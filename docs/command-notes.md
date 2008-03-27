@@ -1,14 +1,16 @@
 # Command notes
 
-Each route is validated before it reaches the token queue.
-Use batch settings to tune how often session data is refreshed.
-The batches module keeps stream values in sync with the support cache.
+Use githubfarm settings to tune how often layout data is refreshed.
+Each batches is validated before it reaches the account queue.
+Run the profile check before changing any context limits.
 
-Each batch is validated before it reaches the stream queue.
-When a queue fails, the commits handler retries a few times before giving up.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Each notes is validated before it reaches the checks queue.
+The already module keeps already values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer session defaults
-- Log every command change
-- Keep stats values small
+- Prefer buffer defaults
+- Document new support fields
+- Keep command values small
+- Validate notes input early
