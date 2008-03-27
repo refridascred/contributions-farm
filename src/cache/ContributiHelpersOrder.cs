@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a already metric sample.</summary>
-        public static long LookupAlreadyMetricIndex(long[] readings, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (readings[i] < bound)
+                if (value >= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the githubfarm checks series from a seed.</summary>
