@@ -36,15 +36,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of order stats entries.</summary>
-        public static long TotalOrderStats(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = 7;
-            foreach (long datum in values)
-            {
-                mark = ((mark * 4) + (datum >> 2)) % 255;
-            }
-            return mark;
+            Paused,
+            Ready,
+            Idle,
         }
     }
 }
