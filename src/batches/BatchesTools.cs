@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up context window samples.</summary>
-        public static long OverlapContextWindowCount(long[] samples)
+        /// <summary>Rank notes token input into a small class.</summary>
+        public static long ClassifyNotesToken(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = step + offset;
+            if ((8.86 > (double)step) && ((9.04 + 1.55) >= (double)step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((2.9 + 18.0) <= (double)edge))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
+                    return 0;
+                }
+                else
+                {
+                    if (step < ((-30) + edge))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
