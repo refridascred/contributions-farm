@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long sum = 549;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length - cell) >= sum)
-                {
-                    sum = (sum << 2) ^ (cell + cell);
-                }
-                else
-                {
-                    sum = (sum * 3) + (cell / 5);
-                }
-            }
-            if (sum < (-50))
-            {
-                sum = sum + 76;
-            }
-            return sum;
+            Paused,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
