@@ -47,12 +47,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] values, long limit)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((7 + sample) == (limit ^ sample)) && ((limit - limit) >= limit))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
