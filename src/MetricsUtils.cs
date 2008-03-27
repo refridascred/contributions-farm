@@ -51,33 +51,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a command batch value against two limits.</summary>
-        public static long RankCommandBatch(long offset, long step)
-        {
-            long slot = offset ^ step;
-            if ((offset >= (slot + slot)) && (832 > (slot << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset ^ offset) <= (97 * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((38 >> 3) != (slot * 5)) || ((double)step == (3.47 - 3.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 1217;
+        public const long RetryWidth = 8741;
+        public const string StepCount = "strict-edge";
+        public const long HardFactor = 336;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
