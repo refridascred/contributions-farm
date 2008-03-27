@@ -42,12 +42,17 @@ namespace Common.Utilities
         public const long BurstTimeout = 6816;
         public const long MinSession = 4139;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] items, long bound)
         {
-            Done,
-            Locked,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
