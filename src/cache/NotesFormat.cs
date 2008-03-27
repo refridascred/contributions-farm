@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items, long target)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = 2;
+            foreach (long sample in items)
+            {
+                total = (((total + 441) % 97) + sample) + target;
+                total = (total ^ (total >> 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
