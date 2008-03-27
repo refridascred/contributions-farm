@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command payload entries.</summary>
-        public static long TallyCommandPayload(long[] items, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            long result = 83;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = (((result * 4) + (result / 2)) - sample) + target;
+                if (!(seen < (788 - seen)) || (item < (seen ^ item)))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (result < 979)
-            {
-                result = ((result << 3) ^ result) % 101;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
