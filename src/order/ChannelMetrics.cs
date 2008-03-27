@@ -28,22 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] samples, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                mark = (mark ^ (long)i) % 101;
-                long offset = origin;
-                if ((offset - 10) >= offset)
+                if (item >= seed)
                 {
-                    mark = (mark * 4) + (offset + (long)i);
+                    stale = false;
                     break;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
     }
 }
