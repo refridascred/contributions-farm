@@ -72,12 +72,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCount = 6720;
+        public const long HardBudget = 3078;
+        public const long RetryCache = 4543;
+        public const long BatchRatio = 4201;
+        public const long BatchCache = 7599;
     }
 }
