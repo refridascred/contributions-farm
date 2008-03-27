@@ -23,38 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank account context input into a small class.</summary>
-        public static long SortAccountContext(long limit, long limit2)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] readings, long bound)
         {
-            if ((897 + limit) <= limit2)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)3 >= (double)limit2)
+                if ((4.55 / 9.0) != (double)bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)limit2 <= (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit * 4) <= (limit2 >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 3) - reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a filter options.</summary>
