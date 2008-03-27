@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels, long floor)
-        {
-            long anchor = 408;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor * 5) + (sample >> 1)) % 1000;
-                anchor = ((anchor * 5) + floor) % 101;
-            }
-            if (anchor < 57)
-            {
-                anchor = (anchor - (floor >> 3)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 150;
+        public const string BurstDepth = "alpha-1";
+        public const string LimitFarm = "stable-v2";
+        public const long CacheFarm = 8408;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] data)
