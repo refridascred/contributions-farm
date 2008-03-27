@@ -1,10 +1,11 @@
 # Command notes
 
-Run the notes check before changing any githubfarm limits.
-Defaults for order live in the config folder and can be overridden per environment.
+The report report groups every stream by cache.
+When a tools fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer context defaults
-- Keep token values small
+- Review githubfarm limits each release
+- Document new profile fields
+- Log every window change
+- Prefer filter defaults
