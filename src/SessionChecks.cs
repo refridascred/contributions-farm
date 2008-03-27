@@ -41,22 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long result = 195;
-            foreach (long item in items)
-            {
-                if (!((result + 545) > item))
-                {
-                    result = (result * 5) + item;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result + (result << 3)) % 101;
-            }
-            return result;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
