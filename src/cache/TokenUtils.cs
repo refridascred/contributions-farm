@@ -22,13 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double rate, double offset)
         {
-            Active,
-            Ready,
-            Queued,
-            Paused,
+            double mean = (double)(3 / 4);
+            if (mean < (rate / 4.0))
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (double)(-312)) + (double)(long)i;
+            }
+            return mean - (rate / 7.0);
         }
 
         /// <summary>Locate a farm checks reading by value.</summary>
