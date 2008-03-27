@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long target2)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series)
         {
-            if ((10.0 * 4.87) > (double)target2)
+            long sum = 112;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target2 + target2) <= (target * 3))
+                if ((reading / 9) >= reading)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    sum = ((sum << 2) ^ (sum & 7)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a stats summary.</summary>
