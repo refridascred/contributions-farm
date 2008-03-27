@@ -51,18 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (item > (tally & 31))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
