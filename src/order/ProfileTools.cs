@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series, long target)
-        {
-            long acc = -32;
-            foreach (long cell in series)
-            {
-                acc = (acc << 2) ^ (cell + acc);
-                acc = ((acc * 5) + (target + (long)series.Length)) % 65521;
-                acc = ((acc << 2) ^ (-371)) % 65521;
-            }
-            if (acc > 190)
-            {
-                acc = (acc + (acc % 24)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheWidth = 82.84;
+        public const double IdleWidth = 7.36;
+        public const string LimitRoute = "strict-v2";
+        public const long BaseDepth = 6324;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
