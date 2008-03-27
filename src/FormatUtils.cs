@@ -103,18 +103,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long origin)
+        /// <summary>Match up report payload samples.</summary>
+        public static long OverlapReportPayloadCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin <= (origin ^ origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + value;
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
