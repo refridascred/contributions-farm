@@ -19,32 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long limit)
-        {
-            if (!((origin / 7) == (limit + origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin * 3) < (origin + 3)) && (limit >= (limit & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.63 * 12.0) <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 6853;
+        public const string BurstFactor = "stable";
+        public const long StepScore = 9107;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long offset)
