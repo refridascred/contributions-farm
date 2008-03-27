@@ -1,14 +1,14 @@
 # Command notes
 
-Keep route and notes names short and lowercase.
-The layout report groups every context by record.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep notes and checks names short and lowercase.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Use profile settings to tune how often command data is refreshed.
-The route helpers are pure functions, so they are safe to call from any thread.
+Keep farm and layout names short and lowercase.
+The already module keeps route values in sync with the queue cache.
 
 ## Guidelines
 
-- Document new token fields
-- Review token limits each release
-- Log every route change
+- Document new channel fields
+- Review cache limits each release
+- Keep graph values small
+- Log every context change
