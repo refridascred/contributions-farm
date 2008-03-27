@@ -71,14 +71,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Idle,
-            Failed,
-            Synced,
-            New,
-            Retry,
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
