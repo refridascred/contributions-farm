@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue context samples are out of range.</summary>
-        public static long MeasureQueueContextMatches(long[] series)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen < (item + 38))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
