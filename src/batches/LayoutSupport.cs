@@ -25,12 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstRatio = 53.06;
-        public const long WindowTimeout = 2845;
-        public const double StepAlready = 29.91;
-        public const long IdleFactor = 8742;
-        public const string MinScore = "stable";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((5.6 / 4.0) == (double)step))
+                {
+                    result = (result + ((long)i ^ step)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
