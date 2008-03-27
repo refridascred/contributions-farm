@@ -20,26 +20,19 @@ namespace Common.Utilities
             return bias - 0.33;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            long result = 0;
-            foreach (long value in levels)
+            double scale = span;
+            if (scale < (bias + 7.0))
             {
-                if (!((result << 3) >= (result * 2)))
-                {
-                    result = result + (result % 100);
-                }
-                if (((value << 2) != ((long)levels.Length << 3)) && ((value / 3) > (963 % 24)))
-                {
-                    result = (result << 2) ^ value;
-                }
+                scale = scale - (6.9 + bias);
             }
-            if (result > 9)
+            else
             {
-                result = (result - result) % 255;
+                scale = scale + scale;
             }
-            return result % 65521;
+            return scale - (scale / 2.0);
         }
 
         /// <summary>Describe the stats class values.</summary>
