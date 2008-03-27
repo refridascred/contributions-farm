@@ -1,9 +1,7 @@
-id,score,label,count
-1,100,34.52,26.69
-2,738,1.42,staging
-3,363,84.72,156
-4,local,fallback,strict
-5,435,primary,eu-west
-6,40.42,15.46,856
-7,staging,fallback,444
-8,626,eu-west,969
+id,owner,token,label
+1,228,16.89,118
+2,stable,98.47,284
+3,11.52,226,blue
+4,979,54.87,edge
+5,standard,79.16,green
+6,local,eu-west,588
