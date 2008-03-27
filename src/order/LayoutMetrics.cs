@@ -23,20 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheDepth = 4515;
+        public const long IdleScore = 9602;
+        public const string MaxRoute = "legacy-1";
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
