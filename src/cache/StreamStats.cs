@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((bound + cell) >= count)
+                if ((seen << 1) >= (seen - value))
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
