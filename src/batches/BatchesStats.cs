@@ -30,23 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long offset)
         {
-            double scale = (offset - ratio) - offset;
-            if (scale <= (double)58)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                scale = scale + (ratio / 2.0);
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (scale - ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - 2.2) + (double)(long)i;
-            }
-            return scale + 0.63;
+            return stale;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
