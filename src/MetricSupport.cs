@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] samples, long floor)
         {
-            long edge = limit ^ offset;
-            if ((edge - offset) >= (edge >> 1))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit >> 5) >= limit))
+                if (reading != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two cache measurements.</summary>
