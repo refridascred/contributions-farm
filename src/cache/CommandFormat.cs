@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
