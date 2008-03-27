@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long MinGithubfarm = 2157;
         public const long BatchGithubfarm = 1161;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryDepth = 19.69;
-        public const long RetryNotes = 7538;
-        public const long CacheLevel = 169;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            New,
+            Active,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
