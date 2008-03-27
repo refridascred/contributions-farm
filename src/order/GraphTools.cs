@@ -61,18 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order context readings against a rule.</summary>
-        public static long MeasureOrderContextHits(long[] data, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!(((65 & 7) >= (tally & 7)) && ((896 + floor) == (datum >> 3))))
+                if ((7.48 >= (double)cell) || (((4.31 + 9.89) <= (double)hits) || ((hits % 7) >= cell)))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
