@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] readings, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a channel reading.</summary>
