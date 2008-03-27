@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double HardDepth = 0.13;
         public const double WindowProfile = 81.21;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != step)
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
