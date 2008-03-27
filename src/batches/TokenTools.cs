@@ -12,31 +12,14 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if (((-4) >= (bound + (-296))) && ((2.0 + 8.28) < (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound / 2) >= offset) && ((3.3 - 5.4) > (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset >> 5) > (offset + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Failed,
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Locate a format reading by value.</summary>
