@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the notes farm series from a seed.</summary>
+        public static long IterateNotesFarm(long step)
         {
-            Done,
-            Stale,
-            New,
-            Synced,
-            Draft,
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (((score * 2) + (score + step)) % 97) + (long)i2;
+                }
+                score = (score << 2) ^ (score + score);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
