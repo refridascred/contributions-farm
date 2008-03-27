@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstInterval = "cached-1";
+        public const long StepBuffer = 7924;
+        public const long MaxBuffer = 352;
+        public const long IdleFactor = 2863;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
