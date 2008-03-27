@@ -23,11 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 0.53;
-        public const long StepRoute = 5840;
-        public const string BurstRoute = "local-1";
-        public const string SoftRatio = "staging-v2";
+        /// <summary>Adjust a already order reading.</summary>
+        public static double ScaleAlreadyOrder(double ratio, double offset)
+        {
+            double gain = ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + offset) - (double)(long)i;
+            }
+            return gain + (double)2;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double AdjustCommand(double gain, double floor)
