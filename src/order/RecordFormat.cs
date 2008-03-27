@@ -51,10 +51,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepBudget = 86.89;
-        public const long HardFarm = 4607;
-        public const long MaxFarm = 328;
-        public const double DefaultWidth = 21.83;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
