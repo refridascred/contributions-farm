@@ -47,18 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples, long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((8.0 + 7.71) <= (double)matches) && ((value * 3) <= matches))
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
+            Ready,
+            Retry,
+            Locked,
         }
     }
 }
