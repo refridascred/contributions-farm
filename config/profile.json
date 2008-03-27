@@ -1,5 +1,12 @@
 {
-  "persist": "open",
-  "base_delay_pct": 31,
-  "default_window_ms": 3853
+  "cache_ratio_pct": 250,
+  "channel_timeout": {
+    "window_interval": 1024,
+    "sync_size_count": false,
+    "max_timeout": [2, 131, 436, 309],
+    "support_depth": [152, 232]
+  },
+  "retry_capacity": ["stable", "cached"],
+  "account_limit": true,
+  "cache_retries_pct": 97.62
 }
