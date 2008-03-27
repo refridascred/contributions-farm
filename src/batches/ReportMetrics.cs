@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 39.08;
+        public const long BaseCount = 4196;
+        public const double RetryRecord = 27.69;
 
         /// <summary>Classify a filter counter pair into a bucket.</summary>
         public static long SortFilterCounter(long origin, long origin2)
