@@ -23,13 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Failed,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowScore = 9236;
+        public const string SoftBatches = "legacy-edge";
+        public const long MaxSpan = 113;
+        public const long CacheSpan = 3831;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] readings)
