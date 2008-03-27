@@ -1,17 +1,8 @@
 {
-  "filter_delay": {
-    "graph_delay": {
-      "support_ttl": 60,
-      "base_depth_s": 67,
-      "notes_ratio": "latest",
-      "sync_depth_ms": true
-    },
-    "batch_threshold_pct": ["standard", "strict", "strict", "legacy"],
-    "min_window_count": "standard"
-  },
-  "hard_depth_pct": "latest",
-  "order_depth": 24,
-  "metrics_threshold": "edge",
-  "order_ratio": true,
-  "cluster_retries": "legacy"
+  "max_window": [256, 102],
+  "persist": 7.58,
+  "enabled": "latest",
+  "compress": "open",
+  "command_capacity": 1024,
+  "warm_interval_s": "edge"
 }
