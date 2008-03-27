@@ -48,19 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long bound)
+        /// <summary>Rank account window input into a small class.</summary>
+        public static long ClassifyAccountWindow(long limit, long floor)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (!(limit >= (limit - limit)))
             {
-                if (item <= bound)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (4.48 - 2.09))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
     }
 }
