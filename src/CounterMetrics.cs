@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Synced,
-            Closed,
-            Pending,
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
