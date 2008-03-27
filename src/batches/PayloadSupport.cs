@@ -29,15 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a support farm reading.</summary>
-        public static double SmoothSupportFarm(double rate, double offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            double ratio = rate;
-            if (ratio < offset)
+            double bias2 = (double)(5 - 548);
+            if (bias2 < bias2)
             {
-                ratio = ratio - (offset / 6.0);
+                bias2 = bias2 + bias;
             }
-            return ratio - (double)567;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - offset) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
     }
 }
