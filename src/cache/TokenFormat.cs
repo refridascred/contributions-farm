@@ -19,20 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record token values into a single score.</summary>
-        public static long FoldRecordToken(long[] data, long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double offset)
         {
-            long score = 19;
-            foreach (long sample in data)
+            double bias2 = (double)(583 - 10);
+            if (bias2 > (double)226)
             {
-                score = ((score ^ (-913)) + sample) - floor;
-                score = score ^ (8 + 14);
+                bias2 = (bias2 - (offset * 0.1)) + bias;
             }
-            if (score < (-91))
+            else
             {
-                score = (score - (score - score)) % 97;
+                bias2 = bias2 + (double)6;
             }
-            return score;
+            return bias2 + offset;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
