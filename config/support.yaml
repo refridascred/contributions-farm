@@ -1,7 +1,9 @@
 # support settings
-flush_size_pct: 30
-soft_limit_pct: blue
-cache_window: 1024
-enabled: stable
-hard_window: false
-burst_timeout_s: staging
+idle_timeout_ms: stable
+context_capacity: 73
+batch_timeout_count: false
+channel_interval: primary
+poll_size_pct:
+  min_limit: edge
+  order_delay: true
+  poll_delay_s: 30
