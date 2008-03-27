@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            Retry,
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
