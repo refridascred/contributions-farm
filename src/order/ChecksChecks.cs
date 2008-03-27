@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
