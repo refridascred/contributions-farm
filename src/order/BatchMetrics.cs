@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 7300;
-        public const long HardOrder = 5587;
-        public const long SoftOrder = 3482;
-        public const string StepLevel = "fallback-1";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long target, long bound)
