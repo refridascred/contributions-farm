@@ -28,12 +28,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "alpha-v2";
-        public const string BaseContributi = "latest-1";
-        public const string CacheSpan = "local";
-        public const long MinFactor = 2899;
-        public const long BaseLevel = 7687;
+        /// <summary>Accumulate profile graph samples.</summary>
+        public static long CombineProfileGraph(long[] values, long target)
+        {
+            long state = 532;
+            foreach (long value in values)
+            {
+                state = ((state * 5) + (target * 5)) - value;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
         public static long SeriesGithubfarmPayload(long limit)
