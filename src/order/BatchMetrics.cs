@@ -31,21 +31,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
