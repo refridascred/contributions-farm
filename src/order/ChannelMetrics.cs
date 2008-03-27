@@ -20,14 +20,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Active,
-            Synced,
-            Locked,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 479;
+        public const double IdleDepth = 5.38;
+        public const string WindowStream = "standard-1";
+        public const long MaxLevel = 1098;
+        public const long WindowTimeout = 3639;
     }
 }
