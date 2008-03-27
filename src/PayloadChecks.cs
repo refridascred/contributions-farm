@@ -30,16 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Audit record session readings against a rule.</summary>
+        public static long TallyRecordSessionOutliers(long[] readings, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                acc = (acc ^ (target - acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((item << 2) <= (hits - item))
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many layout window samples are out of range.</summary>
