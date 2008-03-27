@@ -84,19 +84,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a command metric reading.</summary>
-        public static double ScaleCommandMetric(double bias, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 >= bias)
+            long seen = 0;
+            foreach (long value in data)
             {
-                bias2 = (bias2 + (bias2 * 4.02)) - span;
+                if (((double)value >= (3.6 / 5.0)) || ((double)seen == (7.6 - 3.8)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias + 0.29);
-            }
-            return bias2 - (double)790;
+            return seen;
         }
     }
 }
