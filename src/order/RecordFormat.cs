@@ -36,12 +36,22 @@ namespace Common.Utilities
             return (drift + drift) + floor;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long mark = 1;
+            foreach (long datum in values)
+            {
+                if ((double)datum <= (5.1 * 10.0))
+                {
+                    mark = ((mark ^ (mark >> 4)) % 255) + step;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 4) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
