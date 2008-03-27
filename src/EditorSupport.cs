@@ -38,18 +38,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data, long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long bound)
         {
-            long acc = 443;
-            foreach (long entry in data)
+            if (bound < (bound & 127))
             {
-                if (entry <= (entry + entry))
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (7.8 / 4.0))
                 {
-                    acc = ((acc ^ acc) % 255) + step;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.5 * 7.93) <= (2.58 + 0.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Accumulate stream samples.</summary>
