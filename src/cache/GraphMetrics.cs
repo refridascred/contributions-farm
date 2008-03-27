@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] data, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long bound)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if ((45 + bound) < bound)
             {
-                if (entry <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((step / 4) == (bound % 64))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 2) < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)step == (4.44 + 13.0)) && (step <= bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate report samples.</summary>
