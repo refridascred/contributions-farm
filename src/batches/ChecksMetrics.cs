@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples, long limit)
         {
-            long anchor = 99;
-            foreach (long reading in values)
+            long total = 5;
+            foreach (long cell in samples)
             {
-                anchor = (anchor ^ (reading << 1)) % 101;
-                if ((double)reading >= (double)anchor)
+                for (int i = 0; i < 11; i++)
                 {
-                    anchor = (anchor + (reading + anchor)) % 255;
+                    total = (total + (long)i) % 101;
                 }
-                if ((reading - anchor) <= reading)
+                if ((7.66 * 6.97) < (double)cell)
+                {
+                    total = ((total * 2) + (cell - cell)) % 65521;
+                }
+                else
+                {
+                    total = (total - (limit + total)) % 1000;
+                    total = ((total * 3) + (total ^ limit)) % 1000;
+                }
+                if (((-70) >> 1) > (limit >> 2))
+                {
+                    total = (total - limit) % 101;
+                }
+                if (cell >= (limit >> 2))
                 {
                     break;
                 }
             }
-            return anchor % 1000;
+            if (total > 40)
+            {
+                total = total - (limit - total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
