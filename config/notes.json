@@ -1,5 +1,19 @@
 {
-  "idle_size_s": [85, 408, 13],
-  "persist": "standard",
-  "entry_size": 84
+  "warm_depth_s": 7982,
+  "audit": {
+    "soft_limit": {
+      "audit": 500,
+      "default_limit": 100,
+      "schema_retries": 9631,
+      "default_ratio_ms": "fallback"
+    },
+    "base_capacity_pct": ["primary", "strict", "open", "green"],
+    "dry_run": 30,
+    "editor_ratio": "eu-west",
+    "readonly": "cached",
+    "flush_window": "edge"
+  },
+  "verbose": true,
+  "burst_depth_s": 89,
+  "githubfarm_ratio": "blue"
 }
