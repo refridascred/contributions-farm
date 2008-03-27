@@ -87,13 +87,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            Idle,
+            Closed,
+            New,
+            Failed,
         }
     }
 }
