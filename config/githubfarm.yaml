@@ -1,13 +1,14 @@
 # githubfarm settings
-strict: true
-idle_interval:
-  - 195
-  - 394
-  - 259
-soft_retries_ms:
-  base_depth_ms: 60
-  stats_size: 47.07
-  batches_retries: 20.67
-  batch_ratio: blue
-  max_retries_s: false
-  min_limit: green
+base_retries_s: 78
+max_capacity: 40
+batch_capacity: false
+min_ttl_s:
+  - legacy
+  - fallback
+  - eu-west
+  - latest
+default_timeout_ms: 30
+base_interval:
+  - 487
+  - 40
+  - 190
