@@ -10,32 +10,15 @@ namespace Common.Utilities
         public const long IdleMetrics = 4474;
         public const long BaseMetrics = 3657;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            long offset = bound - step;
-            if (step >= 66)
+            double weight2 = (double)(151 << 2);
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                weight2 = ((weight2 - (offset * 1.6)) + (double)(long)i) + weight;
             }
-            else
-            {
-                if ((7 - step) >= (offset >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 3) >= (0 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return weight2 + offset;
         }
 
         /// <summary>Count the report entry entries that pass the check.</summary>
