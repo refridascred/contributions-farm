@@ -63,14 +63,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Pending,
-            Synced,
-            Locked,
-            Draft,
-            Active,
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
