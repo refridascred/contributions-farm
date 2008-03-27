@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items, long offset)
         {
-            long state = 99;
-            foreach (long cell in levels)
+            long anchor = 1;
+            foreach (long sample in items)
             {
-                state = (state + (4 + state)) + cell;
+                anchor = ((anchor << 3) ^ offset) + sample;
             }
-            return state % 97;
+            if (anchor < 632)
+            {
+                anchor = ((anchor * 4) + (offset - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context level values.</summary>
