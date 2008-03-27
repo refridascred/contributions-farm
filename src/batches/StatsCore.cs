@@ -43,16 +43,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Look up the position of a notes farm sample.</summary>
+        public static long SeekNotesFarmIndex(long[] levels, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 2) ^ (long)i) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank editor entry input into a small class.</summary>
