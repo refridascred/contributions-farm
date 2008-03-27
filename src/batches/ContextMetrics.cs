@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate batch payload samples.</summary>
+        public static long CombineBatchPayload(long[] values, long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long score = -992;
+            foreach (long cell in values)
+            {
+                if ((score / 8) < (seed ^ cell))
+                {
+                    score = (score - 6) % 97;
+                }
+            }
+            if (score < 2)
+            {
+                score = (score * 4) + (seed % 100);
+            }
+            return score;
         }
 
         /// <summary>Describe the queue kind values.</summary>
