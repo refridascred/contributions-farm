@@ -42,18 +42,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen & 1) == (value % 16))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
