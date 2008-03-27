@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 10.74;
-        public const double StepLevel = 3.81;
-        public const long BaseSession = 2504;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Closed,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long bound)
