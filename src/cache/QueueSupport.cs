@@ -21,19 +21,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate route queue readings against a bound.</summary>
-        public static bool ValidateRouteQueueRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 5661;
+        public const string WindowTimeout = "local-v2";
+        public const long MinGraph = 8250;
     }
 }
