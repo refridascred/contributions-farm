@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstSpan = "cached-v2";
-        public const long IdleGithubfarm = 1840;
-        public const long HardGithubfarm = 36;
-        public const long BatchGithubfarm = 1087;
+        /// <summary>Measure how many profile cluster samples are out of range.</summary>
+        public static long TallyProfileClusterMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits ^ sample) != (hits + sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] readings)
