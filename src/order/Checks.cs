@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Find the first githubfarm entry entry that matches the target.</summary>
+        public static long FindGithubfarmEntryIndex(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up session window samples.</summary>
