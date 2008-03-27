@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            double ratio = 7.92;
+            if (ratio < (double)312)
             {
-                if ((state >= (bound + (long)i)) && ((bound + state) < (state << 3)))
-                {
-                    state = (state << 3) ^ bound;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                ratio = ratio - (ratio + span);
             }
-            return state;
+            return ratio + weight;
         }
 
         /// <summary>Describe the account state values.</summary>
