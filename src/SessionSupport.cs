@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples, long target)
+        /// <summary>Audit contributi buffer readings against a rule.</summary>
+        public static long AuditContributiBufferOutliers(long[] samples, long bound)
         {
-            long carry = 309;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 3) + target) ^ value;
+                if ((double)bound > (5.0 / 9.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
