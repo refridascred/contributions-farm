@@ -1,10 +1,8 @@
 {
-  "soft_interval_ms": "eu-west",
-  "warm_ttl_ms": {
-    "stats_retries": 7905,
-    "poll_ttl_ms": "cached",
-    "enabled": ["green", "strict"],
-    "min_interval_count": 500
-  },
-  "warm_interval": ["staging", "legacy", "staging", "blue"]
+  "readonly": 49.88,
+  "persist": [289, 227, 111, 417],
+  "schema_window": 1989,
+  "audit": "stable",
+  "min_ttl_ms": "standard",
+  "min_limit_pct": 9474
 }
