@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 6037;
-        public const long BurstLevel = 4430;
-        public const long WindowRatio = 2830;
-        public const long MaxSpan = 8158;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 8698;
+        public const double HardWidth = 35.14;
+        public const string LimitWidth = "open-1";
+        public const double WindowRatio = 6.64;
+        public const long StepFactor = 9713;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
