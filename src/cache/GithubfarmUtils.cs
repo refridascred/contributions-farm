@@ -36,22 +36,18 @@ namespace Common.Utilities
         public const string CacheFactor = "latest-v2";
         public const double StepRatio = 89.95;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((17.0 - 5.28) < (double)(long)samples.Length)
+                if (((double)count < (9.75 * 18.0)) || (count >= (value - 8)))
                 {
-                    hits = ((hits + 3) + cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
