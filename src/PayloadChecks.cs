@@ -49,21 +49,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 15)
+                    if ((samples[i] - samples[j]) < 0)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
