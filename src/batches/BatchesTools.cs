@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count account record pairs that satisfy a relation.</summary>
-        public static long OverlapAccountRecordCount(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (limit < (origin % 60))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + 93) <= (origin - origin))
                 {
-                    if ((levels[i] + levels[j]) == 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((17.0 - 12.0) >= (13.0 + 0.7))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.97 - 7.93) <= (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
