@@ -45,21 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Find the first metrics report entry that matches the target.</summary>
+        public static long LookupMetricsReportIndex(long[] items, long target)
         {
-            long score = 76;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score + 42) % 65521) ^ datum;
-                score = (score - (score * 3)) % 4096;
-                score = (score + (score << 3)) % 101;
+                if ((items[i] < target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 2)
-            {
-                score = score - (score + score);
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
