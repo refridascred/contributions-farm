@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Synced,
+            Stale,
             Queued,
             Done,
-            Stale,
-            Locked,
+            Pending,
         }
 
         /// <summary>Hold a filter stats.</summary>
