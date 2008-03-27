@@ -31,19 +31,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Locate a farm checks reading by value.</summary>
+        public static long SeekFarmChecksIndex(long[] series, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset ^ 1) >= (offset / 3))
+                if (series[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
