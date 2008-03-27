@@ -47,21 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits batch samples.</summary>
-        public static long PairCommitsBatchCount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((359 / 7) <= (hits / 9)) && ((hits - item) == (hits % 60))) || ((hits >> 5) < (item + hits)))
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
