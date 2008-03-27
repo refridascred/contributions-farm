@@ -1,7 +1,11 @@
 {
-  "base_capacity": "local",
-  "sync_threshold_count": 6,
-  "farm_depth": 70.74,
-  "min_window_count": "standard",
-  "burst_size_pct": "local"
+  "format_threshold": {
+    "burst_capacity": false,
+    "notes_delay": 250,
+    "verbose": 85.21,
+    "min_capacity": 90
+  },
+  "persist": "open",
+  "dry_run": 94.17,
+  "order_retries": "latest"
 }
