@@ -37,19 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph session samples.</summary>
-        public static long CombineGraphSession(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long mark = 50;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + 796) - entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < 8)
-            {
-                mark = (mark * 3) + (mark & 15);
-            }
-            return mark % 4096;
+            return count;
         }
     }
 }
