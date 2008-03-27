@@ -42,38 +42,22 @@ namespace Common.Utilities
         public const double BurstCount = 16.02;
         public const string HardDepth = "primary-edge";
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long origin, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] readings)
         {
-            if ((0 << 3) >= (limit - limit))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((18 <= (origin >> 1)) || ((limit + 4) >= (560 % 3)))
+                if ((double)(long)readings.Length > (4.6 / 8.0))
                 {
-                    return 6;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
-                    if (!((limit + limit) == (origin + (-97))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + limit) < (origin * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
