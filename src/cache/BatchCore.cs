@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Blend two stats session measurements.</summary>
+        public static double AdjustStatsSession(double scale, double span)
         {
-            double bias = offset;
-            if (bias < (offset + bias))
+            double ratio = scale - scale;
+            if (ratio <= (6.5 * 2.1))
             {
-                bias = bias + offset;
+                ratio = ratio - (scale * 10.0);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias - (gain * 8.73)) + (double)(long)i;
+                ratio = (ratio - (scale * 2.8)) - (double)(long)i;
             }
-            return bias - 0.33;
+            return ratio - (ratio - span);
         }
 
         /// <summary>Match up notes stream samples.</summary>
