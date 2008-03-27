@@ -19,16 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] series, long target)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                score = ((score << 3) ^ (long)i) % 97;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((target + (long)series.Length) >= (cell - cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
