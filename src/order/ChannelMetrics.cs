@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long MaxSize = 4738;
         public const double BaseCount = 36.74;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            double gain = (double)(-7) * 12.0;
-            if (gain <= gain)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - 4.31) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + floor;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
