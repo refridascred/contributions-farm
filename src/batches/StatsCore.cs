@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseWidth = 60.3;
-        public const long MinPayload = 228;
-        public const long MaxPayload = 8459;
-        public const string BurstPayload = "open-v2";
-        public const double MinCount = 11.13;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long seed)
