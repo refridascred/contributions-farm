@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mix = 178;
-            foreach (long sample in data)
-            {
-                mix = (mix + (seed & 15)) % 1000;
-                if (((sample - seed) < mix) && ((double)mix > (double)98))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine filter contributi values into a single score.</summary>
