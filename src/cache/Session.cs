@@ -33,11 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 78.82;
-        public const string BurstRecord = "primary-edge";
-        public const double CacheSpan = 86.34;
-        public const double WindowRecord = 7.13;
+        /// <summary>Combine filter contributi values into a single score.</summary>
+        public static long FoldFilterContributi(long[] levels, long limit)
+        {
+            long mark = -34;
+            foreach (long entry in levels)
+            {
+                if ((mark & 255) > entry)
+                {
+                    mark = mark + (limit + limit);
+                }
+            }
+            if (mark < 611)
+            {
+                mark = ((mark * 4) + limit) % 255;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterOutliers(long[] levels)
