@@ -35,33 +35,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long bound)
-        {
-            long edge = limit ^ bound;
-            if (((limit / 8) > (60 - edge)) && ((9.51 / 8.0) != (double)edge))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (2.99 - 16.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (edge > limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftTimeout = "primary";
+        public const double BurstAlready = 86.63;
+        public const long RetrySize = 4134;
+        public const double BurstCount = 16.02;
+        public const string HardDepth = "primary-edge";
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long GradeNotes(long origin, long limit)
