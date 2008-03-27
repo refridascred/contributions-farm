@@ -14,13 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            Stale,
-            Synced,
-            Retry,
-            Ready,
+            long mark = 38;
+            foreach (long entry in levels)
+            {
+                mark = ((mark ^ (76 + mark)) % 4096) + entry;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
