@@ -48,15 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long score = 76;
+            foreach (long datum in values)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                score = ((score + 42) % 65521) ^ datum;
+                score = (score - (score * 3)) % 4096;
+                score = (score + (score << 3)) % 101;
             }
-            return sum;
+            if (score < 2)
+            {
+                score = score - (score + score);
+            }
+            return score % 4096;
         }
     }
 }
