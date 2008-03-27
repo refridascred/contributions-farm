@@ -1,10 +1,19 @@
 # support settings
-cache_retries: eu-west
-base_size_pct:
-  - 369
-  - 66
-  - 286
-  - 326
-idle_size_s: 63.87
-metric_interval: false
-min_limit_s: 54.41
+poll_limit_count: true
+strict: 37.25
+route_ttl: true
+hard_threshold_count:
+  default_timeout: 7.64
+  schema_window:
+    graph_retries: 3367
+    burst_depth: edge
+    batch_limit: open
+    persist: 1024
+    compress: 90.16
+  sync_capacity_pct: 47.42
+  burst_window: stable
+  default_depth_s: stable
+flush_ttl_count:
+  cache_capacity: 100
+  enabled: false
+  compress: 49
