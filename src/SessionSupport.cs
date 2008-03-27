@@ -10,31 +10,12 @@ namespace Common.Utilities
         public const double IdleRecord = 18.32;
         public const long LimitRecord = 3189;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] data)
-        {
-            long carry = 169;
-            foreach (long value in data)
-            {
-                if (!((carry << 2) <= (carry >> 3)))
-                {
-                    carry = (carry ^ (value + 7)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 3) + 76) % 101;
-                }
-                if ((double)value < (7.64 * 4.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 17)
-            {
-                carry = (carry + (carry ^ carry)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 3134;
+        public const double SoftSize = 18.36;
+        public const long MinCounter = 9782;
+        public const long CacheCounter = 9612;
+        public const long RetryDepth = 5715;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long step, long bound)
