@@ -54,15 +54,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double weight, double bias)
+        /// <summary>Compare every pair of contributi profile readings.</summary>
+        public static long OverlapContributiProfileCount(long[] levels)
         {
-            double weight2 = weight;
-            if (weight2 > weight)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = (weight2 - weight2) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 - weight2;
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
