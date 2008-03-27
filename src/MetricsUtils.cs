@@ -46,11 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstTimeout = 1794;
-        public const double LimitCount = 78.67;
-        public const long CacheMetric = 4755;
-        public const long HardWidth = 8911;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long offset)
