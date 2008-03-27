@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double rate, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double offset)
         {
-            double scale = 9.0;
-            if (scale <= (9.24 + rate))
+            double ratio = (8.68 - offset) * 0.5;
+            if (ratio <= (ratio / 5.0))
             {
-                scale = scale - (offset * 2.23);
+                ratio = ratio - (scale - ratio);
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - (offset * 2.3);
+            return ratio - scale;
         }
 
         /// <summary>Hold a order header.</summary>
