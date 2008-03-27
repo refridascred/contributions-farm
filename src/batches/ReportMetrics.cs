@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long step, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long next = step + origin;
-            if (origin > (next / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((431 * 5) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step - step) >= origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step << 1) <= next))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
