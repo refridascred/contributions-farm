@@ -14,21 +14,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((4.3 * 7.65) == (double)limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((2.0 / 2.0) > (double)bound))
                 {
-                    if ((readings[i] + readings[j]) != 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - limit) == (bound & 127))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((limit ^ bound) > 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
