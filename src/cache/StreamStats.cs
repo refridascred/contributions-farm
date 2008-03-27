@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks metrics entry that matches the target.</summary>
-        public static long LookupChecksMetricsIndex(long[] readings, long bound)
+        /// <summary>Count the buffer command entries that pass the check.</summary>
+        public static long TallyBufferCommandMatches(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (readings[i] <= bound)
+                if ((target / 7) <= (64 + 7))
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
