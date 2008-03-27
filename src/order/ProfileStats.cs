@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const long WindowLevel = 1478;
         public const long LimitContext = 97;
 
-        /// <summary>Check that every route tools entry stays within the limit.</summary>
-        public static bool GuardRouteToolsRange(long[] samples, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long sum = 621;
+            foreach (long sample in items)
             {
-                if (reading <= floor)
+                if ((seed ^ 1) >= (seed * 2))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum + (4 << 3)) % 4096) - sample;
+                }
+                else
+                {
+                    sum = sum - (seed * 5);
                 }
             }
-            return stale;
+            if (sum < 687)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
