@@ -21,15 +21,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long bound)
         {
-            double ratio = 1.0;
-            if (ratio < (17.0 / 9.0))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                ratio = (ratio - weight) + floor;
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - weight;
+            return flag;
         }
 
         /// <summary>Digest a series of order stats entries.</summary>
