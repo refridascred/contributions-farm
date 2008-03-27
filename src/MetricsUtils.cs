@@ -42,21 +42,15 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long HardFactor = 336;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
