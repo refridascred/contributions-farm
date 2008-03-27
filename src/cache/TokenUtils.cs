@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            if ((7.0 * 7.0) > (double)origin)
             {
-                if ((mix - (long)i) < (bound << 3))
-                {
-                    continue;
-                }
-                mix = (mix * 5) + mix;
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((target ^ target) > (0 + origin)) && ((5.11 / 8.0) >= (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a contributi info.</summary>
