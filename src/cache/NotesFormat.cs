@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long acc = 913;
+            foreach (long entry in items)
             {
-                if (entry != seed)
+                if ((double)offset > (double)entry)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 3) ^ offset;
+                }
+                else
+                {
+                    acc = ((acc * 4) + acc) % 4096;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
