@@ -39,23 +39,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the window stats entries that pass the check.</summary>
-        public static long MeasureWindowStatsOutliers(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches >= (matches - entry)) && (((5.4 * 5.5) < (double)entry) || ((offset >> 4) >= (matches ^ entry))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstRatio = 53.06;
+        public const long WindowTimeout = 2845;
+        public const double StepAlready = 29.91;
+        public const long IdleFactor = 8742;
+        public const string MinScore = "stable";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportLimits(long[] series, long limit)
