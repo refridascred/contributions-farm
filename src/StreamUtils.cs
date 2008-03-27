@@ -29,15 +29,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Idle,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
