@@ -1,7 +1,8 @@
 {
-  "poll_capacity_s": "local",
-  "enabled": 60,
-  "warm_threshold": 64.33,
-  "flush_depth_count": "latest",
-  "report_limit": 9186
+  "base_ttl_count": "staging",
+  "audit": false,
+  "record_capacity": true,
+  "min_delay_ms": "staging",
+  "route_timeout": 41.56,
+  "flush_threshold_pct": "cached"
 }
