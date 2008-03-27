@@ -36,19 +36,12 @@ namespace Common.Utilities
         public const string CacheFactor = "latest-v2";
         public const double StepRatio = 89.95;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series, long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = 37;
-            foreach (long reading in series)
-            {
-                state = ((state << 3) ^ ((-510) * 4)) + reading;
-            }
-            if (state > 26)
-            {
-                state = (state - ((-499) + origin)) % 1000;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
