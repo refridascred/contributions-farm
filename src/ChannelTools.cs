@@ -15,22 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long offset)
         {
-            long anchor = 818;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.6 * 4.7) <= (double)reading)
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
                 {
-                    anchor = (anchor << 2) ^ reading;
+                    return (long)i;
                 }
             }
-            if (anchor > 604)
-            {
-                anchor = ((anchor << 2) ^ (anchor - offset)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
