@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
