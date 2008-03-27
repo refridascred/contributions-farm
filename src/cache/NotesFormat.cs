@@ -23,21 +23,17 @@ namespace Common.Utilities
         public const double MaxOrder = 6.0;
         public const string CacheSize = "local-1";
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Look up the position of a support already sample.</summary>
+        public static long FindSupportAlreadyIndex(long[] data, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] >= floor)
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
