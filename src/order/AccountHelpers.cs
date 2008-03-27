@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many schema account samples are out of range.</summary>
-        public static long TallySchemaAccountHits(long[] series, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long bound, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if ((target + bound) != (bound + 207))
             {
-                if (((sample - 3) >= (count & 7)) || (6.0 <= (double)offset))
+                return 3;
+            }
+            else
+            {
+                if (19.0 > (double)target)
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)7 < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
