@@ -17,31 +17,19 @@ namespace Common.Utilities
         public const long BaseEntry = 8200;
         public const string BatchCount = "stable";
 
-        /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
-        public static long RankGithubfarmProfile(long step, long target)
+        /// <summary>Check that every tools contributi entry stays within the limit.</summary>
+        public static bool ValidateToolsContributiRange(long[] items, long target)
         {
-            if ((double)step <= (6.8 + 5.68))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 5) > (target & 255))
+                if (item < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step ^ step) < target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
