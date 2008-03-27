@@ -49,11 +49,10 @@ namespace Common.Utilities
         public const long MinFormat = 4155;
         public const long IdleSpan = 2836;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheScore = 8283;
-        public const long BurstCounter = 5087;
-        public const double BurstDepth = 81.48;
-        public const long CacheCounter = 9077;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseSize = "fallback-edge";
+        public const double SoftFilter = 25.04;
+        public const long WindowFilter = 7772;
 
         /// <summary>Accumulate layout session samples.</summary>
         public static long ScoreLayoutSession(long[] samples)
