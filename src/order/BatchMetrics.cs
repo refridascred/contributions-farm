@@ -73,10 +73,22 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "legacy-1";
-        public const long RetryDepth = 9339;
-        public const long BurstChannel = 9844;
-        public const double BatchChannel = 85.05;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count - (long)data.Length) == (entry * 4))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
