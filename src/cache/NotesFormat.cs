@@ -12,13 +12,39 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long slot = bound + seed;
+            if (!((seed + bound) >= (slot - bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed % 5) > (bound - 870))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot > (bound + 6)) || ((bound - bound) < bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(253 < seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
