@@ -33,22 +33,16 @@ namespace Common.Utilities
         public const long MinFactor = 2899;
         public const long BaseLevel = 7687;
 
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long MeasureReportClusterGaps(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((6.8 / 6.0) < (double)entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score * 5) + (origin / 6);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
