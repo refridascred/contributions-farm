@@ -1,5 +1,6 @@
 {
-  "base_retries_s": 4989,
-  "default_timeout_pct": 60,
-  "batch_timeout_ms": 95.44
+  "flush_threshold_pct": [361, 97],
+  "queue_interval": "legacy",
+  "order_ttl": 84,
+  "verbose": 64.73
 }
