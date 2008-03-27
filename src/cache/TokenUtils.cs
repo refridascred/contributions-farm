@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Check that every report layout entry stays within the limit.</summary>
+        public static bool CheckReportLayoutBounds(long[] samples, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Iterate the command stats series from a seed.</summary>
