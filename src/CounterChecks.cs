@@ -65,18 +65,15 @@ namespace Common.Utilities
         public const double StepLevel = 70.15;
         public const double CacheAlready = 2.09;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double gain = offset;
+            if (gain < 9.5)
             {
-                if (!(((origin / 4) > (cell + 0)) && ((origin ^ cell) <= (origin % 100))))
-                {
-                    seen = seen + 1;
-                }
+                gain = (gain - (offset - 12.0)) - scale;
             }
-            return seen;
+            return gain + offset;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
