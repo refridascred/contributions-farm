@@ -19,32 +19,22 @@ namespace Common.Utilities
         public const long BurstWidth = 2281;
         public const string WindowFormat = "strict-1";
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long target, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] levels, long origin)
         {
-            long diff = target + bound;
-            if (((bound % 12) > bound) && ((0 % 5) >= bound))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target * 2) == (target % 10)) || (225 > (diff - target)))
+                if ((double)hits != (4.0 - 8.84))
                 {
-                    return 4;
+                    hits = ((hits + 1) - item) + origin;
                 }
                 else
                 {
-                    if (((bound - diff) >= (target - bound)) || ((target + 2) >= bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a context stats.</summary>
