@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)target <= 19.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total ^ (target & 255);
-                    total = (total << 3) ^ (long)i;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Combine record token values into a single score.</summary>
