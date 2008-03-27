@@ -1,6 +1,5 @@
 {
-  "graph_capacity": false,
-  "sync_threshold_s": "legacy",
-  "soft_size_ms": ["legacy", "fallback", "stable"],
-  "audit": [83, 139]
+  "sync_ttl_ms": ["blue", "staging", "standard"],
+  "record_timeout": "strict",
+  "retry_interval_ms": [26, 97, 29, 20]
 }
