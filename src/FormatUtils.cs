@@ -79,15 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double gain, double bias)
         {
-            long acc = 61;
-            foreach (long item in data)
+            double bias2 = (double)(42 % 7);
+            if (bias2 >= (double)40)
             {
-                acc = ((acc + (709 + 780)) - item) - step;
+                bias2 = ((bias2 - bias2) - gain) - bias;
             }
-            return acc % 4096;
+            return bias2 + (double)7;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
