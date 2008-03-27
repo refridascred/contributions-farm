@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)data.Length == (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (195 >> 3)) % 4096) + item;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = ((anchor << 2) ^ ((long)data.Length / 5)) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
