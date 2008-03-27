@@ -33,18 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = 90;
+            foreach (long cell in levels)
             {
-                if ((datum ^ 840) <= (hits & 3))
+                if ((10.0 - 15.0) > (double)state)
                 {
-                    hits = hits + 1;
+                    state = ((state << 2) ^ state) + cell;
                 }
             }
-            return hits;
+            if (state > 80)
+            {
+                state = state ^ ((-1) % 97);
+            }
+            return state;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
