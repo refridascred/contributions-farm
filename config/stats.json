@@ -1,6 +1,7 @@
 {
-  "min_delay_ms": true,
-  "hard_depth_pct": "fallback",
-  "burst_delay_ms": 14.06,
-  "batch_threshold": 76.12
+  "idle_window": ["eu-west", "edge", "edge", "primary"],
+  "already_interval": 1024,
+  "batch_depth_s": false,
+  "entry_size": "legacy",
+  "retry_ttl_s": [155, 53, 251, 201]
 }
