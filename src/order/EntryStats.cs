@@ -38,26 +38,14 @@ namespace Common.Utilities
         public const long MaxSpan = 113;
         public const long CacheSpan = 3831;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long anchor = 218;
-            foreach (long value in readings)
-            {
-                if ((anchor + anchor) != (value % 7))
-                {
-                    anchor = (anchor * 5) + (9 * 4);
-                }
-                if (((15 % 8) != (value * 3)) && ((anchor - 551) < (anchor & 15)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 659)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 4096;
+            Done,
+            Dropped,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
