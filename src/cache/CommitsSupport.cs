@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ (offset + offset)) % 97;
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
