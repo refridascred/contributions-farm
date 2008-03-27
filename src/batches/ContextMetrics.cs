@@ -46,19 +46,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] samples, long target)
+        /// <summary>Roll a profile batch counter forward.</summary>
+        public static long SeriesProfileBatch(long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
     }
 }
