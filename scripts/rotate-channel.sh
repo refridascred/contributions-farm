@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in standard eu-west edge; do
+for item in strict edge; do
     log "checking ${item}"
 done
