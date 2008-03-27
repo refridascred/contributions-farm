@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long target, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] series, long limit)
         {
-            if ((seed + seed) != (target + seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (3.0 - 3.0))
+                if (series[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - seed) == (seed - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first metrics report entry that matches the target.</summary>
