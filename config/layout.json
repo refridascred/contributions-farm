@@ -1,5 +1,7 @@
 {
-  "persist": 100,
-  "farm_delay": "latest",
-  "soft_ratio": false
+  "enabled": "staging",
+  "hard_interval_pct": false,
+  "profile_ratio": "eu-west",
+  "account_retries": 25.54,
+  "hard_size_count": [336, 308, 210]
 }
