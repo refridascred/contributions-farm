@@ -17,11 +17,9 @@ namespace Common.Utilities
         public const long SoftToken = 4583;
         public const double BatchScore = 19.08;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 479;
-        public const double IdleDepth = 5.38;
-        public const string WindowStream = "standard-1";
-        public const long MaxLevel = 1098;
-        public const long WindowTimeout = 3639;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowChannel = 46.31;
+        public const double CacheBudget = 41.13;
+        public const long StepWidth = 1875;
     }
 }
