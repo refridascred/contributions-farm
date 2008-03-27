@@ -23,28 +23,29 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a tools commits pair into a bucket.</summary>
-        public static long GradeToolsCommits(long origin, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long seed, long bound)
         {
-            if (origin > (origin & 15))
+            long span = seed - bound;
+            if ((seed + span) != (span + bound))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((origin / 8) > bound) && ((244 % 64) >= bound))
+                if (span > (span + 34))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((bound - origin) > (268 ^ bound))
+                    if ((double)seed <= 5.2)
                     {
                         return 7;
                     }
                     else
                     {
-                        return 0;
+                        return 1;
                     }
                 }
             }
