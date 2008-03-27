@@ -42,22 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Rank profile queue input into a small class.</summary>
+        public static long ClassifyProfileQueue(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long delta = offset - seed;
+            if (offset >= (delta << 2))
             {
-                if ((item - 7) <= (item * 5))
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) >= seed)
                 {
-                    seen = seen + 1;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate window record readings against a bound.</summary>
