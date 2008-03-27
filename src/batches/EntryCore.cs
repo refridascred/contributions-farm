@@ -37,24 +37,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a route notes pair into a bucket.</summary>
-        public static long BucketRouteNotes(long step, long limit)
-        {
-            if ((3.4 + 3.5) != (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (step < (step & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheTimeout = 7027;
+        public const double DefaultScore = 60.84;
+        public const long MinAccount = 1624;
     }
 }
