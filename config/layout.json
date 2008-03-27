@@ -1,5 +1,12 @@
 {
-  "default_interval_s": "open",
-  "cache_size_count": "cached",
-  "commits_delay": "cached"
+  "soft_interval": "green",
+  "cache_retries_pct": {
+    "githubfarm_delay": 250,
+    "readonly": false,
+    "window_limit": 52.79,
+    "burst_delay_ms": "open",
+    "persist": "open"
+  },
+  "readonly": "standard",
+  "max_limit_pct": 91.07
 }
