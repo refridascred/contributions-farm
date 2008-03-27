@@ -52,22 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)(long)readings.Length > (4.6 / 8.0))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 7521;
+        public const long StepLevel = 4765;
+        public const long IdleRecord = 3979;
     }
 }
