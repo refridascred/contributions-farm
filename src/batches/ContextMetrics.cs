@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const string MinMetric = "local-v2";
         public const long IdleSpan = 3505;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Iterate the githubfarm window series from a seed.</summary>
