@@ -68,11 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
