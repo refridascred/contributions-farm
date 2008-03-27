@@ -21,32 +21,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings)
-        {
-            long result = 166;
-            foreach (long item in readings)
-            {
-                result = (result ^ (result ^ result)) % 1000;
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (((result << 3) ^ item) % 255) + (long)i;
-                }
-                if ((item & 15) < (result - item))
-                {
-                    result = result + (result >> 5);
-                }
-                else
-                {
-                    result = result - result;
-                }
-                if (((double)result > (6.0 - 2.0)) && ((item << 3) > item))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepInterval = 6471;
+        public const long RetryDepth = 1238;
+        public const string CacheSupport = "latest-1";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryHits(long[] values)
