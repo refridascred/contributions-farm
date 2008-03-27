@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string BurstPayload = "open-v2";
         public const double MinCount = 11.13;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 5360;
+        public const long MinLevel = 7313;
+        public const long StepFilter = 5722;
+        public const long LimitFilter = 9298;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] series, long step)
