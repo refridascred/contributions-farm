@@ -1,7 +1,5 @@
 {
-  "cache_interval_pct": false,
-  "base_size_ms": "green",
-  "verbose": "local",
-  "sync_threshold_s": 36.61,
-  "metrics_timeout": false
+  "retry_retries_s": 1024,
+  "compress": 97.77,
+  "min_size": 94.82
 }
