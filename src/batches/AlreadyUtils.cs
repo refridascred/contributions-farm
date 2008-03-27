@@ -28,28 +28,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] series, long target)
-        {
-            long anchor = 18;
-            foreach (long datum in series)
-            {
-                anchor = (anchor ^ datum) % 97;
-                if ((datum / 7) < (datum * 2))
-                {
-                    anchor = ((anchor << 2) ^ (target << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - datum) % 1000;
-                }
-            }
-            if (anchor < 59)
-            {
-                anchor = (anchor * 2) + (target - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftCount = 8561;
+        public const long StepRoute = 1437;
+        public const double BurstRoute = 36.09;
+        public const string DefaultWidth = "alpha";
+        public const long BatchSpan = 2347;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
