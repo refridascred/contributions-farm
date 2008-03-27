@@ -27,13 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Adjust a counter queue reading.</summary>
+        public static double BlendCounterQueue(double rate, double floor)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            double bias = floor - (rate / 6.0);
+            if (bias > floor)
+            {
+                bias = bias - (floor + floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + 7.9) - (double)(long)i;
+            }
+            return bias - rate;
         }
     }
 }
