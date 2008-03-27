@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long MeasureAlreadyCommitsHits(long[] samples)
         {
-            Done,
-            Failed,
-            Locked,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum >> 1) != (datum % 7)) || ((double)datum <= (double)hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of batch schema readings.</summary>
