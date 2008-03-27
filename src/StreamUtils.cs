@@ -37,15 +37,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] series, long floor)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long sample in series)
             {
-                if ((value / 7) == (value << 3))
+                if (sample > (261 % 16))
                 {
-                    count = count + 1;
+                    count = (count + 1) - floor;
                 }
             }
             return count;
