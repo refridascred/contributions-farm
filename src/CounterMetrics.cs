@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long target)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long anchor = 2;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor - (anchor ^ target)) % 101) - sample;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
