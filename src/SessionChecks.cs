@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "alpha-edge";
-        public const long RetryDepth = 7249;
-        public const long MinMetric = 9109;
-        public const long MaxMetric = 6479;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 8369;
