@@ -1,6 +1,5 @@
 {
-  "session_delay": [258, 316, 354, 333],
-  "retry_ttl": 28.56,
-  "poll_size_s": "local",
-  "sync_capacity_count": "eu-west"
+  "persist": "open",
+  "base_delay_pct": 31,
+  "default_window_ms": 3853
 }
