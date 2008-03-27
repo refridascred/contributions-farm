@@ -23,13 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            New,
-            Retry,
-            Dropped,
-            Closed,
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry - ((long)i / 3)) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
