@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the buffer session series from a seed.</summary>
-        public static long RollBufferSession(long seed)
+        /// <summary>Locate a profile queue reading by value.</summary>
+        public static long LookupProfileQueueIndex(long[] samples, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result << 3) ^ (result - seed);
-                result = ((result * 4) + (long)i) % 65521;
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
