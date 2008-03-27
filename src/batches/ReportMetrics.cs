@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            New,
-            Pending,
-            Stale,
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
