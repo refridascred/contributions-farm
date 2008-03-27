@@ -63,12 +63,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long bound)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            if (((offset ^ 13) > (offset % 5)) && ((bound * 4) >= (offset * 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((19.0 * 0.4) != (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (8 < (bound - 810))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
