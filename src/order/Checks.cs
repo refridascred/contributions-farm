@@ -52,12 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double floor)
         {
-            Failed,
-            Paused,
-            New,
+            double gain = floor;
+            if (gain < 17.0)
+            {
+                gain = gain - (double)669;
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain + (double)6;
         }
     }
 }
