@@ -50,13 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] levels, long origin)
         {
-            Active,
-            Retry,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ 68) >= (5 ^ 467))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
