@@ -37,11 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Find the first session window entry that matches the target.</summary>
+        public static long LookupSessionWindowIndex(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
