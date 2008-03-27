@@ -32,18 +32,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] data, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((-427) << 2) <= (1 ^ seen))
-                {
-                    seen = ((seen + 1) - cell) - offset;
-                }
+                score = (score ^ (score << 1)) % 255;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
