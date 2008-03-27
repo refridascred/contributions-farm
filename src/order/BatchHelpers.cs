@@ -23,21 +23,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 63;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)datum < (double)79)
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 5) + (datum / 8);
+                }
+                else
+                {
+                    mark = mark - (mark << 3);
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
