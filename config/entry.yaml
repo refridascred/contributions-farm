@@ -1,11 +1,22 @@
 # entry settings
-readonly: open
-max_timeout_ms: standard
-burst_window_count: standard
-default_interval:
-  - 463
-  - 228
-  - 434
-  - 127
-sync_ratio_pct: 8381
-cache_timeout: edge
+farm_capacity: edge
+batch_ttl: 60
+idle_depth:
+  graph_depth: 31.46
+  payload_limit: 60
+  account_depth: staging
+  counter_timeout:
+    batches_delay: 60
+    counter_delay: 59
+    poll_interval: 65.34
+    base_interval_count: true
+    batches_interval: false
+    compress: 94
+  session_ratio: 5474
+  burst_interval: fallback
+audit: 19.21
+verbose:
+  - 497
+  - 157
+  - 447
+  - 182
