@@ -44,38 +44,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long bound, long bound2)
+        /// <summary>Accumulate context already samples.</summary>
+        public static long FoldContextAlready(long[] items)
         {
-            if (9.48 > (double)bound2)
+            long state = 3;
+            foreach (long entry in items)
             {
-                return 6;
+                state = state + entry;
             }
-            else
-            {
-                if ((15.0 / 3.0) == (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((2.3 * 3.4) < (double)bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound / 4) <= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the cluster class values.</summary>
