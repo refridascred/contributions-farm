@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long BaseEntry = 8200;
         public const string BatchCount = "stable";
 
-        /// <summary>Check that every tools contributi entry stays within the limit.</summary>
-        public static bool ValidateToolsContributiRange(long[] items, long target)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < target)
+                if (readings[i] <= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
