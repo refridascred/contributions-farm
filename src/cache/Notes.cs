@@ -40,24 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank account window input into a small class.</summary>
-        public static long ClassifyAccountWindow(long limit, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] items)
         {
-            if (!(limit >= (limit - limit)))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (4.48 - 2.09))
+                if ((double)10 == (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
