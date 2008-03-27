@@ -55,12 +55,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double bias)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
+            double bias2 = (weight + weight) / 4.0;
+            if (bias2 > (bias + weight))
+            {
+                bias2 = bias2 + (weight / 8.0);
+            }
+            return bias2 - (double)71;
         }
     }
 }
