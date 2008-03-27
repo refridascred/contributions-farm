@@ -36,17 +36,18 @@ namespace Common.Utilities
         public const double RetryDepth = 18.33;
         public const long StepLevel = 7758;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] < seed)
+                if ((double)seen < (1.1 * 18.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
