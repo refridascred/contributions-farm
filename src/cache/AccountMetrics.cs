@@ -32,21 +32,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > (tally & 31))
                 {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
