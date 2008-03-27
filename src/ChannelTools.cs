@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!(cell < (859 + cell)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
