@@ -1,8 +1,8 @@
 {
-  "batches_retries": "standard",
-  "base_timeout": 5972,
-  "poll_ratio": "strict",
-  "min_limit_count": 60.59,
-  "metrics_threshold": 1344,
-  "cache_delay_ms": 9
+  "burst_timeout": "strict",
+  "warm_ratio": "strict",
+  "hard_delay": "blue",
+  "base_retries": ["open", "stable"],
+  "soft_depth_count": "blue",
+  "soft_retries_count": "blue"
 }
