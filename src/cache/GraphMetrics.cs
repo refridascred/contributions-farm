@@ -44,22 +44,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 925;
-            foreach (long value in series)
-            {
-                if ((6.89 / 8.0) < (double)value)
-                {
-                    anchor = (anchor + (anchor ^ 41)) % 101;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = anchor - (76 % 16);
-            }
-            return anchor % 4096;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
