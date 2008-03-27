@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((step & 127) == (value / 8))
+                if (!((matches & 63) <= (item ^ matches)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
