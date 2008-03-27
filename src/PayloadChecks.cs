@@ -50,12 +50,11 @@ namespace Common.Utilities
         public const long RetryInterval = 7959;
         public const long MaxFactor = 4718;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Dropped,
-            Stale,
-            New,
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
