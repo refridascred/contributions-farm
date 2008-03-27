@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] levels, long bound)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)sample == (7.0 / 2.0)) || ((8.79 + 9.3) <= (double)sample))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a metric reading.</summary>
