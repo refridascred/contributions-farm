@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 40.67;
-        public const string CacheRoute = "open-1";
-        public const double WindowRoute = 21.04;
-        public const long SoftTimeout = 3962;
-        public const long LimitRoute = 4308;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                long count = (long)i + bound;
+                if (!((sum - bound) >= count))
+                {
+                    sum = sum - ((long)i << 3);
+                }
+                count = (count * 5) + (bound << 2);
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BaseContributi = "standard-edge";
