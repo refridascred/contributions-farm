@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a schema checks figure with a bias.</summary>
-        public static double ProjectSchemaChecks(double bias, double bias2)
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long AuditRecordFilterOutliers(long[] data, long step)
         {
-            double scale = bias2;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                scale = ((scale + bias2) - (double)(long)i) - bias;
+                if (((item + count) > count) || (step < count))
+                {
+                    count = count + 2;
+                }
             }
-            return scale - (double)609;
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
