@@ -19,22 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long DigestAlreadyCounter(long[] data, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long bound, long origin)
         {
-            long anchor = 231;
-            foreach (long value in data)
+            if ((3.9 * 3.0) <= (double)origin)
             {
-                if (722 < value)
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) != (562 % 3))
                 {
-                    anchor = (anchor ^ (5 & 31)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (573 < bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor < (-3))
-            {
-                anchor = anchor ^ (anchor - seed);
-            }
-            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
