@@ -50,17 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload layout readings.</summary>
-        public static long WeighPayloadLayout(long[] readings, long offset)
-        {
-            long acc = 927;
-            foreach (long cell in readings)
-            {
-                acc = ((acc ^ (cell + cell)) % 101) - offset;
-                acc = acc + 9;
-                acc = (acc ^ (acc & 31)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 13.65;
+        public const long WindowLayout = 9419;
+        public const long SoftScore = 6364;
+        public const double BaseLayout = 87.51;
+        public const long LimitLayout = 9239;
     }
 }
