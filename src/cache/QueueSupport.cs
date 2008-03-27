@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string CacheRatio = "local-edge";
         public const double MinRatio = 39.82;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Paused,
-            Retry,
-            Failed,
+            Synced,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate route queue readings against a bound.</summary>
