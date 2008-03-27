@@ -1,6 +1,5 @@
 {
-  "context_retries": 3312,
-  "token_retries": "cached",
-  "warm_delay_count": "legacy",
-  "commits_ttl": "stable"
+  "sync_interval_pct": 7273,
+  "audit": 1516,
+  "idle_delay_pct": 1024
 }
