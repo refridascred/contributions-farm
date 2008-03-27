@@ -24,13 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
+            Pending,
             Ready,
             Locked,
-            Stale,
-            New,
+            Queued,
+            Paused,
         }
     }
 }
