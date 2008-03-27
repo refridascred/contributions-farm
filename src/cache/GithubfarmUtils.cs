@@ -38,35 +38,19 @@ namespace Common.Utilities
         public const long BaseRatio = 9022;
         public const long IdleSpan = 9163;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Validate command editor readings against a bound.</summary>
+        public static bool VerifyCommandEditorRange(long[] data, long target)
         {
-            long mix = 57;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((mix - mix) != (85 >> 2))
+                if (item < target)
                 {
-                    mix = ((mix << 2) ^ (mix + 89)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mix = mix ^ (cell / 5);
-                }
-                if ((mix + cell) < (mix % 12))
-                {
-                    mix = mix + mix;
-                }
-                if ((double)mix > (5.51 - 8.9))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix < (-7))
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return ok;
         }
     }
 }
