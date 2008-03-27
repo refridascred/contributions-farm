@@ -16,13 +16,31 @@ namespace Common.Utilities
             return drift - 2.8;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Classify a tools commits pair into a bucket.</summary>
+        public static long GradeToolsCommits(long origin, long bound)
         {
-            Queued,
-            Closed,
-            Pending,
-            Draft,
+            if (origin > (origin & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin / 8) > bound) && ((244 % 64) >= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - origin) > (268 ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
