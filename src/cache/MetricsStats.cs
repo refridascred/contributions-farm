@@ -26,12 +26,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long offset)
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
