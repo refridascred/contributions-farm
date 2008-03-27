@@ -1,7 +1,8 @@
 {
-  "cache_capacity_count": 5742,
-  "burst_size": "cached",
-  "layout_timeout": 6089,
-  "session_window": "local",
-  "report_ttl": "open"
+  "strict": 62.99,
+  "batch_window_ms": 6994,
+  "poll_timeout_ms": true,
+  "idle_ttl": true,
+  "sync_ttl_pct": 1.21,
+  "layout_threshold": ["primary", "standard"]
 }
