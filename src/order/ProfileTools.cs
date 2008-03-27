@@ -67,39 +67,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry report value against two limits.</summary>
-        public static long SortEntryReport(long step, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            long slot = step + limit;
-            if (!(step < (step % 8)))
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit - slot) != (slot - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.4 - 17.0) == (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step * 2) != (limit / 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
