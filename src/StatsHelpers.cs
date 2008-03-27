@@ -18,19 +18,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] readings, long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Count commits checks pairs that satisfy a relation.</summary>
