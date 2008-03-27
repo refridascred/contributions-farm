@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a githubfarm route value against two limits.</summary>
+        public static long SortGithubfarmRoute(long seed, long offset)
         {
-            Draft,
-            New,
-            Stale,
+            if (!(3.9 < (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a entry summary.</summary>
