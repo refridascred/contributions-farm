@@ -53,22 +53,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (datum > (datum - 59))
+                if ((double)count != (6.4 * 7.0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
