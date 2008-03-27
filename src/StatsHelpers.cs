@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
-        public static bool GuardRouteGithubfarmLimits(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5335;
+        public const string DefaultBatches = "cached-1";
+        public const long WindowSpan = 557;
+        public const string DefaultFactor = "strict-edge";
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
         public static long ClassifyBufferCluster(long limit, long bound)
