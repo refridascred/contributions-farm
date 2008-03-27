@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Grade a githubfarm batch value against two limits.</summary>
+        public static long SortGithubfarmBatch(long seed, long origin)
         {
-            Active,
-            Retry,
-            New,
+            if (((double)origin == (1.03 + 6.47)) || ((origin % 97) != (origin << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin / 7) <= (seed + seed)) || ((seed - 6) == (148 << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin >= (5 + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next order payload value from a seed.</summary>
