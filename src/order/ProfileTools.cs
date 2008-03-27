@@ -12,26 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long DigestQueueOrder(long[] data, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] items)
         {
-            long carry = 2;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((924 & 127) < (origin & 255))
+                if ((cell + hits) < (541 - hits))
                 {
-                    carry = ((carry - origin) % 4096) - datum;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry << 2)) % 4096;
-                }
-                if ((double)origin < 7.0)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Scale a stream context figure with a bias.</summary>
