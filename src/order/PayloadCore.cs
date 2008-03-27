@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next payload batch value.</summary>
-        public static double BlendPayloadBatch(double weight, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long seed)
         {
-            double gain = weight;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + (gain / 5.0)) - (double)(long)i;
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (offset + gain);
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
