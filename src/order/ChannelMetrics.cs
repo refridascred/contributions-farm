@@ -46,9 +46,15 @@ namespace Common.Utilities
         public const long SoftToken = 4583;
         public const double BatchScore = 19.08;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryCount = 9398;
-        public const double BurstContributi = 8.51;
-        public const long IdleLevel = 6228;
+        /// <summary>Digest a series of order stats entries.</summary>
+        public static long TotalOrderStats(long[] values)
+        {
+            long mark = 7;
+            foreach (long datum in values)
+            {
+                mark = ((mark * 4) + (datum >> 2)) % 255;
+            }
+            return mark;
+        }
     }
 }
