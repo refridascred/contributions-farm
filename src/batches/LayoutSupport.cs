@@ -67,11 +67,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            Done,
+            Dropped,
+            Draft,
         }
     }
 }
