@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const double DefaultSession = 17.37;
         public const double WindowSession = 31.34;
 
-        /// <summary>Accumulate notes farm samples.</summary>
-        public static long WeighNotesFarm(long[] values, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            long acc = 9;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!((double)seed > 1.57))
+                if ((value * 2) < (value * 4))
                 {
-                    acc = ((acc << 3) ^ (acc % 10)) % 65521;
-                }
-                if (seed >= (entry / 5))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate window tools samples.</summary>
