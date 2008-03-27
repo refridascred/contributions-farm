@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series)
         {
-            Stale,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)seen <= 2.8)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a support farm reading.</summary>
