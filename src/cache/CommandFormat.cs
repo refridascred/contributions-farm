@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            long total = 662;
-            foreach (long cell in levels)
+            double bias2 = span;
+            if (bias2 >= 3.0)
             {
-                if ((double)limit < 4.14)
-                {
-                    total = total + (cell / 4);
-                }
+                bias2 = (bias2 + (span / 3.0)) - bias;
             }
-            if (total < 5)
-            {
-                total = ((total << 3) ^ total) % 4096;
-            }
-            return total % 65521;
+            return bias2 + bias2;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
