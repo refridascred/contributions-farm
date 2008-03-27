@@ -13,22 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a stream tools counter forward.</summary>
-        public static long RollStreamTools(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state ^ (state + limit);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    long gap = (state >> 5) & 31;
-                    state = ((state << 2) ^ (limit + gap)) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleScore = "legacy-edge";
+        public const double DefaultLayout = 37.1;
+        public const long RetrySize = 5693;
+        public const long BaseCount = 7779;
+        public const long MinLayout = 5603;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
