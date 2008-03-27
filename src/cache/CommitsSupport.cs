@@ -54,21 +54,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of queue order readings.</summary>
-        public static long OverlapQueueOrderCount(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
