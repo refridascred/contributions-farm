@@ -31,18 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit editor record readings against a rule.</summary>
-        public static long MeasureEditorRecordGaps(long[] levels, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen + limit) > ((long)levels.Length >> 1)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
