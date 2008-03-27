@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long WeighProfileOrder(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 188;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix + (mix * 5)) - value;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Accumulate layout samples.</summary>
