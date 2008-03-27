@@ -19,24 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long floor)
         {
-            if ((double)floor >= (6.98 * 20.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor << 3) <= (bound / 5)) || ((920 % 64) <= (bound + 40)))
+                if (items[i] <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
