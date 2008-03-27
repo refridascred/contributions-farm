@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the format notes entries that pass the check.</summary>
