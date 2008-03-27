@@ -29,21 +29,15 @@ namespace Common.Utilities
         public const double RetryDepth = 18.33;
         public const long StepLevel = 7758;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 9;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ (7 & 127)) % 97) ^ datum;
             }
-            return count;
+            return carry;
         }
     }
 }
