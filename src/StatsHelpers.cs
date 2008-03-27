@@ -38,10 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultRatio = 7020;
-        public const long BurstTimeout = 6816;
-        public const long MinSession = 4139;
+        /// <summary>Validate checks buffer readings against a bound.</summary>
+        public static bool ValidateChecksBufferRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] items, long bound)
