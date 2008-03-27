@@ -1,5 +1,6 @@
 {
-  "burst_depth": "local",
-  "max_size_pct": ["edge", "blue", "staging", "cached"],
-  "sync_timeout_ms": 59
+  "default_delay": "local",
+  "cache_depth_pct": false,
+  "warm_capacity": [185, 474],
+  "min_ratio": "open"
 }
