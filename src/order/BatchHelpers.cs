@@ -23,21 +23,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long carry = 96;
-            foreach (long sample in values)
-            {
-                carry = (carry - (sample << 2)) % 101;
-                carry = carry - (sample - carry);
-                carry = (carry + (carry & 1)) % 4096;
-            }
-            if (carry > 5)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            Stale,
+            Failed,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
