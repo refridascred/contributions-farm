@@ -43,19 +43,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] items, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Done,
+            Stale,
+            Paused,
+            New,
         }
     }
 }
