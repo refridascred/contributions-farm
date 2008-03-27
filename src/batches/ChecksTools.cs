@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of editor queue readings.</summary>
-        public static long DigestEditorQueue(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = 9;
-            foreach (long sample in series)
-            {
-                if ((acc <= (6 << 1)) || (7.6 > (double)acc))
-                {
-                    acc = ((acc - (acc & 31)) % 1000) - sample;
-                }
-            }
-            return acc;
+            Locked,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the tools class values.</summary>
