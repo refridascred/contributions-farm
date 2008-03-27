@@ -1,21 +1,10 @@
 {
-  "warm_depth_pct": {
-    "soft_size_pct": 70.24,
-    "idle_limit": {
-      "default_size_count": "cached",
-      "retry_interval_count": 39,
-      "support_timeout": "open",
-      "strict": 98.87,
-      "stream_size": "stable",
-      "persist": 9401
-    },
-    "metrics_threshold": 5,
-    "audit": "fallback",
-    "max_depth": "standard",
-    "readonly": true
+  "burst_limit_count": [274, 316],
+  "audit": {
+    "queue_ratio": "blue",
+    "min_size_count": 32,
+    "editor_delay": 9
   },
-  "batch_depth": ["staging", "edge", "latest", "standard"],
-  "cluster_depth": 55,
-  "idle_ttl_pct": "cached",
-  "burst_size_ms": false
+  "soft_ttl_s": false,
+  "contributi_size": 2020
 }
