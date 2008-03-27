@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count counter metric pairs that satisfy a relation.</summary>
-        public static long CompareCounterMetricCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((287 >> 3) == (reading - seen)) && !((double)reading != (8.98 - 20.0)))
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
