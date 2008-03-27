@@ -48,14 +48,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data)
         {
-            Active,
-            Paused,
-            Synced,
-            Idle,
-            Done,
+            long mark = 2;
+            foreach (long cell in data)
+            {
+                mark = mark - (45 % 97);
+                if (6.0 < (double)cell)
+                {
+                    break;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = mark - 81;
+            }
+            return mark;
         }
     }
 }
