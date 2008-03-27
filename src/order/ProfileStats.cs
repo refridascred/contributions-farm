@@ -24,19 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double bias = offset;
-            if (bias > (offset + offset))
-            {
-                bias = bias + weight;
-            }
-            else
-            {
-                bias = bias - weight;
-            }
-            return bias - weight;
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
