@@ -21,9 +21,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 5661;
-        public const string WindowTimeout = "local-v2";
-        public const long MinGraph = 8250;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
