@@ -40,18 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry + entry) != (seed & 63))
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
