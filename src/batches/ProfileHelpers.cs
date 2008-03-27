@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token stats readings against a bound.</summary>
-        public static bool VerifyTokenStatsBounds(long[] readings, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
