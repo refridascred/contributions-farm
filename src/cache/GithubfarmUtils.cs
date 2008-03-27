@@ -20,18 +20,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 7094;
+        public const long RetryTimeout = 9798;
+        public const double RetrySpan = 35.29;
+        public const long BaseRatio = 9022;
+        public const long IdleSpan = 9163;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] values)
