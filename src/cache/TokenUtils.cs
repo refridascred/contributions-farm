@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a entry account value against two limits.</summary>
-        public static long GradeEntryAccount(long origin, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            if ((2 >> 5) <= limit)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ limit) <= 8)
+                if ((item >> 1) > 83)
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((double)limit > (3.0 + 11.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit == (5.57 * 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
