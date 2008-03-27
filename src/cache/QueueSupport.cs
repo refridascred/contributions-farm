@@ -34,19 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] levels, long floor)
+        /// <summary>Audit editor record readings against a rule.</summary>
+        public static long MeasureEditorRecordGaps(long[] levels, long limit)
         {
-            bool valid = true;
+            long seen = 0;
             foreach (long reading in levels)
             {
-                if (reading >= floor)
+                if (!((seen + limit) > ((long)levels.Length >> 1)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
