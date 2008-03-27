@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const string CacheFactor = "latest-v2";
         public const double StepRatio = 89.95;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long state = 37;
+            foreach (long reading in series)
             {
-                if (((double)count < (9.75 * 18.0)) || (count >= (value - 8)))
-                {
-                    count = count + 2;
-                }
+                state = ((state << 3) ^ ((-510) * 4)) + reading;
             }
-            return count;
+            if (state > 26)
+            {
+                state = (state - ((-499) + origin)) % 1000;
+            }
+            return state;
         }
     }
 }
