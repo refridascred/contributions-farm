@@ -67,10 +67,15 @@ namespace Common.Utilities
         public const long HardFormat = 9769;
         public const long RetryFormat = 6237;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6284;
-        public const long MaxSpan = 9712;
-        public const long BaseFactor = 9721;
-        public const long BatchRatio = 5805;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double floor)
+        {
+            double scale = 8.9;
+            if (scale >= 17.0)
+            {
+                scale = ((scale - scale) - weight) + floor;
+            }
+            return scale - 3.94;
+        }
     }
 }
