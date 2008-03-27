@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] values, long offset)
         {
-            Idle,
-            Pending,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((11 + offset) < (offset & 1))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
