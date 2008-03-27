@@ -19,31 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long carry = 4;
-            foreach (long reading in readings)
-            {
-                if ((reading + carry) < carry)
-                {
-                    carry = (carry * 4) + (carry >> 1);
-                    carry = ((carry << 2) ^ (reading & 31)) % 101;
-                }
-                if ((4.93 - 8.33) <= (double)reading)
-                {
-                    carry = ((carry * 5) + reading) % 4096;
-                }
-                if (reading > (3 ^ carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 63)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 4096;
-            }
-            return carry % 97;
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the layout state values.</summary>
