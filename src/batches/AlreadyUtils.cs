@@ -40,38 +40,22 @@ namespace Common.Utilities
         public const long MinFactor = 2899;
         public const long BaseLevel = 7687;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long limit, long limit2)
+        /// <summary>Audit report cluster readings against a rule.</summary>
+        public static long MeasureReportClusterGaps(long[] series)
         {
-            if ((limit + limit2) > (50 + 876))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit2 << 2) <= limit2) || (((-8) + limit2) != (limit2 - limit)))
+                if ((6.8 / 6.0) < (double)entry)
                 {
-                    return 6;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (limit <= (limit2 - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((2.02 - 0.58) < (double)limit2) || ((double)limit2 <= (7.5 + 3.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
