@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long acc = 513;
-            foreach (long sample in data)
-            {
-                acc = (((acc * 2) + acc) % 65521) + sample;
-            }
-            return acc % 4096;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the schema status values.</summary>
