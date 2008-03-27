@@ -1,10 +1,7 @@
 {
-  "retry_ratio_pct": "cached",
-  "poll_interval": {
-    "flush_ratio_count": "standard",
-    "flush_depth": 60,
-    "verbose": 5,
-    "compress": 19.32
-  },
-  "soft_limit_pct": 8913
+  "cache_interval_pct": false,
+  "base_size_ms": "green",
+  "verbose": "local",
+  "sync_threshold_s": 36.61,
+  "metrics_timeout": false
 }
