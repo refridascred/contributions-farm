@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] levels)
         {
-            Done,
-            Failed,
-            New,
-            Synced,
-            Stale,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + matches) < (matches / 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
