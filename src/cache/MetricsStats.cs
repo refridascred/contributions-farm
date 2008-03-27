@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            Synced,
-            Done,
-            Stale,
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i << 1) >= (0 / 8))
+                {
+                    state = ((state << 3) ^ (long)i) % 65521;
+                }
+                else
+                {
+                    state = (state - origin) % 97;
+                }
+                state = state ^ (origin / 7);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
