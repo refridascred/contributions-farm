@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] items)
+        /// <summary>Find the first checks metrics entry that matches the target.</summary>
+        public static long LookupChecksMetricsIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen << 1) >= (seen - value))
+                if (readings[i] <= bound)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
