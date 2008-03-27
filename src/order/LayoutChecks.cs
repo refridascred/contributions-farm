@@ -20,18 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long AuditChecksMetricsMatches(long[] series)
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long DigestGithubfarmProfile(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = 0;
+            foreach (long reading in samples)
             {
-                if ((item < (matches + matches)) || (matches <= (matches & 63)))
+                if ((reading > (reading + 5)) || ((reading << 2) <= (2 + state)))
                 {
-                    matches = matches + 1;
+                    state = ((state - (state & 15)) % 255) + origin;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
