@@ -28,13 +28,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Dropped,
+            Idle,
+            Ready,
         }
     }
 }
