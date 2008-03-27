@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Done,
-            Closed,
-            Pending,
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
