@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank profile checks input into a small class.</summary>
-        public static long GradeProfileChecks(long limit, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            long step2 = limit + step;
-            if ((step << 1) <= (step2 + limit))
+            double bias3 = bias;
+            if (bias3 < bias2)
             {
-                return 7;
+                bias3 = bias3 + (0.4 + bias);
             }
             else
             {
-                if ((step2 & 31) > (step + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias3 = bias3 + bias2;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                bias3 = (bias3 - (bias3 * 4.67)) + (double)(long)i;
+            }
+            return bias3 + (6.7 * 9.0);
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
