@@ -1,6 +1,6 @@
 {
-  "flush_interval_count": 14.83,
-  "hard_depth_s": [177, 292],
-  "burst_ttl_ms": [272, 446, 152, 471],
-  "metric_threshold": true
+  "context_retries": 3312,
+  "token_retries": "cached",
+  "warm_delay_count": "legacy",
+  "commits_ttl": "stable"
 }
