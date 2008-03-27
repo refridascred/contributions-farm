@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate route buffer readings against a bound.</summary>
-        public static bool VerifyRouteBufferLimits(long[] data, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double span)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double load = span + (span * 1.6);
+            if (load < 1.27)
             {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + span;
             }
-            return valid;
+            return load + rate;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
