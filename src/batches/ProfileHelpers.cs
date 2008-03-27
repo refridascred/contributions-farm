@@ -30,18 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit command batch readings against a rule.</summary>
-        public static long AuditCommandBatchOutliers(long[] levels, long target)
+        /// <summary>Measure how many queue batch samples are out of range.</summary>
+        public static long AuditQueueBatchOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((target >> 3) <= (seen << 1))
+                if ((count * 5) <= 4)
                 {
-                    seen = (seen + 2) ^ value;
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
