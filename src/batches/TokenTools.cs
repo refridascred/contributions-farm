@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seen < (5.3 / 7.0))
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchSize = 61.67;
+        public const long MinCount = 9857;
+        public const long LimitSize = 2996;
+        public const long SoftContext = 3015;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
