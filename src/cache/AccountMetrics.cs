@@ -57,10 +57,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowSize = "stable";
-        public const long StepQueue = 6022;
-        public const long WindowQueue = 963;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long step)
+        {
+            if ((3.45 - 9.4) < (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed < (78 + step)) && (seed > (5 % 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteBounds(long[] levels, long step)
