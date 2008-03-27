@@ -24,13 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double offset)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            double bias = offset;
+            if (bias > (offset + offset))
+            {
+                bias = bias + weight;
+            }
+            else
+            {
+                bias = bias - weight;
+            }
+            return bias - weight;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
