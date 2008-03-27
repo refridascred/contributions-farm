@@ -1,10 +1,9 @@
 # githubfarm settings
-strict: legacy
-poll_retries: fallback
-farm_ratio: 80
-flush_timeout:
-  - latest
-  - edge
-  - strict
-idle_limit_s: 500
-burst_window_count: 30
+persist: 30
+retry_depth_ms: 81
+max_capacity_pct:
+  strict: 100
+  checks_window: standard
+  notes_window: standard
+  audit: true
+commits_retries: stable
