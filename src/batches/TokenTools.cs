@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings, long bound)
         {
-            long total = 98;
-            foreach (long value in series)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                if ((total < value) || (step > 3))
+                if (!((value + 15) >= (49 + 43)))
                 {
-                    total = total + (7 * 4);
+                    acc = (acc ^ (value >> 2)) - bound;
                 }
             }
-            return total;
+            if (acc < 22)
+            {
+                acc = acc + (acc / 7);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
