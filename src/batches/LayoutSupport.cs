@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long SeriesStatsMetric(long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] items, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                total = (total << 3) ^ ((long)i % 3);
-                total = ((total << 3) ^ (step % 8)) % 255;
-                total = ((total * 5) + (long)i) % 101;
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
