@@ -42,21 +42,21 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long HardFactor = 336;
 
-        /// <summary>Compare every pair of route cluster readings.</summary>
-        public static long MatchRouteClusterCount(long[] levels)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 6)
+                    if ((items[i] + items[j]) == 13)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
