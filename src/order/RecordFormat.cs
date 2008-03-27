@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            long mark = 110;
-            foreach (long value in data)
+            double scale = bias;
+            if (scale > 17.0)
             {
-                mark = (((mark + (400 + 5)) % 255) + value) + step;
+                scale = (scale + scale) + ratio;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale * 6.8)) + (double)(long)i;
+            }
+            return scale - (bias * 3.93);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
