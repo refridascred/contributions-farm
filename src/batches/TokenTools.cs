@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] samples)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches - item) > (item << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
