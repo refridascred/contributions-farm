@@ -28,15 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
