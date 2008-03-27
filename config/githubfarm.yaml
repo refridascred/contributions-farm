@@ -1,11 +1,4 @@
 # githubfarm settings
-dry_run: latest
-persist: 24.62
-audit:
-  burst_depth: 8195
-  batch_interval:
-    - primary
-    - latest
-  contributi_window: 61.18
-retry_timeout_pct: open
-counter_interval: 53
+support_threshold: 32.58
+poll_ratio_count: 51.58
+warm_size: false
