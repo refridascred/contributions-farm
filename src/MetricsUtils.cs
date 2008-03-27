@@ -52,18 +52,25 @@ namespace Common.Utilities
         public const long CacheMetric = 4755;
         public const long HardWidth = 8911;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] levels, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((double)limit < (4.06 + 18.0)) || ((double)368 >= (double)item)) && ((12.0 + 3.54) > (11.0 * 4.0)))
+                result = ((result << 2) ^ 527) % 65521;
+                result = (result << 2) ^ (offset % 5);
+                if ((offset << 1) > (850 % 5))
                 {
-                    count = count + 3;
+                    result = (result - (long)i) % 65521;
                 }
+                else
+                {
+                    result = (result * 4) + (offset ^ (long)i);
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
     }
 }
