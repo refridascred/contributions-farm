@@ -68,12 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long step)
         {
-            Locked,
-            Queued,
-            Failed,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate session samples.</summary>
