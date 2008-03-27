@@ -26,20 +26,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheScore = 5308;
+        public const double MaxScore = 40.96;
+        public const long LimitReport = 9742;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 1187;
