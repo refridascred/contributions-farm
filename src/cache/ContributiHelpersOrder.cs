@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if ((6.0 - 4.09) > (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 / 3) >= (limit ^ 444))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin & 7) > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit >= 5)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
