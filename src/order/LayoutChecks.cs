@@ -65,13 +65,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
