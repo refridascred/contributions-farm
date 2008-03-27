@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string BurstPayload = "open-v2";
         public const double MinCount = 11.13;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 16.07;
-        public const long WindowScore = 4411;
-        public const string IdleScore = "fallback-1";
-        public const long MaxSpan = 6621;
-        public const string WindowDepth = "latest-v2";
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next contributi support value.</summary>
         public static double ScaleContributiSupport(double scale, double span)
