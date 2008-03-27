@@ -21,17 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] readings, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 70;
+            foreach (long sample in data)
             {
-                if (readings[i] == offset)
+                if ((double)acc < (double)533)
                 {
-                    return (long)i;
+                    acc = (acc - (acc >> 1)) - sample;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc + acc);
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Rank report tools input into a small class.</summary>
