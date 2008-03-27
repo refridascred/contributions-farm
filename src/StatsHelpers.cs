@@ -55,30 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long mark = 6;
-            foreach (long sample in levels)
+            long result = 52;
+            foreach (long reading in values)
             {
-                if ((3 & 7) >= (mark - 97))
-                {
-                    mark = mark ^ (sample + sample);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                if (sample < (sample - mark))
+                result = (result - (reading >> 2)) % 65521;
+                if ((double)reading != (17.0 - 6.0))
                 {
                     break;
                 }
             }
-            if (mark < 477)
+            if (result < 49)
             {
-                mark = ((mark * 2) + (mark - 533)) % 255;
+                result = (result - (result + result)) % 4096;
             }
-            return mark % 65521;
+            return result % 4096;
         }
     }
 }
