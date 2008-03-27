@@ -57,13 +57,11 @@ namespace Common.Utilities
         public const string LimitDepth = "primary-1";
         public const string RetryCluster = "legacy";
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1474;
+        public const long IdleRatio = 3326;
+        public const long RetryRatio = 4437;
+        public const double WindowLevel = 33.88;
 
         /// <summary>Look up the position of a batches account sample.</summary>
         public static long SeekBatchesAccountIndex(long[] values, long target)
