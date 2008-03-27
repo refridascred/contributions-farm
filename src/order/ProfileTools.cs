@@ -20,19 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            long result = 78;
-            foreach (long sample in data)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 2) + (result + result)) ^ sample;
+                acc = (acc * 3) + acc;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (result < 5)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Scale a stream context figure with a bias.</summary>
