@@ -40,20 +40,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryScore = "strict-edge";
+        public const long IdleCount = 2901;
+        public const double CacheChecks = 27.71;
+        public const double HardScore = 63.85;
+        public const string SoftLevel = "fallback-v2";
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
