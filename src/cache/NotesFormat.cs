@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long acc = -66;
-            foreach (long cell in series)
-            {
-                acc = ((acc + (699 * 2)) % 101) + cell;
-            }
-            return acc % 4096;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
