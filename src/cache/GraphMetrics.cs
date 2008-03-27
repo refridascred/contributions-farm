@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long total = 630;
-            foreach (long reading in data)
-            {
-                if ((total >> 2) == (total ^ total))
-                {
-                    total = ((total << 3) ^ reading) % 65521;
-                }
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of graph editor readings.</summary>
