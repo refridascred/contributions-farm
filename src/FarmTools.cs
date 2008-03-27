@@ -28,15 +28,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
+        public static long RankGithubfarmProfile(long step, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            if ((double)step <= (6.8 + 5.68))
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((step >> 5) > (target & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step ^ step) < target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
