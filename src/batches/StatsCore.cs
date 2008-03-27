@@ -45,17 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a context cluster reading by value.</summary>
-        public static long SeekContextClusterIndex(long[] levels, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (levels[i] <= limit)
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
