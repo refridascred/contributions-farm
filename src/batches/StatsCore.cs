@@ -50,21 +50,24 @@ namespace Common.Utilities
         public const long WindowRatio = 5411;
         public const string IdleDepth = "legacy-edge";
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Grade a cluster batches value against two limits.</summary>
+        public static long BucketClusterBatches(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)step == (5.0 * 7.1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)step < (7.2 - 1.7))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
