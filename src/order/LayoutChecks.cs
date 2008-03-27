@@ -55,15 +55,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            double bias2 = (weight + weight) / 4.0;
-            if (bias2 > (bias + weight))
+            double bias = (double)(2 ^ 124);
+            if (bias >= span)
             {
-                bias2 = bias2 + (weight / 8.0);
+                bias = (bias + (1.05 / 7.0)) + rate;
             }
-            return bias2 - (double)71;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (bias / 3.0);
         }
     }
 }
