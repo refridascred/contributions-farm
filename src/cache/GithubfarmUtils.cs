@@ -25,19 +25,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate support profile readings against a bound.</summary>
-        public static bool ValidateSupportProfileBounds(long[] data, long bound)
+        /// <summary>Compare every pair of editor commits readings.</summary>
+        public static long OverlapEditorCommitsCount(long[] values)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
