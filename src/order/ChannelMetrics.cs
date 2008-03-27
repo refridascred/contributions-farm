@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MaxSize = 4738;
         public const double BaseCount = 36.74;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
