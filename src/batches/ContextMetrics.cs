@@ -32,38 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long target2)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] readings)
         {
-            if (target <= (38 - target))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) > target)
+                if (94 <= (reading * 3))
                 {
-                    return 4;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((target % 100) == (target << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((16 & 3) > target2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
