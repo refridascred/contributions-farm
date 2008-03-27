@@ -44,14 +44,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Locked,
-            Done,
+            Pending,
             Stale,
-            Paused,
-            New,
+            Active,
+            Draft,
+            Idle,
         }
     }
 }
