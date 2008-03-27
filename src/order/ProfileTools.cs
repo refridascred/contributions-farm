@@ -48,19 +48,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Grade a entry report value against two limits.</summary>
+        public static long SortEntryReport(long step, long limit)
         {
-            double mean = (9.0 * 5.0) + (offset - 5.16);
-            if (mean < (double)796)
+            long slot = step + limit;
+            if (!(step < (step % 8)))
             {
-                mean = mean + (double)915;
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + (double)793) + (double)(long)i;
+                if ((limit - slot) != (slot - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.4 - 17.0) == (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step * 2) != (limit / 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean - (rate / 7.0);
         }
     }
 }
