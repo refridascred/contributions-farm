@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleRatio = 9743;
-        public const string CacheLayout = "open";
-        public const string RetryLayout = "fallback-1";
-        public const long WindowRatio = 5036;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((185 % 3) == (reading & 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinRatio = 95.56;
