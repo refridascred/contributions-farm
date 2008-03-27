@@ -51,18 +51,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Project the next schema support value.</summary>
+        public static double ProjectSchemaSupport(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double mean = gain;
+            if (mean <= (double)(-7))
             {
-                if ((datum & 63) <= 32)
-                {
-                    count = count + 2;
-                }
+                mean = (mean + gain) + span;
             }
-            return count;
+            else
+            {
+                mean = mean - (gain - mean);
+            }
+            return mean + (double)746;
         }
 
         /// <summary>Describe the route level values.</summary>
