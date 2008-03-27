@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            if (((-7) + offset) <= 3)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 / 3.0) != (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (527 <= offset)
+                    if ((series[i] ^ series[j]) < 19)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed > (18.0 * 14.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
