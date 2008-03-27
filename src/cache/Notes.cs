@@ -38,12 +38,20 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFactor = 8404;
-        public const long BaseFarm = 6269;
-        public const double IdleTimeout = 40.45;
-        public const long MinFarm = 1273;
-        public const long RetryFarm = 4454;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyBounds(long[] items, long bound)
