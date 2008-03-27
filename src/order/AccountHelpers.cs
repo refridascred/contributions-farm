@@ -40,19 +40,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a order batch reading.</summary>
-        public static double SmoothOrderBatch(double weight, double offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            double load = weight;
-            if (load < (double)8)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                load = (load + (double)263) + offset;
+                mix = ((mix * 5) + (mix ^ (long)i)) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                load = load - (load + weight);
-            }
-            return load - (load + weight);
+            return mix;
         }
 
         /// <summary>Hold a tools record.</summary>
