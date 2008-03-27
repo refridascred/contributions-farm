@@ -57,15 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double bias, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + (floor / 3.0);
+            Queued,
+            Pending,
+            Paused,
         }
     }
 }
