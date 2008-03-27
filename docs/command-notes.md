@@ -1,11 +1,12 @@
 # Command notes
 
-Run the entry check before changing any token limits.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A metric that stays idle for too long is moved to the context list.
+When a checks fails, the filter handler retries a few times before giving up.
+Run the graph check before changing any cache limits.
+Run the entry check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Keep order values small
-- Document new buffer fields
-- Prefer queue defaults
+- Log every format change
+- Review tools limits each release
+- Validate githubfarm input early
+- Keep buffer values small
