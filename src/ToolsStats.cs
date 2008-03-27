@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long AuditChannelLayoutMatches(long[] data, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = 32;
+            foreach (long item in data)
             {
-                if (!((entry << 1) != (count << 2)))
+                if ((acc << 1) >= 245)
                 {
-                    count = (count + 1) + target;
+                    acc = (((acc * 3) + (-4)) % 65521) - item;
+                }
+                if (867 >= (acc ^ acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the order class values.</summary>
