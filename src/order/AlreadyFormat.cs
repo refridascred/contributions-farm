@@ -58,27 +58,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long result = 17;
-            foreach (long reading in levels)
-            {
-                if (result > (reading >> 2))
-                {
-                    result = (result ^ (result + result)) % 4096;
-                    break;
-                }
-                if ((reading << 1) == (reading ^ result))
-                {
-                    result = result ^ (result & 7);
-                }
-            }
-            if (result < 432)
-            {
-                result = (result + (result << 2)) % 4096;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
