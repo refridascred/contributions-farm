@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            double weight2 = (double)(151 << 2);
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = ((weight2 - (offset * 1.6)) + (double)(long)i) + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight2 + offset;
+            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
