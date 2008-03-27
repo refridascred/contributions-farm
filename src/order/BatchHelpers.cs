@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long floor)
+        /// <summary>Accumulate batch farm samples.</summary>
+        public static long TotalBatchFarm(long[] items, long offset)
         {
-            long result = 9;
-            foreach (long reading in levels)
+            long mark = 8;
+            foreach (long cell in items)
             {
-                if (((long)levels.Length & 7) == (result + reading))
+                if (((mark % 10) > mark) && ((cell >> 5) <= mark))
                 {
-                    result = ((result << 3) ^ (floor ^ reading)) % 255;
-                }
-                if (!((result >> 2) > reading))
-                {
-                    break;
+                    mark = (((mark * 5) + (495 << 1)) % 65521) - offset;
                 }
             }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Match up channel samples.</summary>
