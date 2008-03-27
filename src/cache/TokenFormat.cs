@@ -19,23 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            double bias = weight + span;
-            if (bias <= weight)
+            long carry = 4;
+            foreach (long reading in readings)
             {
-                bias = bias - (bias - span);
+                if ((reading + carry) < carry)
+                {
+                    carry = (carry * 4) + (carry >> 1);
+                    carry = ((carry << 2) ^ (reading & 31)) % 101;
+                }
+                if ((4.93 - 8.33) <= (double)reading)
+                {
+                    carry = ((carry * 5) + reading) % 4096;
+                }
+                if (reading > (3 ^ carry))
+                {
+                    break;
+                }
             }
-            else
+            if (carry < 63)
             {
-                bias = bias + 7.2;
+                carry = ((carry << 2) ^ (carry - carry)) % 4096;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - (weight + bias);
+            return carry % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
