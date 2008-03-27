@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a payload route pair into a bucket.</summary>
-        public static long ClassifyPayloadRoute(long offset, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            if (!((offset + offset) >= (23 % 5)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)offset > (20.0 * 5.7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >= (target % 5)) && ((offset << 3) > 195))
+                    if ((readings[i] ^ readings[j]) < 19)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target << 3) <= (offset * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
