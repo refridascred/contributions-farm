@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] series, long limit)
         {
-            Closed,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((limit >= (90 * 2)) || ((double)hits > 9.7))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit contributi buffer readings against a rule.</summary>
