@@ -28,17 +28,21 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-edge";
         public const string StepScore = "staging-edge";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (sum & 255)) % 65521;
-                sum = ((sum * 3) + (sum - floor)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
