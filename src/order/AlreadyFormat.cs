@@ -49,27 +49,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings, long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long anchor = 1;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (((anchor * 3) + (anchor >> 1)) % 4096) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (anchor - (value + origin)) + (long)i2;
-                }
-                anchor = (anchor * 2) + (anchor + anchor);
-            }
-            if (anchor < 816)
-            {
-                anchor = ((anchor * 3) + (origin * 3)) % 101;
-            }
-            return anchor;
+            Dropped,
+            Locked,
+            New,
+            Idle,
         }
     }
 }
