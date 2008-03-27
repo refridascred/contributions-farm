@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (values[i] < origin)
+                if ((origin >> 5) > 5)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the cache githubfarm entries that pass the check.</summary>
