@@ -1,7 +1,19 @@
 {
-  "warm_delay": "staging",
-  "flush_ttl_s": 76.71,
-  "retry_ttl_count": true,
-  "poll_size_s": 1115,
-  "min_threshold": 1844
+  "batch_size_ms": "edge",
+  "verbose": 25.12,
+  "base_window_s": true,
+  "max_depth_s": "eu-west",
+  "audit": "staging",
+  "burst_size": {
+    "verbose": {
+      "batch_size": "strict",
+      "soft_timeout": "blue",
+      "audit": true
+    },
+    "cluster_ttl": 7906,
+    "poll_interval_count": 13,
+    "batch_timeout_pct": "legacy",
+    "already_capacity": "standard",
+    "default_threshold_s": ["eu-west", "stable", "fallback"]
+  }
 }
