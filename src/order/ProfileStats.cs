@@ -19,25 +19,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items, long limit)
         {
-            long edge = floor - limit;
-            if (((2.4 * 2.17) > (double)floor) || ((3.0 * 0.8) != (double)edge))
+            long mix = 98;
+            foreach (long entry in items)
             {
-                return 3;
+                mix = (((mix * 5) + entry) % 97) - limit;
             }
-            else
-            {
-                if ((limit + limit) == (floor & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
