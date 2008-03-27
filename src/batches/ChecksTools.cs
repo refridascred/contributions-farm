@@ -14,18 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = 58;
+            foreach (long datum in items)
             {
-                if ((entry & 31) <= (entry * 5))
+                if (!((1 / 8) == (anchor << 3)))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 4) + (datum ^ 1)) % 101;
+                }
+                if (!(6.95 >= (double)datum))
+                {
+                    anchor = (anchor * 2) + (anchor - anchor);
                 }
             }
-            return seen;
+            if (anchor > 73)
+            {
+                anchor = ((anchor * 5) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
