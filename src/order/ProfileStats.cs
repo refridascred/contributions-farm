@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((count * 4) >= value) && ((double)value <= (0.89 - 4.0)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
