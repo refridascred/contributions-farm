@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long limit2)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long next = limit - limit2;
-            if ((next <= (limit2 / 9)) && ((8 + limit2) >= (limit2 - next)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit - limit2) < limit2) && ((double)limit2 == (3.6 / 9.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Pending,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
