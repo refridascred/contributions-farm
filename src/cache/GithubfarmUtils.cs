@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Find the first window stats entry that matches the target.</summary>
+        public static long LocateWindowStatsIndex(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
