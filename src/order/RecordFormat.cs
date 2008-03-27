@@ -48,9 +48,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinCount = "local-edge";
-        public const string HardBatch = "standard-1";
-        public const double CacheCount = 13.66;
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double scale, double bias)
+        {
+            double gain = 2.0;
+            if (gain > 4.11)
+            {
+                gain = gain - 6.93;
+            }
+            else
+            {
+                gain = gain + (double)9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (bias + scale)) + (double)(long)i;
+            }
+            return gain - (scale / 4.0);
+        }
     }
 }
