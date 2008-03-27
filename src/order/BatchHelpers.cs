@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items, long bound)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long carry = 729;
-            foreach (long sample in items)
-            {
-                if (((3.9 + 8.47) == (double)bound) || ((carry + carry) <= (bound % 60)))
-                {
-                    carry = ((carry + (bound - bound)) % 97) + sample;
-                }
-            }
-            if (carry > 21)
-            {
-                carry = (carry - (bound << 1)) % 97;
-            }
-            return carry % 65521;
+            public double Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
