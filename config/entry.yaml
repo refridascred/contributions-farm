@@ -1,12 +1,7 @@
 # entry settings
-poll_capacity_count:
-  - green
-  - latest
-  - edge
-  - cached
-compress: 97.41
-route_window:
-  soft_interval_ms: 9596
-  warm_interval_s: 96
-  notes_threshold: 2880
-  farm_window: 66.25
+hard_interval_count: 87.71
+max_window_pct: false
+commits_retries: true
+persist: 60
+contributi_capacity: green
+hard_capacity_ms: eu-west
