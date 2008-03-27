@@ -1,6 +1,11 @@
-id,state,ratio,region,weight
-1,65.64,green,681,1.63
-2,998,blue,legacy,52.11
-3,legacy,70.58,primary,222
-4,open,stable,335,481
-5,83.15,913,73,707
+id,weight,region
+1,local,932
+2,open,standard
+3,44.7,648
+4,13.18,60.01
+5,824,98.8
+6,60,712
+7,stable,884
+8,primary,cached
+9,4.21,289
+10,47,green
