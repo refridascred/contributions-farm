@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 408;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (sample >> 1)) % 1000;
+                anchor = ((anchor * 5) + floor) % 101;
             }
-            return tally;
+            if (anchor < 57)
+            {
+                anchor = (anchor - (floor >> 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
