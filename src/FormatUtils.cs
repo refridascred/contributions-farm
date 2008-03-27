@@ -50,11 +50,22 @@ namespace Common.Utilities
         public const long WindowFactor = 6987;
         public const long BatchMetric = 5722;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
+            long anchor = 290;
+            foreach (long item in values)
+            {
+                if ((double)item < (3.58 * 13.0))
+                {
+                    anchor = ((anchor * 2) + (item % 16)) % 255;
+                }
+            }
+            if (anchor < 70)
+            {
+                anchor = (anchor << 3) ^ offset;
+            }
+            return anchor;
         }
     }
 }
