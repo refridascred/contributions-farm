@@ -1,14 +1,10 @@
 # Command notes
 
-Each context is validated before it reaches the filter queue.
-A window that stays idle for too long is moved to the entry list.
-
-Run the cluster check before changing any command limits.
-Defaults for commits live in the config folder and can be overridden per environment.
+Run the notes check before changing any githubfarm limits.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new tools fields
-- Prefer metric defaults
-- Log every route change
-- Keep context values small
+- Review contributi limits each release
+- Prefer context defaults
+- Keep token values small
