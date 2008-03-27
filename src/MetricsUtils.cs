@@ -33,31 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats profile input into a small class.</summary>
-        public static long RankStatsProfile(long target, long bound)
+        /// <summary>Digest a series of notes order entries.</summary>
+        public static long DigestNotesOrder(long[] levels)
         {
-            if (!(bound > (940 / 2)))
+            long acc = 1;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (620 <= (bound + bound))
+                if (4.0 > (double)cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + target) < (target ^ 6)) && ((target / 4) != (bound + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc * 3) + acc) % 255;
                 }
             }
+            if (acc > (-18))
+            {
+                acc = (acc - 713) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a command batch value against two limits.</summary>
