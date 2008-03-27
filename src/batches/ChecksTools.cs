@@ -70,18 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen / 5) < sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9407;
+        public const long LimitFactor = 2894;
+        public const long DefaultBatch = 1963;
+        public const long StepBatch = 5834;
     }
 }
