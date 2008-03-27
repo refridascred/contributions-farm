@@ -46,11 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] samples, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count & 127) >= (item << 1))
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
     }
 }
