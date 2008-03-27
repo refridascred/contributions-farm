@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 9722;
+        public const long BatchSession = 8353;
+        public const double WindowSession = 40.15;
+        public const string StepSession = "cached-edge";
+        public const string DefaultDepth = "standard-edge";
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
