@@ -1,6 +1,5 @@
 {
-  "flush_threshold_pct": [361, 97],
-  "queue_interval": "legacy",
-  "order_ttl": 84,
-  "verbose": 64.73
+  "default_interval_s": "open",
+  "cache_size_count": "cached",
+  "commits_delay": "cached"
 }
