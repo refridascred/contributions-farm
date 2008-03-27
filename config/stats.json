@@ -1,6 +1,18 @@
 {
-  "default_threshold_pct": 54,
-  "schema_threshold": "open",
-  "dry_run": "latest",
-  "route_delay": 32.05
+  "verbose": "local",
+  "counter_retries": "stable",
+  "token_ratio": true,
+  "window_ratio": {
+    "max_delay_ms": "staging",
+    "batch_interval": {
+      "payload_ttl": 54.07,
+      "route_limit": true,
+      "min_threshold_s": "local",
+      "sync_limit_s": "latest",
+      "compress": "latest"
+    },
+    "min_threshold_s": [232, 350, 321, 418],
+    "cache_window_ms": "edge"
+  },
+  "readonly": "green"
 }
