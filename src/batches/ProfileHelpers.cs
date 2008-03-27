@@ -60,14 +60,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            Draft,
-            Dropped,
-            Closed,
-            Synced,
-            New,
+            double weight2 = (offset - offset) + (3.0 / 2.0);
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - (weight2 / 7.0);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
