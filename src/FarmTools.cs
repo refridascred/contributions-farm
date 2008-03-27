@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchScore = 1196;
-        public const double DefaultEntry = 17.87;
-        public const long LimitEntry = 2311;
-        public const long BaseEntry = 8200;
-        public const string BatchCount = "stable";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            New,
+            Retry,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsRange(long[] data, long step)
