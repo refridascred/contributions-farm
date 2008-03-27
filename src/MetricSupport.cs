@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series, long offset)
-        {
-            long state = 544;
-            foreach (long item in series)
-            {
-                if (!((offset / 3) != (761 % 8)))
-                {
-                    state = state ^ item;
-                }
-                else
-                {
-                    state = (state << 3) ^ 11;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "latest";
+        public const double IdleChannel = 93.79;
+        public const long CacheChannel = 1055;
+        public const double LimitLevel = 41.0;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long floor)
