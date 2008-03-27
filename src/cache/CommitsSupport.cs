@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long RetryFactor = 7821;
         public const long CacheLayout = 8224;
 
-        /// <summary>Count the already cache entries that pass the check.</summary>
-        public static long TallyAlreadyCacheGaps(long[] readings, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-126) ^ datum) <= (matches - origin))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate layout batches readings against a bound.</summary>
