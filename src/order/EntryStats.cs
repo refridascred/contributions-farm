@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool VerifyTokenBatchesBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((2.0 + 1.0) > (double)seen)
+                if (value >= step)
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
