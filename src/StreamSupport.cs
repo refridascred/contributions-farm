@@ -27,11 +27,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "standard";
-        public const long SoftCount = 9553;
-        public const long BatchCount = 1774;
-        public const double HardQueue = 26.27;
-        public const string SoftSize = "legacy-v2";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long bound)
+        {
+            if ((7.4 * 5.2) < (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) < floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
