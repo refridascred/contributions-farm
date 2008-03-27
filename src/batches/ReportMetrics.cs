@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            double mean = (double)289 + (8.2 / 6.0);
+            if (mean > (19.0 + bias))
+            {
+                mean = mean - (ratio + mean);
+            }
+            else
+            {
+                mean = mean - ratio;
+            }
+            return mean - (double)517;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
