@@ -62,18 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((7.48 >= (double)cell) || (((4.31 + 9.89) <= (double)hits) || ((hits % 7) >= cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
