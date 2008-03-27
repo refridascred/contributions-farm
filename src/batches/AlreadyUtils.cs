@@ -31,17 +31,11 @@ namespace Common.Utilities
         public const long MinFactor = 2899;
         public const long BaseLevel = 7687;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score * 5) + (origin / 6);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardFactor = "open-edge";
+        public const string IdleCluster = "staging-1";
+        public const long SoftDepth = 5763;
+        public const long RetryCluster = 4187;
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
         public static long StepLayoutBatches(long step)
