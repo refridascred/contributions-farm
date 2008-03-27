@@ -12,13 +12,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Locate a cluster record reading by value.</summary>
+        public static long LookupClusterRecordIndex(long[] data, long limit)
         {
-            Done,
-            Paused,
-            Idle,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
