@@ -16,22 +16,17 @@ namespace Common.Utilities
             return ratio2 - (ratio + floor);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] readings, long target)
         {
-            long state = 276;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state + state) >= 648)
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    state = state ^ ((-754) + entry);
-                }
-                else
-                {
-                    state = (state + (state + 47)) % 4096;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
