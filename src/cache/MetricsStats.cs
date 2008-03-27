@@ -29,11 +29,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + hits) <= (hits << 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
