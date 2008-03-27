@@ -47,19 +47,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double bias = (double)(2 ^ 124);
-            if (bias >= span)
-            {
-                bias = (bias + (1.05 / 7.0)) + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (bias / 3.0);
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
