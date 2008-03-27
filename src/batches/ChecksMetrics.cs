@@ -64,19 +64,39 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data, long step)
+        /// <summary>Fold a list of account context readings.</summary>
+        public static long TallyAccountContext(long[] data, long offset)
         {
-            long acc = -699;
-            foreach (long sample in data)
+            long anchor = 99;
+            foreach (long value in data)
             {
-                acc = (acc ^ acc) + sample;
+                if ((801 & 15) <= (anchor & 7))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + value;
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                if (value >= (82 >> 1))
+                {
+                    anchor = anchor - (anchor / 5);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (long)data.Length) % 97;
+                }
+                if ((value + anchor) <= (offset & 127))
+                {
+                    break;
+                }
             }
-            if (acc > (-324))
+            if (anchor > (-59))
             {
-                acc = (acc ^ (step >> 5)) % 255;
+                anchor = (anchor << 2) ^ (anchor - anchor);
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Hold a cluster options.</summary>
