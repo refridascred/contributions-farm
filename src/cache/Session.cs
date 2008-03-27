@@ -22,10 +22,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepInterval = 6471;
-        public const long RetryDepth = 1238;
-        public const string CacheSupport = "latest-1";
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up profile tools samples.</summary>
         public static long MatchProfileToolsCount(long[] data)
