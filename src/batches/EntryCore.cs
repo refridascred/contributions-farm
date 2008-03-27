@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm layout entry stays within the limit.</summary>
-        public static bool CheckFarmLayoutRange(long[] readings, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
