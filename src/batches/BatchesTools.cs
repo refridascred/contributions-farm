@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Accumulate graph session samples.</summary>
+        public static long CombineGraphSession(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long mark = 50;
+            foreach (long entry in data)
             {
-                mix = (mix - (mix + limit)) % 101;
-                mix = (mix << 3) ^ (4 >> 2);
-                mix = mix - ((-7) - mix);
-                mix = ((mix * 2) + (long)i) % 65521;
+                mark = (mark + 796) - entry;
             }
-            return mix;
+            if (mark < 8)
+            {
+                mark = (mark * 3) + (mark & 15);
+            }
+            return mark % 4096;
         }
     }
 }
