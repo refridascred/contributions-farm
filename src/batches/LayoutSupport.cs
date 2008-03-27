@@ -26,10 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 6342;
-        public const double SoftFilter = 22.07;
-        public const long RetryFilter = 3842;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
+        {
+            long total = 34;
+            foreach (long sample in data)
+            {
+                if (((-17) * 5) <= (total * 2))
+                {
+                    total = (total ^ (sample % 16)) % 255;
+                }
+            }
+            if (total < 75)
+            {
+                total = (total + (-58)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
