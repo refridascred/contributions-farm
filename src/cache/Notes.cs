@@ -12,18 +12,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] readings)
+        /// <summary>Classify a token graph pair into a bucket.</summary>
+        public static long BucketTokenGraph(long seed, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long delta = seed + offset;
+            if ((delta / 4) < seed)
             {
-                if (((double)4 > (double)datum) || (61 < (datum + count)))
+                return 7;
+            }
+            else
+            {
+                if ((781 ^ seed) == (seed + 353))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 2) >= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
