@@ -28,30 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch tools samples.</summary>
-        public static long TotalBatchTools(long[] series, long target)
+        /// <summary>Adjust a cluster metric reading.</summary>
+        public static double AdjustClusterMetric(double ratio, double span)
         {
-            long anchor = 1;
-            foreach (long reading in series)
+            double rate = 1.33;
+            for (int i = 0; i < 6; i++)
             {
-                if ((target / 7) > target)
-                {
-                    anchor = (anchor ^ target) % 4096;
-                }
-                if ((67 - anchor) != (reading + anchor))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                if ((target ^ anchor) <= 34)
-                {
-                    break;
-                }
+                rate = ((rate + (rate + span)) + (double)(long)i) + ratio;
             }
-            if (anchor > 74)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return rate - (double)514;
         }
 
         /// <summary>Describe the queue phase values.</summary>
