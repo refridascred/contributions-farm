@@ -42,22 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] values, long floor)
         {
-            long carry = 524;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((double)(long)readings.Length <= (1.6 / 6.0))
+                if (cell <= floor)
                 {
-                    carry = ((carry * 5) + (limit ^ limit)) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 771)
-            {
-                carry = carry + (carry >> 2);
-            }
-            return carry % 65521;
+            return flag;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
