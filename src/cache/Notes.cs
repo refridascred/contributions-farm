@@ -27,21 +27,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count record payload pairs that satisfy a relation.</summary>
-        public static long OverlapRecordPayloadCount(long[] samples)
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long TotalChecksNotes(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 80;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((5.0 + 9.2) <= (double)mix) && ((mix % 60) == (mix << 3)))
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix + mix;
+                }
+                mix = (mix - mix) % 1000;
+                if (((mix >> 5) <= (sample << 2)) || ((249 - mix) >= (sample & 15)))
+                {
+                    mix = (mix - (sample >> 1)) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
