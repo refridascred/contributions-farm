@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] items, long floor)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= origin)
+                if (items[i] <= floor)
                 {
                     return (long)i;
                 }
