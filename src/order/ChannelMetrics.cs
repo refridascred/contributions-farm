@@ -46,9 +46,9 @@ namespace Common.Utilities
         public const long SoftToken = 4583;
         public const double BatchScore = 19.08;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowChannel = 46.31;
-        public const double CacheBudget = 41.13;
-        public const long StepWidth = 1875;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryCount = 9398;
+        public const double BurstContributi = 8.51;
+        public const long IdleLevel = 6228;
     }
 }
