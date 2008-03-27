@@ -21,12 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long offset)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank report tools input into a small class.</summary>
