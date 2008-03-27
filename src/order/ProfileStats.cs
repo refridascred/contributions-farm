@@ -19,15 +19,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mix = 98;
-            foreach (long entry in items)
-            {
-                mix = (((mix * 5) + entry) % 97) - limit;
-            }
-            return mix;
+            Queued,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
