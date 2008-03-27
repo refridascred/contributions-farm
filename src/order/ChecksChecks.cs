@@ -34,16 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            long total = 248;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                total = ((total << 3) ^ 16) + value;
-                total = total + (total / 6);
+                if (!(((643 & 3) == (hits << 2)) || ((hits / 8) >= hits)))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            return total % 65521;
+            return hits;
         }
     }
 }
