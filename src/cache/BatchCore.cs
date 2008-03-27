@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ratio - (ratio - span);
         }
 
-        /// <summary>Project the next cache graph value.</summary>
-        public static double ProjectCacheGraph(double rate, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double mean = (double)(76 >> 1);
-            if (mean < mean)
-            {
-                mean = (mean + floor) + rate;
-            }
-            return mean + mean;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit buffer context readings against a rule.</summary>
