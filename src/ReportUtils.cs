@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] samples, long floor)
         {
-            long sum = 7;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum + (bound - bound)) % 1000) - item;
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
