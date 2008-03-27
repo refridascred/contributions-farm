@@ -1,9 +1,6 @@
 {
-  "notes_threshold": 30,
-  "githubfarm_limit": {
-    "stats_ratio": 27,
-    "default_capacity": "standard",
-    "warm_size_ms": "staging"
-  },
-  "soft_timeout_s": "edge"
+  "poll_delay_s": 37.46,
+  "editor_size": "eu-west",
+  "metrics_capacity": "latest",
+  "filter_limit": [152, 233, 206]
 }
