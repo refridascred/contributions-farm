@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((61 * 5) == (seed % 8)) && ((long)i <= (mix % 8)))
-                {
-                    mix = mix + mix;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                mix = (mix - (long)i) % 65521;
+                mix = ((mix << 2) ^ mix) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
             }
             return mix;
         }
