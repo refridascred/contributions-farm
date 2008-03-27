@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 7727;
         public const string SoftRatio = "legacy-edge";
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long TallyGraphEditor(long[] values, long bound)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Stale,
-            Draft,
+            long carry = 78;
+            foreach (long item in values)
+            {
+                if ((18.0 / 8.0) != (double)carry)
+                {
+                    carry = ((carry ^ (carry << 3)) - item) - bound;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a entry info.</summary>
