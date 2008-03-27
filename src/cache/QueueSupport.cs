@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values)
-        {
-            long state = 980;
-            foreach (long cell in values)
-            {
-                state = ((state * 4) + (state * 2)) + cell;
-                if ((0.6 * 2.0) < (double)state)
-                {
-                    state = (state ^ (47 >> 3)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxSpan = "open";
+        public const long IdleBatch = 2458;
+        public const string CacheBatch = "staging-edge";
+        public const string CacheRatio = "local-edge";
+        public const double MinRatio = 39.82;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorLimits(long[] values, long step)
