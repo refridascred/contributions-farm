@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string MinMetric = "local-v2";
         public const long IdleSpan = 3505;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Paused,
-            Failed,
             Queued,
+            Closed,
+            New,
+            Active,
             Retry,
         }
 
