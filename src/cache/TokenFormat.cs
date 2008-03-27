@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Active,
-            Ready,
-            Pending,
             Stale,
-            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Combine record token values into a single score.</summary>
