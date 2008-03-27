@@ -53,17 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream already value from a seed.</summary>
-        public static long StepStreamAlready(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result * 2) + result;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitFactor = 8321;
+        public const long BatchCommits = 5612;
+        public const long DefaultFactor = 6656;
+        public const long RetryInterval = 7959;
+        public const long MaxFactor = 4718;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
