@@ -23,12 +23,10 @@ namespace Common.Utilities
         public const string LimitBuffer = "legacy-v2";
         public const string BaseSpan = "standard-1";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstInterval = 989;
+        public const long HardInterval = 5674;
+        public const double IdleSupport = 17.26;
 
         /// <summary>Accumulate already githubfarm samples.</summary>
         public static long ScoreAlreadyGithubfarm(long[] levels, long origin)
