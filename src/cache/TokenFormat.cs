@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long origin)
         {
-            double rate = (9.51 + bias) * 20.0;
-            if (rate < (3.2 / 4.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - (floor + rate);
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + 18.0;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
