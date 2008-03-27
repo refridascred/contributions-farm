@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double span)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long offset)
         {
-            double bias2 = span;
-            if (bias2 >= 3.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + (span / 3.0)) - bias;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias2;
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
