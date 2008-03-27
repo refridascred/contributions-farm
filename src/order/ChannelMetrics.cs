@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of notes batch readings.</summary>
-        public static long DigestNotesBatch(long[] data, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] levels, long step)
         {
-            long mark = 29;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark << 2) ^ (target + target)) % 4096) ^ entry;
-                mark = ((mark << 2) ^ (mark / 4)) % 1000;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 60)
-            {
-                mark = (mark ^ (mark & 255)) % 1000;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
