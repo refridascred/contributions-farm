@@ -1,5 +1,14 @@
 # githubfarm settings
-sync_timeout_s: 2204
-verbose: 6236
-entry_window: false
-warm_threshold: true
+dry_run: 66
+base_ratio_pct:
+  - 230
+  - 126
+cache_size_pct:
+  - 102
+  - 472
+  - 186
+verbose: 8.79
+graph_window:
+  - primary
+  - green
+  - local
