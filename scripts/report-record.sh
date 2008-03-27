@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-standard}"
+mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    green)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=179
+RECORD_LIMIT=83
 log "limit is ${RECORD_LIMIT}"
