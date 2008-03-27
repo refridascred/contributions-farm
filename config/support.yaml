@@ -1,9 +1,5 @@
 # support settings
-soft_threshold_count: 5043
-readonly: primary
-verbose: primary
-graph_timeout:
-  - standard
-  - eu-west
-  - stable
-  - local
+verbose: true
+audit: false
+payload_delay: strict
+cache_capacity_s: edge
