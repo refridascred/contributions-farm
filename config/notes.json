@@ -1,14 +1,5 @@
 {
-  "poll_limit": 31.25,
-  "schema_threshold": 72,
-  "hard_retries_ms": true,
-  "counter_interval": {
-    "verbose": true,
-    "metrics_limit": false,
-    "min_ratio": 56.41,
-    "idle_limit_ms": [402, 240],
-    "max_timeout_s": 12
-  },
-  "enabled": 30,
-  "schema_timeout": "standard"
+  "soft_interval_s": 39.59,
+  "readonly": 3677,
+  "stream_ttl": ["stable", "standard", "fallback"]
 }
