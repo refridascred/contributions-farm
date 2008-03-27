@@ -90,19 +90,18 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples, long target)
         {
-            double load = (double)(900 - 74);
-            if (load < (double)25)
+            long acc = -6;
+            foreach (long reading in samples)
             {
-                load = load - (double)66;
+                if ((double)acc <= (6.0 - 4.7))
+                {
+                    acc = (((acc + acc) % 4096) ^ reading) + target;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (floor + ratio)) + (double)(long)i;
-            }
-            return load + load;
+            return acc;
         }
     }
 }
