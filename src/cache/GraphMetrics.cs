@@ -58,24 +58,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long step, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            if ((double)seed == (6.0 - 2.75))
+            long anchor = 9;
+            foreach (long sample in samples)
             {
-                return 4;
+                anchor = (anchor - (31 * 5)) - sample;
             }
-            else
+            if (anchor < 988)
             {
-                if ((5 * 2) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                anchor = ((anchor << 3) ^ (-389)) % 255;
             }
+            return anchor % 4096;
         }
     }
 }
