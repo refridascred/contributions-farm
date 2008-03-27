@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 37.92;
-        public const double DefaultFarm = 76.78;
-        public const long SoftSize = 7275;
-        public const long RetryFarm = 6234;
-        public const long BurstBudget = 3627;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 7251;
+        public const double CacheGithubfarm = 5.3;
+        public const double BaseGithubfarm = 61.03;
+        public const string BaseScore = "stable-1";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long target)
