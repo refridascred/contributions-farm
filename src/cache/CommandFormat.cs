@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 4927;
-        public const long BaseGraph = 7749;
-        public const string IdleBudget = "staging-1";
-        public const long StepGraph = 678;
-        public const double HardRatio = 10.89;
+        /// <summary>Find the first layout checks entry that matches the target.</summary>
+        public static long FindLayoutChecksIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batches checks readings against a rule.</summary>
         public static long MeasureBatchesChecksMatches(long[] items, long bound)
