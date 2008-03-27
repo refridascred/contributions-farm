@@ -33,11 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double floor)
+        /// <summary>Rank stats profile input into a small class.</summary>
+        public static long RankStatsProfile(long target, long bound)
         {
-            double weight = (floor - gain) - floor;
-            return weight - floor;
+            if (!(bound > (940 / 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (620 <= (bound + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + target) < (target ^ 6)) && ((target / 4) != (bound + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a command batch value against two limits.</summary>
