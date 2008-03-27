@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Stale,
-            Active,
-            Ready,
-            Synced,
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
