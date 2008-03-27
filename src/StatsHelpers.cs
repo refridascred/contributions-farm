@@ -42,11 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Scale a window entry figure with a bias.</summary>
+        public static double SmoothWindowEntry(double weight, double bias)
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            double scale = bias;
+            if (scale <= (double)1)
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (weight - bias)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Project the next command value.</summary>
