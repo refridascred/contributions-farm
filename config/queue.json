@@ -1,6 +1,5 @@
 {
-  "audit": "green",
-  "verbose": false,
-  "flush_ttl": "strict",
-  "warm_capacity_count": 3576
+  "cache_threshold_pct": 94,
+  "base_interval_pct": 65.87,
+  "idle_limit_s": [333, 296, 166, 268]
 }
