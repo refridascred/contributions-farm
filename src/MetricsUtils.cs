@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const long CacheMetric = 4755;
         public const long HardWidth = 8911;
 
-        /// <summary>Fold a list of farm command readings.</summary>
-        public static long FoldFarmCommand(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] levels, long limit)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mix = (((mix << 3) ^ (entry * 5)) % 4096) - target;
+                if ((((double)limit < (4.06 + 18.0)) || ((double)368 >= (double)item)) && ((12.0 + 3.54) > (11.0 * 4.0)))
+                {
+                    count = count + 3;
+                }
             }
-            return mix % 97;
+            return count;
         }
     }
 }
