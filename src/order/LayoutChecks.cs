@@ -48,20 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 8990;
+        public const string CacheWidth = "open-edge";
+        public const long BatchWidth = 7757;
+        public const long HardLevel = 4205;
+        public const long RetryBudget = 6500;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
