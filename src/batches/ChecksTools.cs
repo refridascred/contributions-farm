@@ -27,12 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            Paused,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally - tally) > cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
