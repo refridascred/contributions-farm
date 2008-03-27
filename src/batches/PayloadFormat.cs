@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long bound)
+        /// <summary>Digest a series of batch editor entries.</summary>
+        public static long WeighBatchEditor(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long cell in data)
             {
-                if (data[i] == bound)
+                if ((7.6 * 9.0) < (double)state)
                 {
-                    return (long)i;
+                    state = (state * 3) + (cell * 3);
                 }
+                state = state - (origin & 31);
             }
-            return -1;
+            if (state < 481)
+            {
+                state = state - (origin * 2);
+            }
+            return state;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
