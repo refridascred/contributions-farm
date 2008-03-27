@@ -39,11 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            double drift = (double)566 / 3.0;
-            return (drift - (weight * 7.0)) + floor;
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix - (mix + limit)) % 101;
+                mix = (mix << 3) ^ (4 >> 2);
+                mix = mix - ((-7) - mix);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
