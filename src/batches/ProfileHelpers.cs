@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            New,
-            Retry,
-            Ready,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseDepth = "staging-v2";
+        public const long MinSession = 7138;
+        public const long IdleWidth = 1050;
+        public const double DefaultSession = 17.37;
+        public const double WindowSession = 31.34;
 
         /// <summary>Accumulate notes farm samples.</summary>
         public static long WeighNotesFarm(long[] values, long seed)
