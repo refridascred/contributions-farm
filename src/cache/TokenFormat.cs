@@ -34,17 +34,15 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long origin)
+        /// <summary>Project the next route window value.</summary>
+        public static double AdjustRouteWindow(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(83 * 3);
+            if (rate > (3.96 * 12.0))
             {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)597) - weight;
             }
-            return -1;
+            return rate + (span / 4.0);
         }
     }
 }
