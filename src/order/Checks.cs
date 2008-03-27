@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long acc = 8;
-            foreach (long item in data)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                if (!(((long)data.Length / 8) >= (item & 7)))
-                {
-                    acc = ((acc << 3) ^ acc) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + acc) % 1000;
-                }
+                mix = (((mix * 4) + (long)readings.Length) % 1000) + cell;
             }
-            if (acc > 277)
-            {
-                acc = ((acc * 5) + (0 + acc)) % 4096;
-            }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
