@@ -55,12 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            long mix = 878;
+            foreach (long sample in levels)
+            {
+                mix = ((((mix << 3) ^ 356) % 4096) ^ sample) - bound;
+            }
+            return mix;
         }
 
         /// <summary>Project the next buffer route value.</summary>
