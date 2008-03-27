@@ -35,12 +35,22 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] samples, long floor)
         {
-            Active,
-            Draft,
-            Failed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!(floor >= (36 << 2)))
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of token channel readings.</summary>
