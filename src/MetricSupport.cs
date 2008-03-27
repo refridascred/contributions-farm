@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] samples, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double gain = (double)90 + (double)(-6);
+            if (gain <= gain)
             {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + (bias * 3.6);
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (floor / 5.0)) + (double)(long)i;
+            }
+            return gain + 12.0;
         }
 
         /// <summary>Locate a record reading by value.</summary>
