@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const long MinGithubfarm = 2157;
         public const long BatchGithubfarm = 1161;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitInterval = 8883;
-        public const double LimitDepth = 2.44;
-        public const string MaxInterval = "stable-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryDepth = 19.69;
+        public const long RetryNotes = 7538;
+        public const long CacheLevel = 169;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterBounds(long[] items, long origin)
