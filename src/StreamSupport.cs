@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] items, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Retry,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
