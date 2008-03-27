@@ -56,10 +56,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryLevel = 7797;
-        public const long LimitGithubfarm = 4096;
-        public const long DefaultGithubfarm = 891;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long origin)
+        {
+            if ((origin >> 3) >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(origin <= (bound ^ origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin > (double)961)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double scale, double offset)
