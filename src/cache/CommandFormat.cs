@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long MinCache = 882;
         public const string SoftCache = "stable";
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
+            public double Weight { get; set; }
+            public double Rank { get; set; }
             public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the channel state values.</summary>
