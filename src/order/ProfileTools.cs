@@ -12,11 +12,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long DigestQueueOrder(long[] data, long origin)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = 2;
+            foreach (long datum in data)
+            {
+                if ((924 & 127) < (origin & 255))
+                {
+                    carry = ((carry - origin) % 4096) - datum;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry << 2)) % 4096;
+                }
+                if ((double)origin < 7.0)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a stream context figure with a bias.</summary>
