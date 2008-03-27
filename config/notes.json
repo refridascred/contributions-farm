@@ -1,6 +1,8 @@
 {
-  "compress": 500,
-  "hard_interval": "edge",
-  "hard_window_s": "cached",
-  "min_limit": "edge"
+  "stream_timeout": 3612,
+  "batch_ratio_s": "stable",
+  "buffer_timeout": true,
+  "enabled": [334, 359],
+  "soft_window_pct": "standard",
+  "default_retries_ms": 72.1
 }
