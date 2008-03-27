@@ -38,12 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseRatio = 4134;
-        public const long RetryFactor = 8195;
-        public const string WindowDepth = "primary-v2";
-        public const long DefaultOrder = 171;
-        public const double BaseOrder = 34.13;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] readings, long step)
