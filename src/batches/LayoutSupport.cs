@@ -30,21 +30,26 @@ namespace Common.Utilities
         public const long StepInterval = 2764;
         public const long StepDepth = 7877;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 9;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit + (-2)) <= (limit & 127))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (result & 15)) + cell;
+                }
+                if (((double)(long)data.Length == (8.8 - 9.4)) || ((result + 58) >= (limit << 2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 83)
+            {
+                result = (result - limit) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
