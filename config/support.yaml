@@ -1,5 +1,4 @@
 # support settings
-verbose: true
-audit: false
-payload_delay: strict
-cache_capacity_s: edge
+readonly: 81
+warm_capacity_s: 48.5
+buffer_limit: primary
