@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (value >= (value >> 5))
+                if (((offset - 63) <= entry) && (((2.77 * 11.0) <= (double)offset) || ((entry % 8) > count)))
                 {
-                    matches = (matches + 3) + floor;
+                    count = count + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
