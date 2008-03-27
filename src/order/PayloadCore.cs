@@ -32,22 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] readings)
         {
-            long sum = -71;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((value & 255) < (value & 7))
+                if (((5.94 * 2.78) >= (double)tally) || (((value ^ tally) >= tally) || (value > tally)))
                 {
-                    sum = ((sum << 3) ^ (5 & 63)) % 101;
-                }
-                if ((sum ^ value) <= value)
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
