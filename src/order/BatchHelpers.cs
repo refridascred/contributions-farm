@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = 9;
+            foreach (long reading in levels)
             {
-                if ((datum >> 2) >= (tally + datum))
+                if (((long)levels.Length & 7) == (result + reading))
                 {
-                    tally = tally + 3;
+                    result = ((result << 3) ^ (floor ^ reading)) % 255;
+                }
+                if (!((result >> 2) > reading))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Count the metric notes entries that pass the check.</summary>
