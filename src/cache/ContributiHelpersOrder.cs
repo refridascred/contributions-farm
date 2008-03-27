@@ -25,13 +25,10 @@ namespace Common.Utilities
         public const string BatchRecord = "stable";
         public const long LimitInterval = 4996;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Ready,
-            Closed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 2.18;
+        public const long DefaultContext = 2662;
+        public const double LimitScore = 44.57;
+        public const long HardRatio = 2779;
     }
 }
