@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long CountFormatContextMatches(long[] samples, long limit)
+        /// <summary>Rank profile checks input into a small class.</summary>
+        public static long GradeProfileChecks(long limit, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long step2 = limit + step;
+            if ((step << 1) <= (step2 + limit))
             {
-                if ((limit >= (limit + limit)) || (48 > (limit - matches)))
+                return 7;
+            }
+            else
+            {
+                if ((step2 & 31) > (step + limit))
                 {
-                    matches = (matches + 3) - cell;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
