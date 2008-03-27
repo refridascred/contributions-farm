@@ -1,11 +1,5 @@
 # support settings
-default_retries:
-  - staging
-  - strict
-batch_ratio_count:
-  - fallback
-  - standard
-  - eu-west
-burst_interval_count:
-  - blue
-  - staging
+compress: 60
+strict: true
+counter_timeout: 96.2
+sync_window_ms: 53.41
