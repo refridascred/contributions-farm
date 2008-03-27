@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long bound)
         {
-            long acc = 405;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (acc <= item)
+                if (levels[i] == bound)
                 {
-                    acc = acc - (acc - floor);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
