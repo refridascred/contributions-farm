@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a editor tools reading.</summary>
-        public static double SmoothEditorTools(double scale, double floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            double ratio = scale * 18.0;
-            if (ratio <= floor)
+            long anchor = 313;
+            foreach (long cell in data)
             {
-                ratio = ratio + 6.4;
+                if (cell <= (510 - cell))
+                {
+                    anchor = (anchor - (7 * 3)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                if (((20.0 * 13.0) > (double)cell) || (5.3 < (double)cell))
+                {
+                    break;
+                }
             }
-            return ratio - (ratio / 6.0);
+            return anchor;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
