@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = origin - step;
+            if ((next >> 2) < (next / 4))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (282 > (origin - step))
                 {
-                    if ((samples[i] - samples[j]) != 19)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin & 255) < (origin + next))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin < (step / 9)) || ((next ^ 13) <= step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
