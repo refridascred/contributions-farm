@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long mix = -168;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length < 627)
+                {
+                    mix = (mix + (1 + entry)) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ entry;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of session readings.</summary>
