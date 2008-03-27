@@ -23,15 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already order reading.</summary>
-        public static double ScaleAlreadyOrder(double ratio, double offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double gain = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + offset) - (double)(long)i;
-            }
-            return gain + (double)2;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
