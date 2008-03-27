@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double mean = (double)289 + (8.2 / 6.0);
-            if (mean > (19.0 + bias))
-            {
-                mean = mean - (ratio + mean);
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean - (double)517;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
