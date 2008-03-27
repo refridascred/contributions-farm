@@ -30,39 +30,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long edge = target ^ step;
-            if (((step / 5) >= 0) || ((step - target) < (333 / 6)))
+            double ratio = (double)(9 - 4);
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                ratio = ((ratio + (double)27) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((target << 1) == (edge - edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6 - edge) >= (edge + 117))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.8 - 5.0) >= (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return ratio - weight;
         }
 
         /// <summary>Define already limits and defaults.</summary>
