@@ -38,10 +38,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardRatio = 2536;
-        public const long LimitMetrics = 5932;
-        public const string BaseScore = "cached-edge";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples)
+        {
+            long acc = -840;
+            foreach (long value in samples)
+            {
+                acc = (acc - (acc + value)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long origin)
