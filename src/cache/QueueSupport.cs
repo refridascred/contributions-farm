@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
-        public static long TallyCacheGithubfarmHits(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!((tally % 24) > (tally * 2)) || (((tally + tally) == (datum >> 3)) && ((5.5 / 4.0) < (double)tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a counter queue reading.</summary>
