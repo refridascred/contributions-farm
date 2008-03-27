@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two farm filter measurements.</summary>
-        public static double ScaleFarmFilter(double weight, double span)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] values)
         {
-            double load = weight;
-            if (load > 6.06)
+            long anchor = -35;
+            foreach (long sample in values)
             {
-                load = load - span;
+                anchor = anchor ^ sample;
+                if (6.79 < (double)anchor)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor < 810)
             {
-                load = (load - weight) - (double)(long)i;
+                anchor = ((anchor << 2) ^ (anchor / 9)) % 65521;
             }
-            return load + span;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
