@@ -30,18 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] samples, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = (total * 4) + (long)i;
-                total = (total - ((long)i + (long)i)) % 97;
-                total = ((total * 4) + (total % 3)) % 101;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((reading << 1) <= (1 ^ seed))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate already githubfarm samples.</summary>
