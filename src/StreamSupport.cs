@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long floor)
         {
-            long slot = offset + seed;
-            if (((slot ^ offset) >= (offset << 1)) && (630 > (slot - 4)))
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((offset - seed) < seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Accumulate filter queue samples.</summary>
