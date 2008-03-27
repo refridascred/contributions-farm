@@ -53,39 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long floor, long floor2)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series, long limit)
         {
-            long diff = floor ^ floor2;
-            if (floor <= 224)
+            long score = 66;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 2) > (floor2 >> 4))
+                if ((score / 7) == (value >> 5))
                 {
-                    return 3;
+                    score = ((score - (score - value)) % 97) - limit;
                 }
                 else
                 {
-                    if ((64 / 4) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((5.72 - 6.39) != (double)floor) || ((diff >> 3) < (diff + floor)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score ^ (score % 7)) % 65521;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
