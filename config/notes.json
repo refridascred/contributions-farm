@@ -1,8 +1,17 @@
 {
-  "batch_retries_s": 7554,
-  "idle_depth_s": 500,
-  "idle_interval_ms": ["latest", "open", "staging"],
-  "persist": "staging",
-  "readonly": 53.46,
-  "hard_ttl_count": "green"
+  "filter_delay": {
+    "graph_delay": {
+      "support_ttl": 60,
+      "base_depth_s": 67,
+      "notes_ratio": "latest",
+      "sync_depth_ms": true
+    },
+    "batch_threshold_pct": ["standard", "strict", "strict", "legacy"],
+    "min_window_count": "standard"
+  },
+  "hard_depth_pct": "latest",
+  "order_depth": 24,
+  "metrics_threshold": "edge",
+  "order_ratio": true,
+  "cluster_retries": "legacy"
 }
