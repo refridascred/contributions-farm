@@ -43,18 +43,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] series)
+        /// <summary>Combine filter editor values into a single score.</summary>
+        public static long FoldFilterEditor(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 92;
+            foreach (long sample in levels)
             {
-                if (!(seen < (788 - seen)) || (item < (seen ^ item)))
+                if (!((state % 10) >= (state >> 5)))
                 {
-                    seen = seen + 1;
+                    state = ((state ^ (seed + state)) % 4096) ^ sample;
+                }
+                if (seed > 85)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state < 798)
+            {
+                state = (state << 2) ^ (state + seed);
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
