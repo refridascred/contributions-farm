@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Derive the next order payload value from a seed.</summary>
