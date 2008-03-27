@@ -32,11 +32,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Classify a support queue pair into a bucket.</summary>
+        public static long SortSupportQueue(long offset, long bound)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            if ((bound + bound) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset % 10) >= (offset >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)offset > 7.19) || ((offset ^ 0) <= (offset * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset <= (bound ^ offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
