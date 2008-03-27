@@ -1,4 +1,33 @@
 # entry settings
-report_size: staging
-dry_run: local
-burst_ttl_s: true
+hard_ttl_s: 32
+readonly: 80.41
+base_depth_s:
+  audit: standard
+  metrics_ttl: 77
+  min_window_s:
+    - 229
+    - 74
+    - 368
+    - 165
+  soft_depth_count: staging
+  burst_depth_ms: primary
+  strict: primary
+flush_limit_count: green
+enabled:
+  githubfarm_size: false
+  min_retries:
+    - staging
+    - fallback
+    - edge
+    - open
+  retry_retries:
+    audit:
+      - 293
+      - 169
+    compress:
+      - 272
+      - 40
+      - 163
+      - 487
+    notes_window: standard
+command_depth: legacy
