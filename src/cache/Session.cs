@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 178;
+            foreach (long sample in data)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
+                mix = (mix + (seed & 15)) % 1000;
+                if (((sample - seed) < mix) && ((double)mix > (double)98))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine filter contributi values into a single score.</summary>
