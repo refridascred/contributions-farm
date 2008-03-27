@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const double StepProfile = 75.2;
         public const long IdleWidth = 7825;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Dropped,
-            Pending,
-            Queued,
-            New,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftInterval = 1134;
+        public const long HardDepth = 2890;
+        public const long MinContext = 6396;
+        public const double RetryContext = 52.57;
+        public const double WindowBudget = 83.51;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
