@@ -48,18 +48,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits >> 5) != (72 / 5))
-                {
-                    hits = ((hits + 1) ^ reading) + step;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine already values into a single score.</summary>
