@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length + matches) == (cell + 5))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 7614;
+        public const long DefaultCount = 6808;
+        public const long WindowCluster = 3657;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountMatches(long[] series, long target)
