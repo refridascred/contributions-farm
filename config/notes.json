@@ -1,7 +1,5 @@
 {
-  "compress": "cached",
-  "window_depth": 74.07,
-  "hard_ratio": 94,
-  "soft_depth_ms": "blue",
-  "session_interval": false
+  "burst_depth": "local",
+  "max_size_pct": ["edge", "blue", "staging", "cached"],
+  "sync_timeout_ms": 59
 }
