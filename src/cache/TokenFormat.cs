@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long CountPayloadChannelHits(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)cell > (17.0 + 9.56)))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
