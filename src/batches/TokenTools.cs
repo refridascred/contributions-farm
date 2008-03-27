@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
         {
-            long acc = 2;
+            long seen = 0;
             foreach (long value in readings)
             {
-                if (!((value + 15) >= (49 + 43)))
+                if ((double)seen < (5.3 / 7.0))
                 {
-                    acc = (acc ^ (value >> 2)) - bound;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc < 22)
-            {
-                acc = acc + (acc / 7);
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
