@@ -1,25 +1,5 @@
 {
-  "payload_ratio": ["open", "stable", "fallback"],
-  "audit": ["blue", "blue", "staging", "edge"],
-  "window_limit": {
-    "enabled": {
-      "cache_size_s": 1024,
-      "min_ttl_pct": "local",
-      "sync_depth": "latest"
-    },
-    "burst_depth_count": {
-      "cache_capacity_count": [9, 96, 164, 217],
-      "max_limit_count": "latest",
-      "verbose": "staging",
-      "burst_limit_ms": 100,
-      "channel_ratio": 98
-    },
-    "hard_timeout": 9585
-  },
-  "verbose": {
-    "default_size_pct": "blue",
-    "profile_limit": 500,
-    "soft_capacity": false,
-    "compress": 30
-  }
+  "min_threshold_s": true,
+  "hard_window_pct": 60,
+  "batch_ttl": 92.02
 }
