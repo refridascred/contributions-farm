@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 10.31;
-        public const double RetryPayload = 17.95;
-        public const long BatchInterval = 1894;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a filter counter pair into a bucket.</summary>
         public static long SortFilterCounter(long origin, long origin2)
