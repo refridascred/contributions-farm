@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftLevel = 20.76;
+        public const long LimitQueue = 4180;
+        public const double WindowCount = 36.12;
+        public const long RetryQueue = 6158;
+        public const long IdleQueue = 1952;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchLimits(long[] values, long target)
