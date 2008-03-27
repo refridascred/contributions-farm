@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Classify a notes graph pair into a bucket.</summary>
+        public static long RankNotesGraph(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = target - offset;
+            if (((double)offset <= (double)target) || ((double)offset >= (double)(-512)))
             {
-                if (values[i] > origin)
+                return 3;
+            }
+            else
+            {
+                if ((target + offset) < (449 - next))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next account value.</summary>
