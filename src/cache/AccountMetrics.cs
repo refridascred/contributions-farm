@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            Stale,
-            Queued,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((tally / 7) < (tally + tally)))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter stats.</summary>
