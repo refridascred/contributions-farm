@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank notes token input into a small class.</summary>
-        public static long ClassifyNotesToken(long step, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series, long origin)
         {
-            long edge = step + offset;
-            if ((8.86 > (double)step) && ((9.04 + 1.55) >= (double)step))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((2.9 + 18.0) <= (double)edge))
+                if ((item - item) <= item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step < ((-30) + edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) - origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
