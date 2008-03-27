@@ -40,16 +40,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Find the first payload cluster entry that matches the target.</summary>
+        public static long SeekPayloadClusterIndex(long[] samples, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 5) + (mix ^ (long)i)) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
