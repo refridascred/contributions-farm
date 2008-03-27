@@ -25,38 +25,21 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            if ((4.0 / 7.0) != (double)seed)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >= (seed - floor)) || ((seed - 34) <= floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)901 == (double)floor)
+                    if ((readings[i] - readings[j]) == 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed & 63) > ((-4) - 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
