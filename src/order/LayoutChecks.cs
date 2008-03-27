@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long DigestGithubfarmProfile(long[] samples, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items)
         {
-            long state = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((reading > (reading + 5)) || ((reading << 2) <= (2 + state)))
+                if ((count * 4) < (14 / 5))
                 {
-                    state = ((state - (state & 15)) % 255) + origin;
+                    count = (count + 2) + item;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
