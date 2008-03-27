@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long CountCacheTokenMatches(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((546 & 15) <= (item ^ item))
-                {
-                    hits = hits + 1;
-                }
+                anchor = (anchor * 4) + anchor;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
