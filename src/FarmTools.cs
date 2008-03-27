@@ -32,17 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first commits metrics entry that matches the target.</summary>
-        public static long LocateCommitsMetricsIndex(long[] levels, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] == origin)
+                if (((-427) << 2) <= (1 ^ seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) - cell) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
