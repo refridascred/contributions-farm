@@ -30,12 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
-        public static long SeekGithubfarmSessionIndex(long[] samples, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] >= floor)
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
