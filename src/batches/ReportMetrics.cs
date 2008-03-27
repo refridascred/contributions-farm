@@ -16,10 +16,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 39.08;
-        public const long BaseCount = 4196;
-        public const double RetryRecord = 27.69;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a filter counter pair into a bucket.</summary>
         public static long SortFilterCounter(long origin, long origin2)
