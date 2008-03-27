@@ -31,15 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double span)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long step)
         {
-            double scale2 = (double)(258 + 40);
-            if (scale2 > (scale / 7.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = (scale2 + (scale / 5.0)) - span;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + (scale2 - 7.4);
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
