@@ -44,21 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token channel readings.</summary>
-        public static long CompareTokenChannelCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryFactor = 3.58;
+        public const double SoftBatches = 6.78;
+        public const string BurstBudget = "local-1";
+        public const long IdleWidth = 393;
+        public const double BaseBatches = 1.67;
     }
 }
