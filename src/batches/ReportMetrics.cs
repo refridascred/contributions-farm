@@ -30,38 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter counter pair into a bucket.</summary>
-        public static long SortFilterCounter(long origin, long origin2)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((origin <= (origin2 + origin2)) || (origin > (origin2 >> 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin - origin2) < origin) || ((402 + origin) < (origin2 + origin2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin < (3.81 / 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin < (20.0 - 9.58))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
