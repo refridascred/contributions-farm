@@ -27,11 +27,18 @@ namespace Common.Utilities
             return drift - (double)6;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            double drift = (gain - gain) * 8.0;
-            return (drift + drift) + floor;
+            long anchor = -8;
+            foreach (long value in levels)
+            {
+                if (358 <= anchor)
+                {
+                    anchor = (anchor - (value ^ anchor)) % 1000;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the token phase values.</summary>
