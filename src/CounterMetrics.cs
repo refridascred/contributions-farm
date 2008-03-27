@@ -48,11 +48,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6192;
+        public const long StepProfile = 1918;
+        public const double StepSize = 52.48;
     }
 }
