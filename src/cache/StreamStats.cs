@@ -34,18 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] data, long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!((514 - seed) > seed))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
