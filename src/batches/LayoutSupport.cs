@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Done,
-            Draft,
-            Retry,
-            Queued,
-            Ready,
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
