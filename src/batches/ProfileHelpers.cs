@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a batches metric value against two limits.</summary>
-        public static long BucketBatchesMetric(long bound, long floor)
-        {
-            long span = bound + floor;
-            if ((double)span >= 2.1)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((17.0 / 2.0) != (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)28 > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 1362;
+        public const long MaxFactor = 5858;
+        public const long BatchDepth = 190;
+        public const double MinInterval = 25.5;
+        public const long IdleDepth = 4525;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
