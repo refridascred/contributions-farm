@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const double SoftCluster = 17.07;
         public const long BurstSize = 1997;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] series, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell ^ cell) != (step >> 3))
-                {
-                    tally = tally + 2;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
