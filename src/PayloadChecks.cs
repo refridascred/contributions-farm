@@ -49,24 +49,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long offset, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] samples, long limit)
         {
-            if (!((offset << 1) >= (origin << 3)))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (9.04 / 6.0))
+                if (value < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
