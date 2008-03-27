@@ -14,11 +14,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6578;
-        public const long DefaultSchema = 695;
-        public const long HardSchema = 5235;
-        public const long RetrySchema = 2135;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 3) + (state << 1)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a support farm reading.</summary>
         public static double SmoothSupportFarm(double rate, double offset)
