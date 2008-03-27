@@ -1,9 +1,8 @@
 # entry settings
-poll_depth_s: open
-counter_size: 30
-default_capacity:
-  retry_size: 100
-  idle_threshold: open
-  min_interval: edge
-  githubfarm_interval: false
-  order_retries: false
+readonly:
+  - fallback
+  - local
+token_window:
+  - open
+  - local
+batch_ratio_count: true
