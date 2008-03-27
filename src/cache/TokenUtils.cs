@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] data, long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample * 2) <= (origin + 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
