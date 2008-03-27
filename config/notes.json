@@ -1,6 +1,7 @@
 {
-  "warm_ttl_s": 60,
-  "burst_capacity_pct": [491, 69],
-  "strict": 2916,
-  "warm_depth": 55.13
+  "compress": "cached",
+  "window_depth": 74.07,
+  "hard_ratio": 94,
+  "soft_depth_ms": "blue",
+  "session_interval": false
 }
