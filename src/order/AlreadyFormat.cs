@@ -39,25 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile queue input into a small class.</summary>
-        public static long ClassifyProfileQueue(long offset, long seed)
+        /// <summary>Derive the next queue order value from a seed.</summary>
+        public static long RollQueueOrder(long target)
         {
-            long delta = offset - seed;
-            if (offset >= (delta << 2))
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                state = state ^ ((long)i + target);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset - offset) >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate window record readings against a bound.</summary>
