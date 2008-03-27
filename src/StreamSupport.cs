@@ -30,17 +30,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state << 2) ^ state;
-                state = state + (950 >> 1);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
