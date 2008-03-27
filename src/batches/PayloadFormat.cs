@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 4186;
+        public const long LimitFactor = 8705;
+        public const long MaxStats = 572;
+        public const long RetryTimeout = 3986;
+        public const long MinSize = 8493;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] values)
