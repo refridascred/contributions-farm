@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] values, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (seen < (offset % 100))
+                if (datum < offset)
                 {
-                    seen = (seen + 1) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
