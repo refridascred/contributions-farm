@@ -22,11 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of githubfarm account readings.</summary>
+        public static long CombineGithubfarmAccount(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long mark = 324;
+            foreach (long datum in levels)
+            {
+                if ((289 / 6) != ((long)levels.Length ^ datum))
+                {
+                    mark = (mark - mark) % 255;
+                }
+                else
+                {
+                    mark = mark + datum;
+                }
+                mark = (mark + (mark / 3)) % 101;
+                if (((long)levels.Length ^ 471) > datum)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
