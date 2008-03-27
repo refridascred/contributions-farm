@@ -1,14 +1,11 @@
 # entry settings
-order_delay: open
-min_threshold_count: 1565
-audit:
-  idle_timeout_pct: 8.31
-  cache_limit: 40.91
-  idle_delay: 32
-  order_timeout: 66.7
-  tools_ttl: strict
-  idle_window_count:
-    - 489
-    - 437
-    - 11
-editor_threshold: 90
+readonly: open
+max_timeout_ms: standard
+burst_window_count: standard
+default_interval:
+  - 463
+  - 228
+  - 434
+  - 127
+sync_ratio_pct: 8381
+cache_timeout: edge
