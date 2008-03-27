@@ -53,17 +53,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a counter batches reading by value.</summary>
-        public static long FindCounterBatchesIndex(long[] readings, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((875 >= bound) && (57 <= (seed - seed)))
             {
-                if (readings[i] >= target)
+                return 6;
+            }
+            else
+            {
+                if ((5.52 / 2.0) > (double)seed)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 3) < (seed - 26))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
