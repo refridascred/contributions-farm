@@ -63,31 +63,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double floor)
         {
-            if (((offset ^ 13) > (offset % 5)) && ((bound * 4) >= (offset * 4)))
+            double bias = 3.5;
+            if (bias <= (bias * 3.0))
             {
-                return 0;
+                bias = (bias - (1.8 - bias)) + floor;
             }
             else
             {
-                if ((19.0 * 0.4) != (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (8 < (bound - 810))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                bias = bias + scale;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (6.08 + scale)) + (double)(long)i;
+            }
+            return bias + (double)336;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
