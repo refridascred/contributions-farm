@@ -1,13 +1,15 @@
 # Command notes
 
-When a cluster fails, the graph handler retries a few times before giving up.
-Use session settings to tune how often profile data is refreshed.
+Each contributi is validated before it reaches the context queue.
+Keep githubfarm and metrics names short and lowercase.
 
-Run the counter check before changing any graph limits.
-The command module keeps stats values in sync with the order cache.
+Defaults for format live in the config folder and can be overridden per environment.
+The payload module keeps channel values in sync with the command cache.
+Use buffer settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate checks input early
-- Keep cluster values small
+- Review cache limits each release
+- Document new cluster fields
+- Log every layout change
+- Prefer cluster defaults
