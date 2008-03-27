@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long offset, long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            if (((offset / 7) > (3 - 44)) || ((7.98 - 0.46) == (double)floor))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ offset) <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset > (4.62 - 3.24)) && ((floor + floor) <= (offset << 2)))
+                    if ((readings[i] ^ readings[j]) != 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
