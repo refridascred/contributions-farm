@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "staging-v2";
-        public const long DefaultInterval = 9705;
-        public const long DefaultLayout = 5901;
-        public const long BaseTimeout = 7727;
-        public const string SoftRatio = "legacy-edge";
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data)
+        {
+            long total = 630;
+            foreach (long reading in data)
+            {
+                if ((total >> 2) == (total ^ total))
+                {
+                    total = ((total << 3) ^ reading) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of graph editor readings.</summary>
         public static long TallyGraphEditor(long[] values, long bound)
