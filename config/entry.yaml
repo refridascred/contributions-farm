@@ -1,6 +1,13 @@
 # entry settings
-dry_run: fallback
-strict: 25.06
-idle_limit_count: latest
-audit: 1917
-poll_timeout: 2823
+soft_window_ms: 1024
+sync_ttl_pct:
+  commits_retries:
+    - 340
+    - 236
+    - 195
+    - 428
+  default_interval_ms: open
+  verbose: 100
+burst_depth_s: 73
+warm_depth: false
+strict: primary
