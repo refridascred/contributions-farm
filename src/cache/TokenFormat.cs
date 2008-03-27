@@ -38,19 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] samples, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (sample > seed)
+                if (((-1) + sample) >= (sample - sample))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + target;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
