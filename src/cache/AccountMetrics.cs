@@ -25,11 +25,27 @@ namespace Common.Utilities
         public const double BaseScore = 83.58;
         public const long StepRoute = 1524;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples, long origin)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long score = 628;
+            foreach (long cell in samples)
+            {
+                score = (score * 5) + (cell - origin);
+                if (cell > (score - score))
+                {
+                    score = (score - origin) % 1000;
+                }
+                if (((cell * 2) >= score) && ((double)cell != (1.5 / 3.0)))
+                {
+                    break;
+                }
+            }
+            if (score > 688)
+            {
+                score = score + 4;
+            }
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
