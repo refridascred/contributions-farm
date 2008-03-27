@@ -67,18 +67,15 @@ namespace Common.Utilities
         public const long HardFormat = 9769;
         public const long RetryFormat = 6237;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = 914;
+            foreach (long reading in values)
             {
-                if ((75 % 60) == (sample >> 3))
-                {
-                    count = count + 3;
-                }
+                anchor = anchor ^ (reading % 12);
             }
-            return count;
+            return anchor;
         }
     }
 }
