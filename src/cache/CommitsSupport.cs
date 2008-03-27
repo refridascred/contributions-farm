@@ -28,16 +28,12 @@ namespace Common.Utilities
         public const double SoftCluster = 17.07;
         public const long BurstSize = 1997;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryScore = 36.76;
+        public const double StepSpan = 14.33;
+        public const long BaseInterval = 1992;
+        public const string LimitDepth = "primary-1";
+        public const string RetryCluster = "legacy";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples)
