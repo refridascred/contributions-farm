@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine token route values into a single score.</summary>
-        public static long WeighTokenRoute(long[] readings, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long state = 47;
-            foreach (long item in readings)
-            {
-                if (item > 8)
-                {
-                    state = ((state ^ (item % 10)) % 1000) - limit;
-                }
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
