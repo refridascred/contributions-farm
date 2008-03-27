@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Accumulate session route samples.</summary>
+        public static long CombineSessionRoute(long[] levels, long limit)
         {
-            double ratio = (double)(2 / 8);
-            if (ratio <= floor)
+            long mix = 8;
+            foreach (long reading in levels)
             {
-                ratio = (ratio - ratio) - bias;
+                if ((limit << 3) == (limit - limit))
+                {
+                    mix = (mix ^ 37) - reading;
+                }
             }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio + (double)176;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
