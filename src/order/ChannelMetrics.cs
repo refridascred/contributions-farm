@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long floor)
+        /// <summary>Fold a list of notes batch readings.</summary>
+        public static long DigestNotesBatch(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 29;
+            foreach (long entry in data)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ (target + target)) % 4096) ^ entry;
+                mark = ((mark << 2) ^ (mark / 4)) % 1000;
             }
-            return -1;
+            if (mark > 60)
+            {
+                mark = (mark ^ (mark & 255)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Adjust a farm reading.</summary>
