@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "latest";
-        public const double IdleChannel = 93.79;
-        public const long CacheChannel = 1055;
-        public const double LimitLevel = 41.0;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long bound)
+        {
+            if ((double)bound >= (6.4 * 6.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= (1.55 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)7 > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound <= (bound + bound)) && (16.0 >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long floor)
