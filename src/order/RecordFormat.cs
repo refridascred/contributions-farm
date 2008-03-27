@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 6047;
+        public const long DefaultLevel = 9897;
+        public const long SoftLevel = 1135;
+        public const long IdleBatch = 2197;
+        public const string DefaultBatch = "alpha-edge";
 
         /// <summary>Project the next command notes value.</summary>
         public static double SmoothCommandNotes(double rate, double bias)
