@@ -74,19 +74,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = 454;
-            foreach (long reading in samples)
-            {
-                sum = (((sum << 3) ^ (2 + origin)) % 4096) ^ reading;
-            }
-            if (sum < 9)
-            {
-                sum = (sum * 2) + (origin ^ origin);
-            }
-            return sum;
+            Draft,
+            Retry,
+            Dropped,
+            Pending,
+            Ready,
         }
     }
 }
