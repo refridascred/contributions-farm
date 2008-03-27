@@ -1,12 +1,8 @@
 {
-  "poll_retries_pct": {
-    "warm_window_pct": "primary",
-    "window_retries": "strict",
-    "flush_ttl_count": 82,
-    "hard_timeout_ms": 1889,
-    "batch_capacity_ms": [85, 100],
-    "already_limit": "standard"
-  },
-  "dry_run": [217, 358],
-  "hard_size": "staging"
+  "idle_timeout_pct": "legacy",
+  "sync_capacity_pct": 1.67,
+  "metric_retries": 57,
+  "poll_delay": true,
+  "stream_depth": true,
+  "verbose": "stable"
 }
