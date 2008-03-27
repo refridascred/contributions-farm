@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings)
-        {
-            long result = 2;
-            foreach (long value in readings)
-            {
-                result = ((result << 2) ^ (value + value)) % 97;
-            }
-            if (result > 2)
-            {
-                result = (result * 3) + (result % 7);
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 4488;
+        public const string RetryAccount = "open-1";
+        public const long MinInterval = 8984;
+        public const long HardLevel = 166;
+        public const long LimitRatio = 5564;
     }
 }
