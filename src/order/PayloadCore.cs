@@ -51,22 +51,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] values, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long acc = 6;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit <= (acc + acc)) && ((double)acc == (6.1 + 5.4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ item;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > (-229))
-            {
-                acc = ((acc << 2) ^ (limit << 3)) % 97;
-            }
-            return acc;
+            return tally;
         }
     }
 }
