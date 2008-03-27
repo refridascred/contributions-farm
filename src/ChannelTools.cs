@@ -15,15 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long anchor = 818;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((3.6 * 4.7) <= (double)reading)
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
             }
-            return carry;
+            if (anchor > 604)
+            {
+                anchor = ((anchor << 2) ^ (anchor - offset)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor status values.</summary>
