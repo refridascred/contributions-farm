@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every stream metric entry stays within the limit.</summary>
-        public static bool GuardStreamMetricBounds(long[] readings, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + (offset * 2)) % 255;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Find the first route account entry that matches the target.</summary>
