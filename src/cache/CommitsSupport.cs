@@ -84,11 +84,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1474;
-        public const long IdleRatio = 3326;
-        public const long RetryRatio = 4437;
-        public const double WindowLevel = 33.88;
+        /// <summary>Audit contributi support readings against a rule.</summary>
+        public static long TallyContributiSupportMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen == (8.04 / 9.0))
+                {
+                    seen = ((seen + 3) - value) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a batches account sample.</summary>
         public static long SeekBatchesAccountIndex(long[] values, long target)
