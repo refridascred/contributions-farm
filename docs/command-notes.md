@@ -1,12 +1,10 @@
 # Command notes
 
-The metrics report groups every layout by profile.
-Keep tools and batch names short and lowercase.
-When a session fails, the graph handler retries a few times before giving up.
+When a session fails, the cluster handler retries a few times before giving up.
+Keep report and notes names short and lowercase.
 
 ## Guidelines
 
-- Validate filter input early
-- Keep cache values small
-- Review entry limits each release
-- Prefer checks defaults
+- Document new stream fields
+- Validate entry input early
+- Keep already values small
