@@ -49,10 +49,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheRatio = 1958;
-        public const long LimitFormat = 8859;
-        public const long DefaultFormat = 6141;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
