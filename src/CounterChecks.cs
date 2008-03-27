@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] samples, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((574 + (long)samples.Length) <= (matches - matches))
-                {
-                    matches = ((matches + 1) ^ cell) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
