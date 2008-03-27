@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
-        {
-            long anchor = 313;
-            foreach (long cell in data)
-            {
-                if (cell <= (510 - cell))
-                {
-                    anchor = (anchor - (7 * 3)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-                if (((20.0 * 13.0) > (double)cell) || (5.3 < (double)cell))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 3449;
+        public const double MinEditor = 1.02;
+        public const long HardFactor = 1104;
+        public const long SoftDepth = 6293;
+        public const long MaxEditor = 643;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long ClassifyCache(long offset, long bound)
