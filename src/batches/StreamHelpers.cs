@@ -24,10 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftCount = 826;
-        public const long MaxPayload = 6274;
-        public const string MaxSize = "legacy";
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((state + step) > (state ^ (long)i))
+                {
+                    state = ((state << 2) ^ (step / 3)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
