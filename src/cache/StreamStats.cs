@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] samples, long bound)
         {
-            long score = 483;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = ((score - (long)series.Length) % 1000) - reading;
-                if (score > 1)
+                if ((bound + cell) >= count)
                 {
-                    score = ((score * 2) + (score << 3)) % 101;
+                    count = count + 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
