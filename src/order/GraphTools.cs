@@ -48,19 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long carry = 675;
+            foreach (long sample in items)
             {
-                if (value > step)
+                if (((80 * 5) >= (carry << 2)) && ((origin * 5) == (origin * 4)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry - (sample & 255);
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
