@@ -44,19 +44,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
