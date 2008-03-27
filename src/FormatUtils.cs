@@ -67,18 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double bias)
         {
-            long carry = 537;
-            foreach (long item in values)
-            {
-                if ((990 + 569) > item)
-                {
-                    carry = (carry + (item << 1)) % 1000;
-                }
-            }
-            return carry;
+            double mean = weight;
+            return mean - bias;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
