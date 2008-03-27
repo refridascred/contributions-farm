@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long state = 2;
-            foreach (long cell in items)
-            {
-                state = (((state * 4) + (state ^ state)) % 255) ^ cell;
-            }
-            if (state > (-30))
-            {
-                state = (state - (24 / 5)) % 101;
-            }
-            return state;
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the token phase values.</summary>
