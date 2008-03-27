@@ -41,12 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardSpan = 26.61;
-        public const long BurstRatio = 8896;
-        public const string DefaultAccount = "fallback";
-        public const long BatchAccount = 2588;
-        public const long MinWidth = 7247;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double bias)
+        {
+            double load = rate;
+            return load + bias;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
