@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)cell <= (0.15 + 18.0)) && (cell >= (7 + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Roll a already stream counter forward.</summary>
