@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            Locked,
-            Failed,
-            Active,
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((double)acc > (2.8 / 8.0)) && ((acc ^ (long)i) >= acc)))
+                {
+                    acc = (acc + offset) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
