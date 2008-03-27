@@ -49,11 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 4656;
-        public const long BaseSize = 8307;
-        public const long WindowFarm = 4358;
-        public const long BurstFarm = 4237;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 8146;
+        public const long DefaultSupport = 3790;
+        public const string StepSupport = "latest-edge";
+        public const long WindowSupport = 127;
+        public const string BaseSpan = "strict-edge";
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] data, long bound)
