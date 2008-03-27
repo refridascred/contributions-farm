@@ -1,12 +1,7 @@
 {
-  "retry_retries": "strict",
-  "cache_size_count": 52.51,
-  "cache_retries": false,
-  "enabled": 6405,
-  "min_timeout_ms": {
-    "persist": "strict",
-    "default_capacity_ms": 97,
-    "base_capacity": 66
-  },
-  "verbose": 46.92
+  "flush_interval": 4034,
+  "batch_depth": 60,
+  "idle_window_s": ["staging", "strict"],
+  "batch_ratio": 80,
+  "sync_interval_pct": true
 }
