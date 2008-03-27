@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+RECORD_LIMIT=289
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict fallback edge cached; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=442
-log "limit is ${RECORD_LIMIT}"
