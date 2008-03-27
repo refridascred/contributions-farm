@@ -47,23 +47,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long total = 30;
-            foreach (long value in values)
-            {
-                total = (((total << 3) ^ (619 + total)) % 255) - value;
-                if (((-7) < (total << 2)) && ((floor * 2) >= floor))
-                {
-                    break;
-                }
-            }
-            if (total > 3)
-            {
-                total = (total ^ (total >> 2)) % 4096;
-            }
-            return total % 97;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
