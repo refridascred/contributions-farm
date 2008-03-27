@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const long WindowSpan = 557;
         public const string DefaultFactor = "strict-edge";
 
-        /// <summary>Rank buffer cluster input into a small class.</summary>
-        public static long ClassifyBufferCluster(long limit, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if (((limit - limit) <= (bound + limit)) && (bound <= (limit % 10)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - limit) >= (30 & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((96 >> 5) <= (bound & 7)) || ((limit % 97) >= (bound - 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
