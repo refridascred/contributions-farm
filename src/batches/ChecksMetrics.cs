@@ -19,18 +19,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6.9 <= (double)bound)
+                if (readings[i] == target)
                 {
-                    tally = (tally + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
