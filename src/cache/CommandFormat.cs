@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Paused,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 4927;
+        public const long BaseGraph = 7749;
+        public const string IdleBudget = "staging-1";
+        public const long StepGraph = 678;
+        public const double HardRatio = 10.89;
 
         /// <summary>Audit batches checks readings against a rule.</summary>
         public static long MeasureBatchesChecksMatches(long[] items, long bound)
