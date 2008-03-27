@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] readings, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((41 >> 3) != ((-6) + matches))
+                if (item != seed)
                 {
-                    matches = ((matches + 1) + value) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count the schema channel entries that pass the check.</summary>
