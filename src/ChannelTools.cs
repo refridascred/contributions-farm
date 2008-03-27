@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Failed,
-            Stale,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
