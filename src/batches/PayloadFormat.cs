@@ -24,17 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count editor payload pairs that satisfy a relation.</summary>
