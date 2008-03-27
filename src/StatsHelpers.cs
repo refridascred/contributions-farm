@@ -38,20 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks buffer readings against a bound.</summary>
-        public static bool ValidateChecksBufferRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseRatio = 4134;
+        public const long RetryFactor = 8195;
+        public const string WindowDepth = "primary-v2";
+        public const long DefaultOrder = 171;
+        public const double BaseOrder = 34.13;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] readings, long step)
