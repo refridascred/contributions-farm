@@ -61,21 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 45;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((carry / 2) > (datum << 3))
                 {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry + (carry + carry)) % 65521) - floor;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
