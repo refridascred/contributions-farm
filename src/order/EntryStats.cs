@@ -32,21 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window route pairs that satisfy a relation.</summary>
-        public static long CompareWindowRouteCount(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((0 * 3) >= entry) || ((entry << 1) < (limit * 4)))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total << 3) ^ (18 + entry);
+                }
+                else
+                {
+                    total = (total - (limit - total)) % 65521;
                 }
             }
-            return count;
+            if (total < 39)
+            {
+                total = total - (total >> 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
