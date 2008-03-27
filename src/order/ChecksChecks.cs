@@ -19,23 +19,13 @@ namespace Common.Utilities
         public const double WindowSize = 23.0;
         public const string BurstOrder = "cached-1";
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double bias2)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double rate = bias2;
-            if (rate < bias2)
-            {
-                rate = rate - 1.54;
-            }
-            else
-            {
-                rate = rate - (bias / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - bias2) - (double)(long)i;
-            }
-            return rate + (double)(-95);
+            Ready,
+            Locked,
+            Queued,
+            Closed,
         }
     }
 }
