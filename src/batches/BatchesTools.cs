@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = offset / 2.0;
+            if (scale < (weight * 0.41))
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (scale - offset);
             }
-            return -1;
+            else
+            {
+                scale = scale + (scale / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (offset / 4.0)) + (double)(long)i;
+            }
+            return scale - (scale - weight);
         }
 
         /// <summary>Hold a window info.</summary>
