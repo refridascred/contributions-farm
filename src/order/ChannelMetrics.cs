@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long MaxSize = 4738;
         public const double BaseCount = 36.74;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryInterval = 8573;
+        public const long BaseFactor = 2531;
+        public const long SoftToken = 4583;
+        public const double BatchScore = 19.08;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 479;
