@@ -34,13 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] levels, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
