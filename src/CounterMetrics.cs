@@ -13,21 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((66 ^ 87) <= hits)
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up stream samples.</summary>
