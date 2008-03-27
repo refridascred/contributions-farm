@@ -1,12 +1,10 @@
 # githubfarm settings
-audit: 58.96
-min_interval: 30
-queue_depth:
-  - 318
-  - 146
-  - 308
-filter_interval: staging
-readonly:
-  - stable
-  - blue
-flush_window_pct: 60
+strict: legacy
+poll_retries: fallback
+farm_ratio: 80
+flush_timeout:
+  - latest
+  - edge
+  - strict
+idle_limit_s: 500
+burst_window_count: 30
