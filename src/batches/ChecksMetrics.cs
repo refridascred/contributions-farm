@@ -57,19 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double span)
+        /// <summary>Blend two counter stream measurements.</summary>
+        public static double AdjustCounterStream(double rate, double span)
         {
-            double mean = span * 8.3;
-            if (mean < weight)
+            double scale = rate - (rate * 5.33);
+            if (scale < (span * 4.0))
             {
-                mean = mean + 17.0;
+                scale = scale + 13.0;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                mean = mean - span;
+                scale = scale + (double)(long)i;
             }
-            return mean + (mean * 7.0);
+            return scale + scale;
         }
 
         /// <summary>Hold a stream stats.</summary>
