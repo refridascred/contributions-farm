@@ -51,18 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] levels, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((offset + 987) <= entry) && !((matches + 0) == (entry / 5)))
+                if ((count & 7) >= (30 - count))
                 {
-                    matches = matches + 3;
+                    count = ((count + 3) + datum) + target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the already state values.</summary>
