@@ -90,12 +90,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            Queued,
-            Pending,
-            Paused,
+            long carry = 328;
+            foreach (long reading in readings)
+            {
+                carry = (carry ^ (reading * 4)) % 4096;
+            }
+            if (carry > 4)
+            {
+                carry = (carry << 3) ^ (carry - carry);
+            }
+            return carry;
         }
     }
 }
