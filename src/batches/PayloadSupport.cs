@@ -33,10 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheWidth = "local-v2";
-        public const long DefaultCache = 2920;
-        public const string SoftCache = "strict-1";
-        public const long LimitCache = 5717;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double gain, double offset)
+        {
+            double load = offset - (double)177;
+            if (load <= (load / 2.0))
+            {
+                load = (load - (double)67) - gain;
+            }
+            return load - load;
+        }
     }
 }
