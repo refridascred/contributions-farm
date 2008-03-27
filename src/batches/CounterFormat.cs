@@ -14,18 +14,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long offset = bound - step;
+            if (step >= 66)
             {
-                if (reading <= matches)
+                return 0;
+            }
+            else
+            {
+                if ((7 - step) >= (offset >> 2))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 3) >= (0 + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
