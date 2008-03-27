@@ -1,11 +1,11 @@
 # Command notes
 
-Run the githubfarm check before changing any format limits.
-Keep buffer and metrics names short and lowercase.
+Run the session check before changing any order limits.
+A window that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer report defaults
-- Log every record change
-- Validate already input early
+- Document new order fields
+- Validate payload input early
+- Keep counter values small
+- Review token limits each release
