@@ -38,17 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] items, long offset)
+        /// <summary>Count the report entry entries that pass the check.</summary>
+        public static long AuditReportEntryHits(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (items[i] <= offset)
+                if ((20.0 / 9.0) >= (double)limit)
                 {
-                    return (long)i;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
