@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] samples, long floor)
         {
-            long mix = 72;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                mix = (mix ^ (99 + item)) % 1000;
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 49)
-            {
-                mix = (mix + (mix - mix)) % 4096;
-            }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
