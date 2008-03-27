@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long BaseEntry = 8200;
         public const string BatchCount = "stable";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (readings[i] <= target)
+                if (((hits & 63) >= (hits / 7)) || ((step & 1) > 2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
