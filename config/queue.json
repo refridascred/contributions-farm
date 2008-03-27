@@ -1,7 +1,15 @@
 {
-  "flush_interval": 4034,
-  "batch_depth": 60,
-  "idle_window_s": ["staging", "strict"],
-  "batch_ratio": 80,
-  "sync_interval_pct": true
+  "min_timeout_pct": "strict",
+  "warm_capacity": 250,
+  "flush_timeout_ms": {
+    "sync_retries_pct": "edge",
+    "command_delay": 60,
+    "audit": 60,
+    "sync_size_count": {
+      "poll_limit": false,
+      "cache_capacity": "strict",
+      "default_interval_ms": ["local", "blue"],
+      "farm_depth": 2321
+    }
+  }
 }
