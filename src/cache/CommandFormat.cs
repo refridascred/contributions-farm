@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record command readings.</summary>
-        public static long TallyRecordCommand(long[] readings, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long target)
         {
-            long carry = 4;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 5) + ((long)readings.Length << 3)) % 97;
-                carry = (carry ^ cell) % 4096;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 52)
-            {
-                carry = (carry * 3) + (target * 2);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
