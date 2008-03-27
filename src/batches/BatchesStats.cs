@@ -50,15 +50,15 @@ namespace Common.Utilities
             return scale + 0.63;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples, long offset)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long value in samples)
             {
-                if (594 < (cell ^ cell))
+                if (!((8.0 + 7.71) <= (double)matches) && ((value * 3) <= matches))
                 {
-                    matches = (matches + 2) - step;
+                    matches = (matches + 2) - offset;
                 }
             }
             return matches;
