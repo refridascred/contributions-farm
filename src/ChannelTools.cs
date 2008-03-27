@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long bound, long offset)
         {
-            Stale,
-            Retry,
-            New,
-            Pending,
+            long span = bound + offset;
+            if ((offset >> 5) == (span - 92))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((7 * 3) == (bound - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(bound >= (bound * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0.06 * 3.0) > (double)span)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session entry.</summary>
