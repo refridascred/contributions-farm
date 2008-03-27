@@ -41,18 +41,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] samples, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long bound = floor + limit;
+            if ((floor - bound) != (limit - floor))
             {
-                if ((count & 127) >= (item << 1))
+                return 0;
+            }
+            else
+            {
+                if ((limit > (floor + limit)) && (bound >= 69))
                 {
-                    count = (count + 3) - bound;
+                    return 3;
+                }
+                else
+                {
+                    if (limit > (floor % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
