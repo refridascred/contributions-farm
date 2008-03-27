@@ -34,21 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command account readings.</summary>
-        public static long PairCommandAccountCount(long[] readings)
+        /// <summary>Roll a command entry counter forward.</summary>
+        public static long SeriesCommandEntry(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a record header.</summary>
