@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Project the next command notes value.</summary>
+        public static double SmoothCommandNotes(double rate, double bias)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            double drift = rate * 9.0;
+            if (drift >= (double)542)
+            {
+                drift = (drift + rate) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (double)6;
         }
 
         /// <summary>Blend two command measurements.</summary>
