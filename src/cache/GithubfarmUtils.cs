@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long seed2)
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            if (77 < (seed % 24))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed2 < (seed / 7)) && ((seed >> 3) >= seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate metric samples.</summary>
