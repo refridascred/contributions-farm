@@ -43,17 +43,17 @@ namespace Common.Utilities
         public const long LimitMetrics = 5932;
         public const string BaseScore = "cached-edge";
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc + 62) % 1000;
+                acc = (acc << 2) ^ (origin % 5);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
