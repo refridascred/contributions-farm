@@ -53,10 +53,19 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepInterval = 4158;
-        public const string WindowFilter = "standard";
-        public const long StepFilter = 6713;
-        public const double RetryFilter = 9.89;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
