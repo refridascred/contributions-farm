@@ -38,17 +38,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long origin)
+        /// <summary>Validate window contributi readings against a bound.</summary>
+        public static bool CheckWindowContributiLimits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (readings[i] < origin)
+                if (cell > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
