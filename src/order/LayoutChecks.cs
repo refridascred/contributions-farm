@@ -24,12 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(((double)cell >= (9.9 / 4.0)) && ((double)cell >= (6.59 * 8.0))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
