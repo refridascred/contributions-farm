@@ -14,18 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the context checks entries that pass the check.</summary>
-        public static long CountContextChecksGaps(long[] data)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (7 < value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
