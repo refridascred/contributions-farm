@@ -47,10 +47,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySpan = 23.45;
-        public const double LimitTimeout = 66.56;
-        public const string DefaultSupport = "staging";
+        /// <summary>Match up order metric samples.</summary>
+        public static long CompareOrderMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] series, long offset)
