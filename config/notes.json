@@ -1,14 +1,6 @@
 {
-  "batch_limit_pct": 91.74,
-  "warm_threshold": 72.27,
-  "dry_run": [299, 239, 258, 389],
-  "verbose": {
-    "base_ttl_pct": 37.06,
-    "flush_limit_s": 19.77,
-    "batch_size": 72,
-    "default_limit": true,
-    "strict": "cached"
-  },
-  "cache_size_ms": 94.56,
-  "idle_retries": ["staging", "blue", "strict", "primary"]
+  "graph_capacity": false,
+  "sync_threshold_s": "legacy",
+  "soft_size_ms": ["legacy", "fallback", "stable"],
+  "audit": [83, 139]
 }
