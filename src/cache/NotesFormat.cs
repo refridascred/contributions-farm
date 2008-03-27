@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepFactor = 7012;
-        public const long BaseInterval = 2234;
-        public const long RetryOrder = 505;
-        public const double MaxOrder = 6.0;
-        public const string CacheSize = "local-1";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((38 ^ datum) > 124)
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long limit)
