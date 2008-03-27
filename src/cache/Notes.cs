@@ -19,20 +19,14 @@ namespace Common.Utilities
         public const long DefaultInterval = 9426;
         public const long SoftGraph = 2146;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((carry + bound) <= bound)
-                {
-                    long tally = carry;
-                    carry = (carry ^ (carry + tally)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Pending,
+            Active,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Locate a cluster filter reading by value.</summary>
