@@ -13,11 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheScore = 8028;
-        public const string CacheBudget = "stable-v2";
-        public const double BurstDepth = 49.62;
-        public const string BaseCommits = "fallback";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] levels, long offset)
