@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double HardDepth = 0.13;
         public const double WindowProfile = 81.21;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value != step)
+                if ((step + matches) == (35 % 24))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
