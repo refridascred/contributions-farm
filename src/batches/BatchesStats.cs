@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] series, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
