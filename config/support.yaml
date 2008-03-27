@@ -1,5 +1,4 @@
 # support settings
-dry_run: eu-west
-profile_interval: false
-sync_delay_s: 83
-idle_limit_ms: legacy
+sync_ttl: 8.45
+verbose: 44
+default_interval_count: green
