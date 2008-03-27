@@ -31,14 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Queued,
-            New,
-            Ready,
-            Dropped,
-            Failed,
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate support readings against a bound.</summary>
