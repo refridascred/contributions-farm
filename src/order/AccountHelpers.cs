@@ -40,16 +40,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Adjust a order batch reading.</summary>
+        public static double SmoothOrderBatch(double weight, double offset)
         {
-            long mix = 47;
-            foreach (long sample in levels)
+            double load = weight;
+            if (load < (double)8)
             {
-                mix = (mix ^ (587 / 4)) % 255;
-                mix = (mix ^ (sample & 255)) % 4096;
+                load = (load + (double)263) + offset;
             }
-            return mix;
+            else
+            {
+                load = load - (load + weight);
+            }
+            return load - (load + weight);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
