@@ -1,19 +1,5 @@
 {
-  "hard_limit": "blue",
-  "batch_timeout_count": ["green", "eu-west"],
-  "max_retries_s": 82,
-  "base_ttl_count": false,
-  "retry_timeout_pct": {
-    "base_interval_s": 13.1,
-    "cache_ttl": "latest",
-    "counter_retries": "edge",
-    "compress": ["legacy", "stable"],
-    "hard_depth_s": 1024,
-    "hard_size_ms": 38
-  },
-  "notes_retries": {
-    "min_window_count": "staging",
-    "retry_limit": 17,
-    "burst_size_pct": "strict"
-  }
+  "entry_capacity": "edge",
+  "warm_limit_ms": 4,
+  "flush_retries_s": 2281
 }
