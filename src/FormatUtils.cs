@@ -48,10 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheBudget = "stable";
-        public const long WindowFactor = 6987;
-        public const long BatchMetric = 5722;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double offset)
+        {
+            double bias = weight;
+            if (bias >= 0.88)
+            {
+                bias = bias - offset;
+            }
+            return bias + offset;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] values, long offset)
