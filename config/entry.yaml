@@ -1,8 +1,5 @@
 # entry settings
-context_timeout: edge
-base_ratio: local
-sync_delay: primary
-persist:
-  - standard
-  - fallback
-  - staging
+warm_depth_count: true
+idle_timeout_count: 97.47
+soft_interval: 46.22
+verbose: 2.36
