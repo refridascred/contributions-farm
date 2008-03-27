@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Synced,
-            Stale,
-            Done,
-            Paused,
-            Idle,
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
