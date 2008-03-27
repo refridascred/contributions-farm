@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Synced,
-            Retry,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "standard-v2";
+        public const double MinScore = 69.97;
+        public const long StepDepth = 4158;
+        public const double IdleCommand = 75.06;
+        public const long SoftRatio = 8145;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] items)
