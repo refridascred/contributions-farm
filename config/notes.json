@@ -1,6 +1,5 @@
 {
-  "flush_delay_s": "primary",
-  "sync_interval": "fallback",
-  "already_ratio": "latest",
-  "base_retries": 74.63
+  "burst_limit_s": "standard",
+  "hard_ttl": true,
+  "hard_size_pct": ["staging", "local"]
 }
