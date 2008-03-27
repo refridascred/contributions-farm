@@ -29,17 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a cluster filter reading by value.</summary>
-        public static long LocateClusterFilterIndex(long[] data, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (data[i] == origin)
+                if (!((seen & 255) >= (item + 39)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank account window input into a small class.</summary>
