@@ -45,32 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items)
         {
-            long bound = floor + limit;
-            if ((floor - bound) != (limit - floor))
+            long result = 195;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit > (floor + limit)) && (bound >= 69))
+                if (!((result + 545) > item))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > (floor % 24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result * 5) + item;
                 }
             }
+            if (result < 4)
+            {
+                result = (result + (result << 3)) % 101;
+            }
+            return result;
         }
     }
 }
