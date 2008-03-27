@@ -1,16 +1,6 @@
 # entry settings
-base_capacity_ms: false
-cache_ratio: 250
-hard_interval_pct:
-  counter_interval: 7356
-  strict:
-    session_delay: 41
-    metric_delay: true
-    context_delay: 79.57
-    cluster_capacity: false
-  min_ratio: edge
-  batch_retries_count: 50
-  contributi_size: strict
-batches_interval:
-  - 91
-  - 188
+warm_depth_count: eu-west
+persist: 47
+strict: local
+base_interval: 2
+min_window: true
