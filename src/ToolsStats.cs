@@ -58,19 +58,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next schema support value.</summary>
-        public static double ProjectSchemaSupport(double gain, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            double mean = gain;
-            if (mean <= (double)(-7))
+            long carry = 64;
+            foreach (long cell in items)
             {
-                mean = (mean + gain) + span;
+                if ((carry & 63) != (carry >> 1))
+                {
+                    carry = (carry ^ (long)items.Length) ^ cell;
+                }
+                if ((long)items.Length > (carry % 7))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (gain - mean);
-            }
-            return mean + (double)746;
+            return carry % 97;
         }
 
         /// <summary>Describe the route level values.</summary>
