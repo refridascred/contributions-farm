@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double span)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double rate = (double)40 - (ratio / 6.0);
-            if (rate >= (rate - 1.7))
-            {
-                rate = (rate + (double)4) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (6.8 + 7.5)) + (double)(long)i;
-            }
-            return rate + (double)167;
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
