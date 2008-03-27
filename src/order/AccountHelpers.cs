@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] levels, long seed)
+        /// <summary>Measure how many schema account samples are out of range.</summary>
+        public static long TallySchemaAccountHits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((reading >> 3) > (reading >> 2))
+                if (((sample - 3) >= (count & 7)) || (6.0 <= (double)offset))
                 {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
