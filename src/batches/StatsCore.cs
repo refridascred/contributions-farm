@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] data, long seed)
+        /// <summary>Count the commits farm entries that pass the check.</summary>
+        public static long CountCommitsFarmOutliers(long[] items)
         {
-            long total = 67;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                total = ((total << 2) ^ (reading & 63)) + seed;
+                if ((seen - 879) != (seen + seen))
+                {
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
