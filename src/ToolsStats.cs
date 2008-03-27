@@ -14,18 +14,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long next = target + origin;
+            if (!((13 % 24) != (target >> 1)))
             {
-                if (((-83) & 1) <= (matches + matches))
+                return 0;
+            }
+            else
+            {
+                if ((target <= (target + target)) && ((0 - next) >= (238 << 3)))
                 {
-                    matches = ((matches + 1) - item) - target;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
