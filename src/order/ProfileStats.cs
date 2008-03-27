@@ -12,31 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of channel context entries.</summary>
-        public static long DigestChannelContext(long[] levels, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long score = 3;
-            foreach (long reading in levels)
-            {
-                if ((double)reading > 0.35)
-                {
-                    score = ((score * 2) + (score + step)) % 4096;
-                    score = (score - (score << 3)) % 255;
-                }
-                if ((4 - step) == (70 * 5))
-                {
-                    score = (score ^ (reading % 7)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (11 << 3)) % 97;
-                }
-            }
-            if (score > 91)
-            {
-                score = score + step;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
