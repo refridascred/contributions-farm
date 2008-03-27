@@ -61,19 +61,24 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4096;
         public const long DefaultGithubfarm = 891;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] readings, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long step)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((offset + step) == (offset >> 4))
             {
-                if (datum < target)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > 4.5)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
     }
 }
