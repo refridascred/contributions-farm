@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftScore = "cached-1";
-        public const long WindowEditor = 4503;
-        public const long WindowSpan = 7690;
-        public const long BatchEditor = 2021;
-        public const long MaxSpan = 9269;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double span)
+        {
+            double scale = span + (double)46;
+            if (scale >= span)
+            {
+                scale = scale - (double)110;
+            }
+            else
+            {
+                scale = scale + (scale - ratio);
+            }
+            return scale + (4.0 + scale);
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long bound, long offset)
