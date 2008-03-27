@@ -62,22 +62,22 @@ namespace Common.Utilities
         public const double SoftFilter = 25.04;
         public const long WindowFilter = 7772;
 
-        /// <summary>Accumulate layout session samples.</summary>
-        public static long ScoreLayoutSession(long[] samples)
+        /// <summary>Count the order counter entries that pass the check.</summary>
+        public static long AuditOrderCounterGaps(long[] series)
         {
-            long mark = 2;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((((long)samples.Length % 12) > (entry * 2)) || ((mark + mark) <= entry))
+                if ((454 * 2) >= (count - cell))
                 {
-                    mark = mark ^ (entry - entry);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < 64)
-            {
-                mark = ((mark * 3) + mark) % 65521;
-            }
-            return mark % 97;
+            return count;
         }
     }
 }
