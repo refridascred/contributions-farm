@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const double MinSpan = 33.64;
         public const long SoftCount = 5365;
 
-        /// <summary>Audit counter token readings against a rule.</summary>
-        public static long MeasureCounterTokenMatches(long[] series, long origin)
+        /// <summary>Compare every pair of githubfarm stats readings.</summary>
+        public static long PairGithubfarmStatsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin - 1) != (tally - origin)) || (datum > (tally >> 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
