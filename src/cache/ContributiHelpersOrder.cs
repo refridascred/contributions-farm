@@ -25,10 +25,18 @@ namespace Common.Utilities
         public const string BatchRecord = "stable";
         public const long LimitInterval = 4996;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1827;
-        public const long CacheMetrics = 8793;
-        public const long BurstMetrics = 8976;
-        public const string MaxCount = "cached-1";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 2) > (tally + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
