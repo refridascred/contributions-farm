@@ -23,14 +23,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Queued,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
