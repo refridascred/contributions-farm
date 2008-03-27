@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 14;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score - (long)i2) % 1000) ^ entry;
+                    score = (score + (score << 1)) % 255;
                 }
+                score = score + (score >> 3);
             }
-            return matches;
+            if (score > 720)
+            {
+                score = ((score * 4) + (offset << 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
