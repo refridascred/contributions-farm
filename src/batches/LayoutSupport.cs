@@ -28,13 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 6342;
+        public const double SoftFilter = 22.07;
+        public const long RetryFilter = 3842;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
