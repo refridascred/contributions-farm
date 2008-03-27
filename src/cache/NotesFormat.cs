@@ -23,14 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Dropped,
-            Failed,
-            Paused,
-            New,
-            Synced,
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
