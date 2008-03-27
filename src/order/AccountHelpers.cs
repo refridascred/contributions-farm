@@ -23,22 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long target)
+        /// <summary>Rank account context input into a small class.</summary>
+        public static long SortAccountContext(long limit, long limit2)
         {
-            long total = 85;
-            foreach (long cell in values)
+            if ((897 + limit) <= limit2)
             {
-                if (total < (cell / 9))
+                return 4;
+            }
+            else
+            {
+                if ((double)3 >= (double)limit2)
                 {
-                    total = (total << 2) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)limit2 <= (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 4) <= (limit2 >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < 53)
-            {
-                total = total - (target - total);
-            }
-            return total % 65521;
         }
 
         /// <summary>Hold a filter options.</summary>
