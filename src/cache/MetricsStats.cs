@@ -33,11 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] levels, long bound)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count & 3) <= (count + cell))
+                {
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
