@@ -31,17 +31,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Synced,
+            Idle,
+            Done,
         }
     }
 }
