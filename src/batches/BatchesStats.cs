@@ -16,19 +16,24 @@ namespace Common.Utilities
             return scale - (double)609;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long acc = 703;
+            foreach (long sample in levels)
             {
-                if (reading >= offset)
+                acc = (acc - (0 & 31)) % 1000;
+                acc = (acc << 3) ^ (limit & 31);
+                if ((double)acc == (19.0 * 0.13))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc * 4) + (sample + (-760));
+                }
+                else
+                {
+                    acc = acc + (acc * 2);
                 }
             }
-            return ok;
+            return acc % 97;
         }
 
         /// <summary>Hold a context snapshot.</summary>
