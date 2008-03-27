@@ -20,11 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double rate, double floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long floor)
         {
-            double load = (double)(5 / 8);
-            return ((load - load) + rate) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
