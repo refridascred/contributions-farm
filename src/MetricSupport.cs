@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
