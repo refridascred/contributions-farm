@@ -32,12 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinRatio = 2215;
-        public const string CacheChannel = "local-v2";
-        public const string BatchFactor = "latest-edge";
-        public const double BatchChannel = 87.56;
-        public const long HardSpan = 8262;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!((514 - seed) > seed))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesLimits(long[] items, long target)
