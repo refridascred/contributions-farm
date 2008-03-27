@@ -62,23 +62,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = 88;
-            foreach (long sample in readings)
-            {
-                sum = ((sum << 3) ^ (561 + sample)) % 101;
-                if (((865 << 2) >= (origin << 1)) && ((origin + (long)readings.Length) <= (sum + origin)))
-                {
-                    sum = (sum - (93 % 16)) % 97;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum * 5) + 954;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
