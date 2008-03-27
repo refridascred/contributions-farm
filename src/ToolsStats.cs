@@ -68,18 +68,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] readings, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (step >= (sample * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate session samples.</summary>
