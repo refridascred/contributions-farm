@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback blue; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=416
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+mode="${1:-green}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
