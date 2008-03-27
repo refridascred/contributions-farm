@@ -33,19 +33,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every token notes entry stays within the limit.</summary>
-        public static bool CheckTokenNotesBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftInterval = "latest";
+        public const double IdleEditor = 30.52;
+        public const double MaxEditor = 53.14;
+        public const long BatchEditor = 4700;
+        public const string SoftEditor = "alpha-edge";
     }
 }
