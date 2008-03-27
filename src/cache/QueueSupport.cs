@@ -34,19 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a counter queue reading.</summary>
-        public static double BlendCounterQueue(double rate, double floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double bias = floor - (rate / 6.0);
-            if (bias > floor)
-            {
-                bias = bias - (floor + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + 7.9) - (double)(long)i;
-            }
-            return bias - rate;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
