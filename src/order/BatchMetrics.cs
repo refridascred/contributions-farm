@@ -59,19 +59,10 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
-        public static bool ValidateReportGithubfarmRange(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "legacy-1";
+        public const long RetryDepth = 9339;
+        public const long BurstChannel = 9844;
+        public const double BatchChannel = 85.05;
     }
 }
