@@ -68,31 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long origin, long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((origin % 2) < (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed - origin) <= (seed >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed << 2) > (origin ^ seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
