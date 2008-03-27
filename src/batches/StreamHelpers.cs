@@ -36,13 +36,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of buffer farm readings.</summary>
+        public static long WeighBufferFarm(long[] data)
         {
-            Done,
-            Idle,
-            Active,
-            Stale,
+            long anchor = 902;
+            foreach (long entry in data)
+            {
+                if (((entry - entry) >= (anchor >> 1)) && (((-6) / 8) < (entry + anchor)))
+                {
+                    anchor = (anchor << 3) ^ (entry - entry);
+                }
+                if ((entry % 2) == (anchor % 10))
+                {
+                    break;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ 45) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every cache contributi entry stays within the limit.</summary>
