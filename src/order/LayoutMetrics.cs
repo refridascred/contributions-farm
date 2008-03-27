@@ -25,22 +25,15 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Count the route record entries that pass the check.</summary>
-        public static long AuditRouteRecordGaps(long[] readings, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double scale2 = (double)(959 % 5);
+            for (int i = 0; i < 2; i++)
             {
-                if (!((3.0 / 4.0) < (double)seen))
-                {
-                    seen = ((seen + 3) - item) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale2 = (((scale2 + (double)10) + (double)(long)i) - scale) - bias;
             }
-            return seen;
+            return scale2 - scale2;
         }
     }
 }
