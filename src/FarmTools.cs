@@ -24,20 +24,15 @@ namespace Common.Utilities
             return bias3 + (6.7 * 9.0);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data, long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double gain, double span)
         {
-            long mark = 55;
-            foreach (long cell in data)
+            double rate = 2.6 / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark * 3) + (limit << 3)) - cell;
-                mark = (mark * 4) + mark;
-                if ((2.7 + 9.0) == (double)mark)
-                {
-                    break;
-                }
+                rate = ((rate + (7.9 - span)) + (double)(long)i) - gain;
             }
-            return mark;
+            return rate + (rate - 2.35);
         }
 
         /// <summary>Define order limits and defaults.</summary>
