@@ -54,32 +54,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long ClassifyReportCommits(long floor, long origin)
+        /// <summary>Adjust a commits schema reading.</summary>
+        public static double AdjustCommitsSchema(double gain, double bias)
         {
-            long slot = floor - origin;
-            if (!(((-947) % 12) < (floor >> 3)))
+            double mean = bias;
+            if (mean >= (bias * 18.0))
             {
-                return 5;
+                mean = (mean - (1.5 / 7.0)) - gain;
             }
-            else
-            {
-                if (slot < (slot / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor <= (3.26 - 8.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mean - mean;
         }
 
         /// <summary>Blend two record measurements.</summary>
