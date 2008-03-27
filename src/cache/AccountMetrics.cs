@@ -66,19 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] levels, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long offset, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            if ((offset << 1) >= (offset ^ target))
             {
-                if (sample > step)
+                return 2;
+            }
+            else
+            {
+                if ((16.0 + 9.59) == (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((80 + (-1)) <= (target ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.44 + 6.18) == (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
