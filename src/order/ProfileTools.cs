@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 6;
+            foreach (long entry in values)
             {
-                if ((cell + hits) < (541 - hits))
-                {
-                    hits = hits + 2;
-                }
+                total = ((total - (step - 2)) % 255) + entry;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Find the first contributi command entry that matches the target.</summary>
