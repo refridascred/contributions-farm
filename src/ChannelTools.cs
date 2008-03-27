@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result + floor) % 97;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowDepth = 3427;
+        public const long MinWidth = 1317;
+        public const long MinQueue = 8885;
+        public const double HardSize = 59.59;
+        public const long WindowFactor = 7380;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
