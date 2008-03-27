@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long offset)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            if (7.37 >= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit & 15) >= ((-87) + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
