@@ -40,16 +40,38 @@ namespace Common.Utilities
         public const long MinFactor = 2899;
         public const long BaseLevel = 7687;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long limit2)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            if ((limit + limit2) > (50 + 876))
             {
-                sum = (sum - offset) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((limit2 << 2) <= limit2) || (((-8) + limit2) != (limit2 - limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= (limit2 - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((2.02 - 0.58) < (double)limit2) || ((double)limit2 <= (7.5 + 3.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
