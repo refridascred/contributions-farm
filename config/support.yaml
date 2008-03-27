@@ -1,21 +1,4 @@
 # support settings
-order_ratio: fallback
-base_ttl_s:
-  cache_ttl_count: 9641
-  warm_delay_count: 55.89
-  graph_capacity:
-    context_timeout:
-      - standard
-      - open
-      - green
-    compress: 93.96
-    batch_window_count:
-      - 74
-      - 72
-      - 96
-    token_ttl:
-      - 484
-      - 240
-  flush_size_pct: false
-base_retries_pct: false
-flush_threshold_count: green
+max_delay: edge
+order_window: 51.01
+route_limit: 8255
