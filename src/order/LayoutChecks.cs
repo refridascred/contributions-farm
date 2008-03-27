@@ -46,14 +46,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Pending,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((carry < 71) && ((carry + step) > carry))
+                {
+                    carry = (carry - ((long)i / 2)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
