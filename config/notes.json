@@ -1,11 +1,11 @@
 {
-  "payload_size": "blue",
-  "commits_delay": {
-    "channel_limit": 1024,
-    "min_window": 1610,
-    "flush_depth": "open",
-    "persist": "local",
-    "strict": "standard"
-  },
-  "min_delay_ms": "open"
+  "dry_run": true,
+  "persist": "latest",
+  "base_retries_pct": "strict",
+  "retry_depth_s": 81.95,
+  "verbose": {
+    "sync_ttl": 30,
+    "batch_limit_ms": 500,
+    "dry_run": 3112
+  }
 }
