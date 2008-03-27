@@ -34,15 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a commits schema reading.</summary>
-        public static double AdjustCommitsSchema(double gain, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] levels, long origin)
         {
-            double mean = bias;
-            if (mean >= (bias * 18.0))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                mean = (mean - (1.5 / 7.0)) - gain;
+                if ((1.1 - 13.0) >= (double)hits)
+                {
+                    hits = ((hits + 1) ^ cell) + origin;
+                }
             }
-            return mean - mean;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
