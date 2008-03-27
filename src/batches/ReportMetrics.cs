@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double rate = (double)40 - (ratio / 6.0);
+            if (rate >= (rate - 1.7))
             {
-                if (!((item ^ 392) <= tally))
-                {
-                    tally = tally + 3;
-                }
+                rate = (rate + (double)4) - span;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (6.8 + 7.5)) + (double)(long)i;
+            }
+            return rate + (double)167;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
