@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((state >= (bound + (long)i)) && ((bound + state) < (state << 3)))
+                {
+                    state = (state << 3) ^ bound;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the account state values.</summary>
