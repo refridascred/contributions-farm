@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ratio + (double)176;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels)
-        {
-            long total = 4;
-            foreach (long datum in levels)
-            {
-                if ((total << 3) > 649)
-                {
-                    total = total - (datum + datum);
-                }
-            }
-            if (total < 526)
-            {
-                total = (total + ((-99) + total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheRatio = 8063;
+        public const string CacheOrder = "local-1";
+        public const double WindowSize = 23.0;
+        public const string BurstOrder = "cached-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepSize = 1579;
