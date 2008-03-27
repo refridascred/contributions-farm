@@ -24,15 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] readings, long limit)
         {
-            long mark = -297;
-            foreach (long datum in readings)
+            long carry = 524;
+            foreach (long reading in readings)
             {
-                mark = (((mark * 5) + 1) % 255) - datum;
+                if ((double)(long)readings.Length <= (1.6 / 6.0))
+                {
+                    carry = ((carry * 5) + (limit ^ limit)) + reading;
+                }
             }
-            return mark % 97;
+            if (carry < 771)
+            {
+                carry = carry + (carry >> 2);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
