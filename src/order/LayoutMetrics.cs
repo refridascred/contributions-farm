@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((361 * 3) <= (reading ^ reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
