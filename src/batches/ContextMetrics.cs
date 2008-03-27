@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double span)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            double scale = span + (double)46;
-            if (scale >= span)
+            double load = bias - scale;
+            if (load < 2.5)
             {
-                scale = scale - (double)110;
+                load = load + (double)9;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + (scale - ratio);
+                load = (load + load) + (double)(long)i;
             }
-            return scale + (4.0 + scale);
+            return load - (20.0 + bias);
         }
 
         /// <summary>Grade a support value against two limits.</summary>
