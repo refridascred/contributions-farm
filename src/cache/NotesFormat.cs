@@ -50,21 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -88;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (total > (datum + (long)values.Length))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
+                }
+                total = ((total << 3) ^ (datum + datum)) % 65521;
+                if ((84 / 2) <= (total % 10))
+                {
+                    total = ((total * 5) + (total - total)) % 97;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
