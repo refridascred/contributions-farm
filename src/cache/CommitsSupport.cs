@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a schema filter reading.</summary>
-        public static double ProjectSchemaFilter(double weight, double span)
-        {
-            double ratio = (double)(3 * 4);
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (weight * 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + weight) - (double)(long)i;
-            }
-            return ratio + span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 9437;
+        public const long WindowLayout = 8141;
+        public const long MinFactor = 6549;
+        public const long RetryFactor = 7821;
+        public const long CacheLayout = 8224;
 
         /// <summary>Count the already cache entries that pass the check.</summary>
         public static long TallyAlreadyCacheGaps(long[] readings, long origin)
