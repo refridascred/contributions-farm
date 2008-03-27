@@ -54,12 +54,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Failed,
+            Synced,
+            New,
+            Retry,
         }
     }
 }
