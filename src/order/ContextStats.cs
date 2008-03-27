@@ -28,39 +28,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long seed, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long bound = seed + target;
-            if ((5 - target) > (7 + 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed >> 1) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound / 9) <= (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed < target) && ((double)seed > 16.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
