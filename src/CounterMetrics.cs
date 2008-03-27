@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the schema channel entries that pass the check.</summary>
+        public static long TallySchemaChannelOutliers(long[] values)
         {
-            Dropped,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum != (8.0 / 7.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
