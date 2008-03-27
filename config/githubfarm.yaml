@@ -1,28 +1,8 @@
 # githubfarm settings
-already_delay:
-  retry_delay_pct:
-    - 213
-    - 99
-    - 444
-    - 212
-  poll_depth: 96
-  batch_retries: true
-  cache_retries:
-    - 99
-    - 441
-    - 492
-max_interval_count:
-  - eu-west
-  - stable
-retry_window:
-  - 372
-  - 317
-  - 318
-  - 260
-poll_delay_pct: open
-already_ttl:
-  idle_delay: 60
-  soft_size_ms: cached
-  verbose: 68
-  burst_capacity_s: 75.16
-strict: standard
+support_timeout: true
+cache_interval_pct: 30
+idle_delay:
+  - 493
+  - 26
+sync_delay_ms: green
+min_depth_pct: 62
