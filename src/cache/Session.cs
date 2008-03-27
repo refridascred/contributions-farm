@@ -28,18 +28,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] values, long seed)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)seed == (1.81 + 2.5))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                mark = (mark << 3) ^ (mark / 7);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
