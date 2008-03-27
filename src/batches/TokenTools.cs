@@ -27,24 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long step2)
+        /// <summary>Validate session checks readings against a bound.</summary>
+        public static bool VerifySessionChecksLimits(long[] levels, long bound)
         {
-            if ((step <= step2) || ((step & 31) < step))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step / 8) > step2) || ((3.82 + 13.0) >= (double)step2))
+                if (datum != bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
