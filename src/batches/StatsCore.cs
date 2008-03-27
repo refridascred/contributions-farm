@@ -58,12 +58,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftScore = "legacy-1";
-        public const double StepPayload = 15.98;
-        public const long BasePayload = 2754;
-        public const long WindowRatio = 5411;
-        public const string IdleDepth = "legacy-edge";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
