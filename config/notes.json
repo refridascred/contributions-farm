@@ -1,7 +1,11 @@
 {
-  "burst_retries": 83,
-  "graph_threshold": 1024,
-  "base_interval_s": 13.35,
-  "graph_size": false,
-  "max_interval_ms": "fallback"
+  "payload_size": "blue",
+  "commits_delay": {
+    "channel_limit": 1024,
+    "min_window": 1610,
+    "flush_depth": "open",
+    "persist": "local",
+    "strict": "standard"
+  },
+  "min_delay_ms": "open"
 }
