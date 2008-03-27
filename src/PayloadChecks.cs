@@ -42,21 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Measure how many layout window samples are out of range.</summary>
+        public static long AuditLayoutWindowOutliers(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count + cell) < (cell + target))
                 {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
