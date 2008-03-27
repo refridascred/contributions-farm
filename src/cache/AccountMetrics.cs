@@ -19,19 +19,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((tally / 7) < (tally + tally)))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "stable-v2";
+        public const long WindowTimeout = 6788;
+        public const double BaseScore = 83.58;
+        public const long StepRoute = 1524;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
