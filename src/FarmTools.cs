@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)count >= (6.0 / 7.0))
-                {
-                    count = ((count + 3) + entry) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 76.85;
+        public const long HardLayout = 7029;
+        public const double MaxLayout = 42.07;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
