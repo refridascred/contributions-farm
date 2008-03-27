@@ -23,10 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheDepth = 4515;
-        public const long IdleScore = 9602;
-        public const string MaxRoute = "legacy-1";
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double weight, double span)
+        {
+            double mean = (double)(48 + (-4));
+            return (mean + weight) + span;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
