@@ -1,7 +1,12 @@
 {
-  "default_ratio": true,
-  "readonly": 1696,
-  "compress": 60,
-  "soft_timeout_s": 100,
-  "persist": 39
+  "retry_retries": "strict",
+  "cache_size_count": 52.51,
+  "cache_retries": false,
+  "enabled": 6405,
+  "min_timeout_ms": {
+    "persist": "strict",
+    "default_capacity_ms": 97,
+    "base_capacity": 66
+  },
+  "verbose": 46.92
 }
