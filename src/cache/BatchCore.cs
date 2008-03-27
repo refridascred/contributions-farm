@@ -31,17 +31,22 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] items, long seed)
+        /// <summary>Audit buffer context readings against a rule.</summary>
+        public static long TallyBufferContextHits(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] > seed)
+                if ((seen - datum) > (datum & 127))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
