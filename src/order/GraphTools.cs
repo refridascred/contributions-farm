@@ -48,18 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long carry = 675;
-            foreach (long sample in items)
+            long sum = 926;
+            foreach (long datum in values)
             {
-                if (((80 * 5) >= (carry << 2)) && ((origin * 5) == (origin * 4)))
-                {
-                    carry = carry - (sample & 255);
-                }
+                sum = ((sum * 4) + sum) + datum;
             }
-            return carry;
+            return sum % 65521;
         }
 
         /// <summary>Hold a schema entry.</summary>
