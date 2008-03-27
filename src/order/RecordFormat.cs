@@ -38,15 +38,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Retry,
-            Closed,
-            Paused,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetrySpan = "legacy-1";
+        public const long LimitRoute = 1659;
+        public const long MaxTimeout = 4774;
+        public const double StepRoute = 96.25;
 
         /// <summary>Project the next schema value.</summary>
         public static double AdjustSchema(double scale, double bias)
