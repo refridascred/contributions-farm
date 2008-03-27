@@ -15,19 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every context contributi entry stays within the limit.</summary>
-        public static bool CheckContextContributiBounds(long[] series, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
