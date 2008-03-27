@@ -24,12 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Idle,
-            New,
-            Queued,
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
