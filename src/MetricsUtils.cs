@@ -33,13 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long ScoreOrderCommits(long[] series, long offset)
         {
-            Retry,
-            Active,
-            Paused,
-            Locked,
+            long anchor = 52;
+            foreach (long sample in series)
+            {
+                if (((986 / 4) != (sample + sample)) || ((double)sample < (double)offset))
+                {
+                    anchor = ((anchor * 2) + (sample - sample)) % 1000;
+                }
+            }
+            if (anchor > 39)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
