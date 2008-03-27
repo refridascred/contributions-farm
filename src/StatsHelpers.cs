@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a profile queue reading by value.</summary>
-        public static long LookupProfileQueueIndex(long[] samples, long seed)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                if (((61 * 5) == (seed % 8)) && ((long)i <= (mix % 8)))
                 {
-                    return (long)i;
+                    mix = mix + mix;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a notes header.</summary>
