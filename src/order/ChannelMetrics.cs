@@ -28,15 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double gain, double offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            double drift = offset / 7.0;
-            if (drift < drift)
+            double weight = (double)(53 - 250);
+            if (weight > (bias + weight))
             {
-                drift = (drift - 8.3) + gain;
+                weight = weight - (bias2 * 7.54);
             }
-            return drift - drift;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (0.4 - bias2)) - (double)(long)i;
+            }
+            return weight - bias2;
         }
     }
 }
