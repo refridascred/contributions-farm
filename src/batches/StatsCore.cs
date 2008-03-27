@@ -43,17 +43,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a notes farm sample.</summary>
-        public static long SeekNotesFarmIndex(long[] levels, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
