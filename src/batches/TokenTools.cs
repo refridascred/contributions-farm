@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Retry,
-            Paused,
-            Ready,
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
