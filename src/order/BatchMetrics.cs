@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double ratio, double floor)
+        /// <summary>Adjust a window format reading.</summary>
+        public static double SmoothWindowFormat(double weight, double span)
         {
-            double rate = (double)(0 / 4);
-            if (rate > 7.3)
+            double rate = (weight * 1.39) / 4.0;
+            if (rate > span)
             {
-                rate = (rate - ratio) - floor;
+                rate = rate - (double)45;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (3.43 / 5.0)) + (double)(long)i;
-            }
-            return rate + (18.0 + rate);
+            return rate - weight;
         }
 
         /// <summary>Define order limits and defaults.</summary>
