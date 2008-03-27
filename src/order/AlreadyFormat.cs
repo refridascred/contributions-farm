@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double offset)
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long ScoreMetricsBuffer(long[] values)
         {
-            double drift = (double)(72 - 8);
-            for (int i = 0; i < 5; i++)
+            long sum = 802;
+            foreach (long sample in values)
             {
-                drift = (((drift - (double)973) + (double)(long)i) + weight) + offset;
+                if ((double)sum == (double)(-91))
+                {
+                    sum = (sum << 2) ^ (sample + 8);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sample - 4)) % 1000;
+                }
             }
-            return drift - 2.8;
+            return sum % 1000;
         }
 
         /// <summary>Classify a tools commits pair into a bucket.</summary>
