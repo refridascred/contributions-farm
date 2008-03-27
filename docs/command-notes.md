@@ -1,11 +1,11 @@
 # Command notes
 
-Run the session check before changing any order limits.
-A window that stays idle for too long is moved to the stats list.
+The buffer module keeps stream values in sync with the buffer cache.
+Each stream is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Document new order fields
-- Validate payload input early
-- Keep counter values small
-- Review token limits each release
+- Review command limits each release
+- Prefer token defaults
+- Keep batches values small
+- Document new githubfarm fields
