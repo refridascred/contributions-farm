@@ -1,5 +1,6 @@
 {
-  "dry_run": 34,
-  "poll_window_count": 56.17,
-  "already_threshold": "staging"
+  "retry_depth_pct": 30,
+  "metric_ratio": "latest",
+  "persist": 2.29,
+  "sync_threshold": false
 }
