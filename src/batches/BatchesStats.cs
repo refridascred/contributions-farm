@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long floor)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            long offset = step - floor;
+            if (((floor << 3) > offset) && ((double)step > (1.68 / 2.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 3) >= (floor - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)step <= (2.4 + 15.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + step) >= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
