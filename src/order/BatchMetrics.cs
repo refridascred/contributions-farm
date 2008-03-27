@@ -53,13 +53,10 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepInterval = 4158;
+        public const string WindowFilter = "standard";
+        public const long StepFilter = 6713;
+        public const double RetryFilter = 9.89;
     }
 }
