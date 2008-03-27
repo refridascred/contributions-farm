@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (477 > (matches >> 5))
+                if (!((12.0 - 9.0) >= (double)tally) && ((tally & 31) <= (0 * 5)))
                 {
-                    matches = (matches + 3) ^ reading;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
