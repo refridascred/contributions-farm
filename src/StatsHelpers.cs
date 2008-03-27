@@ -57,22 +57,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Measure how many session token samples are out of range.</summary>
-        public static long CountSessionTokenMatches(long[] data, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double weight = (double)(654 >> 3);
+            if (weight >= (double)(-7))
             {
-                if (((long)data.Length - sample) >= (47 + step))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = ((weight + (double)9) + rate) - bias;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + 3.2;
         }
     }
 }
