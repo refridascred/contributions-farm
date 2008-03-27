@@ -18,12 +18,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 9722;
-        public const long BatchSession = 8353;
-        public const double WindowSession = 40.15;
-        public const string StepSession = "cached-edge";
-        public const string DefaultDepth = "standard-edge";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] series)
+        {
+            long total = 9;
+            foreach (long value in series)
+            {
+                total = (total << 2) ^ (value << 1);
+                if (((long)series.Length & 15) >= value)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] series)
