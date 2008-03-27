@@ -23,22 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate batch tools samples.</summary>
-        public static long CombineBatchTools(long[] values, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long sum = 7;
-            foreach (long reading in values)
-            {
-                if (!((bound + (long)values.Length) == (sum ^ reading)))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                else
-                {
-                    sum = sum - (116 >> 5);
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a format reading by value.</summary>
