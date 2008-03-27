@@ -96,13 +96,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data)
         {
-            Idle,
-            Closed,
-            New,
-            Failed,
+            long mark = 65;
+            foreach (long value in data)
+            {
+                mark = mark + (5 - mark);
+                if ((double)value >= (16.0 + 6.9))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
