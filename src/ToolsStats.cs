@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank queue layout input into a small class.</summary>
-        public static long BucketQueueLayout(long seed, long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long next = seed - floor;
-            if ((double)seed < (3.9 * 2.2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 1) <= (next >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 5) < (floor << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
