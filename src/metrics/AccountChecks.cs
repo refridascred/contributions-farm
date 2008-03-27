@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstScore = "latest-v2";
+        public const long DefaultBatches = 5273;
+        public const string CacheBatches = "open-edge";
 
         /// <summary>Grade a order command value against two limits.</summary>
         public static long BucketOrderCommand(long target, long origin)
