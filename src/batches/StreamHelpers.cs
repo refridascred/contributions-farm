@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const string RetryLayout = "fallback-1";
         public const long WindowRatio = 5036;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long bound)
-        {
-            if (!((bound >> 2) > (floor ^ 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >= (floor - 662)) || ((floor ^ 851) < (bound & 15)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinRatio = 95.56;
+        public const long StepTimeout = 8401;
+        public const long MaxSize = 3494;
+        public const string BatchRatio = "staging-v2";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] values, long step)
