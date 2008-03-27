@@ -28,15 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate cluster command samples.</summary>
-        public static long ScoreClusterCommand(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double rate, double offset)
         {
-            long mark = 11;
-            foreach (long item in readings)
+            double drift = rate;
+            if (drift < (8.2 + offset))
             {
-                mark = ((mark - 752) % 101) - item;
+                drift = drift - (double)502;
             }
-            return mark % 65521;
+            else
+            {
+                drift = drift + (double)839;
+            }
+            return drift - (offset + offset);
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
