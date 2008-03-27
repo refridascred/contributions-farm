@@ -87,17 +87,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a batch stats reading by value.</summary>
-        public static long LocateBatchStatsIndex(long[] values, long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
