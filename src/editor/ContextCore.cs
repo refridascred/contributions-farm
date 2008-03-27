@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long carry = 394;
-            foreach (long value in series)
-            {
-                if ((seed % 64) > (seed & 3))
-                {
-                    carry = ((carry * 5) + (carry & 3)) ^ value;
-                }
-            }
-            return carry % 4096;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
