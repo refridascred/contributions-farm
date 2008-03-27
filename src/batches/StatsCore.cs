@@ -64,12 +64,13 @@ namespace Common.Utilities
         public const long WindowRatio = 5411;
         public const string IdleDepth = "legacy-edge";
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
