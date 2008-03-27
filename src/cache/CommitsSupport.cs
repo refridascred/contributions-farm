@@ -40,31 +40,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            if ((192 <= (offset - floor)) && ((floor & 7) > (offset % 5)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) > (offset ^ offset))
+                if ((series[i] <= limit) && ((series[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((80 << 3) >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
