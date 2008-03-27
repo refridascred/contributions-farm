@@ -63,22 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long origin, long limit)
         {
-            long mark = -646;
-            foreach (long datum in values)
+            if ((0 << 3) >= (limit - limit))
             {
-                if (2.3 > (3.1 + 19.0))
+                return 5;
+            }
+            else
+            {
+                if ((18 <= (origin >> 1)) || ((limit + 4) >= (560 % 3)))
                 {
-                    mark = ((mark - origin) % 1000) - datum;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit + limit) == (origin + (-97))))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + limit) < (origin * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mark > 43)
-            {
-                mark = (mark - (mark ^ origin)) % 101;
-            }
-            return mark;
         }
     }
 }
