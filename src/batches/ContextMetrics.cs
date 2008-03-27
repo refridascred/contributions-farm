@@ -29,20 +29,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Grade a contributi order value against two limits.</summary>
+        public static long RankContributiOrder(long offset, long target)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            long edge = offset + target;
+            if ((7.5 + 2.8) != (double)offset)
             {
-                acc = acc ^ cell;
-                acc = ((acc << 3) ^ (cell % 100)) % 97;
-                if ((((long)values.Length >> 1) == (cell - cell)) || ((acc + cell) >= cell))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (3.5 * 6.92))
                 {
-                    acc = acc ^ (acc - acc);
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 3) <= (edge / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target >= (edge / 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
