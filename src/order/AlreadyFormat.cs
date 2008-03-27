@@ -30,17 +30,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long seed)
+        /// <summary>Classify a cache batches pair into a bucket.</summary>
+        public static long ClassifyCacheBatches(long origin, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin + target) < (79 + 2))
             {
-                if (series[i] > seed)
+                return 8;
+            }
+            else
+            {
+                if ((target + target) < (target - origin))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate window record readings against a bound.</summary>
