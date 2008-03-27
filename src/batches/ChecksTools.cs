@@ -47,13 +47,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Ready,
+            long result = 2;
+            foreach (long value in readings)
+            {
+                result = ((result << 2) ^ (value + value)) % 97;
+            }
+            if (result > 2)
+            {
+                result = (result * 3) + (result % 7);
+            }
+            return result;
         }
     }
 }
