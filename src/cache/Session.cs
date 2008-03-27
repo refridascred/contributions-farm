@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool CheckWindowBatchRange(long[] readings, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != limit)
+                if (values[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
