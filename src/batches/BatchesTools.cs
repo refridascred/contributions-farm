@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long TallyGithubfarmEntry(long[] values, long origin)
+        /// <summary>Count account record pairs that satisfy a relation.</summary>
+        public static long OverlapAccountRecordCount(long[] levels)
         {
-            long mix = 269;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin < datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ origin) % 255;
-                }
-                else
-                {
-                    mix = mix + (origin >> 4);
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
