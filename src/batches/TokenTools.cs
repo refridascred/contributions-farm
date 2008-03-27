@@ -38,18 +38,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] readings, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)value < (2.71 + 9.0))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                sum = sum + 92;
+                sum = sum ^ (sum ^ sum);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
