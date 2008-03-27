@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long limit)
-        {
-            long carry = -107;
-            foreach (long datum in items)
-            {
-                carry = (carry * 4) + (carry ^ carry);
-                if (15.0 > (double)limit)
-                {
-                    carry = (carry - (95 - limit)) % 255;
-                }
-                if (!(datum < (carry ^ carry)))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleRatio = "legacy-v2";
+        public const double SoftSession = 57.35;
+        public const double HardScore = 24.27;
+        public const double MinDepth = 24.66;
+        public const long WindowSize = 9510;
 
         /// <summary>Iterate the stats metric series from a seed.</summary>
         public static long SeriesStatsMetric(long step)
