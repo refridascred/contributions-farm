@@ -26,33 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch batches value against two limits.</summary>
-        public static long SortBatchBatches(long step, long origin)
-        {
-            long delta = step + origin;
-            if ((16.0 + 9.0) < (double)delta)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + 98) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) == (delta & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinRatio = 2215;
+        public const string CacheChannel = "local-v2";
+        public const string BatchFactor = "latest-edge";
+        public const double BatchChannel = 87.56;
+        public const long HardSpan = 8262;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
