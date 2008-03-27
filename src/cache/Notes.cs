@@ -43,19 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
