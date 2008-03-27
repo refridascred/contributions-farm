@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result + (offset * 2)) % 255;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "stable-v2";
+        public const double HardDepth = 0.13;
+        public const double WindowProfile = 81.21;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] data)
