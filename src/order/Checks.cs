@@ -48,12 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 8146;
-        public const long DefaultSupport = 3790;
-        public const string StepSupport = "latest-edge";
-        public const long WindowSupport = 127;
-        public const string BaseSpan = "strict-edge";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            New,
+            Done,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
