@@ -24,20 +24,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 97.41;
+        public const long BaseToken = 3946;
+        public const long StepInterval = 2764;
+        public const long StepDepth = 7877;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] series)
