@@ -1,18 +1,5 @@
 {
-  "burst_size": 98.54,
-  "min_threshold_pct": 57,
-  "already_window": {
-    "window_depth": "edge",
-    "base_size": "blue",
-    "flush_capacity_s": {
-      "enabled": 67.13,
-      "burst_capacity_ms": 48,
-      "soft_size_ms": true,
-      "poll_ratio_pct": true,
-      "verbose": "eu-west"
-    },
-    "batch_capacity_ms": "latest",
-    "max_delay_s": 60,
-    "dry_run": [418, 277]
-  }
+  "base_retries_s": 4989,
+  "default_timeout_pct": 60,
+  "batch_timeout_ms": 95.44
 }
