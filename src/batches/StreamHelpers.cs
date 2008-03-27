@@ -24,11 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinRatio = 95.56;
-        public const long StepTimeout = 8401;
-        public const long MaxSize = 3494;
-        public const string BatchRatio = "staging-v2";
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
