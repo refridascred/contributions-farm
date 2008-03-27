@@ -33,21 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((49 & 127) != (long)i)
-                {
-                    long prev = bound;
-                    result = result ^ (prev * 4);
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Locked,
+            Idle,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
