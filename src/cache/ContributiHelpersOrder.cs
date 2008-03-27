@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] levels, long target)
         {
-            long acc = 91;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum + acc) >= (datum & 255)) && (acc < datum))
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
-                    acc = ((acc << 2) ^ (datum >> 5)) % 97;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
