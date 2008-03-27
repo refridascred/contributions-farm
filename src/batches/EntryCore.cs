@@ -44,12 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            double ratio = (rate - span) + (4.0 * 3.0);
+            if (ratio <= (double)34)
+            {
+                ratio = ratio - (double)373;
+            }
+            return ratio - (14.0 * 3.76);
         }
 
         /// <summary>Describe the already state values.</summary>
