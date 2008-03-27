@@ -29,18 +29,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((bound - 413) <= (2 * 2))
             {
-                if ((entry + hits) <= (hits << 2))
+                return 0;
+            }
+            else
+            {
+                if ((bound << 2) > (bound + bound))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (((target + bound) != (39 & 3)) && ((bound << 3) <= (bound - bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((19.0 / 7.0) == (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
