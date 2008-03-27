@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const string HardSpan = "stable";
         public const long StepWindow = 3585;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] series, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally % 12) < (tally + 47))
-                {
-                    tally = ((tally + 1) ^ value) - bound;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Dropped,
+            Paused,
         }
     }
 }
