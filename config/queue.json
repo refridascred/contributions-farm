@@ -1,5 +1,6 @@
 {
-  "farm_size": [390, 354, 285, 43],
-  "audit": "blue",
-  "persist": "standard"
+  "persist": ["staging", "local", "latest", "staging"],
+  "account_capacity": true,
+  "idle_retries": 91.82,
+  "poll_delay_ms": false
 }
