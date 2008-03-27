@@ -19,17 +19,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = origin ^ offset;
+            if (((origin % 24) == (gap & 7)) || (4 > (origin >> 3)))
             {
-                if (readings[i] == target)
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) <= (698 - origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((offset >> 2) <= (gap + origin)) && ((double)offset != (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin > 14.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
