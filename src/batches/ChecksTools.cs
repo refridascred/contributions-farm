@@ -14,12 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            Failed,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry & 31) <= (entry * 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
