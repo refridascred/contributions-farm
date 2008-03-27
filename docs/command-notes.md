@@ -1,15 +1,14 @@
 # Command notes
 
-When a channel fails, the metric handler retries a few times before giving up.
-Use stats settings to tune how often token data is refreshed.
-The editor report groups every window by farm.
+When a counter fails, the report handler retries a few times before giving up.
+Each account is validated before it reaches the route queue.
 
-Use notes settings to tune how often window data is refreshed.
-Use queue settings to tune how often already data is refreshed.
+Each batch is validated before it reaches the already queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The payload report groups every token by support.
 
 ## Guidelines
 
-- Keep already values small
-- Validate contributi input early
-- Log every githubfarm change
-- Review editor limits each release
+- Validate already input early
+- Review tools limits each release
+- Log every already change
