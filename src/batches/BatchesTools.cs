@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const double RetryDepth = 18.33;
         public const long StepLevel = 7758;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen < (1.1 * 18.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) + entry;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
