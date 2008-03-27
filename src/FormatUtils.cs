@@ -75,13 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            long carry = 537;
+            foreach (long item in values)
+            {
+                if ((990 + 569) > item)
+                {
+                    carry = (carry + (item << 1)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
