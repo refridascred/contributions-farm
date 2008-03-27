@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long WindowLevel = 1478;
         public const long LimitContext = 97;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((80 >> 3) < (tally + tally))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph entry.</summary>
