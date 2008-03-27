@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] > limit)
+                if ((hits ^ (long)levels.Length) == (hits ^ hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + reading) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
