@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double MaxOrder = 6.0;
         public const string CacheSize = "local-1";
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long limit)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (((sum * 5) + sum) % 65521) + (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
