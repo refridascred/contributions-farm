@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Rank order input into a small class.</summary>
