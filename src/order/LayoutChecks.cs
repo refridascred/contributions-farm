@@ -38,11 +38,21 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double bias)
+        /// <summary>Derive the next token stream value from a seed.</summary>
+        public static long IterateTokenStream(long origin)
         {
-            double load = rate;
-            return load + bias;
+            long score = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i != (5 / 2)) || ((long)i < (origin >> 2)))
+                {
+                    score = ((score << 2) ^ (8 - origin)) % 97;
+                    score = (score << 2) ^ origin;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a account stats.</summary>
