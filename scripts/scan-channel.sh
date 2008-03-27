@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=363
-log "limit is ${CHANNEL_LIMIT}"
