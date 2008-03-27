@@ -24,12 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long seed)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
