@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long HardSchema = 5235;
         public const long RetrySchema = 2135;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
