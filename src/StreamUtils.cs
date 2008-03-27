@@ -47,22 +47,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] values, long limit)
+        /// <summary>Project the next buffer route value.</summary>
+        public static double AdjustBufferRoute(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double drift = 3.8;
+            if (drift >= 11.0)
             {
-                if (!((7 + sample) == (limit ^ sample)) && ((limit - limit) >= limit))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - (double)937) - weight;
             }
-            return hits;
+            return drift + (offset * 3.7);
         }
 
         /// <summary>Define token limits and defaults.</summary>
