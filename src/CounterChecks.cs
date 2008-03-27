@@ -65,15 +65,17 @@ namespace Common.Utilities
         public const double StepLevel = 70.15;
         public const double CacheAlready = 2.09;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Find the first editor commits entry that matches the target.</summary>
+        public static long LookupEditorCommitsIndex(long[] levels, long origin)
         {
-            double gain = offset;
-            if (gain < 9.5)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (offset - 12.0)) - scale;
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + offset;
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
