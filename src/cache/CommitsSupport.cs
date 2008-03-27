@@ -49,11 +49,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheCount = 5790;
-        public const long CacheChecks = 4059;
-        public const string HardSpan = "strict-v2";
-        public const string RetryChecks = "local-edge";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheRatio = 1958;
+        public const long LimitFormat = 8859;
+        public const long DefaultFormat = 6141;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
