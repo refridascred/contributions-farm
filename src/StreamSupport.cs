@@ -34,21 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state << 2) ^ state;
+                state = state + (950 >> 1);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
