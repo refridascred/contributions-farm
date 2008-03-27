@@ -35,16 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the notes profile series from a seed.</summary>
-        public static long IterateNotesProfile(long step)
+        /// <summary>Validate route queue readings against a bound.</summary>
+        public static bool ValidateRouteQueueRange(long[] samples, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                carry = (carry + (carry - step)) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
