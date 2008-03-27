@@ -33,15 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Accumulate window tools samples.</summary>
+        public static long DigestWindowTools(long[] series)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 3; i++)
+            long total = 311;
+            foreach (long value in series)
             {
-                rate2 = ((rate2 - (0.87 / 6.0)) + (double)(long)i) - rate;
+                if ((6.0 / 7.0) == (double)value)
+                {
+                    total = (total + (47 * 3)) % 101;
+                }
+                if (((long)series.Length >> 5) != (total - total))
+                {
+                    break;
+                }
             }
-            return rate2 - rate2;
+            return total;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
