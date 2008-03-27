@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm metric input into a small class.</summary>
-        public static long RankFarmMetric(long origin, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] readings, long offset)
         {
-            long bound = origin ^ floor;
-            if ((double)origin >= (0.81 + 9.0))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.71 / 8.0) < (double)bound)
+                if ((double)cell >= (8.1 / 8.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
