@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Locate a support commits reading by value.</summary>
+        public static long SeekSupportCommitsIndex(long[] readings, long seed)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile mode values.</summary>
