@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the notes farm series from a seed.</summary>
-        public static long IterateNotesFarm(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!((item & 1) < (item + seen)))
                 {
-                    score = (((score * 2) + (score + step)) % 97) + (long)i2;
+                    seen = seen + 2;
                 }
-                score = (score << 2) ^ (score + score);
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
