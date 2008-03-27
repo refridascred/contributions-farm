@@ -20,13 +20,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double floor)
         {
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            double rate = (double)37 * 6.0;
+            if (rate > (double)573)
+            {
+                rate = rate + (floor - rate);
+            }
+            return rate + (19.0 - bias);
         }
     }
 }
