@@ -1,4 +1,8 @@
 # entry settings
-flush_interval_ms: false
-default_timeout_pct: stable
-enabled: true
+context_timeout: edge
+base_ratio: local
+sync_delay: primary
+persist:
+  - standard
+  - fallback
+  - staging
