@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 47.26;
-        public const string WindowCache = "fallback-edge";
-        public const string IdleRatio = "cached-1";
-        public const long RetryBudget = 5356;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((((double)cell > (2.0 / 2.0)) || ((count % 3) < (count - count))) && (((110 + 23) == (cell ^ 4)) && (count > (cell << 1))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long origin)
