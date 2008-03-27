@@ -27,11 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long sum = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((3.0 / 6.0) == (double)(long)i)
+                {
+                    sum = ((sum * 5) + (target * 2)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
