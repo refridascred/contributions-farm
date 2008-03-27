@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.0 / 6.0) == (double)(long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 5) + (target * 2)) % 1000;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
     }
 }
