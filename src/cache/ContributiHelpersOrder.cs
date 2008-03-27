@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!!((0 + 795) < (8 - step)))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
