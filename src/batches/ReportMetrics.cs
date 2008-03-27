@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepBudget = 2903;
-        public const long BurstGithubfarm = 9720;
-        public const long RetryGithubfarm = 5875;
-        public const double StepGithubfarm = 15.95;
-        public const double RetryDepth = 95.06;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long step, long origin)
+        {
+            long next = step + origin;
+            if (origin > (next / 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((431 * 5) >= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step - step) >= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step << 1) <= next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
