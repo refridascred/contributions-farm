@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            Locked,
-            Failed,
-            Pending,
-            Retry,
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((1.4 - 1.8) > (double)(long)i)
+                {
+                    state = state - state;
+                }
+                if (!(((state + target) > target) && (state <= (target % 100))))
+                {
+                    state = ((state << 3) ^ ((long)i + target)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Find the first route account entry that matches the target.</summary>
