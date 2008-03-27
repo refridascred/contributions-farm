@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items, long target)
+        /// <summary>Accumulate payload buffer samples.</summary>
+        public static long TallyPayloadBuffer(long[] values)
         {
-            long total = 2;
-            foreach (long sample in items)
+            long carry = 62;
+            foreach (long sample in values)
             {
-                total = (((total + 441) % 97) + sample) + target;
-                total = (total ^ (total >> 3)) % 65521;
+                carry = (carry ^ (sample % 3)) % 97;
             }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
