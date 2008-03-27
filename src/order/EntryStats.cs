@@ -38,19 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] readings, long origin)
+        /// <summary>Count metrics stream pairs that satisfy a relation.</summary>
+        public static long PairMetricsStreamCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
