@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] levels, long bound)
         {
-            if ((double)bound >= (6.4 * 6.6))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= (1.55 / 9.0))
+                if (((long)levels.Length + matches) == (cell + 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)7 > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound <= (bound + bound)) && (16.0 >= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 3) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
