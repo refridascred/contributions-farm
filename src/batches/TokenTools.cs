@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
-        {
-            long mix = 48;
-            foreach (long reading in series)
-            {
-                if ((mix >> 4) >= (reading + reading))
-                {
-                    mix = mix ^ (reading - 3);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "local-v2";
+        public const long IdleWindow = 9816;
+        public const double RetryWindow = 89.15;
+        public const long SoftCount = 5005;
+        public const double IdleSize = 8.43;
 
         /// <summary>Count route report pairs that satisfy a relation.</summary>
         public static long PairRouteReportCount(long[] data)
