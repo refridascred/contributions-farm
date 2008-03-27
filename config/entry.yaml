@@ -1,21 +1,17 @@
 # entry settings
-retry_delay_s: 26.79
-profile_window: 500
-cache_window:
-  - 237
-  - 187
-  - 273
-  - 283
-flush_threshold: 61.56
-filter_ratio:
-  flush_window:
-    - standard
-    - staging
-  max_timeout: false
-  default_ratio_ms: 72
-  compress:
-    - latest
-    - fallback
-  poll_interval_pct:
-    - 98
-    - 378
+retry_threshold_pct: stable
+max_depth_s: stable
+default_depth_count: cached
+min_threshold_pct:
+  tools_capacity:
+    poll_timeout_ms: green
+    poll_delay_s: 67
+    flush_ratio_pct:
+      - 157
+      - 144
+      - 432
+  context_delay:
+    - 422
+    - 154
+  schema_window: 82.3
+  strict: fallback
