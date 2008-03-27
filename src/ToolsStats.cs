@@ -54,19 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] samples, long step)
         {
-            bool found = true;
+            bool valid = true;
             foreach (long cell in samples)
             {
-                if (cell != target)
+                if (cell <= step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
