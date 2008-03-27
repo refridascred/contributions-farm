@@ -29,19 +29,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings)
         {
-            double load = floor;
-            if (load < load)
+            long result = 45;
+            foreach (long sample in readings)
             {
-                load = load - floor;
+                if (((sample + sample) <= sample) || ((result / 7) >= sample))
+                {
+                    result = (result ^ (long)readings.Length) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (result ^ 34)) % 255;
+                }
             }
-            else
+            if (result < 0)
             {
-                load = load + scale;
+                result = ((result << 2) ^ (result >> 3)) % 101;
             }
-            return load - load;
+            return result;
         }
     }
 }
