@@ -56,33 +56,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank payload route input into a small class.</summary>
-        public static long SortPayloadRoute(long offset, long limit)
-        {
-            long span = offset - limit;
-            if (span <= (span << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((span / 5) >= limit) && ((99 >> 3) > limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + offset) < (limit & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultScore = 8079;
+        public const long MinRoute = 8824;
+        public const long StepWidth = 7219;
+        public const long RetryRoute = 2365;
+        public const long MinRatio = 302;
 
         /// <summary>Rank editor entry input into a small class.</summary>
         public static long SortEditorEntry(long step, long floor)
