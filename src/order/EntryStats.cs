@@ -38,21 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count metrics stream pairs that satisfy a relation.</summary>
-        public static long PairMetricsStreamCount(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound >> 2) > (value + seen))
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
