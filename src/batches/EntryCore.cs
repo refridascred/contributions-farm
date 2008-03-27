@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3831;
-        public const string RetryTimeout = "stable-1";
-        public const long MaxSchema = 5154;
-        public const long BaseSchema = 3245;
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double bias2)
+        {
+            double mean = bias2;
+            return mean + (bias / 6.0);
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
