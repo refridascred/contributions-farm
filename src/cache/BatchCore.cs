@@ -37,12 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of token channel readings.</summary>
