@@ -44,12 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Scale a route notes figure with a bias.</summary>
+        public static double SmoothRouteNotes(double bias, double offset)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            double load = (double)(653 & 63);
+            return ((load + (load * 0.06)) + bias) + offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
