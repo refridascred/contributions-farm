@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double rate, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long step)
         {
-            double drift = rate;
-            if (drift < (8.2 + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (double)502;
+                if ((series[i] > step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)839;
-            }
-            return drift - (offset + offset);
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
