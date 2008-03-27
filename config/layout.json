@@ -1,8 +1,20 @@
 {
-  "base_ttl_count": "staging",
-  "audit": false,
-  "record_capacity": true,
-  "min_delay_ms": "staging",
-  "route_timeout": 41.56,
-  "flush_threshold_pct": "cached"
+  "persist": 70,
+  "retry_threshold": 3631,
+  "flush_limit": {
+    "soft_size_pct": "legacy",
+    "batch_ratio": "green",
+    "min_retries": {
+      "cache_ratio_s": "fallback",
+      "warm_retries": false,
+      "counter_timeout": 1024,
+      "persist": 98.68,
+      "batch_delay": 78,
+      "retry_delay_pct": "eu-west"
+    },
+    "compress": ["fallback", "strict", "primary", "green"]
+  },
+  "tools_limit": "eu-west",
+  "cache_size_s": 3093,
+  "batch_delay_pct": 23
 }
