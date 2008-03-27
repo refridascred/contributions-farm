@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftScore = "cached-1";
+        public const long WindowEditor = 4503;
+        public const long WindowSpan = 7690;
+        public const long BatchEditor = 2021;
+        public const long MaxSpan = 9269;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] readings)
