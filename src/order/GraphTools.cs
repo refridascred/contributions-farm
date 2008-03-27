@@ -47,12 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Match up commits batch samples.</summary>
+        public static long PairCommitsBatchCount(long[] data)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema entry.</summary>
