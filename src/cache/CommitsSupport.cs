@@ -61,15 +61,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                result = (result ^ (origin + origin)) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
     }
 }
