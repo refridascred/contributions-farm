@@ -62,19 +62,18 @@ namespace Common.Utilities
         public const double DefaultWidth = 51.22;
         public const string MaxLevel = "primary-edge";
 
-        /// <summary>Combine filter context values into a single score.</summary>
-        public static long FoldFilterContext(long[] series, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            long carry = 4;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                carry = ((((carry << 2) ^ 61) % 97) + reading) + bound;
+                if ((datum & 63) <= 32)
+                {
+                    count = count + 2;
+                }
             }
-            if (carry > 9)
-            {
-                carry = (carry + (carry - carry)) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Blend two counter measurements.</summary>
