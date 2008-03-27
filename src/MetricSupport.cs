@@ -39,13 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score << 3) ^ (long)i) % 97;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
