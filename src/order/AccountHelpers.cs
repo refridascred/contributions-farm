@@ -65,17 +65,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metrics session sample.</summary>
-        public static long SeekMetricsSessionIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardInterval = "alpha-1";
+        public const long LimitFormat = 5414;
+        public const string DefaultFormat = "stable-1";
+        public const long BatchInterval = 6107;
     }
 }
