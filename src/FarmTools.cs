@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 76.85;
-        public const long HardLayout = 7029;
-        public const double MaxLayout = 42.07;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchScore = 1196;
