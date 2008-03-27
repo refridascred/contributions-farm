@@ -27,23 +27,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next order payload value from a seed.</summary>
-        public static long SeriesOrderPayload(long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit >= (87 / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 5) + (acc * 5)) % 255;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc ^ (acc * 4);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a notes info.</summary>
