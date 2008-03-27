@@ -1,20 +1,6 @@
 # support settings
-soft_limit_s:
-  stream_timeout:
-    - edge
-    - local
-  min_timeout: false
-  farm_size: true
-  max_window_ms: false
-flush_interval_s:
-  base_ttl_pct:
-    - local
-    - staging
-    - local
-    - staging
-  cache_retries_s: cached
-  max_interval_count:
-    - blue
-    - open
-    - open
-readonly: 1024
+graph_capacity: local
+idle_ttl_pct: stable
+editor_retries: false
+stats_capacity: blue
+idle_limit_ms: cached
