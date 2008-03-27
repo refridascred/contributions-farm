@@ -22,11 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 7251;
-        public const double CacheGithubfarm = 5.3;
-        public const double BaseGithubfarm = 61.03;
-        public const string BaseScore = "stable-1";
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double gain, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (gain / 4.0)) + (double)(long)i;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchContributi = "alpha-v2";
