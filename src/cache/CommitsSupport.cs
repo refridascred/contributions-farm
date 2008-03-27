@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long SoftSize = 21;
         public const long BatchTimeout = 2114;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCount = 87.41;
+        public const long BatchCluster = 5498;
+        public const long LimitCluster = 683;
+        public const double SoftCluster = 17.07;
+        public const long BurstSize = 1997;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterGaps(long[] series, long step)
