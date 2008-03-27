@@ -47,15 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = 926;
-            foreach (long datum in values)
-            {
-                sum = ((sum * 4) + sum) + datum;
-            }
-            return sum % 65521;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a schema entry.</summary>
