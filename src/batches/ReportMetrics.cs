@@ -33,15 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric command figure with a bias.</summary>
-        public static double AdjustMetricCommand(double bias, double offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] values, long limit)
         {
-            double bias2 = bias;
-            if (bias2 < (bias2 * 1.79))
+            bool flag = true;
+            foreach (long value in values)
             {
-                bias2 = (bias2 - 11.0) + offset;
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias2 + bias2;
+            return flag;
         }
     }
 }
