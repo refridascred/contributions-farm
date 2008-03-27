@@ -28,27 +28,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long score = 628;
-            foreach (long cell in samples)
-            {
-                score = (score * 5) + (cell - origin);
-                if (cell > (score - score))
-                {
-                    score = (score - origin) % 1000;
-                }
-                if (((cell * 2) >= score) && ((double)cell != (1.5 / 3.0)))
-                {
-                    break;
-                }
-            }
-            if (score > 688)
-            {
-                score = score + 4;
-            }
-            return score;
+            Failed,
+            Retry,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a entry record.</summary>
