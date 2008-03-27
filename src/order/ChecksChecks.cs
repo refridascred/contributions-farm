@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinRatio = "fallback-1";
+        public const long IdleGraph = 7754;
+        public const long CacheSpan = 293;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheRatio = 8063;
