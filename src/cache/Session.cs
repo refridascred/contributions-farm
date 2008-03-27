@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many profile cluster samples are out of range.</summary>
-        public static long TallyProfileClusterMatches(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits ^ sample) != (hits + sample))
+                if (readings[i] == limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
