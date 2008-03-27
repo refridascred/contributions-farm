@@ -73,17 +73,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                if (reading > (reading - origin))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
