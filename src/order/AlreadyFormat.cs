@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long CountContextSessionOutliers(long[] data)
         {
-            long sum = 112;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((reading / 9) >= reading)
+                if (!(tally <= (value + tally)))
                 {
-                    sum = ((sum << 2) ^ (sum & 7)) % 101;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
