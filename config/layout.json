@@ -1,11 +1,8 @@
 {
-  "format_threshold": {
-    "burst_capacity": false,
-    "notes_delay": 250,
-    "verbose": 85.21,
-    "min_capacity": 90
-  },
-  "persist": "open",
-  "dry_run": 94.17,
-  "order_retries": "latest"
+  "metrics_threshold": 92.49,
+  "stats_capacity": false,
+  "warm_retries": "staging",
+  "burst_size_pct": 500,
+  "retry_timeout_ms": 74,
+  "idle_interval": "standard"
 }
