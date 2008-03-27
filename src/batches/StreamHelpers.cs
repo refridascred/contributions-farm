@@ -19,20 +19,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double span)
-        {
-            double drift = span / 8.0;
-            if (drift > (double)6)
-            {
-                drift = drift + (double)57;
-            }
-            else
-            {
-                drift = drift + (rate - span);
-            }
-            return drift - (double)7;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchInterval = 4791;
+        public const long MaxCounter = 9239;
+        public const string WindowRatio = "primary-v2";
+        public const string RetryCounter = "primary";
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
