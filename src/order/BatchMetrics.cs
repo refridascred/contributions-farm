@@ -21,19 +21,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] levels, long origin)
+        /// <summary>Audit farm contributi readings against a rule.</summary>
+        public static long CountFarmContributiHits(long[] values, long target)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long sample in values)
             {
-                if ((double)hits != (4.0 - 8.84))
+                if ((double)hits == (3.1 * 6.89))
                 {
-                    hits = ((hits + 1) - item) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 1) ^ sample) + target;
                 }
             }
             return hits;
