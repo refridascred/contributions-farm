@@ -27,18 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "fallback";
+        public const string IdleFilter = "strict-1";
+        public const long HardFactor = 2175;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] samples, long step)
