@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a cluster record reading by value.</summary>
-        public static long LookupClusterRecordIndex(long[] data, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                if (datum <= (datum ^ 842))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
