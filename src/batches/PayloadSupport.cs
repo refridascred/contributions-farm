@@ -27,15 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double load = bias / 7.0;
-            if (load >= (load * 4.0))
-            {
-                load = (load - 8.68) + weight;
-            }
-            return load - 1.67;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
