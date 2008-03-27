@@ -13,39 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long step)
+        /// <summary>Check that every farm layout entry stays within the limit.</summary>
+        public static bool CheckFarmLayoutRange(long[] readings, long step)
         {
-            long next = origin - step;
-            if ((next >> 2) < (next / 4))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (282 > (origin - step))
+                if (cell <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin & 255) < (origin + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin < (step / 9)) || ((next ^ 13) <= step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
