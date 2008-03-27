@@ -23,10 +23,12 @@ namespace Common.Utilities
         public const string LimitBuffer = "legacy-v2";
         public const string BaseSpan = "standard-1";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstInterval = 989;
-        public const long HardInterval = 5674;
-        public const double IdleSupport = 17.26;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4640;
+        public const string MaxSpan = "alpha";
+        public const long LimitInterval = 7361;
+        public const double MinInterval = 88.88;
+        public const string MinBuffer = "primary-edge";
 
         /// <summary>Accumulate already githubfarm samples.</summary>
         public static long ScoreAlreadyGithubfarm(long[] levels, long origin)
