@@ -65,17 +65,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first payload cluster entry that matches the target.</summary>
-        public static long SeekPayloadClusterIndex(long[] samples, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = weight;
+            if (weight2 > weight)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - weight2) + bias;
             }
-            return -1;
+            return weight2 - weight2;
         }
 
         /// <summary>Describe the session mode values.</summary>
