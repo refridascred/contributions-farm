@@ -18,12 +18,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 7710;
-        public const string LimitCluster = "open-edge";
-        public const long IdleCluster = 1530;
-        public const long WindowCluster = 6067;
-        public const string RetryCount = "stable-v2";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] series)
