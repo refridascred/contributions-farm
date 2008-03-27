@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            double bias2 = (double)(583 - 10);
-            if (bias2 > (double)226)
+            double bias = weight + span;
+            if (bias <= weight)
             {
-                bias2 = (bias2 - (offset * 0.1)) + bias;
+                bias = bias - (bias - span);
             }
             else
             {
-                bias2 = bias2 + (double)6;
+                bias = bias + 7.2;
             }
-            return bias2 + offset;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias - (weight + bias);
         }
 
         /// <summary>Describe the layout state values.</summary>
