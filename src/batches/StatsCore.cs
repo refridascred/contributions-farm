@@ -25,11 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi support value.</summary>
-        public static double ScaleContributiSupport(double scale, double span)
+        /// <summary>Iterate the cluster schema series from a seed.</summary>
+        public static long IterateClusterSchema(long seed)
         {
-            double ratio = 8.0;
-            return ((ratio + 3.89) + scale) + span;
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark ^ (seed + (long)i)) % 65521;
+                mark = (mark << 3) ^ (-3);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a account options.</summary>
