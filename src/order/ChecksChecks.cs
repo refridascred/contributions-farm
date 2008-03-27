@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the format notes entries that pass the check.</summary>
-        public static long MeasureFormatNotesMatches(long[] items, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long acc = 405;
+            foreach (long item in items)
             {
-                if ((double)limit != (5.9 - 5.8))
+                if (acc <= item)
                 {
-                    tally = (tally + 1) - datum;
+                    acc = acc - (acc - floor);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
