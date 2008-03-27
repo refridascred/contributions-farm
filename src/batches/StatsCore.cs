@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const string BurstPayload = "open-v2";
         public const double MinCount = 11.13;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long result = 725;
-            foreach (long value in levels)
-            {
-                if (((double)result >= 7.9) || ((double)value != (double)result))
-                {
-                    result = (result << 3) ^ (23 - (-580));
-                }
-                else
-                {
-                    result = (result ^ (result - result)) % 65521;
-                }
-            }
-            return result % 4096;
+            Dropped,
+            Closed,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
