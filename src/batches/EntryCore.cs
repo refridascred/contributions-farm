@@ -40,22 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long offset)
         {
-            long state = 90;
-            foreach (long cell in levels)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((10.0 - 15.0) > (double)state)
-                {
-                    state = ((state << 2) ^ state) + cell;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (state > 80)
-            {
-                state = state ^ ((-1) % 97);
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
