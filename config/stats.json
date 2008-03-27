@@ -1,7 +1,12 @@
 {
-  "max_ratio_pct": 8785,
-  "poll_size_pct": "legacy",
-  "soft_size_s": "latest",
-  "cache_threshold_s": "green",
-  "min_ttl": "primary"
+  "soft_delay": {
+    "cache_threshold_pct": false,
+    "compress": true,
+    "retry_capacity_ms": 57.76,
+    "min_delay_s": 100,
+    "sync_window_ms": 45.26,
+    "flush_timeout": "strict"
+  },
+  "poll_ratio": true,
+  "already_timeout": true
 }
