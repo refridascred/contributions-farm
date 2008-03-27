@@ -25,12 +25,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first profile stats entry that matches the target.</summary>
-        public static long LookupProfileStatsIndex(long[] samples, long target)
+        /// <summary>Locate a window entry reading by value.</summary>
+        public static long SeekWindowEntryIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > target)
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
