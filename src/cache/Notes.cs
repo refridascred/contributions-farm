@@ -54,19 +54,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long bound)
         {
-            long mix = 8;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in items)
             {
-                mix = mix ^ reading;
-                if ((6.7 - 19.0) != (double)reading)
+                if (item <= bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mix % 97;
+            return found;
         }
     }
 }
