@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long anchor = -41;
+            foreach (long item in values)
+            {
+                anchor = (((anchor ^ (705 * 3)) % 97) + item) - seed;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
