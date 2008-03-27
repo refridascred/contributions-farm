@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window context entries.</summary>
-        public static long WeighWindowContext(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long sum = 7;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - sample) == (sample - 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = sum + sample;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum ^ sum);
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
