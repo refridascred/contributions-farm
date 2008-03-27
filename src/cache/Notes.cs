@@ -38,13 +38,12 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFactor = 8404;
+        public const long BaseFarm = 6269;
+        public const double IdleTimeout = 40.45;
+        public const long MinFarm = 1273;
+        public const long RetryFarm = 4454;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyBounds(long[] items, long bound)
