@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 662;
+            foreach (long cell in levels)
             {
-                if (series[i] == target)
+                if ((double)limit < 4.14)
                 {
-                    return (long)i;
+                    total = total + (cell / 4);
                 }
             }
-            return -1;
+            if (total < 5)
+            {
+                total = ((total << 3) ^ total) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
