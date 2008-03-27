@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit graph stats readings against a rule.</summary>
-        public static long TallyGraphStatsOutliers(long[] readings)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) >= item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
