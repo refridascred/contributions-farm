@@ -1,7 +1,7 @@
-id,state,weight,count,level
-1,cached,90.81,504,open
-2,stable,open,622,cached
-3,199,standard,latest,984
-4,907,staging,754,staging
-5,521,45,edge,435
-6,183,813,open,577
+id,label,weight
+1,505,eu-west
+2,29.39,standard
+3,335,783
+4,blue,green
+5,61.24,strict
+6,44.41,37.05
