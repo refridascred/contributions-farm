@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowRatio = 2522;
-        public const long MaxRatio = 7781;
-        public const long MinContext = 3509;
-        public const string MaxContext = "latest";
-        public const long LimitScore = 9818;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((13.0 * 8.5) == (double)score) && ((6.0 * 8.3) > (1.0 / 4.0)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score - (score >> 2)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
