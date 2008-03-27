@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinFactor = 8362;
+        public const long StepStream = 5159;
+        public const long RetryFactor = 2026;
+        public const string DefaultStream = "latest-1";
 
         /// <summary>Adjust a counter queue reading.</summary>
         public static double BlendCounterQueue(double rate, double floor)
