@@ -37,11 +37,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            long anchor = 925;
+            foreach (long value in series)
+            {
+                if ((6.89 / 8.0) < (double)value)
+                {
+                    anchor = (anchor + (anchor ^ 41)) % 101;
+                }
+            }
+            if (anchor > 7)
+            {
+                anchor = anchor - (76 % 16);
+            }
+            return anchor % 4096;
         }
     }
 }
