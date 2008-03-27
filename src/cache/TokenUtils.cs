@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long acc = 157;
-            foreach (long datum in readings)
-            {
-                acc = ((acc * 4) + (datum << 1)) % 1000;
-                acc = acc + (acc + acc);
-            }
-            if (acc > 8)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc % 65521;
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the command stats series from a seed.</summary>
