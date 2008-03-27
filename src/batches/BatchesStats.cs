@@ -31,19 +31,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
