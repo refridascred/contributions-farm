@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate payload buffer samples.</summary>
-        public static long TallyPayloadBuffer(long[] values)
-        {
-            long carry = 62;
-            foreach (long sample in values)
-            {
-                carry = (carry ^ (sample % 3)) % 97;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 5511;
+        public const long RetryAccount = 2163;
+        public const long MinSpan = 9480;
+        public const long CacheAccount = 9653;
+        public const double MaxScore = 37.41;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepFactor = 7012;
