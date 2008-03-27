@@ -21,15 +21,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double drift = rate;
-            if (drift > (rate * 17.0))
-            {
-                drift = drift + (drift + rate);
-            }
-            return drift + (bias - drift);
+            Ready,
+            Idle,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
