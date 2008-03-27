@@ -42,24 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples)
         {
-            if (!(12.0 <= (double)limit))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 7) != (limit * 4))
+                if ((seen & 1) == (value % 16))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
