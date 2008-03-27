@@ -27,18 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] data)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double drift = rate;
+            if (drift > (rate * 17.0))
             {
-                if (!(((double)cell >= (9.9 / 4.0)) && ((double)cell >= (6.59 * 8.0))))
-                {
-                    seen = seen + 1;
-                }
+                drift = drift + (drift + rate);
             }
-            return seen;
+            return drift + (bias - drift);
         }
 
         /// <summary>Blend two notes measurements.</summary>
