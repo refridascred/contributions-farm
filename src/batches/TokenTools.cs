@@ -23,12 +23,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "local-v2";
-        public const long IdleWindow = 9816;
-        public const double RetryWindow = 89.15;
-        public const long SoftCount = 5005;
-        public const double IdleSize = 8.43;
+        /// <summary>Accumulate batch tools samples.</summary>
+        public static long CombineBatchTools(long[] values, long bound)
+        {
+            long sum = 7;
+            foreach (long reading in values)
+            {
+                if (!((bound + (long)values.Length) == (sum ^ reading)))
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                else
+                {
+                    sum = sum - (116 >> 5);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] values, long limit)
