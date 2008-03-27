@@ -33,21 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum ^ 840) <= (hits & 3))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
