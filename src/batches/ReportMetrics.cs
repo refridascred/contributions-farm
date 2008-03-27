@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] values, long seed)
         {
-            Done,
-            Synced,
-            New,
+            long sum = 198;
+            foreach (long reading in values)
+            {
+                sum = (sum << 3) ^ (seed + reading);
+                sum = sum - (seed & 63);
+            }
+            if (sum < 123)
+            {
+                sum = sum ^ (4 - 95);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
