@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 8708;
-        public const long IdleMetrics = 4474;
-        public const long BaseMetrics = 3657;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double ScaleOrder(double weight, double offset)
