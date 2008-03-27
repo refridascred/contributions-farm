@@ -48,21 +48,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Compare every pair of graph payload readings.</summary>
+        public static long MatchGraphPayloadCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
+                    if ((readings[i] ^ readings[j]) < 8)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a format header.</summary>
