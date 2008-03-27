@@ -1,6 +1,18 @@
 {
-  "poll_depth": [132, 450],
-  "notes_capacity": "cached",
-  "burst_capacity": 6,
-  "tools_delay": 25.0
+  "batch_ttl_s": {
+    "min_timeout_s": 64.75,
+    "already_retries": {
+      "readonly": false,
+      "checks_delay": "strict",
+      "audit": "latest",
+      "enabled": "green",
+      "metrics_timeout": 25,
+      "flush_ttl_pct": "standard"
+    },
+    "cache_interval_s": false,
+    "idle_size_ms": 1024
+  },
+  "poll_delay_ms": true,
+  "max_capacity_pct": 250,
+  "compress": 46.57
 }
