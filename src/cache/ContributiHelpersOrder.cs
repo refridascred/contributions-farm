@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            Synced,
-            New,
-            Ready,
+            long acc = 91;
+            foreach (long datum in values)
+            {
+                if (((datum + acc) >= (datum & 255)) && (acc < datum))
+                {
+                    acc = ((acc << 2) ^ (datum >> 5)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up report samples.</summary>
