@@ -27,11 +27,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "standard";
+        public const long SoftCount = 9553;
+        public const long BatchCount = 1774;
+        public const double HardQueue = 26.27;
+        public const string SoftSize = "legacy-v2";
     }
 }
