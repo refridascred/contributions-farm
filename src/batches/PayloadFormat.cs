@@ -52,15 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double span)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double weight2 = 0.29;
-            if (weight2 > (weight + 7.0))
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 + span;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
