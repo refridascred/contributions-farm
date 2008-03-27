@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] readings, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((0.91 / 8.0) > (double)step)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm summary.</summary>
