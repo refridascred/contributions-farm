@@ -19,11 +19,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
