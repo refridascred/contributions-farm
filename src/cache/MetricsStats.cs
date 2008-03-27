@@ -36,24 +36,13 @@ namespace Common.Utilities
         public const long IdleTools = 800;
         public const long WindowTools = 7338;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((double)score < (double)seed) && ((8.49 - 5.27) < (double)seed))
-                {
-                    score = ((score << 2) ^ seed) % 65521;
-                    score = (score << 3) ^ (2 << 2);
-                }
-                if (!((1.57 - 2.1) <= (double)(long)i))
-                {
-                    score = score + (score - seed);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
