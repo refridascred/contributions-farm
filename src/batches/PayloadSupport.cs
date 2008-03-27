@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6578;
+        public const long DefaultSchema = 695;
+        public const long HardSchema = 5235;
+        public const long RetrySchema = 2135;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
