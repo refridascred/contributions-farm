@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 3239;
+        public const string IdleWindow = "standard-v2";
+        public const string HardSpan = "stable";
+        public const long StepWindow = 3585;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheRatio = "fallback-1";
