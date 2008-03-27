@@ -29,10 +29,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 9071;
-        public const string SoftFactor = "latest-edge";
-        public const string RetryAccount = "open-edge";
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double span)
+        {
+            double weight2 = weight;
+            if (weight2 > (weight * 0.01))
+            {
+                weight2 = (weight2 - weight) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + (2.71 - weight2)) + (double)(long)i;
+            }
+            return weight2 + (double)41;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
