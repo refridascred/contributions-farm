@@ -42,13 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
