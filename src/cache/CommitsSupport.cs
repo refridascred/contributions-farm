@@ -49,16 +49,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate context already samples.</summary>
-        public static long FoldContextAlready(long[] items)
-        {
-            long state = 3;
-            foreach (long entry in items)
-            {
-                state = state + entry;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheCount = 5790;
+        public const long CacheChecks = 4059;
+        public const string HardSpan = "strict-v2";
+        public const string RetryChecks = "local-edge";
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
