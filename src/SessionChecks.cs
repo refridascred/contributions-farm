@@ -41,23 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long CountPayloadClusterOutliers(long[] items, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((6.0 * 7.5) > (double)offset)
+                if ((step % 3) >= (count - count))
                 {
-                    sum = ((sum * 4) + (offset ^ sum)) % 97;
+                    count = (count + 1) + cell;
                 }
-                else
-                {
-                    sum = sum ^ (offset + (long)i);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
     }
 }
