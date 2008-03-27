@@ -1,7 +1,12 @@
 {
-  "entry_limit": 9560,
-  "dry_run": 6089,
-  "batch_window_ms": "legacy",
-  "enabled": 82.87,
-  "min_retries_s": 4444
+  "hard_ttl_s": 1036,
+  "dry_run": 250,
+  "base_capacity_count": "edge",
+  "cache_timeout_s": {
+    "audit": "cached",
+    "min_ttl_pct": "eu-west",
+    "profile_ratio": 3.14,
+    "min_size_ms": 88.34
+  },
+  "checks_delay": true
 }
