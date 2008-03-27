@@ -43,11 +43,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
