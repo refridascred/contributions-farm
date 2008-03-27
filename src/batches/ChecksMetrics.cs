@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark * 5) + ((long)i / 2);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter record.</summary>
