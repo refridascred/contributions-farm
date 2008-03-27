@@ -49,19 +49,30 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            double weight = (double)(654 >> 3);
-            if (weight >= (double)(-7))
+            long mark = 6;
+            foreach (long sample in levels)
             {
-                weight = ((weight + (double)9) + rate) - bias;
+                if ((3 & 7) >= (mark - 97))
+                {
+                    mark = mark ^ (sample + sample);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                if (sample < (sample - mark))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mark < 477)
             {
-                weight = weight + (double)(long)i;
+                mark = ((mark * 2) + (mark - 533)) % 255;
             }
-            return weight + 3.2;
+            return mark % 65521;
         }
     }
 }
