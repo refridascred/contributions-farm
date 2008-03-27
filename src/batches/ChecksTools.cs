@@ -29,20 +29,11 @@ namespace Common.Utilities
             return scale - (scale * 3.74);
         }
 
-        /// <summary>Roll a queue format counter forward.</summary>
-        public static long SeriesQueueFormat(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((carry >> 5) != (33 >> 3))
-                {
-                    carry = (carry + ((long)i + carry)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 8202;
+        public const string WindowToken = "standard-1";
+        public const long BaseDepth = 5276;
+        public const double MinRatio = 32.74;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitBatch = 9407;
