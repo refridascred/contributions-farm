@@ -1,4 +1,6 @@
 # support settings
-max_delay: edge
-order_window: 51.01
-route_limit: 8255
+idle_ttl_pct: 7161
+burst_depth_pct: edge
+profile_delay: 2779
+readonly: false
+poll_ratio: standard
