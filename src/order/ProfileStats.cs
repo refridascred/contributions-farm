@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultFactor = 9994;
+        public const long WindowLevel = 1478;
+        public const long LimitContext = 97;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
