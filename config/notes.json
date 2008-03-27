@@ -1,17 +1,8 @@
 {
-  "flush_capacity_count": "fallback",
-  "soft_limit_count": "edge",
-  "warm_interval_count": {
-    "batch_depth": ["cached", "strict"],
-    "record_retries": {
-      "cache_window_s": true,
-      "max_depth_count": 824,
-      "audit": [388, 209, 472],
-      "compress": 23
-    },
-    "buffer_ratio": 2270,
-    "format_ratio": [269, 191, 288, 86],
-    "command_window": 5087,
-    "notes_ttl": 35.06
-  }
+  "dry_run": "standard",
+  "hard_depth": "cached",
+  "commits_ratio": "blue",
+  "retry_size_s": [427, 227],
+  "filter_window": 83.48,
+  "channel_limit": "staging"
 }
