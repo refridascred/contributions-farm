@@ -1,9 +1,24 @@
 # entry settings
-sync_window_pct:
-  - 406
-  - 290
-  - 223
-  - 457
-default_threshold: 1024
-metrics_interval: edge
-warm_ratio_s: green
+sync_window: 41
+filter_retries: green
+format_ratio:
+  default_retries: false
+  enabled:
+    hard_capacity_ms: 1024
+    batch_depth_pct:
+      - primary
+      - blue
+    sync_limit_s: 2173
+    readonly:
+      - 13
+      - 198
+    warm_retries: 4241
+    batch_window:
+      - 220
+      - 55
+      - 203
+  min_retries_s: 500
+  hard_threshold_ms: 1209
+  base_timeout_count: 79.99
+  channel_delay: local
+dry_run: true
