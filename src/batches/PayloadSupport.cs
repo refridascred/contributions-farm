@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series, long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = 89;
-            foreach (long datum in series)
-            {
-                if ((offset & 127) < 1)
-                {
-                    carry = (carry ^ (carry & 3)) + datum;
-                }
-            }
-            return carry;
+            Stale,
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit filter session readings against a rule.</summary>
