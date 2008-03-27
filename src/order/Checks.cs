@@ -68,18 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] levels, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count >> 2) >= 466)
+                if (series[i] >= floor)
                 {
-                    count = ((count + 2) - entry) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
