@@ -65,18 +65,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((13 + seed) == (406 % 3)) || (939 >= seed))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            New,
         }
     }
 }
