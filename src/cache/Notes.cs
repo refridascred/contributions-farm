@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] data, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + 0) > sample)
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
