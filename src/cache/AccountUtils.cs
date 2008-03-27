@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long bound)
         {
-            long acc = -71;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - (sample + 39);
-                acc = (acc - (seed % 2)) % 4096;
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 959)
-            {
-                acc = acc - seed;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
