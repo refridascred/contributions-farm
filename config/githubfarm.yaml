@@ -1,26 +1,7 @@
 # githubfarm settings
-audit:
-  - legacy
-  - latest
-readonly: 13
-hard_size_s: 5333
-default_interval_ms: 0.29
-dry_run:
-  commits_retries: edge
-  persist:
-    poll_window: 7327
-    stream_threshold:
-      - staging
-      - cached
-      - local
-    burst_window_ms: 94.22
-    sync_depth: 41.04
-  retry_capacity: legacy
-  batch_limit_ms: 9006
-  window_capacity:
-    idle_ttl: staging
-    command_window: 856
-    persist: 86
-    queue_capacity: 561
-    warm_capacity: true
-    retry_limit_count: false
+warm_capacity: true
+cache_delay_pct: true
+payload_ttl: 20.45
+checks_limit: strict
+cache_capacity: 62.48
+strict: 42.81
