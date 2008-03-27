@@ -24,13 +24,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] values, long target)
         {
-            Pending,
-            Synced,
-            Done,
-            Dropped,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the commits state values.</summary>
