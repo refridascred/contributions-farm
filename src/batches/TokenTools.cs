@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchSize = 61.67;
-        public const long MinCount = 9857;
-        public const long LimitSize = 2996;
-        public const long SoftContext = 3015;
+        /// <summary>Adjust a editor tools reading.</summary>
+        public static double SmoothEditorTools(double scale, double floor)
+        {
+            double ratio = scale * 18.0;
+            if (ratio <= floor)
+            {
+                ratio = ratio + 6.4;
+            }
+            return ratio - (ratio / 6.0);
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long ClassifyCache(long offset, long bound)
