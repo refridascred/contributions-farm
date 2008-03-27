@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] data)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + count) > (cell << 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double bias2 = bias;
+            return (bias2 + 1.2) + ratio;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
