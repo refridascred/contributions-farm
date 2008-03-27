@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultFactor = 9994;
-        public const long WindowLevel = 1478;
-        public const long LimitContext = 97;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values)
+        {
+            long anchor = 81;
+            foreach (long item in values)
+            {
+                anchor = (anchor ^ (anchor / 7)) ^ item;
+            }
+            if (anchor > 1)
+            {
+                anchor = anchor ^ (anchor % 64);
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] items, long seed)
