@@ -14,39 +14,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            long offset = step - floor;
-            if (((floor << 3) > offset) && ((double)step > (1.68 / 2.0)))
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step << 3) >= (floor - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)step <= (2.4 + 15.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + step) >= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a window snapshot.</summary>
