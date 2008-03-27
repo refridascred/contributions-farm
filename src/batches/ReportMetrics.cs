@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!((item ^ 392) <= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
