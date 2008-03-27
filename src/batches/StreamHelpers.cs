@@ -72,22 +72,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] samples, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings, long origin)
         {
-            long total = 696;
-            foreach (long cell in samples)
+            long sum = 88;
+            foreach (long sample in readings)
             {
-                if ((step % 24) < (cell + step))
+                sum = ((sum << 3) ^ (561 + sample)) % 101;
+                if (((865 << 2) >= (origin << 1)) && ((origin + (long)readings.Length) <= (sum + origin)))
                 {
-                    total = (total ^ (cell & 7)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (step / 4)) % 97;
+                    sum = (sum - (93 % 16)) % 97;
                 }
             }
-            return total % 65521;
+            if (sum < 3)
+            {
+                sum = (sum * 5) + 954;
+            }
+            return sum;
         }
     }
 }
