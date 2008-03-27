@@ -51,24 +51,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a schema format value against two limits.</summary>
-        public static long ClassifySchemaFormat(long offset, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            if (step >= offset)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(step > offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a command metric reading.</summary>
