@@ -1,18 +1,14 @@
 {
-  "commits_timeout": true,
-  "cache_retries_ms": 2636,
-  "default_delay_ms": "green",
-  "dry_run": {
-    "cache_depth_ms": "local",
-    "soft_ttl_s": {
-      "verbose": "strict",
-      "max_ttl": 64,
-      "graph_interval": "stable",
-      "cache_depth_s": [403, 470, 258]
-    },
-    "stream_window": [158, 379, 237, 307],
-    "enabled": "stable"
+  "base_retries_count": ["eu-west", "green"],
+  "default_window": 100,
+  "readonly": {
+    "sync_interval_ms": "standard",
+    "min_size_ms": 60,
+    "batch_retries": "stable",
+    "hard_interval": true,
+    "min_threshold_count": "standard"
   },
-  "batches_depth": 6389,
-  "batch_timeout": 23.61
+  "account_threshold": true,
+  "base_limit_pct": false,
+  "dry_run": 27.09
 }
