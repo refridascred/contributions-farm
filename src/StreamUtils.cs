@@ -27,13 +27,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Synced,
             Idle,
-            Queued,
-            Retry,
-            Ready,
+            Closed,
         }
 
         /// <summary>Accumulate token contributi samples.</summary>
