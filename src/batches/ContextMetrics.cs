@@ -67,38 +67,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long origin, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] samples, long target)
         {
-            if ((double)offset > (6.4 + 6.0))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > (833 % 10))
+                if (sample < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.8 * 4.0) > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((5 * 2) < (origin - offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
