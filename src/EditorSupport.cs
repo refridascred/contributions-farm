@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Rank token input into a small class.</summary>
