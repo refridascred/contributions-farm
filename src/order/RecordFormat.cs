@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] series, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + 389) <= (seen / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next command notes value.</summary>
