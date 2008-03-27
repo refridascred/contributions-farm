@@ -19,24 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank tools checks input into a small class.</summary>
-        public static long ClassifyToolsChecks(long seed, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if ((seed - origin) != (24 - 90))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin / 9) >= (seed & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the stats kind values.</summary>
