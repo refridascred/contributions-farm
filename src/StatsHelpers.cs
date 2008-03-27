@@ -37,11 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultScore = "strict-edge";
-        public const double LimitWidth = 80.49;
-        public const long IdleChannel = 5310;
-        public const long BurstRatio = 2591;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultRatio = 7020;
+        public const long BurstTimeout = 6816;
+        public const long MinSession = 4139;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
