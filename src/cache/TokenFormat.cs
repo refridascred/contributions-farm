@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] readings)
         {
-            Stale,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (2 <= (seen * 5))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine record token values into a single score.</summary>
