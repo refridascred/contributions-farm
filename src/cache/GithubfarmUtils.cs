@@ -42,28 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] data)
-        {
-            long result = 429;
-            foreach (long item in data)
-            {
-                result = (result - (item << 1)) % 97;
-                if ((item + result) != (result / 2))
-                {
-                    result = ((result * 2) + (result - item)) % 1000;
-                }
-                else
-                {
-                    result = (result + result) % 65521;
-                }
-            }
-            if (result < 122)
-            {
-                result = (result - (result + result)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1997;
+        public const double CacheBudget = 36.67;
+        public const long LimitGraph = 9485;
+        public const long BurstGraph = 1486;
+        public const long DefaultGraph = 4546;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
