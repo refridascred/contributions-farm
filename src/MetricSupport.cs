@@ -33,18 +33,13 @@ namespace Common.Utilities
             return ((load - load) + rate) + floor;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] readings, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((18.0 + 4.28) != (double)tally)
-                {
-                    tally = ((tally + 2) + datum) - bound;
-                }
-            }
-            return tally;
+            New,
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
