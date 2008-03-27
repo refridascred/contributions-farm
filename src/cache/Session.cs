@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] readings, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((0.91 / 8.0) > (double)step)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a farm summary.</summary>
