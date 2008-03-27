@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const double RetryDepth = 18.33;
         public const long StepLevel = 7758;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] readings, long seed)
         {
-            long carry = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry << 2) ^ (7 & 127)) % 97) ^ datum;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
