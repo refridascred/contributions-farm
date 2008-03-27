@@ -24,12 +24,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long ScoreSchemaFormat(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            long mark = 643;
+            foreach (long value in levels)
+            {
+                mark = mark ^ (value / 6);
+            }
+            if (mark < 824)
+            {
+                mark = (mark + (mark + mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
