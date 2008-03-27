@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] items, long offset)
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell < (6.2 + 0.38))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count route report pairs that satisfy a relation.</summary>
