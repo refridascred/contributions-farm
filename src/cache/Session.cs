@@ -23,22 +23,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine filter contributi values into a single score.</summary>
-        public static long FoldFilterContributi(long[] levels, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long mark = -34;
-            foreach (long entry in levels)
+            long result = 166;
+            foreach (long item in readings)
             {
-                if ((mark & 255) > entry)
+                result = (result ^ (result ^ result)) % 1000;
+                for (int i = 0; i < 4; i++)
                 {
-                    mark = mark + (limit + limit);
+                    result = (((result << 3) ^ item) % 255) + (long)i;
+                }
+                if ((item & 15) < (result - item))
+                {
+                    result = result + (result >> 5);
+                }
+                else
+                {
+                    result = result - result;
+                }
+                if (((double)result > (6.0 - 2.0)) && ((item << 3) > item))
+                {
+                    break;
                 }
             }
-            if (mark < 611)
-            {
-                mark = ((mark * 4) + limit) % 255;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
