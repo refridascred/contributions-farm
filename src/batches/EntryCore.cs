@@ -52,18 +52,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen + 655) >= seen)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            New,
         }
     }
 }
