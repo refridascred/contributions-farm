@@ -65,19 +65,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi stats readings against a bound.</summary>
-        public static bool CheckContributiStatsRange(long[] items, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Failed,
+            Pending,
         }
     }
 }
