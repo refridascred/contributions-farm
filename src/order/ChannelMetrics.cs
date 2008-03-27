@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRoute = 88.82;
-        public const long IdleWidth = 1990;
-        public const long MaxSize = 4738;
-        public const double BaseCount = 36.74;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryInterval = 8573;
