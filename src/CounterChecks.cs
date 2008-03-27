@@ -53,11 +53,25 @@ namespace Common.Utilities
             return drift - (offset * 16.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardScore = "local-edge";
-        public const long MinSize = 499;
-        public const double StepLevel = 70.15;
-        public const double CacheAlready = 2.09;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long floor)
+        {
+            if (!(12.0 <= (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor / 7) != (limit * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferOutliers(long[] items)
