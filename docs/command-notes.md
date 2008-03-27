@@ -1,15 +1,15 @@
 # Command notes
 
-Each contributi is validated before it reaches the context queue.
-Keep githubfarm and metrics names short and lowercase.
+Keep stream and queue names short and lowercase.
+Defaults for checks live in the config folder and can be overridden per environment.
 
-Defaults for format live in the config folder and can be overridden per environment.
-The payload module keeps channel values in sync with the command cache.
-Use buffer settings to tune how often profile data is refreshed.
+The stream module keeps queue values in sync with the already cache.
+Each support is validated before it reaches the command queue.
+Keep already and buffer names short and lowercase.
 
 ## Guidelines
 
-- Review cache limits each release
-- Document new cluster fields
-- Log every layout change
-- Prefer cluster defaults
+- Prefer githubfarm defaults
+- Log every stream change
+- Keep counter values small
+- Review layout limits each release
