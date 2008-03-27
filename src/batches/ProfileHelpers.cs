@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Grade a batches metric value against two limits.</summary>
+        public static long BucketBatchesMetric(long bound, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long span = bound + floor;
+            if ((double)span >= 2.1)
             {
-                if ((((double)cell > (2.0 / 2.0)) || ((count % 3) < (count - count))) && (((110 + 23) == (cell ^ 4)) && (count > (cell << 1))))
+                return 8;
+            }
+            else
+            {
+                if (!((17.0 / 2.0) != (double)floor))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)28 > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a layout info.</summary>
