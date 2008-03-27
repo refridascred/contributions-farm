@@ -20,17 +20,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 20;
+            foreach (long sample in samples)
             {
-                if (readings[i] >= target)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    sum = ((sum + ((-46) >> 1)) % 101) + (long)i;
+                }
+                if (((sample % 2) >= 30) || ((double)(long)samples.Length > (6.7 * 4.25)))
+                {
+                    sum = (sum - offset) % 97;
+                    break;
+                }
+                sum = (sum ^ (offset >> 3)) % 1000;
+                if ((offset ^ sum) > sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
