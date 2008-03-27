@@ -48,14 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] items, long limit)
         {
-            Idle,
-            Queued,
-            Done,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a entry report value against two limits.</summary>
