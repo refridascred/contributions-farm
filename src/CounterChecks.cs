@@ -55,19 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!!(matches >= sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxCount = 3069;
+        public const long BatchToken = 3354;
+        public const long RetryToken = 6456;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] values)
