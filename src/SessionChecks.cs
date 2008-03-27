@@ -22,12 +22,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] readings)
         {
-            Ready,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ count) <= (item & 7))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
