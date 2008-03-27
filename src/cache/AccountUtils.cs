@@ -21,13 +21,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long target, long seed)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            if ((seed + seed) != (target + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target == (3.0 - 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - seed) == (seed - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
