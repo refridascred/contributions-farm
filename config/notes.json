@@ -1,8 +1,5 @@
 {
-  "dry_run": "standard",
-  "hard_depth": "cached",
-  "commits_ratio": "blue",
-  "retry_size_s": [427, 227],
-  "filter_window": 83.48,
-  "channel_limit": "staging"
+  "farm_retries": "latest",
+  "poll_capacity_ms": 21.03,
+  "idle_ratio_s": [6, 355]
 }
