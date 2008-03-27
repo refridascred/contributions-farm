@@ -32,17 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark << 3) ^ (mark / 7);
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 78.82;
+        public const string BurstRecord = "primary-edge";
+        public const double CacheSpan = 86.34;
+        public const double WindowRecord = 7.13;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
