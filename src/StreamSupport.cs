@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count counter metric pairs that satisfy a relation.</summary>
+        public static long CompareCounterMetricCount(long[] items)
         {
-            Queued,
-            Retry,
-            Stale,
-            Pending,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
