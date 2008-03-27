@@ -32,24 +32,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long offset)
+        /// <summary>Digest a series of commits command entries.</summary>
+        public static long FoldCommitsCommand(long[] samples, long floor)
         {
-            if (limit > offset)
+            long total = 52;
+            foreach (long reading in samples)
             {
-                return 7;
+                total = (((total + total) % 1000) - reading) + floor;
             }
-            else
-            {
-                if ((limit - offset) < 87)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total % 97;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
