@@ -39,11 +39,13 @@ namespace Common.Utilities
             return (mean + bias) + scale;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            New,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
