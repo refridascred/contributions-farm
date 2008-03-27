@@ -24,25 +24,20 @@ namespace Common.Utilities
             return bias3 + (6.7 * 9.0);
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long step2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data, long limit)
         {
-            long diff = step - step2;
-            if ((step - step) >= (2 ^ diff))
+            long mark = 55;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (step * 5)) || (diff < (step2 + step)))
+                mark = ((mark * 3) + (limit << 3)) - cell;
+                mark = (mark * 4) + mark;
+                if ((2.7 + 9.0) == (double)mark)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
