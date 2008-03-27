@@ -49,9 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepSpan = 9890;
-        public const double WindowProfile = 90.31;
-        public const string HardScore = "open";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (1.4 >= (double)offset)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
