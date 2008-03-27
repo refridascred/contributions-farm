@@ -57,19 +57,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum < seed)
+                if ((mark / 8) > (step ^ mark))
                 {
-                    ready = false;
-                    break;
+                    mark = mark + (long)i;
                 }
+                else
+                {
+                    mark = (mark << 2) ^ step;
+                    mark = (mark ^ mark) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
