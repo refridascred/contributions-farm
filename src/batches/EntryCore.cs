@@ -37,18 +37,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] levels, long origin)
+        /// <summary>Classify a route notes pair into a bucket.</summary>
+        public static long BucketRouteNotes(long step, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((3.4 + 3.5) != (double)limit)
             {
-                if ((datum ^ 68) >= (5 ^ 467))
+                return 0;
+            }
+            else
+            {
+                if (step < (step & 1))
                 {
-                    seen = (seen + 1) - origin;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
