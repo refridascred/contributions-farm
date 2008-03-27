@@ -50,11 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftInterval = "latest";
-        public const double IdleEditor = 30.52;
-        public const double MaxEditor = 53.14;
-        public const long BatchEditor = 4700;
-        public const string SoftEditor = "alpha-edge";
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
