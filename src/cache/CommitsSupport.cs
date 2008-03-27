@@ -82,18 +82,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mix = -41;
-            foreach (long sample in readings)
-            {
-                if (((4.0 + 9.3) == (double)mix) && ((5.0 / 5.0) == (double)sample))
-                {
-                    mix = (mix - (limit << 2)) % 1000;
-                }
-            }
-            return mix % 1000;
+            Locked,
+            Pending,
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Match up channel metric samples.</summary>
