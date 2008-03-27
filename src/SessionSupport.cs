@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 150;
-        public const string BurstDepth = "alpha-1";
-        public const string LimitFarm = "stable-v2";
-        public const long CacheFarm = 8408;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 4889;
+        public const double IdleRecord = 18.32;
+        public const long LimitRecord = 3189;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] data)
