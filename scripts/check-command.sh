@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback stable; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=394
+log "limit is ${COMMAND_LIMIT}"
+
+for item in legacy stable; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=63
-log "limit is ${COMMAND_LIMIT}"
