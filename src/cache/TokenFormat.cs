@@ -36,10 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxDepth = 3058;
-        public const double RetryFactor = 81.56;
-        public const string BaseCommits = "standard-v2";
-        public const double HardSize = 39.06;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
