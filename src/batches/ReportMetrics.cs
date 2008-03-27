@@ -27,19 +27,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] values, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
