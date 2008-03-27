@@ -21,14 +21,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double offset)
         {
-            Ready,
-            Idle,
-            Draft,
-            Locked,
-            Synced,
+            double rate = gain * 1.79;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate + 10.0) + (double)(long)i) - offset;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define route limits and defaults.</summary>
