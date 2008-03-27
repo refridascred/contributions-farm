@@ -18,20 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 7710;
+        public const string LimitCluster = "open-edge";
+        public const long IdleCluster = 1530;
+        public const long WindowCluster = 6067;
+        public const string RetryCount = "stable-v2";
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
