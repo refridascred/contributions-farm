@@ -12,22 +12,12 @@ namespace Common.Utilities
             return mean + (bias / 6.0);
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxDepth = 8217;
+        public const long SoftLevel = 9833;
+        public const double WindowProfile = 93.83;
+        public const long BaseScore = 311;
+        public const double RetryRatio = 15.81;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
