@@ -38,12 +38,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] values, long floor)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((9.3 - 4.25) != (double)count)
+                {
+                    count = ((count + 2) - item) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
