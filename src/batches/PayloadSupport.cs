@@ -33,17 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route tools sample.</summary>
-        public static long SeekRouteToolsIndex(long[] samples, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
