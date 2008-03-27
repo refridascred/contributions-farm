@@ -47,13 +47,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((score ^ (long)i) == (step / 5))
+                {
+                    score = (score ^ (step + score)) % 65521;
+                    score = score - (score << 3);
+                }
+                if ((713 + step) < (3 + score))
+                {
+                    score = score + (score - (long)i);
+                }
+                else
+                {
+                    score = ((score * 2) + (score >> 5)) % 1000;
+                    score = ((score << 2) ^ (score << 1)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
