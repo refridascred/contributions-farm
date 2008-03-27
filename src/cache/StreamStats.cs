@@ -32,13 +32,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a batch batches value against two limits.</summary>
+        public static long SortBatchBatches(long step, long origin)
         {
-            Ready,
-            Synced,
-            New,
-            Dropped,
+            long delta = step + origin;
+            if ((16.0 + 9.0) < (double)delta)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + 98) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) == (delta & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
