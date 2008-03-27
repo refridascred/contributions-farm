@@ -39,16 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue order value from a seed.</summary>
-        public static long RollQueueOrder(long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state ^ ((long)i + target);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
