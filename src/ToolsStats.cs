@@ -36,12 +36,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 5874;
-        public const long StepStats = 9342;
-        public const double IdleLevel = 14.2;
-        public const double DefaultWidth = 51.22;
-        public const string MaxLevel = "primary-edge";
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsMatches(long[] readings)
