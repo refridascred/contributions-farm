@@ -1,22 +1,4 @@
 # support settings
-batch_delay_s: 98.0
-base_limit_ms:
-  audit:
-    soft_limit: false
-    hard_depth_ms:
-      - 352
-      - 467
-    retry_ratio: strict
-    base_timeout: 48
-  soft_interval_s:
-    - local
-    - blue
-  max_limit_count: 79
-  warm_depth_s: true
-flush_limit:
-  - 195
-  - 81
-  - 154
-  - 405
-soft_window: 46.2
-burst_ttl_ms: stable
+farm_interval: 64.26
+metrics_window: blue
+sync_size: false
