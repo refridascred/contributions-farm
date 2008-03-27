@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Paused,
-            New,
-            Retry,
-            Done,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 1357;
+        public const long BatchSize = 1301;
+        public const long BurstCount = 6157;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
