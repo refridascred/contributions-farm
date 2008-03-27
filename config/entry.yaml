@@ -1,22 +1,13 @@
 # entry settings
-max_retries_s: standard
-enabled: 97.4
-sync_threshold_pct:
-  verbose: 30
-  batch_depth_pct: staging
-  metric_size: latest
-  already_window: 100
-  soft_threshold_pct: blue
-hard_timeout_s:
-  metrics_size: open
-  queue_ratio:
-    contributi_retries: 8361
-    sync_ratio_pct: 87
-    batch_interval_ms: false
-  burst_delay_pct: false
-  idle_retries: 9463
-  retry_delay_pct: strict
-batch_depth:
-  - 357
-  - 83
-  - 356
+batch_retries: strict
+flush_delay_s: latest
+session_interval: true
+farm_size: 69
+soft_ratio_pct:
+  flush_limit_ms: 250
+  soft_size_pct: stable
+  default_capacity_ms: 60
+  strict:
+    - 181
+    - 424
+    - 337
