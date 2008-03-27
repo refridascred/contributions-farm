@@ -1,6 +1,12 @@
 # entry settings
-warm_depth_count: eu-west
-persist: 47
-strict: local
-base_interval: 2
-min_window: true
+poll_capacity_count:
+  - green
+  - latest
+  - edge
+  - cached
+compress: 97.41
+route_window:
+  soft_interval_ms: 9596
+  warm_interval_s: 96
+  notes_threshold: 2880
+  farm_window: 66.25
