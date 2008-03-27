@@ -17,17 +17,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] values, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate batches samples.</summary>
