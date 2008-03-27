@@ -21,18 +21,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double gain, double offset)
         {
-            long acc = 73;
-            foreach (long entry in levels)
+            double drift = offset / 7.0;
+            if (drift < drift)
             {
-                if ((acc + 723) >= acc)
-                {
-                    acc = ((acc - ((long)levels.Length + entry)) % 65521) - offset;
-                }
+                drift = (drift - 8.3) + gain;
             }
-            return acc % 1000;
+            return drift - drift;
         }
     }
 }
