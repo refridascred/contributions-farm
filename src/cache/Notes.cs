@@ -27,15 +27,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double span)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long bound)
         {
-            double scale = 19.0;
-            for (int i = 0; i < 9; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                scale = (scale + weight) + (double)(long)i;
+                if ((carry + bound) <= bound)
+                {
+                    long tally = carry;
+                    carry = (carry ^ (carry + tally)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return scale + span;
+            return carry;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
