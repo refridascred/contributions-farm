@@ -47,21 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] <= offset)
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
