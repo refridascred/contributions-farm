@@ -1,4 +1,5 @@
 # entry settings
-readonly: false
-warm_delay: 5
-strict: stable
+enabled: false
+commits_interval: true
+soft_size: 74.63
+min_limit_s: 30
