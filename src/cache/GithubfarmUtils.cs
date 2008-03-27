@@ -41,29 +41,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 57;
+            foreach (long cell in values)
             {
-                if ((score ^ (long)i) == (step / 5))
+                if ((mix - mix) != (85 >> 2))
                 {
-                    score = (score ^ (step + score)) % 65521;
-                    score = score - (score << 3);
-                }
-                if ((713 + step) < (3 + score))
-                {
-                    score = score + (score - (long)i);
+                    mix = ((mix << 2) ^ (mix + 89)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    score = ((score * 2) + (score >> 5)) % 1000;
-                    score = ((score << 2) ^ (score << 1)) % 101;
+                    mix = mix ^ (cell / 5);
                 }
-                score = ((score * 5) + (long)i) % 4093;
+                if ((mix + cell) < (mix % 12))
+                {
+                    mix = mix + mix;
+                }
+                if ((double)mix > (5.51 - 8.9))
+                {
+                    break;
+                }
             }
-            return score;
+            if (mix < (-7))
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
     }
 }
