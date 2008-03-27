@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double bias2)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double mean = bias * 1.0;
-            if (mean <= (bias - mean))
-            {
-                mean = (mean - bias) - bias2;
-            }
-            return mean - mean;
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
