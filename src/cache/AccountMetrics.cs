@@ -73,18 +73,12 @@ namespace Common.Utilities
         public const double SoftFilter = 25.04;
         public const long WindowFilter = 7772;
 
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long AuditCommandToolsGaps(long[] readings, long step)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 3) < (value >> 1))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
