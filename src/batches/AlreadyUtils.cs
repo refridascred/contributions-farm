@@ -35,18 +35,16 @@ namespace Common.Utilities
         public const long MinFactor = 2899;
         public const long BaseLevel = 7687;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long total = 1;
-            foreach (long datum in levels)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((77 - total) <= (datum >> 4))
-                {
-                    total = ((total * 3) + (datum + (long)levels.Length)) + seed;
-                }
+                sum = (sum - offset) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Describe the commits status values.</summary>
