@@ -39,26 +39,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long limit)
+        /// <summary>Count the window stats entries that pass the check.</summary>
+        public static long MeasureWindowStatsOutliers(long[] items, long offset)
         {
-            long result = 9;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((limit + (-2)) <= (limit & 127))
+                if ((matches >= (matches - entry)) && (((5.4 * 5.5) < (double)entry) || ((offset >> 4) >= (matches ^ entry))))
                 {
-                    result = ((result << 2) ^ (result & 15)) + cell;
+                    matches = matches + 2;
                 }
-                if (((double)(long)data.Length == (8.8 - 9.4)) || ((result + 58) >= (limit << 2)))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (result > 83)
-            {
-                result = (result - limit) % 255;
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
