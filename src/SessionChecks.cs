@@ -12,17 +12,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first session metric entry that matches the target.</summary>
-        public static long SeekSessionMetricIndex(long[] data, long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the payload phase values.</summary>
