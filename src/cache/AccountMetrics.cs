@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] data, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                if (datum != target)
+                mix = ((mix << 3) ^ (cell - cell)) % 255;
+                if ((cell % 16) >= offset)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix * 4) + (cell ^ (-43));
                 }
             }
-            return stale;
+            if (mix < 9)
+            {
+                mix = (mix ^ (mix & 7)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Project the next account value.</summary>
