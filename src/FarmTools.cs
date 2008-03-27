@@ -32,19 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] data, long step)
+        /// <summary>Find the first commits metrics entry that matches the target.</summary>
+        public static long LocateCommitsMetricsIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > step)
+                if (levels[i] == origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
