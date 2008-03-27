@@ -30,11 +30,13 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
