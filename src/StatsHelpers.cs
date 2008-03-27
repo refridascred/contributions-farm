@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardRatio = "primary-edge";
-        public const long DefaultInterval = 4643;
-        public const long LimitLayout = 8965;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 7664;
+        public const long BatchCount = 8662;
+        public const double LimitReport = 54.28;
+        public const string WindowSize = "legacy";
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
         public static long ClassifyBufferCluster(long limit, long bound)
