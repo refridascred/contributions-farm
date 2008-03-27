@@ -56,13 +56,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Locate a cluster filter reading by value.</summary>
+        public static long LocateClusterFilterIndex(long[] data, long origin)
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
