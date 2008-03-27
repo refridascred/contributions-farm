@@ -1,15 +1,5 @@
 {
-  "cache_ratio_ms": {
-    "sync_ratio_count": "stable",
-    "audit": 220,
-    "editor_capacity": false,
-    "hard_interval": false,
-    "stats_limit": 15.73,
-    "base_timeout": 92
-  },
-  "flush_depth_s": "open",
-  "channel_limit": 58.53,
-  "enabled": 75,
-  "min_timeout_count": "eu-west",
-  "idle_depth_ms": "staging"
+  "retry_size_ms": 1024,
+  "cache_size_s": "cached",
+  "min_delay_count": "legacy"
 }
