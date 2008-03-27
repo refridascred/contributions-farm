@@ -41,19 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] items, long floor)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long datum in items)
             {
-                if ((bound >> 2) > (value + seen))
+                if ((long)items.Length >= 985)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 2) ^ datum) + floor;
                 }
             }
             return seen;
