@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + matches) < (matches / 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of token readings.</summary>
