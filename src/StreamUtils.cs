@@ -35,30 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate token contributi samples.</summary>
-        public static long ScoreTokenContributi(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long result = 5;
-            foreach (long value in readings)
-            {
-                if (!((value >> 2) <= (result + result)))
-                {
-                    result = (result - result) % 97;
-                }
-                else
-                {
-                    result = (result ^ (value - result)) % 65521;
-                }
-                if (value >= result)
-                {
-                    break;
-                }
-            }
-            if (result > 680)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
