@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of profile metrics readings.</summary>
-        public static long OverlapProfileMetricsCount(long[] data)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] <= seed)
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
