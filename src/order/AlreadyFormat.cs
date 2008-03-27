@@ -22,12 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long target2)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            if ((10.0 * 4.87) > (double)target2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target2 + target2) <= (target * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
