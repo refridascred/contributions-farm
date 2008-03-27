@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool VerifyTokenBatchesBounds(long[] values, long step)
+        /// <summary>Count window route pairs that satisfy a relation.</summary>
+        public static long CompareWindowRouteCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
