@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 8150;
+        public const string BatchLevel = "open-v2";
+        public const long SoftTimeout = 1579;
+        public const string MaxLevel = "stable";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
