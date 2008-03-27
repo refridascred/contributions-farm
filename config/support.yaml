@@ -1,21 +1,8 @@
 # support settings
-route_capacity: 96
-command_limit: 34
-strict: local
-min_size_count: 7555
-editor_interval:
-  compress: 9.96
-  cache_limit:
-    warm_limit_count: true
-    entry_delay: 79.79
-    batch_capacity: open
-    soft_window_count:
-      - 393
-      - 394
-      - 384
-  account_interval:
-    base_timeout: primary
-    poll_timeout_pct: true
-    idle_size_ms: 7265
-    graph_timeout: false
-  graph_size: fallback
+default_ttl_ms: 98
+enabled: 3700
+retry_threshold_pct:
+  - 494
+  - 310
+  - 31
+  - 91
