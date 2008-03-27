@@ -1,7 +1,6 @@
 {
-  "idle_capacity_pct": "stable",
-  "flush_retries": "strict",
-  "max_capacity_pct": 36.6,
-  "enabled": "staging",
-  "default_capacity_ms": 5388
+  "audit": "green",
+  "verbose": false,
+  "flush_ttl": "strict",
+  "warm_capacity_count": 3576
 }
