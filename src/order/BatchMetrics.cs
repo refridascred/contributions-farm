@@ -14,10 +14,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardSize = 20.66;
-        public const long BurstWidth = 2281;
-        public const string WindowFormat = "strict-1";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Retry,
+            Paused,
+            Idle,
+            New,
+            Synced,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmHits(long[] levels, long origin)
