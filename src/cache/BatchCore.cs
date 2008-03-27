@@ -35,18 +35,12 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long TallyFarmChannelOutliers(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)0 == (double)(long)samples.Length)
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of token channel readings.</summary>
