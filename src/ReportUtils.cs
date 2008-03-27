@@ -52,11 +52,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double offset)
         {
-            double bias = (double)(988 ^ 11);
-            return ((bias + bias) + ratio) + floor;
+            double weight2 = 1.5;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = ((weight2 - (14.0 / 4.0)) - (double)(long)i) - offset;
+            }
+            return weight2 + weight;
         }
     }
 }
