@@ -56,16 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc - (origin / 6)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
