@@ -28,10 +28,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "fallback";
-        public const string IdleFilter = "strict-1";
-        public const long HardFactor = 2175;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] samples, long step)
