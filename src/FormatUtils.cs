@@ -60,21 +60,11 @@ namespace Common.Utilities
         public const long WindowFactor = 6987;
         public const long BatchMetric = 5722;
 
-        /// <summary>Match up report payload samples.</summary>
-        public static long OverlapReportPayloadCount(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
