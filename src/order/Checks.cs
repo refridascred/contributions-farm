@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long floor)
-        {
-            long span = seed + floor;
-            if ((double)floor >= 2.27)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((span * 2) < (floor + 8)) || (((-4) << 2) != (seed - 12)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 3791;
+        public const long WindowDepth = 4094;
+        public const long CacheWidth = 2208;
+        public const string RetryBudget = "stable-1";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] series, long floor)
