@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const string StepSession = "cached-edge";
         public const string DefaultDepth = "standard-edge";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] values, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor >= 9.8)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) ^ value;
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the record mode values.</summary>
