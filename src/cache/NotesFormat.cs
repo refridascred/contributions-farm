@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] items)
-        {
-            long state = 2;
-            foreach (long reading in items)
-            {
-                if ((7.3 * 4.0) >= (double)reading)
-                {
-                    continue;
-                }
-                if (((reading % 3) != (reading + state)) && ((11.0 * 7.6) != (double)state))
-                {
-                    state = (state + (reading >> 2)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 7183;
+        public const string RetryTimeout = "latest";
+        public const long BaseSize = 6786;
+        public const string WindowScore = "fallback-1";
+        public const long IdleFactor = 6529;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long floor, long floor2)
