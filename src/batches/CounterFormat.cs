@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                long offset = 4 + (bound + 2);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    offset = (((offset << 3) ^ (offset - offset)) % 65521) ^ (long)i2;
+                    acc = ((acc * 5) + offset) % 101;
+                }
+                if (((offset + offset) <= ((long)i - offset)) && ((offset << 3) <= bound))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
