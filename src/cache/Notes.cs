@@ -29,22 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Combine session order values into a single score.</summary>
+        public static long DigestSessionOrder(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = 35;
+            foreach (long cell in data)
             {
-                if (!((seen & 255) >= (item + 39)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total * 4) + ((-7) ^ total)) ^ cell) + origin;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Rank account window input into a small class.</summary>
