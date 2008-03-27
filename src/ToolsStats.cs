@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank stats layout input into a small class.</summary>
-        public static long BucketStatsLayout(long floor, long limit)
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long AuditChannelLayoutMatches(long[] data, long target)
         {
-            if (((55 + limit) < limit) || ((limit / 9) != (833 << 1)))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= 730)
+                if (!((entry << 1) != (count << 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (limit >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 1) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the order class values.</summary>
