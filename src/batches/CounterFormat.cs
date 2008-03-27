@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!((item & 1) < (item + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 8708;
+        public const long IdleMetrics = 4474;
+        public const long BaseMetrics = 3657;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long BucketRecord(long bound, long step)
