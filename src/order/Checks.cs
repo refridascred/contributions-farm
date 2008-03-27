@@ -31,17 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] levels, long limit)
+        /// <summary>Digest a series of tools token entries.</summary>
+        public static long FoldToolsToken(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 12;
+            foreach (long datum in series)
             {
-                if (levels[i] > limit)
+                if ((double)limit > 7.0)
                 {
-                    return (long)i;
+                    score = ((score * 3) + limit) - datum;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a support reading by value.</summary>
