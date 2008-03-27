@@ -20,9 +20,18 @@ namespace Common.Utilities
         public const string HardSpan = "stable";
         public const long StepWindow = 3585;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheRatio = "fallback-1";
-        public const long WindowBatches = 8554;
-        public const double BurstFactor = 52.65;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally % 12) < (tally + 47))
+                {
+                    tally = ((tally + 1) ^ value) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
