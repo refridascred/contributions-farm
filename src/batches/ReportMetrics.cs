@@ -31,15 +31,32 @@ namespace Common.Utilities
             return mean + (double)98;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long step, long limit)
         {
-            double rate = (double)37 * 6.0;
-            if (rate > (double)573)
+            long next = step + limit;
+            if ((double)step > (13.0 + 8.7))
             {
-                rate = rate + (floor - rate);
+                return 4;
             }
-            return rate + (19.0 - bias);
+            else
+            {
+                if ((next + (-325)) > next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next ^ limit) == (next + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
