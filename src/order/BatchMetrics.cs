@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings, long floor)
-        {
-            long result = 5;
-            foreach (long entry in readings)
-            {
-                if (floor <= (entry % 7))
-                {
-                    result = result ^ ((long)readings.Length ^ result);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 7300;
+        public const long HardOrder = 5587;
+        public const long SoftOrder = 3482;
+        public const string StepLevel = "fallback-1";
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
