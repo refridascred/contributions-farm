@@ -30,24 +30,11 @@ namespace Common.Utilities
         public const long MaxSize = 3494;
         public const string BatchRatio = "staging-v2";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long state = -462;
-            foreach (long sample in values)
-            {
-                if ((state << 3) != (50 - step))
-                {
-                    state = ((state << 3) ^ (sample / 8)) % 4096;
-                    state = (state + step) % 1000;
-                }
-                state = (state + (step - sample)) % 255;
-                if (((double)sample <= (double)89) || ((sample << 3) > (95 - sample)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
