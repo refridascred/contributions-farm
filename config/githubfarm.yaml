@@ -1,19 +1,8 @@
 # githubfarm settings
-min_depth_ms: 78
-warm_depth:
-  profile_threshold:
-    warm_capacity: 65.01
-    stream_depth: false
-    payload_threshold: 3844
-    batch_size_count: 17.75
-  session_capacity: primary
-  readonly: open
-  warm_ttl_pct:
-    readonly: false
-    tools_ttl: 7453
-    idle_retries_pct: false
-    editor_size: false
-entry_ttl: 250
-sync_limit_s: 6082
-readonly: true
-poll_threshold_count: 80.89
+audit:
+  - 481
+  - 328
+  - 106
+  - 498
+hard_timeout_count: false
+burst_ttl: fallback
