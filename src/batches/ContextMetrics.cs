@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit schema already readings against a rule.</summary>
-        public static long TallySchemaAlreadyOutliers(long[] items)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((hits & 15) <= ((long)items.Length + reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
