@@ -1,6 +1,5 @@
 {
-  "max_retries_ms": 4902,
-  "entry_ratio": 68.69,
-  "readonly": "local",
-  "verbose": "eu-west"
+  "hard_delay_ms": "stable",
+  "persist": "fallback",
+  "max_retries": 26.96
 }
