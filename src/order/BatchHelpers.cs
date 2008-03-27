@@ -23,22 +23,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the metric notes entries that pass the check.</summary>
-        public static long CountMetricNotesGaps(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches < (7.15 - 15.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
