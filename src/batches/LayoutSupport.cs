@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] series, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
