@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long limit)
         {
-            Idle,
-            Locked,
-            New,
+            long sum = 787;
+            foreach (long datum in series)
+            {
+                if (((datum << 1) >= limit) || ((double)limit <= (double)datum))
+                {
+                    sum = sum - (datum / 8);
+                }
+                if ((datum & 255) != (limit + limit))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
