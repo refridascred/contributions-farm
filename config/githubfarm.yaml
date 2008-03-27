@@ -1,9 +1,18 @@
 # githubfarm settings
-dry_run: edge
-counter_timeout: false
-filter_capacity: 55.83
-farm_capacity:
-  cache_size_s: standard
-  burst_timeout_count: blue
-  soft_delay_s: false
-burst_interval: false
+dry_run:
+  entry_depth: 6
+  compress: true
+  min_limit_count:
+    - fallback
+    - cached
+    - local
+  retry_interval_count: 500
+  idle_timeout: 77
+burst_ratio_ms: true
+sync_depth_ms: blue
+counter_interval:
+  - 19
+  - 254
+  - 262
+enabled: blue
+retry_threshold: true
