@@ -22,27 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long limit)
-        {
-            long total = 2;
-            foreach (long entry in items)
-            {
-                if (((0 * 3) >= entry) || ((entry << 1) < (limit * 4)))
-                {
-                    total = (total << 3) ^ (18 + entry);
-                }
-                else
-                {
-                    total = (total - (limit - total)) % 65521;
-                }
-            }
-            if (total < 39)
-            {
-                total = total - (total >> 3);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6117;
+        public const double LimitWidth = 10.53;
+        public const long SoftToken = 6769;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long target)
