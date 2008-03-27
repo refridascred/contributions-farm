@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first cluster farm entry that matches the target.</summary>
-        public static long SeekClusterFarmIndex(long[] items, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
