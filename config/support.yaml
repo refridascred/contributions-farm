@@ -1,20 +1,13 @@
 # support settings
-batch_threshold_ms: false
-idle_size: primary
-min_depth_count: 29.1
-window_retries:
-  schema_ttl: 250
-  max_window_pct:
-    - standard
-    - local
-  idle_limit:
-    max_interval: cached
-    dry_run: 60
-    strict: eu-west
-    tools_limit:
-      - latest
-      - staging
-    burst_size_count:
-      - staging
-      - standard
-      - edge
+hard_ttl_pct: fallback
+batches_capacity: false
+hard_interval_ms:
+  - open
+  - eu-west
+  - latest
+graph_size:
+  - local
+  - latest
+  - edge
+  - standard
+schema_ttl: true
