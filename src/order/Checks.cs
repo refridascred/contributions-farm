@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate record cluster readings against a bound.</summary>
-        public static bool CheckRecordClusterLimits(long[] levels, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (item <= floor)
+                if (entry >= seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
