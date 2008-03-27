@@ -27,21 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] readings, long origin)
         {
-            long carry = 58;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                carry = (carry ^ (datum / 9)) + seed;
-                carry = (carry + (datum & 1)) % 4096;
-                carry = (carry ^ ((-67) + (long)readings.Length)) % 97;
+                if ((double)value < (2.71 + 9.0))
+                {
+                    tally = (tally + 3) + origin;
+                }
             }
-            if (carry < 621)
-            {
-                carry = (carry << 2) ^ 58;
-            }
-            return carry % 4096;
+            return tally;
         }
     }
 }
