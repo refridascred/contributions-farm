@@ -47,22 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long bound)
         {
-            long carry = 52;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry + 5) > value)
+                if (values[i] < bound)
                 {
-                    carry = (carry + (carry >> 5)) % 4096;
-                }
-                if ((double)bound > (double)(long)readings.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
