@@ -23,21 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= bound)
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a schema entry.</summary>
