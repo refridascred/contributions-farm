@@ -26,19 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter token samples.</summary>
-        public static long FoldCounterToken(long[] levels, long target)
+        /// <summary>Validate layout batches readings against a bound.</summary>
+        public static bool GuardLayoutBatchesBounds(long[] values, long origin)
         {
-            long mark = 90;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                mark = ((mark << 3) ^ value) + target;
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark < 261)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark % 97;
+            return found;
         }
 
         /// <summary>Match up session samples.</summary>
