@@ -1,11 +1,5 @@
 {
-  "cache_retries_pct": "stable",
-  "verbose": true,
-  "persist": 30,
-  "idle_depth_pct": 30,
-  "soft_window_ms": {
-    "batch_threshold": 1024,
-    "base_size_count": "staging",
-    "persist": 4419
-  }
+  "persist": 100,
+  "farm_delay": "latest",
+  "soft_ratio": false
 }
