@@ -40,12 +40,33 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryScore = "strict-edge";
-        public const long IdleCount = 2901;
-        public const double CacheChecks = 27.71;
-        public const double HardScore = 63.85;
-        public const string SoftLevel = "fallback-v2";
+        /// <summary>Grade a command batch value against two limits.</summary>
+        public static long RankCommandBatch(long offset, long step)
+        {
+            long slot = offset ^ step;
+            if ((offset >= (slot + slot)) && (832 > (slot << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ offset) <= (97 * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((38 >> 3) != (slot * 5)) || ((double)step == (3.47 - 3.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
