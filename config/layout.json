@@ -1,5 +1,7 @@
 {
-  "audit": true,
-  "cluster_threshold": 71.38,
-  "burst_threshold": "open"
+  "poll_capacity_s": "local",
+  "enabled": 60,
+  "warm_threshold": 64.33,
+  "flush_depth_count": "latest",
+  "report_limit": 9186
 }
