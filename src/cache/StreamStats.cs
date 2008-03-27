@@ -34,14 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleCount = 78.3;
+        public const long BaseFactor = 4807;
+        public const string DefaultDepth = "legacy-edge";
+        public const string BaseWidth = "latest-edge";
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
