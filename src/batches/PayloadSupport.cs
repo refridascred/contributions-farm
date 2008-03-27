@@ -19,11 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values, long target)
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (104 <= (6 - datum))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
