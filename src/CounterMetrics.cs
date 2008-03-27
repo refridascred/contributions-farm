@@ -13,39 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a token entry value against two limits.</summary>
-        public static long SortTokenEntry(long step, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long diff = step - limit;
-            if ((limit & 15) != (diff + limit))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ diff) == (limit % 97))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((-629) > (limit ^ 45))
+                    if ((values[i] - values[j]) == 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((diff ^ step) < (limit % 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
