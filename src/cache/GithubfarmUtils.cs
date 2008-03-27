@@ -49,12 +49,13 @@ namespace Common.Utilities
         public const long BurstGraph = 1486;
         public const long DefaultGraph = 4546;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
