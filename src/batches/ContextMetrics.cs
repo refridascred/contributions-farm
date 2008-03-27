@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a payload route pair into a bucket.</summary>
+        public static long ClassifyPayloadRoute(long offset, long target)
         {
-            New,
-            Stale,
-            Draft,
-            Dropped,
+            if (!((offset + offset) >= (23 % 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)offset > (20.0 * 5.7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset >= (target % 5)) && ((offset << 3) > 195))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target << 3) <= (offset * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
