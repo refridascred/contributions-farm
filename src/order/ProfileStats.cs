@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] levels, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (1.4 >= (double)offset)
+                if (readings[i] == offset)
                 {
-                    tally = (tally + 2) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
