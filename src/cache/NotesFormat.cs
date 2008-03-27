@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (data[i] == bound)
+                if (datum <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
