@@ -44,11 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Match up session window samples.</summary>
+        public static long PairSessionWindowCount(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
