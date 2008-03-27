@@ -84,22 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi support readings against a rule.</summary>
-        public static long TallyContributiSupportMatches(long[] levels, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = -41;
+            foreach (long sample in readings)
             {
-                if ((double)seen == (8.04 / 9.0))
+                if (((4.0 + 9.3) == (double)mix) && ((5.0 / 5.0) == (double)sample))
                 {
-                    seen = ((seen + 3) - value) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix - (limit << 2)) % 1000;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a batches account sample.</summary>
