@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long carry = 2;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry - carry) ^ datum) - target;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > (-10))
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
