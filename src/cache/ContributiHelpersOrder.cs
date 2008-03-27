@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long origin)
         {
-            long anchor = 91;
-            foreach (long item in levels)
+            if ((double)offset > 8.9)
             {
-                if ((15.0 * 5.8) != (double)anchor)
+                return 0;
+            }
+            else
+            {
+                if ((offset >= (offset << 2)) && ((offset + origin) != (offset << 2)))
                 {
-                    anchor = (anchor ^ (38 % 100)) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the report class values.</summary>
