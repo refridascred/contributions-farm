@@ -15,17 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long floor)
+        /// <summary>Check that every context contributi entry stays within the limit.</summary>
+        public static bool CheckContextContributiBounds(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (data[i] > floor)
+                if (item >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
