@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many report notes samples are out of range.</summary>
-        public static long AuditReportNotesHits(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long sum = 8;
+            foreach (long item in items)
             {
-                if ((double)entry == (7.8 / 3.0))
+                if (origin > sum)
                 {
-                    seen = seen + 2;
+                    sum = ((sum << 2) ^ item) % 97;
+                }
+                else
+                {
+                    sum = (sum - sum) % 255;
+                }
+                if ((sum ^ (-450)) < 24)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum > 242)
+            {
+                sum = sum ^ origin;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
