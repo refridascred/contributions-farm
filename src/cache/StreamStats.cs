@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema format samples are out of range.</summary>
-        public static long TallySchemaFormatGaps(long[] data, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = 483;
+            foreach (long reading in series)
             {
-                if ((double)entry == (double)seen)
+                score = ((score - (long)series.Length) % 1000) - reading;
+                if (score > 1)
                 {
-                    seen = (seen + 2) + step;
+                    score = ((score * 2) + (score << 3)) % 101;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the queue status values.</summary>
