@@ -46,17 +46,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (seed < (766 ^ limit))
             {
-                if (readings[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if (!((limit >> 2) < (limit - seed)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
