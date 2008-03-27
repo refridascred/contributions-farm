@@ -11,13 +11,31 @@ namespace Common.Utilities
         public const long LimitSize = 2996;
         public const long SoftContext = 3015;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long bound)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
+            if (((-4) >= (bound + (-296))) && ((2.0 + 8.28) < (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound / 2) >= offset) && ((3.3 - 5.4) > (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset >> 5) > (offset + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a format reading by value.</summary>
