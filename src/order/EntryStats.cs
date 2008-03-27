@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] readings, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((limit / 6) <= limit)
+                if (item > origin)
                 {
-                    result = ((result * 3) + (limit / 8)) % 1000;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
