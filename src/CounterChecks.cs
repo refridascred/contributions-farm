@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
-        public static bool VerifyPayloadMetricsBounds(long[] levels, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= seed)
+                if (offset <= (offset >> 5))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + ((-23) * 3)) % 255;
+                    carry = carry - ((long)i >> 1);
                 }
+                carry = (carry ^ (16 + carry)) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
