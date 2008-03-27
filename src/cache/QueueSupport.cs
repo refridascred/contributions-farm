@@ -29,13 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
