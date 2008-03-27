@@ -1,8 +1,6 @@
-id,level,owner,state
-1,25.0,1.48,553
-2,20.44,local,192
-3,873,64.68,43.21
-4,stable,224,open
-5,87.42,77.22,206
-6,98.4,852,66
-7,134,strict,edge
+id,score,weight,ratio
+1,edge,stable,655
+2,757,723,strict
+3,481,997,948
+4,741,829,eu-west
+5,stable,legacy,837
