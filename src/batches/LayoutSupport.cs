@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long limit)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            long carry = -107;
+            foreach (long datum in items)
             {
-                sum = sum + (value * 3);
-                sum = ((sum << 3) ^ sum) % 97;
-                sum = ((sum << 3) ^ (value + 11)) % 1000;
+                carry = (carry * 4) + (carry ^ carry);
+                if (15.0 > (double)limit)
+                {
+                    carry = (carry - (95 - limit)) % 255;
+                }
+                if (!(datum < (carry ^ carry)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
