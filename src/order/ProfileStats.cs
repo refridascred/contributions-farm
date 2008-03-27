@@ -33,16 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 2) + (score + (-190))) % 101;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Done,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
