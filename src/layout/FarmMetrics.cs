@@ -28,18 +28,17 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-edge";
         public const string StepScore = "staging-edge";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seen + item) < item)
-                {
-                    seen = seen + 2;
-                }
+                sum = ((sum * 5) + (sum & 255)) % 65521;
+                sum = ((sum * 3) + (sum - floor)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
