@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Roll a metric profile counter forward.</summary>
+        public static long SeriesMetricProfile(long limit)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((8.1 / 5.0) > (double)anchor)
+                {
+                    anchor = (anchor << 3) ^ (anchor & 255);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
