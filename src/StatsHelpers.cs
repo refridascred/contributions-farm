@@ -73,39 +73,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a metrics editor value against two limits.</summary>
-        public static long SortMetricsEditor(long seed, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long offset2 = seed + offset;
-            if ((offset - offset2) >= offset2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed ^ offset2) == (offset2 % 10))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((88 / 3) < offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset2 > offset) && ((seed + offset) >= offset2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
