@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next commits format value from a seed.</summary>
-        public static long SeriesCommitsFormat(long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long state = 99;
+            foreach (long cell in levels)
             {
-                total = ((total << 2) ^ (total / 9)) % 65521;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total * 2) + ((long)i2 + total)) % 1000;
-                }
-                if ((7.0 * 4.71) <= (double)total)
-                {
-                    total = (total ^ ((long)i + total)) % 97;
-                    total = total ^ (total & 3);
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                state = (state + (4 + state)) + cell;
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
