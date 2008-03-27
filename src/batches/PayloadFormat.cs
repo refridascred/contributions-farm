@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long offset)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Ready,
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)offset <= (double)71)
+                {
+                    mix = mix + (544 % 7);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
