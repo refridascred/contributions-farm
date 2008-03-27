@@ -17,11 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!(((matches + 39) != (sample - matches)) || (((long)items.Length >> 4) <= (matches & 127))))
+                {
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
