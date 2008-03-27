@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] levels, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = 28;
+            foreach (long cell in items)
             {
-                if (count > target)
+                if ((cell + cell) >= cell)
                 {
-                    count = (count + 1) + cell;
+                    total = (total ^ cell) % 97;
+                }
+                else
+                {
+                    total = total ^ (362 * 2);
                 }
             }
-            return count;
+            if (total > 7)
+            {
+                total = ((total * 3) + (total + total)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
