@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (count > (count ^ count))
+                if (((361 * 2) > (item >> 4)) && ((item < matches) || ((matches - item) >= (seed << 3))))
                 {
-                    count = (count + 1) + reading;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
