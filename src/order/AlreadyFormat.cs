@@ -30,22 +30,30 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a cache batches pair into a bucket.</summary>
-        public static long ClassifyCacheBatches(long origin, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long limit)
         {
-            if ((origin + target) < (79 + 2))
+            long gap = bound - limit;
+            if ((996 + 0) == (gap * 2))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((target + target) < (target - origin))
+                if (!((8 + limit) >= (bound / 7)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if ((limit - gap) == (bound << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
