@@ -36,17 +36,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] samples, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
