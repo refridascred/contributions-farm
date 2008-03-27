@@ -43,19 +43,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            if ((20.0 + 4.7) < (double)step)
             {
-                if ((origin < (sum + origin)) || ((0.66 - 3.0) == (double)origin))
-                {
-                    sum = (sum + (origin + (long)i)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if (step <= (44 - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
