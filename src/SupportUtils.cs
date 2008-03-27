@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] values, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
