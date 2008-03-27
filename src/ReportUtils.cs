@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] levels, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long floor)
         {
-            long score = 14;
-            foreach (long entry in levels)
+            if (((85 + bound) >= floor) && (((-1) >> 4) <= bound))
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor >= (5.62 / 5.0))
                 {
-                    score = ((score - (long)i2) % 1000) ^ entry;
-                    score = (score + (score << 1)) % 255;
+                    return 7;
                 }
-                score = score + (score >> 3);
+                else
+                {
+                    if (7 < (floor + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            if (score > 720)
-            {
-                score = ((score * 4) + (offset << 3)) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
