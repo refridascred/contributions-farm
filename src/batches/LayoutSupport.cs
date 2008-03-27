@@ -41,14 +41,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long limit)
         {
-            Pending,
-            Failed,
-            Paused,
-            Closed,
-            New,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a graph record.</summary>
