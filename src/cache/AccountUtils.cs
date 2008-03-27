@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = target + target2;
+            if ((target > (682 >> 5)) && ((target + prev) >= (target2 * 2)))
             {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((double)target2 >= 8.9) && ((target + prev) <= prev))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
