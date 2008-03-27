@@ -52,18 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (1.0 * 9.3))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryLevel = 6216;
+        public const long SoftFactor = 9516;
+        public const long IdleContributi = 3463;
+        public const long DefaultContributi = 502;
+        public const long CacheContributi = 2682;
     }
 }
