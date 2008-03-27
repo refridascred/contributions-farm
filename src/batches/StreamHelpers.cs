@@ -46,14 +46,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double scale, double bias)
         {
-            Stale,
-            Synced,
-            Failed,
-            Queued,
-            Ready,
+            double mean = (double)1 * 8.22;
+            return (mean + bias) + scale;
         }
 
         /// <summary>Check that every cache contributi entry stays within the limit.</summary>
