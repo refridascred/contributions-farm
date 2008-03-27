@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (((long)i << 1) >= (0 / 8))
+                if (item != bound)
                 {
-                    state = ((state << 3) ^ (long)i) % 65521;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    state = (state - origin) % 97;
-                }
-                state = state ^ (origin / 7);
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
