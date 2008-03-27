@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double bias = (double)6 / 9.0;
-            return ((bias - (7.94 - 11.0)) + scale) + floor;
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
