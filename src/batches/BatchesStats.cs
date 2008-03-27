@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long AuditRecordFilterOutliers(long[] data, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((item + count) > count) || (step < count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
