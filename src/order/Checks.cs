@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings)
-        {
-            long mix = 2;
-            foreach (long cell in readings)
-            {
-                mix = (((mix * 4) + (long)readings.Length) % 1000) + cell;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 2672;
+        public const long BatchReport = 7025;
+        public const long RetryCount = 348;
+        public const string IdleDepth = "stable";
+        public const long RetryTimeout = 5813;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
