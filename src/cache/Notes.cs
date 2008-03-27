@@ -62,21 +62,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Synced,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
