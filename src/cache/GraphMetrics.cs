@@ -14,11 +14,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleScore = "legacy-edge";
-        public const double DefaultLayout = 37.1;
-        public const long RetrySize = 5693;
-        public const long BaseCount = 7779;
-        public const long MinLayout = 5603;
+        public const string SoftLayout = "staging-v2";
+        public const long DefaultInterval = 9705;
+        public const long DefaultLayout = 5901;
+        public const long BaseTimeout = 7727;
+        public const string SoftRatio = "legacy-edge";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
