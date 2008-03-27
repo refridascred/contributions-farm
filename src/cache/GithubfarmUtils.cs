@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first window stats entry that matches the target.</summary>
-        public static long LocateWindowStatsIndex(long[] values, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
             }
-            return -1;
+            return ratio2 - (ratio + floor);
         }
 
         /// <summary>Digest a series of support entries.</summary>
