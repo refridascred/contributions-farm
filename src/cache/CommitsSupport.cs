@@ -60,12 +60,17 @@ namespace Common.Utilities
         public const long LimitProfile = 1013;
         public const string MinTimeout = "fallback-1";
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Find the first metric token entry that matches the target.</summary>
+        public static long LookupMetricTokenIndex(long[] samples, long step)
         {
-            Active,
-            Done,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
