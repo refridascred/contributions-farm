@@ -1,13 +1,4 @@
 # entry settings
-soft_window_ms: 1024
-sync_ttl_pct:
-  commits_retries:
-    - 340
-    - 236
-    - 195
-    - 428
-  default_interval_ms: open
-  verbose: 100
-burst_depth_s: 73
-warm_depth: false
-strict: primary
+flush_interval_ms: false
+default_timeout_pct: stable
+enabled: true
