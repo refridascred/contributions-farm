@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const string LimitDepth = "primary-1";
         public const string RetryCluster = "legacy";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long mix = 413;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(sample > (sample << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (298 ^ sample)) % 4096;
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 3) + mix) % 101;
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
