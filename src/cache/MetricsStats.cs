@@ -43,13 +43,11 @@ namespace Common.Utilities
         public const long IdleTools = 800;
         public const long WindowTools = 7338;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "stable-1";
+        public const double RetryFactor = 67.24;
+        public const long StepFarm = 7718;
+        public const double CacheWidth = 49.57;
+        public const string RetryFarm = "latest-edge";
     }
 }
