@@ -36,21 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (477 > (matches >> 5))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
