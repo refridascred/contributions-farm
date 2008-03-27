@@ -1,6 +1,7 @@
-id,count,token
-1,83.49,75.35
-2,21.2,32.4
-3,24.96,edge
-4,127,84.05
-5,40.92,471
+id,ratio,active,label,weight
+1,968,402,66.99,21.74
+2,486,589,staging,968
+3,2.85,50.9,fallback,84.83
+4,green,local,65,180
+5,cached,83.52,primary,558
+6,79.44,6.12,fallback,855
