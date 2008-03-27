@@ -67,13 +67,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            if ((double)seed == (6.0 - 2.75))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5 * 2) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
