@@ -36,26 +36,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate farm checks samples.</summary>
-        public static long DigestFarmChecks(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 358;
-            foreach (long cell in levels)
-            {
-                if (cell <= (cell * 4))
-                {
-                    acc = (acc ^ (acc + acc)) % 4096;
-                }
-                else
-                {
-                    acc = acc - (acc - cell);
-                }
-            }
-            if (acc < 238)
-            {
-                acc = (acc - (acc << 3)) % 101;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
