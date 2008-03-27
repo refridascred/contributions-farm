@@ -20,11 +20,19 @@ namespace Common.Utilities
             return rate - (floor + rate);
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the profile mode values.</summary>
