@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string CacheRatio = "local-edge";
         public const double MinRatio = 39.82;
 
-        /// <summary>Audit support channel readings against a rule.</summary>
-        public static long CountSupportChannelOutliers(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ cell) <= (matches ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate route queue readings against a bound.</summary>
