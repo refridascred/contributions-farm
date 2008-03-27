@@ -1,5 +1,26 @@
 # entry settings
-counter_interval: strict
-stats_ratio: latest
-tools_size: false
-soft_depth_s: standard
+stream_threshold: legacy
+verbose: standard
+flush_timeout_count:
+  cache_limit_count: 2753
+  contributi_threshold:
+    soft_ratio_ms: 26
+    compress: 470
+    max_window_count: 100
+    batch_ttl: 60
+  batch_interval_s: 60
+  cache_retries: 80.47
+  enabled: fallback
+min_delay_ms:
+  cache_ttl: 97
+  batch_capacity:
+    format_depth: 25.63
+    readonly:
+      - cached
+      - primary
+      - local
+    retry_depth: 100
+    warm_size_s: legacy
+    cache_ratio_pct: true
+  dry_run: standard
+audit: open
