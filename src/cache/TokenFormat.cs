@@ -37,11 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinSpan = "local-1";
+        public const long MaxToken = 5197;
+        public const long SoftToken = 2810;
+        public const double IdleToken = 14.43;
+        public const string WindowToken = "alpha-v2";
     }
 }
