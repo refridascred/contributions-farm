@@ -14,38 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels, long target)
         {
-            if (66 >= (origin + origin))
+            long carry = 2;
+            foreach (long datum in levels)
             {
-                return 1;
+                carry = ((carry - carry) ^ datum) - target;
             }
-            else
+            if (carry > (-10))
             {
-                if (((double)origin >= (5.43 * 13.0)) || (floor >= (235 / 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)(-6) > (double)origin) || (63 >= (floor / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.8 / 9.0) < (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                carry = carry ^ carry;
             }
+            return carry % 97;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
