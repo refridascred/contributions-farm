@@ -1,5 +1,4 @@
 # githubfarm settings
-stats_threshold: 21.83
-flush_timeout_pct: edge
-channel_window: false
-batches_ttl: 24.26
+min_retries_count: 250
+burst_ttl: 98.98
+hard_limit: false
