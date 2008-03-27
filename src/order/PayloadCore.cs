@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain;
+            if (rate < (double)515)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (double)4;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (offset * 7.8)) - (double)(long)i;
+            }
+            return rate + (offset / 5.0);
         }
 
         /// <summary>Rank command input into a small class.</summary>
