@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a notes stream counter forward.</summary>
-        public static long RollNotesStream(long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((acc > (long)i) || ((long)i > seed))
-                {
-                    acc = acc ^ ((long)i & 3);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
