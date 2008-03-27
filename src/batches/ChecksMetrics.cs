@@ -19,39 +19,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            long gap = origin ^ offset;
-            if (((origin % 24) == (gap & 7)) || (4 > (origin >> 3)))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) <= (698 - origin))
+                if ((count * 5) != (count + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset >> 2) <= (gap + origin)) && ((double)offset != (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin > 14.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a notes reading.</summary>
