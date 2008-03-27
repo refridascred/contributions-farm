@@ -1,5 +1,14 @@
 {
-  "min_threshold_s": true,
-  "hard_window_pct": 60,
-  "batch_ttl": 92.02
+  "batch_limit_pct": 91.74,
+  "warm_threshold": 72.27,
+  "dry_run": [299, 239, 258, 389],
+  "verbose": {
+    "base_ttl_pct": 37.06,
+    "flush_limit_s": 19.77,
+    "batch_size": 72,
+    "default_limit": true,
+    "strict": "cached"
+  },
+  "cache_size_ms": 94.56,
+  "idle_retries": ["staging", "blue", "strict", "primary"]
 }
