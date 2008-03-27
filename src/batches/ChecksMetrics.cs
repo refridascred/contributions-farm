@@ -56,39 +56,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account context readings.</summary>
-        public static long TallyAccountContext(long[] data, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long anchor = 99;
-            foreach (long value in data)
-            {
-                if ((801 & 15) <= (anchor & 7))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + value;
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                if (value >= (82 >> 1))
-                {
-                    anchor = anchor - (anchor / 5);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (long)data.Length) % 97;
-                }
-                if ((value + anchor) <= (offset & 127))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-59))
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor % 97;
+            Done,
+            Failed,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a cluster options.</summary>
