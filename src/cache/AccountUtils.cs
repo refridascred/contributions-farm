@@ -30,15 +30,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            double weight = 2.0;
-            if (weight > (weight + span))
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight + (bias / 3.0);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return weight + weight;
+            return sum;
         }
     }
 }
