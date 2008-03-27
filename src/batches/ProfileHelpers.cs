@@ -26,22 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window tools samples.</summary>
-        public static long DigestWindowTools(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 311;
-            foreach (long value in series)
-            {
-                if ((6.0 / 7.0) == (double)value)
-                {
-                    total = (total + (47 * 3)) % 101;
-                }
-                if (((long)series.Length >> 5) != (total - total))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
