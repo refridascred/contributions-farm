@@ -29,19 +29,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double offset)
-        {
-            double bias2 = (double)(5 - 548);
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - offset) + (double)(long)i;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheRatio = "fallback-1";
+        public const long WindowBatches = 8554;
+        public const double BurstFactor = 52.65;
     }
 }
