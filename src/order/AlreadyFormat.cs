@@ -30,16 +30,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next window route value from a seed.</summary>
-        public static long DeriveWindowRoute(long offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total + total) % 4096;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate window record readings against a bound.</summary>
