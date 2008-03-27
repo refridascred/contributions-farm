@@ -53,12 +53,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Look up the position of a batches account sample.</summary>
+        public static long SeekBatchesAccountIndex(long[] values, long target)
         {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
