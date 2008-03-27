@@ -12,32 +12,11 @@ namespace Common.Utilities
             return ((bias - (7.94 - 11.0)) + scale) + floor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long target, long offset)
-        {
-            if (target >= (target + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ offset) <= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - offset) < (target ^ 39))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheScore = 8028;
+        public const string CacheBudget = "stable-v2";
+        public const double BurstDepth = 49.62;
+        public const string BaseCommits = "fallback";
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] levels, long offset)
