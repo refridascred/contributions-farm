@@ -29,19 +29,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two counter commits measurements.</summary>
-        public static double ProjectCounterCommits(double rate, double offset)
+        /// <summary>Iterate the command stats series from a seed.</summary>
+        public static long StepCommandStats(long step)
         {
-            double load = rate * 8.6;
-            if (load > (double)461)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                load = load + load;
+                result = (result + ((long)i - step)) % 255;
+                if ((double)step < 11.0)
+                {
+                    result = ((result * 4) + step) % 255;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - (offset - 2.4);
+            return result;
         }
     }
 }
