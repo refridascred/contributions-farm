@@ -34,18 +34,39 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] levels, long origin)
+        /// <summary>Classify a commits cluster pair into a bucket.</summary>
+        public static long GradeCommitsCluster(long step, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long delta = step + bound;
+            if (((929 ^ bound) >= (bound - bound)) || ((double)delta != (8.0 - 8.0)))
             {
-                if ((1.1 - 13.0) >= (double)hits)
+                return 2;
+            }
+            else
+            {
+                if (((delta & 7) <= (bound + delta)) || ((bound << 1) <= step))
                 {
-                    hits = ((hits + 1) ^ cell) + origin;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (delta / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step + bound) == (delta / 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two channel measurements.</summary>
