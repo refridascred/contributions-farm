@@ -14,16 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            double scale = gain;
+            if (scale < (5.0 - scale))
             {
-                mix = (mix ^ (3 ^ 26)) % 1000;
-                mix = ((mix * 3) + (long)i) % 97;
+                scale = (scale + 6.0) - span;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 9.0) - (double)(long)i;
+            }
+            return scale - (scale * 3.74);
         }
 
         /// <summary>Roll a queue format counter forward.</summary>
