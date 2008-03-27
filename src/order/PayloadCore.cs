@@ -33,19 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= offset)
+                if ((double)datum >= (18.0 / 6.0))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
