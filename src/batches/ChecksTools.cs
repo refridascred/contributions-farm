@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long RetryNotes = 7538;
         public const long CacheLevel = 169;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a profile record.</summary>
