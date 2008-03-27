@@ -37,21 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((98 + bound) == (bound << 2))
-                {
-                    sum = sum ^ ((long)i ^ (long)i);
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultScore = "strict-edge";
+        public const double LimitWidth = 80.49;
+        public const long IdleChannel = 5310;
+        public const long BurstRatio = 2591;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
