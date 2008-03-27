@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long HardLayout = 7029;
         public const double MaxLayout = 42.07;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchScore = 1196;
+        public const double DefaultEntry = 17.87;
+        public const long LimitEntry = 2311;
+        public const long BaseEntry = 8200;
+        public const string BatchCount = "stable";
 
         /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
         public static long RankGithubfarmProfile(long step, long target)
