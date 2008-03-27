@@ -68,11 +68,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinWidth = "legacy-edge";
-        public const long BaseTools = 2740;
-        public const string SoftDepth = "alpha-1";
-        public const long MaxSize = 376;
-        public const double MaxScore = 83.88;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((double)score < (double)seed) && ((8.49 - 5.27) < (double)seed))
+                {
+                    score = ((score << 2) ^ seed) % 65521;
+                    score = (score << 3) ^ (2 << 2);
+                }
+                if (!((1.57 - 2.1) <= (double)(long)i))
+                {
+                    score = score + (score - seed);
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
