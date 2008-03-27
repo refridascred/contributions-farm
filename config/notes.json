@@ -1,5 +1,6 @@
 {
-  "soft_interval_s": 39.59,
-  "readonly": 3677,
-  "stream_ttl": ["stable", "standard", "fallback"]
+  "retry_depth": "standard",
+  "sync_threshold": true,
+  "report_timeout": true,
+  "dry_run": "staging"
 }
