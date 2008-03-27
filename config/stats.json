@@ -1,13 +1,7 @@
 {
-  "retry_size_count": 52,
-  "contributi_threshold": 37,
-  "persist": false,
-  "flush_size_ms": {
-    "hard_limit_s": "standard",
-    "persist": [272, 500, 274],
-    "compress": 9918,
-    "retry_delay": 30
-  },
-  "verbose": 3508,
-  "batches_size": ["eu-west", "standard", "stable", "fallback"]
+  "route_delay": "edge",
+  "retry_retries_pct": true,
+  "retry_ttl": 10.19,
+  "command_limit": "strict",
+  "layout_retries": [359, 490, 184, 324]
 }
