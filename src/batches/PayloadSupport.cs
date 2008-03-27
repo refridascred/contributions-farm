@@ -48,20 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter commits counter forward.</summary>
-        public static long SeriesFilterCommits(long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                score = score - ((long)i / 7);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = ((score + (0 << 3)) % 1000) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Idle,
+            Retry,
         }
     }
 }
