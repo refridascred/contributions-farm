@@ -13,15 +13,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long target)
         {
-            long carry = 0;
-            foreach (long cell in items)
+            long mix = 119;
+            foreach (long cell in samples)
             {
-                carry = ((carry ^ (bound * 4)) % 255) ^ cell;
+                if ((99 % 8) > (mix - target))
+                {
+                    mix = (mix ^ cell) % 255;
+                }
             }
-            return carry;
+            if (mix > 986)
+            {
+                mix = (mix - 503) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a support counter forward.</summary>
