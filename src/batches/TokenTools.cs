@@ -22,17 +22,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitBudget = "legacy-edge";
+        public const long MaxReport = 470;
+        public const double MinLevel = 16.69;
     }
 }
