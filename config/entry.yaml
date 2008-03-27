@@ -1,15 +1,22 @@
 # entry settings
-retry_size: cached
-tools_ratio: 68.09
-warm_window_s: edge
-cache_window:
-  commits_timeout:
-    - 200
-    - 473
-    - 459
-  token_capacity: staging
-  soft_threshold: true
-  readonly: blue
-  cache_delay: false
-  report_ttl: latest
-burst_interval_pct: 84
+default_size:
+  notes_size: 34.34
+  soft_threshold:
+    window_interval: 3678
+    enabled: standard
+    strict: 8880
+    max_size: cached
+    soft_depth_s:
+      - 273
+      - 166
+  min_interval: 3338
+  base_delay_s:
+    retry_size:
+      - 268
+      - 153
+    editor_interval: 15.53
+    channel_ttl: 5619
+    base_threshold: 47
+metrics_threshold: 33.41
+retry_limit: true
+base_depth_pct: 23
