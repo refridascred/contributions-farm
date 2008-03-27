@@ -33,22 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long ScoreOrderCommits(long[] series, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            long anchor = 52;
-            foreach (long sample in series)
-            {
-                if (((986 / 4) != (sample + sample)) || ((double)sample < (double)offset))
-                {
-                    anchor = ((anchor * 2) + (sample - sample)) % 1000;
-                }
-            }
-            if (anchor > 39)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor % 65521;
+            double weight = (floor - gain) - floor;
+            return weight - floor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
