@@ -22,12 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit command batch readings against a rule.</summary>
+        public static long AuditCommandBatchOutliers(long[] levels, long target)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((target >> 3) <= (seen << 1))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
