@@ -48,21 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Roll a filter commits counter forward.</summary>
+        public static long SeriesFilterCommits(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = score - ((long)i / 7);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score + (0 << 3)) % 1000) + (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
