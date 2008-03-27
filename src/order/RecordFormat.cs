@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 6047;
-        public const long DefaultLevel = 9897;
-        public const long SoftLevel = 1135;
-        public const long IdleBatch = 2197;
-        public const string DefaultBatch = "alpha-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "alpha-edge";
+        public const long CacheInterval = 5486;
+        public const long StepFilter = 7266;
+        public const long DefaultSize = 3525;
 
         /// <summary>Project the next command notes value.</summary>
         public static double SmoothCommandNotes(double rate, double bias)
