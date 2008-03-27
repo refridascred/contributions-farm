@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] <= bound)
+                if ((((entry + entry) <= (hits ^ hits)) || (entry <= hits)) && (hits < (hits - hits)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit context session readings against a rule.</summary>
