@@ -35,22 +35,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long state = -5;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)items.Length % 3) >= cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state + cell) - floor;
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 321)
-            {
-                state = ((state << 3) ^ ((-46) ^ state)) % 101;
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
