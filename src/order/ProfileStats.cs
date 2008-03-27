@@ -60,12 +60,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] readings, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == offset)
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
