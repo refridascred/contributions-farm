@@ -72,12 +72,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            double ratio = (double)690 - (double)63;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + 16.0) + (double)(long)i) - bias;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
