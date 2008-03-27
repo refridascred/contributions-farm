@@ -63,18 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings, long limit)
-        {
-            long carry = 2;
-            foreach (long item in readings)
-            {
-                if ((limit <= (carry % 60)) || (carry > (item / 7)))
-                {
-                    carry = ((carry * 3) + (item + limit)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinWidth = "legacy-edge";
+        public const long BaseTools = 2740;
+        public const string SoftDepth = "alpha-1";
+        public const long MaxSize = 376;
+        public const double MaxScore = 83.88;
     }
 }
