@@ -65,23 +65,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double bias = 3.5;
-            if (bias <= (bias * 3.0))
-            {
-                bias = (bias - (1.8 - bias)) + floor;
-            }
-            else
-            {
-                bias = bias + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (6.08 + scale)) + (double)(long)i;
-            }
-            return bias + (double)336;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
