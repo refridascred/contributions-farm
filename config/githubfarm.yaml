@@ -1,5 +1,9 @@
 # githubfarm settings
-persist: blue
-flush_threshold_count: legacy
-idle_ratio: edge
-min_retries_s: staging
+batch_threshold: false
+soft_interval: 90.51
+warm_depth_pct: false
+session_window: 52
+burst_window_count:
+  - latest
+  - staging
+  - eu-west
