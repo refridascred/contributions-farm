@@ -39,15 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double span)
+        /// <summary>Locate a context cluster reading by value.</summary>
+        public static long SeekContextClusterIndex(long[] levels, long limit)
         {
-            double rate = (double)98 - span;
-            if (rate > 1.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (double)263;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (weight / 5.0);
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
