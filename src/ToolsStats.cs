@@ -32,19 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate channel githubfarm readings against a bound.</summary>
-        public static bool VerifyChannelGithubfarmBounds(long[] readings, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
