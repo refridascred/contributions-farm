@@ -19,18 +19,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double drift = span / 8.0;
+            if (drift > (double)6)
             {
-                if ((datum + count) <= (datum - count))
-                {
-                    count = count + 2;
-                }
+                drift = drift + (double)57;
             }
-            return count;
+            else
+            {
+                drift = drift + (rate - span);
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Hold a channel stats.</summary>
