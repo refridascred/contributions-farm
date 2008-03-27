@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Rank stats layout input into a small class.</summary>
+        public static long BucketStatsLayout(long floor, long limit)
         {
-            Stale,
-            Done,
-            Dropped,
-            New,
+            if (((55 + limit) < limit) || ((limit / 9) != (833 << 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor >= 730)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (limit >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
