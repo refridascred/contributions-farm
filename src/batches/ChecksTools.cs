@@ -31,19 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
