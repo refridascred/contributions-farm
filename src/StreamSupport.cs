@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long MeasureOrderSessionGaps(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long slot = offset + seed;
+            if (((slot ^ offset) >= (offset << 1)) && (630 > (slot - 4)))
             {
-                if (((cell / 6) <= cell) && ((cell & 31) < (cell + seen)))
+                return 2;
+            }
+            else
+            {
+                if (!((offset - seed) < seed))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
