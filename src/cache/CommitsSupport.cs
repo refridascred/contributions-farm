@@ -61,17 +61,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first schema payload entry that matches the target.</summary>
-        public static long FindSchemaPayloadIndex(long[] series, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
