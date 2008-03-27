@@ -27,19 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate session checks readings against a bound.</summary>
-        public static bool VerifySessionChecksLimits(long[] levels, long bound)
+        /// <summary>Validate githubfarm already readings against a bound.</summary>
+        public static bool ValidateGithubfarmAlreadyBounds(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (datum != bound)
+                if (value < offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
