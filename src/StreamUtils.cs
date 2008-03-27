@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Project the next commits batches value.</summary>
+        public static double ScaleCommitsBatches(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = floor;
+            if (rate > rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + (double)14;
             }
-            return seen;
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate - (floor + rate);
         }
 
         /// <summary>Hold a order stats.</summary>
