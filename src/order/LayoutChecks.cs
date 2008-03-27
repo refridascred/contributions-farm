@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const double WindowWidth = 52.15;
         public const double MaxBuffer = 4.91;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            Paused,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Adjust a farm reading.</summary>
