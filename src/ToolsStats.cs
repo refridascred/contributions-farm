@@ -57,14 +57,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double bias, double floor)
         {
-            Failed,
-            Paused,
-            Ready,
-            Locked,
-            Pending,
+            double scale = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale + (floor / 3.0);
         }
     }
 }
