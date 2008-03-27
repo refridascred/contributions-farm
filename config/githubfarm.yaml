@@ -1,18 +1,5 @@
 # githubfarm settings
-dry_run:
-  entry_depth: 6
-  compress: true
-  min_limit_count:
-    - fallback
-    - cached
-    - local
-  retry_interval_count: 500
-  idle_timeout: 77
-burst_ratio_ms: true
-sync_depth_ms: blue
-counter_interval:
-  - 19
-  - 254
-  - 262
-enabled: blue
-retry_threshold: true
+buffer_depth: staging
+persist: 100
+verbose: false
+audit: 21
