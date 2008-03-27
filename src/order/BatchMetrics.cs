@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long SoftOrder = 3482;
         public const string StepLevel = "fallback-1";
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            public long Stamp { get; set; }
             public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
