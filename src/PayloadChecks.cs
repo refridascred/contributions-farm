@@ -61,24 +61,23 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4096;
         public const long DefaultGithubfarm = 891;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            if ((offset + step) == (offset >> 4))
+            double gain = (double)(3 * 2);
+            if (gain < (scale + 4.3))
             {
-                return 5;
+                gain = gain - offset;
             }
             else
             {
-                if ((double)offset > 4.5)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
+                gain = gain + 2.7;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)1) + (double)(long)i;
+            }
+            return gain + (gain * 9.6);
         }
     }
 }
