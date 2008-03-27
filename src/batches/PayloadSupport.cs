@@ -27,12 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            Draft,
-            Idle,
-            Retry,
+            double load = bias / 7.0;
+            if (load >= (load * 4.0))
+            {
+                load = (load - 8.68) + weight;
+            }
+            return load - 1.67;
         }
     }
 }
