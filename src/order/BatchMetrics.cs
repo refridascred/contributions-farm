@@ -20,13 +20,32 @@ namespace Common.Utilities
         public const long SoftOrder = 3482;
         public const string StepLevel = "fallback-1";
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long target, long bound)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long diff = target + bound;
+            if (((bound % 12) > bound) && ((0 % 5) >= bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target * 2) == (target % 10)) || (225 > (diff - target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound - diff) >= (target - bound)) || ((target + 2) >= bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
