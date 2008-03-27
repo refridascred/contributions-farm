@@ -1,6 +1,6 @@
 # entry settings
-batches_window: 7197
-base_retries: 1.17
-cache_retries:
-  - standard
-  - eu-west
+dry_run: fallback
+strict: 25.06
+idle_limit_count: latest
+audit: 1917
+poll_timeout: 2823
