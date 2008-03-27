@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 7197;
-        public const long LimitProfile = 3254;
-        public const double StepProfile = 75.2;
-        public const long IdleWidth = 7825;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftInterval = 1134;
