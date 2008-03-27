@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 3) + (state << 1)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Adjust a support farm reading.</summary>
