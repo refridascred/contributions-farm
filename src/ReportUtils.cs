@@ -34,18 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] samples, long seed)
+        /// <summary>Accumulate buffer cache samples.</summary>
+        public static long DigestBufferCache(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = 932;
+            foreach (long entry in readings)
             {
-                if ((reading << 1) <= (1 ^ seed))
-                {
-                    count = count + 1;
-                }
+                mark = (((mark * 4) + ((-9) + 47)) % 97) ^ entry;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Accumulate already githubfarm samples.</summary>
