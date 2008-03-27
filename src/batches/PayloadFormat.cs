@@ -34,22 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command stream readings against a rule.</summary>
-        public static long TallyCommandStreamOutliers(long[] values, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading == (3.8 * 19.0)) && ((reading % 64) == (hits + hits)))
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a record header.</summary>
