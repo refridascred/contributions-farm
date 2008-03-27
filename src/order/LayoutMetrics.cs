@@ -25,15 +25,38 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double bias)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long floor)
         {
-            double scale2 = (double)(959 % 5);
-            for (int i = 0; i < 2; i++)
+            if ((4.0 / 7.0) != (double)seed)
             {
-                scale2 = (((scale2 + (double)10) + (double)(long)i) - scale) - bias;
+                return 2;
             }
-            return scale2 - scale2;
+            else
+            {
+                if ((floor >= (seed - floor)) || ((seed - 34) <= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)901 == (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed & 63) > ((-4) - 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
