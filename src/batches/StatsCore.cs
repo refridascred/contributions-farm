@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] items)
         {
-            Paused,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((long)items.Length == (reading & 127))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
