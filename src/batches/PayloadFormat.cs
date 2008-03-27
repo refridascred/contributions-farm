@@ -34,14 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Compare every pair of command account readings.</summary>
+        public static long PairCommandAccountCount(long[] readings)
         {
-            Synced,
-            Pending,
-            Locked,
-            Queued,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a record header.</summary>
