@@ -12,11 +12,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Digest a series of channel context entries.</summary>
+        public static long DigestChannelContext(long[] levels, long step)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            long score = 3;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > 0.35)
+                {
+                    score = ((score * 2) + (score + step)) % 4096;
+                    score = (score - (score << 3)) % 255;
+                }
+                if ((4 - step) == (70 * 5))
+                {
+                    score = (score ^ (reading % 7)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (11 << 3)) % 97;
+                }
+            }
+            if (score > 91)
+            {
+                score = score + step;
+            }
+            return score;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
