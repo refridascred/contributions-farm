@@ -1,7 +1,8 @@
 {
-  "channel_capacity": true,
-  "metric_interval": [2, 276, 325],
-  "idle_capacity": 2165,
-  "sync_size_pct": "standard",
-  "default_ratio": 46.44
+  "account_threshold": "stable",
+  "batch_interval": false,
+  "batch_ratio_count": false,
+  "max_limit_s": true,
+  "readonly": "legacy",
+  "verbose": true
 }
