@@ -34,24 +34,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if ((7.4 * 5.2) < (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Failed,
+            Active,
         }
     }
 }
