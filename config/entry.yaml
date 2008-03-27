@@ -1,5 +1,6 @@
 # entry settings
-retry_limit: stable
-cache_capacity_s: 54.57
-audit: 84
-soft_delay: latest
+batches_window: 7197
+base_retries: 1.17
+cache_retries:
+  - standard
+  - eu-west
