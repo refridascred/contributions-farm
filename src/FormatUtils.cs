@@ -69,15 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double bias = weight;
-            if (bias >= 0.88)
-            {
-                bias = bias - offset;
-            }
-            return bias + offset;
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
