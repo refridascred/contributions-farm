@@ -33,22 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes order entries.</summary>
-        public static long DigestNotesOrder(long[] levels)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long acc = 1;
-            foreach (long cell in levels)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (4.0 > (double)cell)
+                if ((49 & 127) != (long)i)
                 {
-                    acc = ((acc * 3) + acc) % 255;
+                    long prev = bound;
+                    result = result ^ (prev * 4);
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            if (acc > (-18))
-            {
-                acc = (acc - 713) % 4096;
-            }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
