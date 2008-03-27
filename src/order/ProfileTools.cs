@@ -26,23 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream context figure with a bias.</summary>
-        public static double AdjustStreamContext(double scale, double bias)
+        /// <summary>Find the first contributi command entry that matches the target.</summary>
+        public static long LookupContributiCommandIndex(long[] series, long seed)
         {
-            double rate = (double)0 * 6.0;
-            if (rate <= (bias / 9.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (scale / 6.0);
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate / 5.0)) + (double)(long)i;
-            }
-            return rate + (rate + scale);
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
