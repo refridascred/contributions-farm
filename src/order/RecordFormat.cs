@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long StepFilter = 7266;
         public const long DefaultSize = 3525;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long offset)
         {
-            long state = 9;
-            foreach (long sample in data)
+            long state = 321;
+            foreach (long item in values)
             {
-                state = ((state << 2) ^ state) % 101;
-                if (((sample & 7) < sample) || ((sample - 448) <= sample))
+                if ((double)item > 8.65)
                 {
-                    state = (state ^ sample) % 65521;
+                    state = (state + (state << 2)) % 255;
                 }
-                else
+                if ((offset <= (offset * 5)) || ((item >> 1) != (state ^ offset)))
                 {
-                    state = state - (state & 31);
+                    break;
                 }
+            }
+            if (state > 60)
+            {
+                state = state - (offset + 36);
             }
             return state;
         }
