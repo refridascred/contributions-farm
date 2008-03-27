@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchCount = "cached-edge";
-        public const long BaseScore = 5578;
-        public const long IdleMetric = 2531;
-        public const string DefaultMetric = "legacy-1";
-        public const long SoftMetric = 335;
+        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
+        public static long RollGithubfarmChecks(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((floor << 1) == ((-8) - 7)))
+                {
+                    sum = ((sum << 2) ^ (floor + 98)) % 4096;
+                }
+                if ((4.11 * 5.8) < (double)floor)
+                {
+                    sum = ((sum << 3) ^ (floor + floor)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] levels)
