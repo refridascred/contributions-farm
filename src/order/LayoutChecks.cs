@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
+        public static bool ValidateBatchContributiRange(long[] samples, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (sample > floor)
                 {
-                    acc = ((acc - (1 * 5)) % 255) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Combine githubfarm profile values into a single score.</summary>
