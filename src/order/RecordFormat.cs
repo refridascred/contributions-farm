@@ -38,19 +38,12 @@ namespace Common.Utilities
             return scale - (bias * 3.93);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!!(count > 2))
-                {
-                    count = ((count + 3) ^ reading) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardRatio = 98.11;
+        public const long SoftSpan = 3855;
+        public const long BaseCount = 6308;
+        public const long BurstCount = 9425;
+        public const double LimitSpan = 5.55;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long target, long origin)
