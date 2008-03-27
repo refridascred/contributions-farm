@@ -13,13 +13,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long step, long origin)
         {
-            Dropped,
-            Pending,
-            Stale,
-            Locked,
+            long cur = step + origin;
+            if (((7.84 * 8.0) < (double)cur) && ((2.0 + 1.8) > (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step > (464 >> 1)) && (origin <= (cur * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit command stream readings against a rule.</summary>
