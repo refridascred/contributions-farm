@@ -31,12 +31,22 @@ namespace Common.Utilities
         public const long WindowFactor = 4436;
         public const double MinToken = 91.3;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of metric checks readings.</summary>
+        public static long TallyMetricChecks(long[] data, long bound)
         {
-            Dropped,
-            Active,
-            Synced,
+            long carry = 946;
+            foreach (long reading in data)
+            {
+                if (bound <= (bound << 1))
+                {
+                    carry = (carry - (bound * 5)) + reading;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
