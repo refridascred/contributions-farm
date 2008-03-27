@@ -15,13 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Roll a report command counter forward.</summary>
+        public static long StepReportCommand(long floor)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((double)floor == (2.7 + 5.0)) && ((floor + result) == (result + 70)))
+                {
+                    result = (result ^ (-4)) % 65521;
+                }
+                result = (result ^ (result - 6)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
