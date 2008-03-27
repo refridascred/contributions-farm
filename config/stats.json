@@ -1,6 +1,12 @@
 {
-  "max_limit_pct": "fallback",
-  "persist": ["local", "strict"],
-  "retry_timeout_pct": ["eu-west", "standard", "fallback", "local"],
-  "retry_capacity": "latest"
+  "poll_retries_pct": {
+    "warm_window_pct": "primary",
+    "window_retries": "strict",
+    "flush_ttl_count": 82,
+    "hard_timeout_ms": 1889,
+    "batch_capacity_ms": [85, 100],
+    "already_limit": "standard"
+  },
+  "dry_run": [217, 358],
+  "hard_size": "staging"
 }
