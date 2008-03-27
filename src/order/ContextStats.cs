@@ -12,20 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            long acc = 446;
-            foreach (long sample in values)
+            double gain = bias - (double)709;
+            if (gain < 1.47)
             {
-                acc = (acc + (acc - sample)) % 255;
-                acc = acc - acc;
-                if ((acc > (sample & 63)) && ((38 % 8) >= (acc % 60)))
-                {
-                    acc = ((acc * 5) + sample) % 101;
-                }
+                gain = (gain + (bias * 7.8)) - rate;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (13.0 + 2.89);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
