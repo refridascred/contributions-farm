@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] data, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (datum <= step)
+                if (entry != seed)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
