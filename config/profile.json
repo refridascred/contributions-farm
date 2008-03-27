@@ -1,29 +1,5 @@
 {
-  "compress": "strict",
-  "cache_ttl": "open",
-  "warm_limit_ms": {
-    "base_limit": ["local", "green"],
-    "soft_interval": false,
-    "min_window_count": "strict",
-    "persist": "open",
-    "max_window_count": {
-      "account_size": 52.07,
-      "compress": "eu-west",
-      "default_ratio": 55.88,
-      "min_limit_pct": [223, 89, 280]
-    }
-  },
-  "audit": "stable",
-  "account_threshold": {
-    "enabled": {
-      "compress": false,
-      "min_limit_count": "local",
-      "hard_capacity_s": 2
-    },
-    "poll_window_pct": [56, 16, 117, 296],
-    "entry_ttl": "strict",
-    "hard_retries": 35.21,
-    "flush_ratio": 53.54,
-    "flush_threshold_ms": ["staging", "edge"]
-  }
+  "strict": false,
+  "graph_depth": "local",
+  "soft_window_ms": "cached"
 }
