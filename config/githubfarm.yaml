@@ -1,35 +1,7 @@
 # githubfarm settings
-warm_depth: 27.15
-command_ratio: cached
-cache_retries_count:
-  - 200
-  - 232
-sync_interval_ms: 30
-batch_ttl_s:
-  contributi_depth: strict
-  flush_size: 250
-  cache_timeout_s:
-    contributi_size: local
-    enabled: 1615
-    max_depth_s: 30.66
-  min_capacity_count: fallback
-  token_threshold:
-    min_ttl_ms: true
-    soft_retries_ms: stable
-    flush_ttl_s: 72
-    soft_window_pct: 60
-    default_timeout_count: standard
-    default_window: 250
-  retry_timeout:
-    idle_timeout_count: latest
-    readonly: local
-    strict: 46.77
-    hard_timeout_s: 500
-    verbose:
-      - cached
-      - open
-      - staging
-schema_ttl:
-  - eu-west
-  - edge
-  - fallback
+sync_delay_pct:
+  - primary
+  - local
+  - standard
+strict: 58
+base_depth_s: 67.64
