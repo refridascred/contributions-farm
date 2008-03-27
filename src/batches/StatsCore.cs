@@ -55,24 +55,12 @@ namespace Common.Utilities
         public const long WindowRatio = 5411;
         public const string IdleDepth = "legacy-edge";
 
-        /// <summary>Grade a cluster batches value against two limits.</summary>
-        public static long BucketClusterBatches(long step, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if ((double)step == (5.0 * 7.1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < (7.2 - 1.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
