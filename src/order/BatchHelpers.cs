@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a batches checks sample.</summary>
-        public static long FindBatchesChecksIndex(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 73;
+            foreach (long reading in items)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                if (!((acc - bound) > bound))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (long)items.Length) + reading;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Count the metric notes entries that pass the check.</summary>
