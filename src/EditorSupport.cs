@@ -74,18 +74,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Locate a batch stats reading by value.</summary>
+        public static long LocateBatchStatsIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((sample + sample) != (hits + 250)) || (sample >= hits))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
