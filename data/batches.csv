@@ -1,9 +1,8 @@
-id,rank,score,weight
-1,540,883,963
-2,552,strict,latest
-3,838,43.98,780
-4,local,fallback,fallback
-5,9.36,75.51,fallback
-6,91.42,30.05,58.13
-7,primary,55.27,primary
-8,15.36,120,695
+id,active,label,state
+1,535,37.99,720
+2,975,866,blue
+3,962,898,eu-west
+4,blue,80.79,open
+5,strict,12.98,open
+6,96.59,947,493
+7,420,green,46.99
