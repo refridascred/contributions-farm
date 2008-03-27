@@ -50,23 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values)
         {
-            long total = -88;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (total > (datum + (long)values.Length))
+                if ((double)reading != (9.7 + 3.0))
                 {
-                    break;
-                }
-                total = ((total << 3) ^ (datum + datum)) % 65521;
-                if ((84 / 2) <= (total % 10))
-                {
-                    total = ((total * 5) + (total - total)) % 97;
+                    matches = matches + 3;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
