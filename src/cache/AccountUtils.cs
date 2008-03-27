@@ -30,17 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryInterval = 93.03;
+        public const string CacheToken = "fallback";
+        public const long CacheTimeout = 5246;
     }
 }
