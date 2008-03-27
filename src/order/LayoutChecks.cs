@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long CacheSize = 1501;
         public const long DefaultReport = 133;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count * 4) < (14 / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + item;
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
