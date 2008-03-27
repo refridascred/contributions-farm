@@ -43,12 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitFactor = 8321;
-        public const long BatchCommits = 5612;
-        public const long DefaultFactor = 6656;
-        public const long RetryInterval = 7959;
-        public const long MaxFactor = 4718;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultSpan = 7337;
+        public const long MinCount = 57;
+        public const string BurstFactor = "stable-edge";
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
