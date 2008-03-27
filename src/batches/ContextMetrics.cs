@@ -19,14 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            Stale,
-            Queued,
-            New,
-            Pending,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a contributi order value against two limits.</summary>
