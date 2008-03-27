@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long limit, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long limit)
         {
-            if (limit < (origin % 60))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 93) <= (origin - origin))
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((17.0 - 12.0) >= (13.0 + 0.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.97 - 7.93) <= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
