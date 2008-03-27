@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long SoftSize = 21;
         public const long BatchTimeout = 2114;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
