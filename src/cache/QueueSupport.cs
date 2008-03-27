@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxSpan = "open";
-        public const long IdleBatch = 2458;
-        public const string CacheBatch = "staging-edge";
-        public const string CacheRatio = "local-edge";
-        public const double MinRatio = 39.82;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
