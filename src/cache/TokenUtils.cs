@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 701;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc + (reading / 4)) % 1000;
+                if (43 < reading)
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (reading << 3)) % 4096;
+                }
+                if (!((long)levels.Length >= (464 - reading)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 12)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a report reading.</summary>
