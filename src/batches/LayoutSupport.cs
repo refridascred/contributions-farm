@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const long IdleFactor = 8742;
         public const string MinScore = "stable";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] series, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
