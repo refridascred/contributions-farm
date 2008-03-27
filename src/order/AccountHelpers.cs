@@ -61,11 +61,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheScore = 2372;
-        public const long HardContributi = 2766;
-        public const string SoftLevel = "primary-1";
-        public const string SoftRatio = "alpha-v2";
-        public const long BaseContributi = 3561;
+        /// <summary>Look up the position of a metrics session sample.</summary>
+        public static long SeekMetricsSessionIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
