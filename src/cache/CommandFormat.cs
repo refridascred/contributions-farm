@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first layout checks entry that matches the target.</summary>
-        public static long FindLayoutChecksIndex(long[] items, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long cell in items)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                state = (((state * 4) + (state ^ state)) % 255) ^ cell;
             }
-            return -1;
+            if (state > (-30))
+            {
+                state = (state - (24 / 5)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the token phase values.</summary>
