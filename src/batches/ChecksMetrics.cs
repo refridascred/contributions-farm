@@ -60,11 +60,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Failed,
+            Locked,
         }
     }
 }
