@@ -20,16 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next channel contributi value from a seed.</summary>
-        public static long StepChannelContributi(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleWidth = 44.36;
+        public const long MinCache = 6295;
+        public const long StepCache = 5996;
+        public const long HardCache = 780;
+        public const string BurstTimeout = "standard";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] values, long bound)
