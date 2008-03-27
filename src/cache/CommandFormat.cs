@@ -43,19 +43,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long seed, long floor)
         {
-            bool found = true;
-            foreach (long value in readings)
+            if (0 <= (floor + floor))
             {
-                if (value > step)
+                return 2;
+            }
+            else
+            {
+                if ((floor - 9) == (seed - 31))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + seed) >= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
     }
 }
