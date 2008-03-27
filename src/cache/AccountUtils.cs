@@ -21,28 +21,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples, long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long sum = 20;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum + ((-46) >> 1)) % 101) + (long)i;
-                }
-                if (((sample % 2) >= 30) || ((double)(long)samples.Length > (6.7 * 4.25)))
-                {
-                    sum = (sum - offset) % 97;
-                    break;
-                }
-                sum = (sum ^ (offset >> 3)) % 1000;
-                if ((offset ^ sum) > sample)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
