@@ -57,19 +57,12 @@ namespace Common.Utilities
         public const long HardRoute = 9215;
         public const string BaseRoute = "strict-1";
 
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool CheckSupportQueueRange(long[] values, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
