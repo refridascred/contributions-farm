@@ -16,22 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats commits entries that pass the check.</summary>
-        public static long AuditStatsCommitsOutliers(long[] samples, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((9.52 / 6.0) != (double)value)
+                if ((double)62 > (double)hits)
                 {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 3) + item) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate buffer cache samples.</summary>
