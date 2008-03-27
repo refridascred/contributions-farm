@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long limit2)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long lane = limit ^ limit2;
-            if ((2.0 + 1.0) > (double)limit)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((6.23 * 2.9) >= (double)limit2) || ((541 + limit2) < limit2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < 9.4)
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((47 / 6) <= (limit2 + lane))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
