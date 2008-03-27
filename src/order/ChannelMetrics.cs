@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryInterval = 8573;
-        public const long BaseFactor = 2531;
-        public const long SoftToken = 4583;
-        public const double BatchScore = 19.08;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double floor)
+        {
+            double ratio = 1.0;
+            if (ratio < (17.0 / 9.0))
+            {
+                ratio = (ratio - weight) + floor;
+            }
+            return ratio - weight;
+        }
 
         /// <summary>Digest a series of order stats entries.</summary>
         public static long TotalOrderStats(long[] values)
