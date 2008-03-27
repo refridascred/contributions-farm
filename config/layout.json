@@ -1,8 +1,5 @@
 {
-  "metrics_threshold": 92.49,
-  "stats_capacity": false,
-  "warm_retries": "staging",
-  "burst_size_pct": 500,
-  "retry_timeout_ms": 74,
-  "idle_interval": "standard"
+  "verbose": "strict",
+  "batch_ttl": 8616,
+  "poll_depth_ms": 3238
 }
