@@ -13,19 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (result - (result - (long)i2)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
