@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route stream values into a single score.</summary>
-        public static long DigestRouteStream(long[] levels)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long carry = 113;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry - (carry & 63)) % 255) + (long)i) ^ sample;
-                }
-                carry = (carry * 2) + (carry ^ carry);
-            }
-            if (carry > 98)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 4096;
-            }
-            return carry;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count route report pairs that satisfy a relation.</summary>
