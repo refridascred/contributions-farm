@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "strict";
-        public const long DefaultBuffer = 3488;
-        public const string LimitBuffer = "stable-1";
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] levels, long seed)
