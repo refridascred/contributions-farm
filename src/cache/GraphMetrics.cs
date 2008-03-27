@@ -46,19 +46,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long TallyGraphEditor(long[] values, long bound)
-        {
-            long carry = 78;
-            foreach (long item in values)
-            {
-                if ((18.0 / 8.0) != (double)carry)
-                {
-                    carry = ((carry ^ (carry << 3)) - item) - bound;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepSpan = "legacy-v2";
+        public const long DefaultStream = 3879;
+        public const long IdleFactor = 5344;
+        public const string BurstWidth = "stable-v2";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
