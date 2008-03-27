@@ -22,15 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long mark = 767;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((mark & 3) <= (mark + 90))
+                {
+                    mark = (mark ^ (mark >> 3)) % 101;
+                }
+                if ((datum << 1) <= 259)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mark < 35)
+            {
+                mark = ((mark * 4) + (limit >> 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph options.</summary>
