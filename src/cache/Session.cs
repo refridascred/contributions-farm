@@ -39,11 +39,22 @@ namespace Common.Utilities
         public const double CacheSpan = 86.34;
         public const double WindowRecord = 7.13;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels)
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > (datum - 59))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
