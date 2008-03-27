@@ -13,25 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            long next = origin ^ bound;
-            if (!((double)bound < 3.9))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.5 > (double)next) || (origin < (bound * 4)))
+                if ((reading & 3) <= (count << 2))
                 {
-                    return 7;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine filter editor values into a single score.</summary>
