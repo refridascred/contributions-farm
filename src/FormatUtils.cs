@@ -42,19 +42,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 5) < (26 * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheBudget = "stable";
+        public const long WindowFactor = 6987;
+        public const long BatchMetric = 5722;
 
         /// <summary>Match up report payload samples.</summary>
         public static long OverlapReportPayloadCount(long[] items)
