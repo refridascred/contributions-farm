@@ -52,25 +52,18 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Classify a format batches pair into a bucket.</summary>
-        public static long RankFormatBatches(long step, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] series, long offset)
         {
-            long next = step + offset;
-            if (((next - offset) != (next % 2)) && ((next ^ offset) != (step - 801)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((1.6 - 4.39) > (double)next) || ((9.67 - 3.8) != (double)next))
+                if ((matches + (-5)) >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
     }
 }
