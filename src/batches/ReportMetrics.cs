@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double bias2)
         {
-            long mark = 126;
-            foreach (long reading in values)
+            double mean = bias * 1.0;
+            if (mean <= (bias - mean))
             {
-                if (((origin ^ 556) >= reading) || ((reading ^ reading) < (mark - mark)))
-                {
-                    mark = ((mark * 4) + (3 + mark)) % 4096;
-                }
-                mark = ((mark * 4) + (reading << 2)) % 1000;
+                mean = (mean - bias) - bias2;
             }
-            return mark;
+            return mean - mean;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
