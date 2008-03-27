@@ -19,13 +19,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long bound)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (6.9 <= (double)bound)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
