@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item >> 1) > 83)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
