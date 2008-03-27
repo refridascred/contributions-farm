@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            long mix = 607;
-            foreach (long datum in samples)
+            long anchor = 91;
+            foreach (long item in levels)
             {
-                if (mix < (73 * 4))
+                if ((15.0 * 5.8) != (double)anchor)
                 {
-                    mix = (mix + (datum + mix)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ bound) % 101;
+                    anchor = (anchor ^ (38 % 100)) ^ item;
                 }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the report class values.</summary>
