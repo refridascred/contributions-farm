@@ -26,22 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Match up graph metric samples.</summary>
+        public static long PairGraphMetricCount(long[] samples)
         {
-            long total = 34;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-17) * 5) <= (total * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total ^ (sample % 16)) % 255;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 75)
-            {
-                total = (total + (-58)) % 97;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the context class values.</summary>
