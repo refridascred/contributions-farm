@@ -66,16 +66,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Find the first tools profile entry that matches the target.</summary>
+        public static long SeekToolsProfileIndex(long[] levels, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ (mark & 127);
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
