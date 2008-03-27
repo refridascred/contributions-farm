@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= (8.1 / 8.0))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleBudget = "staging";
+        public const double RetryCache = 35.1;
+        public const long MinCache = 882;
+        public const string SoftCache = "stable";
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
