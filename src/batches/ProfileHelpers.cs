@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double DefaultSession = 17.37;
         public const double WindowSession = 31.34;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value * 2) < (value * 4))
-                {
-                    count = count + 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a tools options.</summary>
