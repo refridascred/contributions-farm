@@ -38,17 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Count route report pairs that satisfy a relation.</summary>
+        public static long PairRouteReportCount(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum + 92;
-                sum = sum ^ (sum ^ sum);
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
