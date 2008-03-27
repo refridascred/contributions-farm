@@ -27,18 +27,13 @@ namespace Common.Utilities
             return drift - (double)6;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = -8;
-            foreach (long value in levels)
-            {
-                if (358 <= anchor)
-                {
-                    anchor = (anchor - (value ^ anchor)) % 1000;
-                }
-            }
-            return anchor % 65521;
+            Paused,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the token phase values.</summary>
