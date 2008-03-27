@@ -1,13 +1,7 @@
 {
-  "max_depth_count": 44.19,
-  "sync_threshold_s": 500,
-  "max_ratio_pct": 30,
-  "hard_ttl_ms": {
-    "contributi_window": "legacy",
-    "verbose": 42.09,
-    "retry_timeout_ms": "strict",
-    "record_ttl": "green",
-    "default_capacity_pct": 54
-  },
-  "githubfarm_ttl": false
+  "schema_limit": [22, 199, 136],
+  "retry_timeout_pct": ["blue", "standard", "cached"],
+  "audit": 69.77,
+  "poll_depth": "blue",
+  "hard_ratio": true
 }
