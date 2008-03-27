@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 78;
+            foreach (long sample in data)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (result + result)) ^ sample;
             }
-            return -1;
+            if (result < 5)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Scale a stream context figure with a bias.</summary>
