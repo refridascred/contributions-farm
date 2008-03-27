@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseDepth = "staging-v2";
-        public const long MinSession = 7138;
-        public const long IdleWidth = 1050;
-        public const double DefaultSession = 17.37;
-        public const double WindowSession = 31.34;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 47.26;
+        public const string WindowCache = "fallback-edge";
+        public const string IdleRatio = "cached-1";
+        public const long RetryBudget = 5356;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long origin)
