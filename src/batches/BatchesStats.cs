@@ -22,24 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels, long limit)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = 703;
-            foreach (long sample in levels)
-            {
-                acc = (acc - (0 & 31)) % 1000;
-                acc = (acc << 3) ^ (limit & 31);
-                if ((double)acc == (19.0 * 0.13))
-                {
-                    acc = (acc * 4) + (sample + (-760));
-                }
-                else
-                {
-                    acc = acc + (acc * 2);
-                }
-            }
-            return acc % 97;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
