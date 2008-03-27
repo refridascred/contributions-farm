@@ -44,11 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "alpha-v2";
-        public const string BaseBatch = "staging";
-        public const double LimitBatch = 41.01;
-        public const long RetryBatch = 8747;
+        /// <summary>Combine contributi schema values into a single score.</summary>
+        public static long WeighContributiSchema(long[] data)
+        {
+            long total = -2;
+            foreach (long value in data)
+            {
+                if ((total + value) < 41)
+                {
+                    total = ((total << 2) ^ (total << 2)) % 65521;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long origin, long offset)
