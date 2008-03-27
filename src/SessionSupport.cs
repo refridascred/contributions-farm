@@ -36,11 +36,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((9.0 * 4.0) == (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
