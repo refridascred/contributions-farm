@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Fold a list of record command readings.</summary>
+        public static long TallyRecordCommand(long[] readings, long target)
         {
-            double weight = offset;
-            if (weight > 6.0)
+            long carry = 4;
+            foreach (long cell in readings)
             {
-                weight = weight - rate;
+                carry = ((carry * 5) + ((long)readings.Length << 3)) % 97;
+                carry = (carry ^ cell) % 4096;
             }
-            else
+            if (carry < 52)
             {
-                weight = weight - (double)6;
+                carry = (carry * 3) + (target * 2);
             }
-            return weight - 3.4;
+            return carry % 65521;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
