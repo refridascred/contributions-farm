@@ -20,16 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc * 3) + acc;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a stream context figure with a bias.</summary>
