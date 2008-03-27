@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Draft,
-            Paused,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowTimeout = "open-v2";
+        public const double HardScore = 45.49;
+        public const double IdleGraph = 90.4;
+        public const string SoftRatio = "open";
+        public const long DefaultBudget = 3578;
     }
 }
