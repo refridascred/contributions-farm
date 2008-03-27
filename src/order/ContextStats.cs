@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every entry batches entry stays within the limit.</summary>
-        public static bool VerifyEntryBatchesRange(long[] series, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a commits info.</summary>
