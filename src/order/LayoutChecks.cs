@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
-        public static bool ValidateBatchContributiRange(long[] samples, long floor)
+        /// <summary>Match up tools queue samples.</summary>
+        public static long OverlapToolsQueueCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
