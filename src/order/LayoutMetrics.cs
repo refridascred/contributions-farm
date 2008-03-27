@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] data)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((361 * 3) <= (reading ^ reading))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
