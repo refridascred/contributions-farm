@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout notes readings.</summary>
-        public static long ScoreLayoutNotes(long[] values, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mark = -280;
-            foreach (long item in values)
-            {
-                mark = (((mark - (mark + mark)) % 1000) - item) - offset;
-            }
-            if (mark < 4)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark % 65521;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
