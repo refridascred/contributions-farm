@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            long mix = -168;
-            foreach (long entry in values)
+            double rate = (double)(0 / 4);
+            if (rate > 7.3)
             {
-                if ((long)values.Length < 627)
-                {
-                    mix = (mix + (1 + entry)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ entry;
-                }
+                rate = (rate - ratio) - floor;
             }
-            if (mix < 4)
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix + mix) % 1000;
+                rate = (rate + (3.43 / 5.0)) + (double)(long)i;
             }
-            return mix;
+            return rate + (18.0 + rate);
         }
 
         /// <summary>Define order limits and defaults.</summary>
