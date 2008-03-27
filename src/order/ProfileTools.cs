@@ -30,12 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheRatio = 3393;
-        public const long BatchCount = 1459;
-        public const long RetryRatio = 4723;
-        public const long MaxRatio = 2689;
-        public const double CacheTimeout = 43.2;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] items, long limit)
