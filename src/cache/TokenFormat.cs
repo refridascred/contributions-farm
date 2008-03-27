@@ -31,27 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] values, long floor)
         {
-            long state = -2;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (4 < (state + state))
+                if ((80 + count) == (item - item))
                 {
-                    state = (state * 2) + state;
-                    state = (state - (value ^ floor)) % 1000;
-                }
-                if (value < (state + floor))
-                {
-                    state = (state << 2) ^ (floor << 3);
+                    count = (count + 1) - floor;
                 }
             }
-            if (state < 940)
-            {
-                state = state + (floor & 31);
-            }
-            return state;
+            return count;
         }
     }
 }
