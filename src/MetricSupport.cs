@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardDepth = "latest-edge";
-        public const long RetryCluster = 952;
-        public const string WindowFactor = "stable-edge";
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long offset)
+        {
+            long edge = limit ^ offset;
+            if ((edge - offset) >= (edge >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit >> 5) >= limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double rate, double floor)
