@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 8551;
-        public const double DefaultBuffer = 3.2;
-        public const long WindowBuffer = 8113;
-        public const string LimitBuffer = "legacy-v2";
-        public const string BaseSpan = "standard-1";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((7.0 + 5.3) == (double)value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long step, long origin)
