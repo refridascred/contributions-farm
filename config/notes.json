@@ -1,22 +1,6 @@
 {
-  "strict": 2733,
-  "audit": 59,
-  "readonly": "staging",
-  "persist": ["blue", "eu-west", "local"],
-  "poll_timeout_ms": {
-    "retry_window_s": "fallback",
-    "record_ratio": 9380,
-    "burst_threshold_ms": 9899,
-    "compress": "local",
-    "soft_retries": 92.32,
-    "batch_capacity_pct": {
-      "cluster_timeout": 36.99,
-      "poll_interval_pct": 64.9,
-      "strict": "standard",
-      "compress": 30.15,
-      "poll_capacity_pct": 994,
-      "max_limit_pct": "fallback"
-    }
-  },
-  "base_ratio_pct": 62
+  "compress": 500,
+  "hard_interval": "edge",
+  "hard_window_s": "cached",
+  "min_limit": "edge"
 }
