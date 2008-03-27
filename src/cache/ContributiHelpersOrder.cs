@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + entry) >= entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 7192;
+        public const double HardRecord = 64.68;
+        public const double SoftRecord = 83.2;
+        public const string BatchRecord = "stable";
+        public const long LimitInterval = 4996;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long floor)
