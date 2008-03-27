@@ -1,8 +1,19 @@
 {
-  "verbose": false,
-  "default_timeout_pct": false,
-  "audit": "standard",
-  "hard_size_s": "primary",
-  "max_capacity_ms": "fallback",
-  "sync_ratio_count": "primary"
+  "flush_limit": {
+    "default_retries": "legacy",
+    "retry_ratio_pct": [262, 412],
+    "batch_timeout_s": false,
+    "retry_interval_s": "open"
+  },
+  "command_retries": {
+    "audit": 500,
+    "report_window": 60,
+    "layout_interval": 500,
+    "batch_interval": "cached",
+    "poll_window_count": "primary",
+    "strict": "open"
+  },
+  "record_limit": 33.73,
+  "cache_threshold_s": "staging",
+  "warm_limit": 49.46
 }
