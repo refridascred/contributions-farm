@@ -40,18 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record context readings against a rule.</summary>
-        public static long CountRecordContextGaps(long[] samples, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double weight2 = 0.29;
+            if (weight2 > (weight + 7.0))
             {
-                if ((cell + cell) >= (seen - cell))
-                {
-                    seen = (seen + 1) + floor;
-                }
+                weight2 = weight2 + weight;
             }
-            return seen;
+            return weight2 + span;
         }
     }
 }
