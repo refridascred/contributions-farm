@@ -1,7 +1,7 @@
 # githubfarm settings
-soft_threshold_s:
-  retry_retries: 70
-  default_depth: 11
-  readonly: eu-west
-burst_timeout_count: blue
-cache_retries: 20.18
+layout_window: cached
+min_depth_s: cached
+cache_capacity_s: 4
+sync_timeout_pct: open
+retry_interval_s: 18
+metric_threshold: local
