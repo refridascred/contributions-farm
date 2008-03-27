@@ -1,8 +1,7 @@
 {
-  "strict": 62.99,
-  "batch_window_ms": 6994,
-  "poll_timeout_ms": true,
-  "idle_ttl": true,
-  "sync_ttl_pct": 1.21,
-  "layout_threshold": ["primary", "standard"]
+  "notes_limit": [303, 478, 252, 325],
+  "format_interval": 46,
+  "warm_threshold_count": true,
+  "commits_timeout": 49,
+  "filter_retries": false
 }
