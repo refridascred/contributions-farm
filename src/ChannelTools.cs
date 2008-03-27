@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] data, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result + floor) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a session entry.</summary>
