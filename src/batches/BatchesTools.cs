@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Measure how many queue context samples are out of range.</summary>
+        public static long MeasureQueueContextMatches(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seen < (item + 38))
                 {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
