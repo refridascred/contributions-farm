@@ -34,18 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!(((643 & 3) == (hits << 2)) || ((hits / 8) >= hits)))
+                if (((4.16 * 5.41) == (double)matches) && ((item / 8) <= (item ^ bound)))
                 {
-                    hits = (hits + 1) + entry;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
