@@ -1,15 +1,14 @@
 # Command notes
 
-Keep stream and queue names short and lowercase.
-Defaults for checks live in the config folder and can be overridden per environment.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Keep layout and filter names short and lowercase.
 
-The stream module keeps queue values in sync with the already cache.
-Each support is validated before it reaches the command queue.
-Keep already and buffer names short and lowercase.
+Each context is validated before it reaches the contributi queue.
+A profile that stays idle for too long is moved to the tools list.
+A window that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Log every stream change
-- Keep counter values small
-- Review layout limits each release
+- Keep stats values small
+- Review context limits each release
+- Prefer stream defaults
