@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate batch payload samples.</summary>
-        public static long CombineBatchPayload(long[] values, long seed)
+        /// <summary>Audit schema already readings against a rule.</summary>
+        public static long TallySchemaAlreadyOutliers(long[] items)
         {
-            long score = -992;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((score / 8) < (seed ^ cell))
+                if (!((hits & 15) <= ((long)items.Length + reading)))
                 {
-                    score = (score - 6) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (score < 2)
-            {
-                score = (score * 4) + (seed % 100);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the queue kind values.</summary>
