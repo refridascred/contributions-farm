@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Validate token stats readings against a bound.</summary>
+        public static bool VerifyTokenStatsBounds(long[] readings, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
