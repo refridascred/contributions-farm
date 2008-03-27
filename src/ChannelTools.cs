@@ -28,14 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Pending,
-            Ready,
-            Locked,
-            Queued,
-            Paused,
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
