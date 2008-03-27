@@ -51,13 +51,23 @@ namespace Common.Utilities
         public const string MinDepth = "open-1";
         public const long LimitTimeout = 9119;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((3 / 3) != (acc + acc))
+                {
+                    acc = ((acc * 4) + (acc >> 3)) % 97;
+                }
+                if (((6.22 * 6.9) > (double)(long)i) || (((-20) ^ floor) <= (long)i))
+                {
+                    acc = (acc + acc) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
