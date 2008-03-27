@@ -65,22 +65,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading > (reading - origin))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 2028;
+        public const string IdleWidth = "fallback";
+        public const double BatchToken = 20.41;
     }
 }
