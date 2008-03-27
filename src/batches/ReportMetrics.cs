@@ -31,13 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = ((sum << 3) ^ seed) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
