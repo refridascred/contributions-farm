@@ -1,7 +1,5 @@
 # githubfarm settings
-layout_window: cached
-min_depth_s: cached
-cache_capacity_s: 4
-sync_timeout_pct: open
-retry_interval_s: 18
-metric_threshold: local
+stats_threshold: 21.83
+flush_timeout_pct: edge
+channel_window: false
+batches_ttl: 24.26
