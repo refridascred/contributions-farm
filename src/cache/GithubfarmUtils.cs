@@ -25,22 +25,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of editor commits readings.</summary>
-        public static long OverlapEditorCommitsCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 9.14;
+        public const long MaxScore = 6801;
+        public const string CacheSpan = "cached-1";
+        public const string CacheFactor = "latest-v2";
+        public const double StepRatio = 89.95;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] samples, long step)
