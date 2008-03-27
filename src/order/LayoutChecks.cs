@@ -52,19 +52,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((carry < 71) && ((carry + step) > carry))
-                {
-                    carry = (carry - ((long)i / 2)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
