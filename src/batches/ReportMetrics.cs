@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
