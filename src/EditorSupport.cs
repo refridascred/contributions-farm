@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long floor)
         {
-            double ratio = (8.68 - offset) * 0.5;
-            if (ratio <= (ratio / 5.0))
+            if ((double)floor >= (6.98 * 20.0))
             {
-                ratio = ratio - (scale - ratio);
+                return 4;
             }
-            return ratio - scale;
+            else
+            {
+                if (((floor << 3) <= (bound / 5)) || ((920 % 64) <= (bound + 40)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a order header.</summary>
