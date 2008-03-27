@@ -28,17 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] values, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = (score * 3) + (long)i;
-                score = (score + score) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((double)seed == (1.81 + 2.5))
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
