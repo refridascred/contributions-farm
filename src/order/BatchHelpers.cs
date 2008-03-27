@@ -34,22 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] samples, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell << 2) >= (cell % 64))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
