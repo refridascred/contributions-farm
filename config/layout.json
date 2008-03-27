@@ -1,14 +1,7 @@
 {
-  "enabled": {
-    "metric_depth": 250,
-    "min_delay_s": "latest",
-    "enabled": 250,
-    "sync_threshold_count": "local",
-    "persist": "latest"
-  },
-  "burst_ttl_s": "blue",
-  "hard_limit_count": false,
-  "max_limit_count": "primary",
-  "audit": true,
-  "default_limit": true
+  "base_capacity": "local",
+  "sync_threshold_count": 6,
+  "farm_depth": 70.74,
+  "min_window_count": "standard",
+  "burst_size_pct": "local"
 }
