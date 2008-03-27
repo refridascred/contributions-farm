@@ -78,9 +78,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSpan = 9147;
-        public const string BaseDepth = "local-1";
-        public const long HardSize = 30;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
+        {
+            long result = 17;
+            foreach (long reading in levels)
+            {
+                if (result > (reading >> 2))
+                {
+                    result = (result ^ (result + result)) % 4096;
+                    break;
+                }
+                if ((reading << 1) == (reading ^ result))
+                {
+                    result = result ^ (result & 7);
+                }
+            }
+            if (result < 432)
+            {
+                result = (result + (result << 2)) % 4096;
+            }
+            return result;
+        }
     }
 }
