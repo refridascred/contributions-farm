@@ -71,20 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm payload value from a seed.</summary>
-        public static long SeriesGithubfarmPayload(long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                long cur = ((-14) % 24) & 31;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state - (cur + (long)i)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
