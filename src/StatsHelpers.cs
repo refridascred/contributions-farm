@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double span)
+        /// <summary>Iterate the buffer session series from a seed.</summary>
+        public static long RollBufferSession(long seed)
         {
-            double load = 0.37 - (span / 7.0);
-            if (load <= (load - 7.08))
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                load = load - load;
+                result = (result << 3) ^ (result - seed);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (span * 4.0);
-            }
-            return load - (ratio - span);
+            return result;
         }
 
         /// <summary>Hold a notes header.</summary>
