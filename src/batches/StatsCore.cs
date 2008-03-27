@@ -73,13 +73,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
