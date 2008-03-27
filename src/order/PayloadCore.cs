@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((5.94 * 2.78) >= (double)tally) || (((value ^ tally) >= tally) || (value > tally)))
+                if ((count ^ datum) >= (datum + datum))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
