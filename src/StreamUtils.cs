@@ -51,18 +51,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long carry = 45;
-            foreach (long datum in readings)
-            {
-                if ((carry / 2) > (datum << 3))
-                {
-                    carry = ((carry + (carry + carry)) % 65521) - floor;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
