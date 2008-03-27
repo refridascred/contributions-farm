@@ -28,21 +28,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 218;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor + anchor) != (value % 7))
                 {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor * 5) + (9 * 4);
+                }
+                if (((15 % 8) != (value * 3)) && ((anchor - 551) < (anchor & 15)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 659)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a schema format value against two limits.</summary>
