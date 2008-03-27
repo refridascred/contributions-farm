@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const double WindowSize = 23.0;
         public const string BurstOrder = "cached-1";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading + tally) <= (reading + (-86))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Locked,
         }
     }
 }
