@@ -75,31 +75,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long bound, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels, long offset)
         {
-            if ((875 >= bound) && (57 <= (seed - seed)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.52 / 2.0) > (double)seed)
+                if (sample < ((long)levels.Length - count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 3) < (seed - 26))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) + offset;
                 }
             }
+            return count;
         }
     }
 }
