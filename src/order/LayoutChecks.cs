@@ -32,11 +32,11 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstInterval = 5340;
-        public const double IdleCount = 93.35;
-        public const double WindowOrder = 59.68;
-        public const long BaseSpan = 3397;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 6794;
+        public const double HardCount = 8.45;
+        public const long StepRoute = 8430;
+        public const long CacheWidth = 3509;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] values)
