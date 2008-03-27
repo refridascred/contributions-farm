@@ -53,15 +53,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
+        public static bool ValidateChecksClusterRange(long[] items, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
