@@ -53,19 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] samples, long limit)
+        /// <summary>Derive the next stream already value from a seed.</summary>
+        public static long StepStreamAlready(long origin)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result * 2) + result;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
