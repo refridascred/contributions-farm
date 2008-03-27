@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
