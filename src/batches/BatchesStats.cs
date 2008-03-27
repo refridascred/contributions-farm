@@ -67,11 +67,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTimeout = 63.24;
-        public const long IdleTools = 1842;
-        public const long IdleInterval = 5563;
-        public const long RetryFactor = 9241;
-        public const string BatchTools = "legacy-v2";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long limit)
+        {
+            long sum = 6;
+            foreach (long cell in series)
+            {
+                if (cell > sum)
+                {
+                    sum = ((sum * 2) + (sum >> 1)) - limit;
+                }
+            }
+            return sum;
+        }
     }
 }
