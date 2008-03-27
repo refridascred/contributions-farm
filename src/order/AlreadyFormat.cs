@@ -78,18 +78,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = 1;
+            foreach (long value in readings)
             {
-                if (sample < ((long)levels.Length - count))
+                for (int i = 0; i < 7; i++)
                 {
-                    count = (count + 1) + offset;
+                    anchor = (((anchor * 3) + (anchor >> 1)) % 4096) ^ (long)i;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor - (value + origin)) + (long)i2;
+                }
+                anchor = (anchor * 2) + (anchor + anchor);
             }
-            return count;
+            if (anchor < 816)
+            {
+                anchor = ((anchor * 3) + (origin * 3)) % 101;
+            }
+            return anchor;
         }
     }
 }
