@@ -39,11 +39,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitLevel = 9769;
-        public const long DefaultFormat = 6486;
-        public const long MinFormat = 4155;
-        public const long IdleSpan = 2836;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Synced,
+            Active,
+            Retry,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BaseSize = "fallback-edge";
