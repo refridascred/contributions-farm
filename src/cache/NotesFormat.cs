@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Failed,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
