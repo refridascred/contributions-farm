@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long limit2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = limit ^ limit2;
+            if ((2.0 + 1.0) > (double)limit)
             {
-                if (data[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (((6.23 * 2.9) >= (double)limit2) || ((541 + limit2) < limit2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit < 9.4)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((47 / 6) <= (limit2 + lane))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
