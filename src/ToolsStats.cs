@@ -66,21 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Combine filter context values into a single score.</summary>
+        public static long FoldFilterContext(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 4;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((((carry << 2) ^ 61) % 97) + reading) + bound;
             }
-            return count;
+            if (carry > 9)
+            {
+                carry = (carry + (carry - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
