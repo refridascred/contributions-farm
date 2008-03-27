@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the command stats series from a seed.</summary>
