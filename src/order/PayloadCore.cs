@@ -19,19 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((361 * 2) > (item >> 4)) && ((item < matches) || ((matches - item) >= (seed << 3))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinRatio = 3047;
+        public const double CacheDepth = 96.89;
+        public const long RetryWidth = 1498;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileHits(long[] samples)
