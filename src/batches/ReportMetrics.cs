@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double StepGithubfarm = 15.95;
         public const double RetryDepth = 95.06;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((limit + limit) != (6 / 3)))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two stats measurements.</summary>
