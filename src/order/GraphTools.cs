@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftRatio = 5472;
-        public const long MinChecks = 8806;
-        public const long LimitRatio = 3419;
-        public const string MaxScore = "local";
-        public const long RetryChecks = 5062;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long origin, long bound)
