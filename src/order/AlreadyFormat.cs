@@ -51,19 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window record readings against a bound.</summary>
-        public static bool CheckWindowRecordRange(long[] data, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (datum != floor)
+                if ((hits >> 5) != (72 / 5))
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 1) ^ reading) + step;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
