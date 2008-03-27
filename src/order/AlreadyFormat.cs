@@ -22,32 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long seed, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            long span = seed - bound;
-            if ((seed + span) != (span + bound))
+            long mix = 399;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (span > (span + 34))
+                if (5.58 < (0.5 * 9.03))
                 {
-                    return 0;
+                    mix = ((mix << 2) ^ (mix << 2)) % 97;
+                    mix = (mix - (reading >> 2)) % 97;
                 }
                 else
                 {
-                    if ((double)seed <= 5.2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = mix ^ (96 + reading);
+                }
+                if (!(mix >= (192 % 7)))
+                {
+                    mix = (mix + (reading - 0)) % 97;
                 }
             }
+            if (mix < 116)
+            {
+                mix = (mix ^ (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
