@@ -1,6 +1,12 @@
 # entry settings
-burst_ttl_s: 100
-idle_retries: false
-enabled: 32
-strict: false
-batch_depth: 94.96
+format_retries: true
+enabled:
+  - latest
+  - primary
+  - strict
+profile_capacity: 48.23
+flush_delay_pct: true
+max_ratio_count: staging
+editor_interval:
+  - primary
+  - cached
