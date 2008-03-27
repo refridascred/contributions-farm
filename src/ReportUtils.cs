@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] samples, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((-7) + offset) <= 3)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((4.0 / 3.0) != (double)offset)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (527 <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed > (18.0 * 14.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
