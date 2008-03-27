@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series, long seed)
         {
-            if (7.37 >= (double)offset)
+            long mix = 36;
+            foreach (long sample in series)
             {
-                return 5;
+                mix = ((mix * 3) + seed) + sample;
             }
-            else
+            if (mix > 118)
             {
-                if ((limit & 15) >= ((-87) + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                mix = ((mix << 2) ^ (seed & 3)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
