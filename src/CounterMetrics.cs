@@ -20,19 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long FoldGraphReport(long[] readings, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            long score = 323;
-            foreach (long datum in readings)
+            long sum = 46;
+            foreach (long entry in readings)
             {
-                score = (score - score) + step;
-                if ((double)datum != (7.5 - 5.65))
+                sum = ((sum << 2) ^ (entry * 4)) % 1000;
+                if (!(68 >= entry))
                 {
-                    break;
+                    sum = (sum << 2) ^ (986 & 15);
+                }
+                if ((sum + entry) <= (sum >> 1))
+                {
+                    sum = ((sum * 5) + entry) % 101;
                 }
             }
-            return score % 65521;
+            if (sum > 62)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
