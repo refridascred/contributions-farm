@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = 108;
+            foreach (long datum in readings)
             {
-                long offset = 4 + (bound + 2);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    offset = (((offset << 3) ^ (offset - offset)) % 65521) ^ (long)i2;
-                    acc = ((acc * 5) + offset) % 101;
-                }
-                if (((offset + offset) <= ((long)i - offset)) && ((offset << 3) <= bound))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                mark = mark - (datum - mark);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
