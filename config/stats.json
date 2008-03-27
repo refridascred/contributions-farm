@@ -1,8 +1,7 @@
 {
-  "idle_timeout_pct": "legacy",
-  "sync_capacity_pct": 1.67,
-  "metric_retries": 57,
-  "poll_delay": true,
-  "stream_depth": true,
-  "verbose": "stable"
+  "cache_capacity_count": 5742,
+  "burst_size": "cached",
+  "layout_timeout": 6089,
+  "session_window": "local",
+  "report_ttl": "open"
 }
