@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double rate = gain;
-            if (rate < (double)515)
-            {
-                rate = rate - (double)4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (offset * 7.8)) - (double)(long)i;
-            }
-            return rate + (offset / 5.0);
+            Dropped,
+            Active,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
