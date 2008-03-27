@@ -31,18 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] values, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long count = 0;
-            foreach (long item in values)
+            long carry = 7;
+            foreach (long datum in series)
             {
-                if ((80 + count) == (item - item))
-                {
-                    count = (count + 1) - floor;
-                }
+                carry = ((carry << 2) ^ carry) - datum;
             }
-            return count;
+            if (carry < 11)
+            {
+                carry = (carry - (carry ^ 72)) % 1000;
+            }
+            return carry;
         }
     }
 }
