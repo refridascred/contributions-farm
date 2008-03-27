@@ -46,15 +46,39 @@ namespace Common.Utilities
         public const long BatchEditor = 2021;
         public const long MaxSpan = 9269;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long cur = bound - offset;
+            if (!((double)cur >= (double)offset))
             {
-                score = ((score * 4) + (long)i) % 1000;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((5.8 + 1.58) < (double)cur)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(cur <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4 >= (cur & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
