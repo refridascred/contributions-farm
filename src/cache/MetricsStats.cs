@@ -41,38 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((bound - 413) <= (2 * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 2) > (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + bound) != (39 & 3)) && ((bound << 3) <= (bound - bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((19.0 / 7.0) == (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
