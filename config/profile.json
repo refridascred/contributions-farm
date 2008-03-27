@@ -1,17 +1,14 @@
 {
-  "enabled": false,
-  "persist": "primary",
-  "idle_threshold_s": "blue",
-  "batch_retries": {
-    "dry_run": {
-      "cache_window": 78,
-      "hard_capacity": "edge",
-      "poll_window_ms": "edge",
-      "graph_timeout": "latest"
-    },
-    "batch_size_count": "fallback",
-    "batches_retries": 60,
-    "record_limit": ["green", "latest"]
+  "schema_ratio": "blue",
+  "default_ttl_pct": "edge",
+  "persist": false,
+  "warm_depth": {
+    "cache_limit": 6019,
+    "sync_window_pct": "green",
+    "soft_size_count": false,
+    "dry_run": "stable",
+    "flush_depth": "standard"
   },
-  "default_size": 22.66
+  "flush_retries": 2494,
+  "hard_delay_count": "legacy"
 }
