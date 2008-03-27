@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Failed,
-            Synced,
-            Retry,
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the layout state values.</summary>
