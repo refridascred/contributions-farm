@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Blend two farm filter measurements.</summary>
+        public static double ScaleFarmFilter(double weight, double span)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double load = weight;
+            if (load > 6.06)
             {
-                if (!((185 % 3) == (reading & 3)))
-                {
-                    matches = matches + 1;
-                }
+                load = load - span;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - weight) - (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
