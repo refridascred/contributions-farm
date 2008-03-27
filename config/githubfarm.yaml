@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_delay_pct: 7.08
-soft_size_ms: 54
-soft_ttl_s: 94.29
+soft_threshold_s:
+  retry_retries: 70
+  default_depth: 11
+  readonly: eu-west
+burst_timeout_count: blue
+cache_retries: 20.18
