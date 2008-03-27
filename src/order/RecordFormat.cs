@@ -45,25 +45,12 @@ namespace Common.Utilities
         public const long BurstCount = 9425;
         public const double LimitSpan = 5.55;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long target, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long bound = target - origin;
-            if ((8.98 <= (double)target) || ((double)bound <= (3.5 - 5.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound << 2) < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
