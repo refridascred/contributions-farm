@@ -36,19 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] items, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long state = 68;
+            foreach (long value in items)
             {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state - (state - 321)) % 65521;
+                state = state - (state & 3);
+                state = ((state << 2) ^ (value << 1)) % 4096;
             }
-            return ok;
+            if (state < 5)
+            {
+                state = ((state * 2) + (state << 3)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
