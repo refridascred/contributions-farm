@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next commits batches value.</summary>
-        public static double ScaleCommitsBatches(double ratio, double floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            double rate = floor;
-            if (rate > rate)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + (double)14;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate - (floor + rate);
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
