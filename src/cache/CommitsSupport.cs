@@ -21,12 +21,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCount = 87.41;
-        public const long BatchCluster = 5498;
-        public const long LimitCluster = 683;
-        public const double SoftCluster = 17.07;
-        public const long BurstSize = 1997;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryScore = 36.76;
