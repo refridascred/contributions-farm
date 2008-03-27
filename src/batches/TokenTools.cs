@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long SoftCount = 5005;
         public const double IdleSize = 8.43;
 
-        /// <summary>Count route report pairs that satisfy a relation.</summary>
-        public static long PairRouteReportCount(long[] data)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] == limit)
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
