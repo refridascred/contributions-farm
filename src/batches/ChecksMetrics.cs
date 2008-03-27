@@ -40,19 +40,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] values, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
