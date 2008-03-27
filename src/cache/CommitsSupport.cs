@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate counter token samples.</summary>
