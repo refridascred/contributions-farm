@@ -39,13 +39,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Level { get; set; }
+            Active,
+            Queued,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
