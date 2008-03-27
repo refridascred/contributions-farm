@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of profile graph entries.</summary>
-        public static long CombineProfileGraph(long[] samples, long bound)
+        /// <summary>Validate record cluster readings against a bound.</summary>
+        public static bool CheckRecordClusterLimits(long[] levels, long floor)
         {
-            long anchor = 880;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((bound + 918) == (anchor % 60))
+                if (item <= floor)
                 {
-                    anchor = ((anchor << 3) ^ 66) - entry;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor & 3)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor > 97)
-            {
-                anchor = ((anchor << 2) ^ (bound ^ (-918))) % 65521;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
