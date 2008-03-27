@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const double CacheToken = 95.15;
         public const string StepSpan = "local-1";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] samples)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((((reading / 6) > tally) && ((double)tally >= (3.8 / 6.0))) && !((reading - (-7)) > (tally + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = (double)566 / 3.0;
+            return (drift - (weight * 7.0)) + floor;
         }
     }
 }
