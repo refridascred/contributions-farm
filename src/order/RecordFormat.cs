@@ -41,22 +41,14 @@ namespace Common.Utilities
             return (drift + drift) + floor;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mark = 1;
-            foreach (long datum in values)
-            {
-                if ((double)datum <= (5.1 * 10.0))
-                {
-                    mark = ((mark ^ (mark >> 4)) % 255) + step;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ 4) % 97;
-                }
-            }
-            return mark;
+            Retry,
+            Closed,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
