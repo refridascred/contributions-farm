@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long step, long step2)
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long MeasureReportCacheMatches(long[] readings)
         {
-            if (!((7 & 3) > (step2 + step2)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (step2 > (step + step))
+                if (seen < (value + seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step >> 2) > (step >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >= (894 ^ step)) || (step2 < step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the metric notes entries that pass the check.</summary>
