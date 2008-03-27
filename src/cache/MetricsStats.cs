@@ -28,11 +28,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double drift = floor;
-            return (drift - 9.9) + scale;
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate farm checks samples.</summary>
