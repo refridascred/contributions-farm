@@ -12,21 +12,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 20)
+                    if ((levels[i] + levels[j]) > 14)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
