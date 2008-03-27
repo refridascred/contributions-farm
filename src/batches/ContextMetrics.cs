@@ -43,16 +43,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stats payload series from a seed.</summary>
-        public static long RollStatsPayload(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "alpha-v2";
+        public const string BaseBatch = "staging";
+        public const double LimitBatch = 41.01;
+        public const long RetryBatch = 8747;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] data)
