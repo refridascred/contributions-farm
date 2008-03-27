@@ -20,38 +20,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long step, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if (((6.46 - 10.0) < (double)step) && (8 < (seed << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((((-5) ^ seed) != (step ^ seed)) || ((step - 0) != (step / 6)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed != (6.47 * 18.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2 & 31) <= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
