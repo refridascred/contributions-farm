@@ -35,14 +35,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            Active,
-            Queued,
-            Synced,
-            Done,
-            Draft,
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix + (576 - 0)) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
