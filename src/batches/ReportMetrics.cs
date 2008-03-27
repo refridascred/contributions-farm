@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] values, long seed)
-        {
-            long sum = 198;
-            foreach (long reading in values)
-            {
-                sum = (sum << 3) ^ (seed + reading);
-                sum = sum - (seed & 63);
-            }
-            if (sum < 123)
-            {
-                sum = sum ^ (4 - 95);
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepBudget = 2903;
+        public const long BurstGithubfarm = 9720;
+        public const long RetryGithubfarm = 5875;
+        public const double StepGithubfarm = 15.95;
+        public const double RetryDepth = 95.06;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
