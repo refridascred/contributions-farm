@@ -30,18 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((12.0 - 9.0) >= (double)tally) && ((tally & 31) <= (0 * 5)))
+                if (series[i] < target)
                 {
-                    tally = (tally + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
