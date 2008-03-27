@@ -65,21 +65,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up channel metric samples.</summary>
-        public static long CompareChannelMetricCount(long[] data)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Ready,
         }
     }
 }
