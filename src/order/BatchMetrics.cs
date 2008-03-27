@@ -61,17 +61,19 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
