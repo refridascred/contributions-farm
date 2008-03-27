@@ -30,17 +30,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] data, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((5 / 6) <= (step2 + 99))
             {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((19.0 + 0.26) > (double)step) && ((step2 + step) > step2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (4.04 <= (double)step2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step2 < 5.3)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
