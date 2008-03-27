@@ -72,13 +72,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
