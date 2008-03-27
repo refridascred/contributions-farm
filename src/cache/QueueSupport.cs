@@ -35,17 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first payload metric entry that matches the target.</summary>
-        public static long SeekPayloadMetricIndex(long[] readings, long origin)
+        /// <summary>Iterate the notes profile series from a seed.</summary>
+        public static long IterateNotesProfile(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (carry - step)) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
