@@ -35,18 +35,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the schema channel entries that pass the check.</summary>
-        public static long TallySchemaChannelOutliers(long[] values)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long edge = limit ^ bound;
+            if (((limit / 8) > (60 - edge)) && ((9.51 / 8.0) != (double)edge))
             {
-                if ((double)datum != (8.0 / 7.0))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound < (2.99 - 16.0))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (edge > limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
