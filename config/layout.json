@@ -1,6 +1,6 @@
 {
-  "retry_depth_pct": 30,
-  "metric_ratio": "latest",
-  "persist": 2.29,
-  "sync_threshold": false
+  "stats_capacity": 5104,
+  "warm_window_ms": false,
+  "checks_size": 905,
+  "enabled": "stable"
 }
