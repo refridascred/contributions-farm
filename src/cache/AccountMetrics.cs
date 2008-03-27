@@ -55,25 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long step)
-        {
-            if ((3.45 - 9.4) < (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed < (78 + step)) && (seed > (5 % 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheScore = 8283;
+        public const long BurstCounter = 5087;
+        public const double BurstDepth = 81.48;
+        public const long CacheCounter = 9077;
 
         /// <summary>Accumulate layout session samples.</summary>
         public static long ScoreLayoutSession(long[] samples)
