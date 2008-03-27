@@ -1,7 +1,7 @@
-id,level,rank,ratio
-1,1.55,65.07,58.71
-2,latest,92.37,349
-3,strict,27.52,open
-4,45.03,49.4,142
-5,266,standard,open
-6,11.48,178,715
+id,state,weight,count,level
+1,cached,90.81,504,open
+2,stable,open,622,cached
+3,199,standard,latest,984
+4,907,staging,754,staging
+5,521,45,edge,435
+6,183,813,open,577
