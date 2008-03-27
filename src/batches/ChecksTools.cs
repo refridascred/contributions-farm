@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a stream githubfarm value against two limits.</summary>
-        public static long BucketStreamGithubfarm(long bound, long step)
+        /// <summary>Fold a list of editor queue readings.</summary>
+        public static long DigestEditorQueue(long[] series)
         {
-            if ((double)bound != (5.91 / 3.0))
+            long acc = 9;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ bound) >= step) && ((bound / 5) < step))
+                if ((acc <= (6 << 1)) || (7.6 > (double)acc))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step & 127) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc - (acc & 31)) % 1000) - sample;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the batch class values.</summary>
