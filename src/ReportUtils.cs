@@ -16,11 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Compare every pair of schema entry readings.</summary>
+        public static long OverlapSchemaEntryCount(long[] readings)
         {
-            double scale2 = (double)(-6) + (double)(-9);
-            return ((scale2 - (scale2 / 9.0)) + scale) + offset;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
