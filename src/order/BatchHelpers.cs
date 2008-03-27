@@ -40,12 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
