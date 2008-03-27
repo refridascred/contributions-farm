@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
-        {
-            long anchor = 0;
-            foreach (long datum in items)
-            {
-                if ((927 <= (anchor * 4)) && ((datum >> 3) > (datum ^ datum)))
-                {
-                    anchor = (anchor + (399 >> 4)) % 97;
-                }
-            }
-            if (anchor > 357)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3831;
+        public const string RetryTimeout = "stable-1";
+        public const long MaxSchema = 5154;
+        public const long BaseSchema = 3245;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
