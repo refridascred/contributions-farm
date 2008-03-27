@@ -52,26 +52,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long sum = -73;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-7) ^ sum) < (7 >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 5) + (reading << 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + sum)) % 97;
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < (-5))
-            {
-                sum = ((sum << 2) ^ target) % 101;
-            }
-            return sum;
+            return hits;
         }
     }
 }
