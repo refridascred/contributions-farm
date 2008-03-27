@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 58.78;
-        public const long WindowCounter = 1444;
-        public const string DefaultSpan = "latest-v2";
+        /// <summary>Rank editor stream input into a small class.</summary>
+        public static long SortEditorStream(long bound, long bound2)
+        {
+            long lane = bound - bound2;
+            if ((2.5 / 2.0) <= (double)lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound2 / 2) == (11 * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
         public static long TallyBufferCommandMatches(long[] data, long target)
