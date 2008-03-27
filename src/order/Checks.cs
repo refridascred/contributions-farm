@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Synced,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitWidth = 421;
+        public const double BurstSize = 58.91;
+        public const long DefaultSize = 9914;
+        public const long IdleScore = 8634;
+        public const double CacheNotes = 47.45;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] series, long floor)
