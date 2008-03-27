@@ -39,18 +39,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] items, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((long)items.Length >= 985)
-                {
-                    seen = ((seen + 2) ^ datum) + floor;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
