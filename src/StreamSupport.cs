@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long MeasureOrderSessionGaps(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell / 6) <= cell) && ((cell & 31) < (cell + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
