@@ -48,26 +48,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long ScoreAlreadyGithubfarm(long[] levels, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long sum = 7;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((19.0 - 4.9) == (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ ((long)levels.Length + reading)) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ reading;
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum ^ (5 - sum)) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a format header.</summary>
