@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long acc = 913;
-            foreach (long entry in items)
+            long state = 2;
+            foreach (long reading in items)
             {
-                if ((double)offset > (double)entry)
+                if ((7.3 * 4.0) >= (double)reading)
                 {
-                    acc = (acc << 3) ^ offset;
+                    continue;
                 }
-                else
+                if (((reading % 3) != (reading + state)) && ((11.0 * 7.6) != (double)state))
                 {
-                    acc = ((acc * 4) + acc) % 4096;
+                    state = (state + (reading >> 2)) % 97;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
