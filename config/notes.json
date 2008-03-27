@@ -1,5 +1,6 @@
 {
-  "max_threshold_count": ["legacy", "open", "local", "standard"],
-  "cache_threshold_ms": "open",
-  "base_timeout_count": 5418
+  "poll_depth": [132, 450],
+  "notes_capacity": "cached",
+  "burst_capacity": 6,
+  "tools_delay": 25.0
 }
