@@ -43,12 +43,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Draft,
-            Done,
+            Idle,
             Queued,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Grade a entry report value against two limits.</summary>
