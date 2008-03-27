@@ -34,15 +34,13 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Project the next route window value.</summary>
-        public static double AdjustRouteWindow(double weight, double span)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double rate = (double)(83 * 3);
-            if (rate > (3.96 * 12.0))
-            {
-                rate = (rate - (double)597) - weight;
-            }
-            return rate + (span / 4.0);
+            Pending,
+            Stale,
+            Draft,
+            New,
         }
     }
 }
