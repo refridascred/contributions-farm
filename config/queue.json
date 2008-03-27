@@ -1,11 +1,7 @@
 {
-  "idle_capacity": {
-    "soft_timeout": [425, 34],
-    "base_timeout_pct": "local",
-    "idle_depth": 46.17,
-    "layout_capacity": true
-  },
-  "enabled": 98.29,
-  "strict": ["strict", "legacy", "legacy"],
-  "hard_window_ms": 42.83
+  "default_ratio": true,
+  "readonly": 1696,
+  "compress": 60,
+  "soft_timeout_s": 100,
+  "persist": 39
 }
