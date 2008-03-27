@@ -1,20 +1,10 @@
 # support settings
-metrics_retries:
-  sync_retries:
-    batch_capacity: 8041
-    retry_ttl: 30
-    batch_size_ms: fallback
-    graph_interval: 4123
-    warm_ratio_count:
-      - 313
-      - 176
-      - 389
-      - 311
-    default_size: edge
-  sync_delay: 7191
-  soft_depth_pct: 60
-retry_delay_ms:
-  - 357
-  - 417
-  - 190
-hard_ratio_pct: 41
+batch_size: true
+queue_ratio:
+  readonly: 59.45
+  already_depth: 67
+  soft_threshold: 500
+  base_ratio_pct: standard
+  cache_capacity: local
+retry_limit_pct: true
+strict: 100
