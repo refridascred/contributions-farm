@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const string BurstPayload = "open-v2";
         public const double MinCount = 11.13;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Failed,
-            Done,
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result - (result - (long)i2)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
