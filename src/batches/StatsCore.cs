@@ -38,24 +38,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data, long seed)
+        /// <summary>Combine support layout values into a single score.</summary>
+        public static long FoldSupportLayout(long[] readings, long offset)
         {
-            long total = -3;
-            foreach (long reading in data)
+            long total = 837;
+            foreach (long value in readings)
             {
-                if ((27 - reading) == (reading * 5))
+                if ((value + total) < (35 / 3))
                 {
-                    total = (total - (total - reading)) % 255;
-                }
-                if ((double)seed >= (1.05 / 7.0))
-                {
-                    break;
+                    total = (total ^ (value - total)) % 255;
                 }
             }
-            if (total > 130)
+            if (total < 6)
             {
-                total = total + (seed ^ seed);
+                total = (total ^ offset) % 4096;
             }
             return total;
         }
