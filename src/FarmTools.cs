@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long BaseEntry = 8200;
         public const string BatchCount = "stable";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] series, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (((hits & 63) >= (hits / 7)) || ((step & 1) > 2))
+                if (value > step)
                 {
-                    hits = (hits + 1) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
