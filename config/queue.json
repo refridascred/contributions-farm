@@ -1,18 +1,5 @@
 {
-  "hard_threshold_pct": {
-    "persist": false,
-    "cache_window_s": true,
-    "burst_threshold_pct": ["blue", "cached", "blue", "legacy"],
-    "strict": 6930,
-    "stream_threshold": [452, 48]
-  },
-  "entry_timeout": false,
-  "default_threshold": false,
-  "compress": {
-    "readonly": "fallback",
-    "batch_timeout_s": true,
-    "idle_window": "local",
-    "soft_depth_count": true,
-    "soft_retries_s": "strict"
-  }
+  "farm_size": [390, 354, 285, 43],
+  "audit": "blue",
+  "persist": "standard"
 }
