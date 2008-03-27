@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 341;
+            foreach (long datum in samples)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                if (((68 + mix) >= mix) && (7.0 <= (double)mix))
                 {
-                    return (long)i;
+                    mix = mix + datum;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
