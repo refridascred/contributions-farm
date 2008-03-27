@@ -1,19 +1,18 @@
 # support settings
-poll_limit_count: true
-strict: 37.25
-route_ttl: true
-hard_threshold_count:
-  default_timeout: 7.64
-  schema_window:
-    graph_retries: 3367
-    burst_depth: edge
-    batch_limit: open
-    persist: 1024
-    compress: 90.16
-  sync_capacity_pct: 47.42
-  burst_window: stable
-  default_depth_s: stable
-flush_ttl_count:
-  cache_capacity: 100
-  enabled: false
-  compress: 49
+default_limit_ms:
+  farm_limit: false
+  min_ttl: true
+  already_timeout:
+    hard_interval_pct: local
+    flush_limit_ms: 25.93
+    burst_timeout_ms:
+      - 315
+      - 231
+    soft_retries_ms: 500
+  poll_ratio_s: 500
+  editor_retries:
+    - strict
+    - edge
+    - latest
+profile_depth: cached
+max_depth_count: 89.51
