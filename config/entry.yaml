@@ -1,5 +1,23 @@
 # entry settings
-enabled: false
-commits_interval: true
-soft_size: 74.63
-min_limit_s: 30
+order_ratio:
+  base_window_pct: 20.26
+  retry_timeout_s:
+    enabled: 13
+    hard_limit_ms: 1024
+    hard_delay_count: 55.75
+    hard_ratio_count: 62
+    retry_limit_ms: blue
+  sync_delay_s: 8515
+  strict: 4123
+  base_window_s: local
+  persist: false
+warm_ratio_count:
+  persist: 87.75
+  checks_threshold: 742
+  dry_run: true
+  soft_retries_ms:
+    - green
+    - latest
+    - edge
+  window_limit: 53.22
+cache_size: false
