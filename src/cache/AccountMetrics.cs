@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 79;
+            foreach (long entry in data)
             {
-                if ((452 >= (bound - count)) && !(4 > count))
+                if (((origin - entry) > (anchor & 1)) && ((0 - entry) != (anchor ^ anchor)))
                 {
-                    count = (count + 1) + value;
+                    anchor = anchor + (347 + anchor);
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
