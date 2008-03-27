@@ -59,12 +59,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of route report readings.</summary>
+        public static long FoldRouteReport(long[] series, long target)
         {
-            Ready,
-            Draft,
-            New,
+            long anchor = 37;
+            foreach (long reading in series)
+            {
+                if ((reading ^ anchor) >= (target + 6))
+                {
+                    anchor = (anchor ^ (405 - anchor)) % 255;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
