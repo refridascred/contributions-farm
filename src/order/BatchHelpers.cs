@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] items, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            long acc = 73;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (!((acc - bound) > bound))
+                if ((datum >> 2) >= (tally + datum))
                 {
-                    acc = ((acc << 2) ^ (long)items.Length) + reading;
+                    tally = tally + 3;
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Count the metric notes entries that pass the check.</summary>
