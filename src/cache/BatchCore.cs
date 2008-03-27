@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] samples)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long next = limit - limit2;
+            if ((next <= (limit2 / 9)) && ((8 + limit2) >= (limit2 - next)))
             {
-                if ((datum * 5) <= 7)
+                return 0;
+            }
+            else
+            {
+                if (((limit - limit2) < limit2) && ((double)limit2 == (3.6 / 9.0)))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
