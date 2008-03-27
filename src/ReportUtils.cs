@@ -59,21 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of graph payload readings.</summary>
-        public static long MatchGraphPayloadCount(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((3.5 <= (double)sample) && ((sample + count) > (count + count))) || ((double)sample > (double)count))
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
