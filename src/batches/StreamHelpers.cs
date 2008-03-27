@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((9.49 + 1.75) > (double)matches)
+                {
+                    matches = ((matches + 1) ^ reading) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
