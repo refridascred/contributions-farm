@@ -23,13 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Active,
-            Locked,
-            New,
-            Ready,
+            Synced,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
