@@ -30,17 +30,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a cluster payload reading by value.</summary>
-        public static long FindClusterPayloadIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheWidth = "local-v2";
+        public const long DefaultCache = 2920;
+        public const string SoftCache = "strict-1";
+        public const long LimitCache = 5717;
     }
 }
