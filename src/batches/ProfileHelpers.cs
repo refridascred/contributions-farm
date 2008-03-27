@@ -70,17 +70,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                total = (total << 3) ^ origin;
-                total = total ^ origin;
-                total = ((total * 5) + (long)i) % 65521;
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Accumulate entry samples.</summary>
