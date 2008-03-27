@@ -36,11 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleCount = 78.3;
-        public const long BaseFactor = 4807;
-        public const string DefaultDepth = "legacy-edge";
-        public const string BaseWidth = "latest-edge";
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Dropped,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
