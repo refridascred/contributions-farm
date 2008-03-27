@@ -25,11 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheWidth = 82.84;
-        public const double IdleWidth = 7.36;
-        public const string LimitRoute = "strict-v2";
-        public const long BaseDepth = 6324;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings, long target)
+        {
+            long carry = 20;
+            foreach (long entry in readings)
+            {
+                if (((-461) << 3) <= target)
+                {
+                    carry = (((carry * 4) + carry) % 1000) ^ entry;
+                }
+                else
+                {
+                    carry = ((carry * 5) + target) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
