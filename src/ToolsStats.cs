@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the stats state values.</summary>
