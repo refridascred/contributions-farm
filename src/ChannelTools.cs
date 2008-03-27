@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long span = bound + offset;
-            if ((offset >> 5) == (span - 92))
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                anchor = ((anchor << 3) ^ anchor) % 97;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((7 * 3) == (bound - bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound >= (bound * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.06 * 3.0) > (double)span)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a session entry.</summary>
