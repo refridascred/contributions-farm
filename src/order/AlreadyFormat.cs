@@ -22,31 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = 399;
-            foreach (long reading in levels)
-            {
-                if (5.58 < (0.5 * 9.03))
-                {
-                    mix = ((mix << 2) ^ (mix << 2)) % 97;
-                    mix = (mix - (reading >> 2)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (96 + reading);
-                }
-                if (!(mix >= (192 % 7)))
-                {
-                    mix = (mix + (reading - 0)) % 97;
-                }
-            }
-            if (mix < 116)
-            {
-                mix = (mix ^ (mix + mix)) % 255;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
