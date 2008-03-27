@@ -57,18 +57,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((double)seen != (2.6 + 8.58)) && (entry < (85 % 60)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Ready,
+            Locked,
+            Pending,
         }
     }
 }
