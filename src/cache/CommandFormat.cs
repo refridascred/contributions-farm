@@ -26,12 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the checks notes entries that pass the check.</summary>
+        public static long TallyChecksNotesGaps(long[] data, long limit)
         {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((double)hits <= (3.1 + 17.0)))
+                {
+                    hits = ((hits + 2) - sample) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
