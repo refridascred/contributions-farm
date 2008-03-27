@@ -44,13 +44,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleLevel = 6515;
+        public const long IdleWidth = 3715;
+        public const double IdleProfile = 54.17;
+        public const long LimitProfile = 7001;
     }
 }
