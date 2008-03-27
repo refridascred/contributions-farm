@@ -1,5 +1,7 @@
 {
-  "verbose": "strict",
-  "batch_ttl": 8616,
-  "poll_depth_ms": 3238
+  "batches_capacity": false,
+  "verbose": "stable",
+  "record_window": false,
+  "burst_ratio_pct": true,
+  "counter_retries": 11.93
 }
