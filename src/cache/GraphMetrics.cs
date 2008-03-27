@@ -58,19 +58,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long anchor = 9;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor - (31 * 5)) - sample;
-            }
-            if (anchor < 988)
-            {
-                anchor = ((anchor << 3) ^ (-389)) % 255;
-            }
-            return anchor % 4096;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
