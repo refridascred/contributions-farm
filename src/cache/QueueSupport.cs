@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] items, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 980;
+            foreach (long cell in values)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                state = ((state * 4) + (state * 2)) + cell;
+                if ((0.6 * 2.0) < (double)state)
                 {
-                    return (long)i;
+                    state = (state ^ (47 >> 3)) % 255;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
