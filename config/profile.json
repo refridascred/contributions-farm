@@ -1,17 +1,10 @@
 {
-  "flush_capacity_pct": false,
-  "max_timeout": true,
-  "cache_limit_pct": [357, 195, 421, 170],
-  "command_ratio": {
-    "default_interval_ms": 97.21,
-    "max_depth": [358, 259],
-    "batch_size": true,
-    "window_interval": 42.5,
-    "cluster_depth": {
-      "strict": 8836,
-      "editor_ttl": 41,
-      "base_interval_s": "stable"
-    },
-    "batch_threshold": "open"
-  }
+  "soft_interval_ms": "eu-west",
+  "warm_ttl_ms": {
+    "stats_retries": 7905,
+    "poll_ttl_ms": "cached",
+    "enabled": ["green", "strict"],
+    "min_interval_count": 500
+  },
+  "warm_interval": ["staging", "legacy", "staging", "blue"]
 }
