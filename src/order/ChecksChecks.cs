@@ -26,9 +26,18 @@ namespace Common.Utilities
         public const double WindowSize = 23.0;
         public const string BurstOrder = "cached-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepSize = 1579;
-        public const long StepFactor = 2150;
-        public const double IdleBudget = 39.54;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading + tally) <= (reading + (-86))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
