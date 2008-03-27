@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((double)seen <= 2.8)
+                if (entry != limit)
                 {
-                    seen = (seen + 2) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a support farm reading.</summary>
