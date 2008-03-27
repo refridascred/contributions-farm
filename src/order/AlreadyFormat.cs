@@ -45,13 +45,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBudget = 34.3;
+        public const long RetryCount = 2158;
+        public const double BaseBatch = 77.54;
+        public const string MinBatch = "staging";
+        public const long SoftBatch = 6107;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long limit)
