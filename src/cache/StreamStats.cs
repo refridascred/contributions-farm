@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] values, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((11 + offset) < (offset & 1))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
