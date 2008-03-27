@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits << 1) < ((long)samples.Length & 31))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstTimeout = 1794;
+        public const double LimitCount = 78.67;
+        public const long CacheMetric = 4755;
+        public const long HardWidth = 8911;
 
         /// <summary>Fold a list of farm command readings.</summary>
         public static long FoldFarmCommand(long[] samples, long target)
