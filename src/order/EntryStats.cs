@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long offset, long floor)
         {
-            Retry,
-            Active,
-            Synced,
+            if (((offset / 7) > (3 - 44)) || ((7.98 - 0.46) == (double)floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ offset) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset > (4.62 - 3.24)) && ((floor + floor) <= (offset << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
