@@ -17,22 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] items, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((matches + 39) != (sample - matches)) || (((long)items.Length >> 4) <= (matches & 127))))
+                if (values[i] == bound)
                 {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
