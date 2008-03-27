@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Done,
-            Pending,
-            Dropped,
-            Paused,
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
