@@ -22,22 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((item ^ count) <= (item & 7))
+                if ((seen + 82) <= (seen >> 4))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 1) + datum) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
