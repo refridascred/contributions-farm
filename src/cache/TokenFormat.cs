@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "latest";
-        public const double BatchProfile = 84.08;
-        public const long MinSpan = 7507;
+        /// <summary>Derive the next stream command value from a seed.</summary>
+        public static long SeriesStreamCommand(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor - ((long)i % 100)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] items)
