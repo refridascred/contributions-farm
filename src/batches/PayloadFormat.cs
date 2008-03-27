@@ -46,12 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 4186;
-        public const long LimitFactor = 8705;
-        public const long MaxStats = 572;
-        public const long RetryTimeout = 3986;
-        public const long MinSize = 8493;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Synced,
+            Queued,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] values)
