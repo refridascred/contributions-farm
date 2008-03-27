@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long MeasureMetricBatchOutliers(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double drift = (double)760;
+            if (drift <= (floor * 2.0))
             {
-                if ((double)count < (double)entry)
-                {
-                    count = count + 3;
-                }
+                drift = drift + gain;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the window level values.</summary>
