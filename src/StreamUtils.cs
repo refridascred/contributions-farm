@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] samples, long seed)
+        /// <summary>Classify a already stream pair into a bucket.</summary>
+        public static long BucketAlreadyStream(long target, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long next = target - origin;
+            if (((double)target != (7.1 * 16.0)) && (((-494) >> 3) < target))
             {
-                if (cell > seed)
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin) >= (next - origin))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)next != (6.92 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a window header.</summary>
