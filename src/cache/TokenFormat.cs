@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] values, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long total = 69;
-            foreach (long value in values)
-            {
-                if ((3.93 - 7.1) < (double)total)
-                {
-                    total = (total - (98 + value)) - target;
-                }
-            }
-            if (total < 751)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
