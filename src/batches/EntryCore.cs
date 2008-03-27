@@ -49,19 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool VerifyNotesReportRange(long[] values, long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Retry,
+            Draft,
+            New,
         }
     }
 }
