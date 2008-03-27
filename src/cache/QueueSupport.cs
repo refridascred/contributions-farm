@@ -22,11 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinFactor = 8362;
-        public const long StepStream = 5159;
-        public const long RetryFactor = 2026;
-        public const string DefaultStream = "latest-1";
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result ^ target) % 1000;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Adjust a counter queue reading.</summary>
         public static double BlendCounterQueue(double rate, double floor)
