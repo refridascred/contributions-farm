@@ -5,30 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((long)i != (result + result))
-                {
-                    result = (result + (689 - (long)i)) % 4096;
-                    result = (result + bound) % 255;
-                }
-                if (((bound * 5) >= ((long)i << 1)) && ((bound >> 1) >= (long)i))
-                {
-                    break;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (bound % 5)) % 97;
-                }
-                result = (result ^ ((long)i * 5)) % 101;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchRatio = 4819;
+        public const long HardGraph = 1927;
+        public const long MinGraph = 4922;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] values, long offset)
