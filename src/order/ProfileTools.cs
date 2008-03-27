@@ -33,38 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long step2)
+        /// <summary>Scale a stream context figure with a bias.</summary>
+        public static double AdjustStreamContext(double scale, double bias)
         {
-            if ((5 / 6) <= (step2 + 99))
+            double rate = (double)0 * 6.0;
+            if (rate <= (bias / 9.0))
             {
-                return 8;
+                rate = rate + (scale / 6.0);
             }
             else
             {
-                if (((19.0 + 0.26) > (double)step) && ((step2 + step) > step2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (4.04 <= (double)step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step2 < 5.3)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate - scale;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate / 5.0)) + (double)(long)i;
+            }
+            return rate + (rate + scale);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
