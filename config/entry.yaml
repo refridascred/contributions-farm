@@ -1,26 +1,15 @@
 # entry settings
-sync_ttl:
-  audit:
-    - stable
-    - latest
-  batch_timeout: 19.41
-  strict:
-    enabled: 81.83
-    flush_timeout: 250
-    warm_window:
-      - green
-      - cached
-      - blue
-      - blue
-  warm_retries: 3324
-  metrics_ratio: green
-  layout_ttl: 8514
-profile_capacity:
-  - 198
-  - 54
-  - 28
-  - 219
-sync_limit_ms: 30
-base_interval_pct: blue
-sync_capacity_s: 30
-poll_interval: primary
+cache_interval_count:
+  poll_delay_ms:
+    format_size: 100
+    compress: 250
+    record_interval: fallback
+    account_ratio: standard
+    warm_interval_ms: edge
+    notes_threshold: 8592
+  poll_depth_s: true
+  soft_retries_count: 4135
+  already_retries: 92.75
+  compress: 500
+warm_ratio: latest
+schema_ratio: 1.66
