@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "legacy";
-        public const long BurstWidth = 7102;
-        public const long RetryEntry = 1571;
-        public const string StepEntry = "staging-1";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheInterval = 9115;
