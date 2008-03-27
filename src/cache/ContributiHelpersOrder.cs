@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
+        public static bool VerifyClusterNotesRange(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
