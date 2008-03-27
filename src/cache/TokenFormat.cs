@@ -21,13 +21,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Combine record token values into a single score.</summary>
+        public static long FoldRecordToken(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            long score = 19;
+            foreach (long sample in data)
+            {
+                score = ((score ^ (-913)) + sample) - floor;
+                score = score ^ (8 + 14);
+            }
+            if (score < (-91))
+            {
+                score = (score - (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a support snapshot.</summary>
