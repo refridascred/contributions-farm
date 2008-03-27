@@ -22,17 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a window entry reading by value.</summary>
-        public static long SeekWindowEntryIndex(long[] levels, long seed)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
