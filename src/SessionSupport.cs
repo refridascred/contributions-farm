@@ -27,13 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Ready,
-            Failed,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryTimeout = 1355;
+        public const long IdleChecks = 780;
+        public const long DefaultTimeout = 9494;
+        public const long MaxChecks = 868;
+        public const long BaseChecks = 9906;
     }
 }
