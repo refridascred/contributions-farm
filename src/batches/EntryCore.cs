@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 0;
+            foreach (long datum in items)
             {
-                if (data[i] <= bound)
+                if ((927 <= (anchor * 4)) && ((datum >> 3) > (datum ^ datum)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (399 >> 4)) % 97;
                 }
             }
-            return -1;
+            if (anchor > 357)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
