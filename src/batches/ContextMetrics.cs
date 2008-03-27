@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            Stale,
             Queued,
-            Closed,
             New,
-            Active,
-            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Iterate the githubfarm window series from a seed.</summary>
