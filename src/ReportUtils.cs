@@ -65,13 +65,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long origin, long seed)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((origin % 2) < (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed - origin) <= (seed >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed << 2) > (origin ^ seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
