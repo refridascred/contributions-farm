@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long origin)
         {
-            long anchor = 79;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin - entry) > (anchor & 1)) && ((0 - entry) != (anchor ^ anchor)))
+                if (values[i] > origin)
                 {
-                    anchor = anchor + (347 + anchor);
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
