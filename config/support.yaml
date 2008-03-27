@@ -1,9 +1,6 @@
 # support settings
-batches_ttl:
-  - 463
-  - 22
-farm_interval: false
-soft_depth_pct: staging
-burst_interval_pct: 5401
-max_retries_s: 60
-max_capacity_pct: open
+flush_threshold_count:
+  - 244
+  - 15
+retry_depth: green
+min_window: standard
