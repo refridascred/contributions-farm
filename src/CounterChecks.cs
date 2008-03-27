@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
+        public static bool VerifyPayloadMetricsBounds(long[] levels, long seed)
         {
-            Failed,
-            Closed,
-            Idle,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the route level values.</summary>
