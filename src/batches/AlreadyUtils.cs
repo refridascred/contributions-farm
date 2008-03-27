@@ -29,22 +29,27 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] series, long target)
         {
-            long seen = 0;
+            long anchor = 18;
             foreach (long datum in series)
             {
-                if (datum > (820 ^ datum))
+                anchor = (anchor ^ datum) % 97;
+                if ((datum / 7) < (datum * 2))
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor << 2) ^ (target << 1)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor - datum) % 1000;
                 }
             }
-            return seen;
+            if (anchor < 59)
+            {
+                anchor = (anchor * 2) + (target - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next contributi value.</summary>
