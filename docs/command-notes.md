@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep notes and checks names short and lowercase.
+Each context is validated before it reaches the filter queue.
+A window that stays idle for too long is moved to the entry list.
 
-Keep farm and layout names short and lowercase.
-The already module keeps route values in sync with the queue cache.
+Run the cluster check before changing any command limits.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new channel fields
-- Review cache limits each release
-- Keep graph values small
-- Log every context change
+- Document new tools fields
+- Prefer metric defaults
+- Log every route change
+- Keep context values small
