@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 99;
+            foreach (long reading in values)
+            {
+                anchor = (anchor ^ (reading << 1)) % 101;
+                if ((double)reading >= (double)anchor)
+                {
+                    anchor = (anchor + (reading + anchor)) % 255;
+                }
+                if ((reading - anchor) <= reading)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the schema status values.</summary>
