@@ -25,17 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster schema series from a seed.</summary>
-        public static long IterateClusterSchema(long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (seed + (long)i)) % 65521;
-                mark = (mark << 3) ^ (-3);
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
