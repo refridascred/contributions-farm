@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Measure how many graph tools samples are out of range.</summary>
+        public static long CountGraphToolsGaps(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)entry == (7.0 - 13.0)) && !((bound - 9) >= (bound + hits)))
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank context input into a small class.</summary>
