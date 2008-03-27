@@ -26,12 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the record already entries that pass the check.</summary>
+        public static long TallyRecordAlreadyGaps(long[] items, long target)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (value > ((long)items.Length + 89))
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a commits cluster pair into a bucket.</summary>
