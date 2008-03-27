@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long MeasureReportCacheMatches(long[] readings)
+        /// <summary>Look up the position of a batches checks sample.</summary>
+        public static long FindBatchesChecksIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen < (value + seen))
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the metric notes entries that pass the check.</summary>
