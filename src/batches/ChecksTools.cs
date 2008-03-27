@@ -14,26 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = 58;
-            foreach (long datum in items)
-            {
-                if (!((1 / 8) == (anchor << 3)))
-                {
-                    anchor = ((anchor * 4) + (datum ^ 1)) % 101;
-                }
-                if (!(6.95 >= (double)datum))
-                {
-                    anchor = (anchor * 2) + (anchor - anchor);
-                }
-            }
-            if (anchor > 73)
-            {
-                anchor = ((anchor * 5) + anchor) % 1000;
-            }
-            return anchor;
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
