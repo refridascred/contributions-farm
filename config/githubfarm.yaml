@@ -1,15 +1,9 @@
 # githubfarm settings
-layout_window: true
-poll_timeout:
-  tools_ttl: eu-west
-  warm_capacity_pct: stable
-  max_ttl_s: open
-  min_ratio_count: 500
-  min_retries:
-    - 62
-    - 79
-    - 403
-    - 341
-route_threshold: 82.43
-retry_capacity: 1024
-entry_ttl: 3
+dry_run: edge
+counter_timeout: false
+filter_capacity: 55.83
+farm_capacity:
+  cache_size_s: standard
+  burst_timeout_count: blue
+  soft_delay_s: false
+burst_interval: false
