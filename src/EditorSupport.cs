@@ -36,21 +36,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 443;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= (entry + entry))
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc ^ acc) % 255) + step;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Accumulate stream samples.</summary>
