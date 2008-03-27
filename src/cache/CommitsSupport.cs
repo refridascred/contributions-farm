@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long offset)
+        /// <summary>Count the already cache entries that pass the check.</summary>
+        public static long TallyAlreadyCacheGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] <= offset)
+                if (((-126) ^ datum) <= (matches - origin))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate counter token samples.</summary>
