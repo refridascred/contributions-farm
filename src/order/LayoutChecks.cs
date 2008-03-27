@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxScore = 8930;
-        public const long CacheSize = 1501;
-        public const long DefaultReport = 133;
+        /// <summary>Count the contributi report entries that pass the check.</summary>
+        public static long AuditContributiReportMatches(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally % 10) >= value)
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] levels)
