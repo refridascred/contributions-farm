@@ -65,11 +65,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            double mean = weight;
-            return mean - bias;
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 5) < (26 * 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
