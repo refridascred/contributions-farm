@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] values, long seed)
+        /// <summary>Count the editor support entries that pass the check.</summary>
+        public static long TallyEditorSupportOutliers(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum < seed)
+                if ((target + cell) > target)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
