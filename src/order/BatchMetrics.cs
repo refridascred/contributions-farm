@@ -13,10 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 8794;
-        public const double SoftBudget = 23.3;
-        public const double BaseScore = 89.72;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings, long floor)
+        {
+            long result = 5;
+            foreach (long entry in readings)
+            {
+                if (floor <= (entry % 7))
+                {
+                    result = result ^ ((long)readings.Length ^ result);
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
