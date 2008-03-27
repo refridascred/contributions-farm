@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two metrics layout measurements.</summary>
-        public static double SmoothMetricsLayout(double ratio, double offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            double bias = offset - (offset / 8.0);
-            if (bias > (bias - ratio))
+            long acc = -66;
+            foreach (long cell in series)
             {
-                bias = bias - (offset / 4.0);
+                acc = ((acc + (699 * 2)) % 101) + cell;
             }
-            else
-            {
-                bias = bias + (0.9 - ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + 9.5) + (double)(long)i;
-            }
-            return bias + (offset * 3.6);
+            return acc % 4096;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
