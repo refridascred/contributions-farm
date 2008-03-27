@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Done,
-            Locked,
-            Ready,
+            Idle,
             New,
+            Queued,
         }
 
         /// <summary>Match up window samples.</summary>
