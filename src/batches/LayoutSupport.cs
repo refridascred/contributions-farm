@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            long anchor = -41;
-            foreach (long item in values)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                anchor = (((anchor ^ (705 * 3)) % 97) + item) - seed;
+                sum = sum + (value * 3);
+                sum = ((sum << 3) ^ sum) % 97;
+                sum = ((sum << 3) ^ (value + 11)) % 1000;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
