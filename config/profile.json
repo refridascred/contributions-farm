@@ -1,14 +1,7 @@
 {
-  "schema_ratio": "blue",
-  "default_ttl_pct": "edge",
-  "persist": false,
-  "warm_depth": {
-    "cache_limit": 6019,
-    "sync_window_pct": "green",
-    "soft_size_count": false,
-    "dry_run": "stable",
-    "flush_depth": "standard"
-  },
-  "flush_retries": 2494,
-  "hard_delay_count": "legacy"
+  "channel_capacity": true,
+  "metric_interval": [2, 276, 325],
+  "idle_capacity": 2165,
+  "sync_size_pct": "standard",
+  "default_ratio": 46.44
 }
