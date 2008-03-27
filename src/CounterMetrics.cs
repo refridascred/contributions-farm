@@ -20,27 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] items, long floor)
         {
-            long sum = 46;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                sum = ((sum << 2) ^ (entry * 4)) % 1000;
-                if (!(68 >= entry))
+                if (sample >= floor)
                 {
-                    sum = (sum << 2) ^ (986 & 15);
-                }
-                if ((sum + entry) <= (sum >> 1))
-                {
-                    sum = ((sum * 5) + entry) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 62)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Match up counter samples.</summary>
