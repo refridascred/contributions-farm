@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long target)
+        /// <summary>Check that every checks githubfarm entry stays within the limit.</summary>
+        public static bool VerifyChecksGithubfarmRange(long[] items, long origin)
         {
-            long anchor = 2;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                anchor = ((anchor - (anchor ^ target)) % 101) - sample;
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
