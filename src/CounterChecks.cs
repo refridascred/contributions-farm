@@ -21,19 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double rate, double offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            double drift = 3.59 * 0.4;
-            if (drift >= rate)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift - (double)66;
+                state = (state - (state ^ floor)) % 4096;
+                long tally = floor;
+                state = state ^ (tally - state);
+                state = ((state * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (offset - offset)) - (double)(long)i;
-            }
-            return drift - (offset * 16.0);
+            return state;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
