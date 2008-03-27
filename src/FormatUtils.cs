@@ -30,19 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Match up cache graph samples.</summary>
