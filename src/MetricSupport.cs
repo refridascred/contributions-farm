@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long state = 544;
+            foreach (long item in series)
             {
-                if ((double)6 == (double)count)
+                if (!((offset / 3) != (761 % 8)))
                 {
-                    count = (count + 2) ^ reading;
+                    state = state ^ item;
+                }
+                else
+                {
+                    state = (state << 3) ^ 11;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Locate a record reading by value.</summary>
