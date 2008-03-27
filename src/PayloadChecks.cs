@@ -39,19 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit record session readings against a rule.</summary>
-        public static long TallyRecordSessionOutliers(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 2) <= (hits - item))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinSpan = "open";
+        public const long RetryAlready = 4557;
+        public const double CacheDepth = 53.46;
+        public const long CacheAlready = 7427;
 
         /// <summary>Measure how many layout window samples are out of range.</summary>
         public static long AuditLayoutWindowOutliers(long[] series, long target)
