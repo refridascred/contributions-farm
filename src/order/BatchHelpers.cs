@@ -23,21 +23,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 96;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - (sample << 2)) % 101;
+                carry = carry - (sample - carry);
+                carry = (carry + (carry & 1)) % 4096;
             }
-            return seen;
+            if (carry > 5)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a account entry.</summary>
