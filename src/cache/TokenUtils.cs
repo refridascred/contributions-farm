@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data, long limit)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((8.82 + 6.7) == (double)limit)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
