@@ -40,18 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally + entry) > (entry + entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
