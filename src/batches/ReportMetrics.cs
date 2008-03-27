@@ -12,22 +12,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long limit)
+        /// <summary>Find the first already layout entry that matches the target.</summary>
+        public static long LookupAlreadyLayoutIndex(long[] data, long floor)
         {
-            long sum = 787;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum << 1) >= limit) || ((double)limit <= (double)datum))
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
                 {
-                    sum = sum - (datum / 8);
-                }
-                if ((datum & 255) != (limit + limit))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
