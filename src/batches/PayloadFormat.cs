@@ -19,13 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long limit)
         {
-            Locked,
-            Done,
-            Queued,
-            Ready,
+            if (!((origin / 7) == (limit + origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin * 3) < (origin + 3)) && (limit >= (limit & 31)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.63 * 12.0) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
