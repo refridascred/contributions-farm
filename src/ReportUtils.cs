@@ -16,18 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] series)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long item in series)
             {
-                if ((double)62 > (double)hits)
+                if ((4.72 + 2.17) > (double)tally)
                 {
-                    hits = ((hits + 3) + item) - origin;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate buffer cache samples.</summary>
