@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long limit)
         {
-            double load = span;
-            return (load - (load / 6.0)) + weight;
+            long mark = 7;
+            foreach (long datum in levels)
+            {
+                mark = mark ^ limit;
+                if (((datum + datum) < (limit << 2)) || ((double)mark == (3.0 * 8.69)))
+                {
+                    mark = (mark << 3) ^ (long)levels.Length;
+                }
+                else
+                {
+                    mark = (mark * 3) + (datum - limit);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the window phase values.</summary>
