@@ -1,7 +1,13 @@
 {
-  "notes_limit": [303, 478, 252, 325],
-  "format_interval": 46,
-  "warm_threshold_count": true,
-  "commits_timeout": 49,
-  "filter_retries": false
+  "metrics_delay": "strict",
+  "strict": [337, 37, 89],
+  "hard_capacity_count": [347, 391, 487],
+  "metrics_ratio": {
+    "hard_threshold": 14.16,
+    "retry_capacity": 336,
+    "default_timeout": 998,
+    "verbose": "edge",
+    "cluster_capacity": 85
+  },
+  "readonly": ["eu-west", "blue", "strict"]
 }
