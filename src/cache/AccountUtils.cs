@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long seed)
         {
-            long span = limit - step;
-            if ((limit + 70) > span)
+            long acc = -71;
+            foreach (long sample in levels)
             {
-                return 2;
+                acc = acc - (sample + 39);
+                acc = (acc - (seed % 2)) % 4096;
             }
-            else
+            if (acc > 959)
             {
-                if (!((limit - limit) >= (step - limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.84 - 11.0) <= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step <= (double)2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = acc - seed;
             }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate metric samples.</summary>
