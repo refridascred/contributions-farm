@@ -1,5 +1,7 @@
 {
-  "retry_retries_s": 1024,
-  "compress": 97.77,
-  "min_size": 94.82
+  "idle_capacity_pct": "stable",
+  "flush_retries": "strict",
+  "max_capacity_pct": 36.6,
+  "enabled": "staging",
+  "default_capacity_ms": 5388
 }
