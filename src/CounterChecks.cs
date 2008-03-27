@@ -39,21 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count counter schema pairs that satisfy a relation.</summary>
-        public static long MatchCounterSchemaCount(long[] data)
+        /// <summary>Look up the position of a channel context sample.</summary>
+        public static long SeekChannelContextIndex(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] < floor)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a support snapshot.</summary>
