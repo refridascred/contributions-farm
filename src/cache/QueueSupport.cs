@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] values, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Queued,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
