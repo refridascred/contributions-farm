@@ -49,11 +49,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long origin)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long span = seed - origin;
+            if (span > (origin >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed > span) || ((0 + span) <= (span + origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (6.0 * 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed - seed) >= span) && (origin < (721 & 63)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
