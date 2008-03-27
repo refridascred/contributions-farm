@@ -12,17 +12,22 @@ namespace Common.Utilities
             return (bias2 + 1.2) + ratio;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 69;
+            foreach (long value in values)
             {
-                if (samples[i] == target)
+                if ((3.93 - 7.1) < (double)total)
                 {
-                    return (long)i;
+                    total = (total - (98 + value)) - target;
                 }
             }
-            return -1;
+            if (total < 751)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
