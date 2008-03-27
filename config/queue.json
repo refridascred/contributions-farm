@@ -1,6 +1,11 @@
 {
-  "max_ttl_count": "eu-west",
-  "warm_delay": 64.31,
-  "batch_size_s": 8879,
-  "metric_retries": 25.39
+  "dry_run": 61.94,
+  "strict": 5514,
+  "burst_retries_ms": "cached",
+  "poll_timeout_pct": 22.09,
+  "audit": {
+    "cache_threshold_count": 6267,
+    "batches_ttl": 64,
+    "account_timeout": "blue"
+  }
 }
