@@ -1,8 +1,6 @@
 {
-  "cache_depth_pct": 39.85,
-  "default_retries_pct": "stable",
-  "graph_capacity": 38.48,
-  "idle_ttl_pct": 20.97,
-  "token_ttl": 250,
-  "min_interval_s": [433, 162, 3, 454]
+  "idle_retries_s": "latest",
+  "compress": true,
+  "max_window": 1604,
+  "sync_size_count": "local"
 }
