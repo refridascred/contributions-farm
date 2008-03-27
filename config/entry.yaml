@@ -1,12 +1,13 @@
 # entry settings
-format_retries: true
-enabled:
-  - latest
-  - primary
-  - strict
-profile_capacity: 48.23
-flush_delay_pct: true
-max_ratio_count: staging
-editor_interval:
-  - primary
-  - cached
+flush_interval_ms:
+  - edge
+  - fallback
+  - stable
+dry_run: 60.35
+cluster_retries:
+  poll_size: cached
+  persist: 7411
+  retry_timeout_pct: 47.23
+buffer_delay: 77.37
+soft_delay: false
+audit: edge
