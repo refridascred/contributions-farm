@@ -30,32 +30,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long limit)
+        /// <summary>Derive the next window route value from a seed.</summary>
+        public static long DeriveWindowRoute(long offset)
         {
-            long gap = bound - limit;
-            if ((996 + 0) == (gap * 2))
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                total = (total + total) % 4096;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((8 + limit) >= (bound / 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - gap) == (bound << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate window record readings against a bound.</summary>
