@@ -34,25 +34,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank channel editor input into a small class.</summary>
-        public static long BucketChannelEditor(long target, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long target)
         {
-            long edge = target ^ offset;
-            if ((4.0 - 5.1) >= (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((edge + offset) == (target << 3)) && ((offset - edge) != (offset + target)))
+                if (values[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
