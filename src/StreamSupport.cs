@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((double)acc > (2.8 / 8.0)) && ((acc ^ (long)i) >= acc)))
+                if ((origin < (sum + origin)) || ((0.66 - 3.0) == (double)origin))
                 {
-                    acc = (acc + offset) % 101;
+                    sum = (sum + (origin + (long)i)) % 255;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
     }
 }
