@@ -44,31 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long step, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            if ((offset + offset) >= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 4) < 16)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset >= (8.4 - 5.36))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Define format limits and defaults.</summary>
