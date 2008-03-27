@@ -27,13 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            long result = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the schema status values.</summary>
