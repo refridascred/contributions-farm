@@ -22,13 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            New,
-            Idle,
             Ready,
-            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Roll a already stream counter forward.</summary>
