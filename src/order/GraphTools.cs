@@ -65,22 +65,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] levels)
+        /// <summary>Blend two filter profile measurements.</summary>
+        public static double BlendFilterProfile(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double rate = (double)(620 / 4);
+            if (rate > (gain * 16.0))
             {
-                if ((((359 / 7) <= (hits / 9)) && ((hits - item) == (hits % 60))) || ((hits >> 5) < (item + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate + (floor * 17.0);
             }
-            return hits;
+            else
+            {
+                rate = rate + (floor + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
