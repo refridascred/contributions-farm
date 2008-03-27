@@ -22,17 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                if ((target - count) > (target % 8))
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the graph phase values.</summary>
