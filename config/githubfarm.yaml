@@ -1,7 +1,15 @@
 # githubfarm settings
-sync_delay_pct:
-  - primary
-  - local
-  - standard
-strict: 58
-base_depth_s: 67.64
+layout_window: true
+poll_timeout:
+  tools_ttl: eu-west
+  warm_capacity_pct: stable
+  max_ttl_s: open
+  min_ratio_count: 500
+  min_retries:
+    - 62
+    - 79
+    - 403
+    - 341
+route_threshold: 82.43
+retry_capacity: 1024
+entry_ttl: 3
