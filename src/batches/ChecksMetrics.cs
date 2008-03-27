@@ -73,20 +73,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(score >= (limit + 157)))
+                if ((15.0 - 8.16) <= (double)entry)
                 {
-                    score = (score - score) % 4096;
-                    score = (score + (score & 3)) % 255;
+                    hits = hits + 2;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
