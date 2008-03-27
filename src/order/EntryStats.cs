@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowScore = 9236;
-        public const string SoftBatches = "legacy-edge";
-        public const long MaxSpan = 113;
-        public const long CacheSpan = 3831;
+        /// <summary>Derive the next account cache value from a seed.</summary>
+        public static long SeriesAccountCache(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix - mix) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
