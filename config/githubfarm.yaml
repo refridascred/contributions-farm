@@ -1,7 +1,13 @@
 # githubfarm settings
-warm_capacity: true
-cache_delay_pct: true
-payload_ttl: 20.45
-checks_limit: strict
-cache_capacity: 62.48
-strict: 42.81
+strict: true
+idle_interval:
+  - 195
+  - 394
+  - 259
+soft_retries_ms:
+  base_depth_ms: 60
+  stats_size: 47.07
+  batches_retries: 20.67
+  batch_ratio: blue
+  max_retries_s: false
+  min_limit: green
