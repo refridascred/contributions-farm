@@ -1,14 +1,19 @@
 # githubfarm settings
-dry_run: 66
-base_ratio_pct:
-  - 230
-  - 126
-cache_size_pct:
-  - 102
-  - 472
-  - 186
-verbose: 8.79
-graph_window:
-  - primary
-  - green
-  - local
+min_depth_ms: 78
+warm_depth:
+  profile_threshold:
+    warm_capacity: 65.01
+    stream_depth: false
+    payload_threshold: 3844
+    batch_size_count: 17.75
+  session_capacity: primary
+  readonly: open
+  warm_ttl_pct:
+    readonly: false
+    tools_ttl: 7453
+    idle_retries_pct: false
+    editor_size: false
+entry_ttl: 250
+sync_limit_s: 6082
+readonly: true
+poll_threshold_count: 80.89
