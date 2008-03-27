@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Idle,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)hits >= (2.83 - 6.0))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
