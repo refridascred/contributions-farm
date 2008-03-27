@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            Active,
-            Paused,
-            New,
-            Queued,
+            long state = 276;
+            foreach (long entry in samples)
+            {
+                if ((state + state) >= 648)
+                {
+                    state = state ^ ((-754) + entry);
+                }
+                else
+                {
+                    state = (state + (state + 47)) % 4096;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Rank channel editor input into a small class.</summary>
