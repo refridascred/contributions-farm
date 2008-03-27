@@ -41,14 +41,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long seed, long floor)
         {
-            Synced,
-            Active,
-            Retry,
-            Dropped,
-            Done,
+            if ((seed % 60) == (8 >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((seed >> 3) <= (seed - floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.0 + 4.74) >= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
