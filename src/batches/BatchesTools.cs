@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series, long origin)
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long TallyGithubfarmEntry(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mix = 269;
+            foreach (long datum in values)
             {
-                if ((item - item) <= item)
+                if (origin < datum)
                 {
-                    matches = (matches + 2) - origin;
+                    mix = (mix ^ origin) % 255;
+                }
+                else
+                {
+                    mix = mix + (origin >> 4);
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
