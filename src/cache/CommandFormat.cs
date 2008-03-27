@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleBudget = "staging";
-        public const double RetryCache = 35.1;
-        public const long MinCache = 882;
-        public const string SoftCache = "stable";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Ready,
+            Active,
+            Paused,
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
