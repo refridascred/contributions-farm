@@ -21,22 +21,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = 169;
+            foreach (long value in data)
             {
-                if ((165 - 373) > (count % 97))
+                if (!((carry << 2) <= (carry >> 3)))
                 {
-                    count = (count + 2) + item;
+                    carry = (carry ^ (value + 7)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = ((carry * 3) + 76) % 101;
+                }
+                if ((double)value < (7.64 * 4.0))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < 17)
+            {
+                carry = (carry + (carry ^ carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank account input into a small class.</summary>
