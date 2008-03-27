@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 5511;
-        public const long RetryAccount = 2163;
-        public const long MinSpan = 9480;
-        public const long CacheAccount = 9653;
-        public const double MaxScore = 37.41;
+        /// <summary>Check that every route layout entry stays within the limit.</summary>
+        public static bool ValidateRouteLayoutBounds(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepFactor = 7012;
