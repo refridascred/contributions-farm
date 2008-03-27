@@ -46,14 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            Done,
-            Synced,
-            Failed,
-            Queued,
-            Closed,
+            double scale = (floor - 2.62) - 5.8;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (double)67) - (double)(long)i;
+            }
+            return scale + (floor + ratio);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
