@@ -1,7 +1,6 @@
 # support settings
-audit: 1024
-contributi_interval: eu-west
-base_interval:
-  - cached
-  - legacy
-cache_limit_ms: 3
+flush_window_count: true
+soft_delay_s: 44
+min_ttl:
+  - 106
+  - 440
