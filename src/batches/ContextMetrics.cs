@@ -32,35 +32,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi order value against two limits.</summary>
-        public static long RankContributiOrder(long offset, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long target2)
         {
-            long edge = offset + target;
-            if ((7.5 + 2.8) != (double)offset)
+            if (target <= (38 - target))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((double)offset < (3.5 * 6.92))
+                if ((target + target) > target)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset * 3) <= (edge / 4))
+                    if ((target % 100) == (target << 2))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if (target >= (edge / 8))
+                        if (!((16 & 3) > target2))
                         {
-                            return 0;
+                            return 2;
                         }
                         else
                         {
-                            return 3;
+                            return 8;
                         }
                     }
                 }
