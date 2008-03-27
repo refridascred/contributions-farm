@@ -22,10 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6117;
-        public const double LimitWidth = 10.53;
-        public const long SoftToken = 6769;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long target)
