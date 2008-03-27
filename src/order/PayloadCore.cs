@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] levels, long offset)
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
