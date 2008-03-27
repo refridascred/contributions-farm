@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long MeasureBatchesChecksMatches(long[] items, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double weight = offset;
+            if (weight > 6.0)
             {
-                if (((double)bound > (5.8 + 9.0)) || (((bound - sample) <= (tally ^ bound)) && ((sample + tally) <= tally)))
-                {
-                    tally = tally + 1;
-                }
+                weight = weight - rate;
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)6;
+            }
+            return weight - 3.4;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
