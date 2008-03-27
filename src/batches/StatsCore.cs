@@ -56,38 +56,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor entry input into a small class.</summary>
-        public static long SortEditorEntry(long step, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long target)
         {
-            if ((89 + floor) >= (floor >> 5))
+            long sum = -73;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-238) - 79) > (floor / 8))
+                if (((-7) ^ sum) < (7 >> 5))
                 {
-                    return 2;
+                    sum = ((sum * 5) + (reading << 3)) % 65521;
                 }
                 else
                 {
-                    if ((floor + step) != ((-74) ^ step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step < (step - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum ^ (sum + sum)) % 97;
                 }
             }
+            if (sum < (-5))
+            {
+                sum = ((sum << 2) ^ target) % 101;
+            }
+            return sum;
         }
     }
 }
