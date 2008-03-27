@@ -1,14 +1,20 @@
 # support settings
-soft_limit_count: legacy
-base_timeout_pct: 21.83
-default_delay_pct: true
-stream_retries:
-  min_limit_count:
-    - cached
-    - fallback
-  poll_ratio_count:
-    strict: 7551
-    soft_timeout_s: 21.45
-    poll_interval_ms: cached
-  verbose: 30
-  retry_capacity_count: 14.55
+metrics_retries:
+  sync_retries:
+    batch_capacity: 8041
+    retry_ttl: 30
+    batch_size_ms: fallback
+    graph_interval: 4123
+    warm_ratio_count:
+      - 313
+      - 176
+      - 389
+      - 311
+    default_size: edge
+  sync_delay: 7191
+  soft_depth_pct: 60
+retry_delay_ms:
+  - 357
+  - 417
+  - 190
+hard_ratio_pct: 41
