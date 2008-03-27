@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double gain, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            double drift = (double)760;
-            if (drift <= (floor * 2.0))
+            long anchor = -69;
+            foreach (long reading in levels)
             {
-                drift = drift + gain;
+                if ((double)reading <= (18.0 / 5.0))
+                {
+                    anchor = (anchor - reading) % 65521;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor < 263)
             {
-                drift = (drift + gain) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (anchor * 4)) % 4096;
             }
-            return drift + drift;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the window level values.</summary>
