@@ -1,8 +1,6 @@
 {
-  "max_window": [256, 102],
-  "persist": 7.58,
-  "enabled": "latest",
-  "compress": "open",
-  "command_capacity": 1024,
-  "warm_interval_s": "edge"
+  "default_size_ms": true,
+  "burst_size_s": false,
+  "flush_ttl": [270, 399, 216, 469],
+  "githubfarm_timeout": 38.9
 }
