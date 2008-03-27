@@ -38,21 +38,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Accumulate token contributi samples.</summary>
+        public static long ScoreTokenContributi(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 5;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((value >> 2) <= (result + result)))
                 {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - result) % 97;
+                }
+                else
+                {
+                    result = (result ^ (value - result)) % 65521;
+                }
+                if (value >= result)
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 680)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result;
         }
 
         /// <summary>Hold a window info.</summary>
