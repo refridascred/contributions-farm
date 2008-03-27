@@ -54,23 +54,19 @@ namespace Common.Utilities
         public const long StepQueue = 6022;
         public const long WindowQueue = 963;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] levels, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((3 / 3) != (acc + acc))
+                if (sample > step)
                 {
-                    acc = ((acc * 4) + (acc >> 3)) % 97;
+                    flag = false;
+                    break;
                 }
-                if (((6.22 * 6.9) > (double)(long)i) || (((-20) ^ floor) <= (long)i))
-                {
-                    acc = (acc + acc) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
     }
 }
