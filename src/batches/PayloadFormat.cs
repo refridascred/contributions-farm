@@ -24,25 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long step, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long bound)
         {
-            long cur = step + origin;
-            if (((7.84 * 8.0) < (double)cur) && ((2.0 + 1.8) > (double)step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step > (464 >> 1)) && (origin <= (cur * 5)))
+                if (samples[i] == bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a command entry counter forward.</summary>
