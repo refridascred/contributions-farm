@@ -1,7 +1,7 @@
 {
-  "idle_window": ["eu-west", "edge", "edge", "primary"],
-  "already_interval": 1024,
-  "batch_depth_s": false,
-  "entry_size": "legacy",
-  "retry_ttl_s": [155, 53, 251, 201]
+  "max_ratio_pct": 8785,
+  "poll_size_pct": "legacy",
+  "soft_size_s": "latest",
+  "cache_threshold_s": "green",
+  "min_ttl": "primary"
 }
