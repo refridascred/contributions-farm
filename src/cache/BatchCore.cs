@@ -47,17 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 16;
+            foreach (long value in items)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                sum = (sum << 3) ^ (value + sum);
+                if (value > sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (531 >> 2)) % 255;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
