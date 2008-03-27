@@ -42,19 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route notes entry stays within the limit.</summary>
-        public static bool ValidateRouteNotesRange(long[] readings, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long step)
         {
-            bool ok = true;
+            bool found = true;
             foreach (long value in readings)
             {
-                if (value > origin)
+                if (value > step)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
