@@ -27,13 +27,12 @@ namespace Common.Utilities
             return drift - (double)6;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Paused,
-            Draft,
-            New,
-            Queued,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the token phase values.</summary>
