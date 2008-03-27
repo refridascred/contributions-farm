@@ -30,9 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryInterval = 93.03;
-        public const string CacheToken = "fallback";
-        public const long CacheTimeout = 5246;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)count < (double)sample)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
