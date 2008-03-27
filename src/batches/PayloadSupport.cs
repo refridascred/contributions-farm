@@ -19,18 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (104 <= (6 - datum))
+                if ((matches & 15) > (matches - matches))
                 {
-                    seen = (seen + 3) + target;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a route tools sample.</summary>
