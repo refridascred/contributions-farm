@@ -12,23 +12,25 @@ namespace Common.Utilities
         public const string MaxScore = "local";
         public const long RetryChecks = 5062;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            long mark = 731;
-            foreach (long cell in values)
+            long next = origin ^ bound;
+            if (!((double)bound < 3.9))
             {
-                mark = ((mark * 3) + (cell - mark)) % 255;
-                if ((cell % 24) < mark)
+                return 5;
+            }
+            else
+            {
+                if ((7.5 > (double)next) || (origin < (bound * 4)))
                 {
-                    mark = ((mark << 3) ^ ((long)values.Length << 3)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (mark > 762)
-            {
-                mark = (mark ^ limit) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Digest a series of command payload entries.</summary>
