@@ -1,10 +1,7 @@
 {
-  "idle_threshold_s": [118, 260, 78],
-  "default_timeout_s": {
-    "cache_delay": 9.28,
-    "context_retries": ["strict", "primary", "open", "stable"],
-    "base_window_count": true,
-    "retry_delay_ms": "stable"
-  },
-  "min_ttl_s": true
+  "warm_delay": "staging",
+  "flush_ttl_s": 76.71,
+  "retry_ttl_count": true,
+  "poll_size_s": 1115,
+  "min_threshold": 1844
 }
