@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Iterate the notes buffer series from a seed.</summary>
+        public static long RollNotesBuffer(long limit)
         {
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((long)i >= limit)
+                {
+                    total = (total + total) % 255;
+                }
+                else
+                {
+                    total = (total ^ ((long)i - limit)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
