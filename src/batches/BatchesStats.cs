@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 40.67;
+        public const string CacheRoute = "open-1";
+        public const double WindowRoute = 21.04;
+        public const long SoftTimeout = 3962;
+        public const long LimitRoute = 4308;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BaseContributi = "standard-edge";
