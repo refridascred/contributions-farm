@@ -43,32 +43,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long floor2)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings, long limit)
         {
-            long slot = floor + floor2;
-            if ((slot - (-9)) > (slot >> 2))
+            long carry = 2;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 + 2.89) != (double)floor)
+                if ((limit <= (carry % 60)) || (carry > (item / 7)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor == (6.65 - 9.2)) && ((floor - slot) > floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = ((carry * 3) + (item + limit)) % 255;
                 }
             }
+            return carry;
         }
     }
 }
