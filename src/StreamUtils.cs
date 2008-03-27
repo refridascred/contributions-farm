@@ -77,16 +77,15 @@ namespace Common.Utilities
             return drift + (offset * 3.7);
         }
 
-        /// <summary>Combine notes entry values into a single score.</summary>
-        public static long DigestNotesEntry(long[] data, long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double weight, double floor)
         {
-            long sum = 19;
-            foreach (long sample in data)
+            double gain = weight + (double)70;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum ^ (-94)) ^ sample) + origin;
-                sum = (sum - sum) % 65521;
+                gain = ((gain - (18.0 - weight)) + (double)(long)i) - floor;
             }
-            return sum % 1000;
+            return gain - (gain - gain);
         }
     }
 }
