@@ -45,19 +45,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double offset)
-        {
-            double weight = ratio;
-            if (weight > (double)3)
-            {
-                weight = (weight - ratio) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (ratio - ratio)) + (double)(long)i;
-            }
-            return weight - ratio;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 4680;
+        public const long LimitFactor = 7554;
+        public const double BatchOrder = 39.72;
     }
 }
