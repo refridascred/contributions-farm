@@ -1,7 +1,7 @@
 {
-  "idle_ttl_pct": [213, 323, 79],
-  "dry_run": 18,
-  "enabled": ["staging", "staging", "green"],
-  "readonly": 5,
-  "persist": ["stable", "blue", "staging"]
+  "cache_ratio_s": 9980,
+  "idle_capacity_pct": 34,
+  "poll_delay_pct": "fallback",
+  "enabled": false,
+  "flush_limit": "fallback"
 }
