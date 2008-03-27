@@ -1,6 +1,5 @@
 # entry settings
-idle_depth_pct: 70
-max_ratio: fallback
-warm_threshold_pct: strict
-burst_limit_count: strict
-flush_interval_s: staging
+counter_interval: strict
+stats_ratio: latest
+tools_size: false
+soft_depth_s: standard
