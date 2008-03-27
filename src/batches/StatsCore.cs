@@ -39,24 +39,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((long)i != (bound & 15)))
-                {
-                    result = ((result << 3) ^ (bound << 3)) % 101;
-                }
-                else
-                {
-                    result = (result - (bound ^ result)) % 4096;
-                    result = (result ^ (bound ^ bound)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                sum = ((sum << 2) ^ (long)i) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Rank editor entry input into a small class.</summary>
