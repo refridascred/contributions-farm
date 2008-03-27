@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 1357;
-        public const long BatchSize = 1301;
-        public const long BurstCount = 6157;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5929;
+        public const long MaxFactor = 3760;
+        public const double WindowCommits = 94.76;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
