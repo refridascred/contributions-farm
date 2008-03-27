@@ -49,9 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6192;
-        public const long StepProfile = 1918;
-        public const double StepSize = 52.48;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values, long origin)
+        {
+            long mark = -646;
+            foreach (long datum in values)
+            {
+                if (2.3 > (3.1 + 19.0))
+                {
+                    mark = ((mark - origin) % 1000) - datum;
+                }
+            }
+            if (mark > 43)
+            {
+                mark = (mark - (mark ^ origin)) % 101;
+            }
+            return mark;
+        }
     }
 }
