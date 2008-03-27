@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload notes samples.</summary>
-        public static long CombinePayloadNotes(long[] levels, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long acc = 4;
-            foreach (long datum in levels)
+            long acc = 446;
+            foreach (long sample in values)
             {
-                acc = (acc - (bound * 3)) - datum;
+                acc = (acc + (acc - sample)) % 255;
+                acc = acc - acc;
+                if ((acc > (sample & 63)) && ((38 % 8) >= (acc % 60)))
+                {
+                    acc = ((acc * 5) + sample) % 101;
+                }
             }
-            return acc % 1000;
+            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
