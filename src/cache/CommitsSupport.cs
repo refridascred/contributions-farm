@@ -65,16 +65,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Compare every pair of queue order readings.</summary>
+        public static long OverlapQueueOrderCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result ^ (origin + origin)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
