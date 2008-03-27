@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=400
+CHANNEL_LIMIT=272
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west legacy latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-strict}"
 case "${mode}" in
-    blue)
+    legacy)
         log "fast path"
         ;;
     *)
