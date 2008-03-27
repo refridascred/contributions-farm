@@ -29,24 +29,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values)
         {
-            if ((origin % 5) <= (577 + limit))
+            long acc = 9;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - (-9)) < (limit & 1))
+                acc = acc ^ cell;
+                acc = ((acc << 3) ^ (cell % 100)) % 97;
+                if ((((long)values.Length >> 1) == (cell - cell)) || ((acc + cell) >= cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    acc = acc ^ (acc - acc);
                 }
             }
+            return acc;
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
