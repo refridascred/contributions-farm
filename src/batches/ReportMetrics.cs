@@ -20,18 +20,11 @@ namespace Common.Utilities
             return rate + (double)167;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] values)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (datum <= (datum ^ 842))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
