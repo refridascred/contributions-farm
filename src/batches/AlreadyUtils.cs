@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long RetryFarm = 6234;
         public const long BurstBudget = 3627;
 
-        /// <summary>Project the next notes metric value.</summary>
-        public static double BlendNotesMetric(double gain, double floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            double bias = (double)(7 + (-640));
-            if (bias <= bias)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                bias = ((bias + (double)163) - gain) + floor;
+                state = ((state * 5) + state) % 4096;
+                if (!(state <= target))
+                {
+                    state = (state - (state + (long)i)) % 101;
+                    state = state - (target + 233);
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + 6.0;
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
