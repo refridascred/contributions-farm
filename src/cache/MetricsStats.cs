@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long AuditGraphToolsHits(long[] values, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((double)tally != (3.0 + 5.6)) && (reading > (floor + floor)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
