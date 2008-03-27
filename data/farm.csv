@@ -1,10 +1,6 @@
-id,active,owner,state
-1,182,78.14,133
-2,29.63,7.36,159
-3,115,edge,377
-4,86.59,local,50
-5,strict,509,blue
-6,fallback,643,254
-7,66.75,300,515
-8,634,cached,standard
-9,73.4,local,743
+id,region,label,ratio,score
+1,open,748,393,5.19
+2,472,blue,staging,519
+3,979,open,9.1,66.81
+4,135,51.52,77.39,29
+5,276,standard,stable,0.74
