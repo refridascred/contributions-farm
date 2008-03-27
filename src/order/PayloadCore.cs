@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Project the next payload batch value.</summary>
+        public static double BlendPayloadBatch(double weight, double offset)
         {
-            Dropped,
-            Active,
-            Draft,
-            Synced,
-            Paused,
+            double gain = weight;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain / 5.0)) - (double)(long)i;
+            }
+            return gain - (offset + gain);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
