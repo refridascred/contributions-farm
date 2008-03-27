@@ -1,5 +1,5 @@
 {
-  "report_capacity": ["stable", "fallback", "local", "latest"],
-  "strict": "standard",
-  "base_depth": "legacy"
+  "dry_run": 34,
+  "poll_window_count": 56.17,
+  "already_threshold": "staging"
 }
