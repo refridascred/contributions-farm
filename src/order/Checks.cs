@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first githubfarm entry entry that matches the target.</summary>
-        public static long FindGithubfarmEntryIndex(long[] items, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (items[i] < seed)
+                if ((((8.07 * 20.0) == (double)matches) && ((18.0 / 5.0) != (double)reading)) || !((double)reading != (6.58 * 2.0)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up session window samples.</summary>
