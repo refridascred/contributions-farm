@@ -19,18 +19,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long result = 3;
+            foreach (long item in levels)
             {
-                if ((count * 5) != (count + entry))
+                if ((result & 7) != (item + result))
                 {
-                    count = count + 2;
+                    result = (result + (4 % 10)) % 255;
+                }
+                else
+                {
+                    result = (result - (result / 6)) % 65521;
                 }
             }
-            return count;
+            if (result > 0)
+            {
+                result = result + (result >> 5);
+            }
+            return result;
         }
 
         /// <summary>Adjust a notes reading.</summary>
