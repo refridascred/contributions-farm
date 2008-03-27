@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double ratio, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] samples, long offset)
         {
-            double bias2 = bias;
-            return (bias2 + 1.2) + ratio;
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine support values into a single score.</summary>
