@@ -54,14 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double span)
         {
-            Done,
-            Failed,
-            Active,
-            New,
-            Closed,
+            double mean = span * 8.3;
+            if (mean < weight)
+            {
+                mean = mean + 17.0;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean + (mean * 7.0);
         }
 
         /// <summary>Hold a stream stats.</summary>
