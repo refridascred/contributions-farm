@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const string BurstRoute = "local-1";
         public const string SoftRatio = "staging-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardRatio = 98.11;
-        public const long SoftSpan = 3855;
-        public const long BaseCount = 6308;
-        public const long BurstCount = 9425;
-        public const double LimitSpan = 5.55;
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double floor)
+        {
+            double drift = (gain - gain) * 8.0;
+            return (drift + drift) + floor;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
