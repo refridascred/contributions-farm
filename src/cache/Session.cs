@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double span)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long limit)
         {
-            double load = span + (span * 1.6);
-            if (load < 1.27)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                load = load + span;
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + rate;
+            return flag;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
