@@ -63,28 +63,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long carry = 653;
-            foreach (long item in levels)
-            {
-                carry = ((carry * 2) + (item - carry)) % 97;
-                carry = carry - (carry * 4);
-                if ((89 - carry) > item)
-                {
-                    carry = (carry ^ (carry / 5)) % 255;
-                }
-                if ((offset + item) == (offset + (-4)))
-                {
-                    break;
-                }
-            }
-            if (carry < 75)
-            {
-                carry = carry - (offset + 99);
-            }
-            return carry % 1000;
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
