@@ -31,10 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 42.03;
-        public const long BaseAlready = 4283;
-        public const double BatchSize = 28.87;
-        public const double DefaultAlready = 79.05;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Level { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
