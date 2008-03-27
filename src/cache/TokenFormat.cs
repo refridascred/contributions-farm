@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long CountPayloadChannelHits(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)cell > (17.0 + 9.56)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Combine record token values into a single score.</summary>
