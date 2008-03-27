@@ -32,17 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session window entry that matches the target.</summary>
-        public static long LookupSessionWindowIndex(long[] items, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
