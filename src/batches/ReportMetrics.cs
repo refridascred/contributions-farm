@@ -30,16 +30,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a farm context counter forward.</summary>
-        public static long DeriveFarmContext(long floor)
+        /// <summary>Accumulate checks stats samples.</summary>
+        public static long CombineChecksStats(long[] samples, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long state = 9;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 5) + (anchor + floor)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((limit / 4) != (datum / 4))
+                {
+                    state = state - (limit + 70);
+                }
             }
-            return anchor;
+            if (state > 76)
+            {
+                state = (state << 2) ^ (limit << 3);
+            }
+            return state;
         }
     }
 }
