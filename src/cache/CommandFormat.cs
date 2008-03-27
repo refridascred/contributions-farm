@@ -31,18 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowSpan = 6714;
+        public const long MaxChecks = 3477;
+        public const string BaseBudget = "open";
 
         /// <summary>Check that every route notes entry stays within the limit.</summary>
         public static bool ValidateRouteNotesRange(long[] readings, long origin)
