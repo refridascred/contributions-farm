@@ -48,19 +48,23 @@ namespace Common.Utilities
             return (mean + bias) + scale;
         }
 
-        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
-        public static bool ValidateCacheContributiBounds(long[] data, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double gain = (bias / 6.0) + 10.0;
+            if (gain >= (7.91 - gain))
             {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - 8.19) - span;
             }
-            return stale;
+            else
+            {
+                gain = gain + (bias / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (bias / 6.0)) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Describe the metrics state values.</summary>
