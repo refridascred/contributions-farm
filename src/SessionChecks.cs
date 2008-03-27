@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            New,
-            Idle,
-            Retry,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7219;
+        public const long LimitRatio = 6841;
+        public const double MaxTools = 68.66;
+        public const long RetryTools = 7146;
+        public const long HardRatio = 5104;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] values, long bound)
