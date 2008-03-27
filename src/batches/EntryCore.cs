@@ -26,18 +26,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] values, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = -89;
+            foreach (long item in readings)
             {
-                if ((count & 7) >= (30 - count))
-                {
-                    count = ((count + 3) + datum) + target;
-                }
+                state = (((state << 2) ^ state) % 1000) - item;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
