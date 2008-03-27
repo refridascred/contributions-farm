@@ -78,15 +78,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a profile batch counter forward.</summary>
-        public static long SeriesProfileBatch(long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long mark = -393;
+            foreach (long value in levels)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                mark = ((mark + 720) % 1000) + value;
             }
-            return score;
+            return mark;
         }
     }
 }
