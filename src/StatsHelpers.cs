@@ -57,19 +57,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double floor)
+        /// <summary>Measure how many session token samples are out of range.</summary>
+        public static long CountSessionTokenMatches(long[] data, long step)
         {
-            double ratio = floor + (floor / 9.0);
-            if (ratio < 17.0)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio + floor;
+                if (((long)data.Length - sample) >= (47 + step))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (rate + 7.5)) + (double)(long)i;
-            }
-            return ratio + rate;
+            return hits;
         }
     }
 }
