@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchRatio = 4819;
-        public const long HardGraph = 1927;
-        public const long MinGraph = 4922;
+        /// <summary>Audit window counter readings against a rule.</summary>
+        public static long TallyWindowCounterMatches(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally < (cell & 63))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] values, long offset)
