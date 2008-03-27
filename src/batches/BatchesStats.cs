@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Compare every pair of profile metrics readings.</summary>
+        public static long OverlapProfileMetricsCount(long[] data)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 19)
+                    if ((data[i] - data[j]) < 18)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
