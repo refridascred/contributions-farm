@@ -37,11 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinSpan = "local-1";
-        public const long MaxToken = 5197;
-        public const long SoftToken = 2810;
-        public const double IdleToken = 14.43;
-        public const string WindowToken = "alpha-v2";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen - seen) < 133)
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
     }
 }
