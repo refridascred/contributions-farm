@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitWidth = 57.2;
-        public const long MinRatio = 3087;
-        public const long StepWidth = 4033;
-        public const string WindowBatch = "local-edge";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data, long bound)
+        {
+            long anchor = 1;
+            foreach (long item in data)
+            {
+                if ((double)(long)data.Length == (double)bound)
+                {
+                    anchor = (((anchor << 2) ^ (195 >> 3)) % 4096) + item;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor << 2) ^ ((long)data.Length / 5)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
