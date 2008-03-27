@@ -27,15 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double bias2)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            double bias3 = bias2;
-            if (bias3 <= (bias2 - bias2))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = bias3 + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias3 - (bias - 4.9);
+            return seen;
         }
 
         /// <summary>Hold a editor header.</summary>
