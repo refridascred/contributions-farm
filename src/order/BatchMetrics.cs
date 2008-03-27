@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a window format reading.</summary>
-        public static double SmoothWindowFormat(double weight, double span)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double rate = (weight * 1.39) / 4.0;
-            if (rate > span)
-            {
-                rate = rate - (double)45;
-            }
-            return rate - weight;
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
