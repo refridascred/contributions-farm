@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] data, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 2) ^ (mark & 127);
-                if (offset >= mark)
+                if ((data[i] < target) && ((data[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
