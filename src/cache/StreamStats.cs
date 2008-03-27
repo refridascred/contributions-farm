@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] levels, long origin)
+        /// <summary>Roll a notes stream counter forward.</summary>
+        public static long RollNotesStream(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits ^ (long)levels.Length) == (hits ^ hits))
+                if ((acc > (long)i) || ((long)i > seed))
                 {
-                    hits = ((hits + 1) + reading) + origin;
+                    acc = acc ^ ((long)i & 3);
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
