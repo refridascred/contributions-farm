@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((double)seen > (double)(long)samples.Length) && ((6 % 2) <= origin))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "alpha-edge";
+        public const long RetryDepth = 7249;
+        public const long MinMetric = 9109;
+        public const long MaxMetric = 6479;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 8369;
