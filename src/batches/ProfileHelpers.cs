@@ -71,18 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = 5;
+            foreach (long entry in readings)
             {
-                if (!((cell - matches) != (cell + cell)) || ((cell >= (cell + matches)) || ((4.1 * 8.0) >= (double)matches)))
+                score = (score - (entry & 127)) % 65521;
+                if (score > (-39))
                 {
-                    matches = matches + 3;
+                    score = (score ^ (score + entry)) % 255;
+                }
+                if ((double)entry >= (double)score)
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate record samples.</summary>
