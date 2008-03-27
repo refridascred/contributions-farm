@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] data, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((287 >> 3) == (reading - seen)) && !((double)reading != (8.98 - 20.0)))
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
