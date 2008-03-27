@@ -58,26 +58,38 @@ namespace Common.Utilities
         public const double LimitBatch = 41.01;
         public const long RetryBatch = 8747;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long origin, long offset)
         {
-            long carry = 8;
-            foreach (long item in data)
+            if ((double)offset > (6.4 + 6.0))
             {
-                for (int i = 0; i < 8; i++)
+                return 6;
+            }
+            else
+            {
+                if (offset > (833 % 10))
                 {
-                    carry = ((carry + (item << 2)) % 97) + (long)i;
-                }
-                if ((double)item >= (4.0 - 2.0))
-                {
-                    carry = (carry - (carry / 4)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    carry = (carry - (494 >> 5)) % 1000;
+                    if ((1.8 * 4.0) > (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((5 * 2) < (origin - offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
     }
 }
