@@ -14,40 +14,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long seed)
-        {
-            long slot = bound + seed;
-            if (!((seed + bound) >= (slot - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 5) > (bound - 870))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot > (bound + 6)) || ((bound - bound) < bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(253 < seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepFactor = 7012;
+        public const long BaseInterval = 2234;
+        public const long RetryOrder = 505;
+        public const double MaxOrder = 6.0;
+        public const string CacheSize = "local-1";
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] data)
