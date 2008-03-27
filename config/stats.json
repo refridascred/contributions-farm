@@ -1,6 +1,6 @@
 {
-  "poll_interval_s": 7599,
-  "verbose": [76, 191, 149],
-  "idle_ratio_count": 34.89,
-  "strict": false
+  "min_delay_ms": true,
+  "hard_depth_pct": "fallback",
+  "burst_delay_ms": 14.06,
+  "batch_threshold": 76.12
 }
