@@ -24,19 +24,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long ScoreSchemaFormat(long[] levels)
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long SeriesStatsMetric(long step)
         {
-            long mark = 643;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                mark = mark ^ (value / 6);
+                total = (total << 3) ^ ((long)i % 3);
+                total = ((total << 3) ^ (step % 8)) % 255;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (mark < 824)
-            {
-                mark = (mark + (mark + mark)) % 255;
-            }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
