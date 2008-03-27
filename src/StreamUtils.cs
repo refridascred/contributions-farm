@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Combine filter already values into a single score.</summary>
+        public static long TotalFilterAlready(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 560;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum + sum) >= (sample + sum))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum - sample)) % 97;
+                    sum = (sum ^ (sum << 1)) % 1000;
                 }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+                sum = ((sum << 2) ^ (sum >> 2)) % 101;
             }
-            return hits;
+            if (sum < 999)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a window header.</summary>
