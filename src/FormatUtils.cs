@@ -90,22 +90,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            long anchor = 290;
-            foreach (long item in values)
+            double load = (double)(900 - 74);
+            if (load < (double)25)
             {
-                if ((double)item < (3.58 * 13.0))
-                {
-                    anchor = ((anchor * 2) + (item % 16)) % 255;
-                }
+                load = load - (double)66;
             }
-            if (anchor < 70)
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor << 3) ^ offset;
+                load = (load - (floor + ratio)) + (double)(long)i;
             }
-            return anchor;
+            return load + load;
         }
     }
 }
