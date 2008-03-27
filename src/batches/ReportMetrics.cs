@@ -31,20 +31,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Roll a farm context counter forward.</summary>
+        public static long DeriveFarmContext(long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = ((sum << 3) ^ seed) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (anchor + floor)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
     }
 }
