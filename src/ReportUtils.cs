@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] levels)
+        /// <summary>Count the stats commits entries that pass the check.</summary>
+        public static long AuditStatsCommitsOutliers(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((7.0 + 5.3) == (double)value)
+                if ((9.52 / 6.0) != (double)value)
                 {
-                    matches = matches + 3;
+                    count = (count + 3) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
