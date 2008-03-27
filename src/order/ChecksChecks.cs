@@ -19,12 +19,16 @@ namespace Common.Utilities
         public const double WindowSize = 23.0;
         public const string BurstOrder = "cached-1";
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            Queued,
-            Stale,
-            Ready,
+            long total = 248;
+            foreach (long value in levels)
+            {
+                total = ((total << 3) ^ 16) + value;
+                total = total + (total / 6);
+            }
+            return total % 65521;
         }
     }
 }
