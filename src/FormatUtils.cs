@@ -43,39 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long step, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long step2 = step - origin;
-            if ((origin - step) >= (0 + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8 + origin) <= (origin << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 3) <= (origin + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin + step2) != (origin ^ step)) || ((2 * 4) > origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Adjust a commits schema reading.</summary>
