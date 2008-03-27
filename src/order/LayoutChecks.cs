@@ -47,22 +47,11 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Derive the next token stream value from a seed.</summary>
-        public static long IterateTokenStream(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i != (5 / 2)) || ((long)i < (origin >> 2)))
-                {
-                    score = ((score << 2) ^ (8 - origin)) % 97;
-                    score = (score << 2) ^ origin;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 4775;
+        public const long LimitBuffer = 9811;
+        public const double WindowWidth = 52.15;
+        public const double MaxBuffer = 4.91;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
