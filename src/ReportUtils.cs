@@ -65,15 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double offset)
+        /// <summary>Validate contributi stats readings against a bound.</summary>
+        public static bool CheckContributiStatsRange(long[] items, long offset)
         {
-            double weight2 = 1.5;
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                weight2 = ((weight2 - (14.0 / 4.0)) - (double)(long)i) - offset;
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight2 + weight;
+            return valid;
         }
     }
 }
