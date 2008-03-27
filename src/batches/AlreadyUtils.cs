@@ -15,15 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (gain / 4.0)) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
