@@ -38,15 +38,11 @@ namespace Common.Utilities
             return bias3 - (bias - 4.9);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
