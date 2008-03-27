@@ -21,12 +21,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1997;
-        public const double CacheBudget = 36.67;
-        public const long LimitGraph = 9485;
-        public const long BurstGraph = 1486;
-        public const long DefaultGraph = 4546;
+        /// <summary>Rank channel editor input into a small class.</summary>
+        public static long BucketChannelEditor(long target, long offset)
+        {
+            long edge = target ^ offset;
+            if ((4.0 - 5.1) >= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((edge + offset) == (target << 3)) && ((offset - edge) != (offset + target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
