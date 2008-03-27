@@ -1,17 +1,14 @@
 # entry settings
-retry_threshold_pct: stable
-max_depth_s: stable
-default_depth_count: cached
-min_threshold_pct:
-  tools_capacity:
-    poll_timeout_ms: green
-    poll_delay_s: 67
-    flush_ratio_pct:
-      - 157
-      - 144
-      - 432
-  context_delay:
-    - 422
-    - 154
-  schema_window: 82.3
-  strict: fallback
+flush_threshold_pct:
+  - 61
+  - 314
+  - 289
+  - 284
+editor_delay: standard
+audit: primary
+poll_depth: false
+sync_threshold: 500
+checks_retries:
+  - 43
+  - 375
+  - 98
