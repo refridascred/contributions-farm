@@ -1,13 +1,9 @@
 # support settings
-hard_ttl_pct: fallback
-batches_capacity: false
-hard_interval_ms:
-  - open
-  - eu-west
-  - latest
-graph_size:
-  - local
-  - latest
-  - edge
+soft_threshold_count: 5043
+readonly: primary
+verbose: primary
+graph_timeout:
   - standard
-schema_ttl: true
+  - eu-west
+  - stable
+  - local
