@@ -17,18 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits - hits) >= hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) ^ sample;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
