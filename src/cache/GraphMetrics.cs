@@ -20,12 +20,13 @@ namespace Common.Utilities
         public const long BaseCount = 7779;
         public const long MinLayout = 5603;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            New,
-            Pending,
+            Dropped,
+            Failed,
             Synced,
+            Stale,
             Draft,
         }
 
