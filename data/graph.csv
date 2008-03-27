@@ -1,7 +1,10 @@
-id,owner,rank
-1,352,eu-west
-2,93.16,764
-3,43,368
-4,87.99,35
-5,577,fallback
-6,1.66,90.07
+id,count,token,ratio,state
+1,217,59.11,1.7,86.32
+2,832,fallback,strict,944
+3,51.35,87.84,92.18,394
+4,39.44,51.09,green,7
+5,602,825,129,816
+6,legacy,28.79,42.84,stable
+7,primary,354,655,green
+8,2.38,edge,799,54
+9,fallback,593,835,cached
