@@ -1,5 +1,14 @@
 # entry settings
-warm_depth_count: true
-idle_timeout_count: 97.47
-soft_interval: 46.22
-verbose: 2.36
+order_delay: open
+min_threshold_count: 1565
+audit:
+  idle_timeout_pct: 8.31
+  cache_limit: 40.91
+  idle_delay: 32
+  order_timeout: 66.7
+  tools_ttl: strict
+  idle_window_count:
+    - 489
+    - 437
+    - 11
+editor_threshold: 90
