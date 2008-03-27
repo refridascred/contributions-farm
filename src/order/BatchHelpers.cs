@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batch payload values into a single score.</summary>
-        public static long TallyBatchPayload(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long step, long step2)
         {
-            long mark = 56;
-            foreach (long entry in samples)
+            if (!((7 & 3) > (step2 + step2)))
             {
-                mark = (mark ^ (234 * 2)) ^ entry;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (step2 > (step + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 2) > (step >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >= (894 ^ step)) || (step2 < step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric notes entries that pass the check.</summary>
