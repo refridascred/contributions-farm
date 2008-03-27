@@ -65,12 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Locate a already notes reading by value.</summary>
+        public static long LookupAlreadyNotesIndex(long[] values, long offset)
         {
-            Locked,
-            Dropped,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
