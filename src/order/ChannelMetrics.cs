@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] readings, long origin)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the payload level values.</summary>
