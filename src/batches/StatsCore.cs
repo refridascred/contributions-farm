@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const string BurstPayload = "open-v2";
         public const double MinCount = 11.13;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 5360;
-        public const long MinLevel = 7313;
-        public const long StepFilter = 5722;
-        public const long LimitFilter = 9298;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] levels)
+        {
+            long result = 725;
+            foreach (long value in levels)
+            {
+                if (((double)result >= 7.9) || ((double)value != (double)result))
+                {
+                    result = (result << 3) ^ (23 - (-580));
+                }
+                else
+                {
+                    result = (result ^ (result - result)) % 65521;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] series, long step)
