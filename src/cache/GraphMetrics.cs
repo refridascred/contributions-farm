@@ -50,11 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseWidth = "standard-1";
-        public const long BaseCommits = 8298;
-        public const double BatchSize = 44.24;
-        public const long DefaultCommits = 6172;
-        public const long SoftCommits = 5267;
+        /// <summary>Fold a list of payload layout readings.</summary>
+        public static long WeighPayloadLayout(long[] readings, long offset)
+        {
+            long acc = 927;
+            foreach (long cell in readings)
+            {
+                acc = ((acc ^ (cell + cell)) % 101) - offset;
+                acc = acc + 9;
+                acc = (acc ^ (acc & 31)) % 255;
+            }
+            return acc;
+        }
     }
 }
