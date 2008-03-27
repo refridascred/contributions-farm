@@ -75,30 +75,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] samples, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            long mark = 423;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((15.0 * 12.0) >= 5.0)
+                if (!((sample + sample) != (hits + 250)) || (sample >= hits))
                 {
-                    mark = mark + (mark & 7);
-                }
-                else
-                {
-                    mark = (mark - (mark % 5)) % 255;
-                }
-                if ((seed - seed) <= (seed % 97))
-                {
-                    mark = (mark * 5) + (cell ^ 214);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ seed) % 1000;
+                    hits = hits + 1;
                 }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
