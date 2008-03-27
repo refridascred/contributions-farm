@@ -30,15 +30,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long limit)
         {
-            double drift = span;
-            if (drift >= drift)
+            long edge = floor - limit;
+            if (((2.4 * 2.17) > (double)floor) || ((3.0 * 0.8) != (double)edge))
             {
-                drift = (drift + (double)209) - scale;
+                return 3;
             }
-            return drift - 5.9;
+            else
+            {
+                if ((limit + limit) == (floor & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
