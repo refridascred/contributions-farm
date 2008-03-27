@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 90.31;
-        public const long WindowSize = 6185;
-        public const long MaxScore = 8156;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Queued,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long offset)
