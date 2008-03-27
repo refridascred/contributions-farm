@@ -40,13 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long step)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
