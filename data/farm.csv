@@ -1,7 +1,8 @@
-id,owner
-1,eu-west
-2,4.83
-3,0.14
-4,810
-5,604
-6,854
+id,count,owner,label
+1,662,822,89.31
+2,25.93,eu-west,primary
+3,68.77,828,940
+4,342,347,311
+5,52,strict,latest
+6,681,latest,382
+7,standard,standard,16.15
