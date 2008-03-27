@@ -41,21 +41,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((192 <= (offset - floor)) && ((floor & 7) > (offset % 5)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) > (offset ^ offset))
                 {
-                    if ((items[i] + items[j]) < 8)
+                    return 6;
+                }
+                else
+                {
+                    if ((80 << 3) >= offset)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cluster class values.</summary>
