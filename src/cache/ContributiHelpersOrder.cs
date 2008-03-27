@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
-        public static bool VerifyClusterNotesRange(long[] series, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            if ((6.0 - 4.09) > (double)origin)
             {
-                if (sample <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((7 / 3) >= (limit ^ 444))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin & 7) > origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit >= 5)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
