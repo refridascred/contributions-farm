@@ -20,31 +20,18 @@ namespace Common.Utilities
             return rate + (offset / 5.0);
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            if ((3.9 * 3.0) <= (double)origin)
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) != (562 % 3))
+                if (count > (count ^ count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (573 < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the report state values.</summary>
