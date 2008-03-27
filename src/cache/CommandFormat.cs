@@ -40,31 +40,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long seed, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if (0 <= (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 9) == (seed - 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + seed) >= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            New,
         }
     }
 }
