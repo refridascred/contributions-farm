@@ -1,10 +1,8 @@
 {
-  "cache_interval": {
-    "burst_threshold_ms": "staging",
-    "idle_ratio_pct": "strict",
-    "batches_ratio": [354, 297, 486]
-  },
-  "soft_depth_ms": 9740,
-  "flush_capacity_s": true,
-  "batch_interval_s": "green"
+  "verbose": false,
+  "default_timeout_pct": false,
+  "audit": "standard",
+  "hard_size_s": "primary",
+  "max_capacity_ms": "fallback",
+  "sync_ratio_count": "primary"
 }
