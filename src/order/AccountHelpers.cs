@@ -62,16 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile already value from a seed.</summary>
-        public static long RollProfileAlready(long floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark + (2 >> 2)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Paused,
+            Retry,
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Blend two commits filter measurements.</summary>
