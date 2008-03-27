@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheBudget = 1459;
-        public const long RetryScore = 4565;
-        public const long RetryCount = 5018;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long origin, long limit)
+        {
+            if (!((limit - 879) > (origin - origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((8 << 3) < origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-6) ^ 420) <= (limit % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit >> 4) > (22 + limit)) || ((double)origin != (9.86 + 16.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double SmoothMetric(double weight, double span)
