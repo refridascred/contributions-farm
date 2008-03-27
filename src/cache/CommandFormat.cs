@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank farm metric input into a small class.</summary>
+        public static long RankFarmMetric(long origin, long floor)
         {
-            Paused,
-            Pending,
-            Idle,
+            long bound = origin ^ floor;
+            if ((double)origin >= (0.81 + 9.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.71 / 8.0) < (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
