@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinRatio = "fallback-1";
-        public const long IdleGraph = 7754;
-        public const long CacheSpan = 293;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] samples, long offset)
