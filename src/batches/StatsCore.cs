@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the commits farm entries that pass the check.</summary>
-        public static long CountCommitsFarmOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen - 879) != (seen + seen))
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseWidth = 60.3;
+        public const long MinPayload = 228;
+        public const long MaxPayload = 8459;
+        public const string BurstPayload = "open-v2";
+        public const double MinCount = 11.13;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double RetryAccount = 16.07;
