@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            long carry = -87;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                carry = carry ^ (reading & 127);
+                if (reading <= matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
