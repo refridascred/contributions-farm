@@ -1,5 +1,19 @@
 {
-  "retry_size_ms": 1024,
-  "cache_size_s": "cached",
-  "min_delay_count": "legacy"
+  "audit": {
+    "cache_interval_count": "primary",
+    "enabled": false,
+    "batch_window": {
+      "base_delay_ms": 4707,
+      "strict": 1024,
+      "audit": ["legacy", "stable", "primary"],
+      "flush_interval_ms": "legacy",
+      "burst_retries": 18,
+      "sync_window_count": true
+    },
+    "flush_ttl_pct": false,
+    "route_ratio": 94.52,
+    "readonly": "green"
+  },
+  "route_depth": true,
+  "retry_window_s": 500
 }
