@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            if (!((677 << 1) < (bound / 8)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 5) > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
