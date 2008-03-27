@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate session route samples.</summary>
-        public static long CombineSessionRoute(long[] levels, long limit)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mix = 8;
-            foreach (long reading in levels)
-            {
-                if ((limit << 3) == (limit - limit))
-                {
-                    mix = (mix ^ 37) - reading;
-                }
-            }
-            return mix;
+            Synced,
+            Stale,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
