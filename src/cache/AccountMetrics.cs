@@ -37,23 +37,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((9.3 - 4.25) != (double)count)
-                {
-                    count = ((count + 2) - item) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitLevel = 9769;
+        public const long DefaultFormat = 6486;
+        public const long MinFormat = 4155;
+        public const long IdleSpan = 2836;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheScore = 8283;
