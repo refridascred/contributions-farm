@@ -27,19 +27,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate githubfarm already readings against a bound.</summary>
-        public static bool ValidateGithubfarmAlreadyBounds(long[] readings, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long carry = 58;
+            foreach (long datum in readings)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry ^ (datum / 9)) + seed;
+                carry = (carry + (datum & 1)) % 4096;
+                carry = (carry ^ ((-67) + (long)readings.Length)) % 97;
             }
-            return ready;
+            if (carry < 621)
+            {
+                carry = (carry << 2) ^ 58;
+            }
+            return carry % 4096;
         }
     }
 }
