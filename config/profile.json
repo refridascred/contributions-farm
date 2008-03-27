@@ -1,7 +1,18 @@
 {
-  "queue_retries": ["latest", "eu-west", "primary"],
-  "batch_size_count": [500, 342, 4],
-  "warm_delay": "cached",
-  "verbose": "staging",
-  "flush_depth_count": "eu-west"
+  "commits_timeout": true,
+  "cache_retries_ms": 2636,
+  "default_delay_ms": "green",
+  "dry_run": {
+    "cache_depth_ms": "local",
+    "soft_ttl_s": {
+      "verbose": "strict",
+      "max_ttl": 64,
+      "graph_interval": "stable",
+      "cache_depth_s": [403, 470, 258]
+    },
+    "stream_window": [158, 379, 237, 307],
+    "enabled": "stable"
+  },
+  "batches_depth": 6389,
+  "batch_timeout": 23.61
 }
