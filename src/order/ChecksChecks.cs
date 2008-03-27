@@ -13,26 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples, long offset)
+        /// <summary>Count the format notes entries that pass the check.</summary>
+        public static long MeasureFormatNotesMatches(long[] items, long limit)
         {
-            long sum = 57;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (!((long)samples.Length < (sum + sum)))
+                if ((double)limit != (5.9 - 5.8))
                 {
-                    sum = (sum + (entry ^ sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (sum << 1)) % 97;
+                    tally = (tally + 1) - datum;
                 }
             }
-            if (sum > (-63))
-            {
-                sum = ((sum * 2) + offset) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
