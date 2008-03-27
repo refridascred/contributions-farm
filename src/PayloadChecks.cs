@@ -42,18 +42,13 @@ namespace Common.Utilities
             return scale2 + (scale2 - 7.4);
         }
 
-        /// <summary>Measure how many layout window samples are out of range.</summary>
-        public static long AuditLayoutWindowOutliers(long[] series, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count + cell) < (cell + target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
