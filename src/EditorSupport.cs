@@ -66,26 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long carry = 63;
-            foreach (long entry in samples)
-            {
-                if ((carry ^ 8) != ((long)samples.Length - entry))
-                {
-                    carry = (carry ^ (entry ^ entry)) % 101;
-                }
-                else
-                {
-                    carry = carry + (carry % 12);
-                }
-                if (((seed >> 2) > (seed - seed)) || ((seed & 31) == (seed % 7)))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
