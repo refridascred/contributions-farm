@@ -1,8 +1,7 @@
 {
-  "strict": true,
-  "readonly": "stable",
-  "persist": "edge",
-  "min_depth": 60,
-  "record_ratio": 3.37,
-  "idle_window_count": ["legacy", "fallback", "staging"]
+  "entry_delay": "eu-west",
+  "soft_limit": "standard",
+  "verbose": false,
+  "hard_ttl_s": "staging",
+  "dry_run": ["edge", "cached", "latest", "local"]
 }
