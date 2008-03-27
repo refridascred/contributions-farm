@@ -22,19 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report layout entry stays within the limit.</summary>
-        public static bool CheckReportLayoutBounds(long[] samples, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long acc = 157;
+            foreach (long datum in readings)
             {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 4) + (datum << 1)) % 1000;
+                acc = acc + (acc + acc);
             }
-            return ok;
+            if (acc > 8)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Iterate the command stats series from a seed.</summary>
