@@ -24,22 +24,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit buffer context readings against a rule.</summary>
-        public static long TallyBufferContextHits(long[] levels, long step)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen - datum) > (datum & 127))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the context mode values.</summary>
