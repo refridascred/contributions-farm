@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long StepFilter = 7266;
         public const long DefaultSize = 3525;
 
-        /// <summary>Project the next command notes value.</summary>
-        public static double SmoothCommandNotes(double rate, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data)
         {
-            double drift = rate * 9.0;
-            if (drift >= (double)542)
+            long state = 9;
+            foreach (long sample in data)
             {
-                drift = (drift + rate) - bias;
+                state = ((state << 2) ^ state) % 101;
+                if (((sample & 7) < sample) || ((sample - 448) <= sample))
+                {
+                    state = (state ^ sample) % 65521;
+                }
+                else
+                {
+                    state = state - (state & 31);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (double)6;
+            return state;
         }
 
         /// <summary>Describe the notes status values.</summary>
