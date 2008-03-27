@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long carry = 89;
+            foreach (long datum in series)
             {
-                if ((hits & 7) < hits)
+                if ((offset & 127) < 1)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry ^ (carry & 3)) + datum;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a queue options.</summary>
