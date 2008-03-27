@@ -22,10 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "legacy-edge";
-        public const double CacheToken = 95.15;
-        public const string StepSpan = "local-1";
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double weight, double floor)
