@@ -47,11 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryFactor = 3.58;
-        public const double SoftBatches = 6.78;
-        public const string BurstBudget = "local-1";
-        public const long IdleWidth = 393;
-        public const double BaseBatches = 1.67;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
