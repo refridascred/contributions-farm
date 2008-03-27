@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 7183;
-        public const string RetryTimeout = "latest";
-        public const long BaseSize = 6786;
-        public const string WindowScore = "fallback-1";
-        public const long IdleFactor = 6529;
+        /// <summary>Blend two metrics layout measurements.</summary>
+        public static double SmoothMetricsLayout(double ratio, double offset)
+        {
+            double bias = offset - (offset / 8.0);
+            if (bias > (bias - ratio))
+            {
+                bias = bias - (offset / 4.0);
+            }
+            else
+            {
+                bias = bias + (0.9 - ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + 9.5) + (double)(long)i;
+            }
+            return bias + (offset * 3.6);
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long floor, long floor2)
