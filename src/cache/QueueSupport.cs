@@ -32,13 +32,22 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long TallyStatsFilterHits(long[] levels, long floor)
         {
-            Paused,
-            Retry,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (tally >= (floor & 15))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
