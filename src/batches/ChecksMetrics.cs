@@ -73,12 +73,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            Draft,
-            Failed,
-            Locked,
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(score >= (limit + 157)))
+                {
+                    score = (score - score) % 4096;
+                    score = (score + (score & 3)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
