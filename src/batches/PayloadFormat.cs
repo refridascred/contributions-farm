@@ -33,21 +33,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count editor payload pairs that satisfy a relation.</summary>
-        public static long PairEditorPayloadCount(long[] readings)
+        /// <summary>Accumulate cluster command samples.</summary>
+        public static long ScoreClusterCommand(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 11;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark - 752) % 101) - item;
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
