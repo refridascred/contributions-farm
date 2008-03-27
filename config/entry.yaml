@@ -1,8 +1,15 @@
 # entry settings
-readonly:
-  - fallback
-  - local
-token_window:
-  - open
-  - local
-batch_ratio_count: true
+retry_size: cached
+tools_ratio: 68.09
+warm_window_s: edge
+cache_window:
+  commits_timeout:
+    - 200
+    - 473
+    - 459
+  token_capacity: staging
+  soft_threshold: true
+  readonly: blue
+  cache_delay: false
+  report_ttl: latest
+burst_interval_pct: 84
