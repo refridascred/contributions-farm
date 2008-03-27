@@ -28,19 +28,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] samples, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Synced,
+            Locked,
+            Closed,
+            Idle,
         }
     }
 }
