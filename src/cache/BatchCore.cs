@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ratio - (ratio - span);
         }
 
-        /// <summary>Match up notes stream samples.</summary>
-        public static long MatchNotesStreamCount(long[] readings)
+        /// <summary>Project the next cache graph value.</summary>
+        public static double ProjectCacheGraph(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(76 >> 1);
+            if (mean < mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + floor) + rate;
             }
-            return count;
+            return mean + mean;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
