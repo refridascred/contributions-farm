@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                long count = (long)i + bound;
-                if (!((sum - bound) >= count))
-                {
-                    sum = sum - ((long)i << 3);
-                }
-                count = (count * 5) + (bound << 2);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
