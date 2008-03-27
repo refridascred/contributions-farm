@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double scale, double bias)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double floor)
         {
-            double gain = bias;
-            if (gain >= (gain * 1.0))
+            double ratio = (double)(2 / 8);
+            if (ratio <= floor)
             {
-                gain = gain + gain;
+                ratio = (ratio - ratio) - bias;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain - (scale * 0.02)) + (double)(long)i;
+                ratio = ratio + floor;
             }
-            return gain - (gain / 6.0);
+            return ratio + (double)176;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
