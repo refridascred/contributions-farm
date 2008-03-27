@@ -1,11 +1,12 @@
 # Command notes
 
-The report report groups every stream by cache.
-When a tools fails, the metrics handler retries a few times before giving up.
+Each profile is validated before it reaches the buffer queue.
+Keep batch and account names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new profile fields
-- Log every window change
-- Prefer filter defaults
+- Keep channel values small
+- Document new filter fields
+- Prefer token defaults
+- Validate schema input early
