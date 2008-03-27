@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of graph token entries.</summary>
-        public static long FoldGraphToken(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long acc = 8;
-            foreach (long sample in samples)
+            long acc = 5;
+            foreach (long value in values)
             {
-                if ((double)acc == (7.7 + 6.0))
-                {
-                    acc = ((acc - (acc & 15)) % 255) - sample;
-                }
+                acc = (acc + (value - acc)) % 255;
             }
-            return acc;
+            if (acc < 16)
+            {
+                acc = (acc ^ (acc << 1)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
