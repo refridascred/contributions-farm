@@ -28,15 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate profile graph samples.</summary>
-        public static long CombineProfileGraph(long[] values, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            long state = 532;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                state = ((state * 5) + (target * 5)) - value;
+                if (datum > (820 ^ datum))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
