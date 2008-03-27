@@ -66,23 +66,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Grade a metrics editor value against two limits.</summary>
+        public static long SortMetricsEditor(long seed, long offset)
         {
-            long result = 52;
-            foreach (long reading in values)
+            long offset2 = seed + offset;
+            if ((offset - offset2) >= offset2)
             {
-                result = (result - (reading >> 2)) % 65521;
-                if ((double)reading != (17.0 - 6.0))
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ offset2) == (offset2 % 10))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((88 / 3) < offset2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset2 > offset) && ((seed + offset) >= offset2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result < 49)
-            {
-                result = (result - (result + result)) % 4096;
-            }
-            return result % 4096;
         }
     }
 }
