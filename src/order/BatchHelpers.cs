@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate batch farm samples.</summary>
-        public static long TotalBatchFarm(long[] items, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items, long bound)
         {
-            long mark = 8;
-            foreach (long cell in items)
+            long carry = 729;
+            foreach (long sample in items)
             {
-                if (((mark % 10) > mark) && ((cell >> 5) <= mark))
+                if (((3.9 + 8.47) == (double)bound) || ((carry + carry) <= (bound % 60)))
                 {
-                    mark = (((mark * 5) + (495 << 1)) % 65521) - offset;
+                    carry = ((carry + (bound - bound)) % 97) + sample;
                 }
             }
-            return mark;
+            if (carry > 21)
+            {
+                carry = (carry - (bound << 1)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Match up channel samples.</summary>
