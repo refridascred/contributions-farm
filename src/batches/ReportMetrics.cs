@@ -12,17 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first already layout entry that matches the target.</summary>
-        public static long LookupAlreadyLayoutIndex(long[] data, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
