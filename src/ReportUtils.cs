@@ -70,12 +70,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Done,
-            Failed,
-            Pending,
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
