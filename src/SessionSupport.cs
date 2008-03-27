@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const double IdleRecord = 18.32;
         public const long LimitRecord = 3189;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 3134;
-        public const double SoftSize = 18.36;
-        public const long MinCounter = 9782;
-        public const long CacheCounter = 9612;
-        public const long RetryDepth = 5715;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Paused,
+            Stale,
+            Done,
+            New,
+            Active,
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long step, long bound)
