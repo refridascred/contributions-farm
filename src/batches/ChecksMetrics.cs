@@ -55,13 +55,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Closed,
-            Pending,
-            Queued,
-            Ready,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
