@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long seed)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long CountFormatContextMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] < seed)
+                if ((limit >= (limit + limit)) || (48 > (limit - matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the profile status values.</summary>
