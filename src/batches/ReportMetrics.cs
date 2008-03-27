@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry ^ (bound * 4)) % 255) ^ cell;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Roll a support counter forward.</summary>
