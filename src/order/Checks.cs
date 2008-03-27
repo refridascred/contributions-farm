@@ -68,19 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] levels, long step)
         {
-            double gain = floor;
-            if (gain < 17.0)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                gain = gain - (double)669;
+                if ((count >> 2) >= 466)
+                {
+                    count = ((count + 2) - entry) - step;
+                }
             }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + (double)6;
+            return count;
         }
     }
 }
