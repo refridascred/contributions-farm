@@ -54,26 +54,12 @@ namespace Common.Utilities
         public const long WindowSupport = 127;
         public const string BaseSpan = "strict-edge";
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mix = 2;
-            foreach (long sample in values)
-            {
-                if (!((mix & 255) > (sample ^ sample)))
-                {
-                    mix = (mix << 3) ^ (sample >> 4);
-                }
-                if ((floor + sample) != (mix / 4))
-                {
-                    mix = mix ^ ((-844) + (long)values.Length);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ floor;
-                }
-            }
-            return mix % 1000;
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
