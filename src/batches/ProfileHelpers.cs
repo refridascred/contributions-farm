@@ -67,15 +67,10 @@ namespace Common.Utilities
         public const long HardFormat = 9769;
         public const long RetryFormat = 6237;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
-        {
-            long anchor = 914;
-            foreach (long reading in values)
-            {
-                anchor = anchor ^ (reading % 12);
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6284;
+        public const long MaxSpan = 9712;
+        public const long BaseFactor = 9721;
+        public const long BatchRatio = 5805;
     }
 }
