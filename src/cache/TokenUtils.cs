@@ -29,26 +29,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Blend two counter commits measurements.</summary>
+        public static double ProjectCounterCommits(double rate, double offset)
         {
-            long result = 45;
-            foreach (long sample in readings)
+            double load = rate * 8.6;
+            if (load > (double)461)
             {
-                if (((sample + sample) <= sample) || ((result / 7) >= sample))
-                {
-                    result = (result ^ (long)readings.Length) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result ^ 34)) % 255;
-                }
+                load = load + load;
             }
-            if (result < 0)
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result << 2) ^ (result >> 3)) % 101;
+                load = (load + load) - (double)(long)i;
             }
-            return result;
+            return load - (offset - 2.4);
         }
     }
 }
