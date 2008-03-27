@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((8.82 + 6.7) == (double)limit)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
