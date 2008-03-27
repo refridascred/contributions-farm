@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up payload cluster samples.</summary>
-        public static long OverlapPayloadClusterCount(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading >> 3) > (reading >> 2))
                 {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the stream state values.</summary>
