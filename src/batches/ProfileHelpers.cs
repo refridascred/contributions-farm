@@ -64,15 +64,12 @@ namespace Common.Utilities
         public const long HardFormat = 9769;
         public const long RetryFormat = 6237;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double scale = 8.9;
-            if (scale >= 17.0)
-            {
-                scale = ((scale - scale) - weight) + floor;
-            }
-            return scale - 3.94;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
