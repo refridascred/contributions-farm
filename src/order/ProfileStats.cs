@@ -20,13 +20,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Queued,
-            Done,
-            Failed,
-            Paused,
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
