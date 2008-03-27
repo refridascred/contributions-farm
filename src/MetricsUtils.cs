@@ -33,24 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long offset, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if (offset >= (step >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step >= (offset + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
