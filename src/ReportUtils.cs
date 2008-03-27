@@ -40,15 +40,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer cache samples.</summary>
-        public static long DigestBufferCache(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long mark = 932;
-            foreach (long entry in readings)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (((mark * 4) + ((-9) + 47)) % 97) ^ entry;
+                acc = acc - (1 * 5);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
