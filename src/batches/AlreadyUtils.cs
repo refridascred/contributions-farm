@@ -45,18 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Derive the next layout batches value from a seed.</summary>
+        public static long StepLayoutBatches(long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(matches >= (value & 31)))
+                carry = carry ^ carry;
+                if ((double)step >= (double)carry)
                 {
-                    matches = matches + 3;
+                    carry = ((carry << 3) ^ ((long)i - (long)i)) % 97;
+                    carry = (carry ^ (carry >> 5)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
