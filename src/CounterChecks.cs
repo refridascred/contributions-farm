@@ -15,13 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] readings, long step)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
