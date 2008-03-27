@@ -65,11 +65,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = mark ^ (mark & 127);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
