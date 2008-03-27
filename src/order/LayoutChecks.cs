@@ -32,11 +32,11 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 4775;
-        public const long LimitBuffer = 9811;
-        public const double WindowWidth = 52.15;
-        public const double MaxBuffer = 4.91;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstInterval = 5340;
+        public const double IdleCount = 93.35;
+        public const double WindowOrder = 59.68;
+        public const long BaseSpan = 3397;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] values)
