@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long origin)
         {
-            Queued,
-            Idle,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
