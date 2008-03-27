@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long target)
         {
-            Closed,
-            New,
-            Active,
-            Idle,
+            long total = 85;
+            foreach (long cell in values)
+            {
+                if (total < (cell / 9))
+                {
+                    total = (total << 2) ^ cell;
+                }
+            }
+            if (total < 53)
+            {
+                total = total - (target - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a filter options.</summary>
