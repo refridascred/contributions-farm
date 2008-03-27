@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const double StepGithubfarm = 15.95;
         public const double RetryDepth = 95.06;
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double mean = bias / 3.0;
-            if (mean >= bias)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - (double)38;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (bias / 2.0)) + (double)(long)i;
-            }
-            return mean + (double)98;
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
