@@ -35,24 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mark / 8) > (step ^ mark))
-                {
-                    mark = mark + (long)i;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ step;
-                    mark = (mark ^ mark) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
