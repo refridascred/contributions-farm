@@ -31,21 +31,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up graph metric samples.</summary>
-        public static long PairGraphMetricCount(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the context class values.</summary>
