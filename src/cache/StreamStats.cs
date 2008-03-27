@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 58.78;
+        public const long WindowCounter = 1444;
+        public const string DefaultSpan = "latest-v2";
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
         public static long TallyBufferCommandMatches(long[] data, long target)
