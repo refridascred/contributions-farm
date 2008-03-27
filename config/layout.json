@@ -1,12 +1,5 @@
 {
-  "cache_threshold_ms": {
-    "warm_timeout_ms": "green",
-    "report_threshold": false,
-    "audit": "legacy",
-    "burst_window_ms": 18,
-    "compress": [461, 142, 181]
-  },
-  "burst_threshold": 30,
-  "retry_ratio": 52.47,
-  "strict": "cached"
+  "audit": true,
+  "cluster_threshold": 71.38,
+  "burst_threshold": "open"
 }
