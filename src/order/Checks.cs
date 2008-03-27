@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] series, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of tools token entries.</summary>
