@@ -1,12 +1,11 @@
 # Command notes
 
-When a checks fails, the filter handler retries a few times before giving up.
-Run the graph check before changing any cache limits.
-Run the entry check before changing any githubfarm limits.
+Keep report and context names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
+The notes module keeps session values in sync with the batch cache.
 
 ## Guidelines
 
-- Log every format change
-- Review tools limits each release
-- Validate githubfarm input early
-- Keep buffer values small
+- Keep contributi values small
+- Review farm limits each release
+- Document new buffer fields
