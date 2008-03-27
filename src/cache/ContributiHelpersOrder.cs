@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "standard-v2";
-        public const double MinScore = 69.97;
-        public const long StepDepth = 4158;
-        public const double IdleCommand = 75.06;
-        public const long SoftRatio = 8145;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Synced,
+            New,
+            Ready,
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] items)
