@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 1362;
-        public const long MaxFactor = 5858;
-        public const long BatchDepth = 190;
-        public const double MinInterval = 25.5;
-        public const long IdleDepth = 4525;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowRatio = 2522;
+        public const long MaxRatio = 7781;
+        public const long MinContext = 3509;
+        public const string MaxContext = "latest";
+        public const long LimitScore = 9818;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
