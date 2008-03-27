@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long HardGithubfarm = 36;
         public const long BatchGithubfarm = 1087;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            Ready,
-            Pending,
-            Locked,
-            Retry,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
