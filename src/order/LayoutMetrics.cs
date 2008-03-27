@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long WeighProfileOrder(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mix = 188;
-            foreach (long value in values)
-            {
-                mix = (mix + (mix * 5)) - value;
-            }
-            return mix;
+            Dropped,
+            Stale,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
