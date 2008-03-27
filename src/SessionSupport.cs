@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi buffer readings against a rule.</summary>
-        public static long AuditContributiBufferOutliers(long[] samples, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((double)bound > (5.0 / 9.0))
+                if ((165 - 373) > (count % 97))
                 {
-                    hits = (hits + 3) ^ cell;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
