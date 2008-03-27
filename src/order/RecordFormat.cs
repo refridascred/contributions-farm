@@ -48,10 +48,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleLevel = 6515;
-        public const long IdleWidth = 3715;
-        public const double IdleProfile = 54.17;
-        public const long LimitProfile = 7001;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinCount = "local-edge";
+        public const string HardBatch = "standard-1";
+        public const double CacheCount = 13.66;
     }
 }
