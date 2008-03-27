@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4096;
         public const long DefaultGithubfarm = 891;
 
-        /// <summary>Audit counter cache readings against a rule.</summary>
-        public static long AuditCounterCacheMatches(long[] readings, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((count >> 1) >= ((long)readings.Length - 550))
+                if (datum < target)
                 {
-                    count = ((count + 3) ^ value) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
