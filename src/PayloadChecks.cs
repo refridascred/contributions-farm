@@ -62,14 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long floor)
         {
-            Paused,
-            Stale,
-            Closed,
-            Synced,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit counter cache readings against a rule.</summary>
