@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two report record measurements.</summary>
-        public static double BlendReportRecord(double gain, double bias)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double gain2 = 17.0;
-            if (gain2 >= gain2)
-            {
-                gain2 = (gain2 - (gain2 - gain)) - bias;
-            }
-            return gain2 - gain;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
