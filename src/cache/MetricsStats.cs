@@ -12,13 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
