@@ -35,21 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile tools samples.</summary>
-        public static long MatchProfileToolsCount(long[] data)
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool CheckWindowBatchRange(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != limit)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
