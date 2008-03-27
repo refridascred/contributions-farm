@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowBudget = 47.15;
-        public const long WindowSize = 7237;
-        public const long SoftSize = 21;
-        public const long BatchTimeout = 2114;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Done,
+            Locked,
+            Ready,
+            New,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitCount = 87.41;
