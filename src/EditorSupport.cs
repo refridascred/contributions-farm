@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (levels[i] > bound)
+                if (datum < seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
