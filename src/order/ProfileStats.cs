@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long WindowLevel = 1478;
         public const long LimitContext = 97;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Check that every route tools entry stays within the limit.</summary>
+        public static bool GuardRouteToolsRange(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((80 >> 3) < (tally + tally))
+                if (reading <= floor)
                 {
-                    tally = (tally + 2) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
