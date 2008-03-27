@@ -26,13 +26,22 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the route record entries that pass the check.</summary>
+        public static long AuditRouteRecordGaps(long[] readings, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((3.0 / 4.0) < (double)seen))
+                {
+                    seen = ((seen + 3) - item) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
