@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 61.03;
         public const string BaseScore = "stable-1";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double bias, double bias2)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            double mean = bias2;
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 5) + state) % 4096;
-                if (!(state <= target))
-                {
-                    state = (state - (state + (long)i)) % 101;
-                    state = state - (target + 233);
-                }
-                state = ((state * 3) + (long)i) % 101;
+                mean = (mean + (bias - 4.8)) + (double)(long)i;
             }
-            return state;
+            return mean + (double)295;
         }
 
         /// <summary>Fold a list of account readings.</summary>
