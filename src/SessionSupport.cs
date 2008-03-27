@@ -39,11 +39,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryTimeout = 1355;
-        public const long IdleChecks = 780;
-        public const long DefaultTimeout = 9494;
-        public const long MaxChecks = 868;
-        public const long BaseChecks = 9906;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long bound)
+        {
+            long slot = step ^ bound;
+            if (((slot + slot) == (slot % 5)) && ((bound * 4) != (46 << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((306 * 2) != (step ^ slot)) || ((-995) > (slot * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)slot == (7.0 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - 614) >= (step - 850))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
