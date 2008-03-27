@@ -30,24 +30,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a already stream counter forward.</summary>
-        public static long StepAlreadyStream(long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] readings, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (readings[i] >= seed)
                 {
-                    state = (((state * 3) + 75) % 65521) + (long)i2;
+                    return (long)i;
                 }
-                if (!(((long)i * 4) < state))
-                {
-                    state = ((state * 2) + step) % 65521;
-                    state = (state + (state + step)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
