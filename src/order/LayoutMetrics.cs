@@ -22,18 +22,11 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value - 636) >= hits)
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3891;
+        public const double CacheSpan = 10.88;
+        public const double BaseStats = 82.93;
+        public const string SoftCount = "legacy-edge";
+        public const double CacheStats = 70.1;
     }
 }
