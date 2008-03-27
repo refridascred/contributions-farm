@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 3791;
-        public const long WindowDepth = 4094;
-        public const long CacheWidth = 2208;
-        public const string RetryBudget = "stable-1";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Synced,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] series, long floor)
