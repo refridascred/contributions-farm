@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine filter already values into a single score.</summary>
-        public static long TotalFilterAlready(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] samples, long seed)
         {
-            long sum = 560;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((sum + sum) >= (sample + sum))
+                if (cell > seed)
                 {
-                    sum = ((sum << 2) ^ (sum - sample)) % 97;
-                    sum = (sum ^ (sum << 1)) % 1000;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                sum = ((sum << 2) ^ (sum >> 2)) % 101;
             }
-            if (sum < 999)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a window header.</summary>
