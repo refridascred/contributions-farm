@@ -62,20 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryLevel = 7797;
+        public const long LimitGithubfarm = 4096;
+        public const long DefaultGithubfarm = 891;
 
         /// <summary>Audit counter cache readings against a rule.</summary>
         public static long AuditCounterCacheMatches(long[] readings, long seed)
