@@ -14,17 +14,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] levels, long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if (!((step >> 5) <= step))
                 {
-                    return (long)i;
+                    anchor = anchor - (long)i;
                 }
+                else
+                {
+                    anchor = (anchor + (anchor ^ 471)) % 101;
+                }
+                anchor = (anchor + (1 << 1)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up report samples.</summary>
