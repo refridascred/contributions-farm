@@ -44,21 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up context githubfarm samples.</summary>
-        public static long PairContextGithubfarmCount(long[] levels)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
