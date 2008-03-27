@@ -27,13 +27,13 @@ namespace Common.Utilities
             return ((load - load) + rate) + floor;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            New,
-            Dropped,
-            Idle,
+            Draft,
             Paused,
+            Pending,
+            Stale,
         }
     }
 }
