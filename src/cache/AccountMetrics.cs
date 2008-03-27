@@ -19,11 +19,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "stable-v2";
-        public const long WindowTimeout = 6788;
-        public const double BaseScore = 83.58;
-        public const long StepRoute = 1524;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] samples, long origin)
