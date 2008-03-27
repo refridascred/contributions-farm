@@ -32,39 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support queue pair into a bucket.</summary>
-        public static long SortSupportQueue(long offset, long bound)
-        {
-            if ((bound + bound) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 10) >= (offset >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)offset > 7.19) || ((offset ^ 0) <= (offset * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= (bound ^ offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 5874;
+        public const long StepStats = 9342;
+        public const double IdleLevel = 14.2;
+        public const double DefaultWidth = 51.22;
+        public const string MaxLevel = "primary-edge";
 
         /// <summary>Combine filter context values into a single score.</summary>
         public static long FoldFilterContext(long[] series, long bound)
