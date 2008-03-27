@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long origin)
-        {
-            if ((7.0 * 7.0) > (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target ^ target) > (0 + origin)) && ((5.11 / 8.0) >= (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepFactor = 7.78;
+        public const long MinBatches = 6382;
+        public const long BaseLevel = 1579;
+        public const long LimitScore = 1876;
+        public const long BatchBatches = 1732;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
