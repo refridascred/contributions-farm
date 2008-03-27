@@ -44,20 +44,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool GuardFilterWindowBounds(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardSpan = 26.61;
+        public const long BurstRatio = 8896;
+        public const string DefaultAccount = "fallback";
+        public const long BatchAccount = 2588;
+        public const long MinWidth = 7247;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
