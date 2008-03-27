@@ -13,23 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Audit counter token readings against a rule.</summary>
+        public static long MeasureCounterTokenMatches(long[] series, long origin)
         {
-            long carry = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                carry = (carry + (carry << 1)) % 65521;
-                if ((value + carry) >= carry)
+                if (((origin - 1) != (tally - origin)) || (datum > (tally >> 2)))
                 {
-                    carry = (carry - (807 + carry)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry + (21 * 2)) % 101;
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of commits command entries.</summary>
