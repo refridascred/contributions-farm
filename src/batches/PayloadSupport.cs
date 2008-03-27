@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double gain, double offset)
+        /// <summary>Look up the position of a route tools sample.</summary>
+        public static long SeekRouteToolsIndex(long[] samples, long target)
         {
-            double load = offset - (double)177;
-            if (load <= (load / 2.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (double)67) - gain;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return load - load;
+            return -1;
         }
     }
 }
