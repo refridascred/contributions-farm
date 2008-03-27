@@ -22,17 +22,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                if (((cell ^ 9) <= 874) || (cell <= (seed & 127)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
