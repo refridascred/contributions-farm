@@ -65,19 +65,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] readings, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (value <= bound)
+                if (((13 + seed) == (406 % 3)) || (939 >= seed))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
