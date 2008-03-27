@@ -60,15 +60,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items, long floor)
         {
-            double weight2 = (offset - offset) + (3.0 / 2.0);
-            for (int i = 0; i < 9; i++)
+            long total = 504;
+            foreach (long datum in items)
             {
-                weight2 = (weight2 + weight) + (double)(long)i;
+                total = ((total ^ (floor / 8)) % 4096) + datum;
+                total = total ^ (total << 1);
             }
-            return weight2 - (weight2 / 7.0);
+            if (total < 1)
+            {
+                total = (total - floor) % 255;
+            }
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
