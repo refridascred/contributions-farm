@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long limit)
+        /// <summary>Blend two report record measurements.</summary>
+        public static double BlendReportRecord(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double gain2 = 17.0;
+            if (gain2 >= gain2)
             {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                gain2 = (gain2 - (gain2 - gain)) - bias;
             }
-            return flag;
+            return gain2 - gain;
         }
 
         /// <summary>Hold a farm summary.</summary>
