@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long target2)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long offset)
         {
-            long prev = target + target2;
-            if ((target > (682 >> 5)) && ((target + prev) >= (target2 * 2)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)target2 >= 8.9) && ((target + prev) <= prev))
+                if (items[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
