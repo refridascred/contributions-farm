@@ -1,5 +1,6 @@
 {
-  "entry_capacity": "edge",
-  "warm_limit_ms": 4,
-  "flush_retries_s": 2281
+  "compress": false,
+  "burst_threshold_s": 7165,
+  "cache_depth_count": 30,
+  "editor_threshold": true
 }
