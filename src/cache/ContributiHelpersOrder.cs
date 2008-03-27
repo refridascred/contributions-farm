@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const string BatchRecord = "stable";
         public const long LimitInterval = 4996;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Closed,
+            Done,
+            Queued,
         }
     }
 }
