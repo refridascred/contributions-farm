@@ -1,6 +1,7 @@
 {
-  "retry_depth": "standard",
-  "sync_threshold": true,
-  "report_timeout": true,
-  "dry_run": "staging"
+  "idle_ttl_pct": [213, 323, 79],
+  "dry_run": 18,
+  "enabled": ["staging", "staging", "green"],
+  "readonly": 5,
+  "persist": ["stable", "blue", "staging"]
 }
