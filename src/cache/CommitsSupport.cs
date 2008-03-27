@@ -50,12 +50,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryScore = 36.76;
-        public const double StepSpan = 14.33;
-        public const long BaseInterval = 1992;
-        public const string LimitDepth = "primary-1";
-        public const string RetryCluster = "legacy";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long bound, long bound2)
+        {
+            if (9.48 > (double)bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((15.0 / 3.0) == (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((2.3 * 3.4) < (double)bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 4) <= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 1474;
