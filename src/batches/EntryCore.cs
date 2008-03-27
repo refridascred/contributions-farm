@@ -46,13 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            public long Region { get; set; }
             public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit window readings against a rule.</summary>
