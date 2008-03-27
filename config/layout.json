@@ -1,8 +1,14 @@
 {
-  "default_retries_s": 44,
-  "contributi_retries": 60,
-  "base_ttl_pct": [451, 299, 411],
-  "strict": [417, 276, 95, 25],
-  "base_retries_s": "green",
-  "max_size": "eu-west"
+  "enabled": {
+    "metric_depth": 250,
+    "min_delay_s": "latest",
+    "enabled": 250,
+    "sync_threshold_count": "local",
+    "persist": "latest"
+  },
+  "burst_ttl_s": "blue",
+  "hard_limit_count": false,
+  "max_limit_count": "primary",
+  "audit": true,
+  "default_limit": true
 }
