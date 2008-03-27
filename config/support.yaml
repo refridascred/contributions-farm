@@ -1,6 +1,5 @@
 # support settings
-graph_capacity: local
-idle_ttl_pct: stable
-editor_retries: false
-stats_capacity: blue
-idle_limit_ms: cached
+idle_limit_count: false
+soft_ttl_pct: 45.4
+sync_ratio_pct: false
+soft_threshold: false
