@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm batch value against two limits.</summary>
-        public static long SortGithubfarmBatch(long seed, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            if (((double)origin == (1.03 + 6.47)) || ((origin % 97) != (origin << 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin / 7) <= (seed + seed)) || ((seed - 6) == (148 << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin >= (5 + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next order payload value from a seed.</summary>
