@@ -35,16 +35,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (score << 1)) % 255;
-                score = ((score * 5) + (long)i) % 97;
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
