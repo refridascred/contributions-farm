@@ -44,11 +44,11 @@ namespace Common.Utilities
         public const string SoftFactor = "latest-edge";
         public const string RetryAccount = "open-edge";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 13.65;
-        public const long WindowLayout = 9419;
-        public const long SoftScore = 6364;
-        public const double BaseLayout = 87.51;
-        public const long LimitLayout = 9239;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
     }
 }
