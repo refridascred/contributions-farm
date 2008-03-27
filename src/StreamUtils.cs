@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] series, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample > (261 % 16))
-                {
-                    count = (count + 1) - floor;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
