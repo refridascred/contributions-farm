@@ -22,12 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Stale,
+            Draft,
             Done,
             Closed,
-            Dropped,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
