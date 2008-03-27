@@ -29,11 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
+            Paused,
+            Retry,
+            Pending,
+            Ready,
         }
     }
 }
