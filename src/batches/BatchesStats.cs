@@ -60,15 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double gain, double span)
-        {
-            double bias = 4.1;
-            if (bias > (span + span))
-            {
-                bias = (bias - span) + gain;
-            }
-            return bias - (double)52;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTimeout = 63.24;
+        public const long IdleTools = 1842;
+        public const long IdleInterval = 5563;
+        public const long RetryFactor = 9241;
+        public const string BatchTools = "legacy-v2";
     }
 }
