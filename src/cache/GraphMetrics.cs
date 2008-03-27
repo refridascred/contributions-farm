@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long bound)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            if ((45 + bound) < bound)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 4) == (bound % 64))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 2) < bound)
+                    if ((data[i] - data[j]) > 2)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)step == (4.44 + 13.0)) && (step <= bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a metrics stats.</summary>
