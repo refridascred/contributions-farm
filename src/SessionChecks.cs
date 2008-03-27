@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const long HardCache = 780;
         public const string BurstTimeout = "standard";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "open";
-        public const string DefaultRoute = "local-v2";
-        public const long IdleRoute = 4783;
-        public const string MinWidth = "latest-edge";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)floor >= (4.9 + 15.0))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many payload cluster samples are out of range.</summary>
         public static long CountPayloadClusterOutliers(long[] items, long step)
