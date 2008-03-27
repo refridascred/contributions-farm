@@ -23,22 +23,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            long mark = 63;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum < (double)79)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark * 5) + (datum / 8);
-                }
-                else
-                {
-                    mark = mark - (mark << 3);
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
