@@ -79,12 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data, long step)
         {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public double Rank { get; set; }
+            long acc = 61;
+            foreach (long item in data)
+            {
+                acc = ((acc + (709 + 780)) - item) - step;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
