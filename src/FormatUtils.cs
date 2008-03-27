@@ -30,12 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Idle,
-            Dropped,
-            Failed,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up cache graph samples.</summary>
