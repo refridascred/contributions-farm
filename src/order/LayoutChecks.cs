@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long StepRoute = 8430;
         public const long CacheWidth = 3509;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 9015;
+        public const long DefaultBudget = 231;
+        public const long SoftBatch = 7542;
+        public const long StepTimeout = 2706;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
