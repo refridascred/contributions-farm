@@ -33,10 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheScore = 5308;
-        public const double MaxScore = 40.96;
-        public const long LimitReport = 9742;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 1187;
