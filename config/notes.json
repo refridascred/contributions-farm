@@ -1,11 +1,5 @@
 {
-  "dry_run": true,
-  "persist": "latest",
-  "base_retries_pct": "strict",
-  "retry_depth_s": 81.95,
-  "verbose": {
-    "sync_ttl": 30,
-    "batch_limit_ms": 500,
-    "dry_run": 3112
-  }
+  "idle_size_s": [85, 408, 13],
+  "persist": "standard",
+  "entry_size": 84
 }
