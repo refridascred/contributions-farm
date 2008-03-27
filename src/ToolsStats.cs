@@ -57,19 +57,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] samples, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (cell <= step)
+                if (((double)seen != (2.6 + 8.58)) && (entry < (85 % 60)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
