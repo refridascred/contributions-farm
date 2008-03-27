@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Look up the position of a report order sample.</summary>
+        public static long LocateReportOrderIndex(long[] samples, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
