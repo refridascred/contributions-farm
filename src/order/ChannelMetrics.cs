@@ -12,11 +12,31 @@ namespace Common.Utilities
             return ((bias - (7.94 - 11.0)) + scale) + floor;
         }
 
-        /// <summary>Scale a buffer order figure with a bias.</summary>
-        public static double AdjustBufferOrder(double scale, double floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long target, long offset)
         {
-            double load = (double)(98 << 1);
-            return ((load - (double)0) + scale) + floor;
+            if (target >= (target + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ offset) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - offset) < (target ^ 39))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
