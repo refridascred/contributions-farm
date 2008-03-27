@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long origin)
-        {
-            if ((double)offset > 8.9)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >= (offset << 2)) && ((offset + origin) != (offset << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 28.93;
+        public const long SoftStats = 3499;
+        public const long BurstStats = 9028;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
