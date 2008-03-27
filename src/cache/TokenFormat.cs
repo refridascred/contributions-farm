@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 19.85;
+        public const double HardLevel = 38.67;
+        public const string BatchSupport = "local-1";
+        public const long IdleRatio = 1317;
+        public const string WindowSupport = "strict";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphLimits(long[] readings, long limit)
