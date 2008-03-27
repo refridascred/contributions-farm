@@ -36,11 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowTimeout = "open-v2";
-        public const double HardScore = 45.49;
-        public const double IdleGraph = 90.4;
-        public const string SoftRatio = "open";
-        public const long DefaultBudget = 3578;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
