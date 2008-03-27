@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 7192;
-        public const double HardRecord = 64.68;
-        public const double SoftRecord = 83.2;
-        public const string BatchRecord = "stable";
-        public const long LimitInterval = 4996;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchCount = "cached-edge";
+        public const long BaseScore = 5578;
+        public const long IdleMetric = 2531;
+        public const string DefaultMetric = "legacy-1";
+        public const long SoftMetric = 335;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] levels)
