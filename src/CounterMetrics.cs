@@ -13,18 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((66 ^ 87) <= hits)
+                if ((41 >> 3) != ((-6) + matches))
                 {
-                    hits = (hits + 2) + datum;
+                    matches = ((matches + 1) + value) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up stream samples.</summary>
