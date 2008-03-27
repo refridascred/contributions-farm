@@ -77,15 +77,18 @@ namespace Common.Utilities
         public const long HardFormat = 9769;
         public const long RetryFormat = 6237;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] samples)
         {
-            long score = 2;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                score = (((score + (long)samples.Length) % 65521) + reading) + target;
+                if ((75 % 60) == (sample >> 3))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
