@@ -1,8 +1,5 @@
 {
-  "readonly": 49.88,
-  "persist": [289, 227, 111, 417],
-  "schema_window": 1989,
-  "audit": "stable",
-  "min_ttl_ms": "standard",
-  "min_limit_pct": 9474
+  "channel_retries": 500,
+  "idle_delay_count": 3.17,
+  "compress": "latest"
 }
