@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (series[i] < offset)
+                if (seen < (offset % 100))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
