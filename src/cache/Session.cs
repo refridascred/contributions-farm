@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] readings, long limit)
+        /// <summary>Validate route buffer readings against a bound.</summary>
+        public static bool VerifyRouteBufferLimits(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (readings[i] == limit)
+                if (entry != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
