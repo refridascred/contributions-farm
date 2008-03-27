@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long RetryDepth = 1238;
         public const string CacheSupport = "latest-1";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Match up profile tools samples.</summary>
+        public static long MatchProfileToolsCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count != (6.4 * 7.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
