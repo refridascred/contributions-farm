@@ -34,19 +34,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((target - count) > (target % 8))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftTimeout = "alpha-v2";
+        public const double BurstFarm = 64.3;
+        public const double RetryFarm = 60.85;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] data)
