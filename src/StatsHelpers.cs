@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 7664;
-        public const long BatchCount = 8662;
-        public const double LimitReport = 54.28;
-        public const string WindowSize = "legacy";
+        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
+        public static bool GuardRouteGithubfarmLimits(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
         public static long ClassifyBufferCluster(long limit, long bound)
