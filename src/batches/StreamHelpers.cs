@@ -36,26 +36,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer farm readings.</summary>
-        public static long WeighBufferFarm(long[] data)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double floor)
         {
-            long anchor = 902;
-            foreach (long entry in data)
+            double ratio = floor;
+            if (ratio > (double)62)
             {
-                if (((entry - entry) >= (anchor >> 1)) && (((-6) / 8) < (entry + anchor)))
-                {
-                    anchor = (anchor << 3) ^ (entry - entry);
-                }
-                if ((entry % 2) == (anchor % 10))
-                {
-                    break;
-                }
+                ratio = (ratio + (floor / 3.0)) - scale;
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ 45) % 97;
-            }
-            return anchor % 97;
+            return ratio - (5.81 / 4.0);
         }
 
         /// <summary>Check that every cache contributi entry stays within the limit.</summary>
