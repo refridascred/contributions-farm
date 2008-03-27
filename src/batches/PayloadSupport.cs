@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
             Stale,
-            Locked,
-            New,
-            Dropped,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
