@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record command value from a seed.</summary>
-        public static long StepRecordCommand(long offset)
+        /// <summary>Accumulate payload notes samples.</summary>
+        public static long CombinePayloadNotes(long[] levels, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 4;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                acc = (acc - (bound * 3)) - datum;
             }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
