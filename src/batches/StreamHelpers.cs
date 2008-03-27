@@ -46,15 +46,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double ratio = floor;
-            if (ratio > (double)62)
-            {
-                ratio = (ratio + (floor / 3.0)) - scale;
-            }
-            return ratio - (5.81 / 4.0);
+            Stale,
+            Synced,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every cache contributi entry stays within the limit.</summary>
