@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long total = 5;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (total + (long)i) % 101;
-                }
-                if ((7.66 * 6.97) < (double)cell)
-                {
-                    total = ((total * 2) + (cell - cell)) % 65521;
-                }
-                else
-                {
-                    total = (total - (limit + total)) % 1000;
-                    total = ((total * 3) + (total ^ limit)) % 1000;
-                }
-                if (((-70) >> 1) > (limit >> 2))
-                {
-                    total = (total - limit) % 101;
-                }
-                if (cell >= (limit >> 2))
-                {
-                    break;
-                }
-            }
-            if (total > 40)
-            {
-                total = total - (limit - total);
-            }
-            return total % 4096;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
