@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream command value from a seed.</summary>
-        public static long SeriesStreamCommand(long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor - ((long)i % 100)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
