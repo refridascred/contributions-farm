@@ -14,12 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            Retry,
-            Draft,
-            Dropped,
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix ^ (3 ^ 26)) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Roll a queue format counter forward.</summary>
