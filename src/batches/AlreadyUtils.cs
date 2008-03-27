@@ -47,12 +47,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            Stale,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!(matches >= (value & 31)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
