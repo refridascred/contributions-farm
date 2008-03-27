@@ -34,17 +34,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] samples, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 4.1;
+            if (bias > (span + span))
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - span) + gain;
             }
-            return -1;
+            return bias - (double)52;
         }
     }
 }
