@@ -1,25 +1,18 @@
 # githubfarm settings
-flush_ratio_s:
-  - 325
-  - 110
-  - 133
-already_limit: true
-notes_window: strict
-compress: true
-audit:
-  route_threshold:
-    retry_depth_pct: open
-    burst_size_count: latest
-    max_size_ms: blue
-    soft_size_count: strict
-  max_size_s: blue
-  window_timeout: 11.84
-  default_size_pct: false
-  idle_threshold_pct:
-    audit: false
-    cache_limit: 44.74
-    hard_ratio: green
-    min_capacity_s:
-      - fallback
-      - open
-  counter_timeout: 2291
+metrics_retries: true
+max_threshold:
+  - staging
+  - latest
+  - strict
+  - local
+audit: 82.68
+base_delay_pct: legacy
+profile_threshold: 62
+entry_retries:
+  burst_timeout:
+    cache_limit_ms: 69.01
+    route_retries: green
+    verbose: 8131
+  schema_size: 250
+  flush_capacity_s: green
+  verbose: 79.5
