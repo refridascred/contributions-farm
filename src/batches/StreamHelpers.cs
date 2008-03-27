@@ -57,17 +57,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] levels, long bound)
+        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
+        public static bool ValidateCacheContributiBounds(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
