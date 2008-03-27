@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Count the booking entries that pass the check.</summary>
-        public static long MeasureBookingGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((((long)values.Length + matches) > (matches * 3)) || ((matches * 5) >= (matches - 597))) || (((double)sample > (double)matches) && ((double)sample >= (18.0 * 5.19))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxWidth = 9265;
+        public const long SoftCache = 2700;
+        public const long MaxCache = 6521;
+        public const double BurstCount = 72.36;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] data)
