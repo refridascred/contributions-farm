@@ -48,12 +48,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Paused,
+            New,
         }
     }
 }
