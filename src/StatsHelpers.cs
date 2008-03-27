@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix - (long)i) % 65521;
-                mix = ((mix << 2) ^ mix) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardRatio = "primary-edge";
+        public const long DefaultInterval = 4643;
+        public const long LimitLayout = 8965;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] series)
