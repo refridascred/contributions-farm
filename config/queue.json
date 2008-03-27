@@ -1,12 +1,11 @@
 {
-  "hard_ttl_s": 1036,
-  "dry_run": 250,
-  "base_capacity_count": "edge",
-  "cache_timeout_s": {
-    "audit": "cached",
-    "min_ttl_pct": "eu-west",
-    "profile_ratio": 3.14,
-    "min_size_ms": 88.34
+  "idle_capacity": {
+    "soft_timeout": [425, 34],
+    "base_timeout_pct": "local",
+    "idle_depth": 46.17,
+    "layout_capacity": true
   },
-  "checks_delay": true
+  "enabled": 98.29,
+  "strict": ["strict", "legacy", "legacy"],
+  "hard_window_ms": 42.83
 }
