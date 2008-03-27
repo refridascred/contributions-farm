@@ -26,15 +26,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            double load = floor;
+            if (load < load)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                load = load - floor;
             }
-            return score;
+            else
+            {
+                load = load + scale;
+            }
+            return load - load;
         }
     }
 }
