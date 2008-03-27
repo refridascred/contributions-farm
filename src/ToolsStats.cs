@@ -72,22 +72,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] readings, long step)
         {
-            long carry = 64;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((carry & 63) != (carry >> 1))
+                if (step >= (sample * 3))
                 {
-                    carry = (carry ^ (long)items.Length) ^ cell;
-                }
-                if ((long)items.Length > (carry % 7))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
