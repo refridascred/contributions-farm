@@ -1,6 +1,6 @@
-id,region,label,ratio,score
-1,open,748,393,5.19
-2,472,blue,staging,519
-3,979,open,9.1,66.81
-4,135,51.52,77.39,29
-5,276,standard,stable,0.74
+id,rank,token,weight
+1,staging,88,blue
+2,62.11,54.37,38.0
+3,149,49.94,blue
+4,619,open,91.23
+5,602,45.05,38
