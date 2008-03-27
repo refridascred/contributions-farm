@@ -22,24 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long seed, long seed2)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if (77 < (seed % 24))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 < (seed / 7)) && ((seed >> 3) >= seed2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
