@@ -13,15 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = 309;
+            foreach (long value in samples)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                carry = ((carry * 3) + target) ^ value;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Describe the schema status values.</summary>
