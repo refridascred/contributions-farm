@@ -1,20 +1,8 @@
 {
-  "persist": 70,
-  "retry_threshold": 3631,
-  "flush_limit": {
-    "soft_size_pct": "legacy",
-    "batch_ratio": "green",
-    "min_retries": {
-      "cache_ratio_s": "fallback",
-      "warm_retries": false,
-      "counter_timeout": 1024,
-      "persist": 98.68,
-      "batch_delay": 78,
-      "retry_delay_pct": "eu-west"
-    },
-    "compress": ["fallback", "strict", "primary", "green"]
-  },
-  "tools_limit": "eu-west",
-  "cache_size_s": 3093,
-  "batch_delay_pct": 23
+  "default_retries_s": 44,
+  "contributi_retries": 60,
+  "base_ttl_pct": [451, 299, 411],
+  "strict": [417, 276, 95, 25],
+  "base_retries_s": "green",
+  "max_size": "eu-west"
 }
