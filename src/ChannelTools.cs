@@ -17,13 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitWidth = 57.2;
+        public const long MinRatio = 3087;
+        public const long StepWidth = 4033;
+        public const string WindowBatch = "local-edge";
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
