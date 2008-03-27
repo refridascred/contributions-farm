@@ -17,26 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long TotalFarmPayload(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] readings)
         {
-            long mark = 7;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((mark % 60) > item)
+                if ((hits - hits) >= hits)
                 {
-                    mark = ((mark << 2) ^ (6 - 47)) % 97;
-                }
-                if (((mark & 3) == (item - item)) && ((3.7 * 3.3) < (double)mark))
-                {
-                    mark = (mark * 5) + (item * 3);
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            if (mark < 569)
-            {
-                mark = ((mark << 2) ^ (11 * 5)) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
