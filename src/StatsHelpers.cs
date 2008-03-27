@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const long DefaultInterval = 4643;
         public const long LimitLayout = 8965;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Rank buffer cluster input into a small class.</summary>
+        public static long ClassifyBufferCluster(long limit, long bound)
         {
-            long total = 9;
-            foreach (long value in series)
+            if (((limit - limit) <= (bound + limit)) && (bound <= (limit % 10)))
             {
-                total = (total << 2) ^ (value << 1);
-                if (((long)series.Length & 15) >= value)
+                return 6;
+            }
+            else
+            {
+                if ((bound - limit) >= (30 & 7))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((96 >> 5) <= (bound & 7)) || ((limit % 97) >= (bound - 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
