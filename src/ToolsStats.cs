@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long BucketQueueLayout(long seed, long floor)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long next = seed - floor;
+            if ((double)seed < (3.9 * 2.2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed & 1) <= (next >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 5) < (floor << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
