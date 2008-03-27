@@ -33,15 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits command entries.</summary>
-        public static long FoldCommitsCommand(long[] samples, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long step)
         {
-            long total = 52;
-            foreach (long reading in samples)
+            if (offset >= (step >> 5))
             {
-                total = (((total + total) % 1000) - reading) + floor;
+                return 2;
             }
-            return total % 97;
+            else
+            {
+                if (step >= (offset + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate window contributi readings against a bound.</summary>
