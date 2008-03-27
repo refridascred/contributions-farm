@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data, long bound)
         {
-            double load = bias - scale;
-            if (load < 2.5)
+            long count = 0;
+            foreach (long entry in data)
             {
-                load = load + (double)9;
+                if ((entry % 100) != (entry + count))
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (20.0 + bias);
+            return count;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
