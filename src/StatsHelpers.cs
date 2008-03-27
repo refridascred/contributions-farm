@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const string StepSession = "cached-edge";
         public const string DefaultDepth = "standard-edge";
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] values, long floor)
         {
-            New,
-            Dropped,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)floor >= 9.8)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
