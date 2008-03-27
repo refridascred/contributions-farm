@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] samples)
         {
-            Closed,
-            Locked,
-            Done,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 5) <= 7)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
