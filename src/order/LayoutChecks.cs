@@ -90,38 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] items)
         {
-            if ((bound * 3) <= (891 * 5))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound / 9) >= bound) || (bound < (seed >> 4)))
+                if (value >= (9 - hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - bound) >= (seed ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((20.0 + 8.5) >= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
