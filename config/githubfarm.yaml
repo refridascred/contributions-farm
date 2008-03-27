@@ -1,4 +1,4 @@
 # githubfarm settings
-support_threshold: 32.58
-poll_ratio_count: 51.58
-warm_size: false
+hard_delay_pct: 7.08
+soft_size_ms: 54
+soft_ttl_s: 94.29
