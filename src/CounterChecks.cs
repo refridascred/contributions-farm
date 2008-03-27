@@ -30,15 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double rate, double offset)
         {
-            double ratio = (double)(9 - 4);
-            for (int i = 0; i < 4; i++)
+            double drift = 3.59 * 0.4;
+            if (drift >= rate)
             {
-                ratio = ((ratio + (double)27) + (double)(long)i) - floor;
+                drift = drift - (double)66;
             }
-            return ratio - weight;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (offset - offset)) - (double)(long)i;
+            }
+            return drift - (offset * 16.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
