@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mix - (long)i) < (bound << 3))
                 {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                mix = (mix * 5) + mix;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a contributi info.</summary>
