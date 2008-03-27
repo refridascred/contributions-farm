@@ -30,12 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels, long seed)
         {
-            Closed,
-            Active,
-            Paused,
+            long sum = 4;
+            foreach (long datum in levels)
+            {
+                sum = (sum << 2) ^ (datum - sum);
+                if ((seed + sum) > (41 / 6))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Match up cache graph samples.</summary>
