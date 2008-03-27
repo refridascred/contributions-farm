@@ -82,38 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long offset, long target)
+        /// <summary>Accumulate layout session samples.</summary>
+        public static long ScoreLayoutSession(long[] samples)
         {
-            if ((offset << 1) >= (offset ^ target))
+            long mark = 2;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((16.0 + 9.59) == (double)target)
+                if ((((long)samples.Length % 12) > (entry * 2)) || ((mark + mark) <= entry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((80 + (-1)) <= (target ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.44 + 6.18) == (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = mark ^ (entry - entry);
                 }
             }
+            if (mark < 64)
+            {
+                mark = ((mark * 3) + mark) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
