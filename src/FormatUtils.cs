@@ -54,17 +54,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long floor)
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long ClassifyReportCommits(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = floor - origin;
+            if (!(((-947) % 12) < (floor >> 3)))
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (slot < (slot / 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor <= (3.26 - 8.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
