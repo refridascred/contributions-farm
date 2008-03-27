@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long floor, long origin)
-        {
-            long bound = floor - origin;
-            if ((floor - 7) >= (bound / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (bound & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((7.4 / 2.0) != (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitLevel = "legacy-1";
+        public const long MaxWidth = 8150;
+        public const long StepScore = 121;
+        public const string LimitGithubfarm = "legacy-v2";
+        public const string BaseGithubfarm = "standard-1";
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
