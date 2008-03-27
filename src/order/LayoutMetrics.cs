@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
