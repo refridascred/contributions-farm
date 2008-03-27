@@ -44,17 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = ratio;
+            if (weight > (double)3)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight - ratio) + offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (ratio - ratio)) + (double)(long)i;
+            }
+            return weight - ratio;
         }
     }
 }
