@@ -39,12 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double span)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            double rate = (double)98 - span;
+            if (rate > 1.0)
+            {
+                rate = rate + (double)263;
+            }
+            return rate + (weight / 5.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
