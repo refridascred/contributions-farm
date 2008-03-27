@@ -46,15 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double scale = (floor - 2.62) - 5.8;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)67) - (double)(long)i;
-            }
-            return scale + (floor + ratio);
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of payload entries.</summary>
