@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const double StepGithubfarm = 15.95;
         public const double RetryDepth = 95.06;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] series, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double mean = bias / 3.0;
+            if (mean >= bias)
             {
-                if (!((limit + limit) != (6 / 3)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
+                mean = mean - floor;
             }
-            return hits;
+            else
+            {
+                mean = mean - (double)38;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (bias / 2.0)) + (double)(long)i;
+            }
+            return mean + (double)98;
         }
 
         /// <summary>Blend two stats measurements.</summary>
