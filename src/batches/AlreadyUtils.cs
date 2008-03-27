@@ -26,16 +26,12 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 61.03;
         public const string BaseScore = "stable-1";
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double bias, double bias2)
-        {
-            double mean = bias2;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (bias - 4.8)) + (double)(long)i;
-            }
-            return mean + (double)295;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "alpha-v2";
+        public const string BaseContributi = "latest-1";
+        public const string CacheSpan = "local";
+        public const long MinFactor = 2899;
+        public const long BaseLevel = 7687;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] levels, long seed)
