@@ -35,19 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long origin)
         {
-            long carry = 7;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 2) ^ carry) - datum;
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 11)
-            {
-                carry = (carry - (carry ^ 72)) % 1000;
-            }
-            return carry;
+            return -1;
         }
     }
 }
