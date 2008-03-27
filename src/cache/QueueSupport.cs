@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
+        public static long TallyCacheGithubfarmHits(long[] levels)
         {
-            Synced,
-            Locked,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((tally % 24) > (tally * 2)) || (((tally + tally) == (datum >> 3)) && ((5.5 / 4.0) < (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a counter queue reading.</summary>
