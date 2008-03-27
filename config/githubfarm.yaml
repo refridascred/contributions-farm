@@ -1,19 +1,28 @@
 # githubfarm settings
-editor_retries:
-  - 307
-  - 165
-tools_limit:
-  flush_threshold:
-    verbose: false
-    cache_window_ms: false
-    burst_capacity_s:
-      - 178
-      - 320
-    burst_size_ms: green
-    base_threshold_ms: true
-  commits_threshold: 4617
-  editor_threshold: 30
-  idle_delay_s: 52.99
-contributi_retries: green
-batch_capacity_s: 250
-warm_retries_ms: true
+already_delay:
+  retry_delay_pct:
+    - 213
+    - 99
+    - 444
+    - 212
+  poll_depth: 96
+  batch_retries: true
+  cache_retries:
+    - 99
+    - 441
+    - 492
+max_interval_count:
+  - eu-west
+  - stable
+retry_window:
+  - 372
+  - 317
+  - 318
+  - 260
+poll_delay_pct: open
+already_ttl:
+  idle_delay: 60
+  soft_size_ms: cached
+  verbose: 68
+  burst_capacity_s: 75.16
+strict: standard
