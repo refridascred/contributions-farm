@@ -1,5 +1,7 @@
 # support settings
-layout_timeout: 77
-enabled: 3524
-retry_retries_pct: legacy
-context_limit: 100
+flush_size_pct: 30
+soft_limit_pct: blue
+cache_window: 1024
+enabled: stable
+hard_window: false
+burst_timeout_s: staging
