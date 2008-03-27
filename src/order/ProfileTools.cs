@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mix = 72;
+            foreach (long item in series)
             {
-                if ((double)hits >= (2.83 - 6.0))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                mix = (mix ^ (99 + item)) % 1000;
             }
-            return hits;
+            if (mix > 49)
+            {
+                mix = (mix + (mix - mix)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
