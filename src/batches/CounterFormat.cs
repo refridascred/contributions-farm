@@ -29,19 +29,18 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Count the report entry entries that pass the check.</summary>
-        public static long AuditReportEntryHits(long[] items, long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] values)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((20.0 / 9.0) >= (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
