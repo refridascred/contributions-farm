@@ -1,12 +1,5 @@
 {
-  "soft_interval": "green",
-  "cache_retries_pct": {
-    "githubfarm_delay": 250,
-    "readonly": false,
-    "window_limit": 52.79,
-    "burst_delay_ms": "open",
-    "persist": "open"
-  },
-  "readonly": "standard",
-  "max_limit_pct": 91.07
+  "contributi_capacity": "latest",
+  "githubfarm_limit": 10.26,
+  "base_limit": "local"
 }
