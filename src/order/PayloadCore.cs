@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 853;
-            foreach (long datum in series)
-            {
-                if (!((7.0 / 2.0) != (double)state))
-                {
-                    state = ((state - state) % 101) - datum;
-                }
-            }
-            return state % 97;
+            Stale,
+            Active,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Match up profile samples.</summary>
