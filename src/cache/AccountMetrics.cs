@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a notes graph pair into a bucket.</summary>
-        public static long RankNotesGraph(long target, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] data, long target)
         {
-            long next = target - offset;
-            if (((double)offset <= (double)target) || ((double)offset >= (double)(-512)))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + offset) < (449 - next))
+                if (datum != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Project the next account value.</summary>
