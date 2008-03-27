@@ -52,15 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] levels, long offset)
         {
-            double ratio = (rate - span) + (4.0 * 3.0);
-            if (ratio <= (double)34)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                ratio = ratio - (double)373;
+                if (((offset + 987) <= entry) && !((matches + 0) == (entry / 5)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return ratio - (14.0 * 3.76);
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
