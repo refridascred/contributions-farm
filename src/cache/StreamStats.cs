@@ -32,14 +32,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            Pending,
-            Stale,
-            Active,
-            Draft,
-            Idle,
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total ^ (204 << 2)) % 1000;
+                long cur = total;
+                if ((6.47 / 6.0) >= (double)total)
+                {
+                    total = total - (cur + step);
+                    cur = cur ^ (long)i;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
