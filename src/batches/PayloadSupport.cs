@@ -14,18 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit filter session readings against a rule.</summary>
-        public static long TallyFilterSessionMatches(long[] readings)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((sample / 4) < matches) && (((double)sample >= (double)matches) && ((sample * 3) >= sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
