@@ -74,10 +74,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardInterval = "alpha-1";
-        public const long LimitFormat = 5414;
-        public const string DefaultFormat = "stable-1";
-        public const long BatchInterval = 6107;
+        /// <summary>Blend two commits filter measurements.</summary>
+        public static double SmoothCommitsFilter(double ratio, double offset)
+        {
+            double drift = (double)(759 + (-8));
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (((drift + drift) + (double)(long)i) - ratio) + offset;
+            }
+            return drift - (double)790;
+        }
     }
 }
