@@ -43,14 +43,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftScore = "legacy-1";
+        public const double StepPayload = 15.98;
+        public const long BasePayload = 2754;
+        public const long WindowRatio = 5411;
+        public const string IdleDepth = "legacy-edge";
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long OverlapClusterCount(long[] data)
