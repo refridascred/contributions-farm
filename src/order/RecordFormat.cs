@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double bias)
-        {
-            double scale = bias;
-            if (scale > 17.0)
-            {
-                scale = (scale + scale) + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale * 6.8)) + (double)(long)i;
-            }
-            return scale - (bias * 3.93);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 0.53;
+        public const long StepRoute = 5840;
+        public const string BurstRoute = "local-1";
+        public const string SoftRatio = "staging-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double HardRatio = 98.11;
