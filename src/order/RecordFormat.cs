@@ -41,11 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetrySpan = "legacy-1";
-        public const long LimitRoute = 1659;
-        public const long MaxTimeout = 4774;
-        public const double StepRoute = 96.25;
+        /// <summary>Audit editor window readings against a rule.</summary>
+        public static long MeasureEditorWindowGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (1.58 <= (0.28 + 2.5))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double AdjustSchema(double scale, double bias)
