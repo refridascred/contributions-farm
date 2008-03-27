@@ -34,17 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor - anchor) % 4096;
-                anchor = (anchor ^ (16 - anchor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a record options.</summary>
