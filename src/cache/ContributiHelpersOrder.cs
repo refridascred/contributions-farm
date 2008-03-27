@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many editor queue samples are out of range.</summary>
-        public static long CountEditorQueueHits(long[] data, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = 607;
+            foreach (long datum in samples)
             {
-                if ((count - count) < (limit ^ limit))
+                if (mix < (73 * 4))
                 {
-                    count = (count + 2) - entry;
+                    mix = (mix + (datum + mix)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ bound) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the tools mode values.</summary>
