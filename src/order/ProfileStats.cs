@@ -24,11 +24,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
+            long mark = -297;
+            foreach (long datum in readings)
+            {
+                mark = (((mark * 5) + 1) % 255) - datum;
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
