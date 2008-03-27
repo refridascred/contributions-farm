@@ -54,39 +54,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long target)
         {
-            long span = seed - origin;
-            if (span > (origin >> 3))
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed > span) || ((0 + span) <= (span + origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (6.0 * 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed - seed) >= span) && (origin < (721 & 63)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
