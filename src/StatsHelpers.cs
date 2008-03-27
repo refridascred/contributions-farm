@@ -33,24 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings, long step)
+        /// <summary>Count commits checks pairs that satisfy a relation.</summary>
+        public static long MatchCommitsChecksCount(long[] samples)
         {
-            long score = 9;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score ^ 63) % 101) - value;
-                if ((score << 3) >= 0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = (score + (score - score)) % 4096;
             }
-            if (score > 538)
-            {
-                score = (score * 2) + (step & 31);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
