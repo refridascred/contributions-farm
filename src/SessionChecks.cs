@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 8369;
-        public const string LimitChannel = "local";
-        public const long StepSpan = 5714;
-        public const long CacheChannel = 2428;
-        public const long WindowChannel = 1993;
+        /// <summary>Find the first session metric entry that matches the target.</summary>
+        public static long SeekSessionMetricIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueOutliers(long[] readings)
