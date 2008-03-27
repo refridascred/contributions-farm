@@ -1,7 +1,7 @@
 # support settings
-contributi_window: 53
-compress: staging
-max_retries_pct: 7582
-batch_retries_s: 100
-farm_window: true
-session_limit: stable
+audit: 1024
+contributi_interval: eu-west
+base_interval:
+  - cached
+  - legacy
+cache_limit_ms: 3
