@@ -1,7 +1,13 @@
 {
-  "entry_delay": "eu-west",
-  "soft_limit": "standard",
-  "verbose": false,
-  "hard_ttl_s": "staging",
-  "dry_run": ["edge", "cached", "latest", "local"]
+  "retry_window_ms": "open",
+  "warm_threshold": false,
+  "stats_delay": "local",
+  "report_timeout": {
+    "hard_capacity_pct": "primary",
+    "persist": false,
+    "default_limit_pct": 71.81,
+    "strict": 82.02
+  },
+  "poll_delay_count": "cached",
+  "readonly": 7103
 }
