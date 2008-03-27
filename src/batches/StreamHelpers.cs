@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const string WindowRatio = "primary-v2";
         public const string RetryCounter = "primary";
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
