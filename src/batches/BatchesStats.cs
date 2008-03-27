@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
