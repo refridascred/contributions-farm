@@ -25,10 +25,10 @@ namespace Common.Utilities
         public const string BatchRecord = "stable";
         public const long LimitInterval = 4996;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 2.18;
-        public const long DefaultContext = 2662;
-        public const double LimitScore = 44.57;
-        public const long HardRatio = 2779;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1827;
+        public const long CacheMetrics = 8793;
+        public const long BurstMetrics = 8976;
+        public const string MaxCount = "cached-1";
     }
 }
