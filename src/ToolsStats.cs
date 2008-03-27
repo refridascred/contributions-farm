@@ -39,12 +39,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels, long step)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long carry = 510;
+            foreach (long sample in levels)
+            {
+                if (((1.0 - 2.0) > (9.42 - 7.31)) || ((double)carry <= (1.5 / 3.0)))
+                {
+                    carry = (((carry << 3) ^ (step & 1)) % 4096) ^ sample;
+                }
+                else
+                {
+                    carry = (carry * 2) + carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
