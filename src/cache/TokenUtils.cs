@@ -29,20 +29,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the command stats series from a seed.</summary>
-        public static long StepCommandStats(long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result + ((long)i - step)) % 255;
-                if ((double)step < 11.0)
+                if ((offset ^ 1) >= (offset / 3))
                 {
-                    result = ((result * 4) + step) % 255;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
     }
 }
