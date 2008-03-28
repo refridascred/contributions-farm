@@ -52,13 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultRatio = 32.12;
+        public const long BurstOrder = 24;
+        public const double CacheOrder = 85.53;
+        public const long CacheRatio = 5380;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
