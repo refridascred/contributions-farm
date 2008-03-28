@@ -1,6 +1,11 @@
-id,count,level
-1,stable,35.27
-2,fallback,50.57
-3,46,78.64
-4,833,784
-5,259,standard
+id,ratio,region
+1,613,210
+2,green,12.57
+3,55.62,edge
+4,standard,primary
+5,963,open
+6,29,245
+7,256,76
+8,735,992
+9,141,478
+10,44.13,standard
