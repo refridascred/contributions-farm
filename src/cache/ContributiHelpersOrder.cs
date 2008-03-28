@@ -34,21 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Digest a series of payload batch entries.</summary>
+        public static long CombinePayloadBatch(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 543;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score ^ (99 + score)) - cell;
+                if (((double)limit >= (double)score) || (((long)readings.Length % 64) < (score + limit)))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ (score ^ limit)) % 4096;
                 }
             }
-            return hits;
+            return score % 65521;
         }
     }
 }
