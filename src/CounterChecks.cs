@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowScore = "alpha";
-        public const double HardBudget = 87.59;
-        public const long BurstCommand = 1953;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
