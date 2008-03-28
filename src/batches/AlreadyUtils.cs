@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many buffer support samples are out of range.</summary>
-        public static long AuditBufferSupportMatches(long[] series)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double mean = 7.65 - ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample + 6) != (matches - sample))
-                {
-                    matches = matches + 3;
-                }
+                mean = ((mean - (ratio + ratio)) + (double)(long)i) - bias;
             }
-            return matches;
+            return mean + (double)7;
         }
 
         /// <summary>Hold a order info.</summary>
