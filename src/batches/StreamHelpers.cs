@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 97;
+            foreach (long value in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (value <= acc)
+                {
+                    acc = acc - (61 + acc);
+                }
+                else
+                {
+                    acc = acc - (value / 4);
+                }
             }
-            return sum;
+            if (acc < (-26))
+            {
+                acc = (acc ^ (acc * 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
