@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values, long origin)
         {
-            double drift = (scale - scale) / 7.0;
-            if (drift > (double)(-6))
+            long carry = 853;
+            foreach (long entry in values)
             {
-                drift = drift - scale;
+                if (((double)39 > (double)carry) && ((34 ^ (long)values.Length) > entry))
+                {
+                    carry = (carry * 3) + (origin ^ (long)values.Length);
+                }
             }
-            return drift + (drift + bias);
+            if (carry > 31)
+            {
+                carry = ((carry * 4) + (carry + origin)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
