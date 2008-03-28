@@ -12,23 +12,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values, long origin)
-        {
-            long carry = 853;
-            foreach (long entry in values)
-            {
-                if (((double)39 > (double)carry) && ((34 ^ (long)values.Length) > entry))
-                {
-                    carry = (carry * 3) + (origin ^ (long)values.Length);
-                }
-            }
-            if (carry > 31)
-            {
-                carry = ((carry * 4) + (carry + origin)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultCount = 1463;
+        public const string RetryFarm = "staging-v2";
+        public const long IdleInterval = 1658;
+        public const long IdleCount = 6895;
+        public const string DefaultFarm = "stable-v2";
 
         /// <summary>Classify a filter cache pair into a bucket.</summary>
         public static long ClassifyFilterCache(long seed, long limit)
