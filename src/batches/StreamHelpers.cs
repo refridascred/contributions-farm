@@ -43,13 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] items, long limit)
         {
-            New,
-            Queued,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((limit * 2) < sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
