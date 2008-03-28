@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepSpan = "legacy-v2";
-        public const long DefaultStream = 3879;
-        public const long IdleFactor = 5344;
-        public const string BurstWidth = "stable-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 8673;
+        public const long StepContext = 6148;
+        public const string DefaultTimeout = "strict";
+        public const long SoftContext = 1213;
+        public const string HardLevel = "staging-v2";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
