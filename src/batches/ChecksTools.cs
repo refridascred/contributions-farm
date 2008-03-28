@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Adjust a commits reading.</summary>
