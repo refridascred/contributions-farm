@@ -49,17 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema session series from a seed.</summary>
-        public static long SeriesSchemaSession(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = (mix - (mix << 3)) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 3513;
+        public const long SoftFormat = 8641;
+        public const long DefaultFormat = 7480;
+        public const long RetryFormat = 1898;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardWidth = 5868;
