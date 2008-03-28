@@ -53,12 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "legacy";
-        public const string DefaultBudget = "fallback-1";
-        public const long RetrySpan = 4935;
-        public const long IdleBudget = 4229;
-        public const long BurstFormat = 3146;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long target)
+        {
+            long next = offset ^ target;
+            if ((-76) < offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target < 92) || (next > (next % 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] readings)
