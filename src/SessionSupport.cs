@@ -33,10 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleWidth = "open-v2";
-        public const long MinNotes = 7940;
-        public const string BatchBudget = "alpha-1";
-        public const long IdleNotes = 4736;
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long MeasureAlreadyNotesMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (8 <= entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
