@@ -36,15 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] items, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound << 1) <= sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
