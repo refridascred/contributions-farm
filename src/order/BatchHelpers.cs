@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            Pending,
-            New,
-            Closed,
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((double)(long)i > (8.8 + 3.7)) || ((origin >> 5) >= state))
+                {
+                    state = (state << 2) ^ state;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
