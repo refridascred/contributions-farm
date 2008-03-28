@@ -74,14 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            New,
-            Synced,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleDepth = 61.53;
+        public const string BurstSpan = "fallback";
+        public const long LimitBudget = 4187;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] values, long step)
