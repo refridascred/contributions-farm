@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 1782;
-        public const long SoftChannel = 6549;
-        public const long BurstLevel = 9953;
-        public const long DefaultChannel = 1978;
-        public const string StepChannel = "standard-1";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaOutliers(long[] series)
