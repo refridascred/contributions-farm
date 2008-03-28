@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long acc = 692;
-            foreach (long item in data)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((long)data.Length >= (acc + item))
-                {
-                    acc = ((acc << 2) ^ item) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (item & 3)) % 4096;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the window mode values.</summary>
