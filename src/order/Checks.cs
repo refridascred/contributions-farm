@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 2672;
-        public const long BatchReport = 7025;
-        public const long RetryCount = 348;
-        public const string IdleDepth = "stable";
-        public const long RetryTimeout = 5813;
+        /// <summary>Find the first entry batches entry that matches the target.</summary>
+        public static long FindEntryBatchesIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] levels)
