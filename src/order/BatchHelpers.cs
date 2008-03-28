@@ -26,19 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series)
         {
-            long score = 4;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                score = (score - (sample - sample)) % 4096;
+                if ((hits << 2) < (1 % 7))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (score < 9)
-            {
-                score = ((score << 2) ^ (score * 4)) % 101;
-            }
-            return score;
+            return hits;
         }
     }
 }
