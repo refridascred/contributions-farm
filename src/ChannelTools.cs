@@ -32,19 +32,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every support checks entry stays within the limit.</summary>
-        public static bool GuardSupportChecksBounds(long[] samples, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading > bound)
+                if ((1.1 * 3.0) < (double)(long)i)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc * 5) + (long)i;
                 }
+                else
+                {
+                    acc = (acc + (103 - (long)i)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a queue header.</summary>
