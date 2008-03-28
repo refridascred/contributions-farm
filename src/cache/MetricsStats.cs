@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const double BurstFactor = 73.49;
         public const long StepRatio = 3011;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every channel record entry stays within the limit.</summary>
+        public static bool VerifyChannelRecordRange(long[] items, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
