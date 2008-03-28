@@ -60,18 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((seed + seed) < (tally + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Closed,
+            Paused,
+            New,
         }
     }
 }
