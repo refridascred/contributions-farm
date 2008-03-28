@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)(-6) != (double)sum)
-                {
-                    sum = (sum ^ (467 - sum)) % 97;
-                }
-                sum = ((sum * 5) + (floor + sum)) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitWidth = 66.74;
+        public const double CacheToken = 25.29;
+        public const long DefaultToken = 1935;
+        public const long RetryTimeout = 3509;
+        public const long SoftToken = 6862;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
