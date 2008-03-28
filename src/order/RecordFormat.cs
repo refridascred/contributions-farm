@@ -66,23 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] values, long floor)
         {
-            double gain = 2.0;
-            if (gain > 4.11)
+            long matches = 0;
+            foreach (long value in values)
             {
-                gain = gain - 6.93;
+                if (((matches < (matches + value)) && ((double)floor == (double)matches)) && ((double)(long)values.Length != (19.0 + 8.4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (bias + scale)) + (double)(long)i;
-            }
-            return gain - (scale / 4.0);
+            return matches;
         }
     }
 }
