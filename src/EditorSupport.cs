@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long MaxScore = 459;
         public const string LimitBuffer = "primary-v2";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series, long target)
         {
-            long acc = 49;
-            foreach (long entry in samples)
+            long total = 19;
+            foreach (long value in series)
             {
-                if ((entry / 4) >= (acc & 15))
+                if ((980 + target) > value)
                 {
-                    acc = (acc ^ (entry + acc)) % 101;
+                    total = (total * 4) + (target + total);
+                }
+                else
+                {
+                    total = total - target;
                 }
             }
-            return acc;
+            return total % 65521;
         }
 
         /// <summary>Rank token input into a small class.</summary>
