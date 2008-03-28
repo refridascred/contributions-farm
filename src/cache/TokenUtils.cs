@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] series, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= step)
+                if (readings[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
