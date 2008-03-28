@@ -86,18 +86,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples, long target)
+        /// <summary>Iterate the commits buffer series from a seed.</summary>
+        public static long StepCommitsBuffer(long target)
         {
-            long acc = -6;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)acc <= (6.0 - 4.7))
-                {
-                    acc = (((acc + acc) % 4096) ^ reading) + target;
-                }
+                mark = (mark << 2) ^ ((long)i & 15);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
     }
 }
