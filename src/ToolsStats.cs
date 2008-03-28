@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = floor;
+            if (rate < (double)27)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + rate) + bias;
             }
-            return count;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + (double)(-6);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
