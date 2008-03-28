@@ -80,13 +80,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Dropped,
-            Retry,
-            Queued,
-            Failed,
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
