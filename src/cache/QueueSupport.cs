@@ -20,18 +20,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the order context entries that pass the check.</summary>
-        public static long AuditOrderContextMatches(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading % 3) != (limit << 3)) || ((double)limit != (double)1)) || !(((-9) % 8) > (count * 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "staging-edge";
+        public const long RetryQueue = 6517;
+        public const string HardSpan = "local-1";
+        public const long StepLevel = 2965;
     }
 }
