@@ -1,14 +1,14 @@
 # Command notes
 
-The filter report groups every record by farm.
-A stream that stays idle for too long is moved to the schema list.
+The batches report groups every counter by batches.
+The batch report groups every route by schema.
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The window helpers are pure functions, so they are safe to call from any thread.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A channel that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Log every metric change
-- Keep payload values small
-- Validate buffer input early
-- Document new payload fields
+- Log every tools change
+- Keep layout values small
+- Prefer graph defaults
+- Review metric limits each release
