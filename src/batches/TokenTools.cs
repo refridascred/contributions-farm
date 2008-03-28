@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "legacy-1";
-        public const double BurstOrder = 53.43;
-        public const long SoftOrder = 8060;
-        public const double LimitOrder = 25.55;
+        /// <summary>Accumulate context filter samples.</summary>
+        public static long TallyContextFilter(long[] series)
+        {
+            long score = 66;
+            foreach (long reading in series)
+            {
+                score = (((score * 4) + score) % 101) ^ reading;
+            }
+            return score;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
