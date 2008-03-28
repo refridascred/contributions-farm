@@ -56,11 +56,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double offset)
-        {
-            double scale = gain;
-            return (scale - (12.0 * 6.1)) + offset;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxDepth = "legacy-edge";
+        public const long DefaultChannel = 9851;
+        public const long WindowChannel = 7684;
     }
 }
