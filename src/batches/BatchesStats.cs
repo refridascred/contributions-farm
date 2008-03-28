@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const double MinCommits = 22.3;
         public const long BatchInterval = 2694;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
