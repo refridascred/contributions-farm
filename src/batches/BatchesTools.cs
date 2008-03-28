@@ -33,32 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry queue pair into a bucket.</summary>
-        public static long BucketEntryQueue(long bound, long target)
+        /// <summary>Derive the next buffer cluster value from a seed.</summary>
+        public static long DeriveBufferCluster(long seed)
         {
-            long offset = bound + target;
-            if ((double)bound >= 9.0)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (target >= (bound << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((855 ^ target) >= (offset + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
