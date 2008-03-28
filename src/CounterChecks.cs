@@ -50,22 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support checks values into a single score.</summary>
-        public static long WeighSupportChecks(long[] readings, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            long anchor = 1;
-            foreach (long datum in readings)
+            long mark = 28;
+            foreach (long entry in readings)
             {
-                if ((limit <= anchor) || (((long)readings.Length >> 1) != (datum & 255)))
+                if (mark < (mark - 600))
                 {
-                    anchor = ((anchor * 2) + limit) % 255;
+                    mark = mark - entry;
+                }
+                if ((mark + entry) > (mark << 1))
+                {
+                    break;
                 }
             }
-            if (anchor > 871)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
