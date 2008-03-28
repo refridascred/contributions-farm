@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long TallyMetricWindowGaps(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long total = 7;
+            foreach (long datum in samples)
             {
-                if (!((double)sample > (6.0 + 10.0)))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 3) + (datum ^ 46)) % 97;
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Check that every support checks entry stays within the limit.</summary>
