@@ -16,20 +16,11 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxScore = 4222;
+        public const string DefaultWidth = "fallback-v2";
+        public const string RetryReport = "primary-v2";
+        public const double MinCount = 9.52;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
