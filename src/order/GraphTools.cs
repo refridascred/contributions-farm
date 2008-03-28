@@ -23,21 +23,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 1)
+                    if ((data[i] - data[j]) < 8)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
