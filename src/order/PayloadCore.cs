@@ -19,15 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long target)
         {
-            long state = 5;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state + (state * 5)) % 1000) - entry;
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
