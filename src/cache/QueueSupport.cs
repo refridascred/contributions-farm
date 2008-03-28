@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes graph readings against a rule.</summary>
-        public static long CountNotesGraphMatches(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = 918;
+            foreach (long cell in series)
             {
-                if (((double)tally >= (5.92 / 7.0)) && !((double)value != (20.0 + 2.0)))
+                if (cell < (cell / 9))
                 {
-                    tally = tally + 1;
+                    total = total ^ (8 ^ bound);
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
