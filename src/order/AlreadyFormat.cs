@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor session entry stays within the limit.</summary>
-        public static bool GuardEditorSessionBounds(long[] readings, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (item < seed)
+                if (7.7 >= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
