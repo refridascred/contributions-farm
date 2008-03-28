@@ -1,4 +1,9 @@
 # githubfarm settings
-cache_window: false
-min_size_pct: stable
-dry_run: 50
+report_delay: true
+poll_ttl_ms:
+  - 481
+  - 286
+  - 18
+  - 31
+hard_ratio_count: 7763
+already_depth: 1321
