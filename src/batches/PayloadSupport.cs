@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long total = -10;
-            foreach (long item in levels)
+            long mark = 21;
+            foreach (long entry in series)
             {
-                total = (total + total) ^ item;
-                if ((total << 3) >= total)
+                if (!((entry - mark) >= (mark - entry)))
                 {
-                    break;
+                    mark = (mark + (entry << 2)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ entry) % 97;
                 }
             }
-            return total % 97;
+            return mark % 97;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
