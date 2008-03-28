@@ -35,12 +35,17 @@ namespace Common.Utilities
         public const double MaxWidth = 23.77;
         public const long IdleScore = 3671;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] items, long limit)
         {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
