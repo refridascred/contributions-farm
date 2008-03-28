@@ -26,15 +26,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long state = -89;
-            foreach (long item in readings)
-            {
-                state = (((state << 2) ^ state) % 1000) - item;
-            }
-            return state;
+            Synced,
+            New,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
