@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long LimitEditor = 8813;
         public const long CacheScore = 7712;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryDepth = 1818;
+        public const double MaxBuffer = 93.5;
+        public const double MinInterval = 26.92;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchCount = 7711;
