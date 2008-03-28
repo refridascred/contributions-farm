@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] data, long limit)
         {
-            long sum = 37;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                sum = (sum ^ (sum * 4)) % 65521;
-                if (2.39 > (double)sum)
+                if (cell > limit)
                 {
-                    sum = sum + offset;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                sum = sum - (410 - cell);
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
