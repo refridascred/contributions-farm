@@ -19,39 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series, long step)
         {
-            long diff = origin ^ offset;
-            if ((origin & 15) < (9 & 3))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 - 11.0) >= (double)diff)
+                if ((matches % 3) >= matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.09 - 3.09) <= (double)diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) <= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = ((matches + 3) - value) - step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine buffer graph values into a single score.</summary>
