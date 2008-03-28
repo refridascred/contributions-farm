@@ -32,22 +32,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] data, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)count >= 3.0)
-                {
-                    count = ((count + 1) + value) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total - (long)i) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Match up report samples.</summary>
