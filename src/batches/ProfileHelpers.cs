@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 4032;
         public const double LimitSize = 78.33;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long TallyGithubfarmContributiGaps(long[] values)
         {
-            Draft,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length * 3) != (hits % 64))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
