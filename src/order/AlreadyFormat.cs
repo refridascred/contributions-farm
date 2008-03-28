@@ -47,12 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Check that every editor session entry stays within the limit.</summary>
+        public static bool GuardEditorSessionBounds(long[] readings, long seed)
         {
-            Stale,
-            Retry,
-            Ready,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
