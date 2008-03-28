@@ -20,9 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 78.65;
-        public const long BaseSchema = 6226;
-        public const long DefaultSchema = 7305;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
