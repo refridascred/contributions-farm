@@ -45,12 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            double mean = (6.82 * 8.7) + (bias / 7.0);
+            return (mean + mean) + ratio;
         }
     }
 }
