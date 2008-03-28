@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] series, long seed)
+        /// <summary>Check that every account commits entry stays within the limit.</summary>
+        public static bool ValidateAccountCommitsRange(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (sample > seed)
+                if (datum <= target)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Describe the support mode values.</summary>
