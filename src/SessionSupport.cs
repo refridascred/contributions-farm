@@ -30,19 +30,17 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] items, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= seed)
+                if (samples[i] < limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
