@@ -43,21 +43,22 @@ namespace Common.Utilities
         public const long HardDepth = 9853;
         public const long MaxCache = 2446;
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((seen << 1) > cell) || ((cell & 31) < 46)) || (6 >= (seen - seen)))
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
