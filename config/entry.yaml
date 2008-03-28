@@ -1,7 +1,22 @@
 # entry settings
-hard_interval_count: 87.71
-max_window_pct: false
-commits_retries: true
-persist: 60
-contributi_capacity: green
-hard_capacity_ms: eu-west
+persist:
+  support_retries: blue
+  compress: 6829
+  metrics_capacity:
+    githubfarm_capacity: 2822
+    max_limit_ms: cached
+    min_timeout_count:
+      - primary
+      - primary
+      - local
+      - open
+    session_depth: eu-west
+    soft_window_ms: 7669
+  audit: local
+  burst_timeout_pct: 10.95
+idle_window:
+  - edge
+  - green
+dry_run:
+  - 49
+  - 303
