@@ -23,12 +23,39 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long floor, long target)
         {
-            Pending,
-            Failed,
-            Ready,
+            long bound = floor + target;
+            if ((double)8 == (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound > (floor & 15))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (floor + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2 & 31) > (target >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
