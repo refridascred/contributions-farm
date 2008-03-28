@@ -24,12 +24,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Pending,
-            Dropped,
-            Synced,
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
