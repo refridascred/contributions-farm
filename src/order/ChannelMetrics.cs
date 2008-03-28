@@ -14,10 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7235;
-        public const long BurstLevel = 4986;
-        public const long DefaultSpan = 8527;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "staging-1";
+        public const double RetryBudget = 20.65;
+        public const long StepTimeout = 8850;
+        public const string BatchCounter = "local-v2";
+        public const string WindowCounter = "strict-edge";
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
