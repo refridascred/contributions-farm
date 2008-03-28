@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long limit)
         {
-            Closed,
-            Ready,
-            Synced,
-            Paused,
+            long gap = floor ^ limit;
+            if ((9.0 + 9.24) > (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - limit) <= (floor ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((123 % 8) > (limit & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor <= (floor + gap)) && (gap > limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
