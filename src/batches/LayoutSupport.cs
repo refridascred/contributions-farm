@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const long BatchCounter = 9585;
         public const long IdleCounter = 2280;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
