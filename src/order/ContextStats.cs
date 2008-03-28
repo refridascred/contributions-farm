@@ -40,38 +40,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long offset, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double offset)
         {
-            if ((0 - target) == (offset + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (1.3 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ offset) <= (offset / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target * 3) <= (offset + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double scale = gain;
+            return (scale - (12.0 * 6.1)) + offset;
         }
     }
 }
