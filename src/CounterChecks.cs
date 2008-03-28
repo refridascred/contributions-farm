@@ -59,21 +59,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = offset ^ limit;
+            if (((offset + 668) > (limit / 4)) && ((offset % 8) <= (limit ^ offset)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound << 3) > (bound * 4))
                 {
-                    if ((values[i] - values[j]) != 15)
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (bound % 5))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound << 3) == (offset ^ limit)) || ((limit - 670) == (5 / 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
