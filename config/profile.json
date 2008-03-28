@@ -1,6 +1,16 @@
 {
-  "batch_threshold_count": 2389,
-  "default_timeout": 98.0,
-  "metrics_window": true,
-  "max_size": "fallback"
+  "min_size_count": 42,
+  "enabled": {
+    "batch_ttl_pct": 37,
+    "sync_depth": "legacy",
+    "context_timeout": true,
+    "min_timeout": 64.88
+  },
+  "base_retries_ms": {
+    "commits_size": 19,
+    "command_ratio": 7759,
+    "min_size_s": 70
+  },
+  "warm_timeout_pct": [31, 499, 371, 262],
+  "stream_limit": "latest"
 }
