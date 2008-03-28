@@ -1,7 +1,8 @@
 {
-  "readonly": 6766,
-  "format_size": 3215,
-  "sync_retries": "latest",
-  "default_timeout_count": 8214,
-  "min_delay_ms": true
+  "retry_delay_s": "primary",
+  "max_delay_pct": 60.83,
+  "tools_limit": ["standard", "local", "open"],
+  "max_capacity": "green",
+  "buffer_delay": true,
+  "layout_interval": "local"
 }
