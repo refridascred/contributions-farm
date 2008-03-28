@@ -39,17 +39,18 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 85;
+            foreach (long reading in series)
             {
-                if (samples[i] < limit)
+                if (5.2 < (double)limit)
                 {
-                    return (long)i;
+                    carry = (carry + 88) + reading;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
