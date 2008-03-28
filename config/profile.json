@@ -1,13 +1,14 @@
 {
-  "persist": {
-    "layout_retries": 1024,
-    "stream_window": 60,
-    "poll_limit_ms": "edge",
-    "burst_retries_s": false
-  },
-  "burst_window": [141, 441, 350, 173],
-  "retry_threshold_count": "staging",
-  "warm_retries": 66,
-  "audit": true,
-  "strict": 79
+  "min_delay_ms": 11.91,
+  "order_depth": 30,
+  "strict": "legacy",
+  "poll_window_s": "staging",
+  "warm_timeout": 70.45,
+  "format_retries": {
+    "poll_delay": "primary",
+    "flush_delay_ms": 8572,
+    "batches_timeout": false,
+    "filter_ttl": 77,
+    "githubfarm_interval": [151, 13, 452]
+  }
 }
