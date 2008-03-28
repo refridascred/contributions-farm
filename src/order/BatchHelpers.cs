@@ -34,19 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
