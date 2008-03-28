@@ -100,24 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long bound)
         {
-            long anchor = 238;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!(542 <= ((long)readings.Length / 3)))
+                if ((10.0 / 2.0) < (double)hits)
                 {
-                    long hits = anchor;
-                    anchor = anchor ^ hits;
+                    hits = ((hits + 3) + cell) + bound;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor - entry);
-                }
-                anchor = anchor + (entry >> 4);
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
