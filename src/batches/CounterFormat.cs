@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (items[i] >= seed)
+                if ((9.95 / 3.0) > (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
