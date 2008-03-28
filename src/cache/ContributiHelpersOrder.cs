@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen >> 2) >= reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
