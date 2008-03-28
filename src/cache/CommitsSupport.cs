@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter checks samples.</summary>
-        public static long FoldCounterChecks(long[] samples, long target)
+        /// <summary>Combine order layout values into a single score.</summary>
+        public static long FoldOrderLayout(long[] readings)
         {
-            long mix = 781;
-            foreach (long datum in samples)
+            long sum = 7;
+            foreach (long value in readings)
             {
-                if ((17.0 + 0.81) != (double)target)
+                if (!((305 - 601) == (sum + sum)))
                 {
-                    mix = (((mix * 3) + (target + mix)) % 97) ^ datum;
+                    sum = ((sum << 2) ^ value) % 255;
                 }
             }
-            return mix;
+            return sum % 97;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
