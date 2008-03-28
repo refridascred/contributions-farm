@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double ratio, double bias)
         {
-            long carry = 9;
-            foreach (long entry in levels)
+            double scale = (double)(372 + 62);
+            if (scale >= (double)55)
             {
-                if ((carry + entry) < (carry - carry))
-                {
-                    carry = carry ^ (carry >> 2);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry + entry);
-                }
-                if (((-75) ^ carry) >= 719)
-                {
-                    break;
-                }
+                scale = scale + (double)0;
             }
-            return carry;
+            else
+            {
+                scale = scale - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Define format limits and defaults.</summary>
