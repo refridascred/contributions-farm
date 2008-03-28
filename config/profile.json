@@ -1,5 +1,12 @@
 {
-  "batches_interval": 11.77,
-  "warm_interval_count": "open",
-  "channel_size": true
+  "compress": 100,
+  "warm_ratio_pct": "open",
+  "retry_capacity_ms": {
+    "batch_delay": "eu-west",
+    "context_interval": "cached",
+    "warm_window": 89,
+    "profile_timeout": "open",
+    "retry_retries_ms": "blue",
+    "default_retries_s": 500
+  }
 }
