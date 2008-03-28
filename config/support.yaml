@@ -1,17 +1,12 @@
 # support settings
-soft_depth:
-  sync_ttl: staging
-  flush_interval:
-    order_limit: local
-    soft_retries: 8275
-    default_capacity: true
-  cache_retries_count:
-    audit:
-      - 310
-      - 119
-    soft_delay: 500
-    batch_ttl_pct: 100
-    metrics_limit: false
-  batch_delay_s: 52
-max_ttl: 59
-batch_interval_ms: 4626
+persist: 28.36
+flush_ttl_ms: 1024
+sync_ttl_pct: 81.27
+profile_capacity:
+  cache_size: eu-west
+  metric_depth: 66.86
+  min_delay_count: primary
+burst_ratio:
+  - green
+  - local
+  - standard
