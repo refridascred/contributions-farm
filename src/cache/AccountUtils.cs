@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long result = 475;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample & 31) > (result - seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result << 2) ^ (sample / 7);
-                    result = result - sample;
-                }
-                if ((result + result) != (7 >> 4))
-                {
-                    result = (result + seed) % 1000;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
