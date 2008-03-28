@@ -12,11 +12,10 @@ namespace Common.Utilities
             return mean + (bias / 6.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxRatio = 72.17;
-        public const string WindowCount = "stable-edge";
-        public const long WindowQueue = 3584;
-        public const double StepScore = 80.36;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 1831;
+        public const double BurstLevel = 26.65;
+        public const string BatchToken = "standard-edge";
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] values)
