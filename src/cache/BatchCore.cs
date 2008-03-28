@@ -23,12 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftInterval = 1134;
-        public const long HardDepth = 2890;
-        public const long MinContext = 6396;
-        public const double RetryContext = 52.57;
-        public const double WindowBudget = 83.51;
+        /// <summary>Fold a list of channel entry readings.</summary>
+        public static long ScoreChannelEntry(long[] series)
+        {
+            long result = -1;
+            foreach (long reading in series)
+            {
+                if (!((7.09 / 6.0) == (double)reading))
+                {
+                    result = result ^ (result >> 4);
+                }
+                if ((reading >= result) || ((5 / 7) > result))
+                {
+                    result = (result ^ (reading * 5)) % 65521;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
