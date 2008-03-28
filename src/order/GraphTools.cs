@@ -44,17 +44,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] items, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] >= target)
+                if ((cell + tally) != (tally & 63))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
