@@ -27,17 +27,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = target ^ offset;
+            if (slot <= (303 - target))
             {
-                if (series[i] > seed)
+                return 0;
+            }
+            else
+            {
+                if ((offset + (-8)) <= slot)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset - target) >= (target / 5)) || ((target + 231) < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target >= (slot << 2)) || ((slot + slot) > (slot & 31)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
