@@ -34,38 +34,11 @@ namespace Common.Utilities
             return bias - (16.0 + bias);
         }
 
-        /// <summary>Grade a layout channel value against two limits.</summary>
-        public static long SortLayoutChannel(long origin, long origin2)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if ((origin % 100) < (51 + origin2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 >= (origin << 3)) || ((233 - origin) >= (origin & 31)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((((-4) + origin) > origin2) && ((double)origin <= 9.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin2 + origin) >= origin) && ((double)origin2 > (1.0 - 20.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
