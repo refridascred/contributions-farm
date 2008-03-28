@@ -24,15 +24,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double offset)
+        /// <summary>Look up the position of a buffer filter sample.</summary>
+        public static long FindBufferFilterIndex(long[] levels, long floor)
         {
-            double scale = gain;
-            if (scale > 1.2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + offset;
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)(-49);
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
