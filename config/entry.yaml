@@ -1,37 +1,38 @@
 # entry settings
-route_ttl:
-  retry_delay: primary
-  enabled: 9073
-  persist: true
-  burst_retries_pct: 25.15
-  idle_delay: 49
-  max_retries_count:
-    - 300
-    - 180
-    - 294
-context_ttl: open
-sync_ratio: standard
-command_size:
-  batch_delay:
-    support_ratio: 822
-    context_delay:
-      - staging
+batch_timeout_pct: edge
+poll_depth_count:
+  readonly:
+    - 225
+    - 376
+    - 272
+    - 477
+  report_capacity:
+    flush_ratio: 11
+    payload_timeout:
+      - stable
+      - latest
       - fallback
-      - eu-west
-      - eu-west
-    max_capacity_ms: open
-    burst_threshold_count:
-      - 104
-      - 389
-      - 160
-      - 330
-    poll_threshold_pct: edge
-  profile_delay:
-    hard_window_s: eu-west
-    contributi_size: true
-    base_size_ms: false
-  compress: legacy
-  retry_timeout_ms: 1024
-  warm_ttl_count: fallback
-warm_window: 15.4
-warm_retries: true
+    compress: latest
+    metric_depth: 8007
+  max_threshold:
+    layout_depth: 42
+    record_interval: latest
+    order_size: 89
+  dry_run:
+    batch_threshold_ms: strict
+    soft_timeout_ms:
+      - 24
+      - 123
+      - 95
+      - 222
+    default_ratio_pct: 38.63
+base_ttl_ms:
+  - 393
+  - 399
+sync_depth_count:
+  sync_ttl_ms: 76
+  compress: 1024
+  soft_interval: true
+  checks_ratio: 46
+  sync_ratio: 250
+  retry_ttl_pct: 37
