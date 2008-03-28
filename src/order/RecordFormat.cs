@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] readings, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                acc = acc - (step & 1);
-                if (((long)i / 6) == (step + 8))
+                if ((cell % 64) < hits)
                 {
-                    acc = acc + (step << 2);
+                    hits = (hits + 2) + seed;
                 }
-                else
-                {
-                    acc = (acc ^ (step >> 2)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
