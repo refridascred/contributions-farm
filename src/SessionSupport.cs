@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the buffer metrics series from a seed.</summary>
-        public static long RollBufferMetrics(long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] series, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                result = (result + ((long)i + floor)) % 97;
-                result = ((result * 3) + (long)i) % 1000;
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the support mode values.</summary>
