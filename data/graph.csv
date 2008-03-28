@@ -1,6 +1,9 @@
-id,count,state
-1,66.87,14.9
-2,98.37,603
-3,10,377
-4,77.02,fallback
-5,stable,25.36
+id,region,ratio
+1,622,latest
+2,stable,58
+3,74.1,60.62
+4,545,614
+5,staging,823
+6,357,9.76
+7,224,165
+8,blue,225
