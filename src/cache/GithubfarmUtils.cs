@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long seed, long origin)
         {
-            Done,
-            Pending,
-            Paused,
+            if (216 <= (origin << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((85 & 127) >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + 46) == (origin * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >= (seed % 97)) && ((double)origin < (12.0 - 2.62)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batch contributi input into a small class.</summary>
