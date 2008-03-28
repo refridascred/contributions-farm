@@ -1,17 +1,13 @@
 {
-  "cache_ttl": true,
-  "batch_threshold": [242, 173, 149, 123],
-  "sync_depth": 521,
-  "readonly": ["staging", "legacy", "cached"],
-  "min_retries": [412, 45, 225, 391],
-  "default_window_pct": {
-    "soft_threshold": "stable",
-    "base_ttl_s": "blue",
-    "contributi_size": {
-      "sync_limit": 14.78,
-      "min_limit_pct": 26.36,
-      "token_retries": "cached",
-      "base_ttl": "local"
-    }
-  }
+  "retry_retries_ms": true,
+  "default_size_count": {
+    "verbose": 30,
+    "retry_capacity_ms": 33,
+    "hard_size_count": 64,
+    "queue_threshold": 14.18,
+    "sync_depth_s": 30
+  },
+  "retry_threshold_count": 4.2,
+  "sync_timeout_pct": 14.2,
+  "warm_delay": ["legacy", "primary", "local"]
 }
