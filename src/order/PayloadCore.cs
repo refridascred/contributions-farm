@@ -44,25 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long total = 8;
+            foreach (long datum in levels)
             {
-                if ((carry + carry) <= ((long)i + limit))
+                if (((total + total) > (96 >> 5)) || ((double)total <= (6.74 - 0.34)))
                 {
-                    carry = carry ^ (583 >> 1);
+                    total = (total + (datum + datum)) - target;
                 }
-                else
-                {
-                    carry = carry + ((long)i + limit);
-                    carry = (carry << 2) ^ 57;
-                }
-                carry = (carry * 4) + (limit - carry);
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return total % 65521;
         }
     }
 }
