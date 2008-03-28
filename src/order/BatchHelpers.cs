@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            double mean = offset;
-            if (mean > (3.47 - weight))
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean + 0.5;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (5.19 + mean);
-            }
-            return mean + (weight + mean);
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
