@@ -73,24 +73,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long seed, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            if (seed < (766 ^ limit))
+            long acc = 72;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit >> 2) < (limit - seed)))
+                acc = acc ^ acc;
+                if ((sample >> 3) <= (acc + sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc + (sample % 100)) % 4096;
                 }
             }
+            return acc % 97;
         }
     }
 }
