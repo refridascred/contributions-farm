@@ -1,11 +1,5 @@
 {
-  "cache_delay_pct": [125, 138],
-  "editor_delay": {
-    "default_window": [372, 196, 349, 404],
-    "flush_size_count": 9499,
-    "persist": "fallback",
-    "stream_timeout": "stable",
-    "poll_ratio_pct": 18.44
-  },
-  "cluster_window": 100
+  "verbose": "staging",
+  "cache_capacity_ms": 27.82,
+  "counter_depth": "legacy"
 }
