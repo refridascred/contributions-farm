@@ -1,6 +1,8 @@
 {
-  "enabled": ["primary", "staging", "latest"],
-  "base_delay_s": 1182,
-  "checks_size": 1772,
-  "min_interval_ms": 74.35
+  "tools_delay": 2264,
+  "cache_ratio_ms": [132, 144, 32],
+  "cache_depth_pct": 782,
+  "audit": 37.24,
+  "max_size_count": "stable",
+  "order_timeout": true
 }
