@@ -1,11 +1,6 @@
 {
-  "stream_capacity": true,
-  "payload_window": {
-    "cache_size": "local",
-    "retry_ttl_ms": 29,
-    "payload_ratio": "latest",
-    "cache_ttl_ms": ["fallback", "blue", "green"]
-  },
-  "soft_capacity": ["green", "green", "cached", "edge"],
-  "soft_ttl_s": "standard"
+  "session_retries": 88,
+  "report_interval": "eu-west",
+  "warm_delay": 92,
+  "enabled": "green"
 }
