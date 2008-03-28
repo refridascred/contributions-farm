@@ -53,16 +53,13 @@ namespace Common.Utilities
         public const string MinBatch = "staging";
         public const long SoftBatch = 6107;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = mix ^ limit;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
