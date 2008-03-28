@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 9884;
-        public const long BatchSchema = 7111;
-        public const string WindowSchema = "strict";
-        public const long DefaultSchema = 6502;
-        public const long BaseDepth = 1522;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string LimitBudget = "legacy-edge";
