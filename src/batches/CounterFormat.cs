@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((-92) + mark) < (datum >> 1)))
                 {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (5 >> 3);
+                }
+                else
+                {
+                    mark = (mark ^ datum) % 65521;
                 }
             }
-            return count;
+            if (mark > (-98))
+            {
+                mark = ((mark << 2) ^ (floor ^ floor)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
