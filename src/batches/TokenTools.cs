@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double span)
-        {
-            double load = (ratio / 8.0) / 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (span + load)) + (double)(long)i;
-            }
-            return load - (double)8;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinBudget = 1767;
+        public const string StepQueue = "staging-v2";
+        public const long LimitScore = 3249;
+        public const string HardQueue = "strict-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchInterval = 9452;
