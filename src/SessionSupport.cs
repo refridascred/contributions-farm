@@ -35,18 +35,10 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long limit)
-        {
-            long carry = 85;
-            foreach (long reading in series)
-            {
-                if (5.2 < (double)limit)
-                {
-                    carry = (carry + 88) + reading;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "standard-edge";
+        public const long HardNotes = 9954;
+        public const long WindowNotes = 1282;
+        public const double BatchFactor = 15.71;
     }
 }
