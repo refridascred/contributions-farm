@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 43.1;
-        public const double BurstLevel = 17.26;
-        public const string BatchScore = "local-edge";
-        public const long RetrySpan = 5959;
-        public const string LimitCommits = "primary-edge";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (60 + hits))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] items)
