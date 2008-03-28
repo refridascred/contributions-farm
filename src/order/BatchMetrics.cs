@@ -72,39 +72,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long slot = origin + seed;
-            if (origin >= (seed / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - (-5)) >= (slot % 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)origin > (4.1 / 8.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin << 3) >= (seed % 64)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many queue farm samples are out of range.</summary>
