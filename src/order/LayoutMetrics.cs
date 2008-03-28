@@ -15,12 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 9621;
-        public const string StepLevel = "cached-v2";
-        public const string RetrySchema = "legacy";
-        public const long BaseSchema = 2966;
-        public const long LimitSchema = 1078;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Done,
+            Locked,
+            Ready,
+            New,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepDepth = 16.27;
