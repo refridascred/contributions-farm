@@ -38,22 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2 % 8) < count)
+                if (data[i] >= bound)
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
