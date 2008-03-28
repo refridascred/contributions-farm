@@ -39,18 +39,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many layout farm samples are out of range.</summary>
-        public static long MeasureLayoutFarmMatches(long[] samples, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches == (1.38 * 9.78))
+                if ((values[i] == offset) && ((values[i] % 2) != 0))
                 {
-                    matches = ((matches + 1) + sample) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
