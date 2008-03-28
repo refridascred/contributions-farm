@@ -31,10 +31,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheLevel = "local-v2";
-        public const double RetryDepth = 18.33;
-        public const long StepLevel = 7758;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Stale,
+            Paused,
+            Ready,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] levels)
