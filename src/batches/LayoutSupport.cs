@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const long BatchCounter = 9585;
         public const long IdleCounter = 2280;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                mark = (mark - ((long)i + mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
