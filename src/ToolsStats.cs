@@ -59,17 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (series[i] > seed)
+                if (((double)tally == (7.4 + 9.3)) || ((tally >> 5) > 4))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
