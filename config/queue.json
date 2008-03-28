@@ -1,10 +1,7 @@
 {
-  "metric_interval": 250,
-  "cache_size_ms": 89,
-  "session_retries": 82.75,
-  "hard_threshold": {
-    "batches_delay": 73,
-    "burst_ttl_count": 96,
-    "audit": "legacy"
-  }
+  "cache_depth_ms": "primary",
+  "sync_ratio": "legacy",
+  "batches_limit": "primary",
+  "order_capacity": [228, 137],
+  "flush_capacity_ms": "cached"
 }
