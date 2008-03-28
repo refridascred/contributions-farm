@@ -30,11 +30,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "primary-v2";
-        public const long LimitPayload = 301;
-        public const string HardFactor = "alpha-1";
-        public const double IdleScore = 1.63;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Draft,
+            Locked,
+            Queued,
+            Closed,
+            Active,
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long floor, long floor2)
