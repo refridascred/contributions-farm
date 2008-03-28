@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long step)
         {
-            long score = 619;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((cell >> 3) >= (cell + 9))
+                if (item >= step)
                 {
-                    score = score + 344;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a notes entry.</summary>
