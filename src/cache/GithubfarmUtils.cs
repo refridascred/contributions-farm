@@ -34,13 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
