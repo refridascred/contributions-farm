@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] samples, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long value in samples)
             {
-                if ((double)seed == (5.4 + 7.8))
+                if ((19.0 * 11.0) == (double)value)
                 {
-                    seen = (seen + 2) + value;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
