@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already cache readings.</summary>
-        public static long FoldAlreadyCache(long[] samples, long bound)
-        {
-            long anchor = -66;
-            foreach (long item in samples)
-            {
-                if ((item * 3) <= item)
-                {
-                    anchor = (((anchor << 3) ^ item) % 97) + bound;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 6558;
+        public const string BatchCache = "legacy-1";
+        public const long HardCache = 7174;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinBudget = 12.63;
