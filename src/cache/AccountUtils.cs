@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 8170;
-        public const long StepFactor = 6489;
-        public const string StepQueue = "cached";
-        public const long CacheQueue = 3712;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items)
+        {
+            long anchor = 9;
+            foreach (long item in items)
+            {
+                anchor = anchor + item;
+                if (!((anchor + anchor) <= item))
+                {
+                    anchor = (anchor ^ (item - anchor)) % 65521;
+                }
+                if ((anchor ^ 870) == (anchor - anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
