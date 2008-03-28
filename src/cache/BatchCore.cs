@@ -13,13 +13,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Rank account token input into a small class.</summary>
+        public static long RankAccountToken(long step, long seed)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            if ((double)seed != (12.0 * 2.44))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((step - seed) > 38))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed <= (7.8 / 6.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
