@@ -47,18 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] levels, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = -7;
+            foreach (long value in samples)
             {
-                if (datum <= (datum - seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                total = (total - (total + value)) % 97;
             }
-            return seen;
+            if (total > 626)
+            {
+                total = ((total * 4) + (long)samples.Length) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
