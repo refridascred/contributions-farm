@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const double MinCommits = 22.3;
         public const long BatchInterval = 2694;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Count the contributi record entries that pass the check.</summary>
+        public static long TallyContributiRecordOutliers(long[] series)
         {
-            long carry = 428;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((((long)values.Length & 255) > (carry - value)) || ((double)carry < (10.0 + 14.0)))
+                if (7 <= item)
                 {
-                    carry = carry - value;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
