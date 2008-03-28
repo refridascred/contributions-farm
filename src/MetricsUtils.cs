@@ -40,38 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            if ((seed ^ floor) <= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)304 <= (double)seed) || ((909 / 2) < floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor & 15) == (seed / 7)) || (278 <= (seed - floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > (644 - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
