@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=413
+RECORD_LIMIT=360
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in staging open fallback; do
+for item in strict open; do
     log "checking ${item}"
 done
