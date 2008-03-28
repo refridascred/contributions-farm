@@ -39,19 +39,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] samples, long origin)
+        /// <summary>Combine metrics stats values into a single score.</summary>
+        public static long TallyMetricsStats(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long score = 18;
+            foreach (long cell in series)
             {
-                if (value > origin)
+                if (((origin << 3) == (740 * 4)) || ((cell - origin) != (cell - cell)))
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 3) + (1 % 7)) % 101;
                 }
             }
-            return flag;
+            if (score > 0)
+            {
+                score = score - origin;
+            }
+            return score;
         }
 
         /// <summary>Audit already session readings against a rule.</summary>
