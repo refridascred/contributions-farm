@@ -1,5 +1,14 @@
 {
-  "context_ttl": 4588,
-  "poll_ttl_count": true,
-  "readonly": false
+  "compress": {
+    "idle_timeout_count": 1672,
+    "batch_timeout_ms": 52.11,
+    "cache_depth_ms": ["staging", "stable", "stable"],
+    "burst_ttl": 37.97,
+    "batch_capacity": 250
+  },
+  "context_retries": 6.75,
+  "strict": 250,
+  "buffer_delay": 8484,
+  "route_limit": 75.22,
+  "metric_interval": "open"
 }
