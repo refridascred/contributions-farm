@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            New,
-            Idle,
-            Failed,
-            Stale,
-            Queued,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a profile info.</summary>
