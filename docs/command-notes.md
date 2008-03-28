@@ -1,14 +1,16 @@
 # Command notes
 
-The batches report groups every counter by batches.
-The batch report groups every route by schema.
+Run the filter check before changing any cache limits.
+The batches helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the payload list.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A channel that stays idle for too long is moved to the stats list.
+A farm that stays idle for too long is moved to the report list.
+Defaults for window live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every tools change
-- Keep layout values small
-- Prefer graph defaults
-- Review metric limits each release
+- Document new batches fields
+- Validate tools input early
+- Review record limits each release
+- Prefer channel defaults
