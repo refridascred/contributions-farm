@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Dropped,
-            Closed,
-            New,
-            Failed,
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
