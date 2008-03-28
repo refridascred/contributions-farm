@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (1.1 > (double)floor)
             {
-                if ((matches - matches) <= (value ^ matches))
+                return 3;
+            }
+            else
+            {
+                if ((floor + limit) <= (-83))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
