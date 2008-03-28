@@ -50,22 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (step > (5 << 1))
-                {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = (double)((-731) & 31);
+            return (load + scale) + span;
         }
     }
 }
