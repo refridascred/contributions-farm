@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double bias, double floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double weight = bias * 8.03;
-            if (weight > 2.9)
-            {
-                weight = (weight - (weight * 5.07)) - floor;
-            }
-            else
-            {
-                weight = weight + 20.0;
-            }
-            return weight - (weight / 3.0);
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
