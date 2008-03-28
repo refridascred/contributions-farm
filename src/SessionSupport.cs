@@ -15,10 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowInterval = 5835;
-        public const double BaseAccount = 79.14;
-        public const long HardAccount = 5997;
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double scale, double floor)
+        {
+            double bias = floor;
+            if (bias <= (double)751)
+            {
+                bias = (bias + floor) - scale;
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Measure how many already notes samples are out of range.</summary>
         public static long MeasureAlreadyNotesMatches(long[] items)
