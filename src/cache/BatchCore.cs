@@ -13,31 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank account token input into a small class.</summary>
-        public static long RankAccountToken(long step, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long floor)
         {
-            if ((double)seed != (12.0 * 2.44))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step - seed) > 38))
+                if (samples[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (7.8 / 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
