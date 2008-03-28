@@ -54,25 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Combine buffer graph values into a single score.</summary>
+        public static long TotalBufferGraph(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 8;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                score = ((score << 2) ^ (score & 127)) % 1000;
+                if (((reading + 0) == (reading * 3)) && ((reading % 97) >= (4 << 1)))
                 {
-                    carry = (carry - (carry % 60)) ^ (long)i2;
-                }
-                if ((long)i >= offset)
-                {
-                    carry = (carry - ((long)i + carry)) % 97;
-                    carry = (carry - carry) % 4096;
                     break;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            if (score > 947)
+            {
+                score = (score * 5) + (seed + 828);
+            }
+            return score;
         }
     }
 }
