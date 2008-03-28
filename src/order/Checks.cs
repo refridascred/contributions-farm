@@ -46,18 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series, long bound)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((9 / 8) <= count)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) + reading) - bound;
                 }
             }
             return count;
