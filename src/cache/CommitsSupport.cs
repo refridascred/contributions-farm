@@ -61,17 +61,11 @@ namespace Common.Utilities
         public const long LimitProfile = 1013;
         public const string MinTimeout = "fallback-1";
 
-        /// <summary>Find the first metric token entry that matches the target.</summary>
-        public static long LookupMetricTokenIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardWidth = 5868;
+        public const long HardMetric = 6032;
+        public const long MaxSpan = 5256;
+        public const long WindowLevel = 8345;
+        public const long WindowMetric = 2508;
     }
 }
