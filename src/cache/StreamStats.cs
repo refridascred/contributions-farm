@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 86;
+            foreach (long reading in readings)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (mark + (-51))) % 101) + reading;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
