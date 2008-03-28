@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long limit)
+        /// <summary>Look up the position of a layout window sample.</summary>
+        public static long LocateLayoutWindowIndex(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                if (series[i] < floor)
                 {
                     return (long)i;
                 }
