@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank cluster githubfarm input into a small class.</summary>
-        public static long RankClusterGithubfarm(long origin, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            if ((origin + origin) > origin)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 2) > (floor & 63))
+                if ((679 ^ entry) <= (count + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine order layout values into a single score.</summary>
