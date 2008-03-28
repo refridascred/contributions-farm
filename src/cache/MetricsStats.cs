@@ -49,11 +49,16 @@ namespace Common.Utilities
         public const double BurstFactor = 73.49;
         public const long StepRatio = 3011;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long state = 959;
+            foreach (long sample in samples)
+            {
+                state = ((state + (74 << 1)) % 255) + offset;
+                state = (state * 3) + (18 ^ sample);
+            }
+            return state;
         }
     }
 }
