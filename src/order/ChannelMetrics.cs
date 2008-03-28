@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series, long offset)
-        {
-            long sum = -65;
-            foreach (long reading in series)
-            {
-                sum = (((sum * 3) + reading) % 65521) - offset;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5775;
+        public const double LimitDepth = 83.66;
+        public const long CacheInterval = 7600;
+        public const long HardCount = 3814;
+        public const long CacheOrder = 8887;
 
         /// <summary>Blend two format measurements.</summary>
         public static double BlendFormat(double bias, double offset)
