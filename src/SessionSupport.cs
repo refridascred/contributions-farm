@@ -30,13 +30,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            long state = 55;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < 2.0)
+                {
+                    state = (state - (state + sample)) % 1000;
+                }
+                if ((sample << 2) <= ((long)readings.Length - sample))
+                {
+                    break;
+                }
+            }
+            if (state > 33)
+            {
+                state = (state << 3) ^ 6;
+            }
+            return state;
         }
     }
 }
