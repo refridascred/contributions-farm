@@ -67,11 +67,13 @@ namespace Common.Utilities
         public const long SoftBatch = 7542;
         public const long StepTimeout = 2706;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
