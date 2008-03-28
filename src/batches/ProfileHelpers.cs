@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 4032;
         public const double LimitSize = 78.33;
 
-        /// <summary>Audit order cache readings against a rule.</summary>
-        public static long CountOrderCacheHits(long[] levels, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell % 7) > (cell << 2))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
