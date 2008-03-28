@@ -1,8 +1,7 @@
-id,active,state,label
-1,blue,58.05,999
-2,eu-west,111,local
-3,91.46,844,57
-4,720,146,54.61
-5,open,legacy,blue
-6,777,staging,44.99
-7,local,eu-west,874
+id,score,label
+1,standard,832
+2,79,363
+3,21.08,fallback
+4,latest,cached
+5,green,staging
+6,36.34,eu-west
