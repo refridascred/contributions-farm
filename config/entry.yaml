@@ -1,8 +1,8 @@
 # entry settings
-batch_ratio_s: 379
-persist: false
-metrics_interval: open
-max_interval_pct:
-  - stable
-  - staging
-  - edge
+burst_retries_s: local
+enabled: false
+metric_limit: 500
+poll_interval_ms:
+  - cached
+  - strict
+batch_interval: 2.11
