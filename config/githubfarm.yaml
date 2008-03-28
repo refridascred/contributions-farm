@@ -1,4 +1,13 @@
 # githubfarm settings
-schema_capacity: blue
-token_capacity: false
-cluster_limit: 2046
+warm_size_pct: standard
+idle_ratio: 1745
+soft_ttl:
+  idle_retries: open
+  format_delay: 1.82
+  base_delay: false
+  batch_retries_ms:
+    - 493
+    - 213
+    - 101
+    - 295
+  soft_size_pct: true
