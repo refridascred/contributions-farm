@@ -34,24 +34,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long bound)
         {
-            if ((9.0 / 4.0) <= (double)target)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= (target % 7))
+                if ((mix - 0) > (bound * 2))
                 {
-                    return 5;
+                    mix = (mix + (27 & 1)) % 4096;
+                    break;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix - bound) % 97) ^ (long)i2;
+                }
+                if (!((mix + (long)i) < bound))
+                {
+                    mix = (mix + 626) % 1000;
+                    break;
                 }
                 else
                 {
-                    return 4;
+                    mix = (mix ^ 470) % 4096;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Count the schema layout entries that pass the check.</summary>
