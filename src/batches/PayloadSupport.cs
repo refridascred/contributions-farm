@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = -10;
+            foreach (long item in levels)
             {
-                if (!((37 < ((long)readings.Length / 3)) && ((value + matches) < matches)))
+                total = (total + total) ^ item;
+                if ((total << 3) >= total)
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
