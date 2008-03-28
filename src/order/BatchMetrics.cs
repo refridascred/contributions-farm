@@ -50,21 +50,13 @@ namespace Common.Utilities
             return ratio2 - (ratio * 5.4);
         }
 
-        /// <summary>Match up order metric samples.</summary>
-        public static long CompareOrderMetricCount(long[] levels)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
