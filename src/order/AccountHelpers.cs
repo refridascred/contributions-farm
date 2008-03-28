@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] readings, long bound)
+        /// <summary>Roll a command payload counter forward.</summary>
+        public static long IterateCommandPayload(long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.55 / 9.0) != (double)bound)
+                if ((double)(long)i > (5.0 * 0.8))
                 {
-                    tally = (tally + 3) - reading;
+                    sum = (sum + (floor - 95)) % 1000;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
