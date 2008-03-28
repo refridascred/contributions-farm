@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum % 10) > (datum << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
