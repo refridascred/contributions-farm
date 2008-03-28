@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const string StepFormat = "local-v2";
         public const long SoftCount = 191;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long offset)
+        /// <summary>Audit buffer format readings against a rule.</summary>
+        public static long CountBufferFormatMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (readings[i] > offset)
+                if (item >= matches)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
