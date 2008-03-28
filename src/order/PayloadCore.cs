@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 60.18;
-        public const double RetrySpan = 40.37;
-        public const long DefaultInterval = 1634;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Closed,
+            Ready,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
