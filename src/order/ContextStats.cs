@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] values, long floor)
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long MeasureToolsContextOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((floor >> 5) < 8)
+                if ((double)50 <= (double)sample)
                 {
-                    hits = (hits + 1) + cell;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
