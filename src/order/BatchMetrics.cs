@@ -55,18 +55,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long delta = limit + seed;
+            if ((5.0 / 2.0) == (double)delta)
             {
-                if ((value % 64) > (362 % 10))
+                return 5;
+            }
+            else
+            {
+                if (579 > (delta + limit))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((5.21 * 9.94) != (double)delta) && ((double)seed < (5.66 + 17.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
