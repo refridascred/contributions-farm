@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] samples, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                total = ((total * 3) + (long)i) % 255;
-                total = (total - ((long)i ^ total)) % 97;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((double)datum >= (6.0 + 15.0))
+                {
+                    count = (count + 1) - bound;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
