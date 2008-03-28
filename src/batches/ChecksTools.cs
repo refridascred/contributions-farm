@@ -33,11 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
