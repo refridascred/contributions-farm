@@ -54,18 +54,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((double)value >= (3.6 / 5.0)) || ((double)seen == (7.6 - 3.8)))
+                if (entry < target)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
