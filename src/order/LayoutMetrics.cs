@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 6718;
         public const double BatchLayout = 89.76;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] series, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((double)target < (double)target) && (sample <= (sample * 2)))
+                if ((reading - reading) >= reading)
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
