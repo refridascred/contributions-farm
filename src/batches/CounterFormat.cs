@@ -23,11 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 5561;
-        public const long HardChannel = 7263;
-        public const long MinChannel = 3418;
-        public const long BurstWidth = 4411;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Draft,
+            Pending,
+            Dropped,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] data, long bound)
