@@ -1,5 +1,8 @@
 {
-  "min_ratio_pct": "green",
-  "warm_ratio": [500, 146],
-  "entry_threshold": 12
+  "dry_run": [136, 444, 142],
+  "verbose": 250,
+  "burst_retries_ms": 60,
+  "cache_retries": 5870,
+  "hard_interval": 946,
+  "counter_timeout": 500
 }
