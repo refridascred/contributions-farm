@@ -40,14 +40,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Ready,
-            Active,
             Retry,
-            Stale,
-            Closed,
+            Draft,
+            Locked,
+            Idle,
         }
     }
 }
