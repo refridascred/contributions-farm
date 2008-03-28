@@ -60,11 +60,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "stable-1";
-        public const double RetryFactor = 67.24;
-        public const long StepFarm = 7718;
-        public const double CacheWidth = 49.57;
-        public const string RetryFarm = "latest-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 8730;
+        public const long StepDepth = 5012;
+        public const double IdleTimeout = 86.0;
+        public const double MinFilter = 89.36;
     }
 }
