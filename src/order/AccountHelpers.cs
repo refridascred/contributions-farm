@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] series, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((2.0 * 9.52) == (double)seen)
-                {
-                    seen = ((seen + 3) ^ sample) - limit;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a command payload counter forward.</summary>
