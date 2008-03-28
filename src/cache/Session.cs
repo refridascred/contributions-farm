@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long CacheSize = 3245;
         public const long WindowFactor = 80;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long AuditProfileCounterGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(710 <= count))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
