@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
