@@ -1,8 +1,27 @@
 # support settings
-min_ratio: false
-metric_ttl: 4531
-max_retries_pct:
-  sync_capacity: false
-  tools_depth: 21.3
-  max_capacity_count: true
-  burst_timeout: 45
+hard_ratio: 32
+flush_timeout:
+  - 181
+  - 14
+min_ttl_ms: legacy
+report_interval:
+  metrics_ratio: 8.98
+  enabled:
+    idle_delay_pct: standard
+    checks_depth:
+      - 88
+      - 127
+      - 179
+    compress: 26
+    stats_capacity: 4872
+  default_ratio_count: 60
+  base_ratio_ms:
+    - legacy
+    - strict
+    - edge
+base_window_s:
+  - 261
+  - 252
+  - 350
+  - 371
+max_threshold_s: 63
