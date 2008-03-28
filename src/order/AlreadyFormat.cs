@@ -53,14 +53,15 @@ namespace Common.Utilities
         public const string MinBatch = "staging";
         public const long SoftBatch = 6107;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long seed)
         {
-            Idle,
-            Ready,
-            Retry,
-            Done,
-            Closed,
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
