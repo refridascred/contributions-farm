@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double StepFactor = 29.09;
         public const double DefaultBudget = 83.61;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
