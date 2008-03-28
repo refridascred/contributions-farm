@@ -29,23 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length - 802) != (reading + (-189)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "legacy";
+        public const string DefaultBudget = "fallback-1";
+        public const long RetrySpan = 4935;
+        public const long IdleBudget = 4229;
+        public const long BurstFormat = 3146;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] readings)
