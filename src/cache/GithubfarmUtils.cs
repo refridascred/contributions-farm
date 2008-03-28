@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long score = 804;
+            foreach (long sample in series)
+            {
+                if ((sample % 2) > score)
+                {
+                    score = score - (score << 3);
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
