@@ -10,16 +10,14 @@ namespace Common.Utilities
         public const long MaxSpan = 3036;
         public const long BurstContributi = 4451;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total - (long)i) % 255;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Draft,
+            Active,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a entry summary.</summary>
