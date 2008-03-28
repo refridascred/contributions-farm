@@ -54,15 +54,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
