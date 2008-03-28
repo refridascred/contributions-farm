@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long WindowWidth = 6226;
         public const long MaxCommits = 5831;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double offset)
         {
-            Locked,
-            Retry,
-            Ready,
+            double mean = (double)(522 / 9);
+            return ((mean + (mean / 7.0)) + bias) + offset;
         }
 
         /// <summary>Find the first cache channel entry that matches the target.</summary>
