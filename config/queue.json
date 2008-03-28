@@ -1,25 +1,10 @@
 {
-  "route_size": {
-    "soft_delay_pct": {
-      "commits_interval": [177, 201],
-      "strict": "latest",
-      "retry_limit": 500,
-      "readonly": "local",
-      "retry_size_s": 176,
-      "min_timeout_pct": 100
-    },
-    "max_delay": "legacy",
-    "retry_ratio_pct": "open",
-    "notes_timeout": {
-      "batch_limit": "blue",
-      "strict": ["strict", "open"],
-      "enabled": "green"
-    },
-    "queue_window": "legacy",
-    "default_window_ms": true
-  },
-  "burst_depth": 250,
-  "report_interval": 17.89,
-  "poll_ratio_ms": 30,
-  "base_window": "cached"
+  "metric_interval": 250,
+  "cache_size_ms": 89,
+  "session_retries": 82.75,
+  "hard_threshold": {
+    "batches_delay": 73,
+    "burst_ttl_count": 96,
+    "audit": "legacy"
+  }
 }
