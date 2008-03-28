@@ -34,23 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] readings, long seed)
         {
-            double bias = weight;
-            if (bias <= (weight - bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - (bias / 7.0)) - offset;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)6;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (double)14;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
