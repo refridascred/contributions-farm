@@ -27,12 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= floor)
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
