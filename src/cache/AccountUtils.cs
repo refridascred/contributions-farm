@@ -39,20 +39,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route command samples.</summary>
-        public static long TallyRouteCommand(long[] items, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] data, long floor)
         {
-            long result = 77;
-            foreach (long entry in items)
+            long mix = 0;
+            foreach (long entry in data)
             {
-                result = ((result - (383 >> 4)) % 101) - entry;
-                result = result ^ seed;
+                mix = (((mix - mix) % 1000) - entry) - floor;
             }
-            if (result > 7)
-            {
-                result = (result * 4) + (result - seed);
-            }
-            return result;
+            return mix;
         }
     }
 }
