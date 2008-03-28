@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 1923;
+        public const double MinContext = 76.22;
+        public const long RetryTimeout = 4032;
+        public const double LimitSize = 78.33;
 
         /// <summary>Audit order cache readings against a rule.</summary>
         public static long CountOrderCacheHits(long[] levels, long offset)
