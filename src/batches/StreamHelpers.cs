@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSize = 824;
-        public const long HardBudget = 6289;
-        public const string SoftRatio = "strict";
-        public const long DefaultSession = 5793;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double scale, double floor)
+        {
+            double load = (scale - 2.0) * 1.07;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - load) + (double)(long)i) - floor;
+            }
+            return load - load;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long target)
