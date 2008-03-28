@@ -77,19 +77,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = 328;
-            foreach (long reading in readings)
-            {
-                carry = (carry ^ (reading * 4)) % 4096;
-            }
-            if (carry > 4)
-            {
-                carry = (carry << 3) ^ (carry - carry);
-            }
-            return carry;
+            Active,
+            Done,
+            Failed,
+            Draft,
+            Dropped,
         }
     }
 }
