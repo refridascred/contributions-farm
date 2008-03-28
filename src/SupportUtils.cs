@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] series, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values, long target)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long reading in values)
             {
-                if (((reading % 100) >= seen) && (((seen + reading) != (seen ^ target)) && ((target << 2) >= ((long)series.Length * 3))))
+                if (!(reading < (699 * 4)))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) - target;
                 }
             }
             return seen;
