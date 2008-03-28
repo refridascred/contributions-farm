@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const long WindowInterval = 9178;
         public const long StepDepth = 5347;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryScore = 6057;
-        public const string MinDepth = "legacy-edge";
-        public const long BaseBatches = 2406;
-        public const long IdleCount = 5512;
-        public const double RetryWidth = 19.13;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = ((carry * 2) + (carry - carry)) ^ (long)i2;
+                }
+                carry = carry + (365 + carry);
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] samples)
