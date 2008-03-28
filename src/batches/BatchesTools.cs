@@ -27,17 +27,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long floor)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long TallyCommandBuffer(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 85;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                if ((item / 4) != (item * 4))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (item >> 4)) % 97;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state & 7)) % 255;
                 }
             }
-            return -1;
+            if (state < 0)
+            {
+                state = (state + 4) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
