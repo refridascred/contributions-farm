@@ -28,12 +28,25 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 4297;
-        public const double MaxReport = 42.06;
-        public const string HardSize = "staging-1";
-        public const double CacheReport = 72.57;
-        public const double SoftReport = 16.73;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long floor)
+        {
+            if ((5.8 - 5.6) != (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step * 5) != (step ^ step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftCluster = "staging";
