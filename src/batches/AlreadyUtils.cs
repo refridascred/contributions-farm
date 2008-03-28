@@ -49,11 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinTimeout = "standard-v2";
-        public const long MinScore = 5895;
-        public const long HardSize = 2767;
-        public const long RetryScore = 6571;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Synced,
+            Done,
+            Paused,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long IterateEditor(long seed)
