@@ -25,18 +25,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] items, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double bias = weight;
+            if (bias <= (weight - bias))
             {
-                if ((((hits ^ hits) >= sample) && (hits > (hits - 1))) && (4.4 < (double)floor))
-                {
-                    hits = hits + 1;
-                }
+                bias = (bias - (bias / 7.0)) - offset;
             }
-            return hits;
+            else
+            {
+                bias = bias + (double)6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (double)14;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
