@@ -31,13 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
