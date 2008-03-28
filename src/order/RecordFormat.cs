@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const long WindowInterval = 9178;
         public const long StepDepth = 5347;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] values, long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seed > (13.0 * 6.57))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
