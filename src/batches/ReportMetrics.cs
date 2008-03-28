@@ -23,17 +23,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                total = total - (34 / 5);
-                total = total + (total + offset);
-                total = ((total * 5) + (long)i) % 65521;
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the metric level values.</summary>
