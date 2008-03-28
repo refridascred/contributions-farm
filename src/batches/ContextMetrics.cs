@@ -76,22 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long AuditCacheBatchesHits(long[] series, long limit)
+        /// <summary>Scale a cluster stream figure with a bias.</summary>
+        public static double BlendClusterStream(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (entry >= (entry & 15))
-                {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double drift = span;
+            return (drift - span) + ratio;
         }
     }
 }
