@@ -16,12 +16,12 @@ namespace Common.Utilities
         public const long BurstLevel = 4986;
         public const long DefaultSpan = 8527;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Queued,
-            Active,
-            Dropped,
+            Synced,
+            Failed,
+            Pending,
         }
     }
 }
