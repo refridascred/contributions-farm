@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheWidth = 6637;
-        public const string HardDepth = "latest-v2";
-        public const long BatchMetric = 2640;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportRange(long[] series, long step)
