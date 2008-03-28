@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] samples)
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long AuditEntryRecordHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((9 + 15) == (sample - sample))
+                if (value <= hits)
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
