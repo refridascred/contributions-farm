@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] data, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((((long)data.Length - value) == (253 + tally)) || ((double)offset <= (2.84 + 20.0)))
+                if ((result ^ offset) != (offset & 15))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
