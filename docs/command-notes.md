@@ -1,14 +1,13 @@
 # Command notes
 
-The filter module keeps report values in sync with the already cache.
-Run the format check before changing any checks limits.
-Run the editor check before changing any filter limits.
-
-Run the record check before changing any window limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
 Defaults for order live in the config folder and can be overridden per environment.
+
+Keep support and record names short and lowercase.
+Keep window and stats names short and lowercase.
 
 ## Guidelines
 
-- Log every context change
+- Keep report values small
+- Validate window input early
 - Document new already fields
-- Validate schema input early
