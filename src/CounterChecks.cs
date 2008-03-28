@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel context sample.</summary>
-        public static long SeekChannelContextIndex(long[] values, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long reading in items)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ result) % 97) ^ reading;
             }
-            return -1;
+            if (result > (-1))
+            {
+                result = ((result << 3) ^ offset) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a support snapshot.</summary>
