@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long SoftOrder = 8060;
         public const double LimitOrder = 25.55;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Dropped,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
