@@ -1,19 +1,11 @@
 {
-  "queue_window": {
-    "order_retries": "staging",
-    "retry_ttl": "green",
-    "graph_delay": [454, 133, 86, 343],
-    "cache_retries_ms": true,
-    "strict": "eu-west"
+  "stream_capacity": true,
+  "payload_window": {
+    "cache_size": "local",
+    "retry_ttl_ms": 29,
+    "payload_ratio": "latest",
+    "cache_ttl_ms": ["fallback", "blue", "green"]
   },
-  "audit": 71,
-  "idle_threshold_s": {
-    "dry_run": "staging",
-    "hard_retries_pct": "eu-west",
-    "counter_retries": 9072,
-    "batch_capacity": 50.91
-  },
-  "verbose": 4003,
-  "strict": 8677,
-  "min_ratio": true
+  "soft_capacity": ["green", "green", "cached", "edge"],
+  "soft_ttl_s": "standard"
 }
