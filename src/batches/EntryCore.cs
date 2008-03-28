@@ -19,11 +19,21 @@ namespace Common.Utilities
         public const long BaseScore = 311;
         public const double RetryRatio = 15.81;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
