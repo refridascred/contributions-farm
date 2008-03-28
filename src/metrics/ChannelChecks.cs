@@ -73,18 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Project the next commits queue value.</summary>
+        public static double ProjectCommitsQueue(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double gain = (double)(8 << 1);
+            if (gain >= (offset - gain))
             {
-                if ((double)hits >= (6.83 / 7.0))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                gain = gain + (double)(-400);
             }
-            return hits;
+            return gain + (rate * 5.12);
         }
 
         /// <summary>Combine report values into a single score.</summary>
