@@ -40,21 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm stats readings.</summary>
-        public static long PairGithubfarmStatsCount(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed ^ floor) <= seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)304 <= (double)seed) || ((909 / 2) < floor))
                 {
-                    if ((values[i] - values[j]) != 19)
+                    return 1;
+                }
+                else
+                {
+                    if (((floor & 15) == (seed / 7)) || (278 <= (seed - floor)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - seed) > (644 - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
