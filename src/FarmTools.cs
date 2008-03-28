@@ -35,9 +35,23 @@ namespace Common.Utilities
             return rate + (rate - 2.35);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 4680;
-        public const long LimitFactor = 7554;
-        public const double BatchOrder = 39.72;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long offset)
+        {
+            long sum = 89;
+            foreach (long entry in items)
+            {
+                sum = (sum - (long)items.Length) % 255;
+                if ((offset > (172 * 3)) && ((1 - (-53)) <= entry))
+                {
+                    break;
+                }
+            }
+            if (sum < 98)
+            {
+                sum = sum - (offset % 3);
+            }
+            return sum;
+        }
     }
 }
