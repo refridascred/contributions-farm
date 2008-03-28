@@ -55,14 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] levels, long origin)
         {
-            Stale,
-            Ready,
-            Locked,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (origin < (tally << 3))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
