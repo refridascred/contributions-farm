@@ -28,22 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 61.25;
+        public const long StepStats = 3310;
+        public const double BurstCount = 33.24;
+        public const double DefaultTimeout = 62.93;
+        public const long MinBudget = 6782;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long target)
