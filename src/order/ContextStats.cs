@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long MeasureToolsContextOutliers(long[] readings)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double ratio = weight;
+            if (ratio <= ratio)
             {
-                if ((double)50 <= (double)sample)
-                {
-                    count = count + 2;
-                }
+                ratio = ratio - (weight + span);
             }
-            return count;
+            else
+            {
+                ratio = ratio + (span - 2.8);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)72) + (double)(long)i;
+            }
+            return ratio + (double)71;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
