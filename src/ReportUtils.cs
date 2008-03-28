@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchLevel = 778;
-        public const double WindowEditor = 80.93;
-        public const long LimitEditor = 8813;
-        public const long CacheScore = 7712;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 2) >= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] values)
