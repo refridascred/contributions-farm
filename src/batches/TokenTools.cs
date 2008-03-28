@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7566;
-        public const long CacheRatio = 9650;
-        public const long DefaultRatio = 2539;
-        public const long MaxWidth = 2203;
-        public const long RetryCluster = 4628;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 6576;
