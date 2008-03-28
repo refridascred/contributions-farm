@@ -1,10 +1,11 @@
 # Command notes
 
-Keep entry and farm names short and lowercase.
-Keep profile and cache names short and lowercase.
+Each command is validated before it reaches the batch queue.
+The command report groups every context by notes.
 
 ## Guidelines
 
-- Keep schema values small
-- Review report limits each release
-- Document new profile fields
+- Review context limits each release
+- Keep farm values small
+- Validate entry input early
+- Log every tools change
