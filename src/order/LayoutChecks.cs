@@ -34,21 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
