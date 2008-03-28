@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (scale - (scale * 9.84)) + bias;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit filter contributi readings against a rule.</summary>
+        public static long CountFilterContributiOutliers(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((13.0 / 9.0) == (double)entry) && ((entry >> 5) <= (offset & 255)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
