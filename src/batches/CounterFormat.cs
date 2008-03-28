@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] <= floor)
+                if ((9.0 - 9.0) == (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ item) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
