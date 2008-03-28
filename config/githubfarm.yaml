@@ -1,14 +1,13 @@
 # githubfarm settings
-channel_ttl:
-  readonly: true
-  payload_interval:
-    - stable
-    - green
-  buffer_capacity: 36.49
-  batch_interval:
-    - 474
-    - 53
-    - 227
-    - 21
-idle_interval_count: 49.66
-enabled: 98.8
+hard_size_pct:
+  - 469
+  - 59
+  - 243
+  - 201
+verbose:
+  - latest
+  - staging
+  - strict
+  - standard
+stream_delay: eu-west
+flush_interval_count: 3.77
