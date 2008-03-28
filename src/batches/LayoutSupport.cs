@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next channel farm value from a seed.</summary>
-        public static long StepChannelFarm(long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] levels, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                state = (state - ((long)i >> 4)) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                if ((cell * 3) > (origin * 4))
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
