@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Blend two checks support measurements.</summary>
+        public static double SmoothChecksSupport(double ratio, double floor)
         {
-            long carry = 89;
-            foreach (long reading in readings)
+            double weight = ratio;
+            if (weight >= (double)0)
             {
-                if (841 >= (reading * 2))
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = carry - (57 + reading);
-                }
+                weight = weight - (weight + ratio);
             }
-            if (carry > 15)
-            {
-                carry = (carry + (carry << 3)) % 1000;
-            }
-            return carry;
+            return weight - floor;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
