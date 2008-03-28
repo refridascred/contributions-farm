@@ -46,19 +46,21 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double span)
+        /// <summary>Compare every pair of githubfarm entry readings.</summary>
+        public static long MatchGithubfarmEntryCount(long[] samples)
         {
-            double ratio = (double)(173 - 23);
-            if (ratio <= ratio)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio - 7.25) - bias) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 4.0);
-            }
-            return ratio - (ratio + 4.4);
+            return seen;
         }
     }
 }
