@@ -1,6 +1,6 @@
 {
-  "audit": "open",
-  "verbose": 1432,
-  "support_capacity": "blue",
-  "session_ttl": "standard"
+  "contributi_ratio": 0.91,
+  "retry_ratio_s": true,
+  "poll_limit_ms": [405, 242],
+  "max_capacity_count": false
 }
