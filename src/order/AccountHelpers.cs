@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] series, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((2.0 * 9.52) == (double)seen)
+                {
+                    seen = ((seen + 3) ^ sample) - limit;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Roll a command payload counter forward.</summary>
