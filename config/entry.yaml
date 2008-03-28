@@ -1,20 +1,10 @@
 # entry settings
-cache_size_pct: standard
-poll_ratio:
-  - standard
-  - local
-  - stable
-counter_capacity: true
-format_window: 26.91
-record_delay:
-  retry_delay_pct: eu-west
-  checks_limit: 13.49
-  batch_threshold: 54.22
-  route_threshold: false
-  batch_size: 42.5
-  cache_interval_count:
-    - 368
-    - 380
-    - 139
-    - 401
-farm_ttl: standard
+channel_retries: 8161
+hard_delay: strict
+default_interval_pct: primary
+token_capacity: eu-west
+dry_run: edge
+flush_delay:
+  warm_ratio: 1024
+  token_interval: false
+  token_window: 48.81
