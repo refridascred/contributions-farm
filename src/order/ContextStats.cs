@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long target)
         {
-            Retry,
-            Closed,
-            Idle,
-            Synced,
+            long lane = offset ^ target;
+            if ((44 + 44) == (target ^ offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((955 >= offset) || ((double)target != (double)lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset / 9) >= (offset - offset)) && ((offset + offset) < (7 - lane)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools header.</summary>
