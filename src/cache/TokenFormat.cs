@@ -17,32 +17,14 @@ namespace Common.Utilities
         public const double CacheCluster = 56.57;
         public const string BaseCluster = "alpha-edge";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long diff = floor ^ offset;
-            if (((double)offset < (19.0 / 7.0)) && (floor <= offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((diff + diff) >= (offset - 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((diff / 5) < diff) || (offset > (offset * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Retry,
+            Done,
+            Synced,
         }
     }
 }
