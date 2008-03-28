@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long bound)
         {
-            long edge = target ^ floor;
-            if ((floor << 2) <= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((edge % 64) >= target)
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target + edge) < (edge << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((13.0 / 4.0) >= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
