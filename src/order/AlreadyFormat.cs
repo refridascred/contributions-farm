@@ -30,18 +30,21 @@ namespace Common.Utilities
             return rate - (double)37;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            long carry = 98;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading ^ carry) <= (carry - 110)) || (carry < (carry + reading)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ carry) % 4096;
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
