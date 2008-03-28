@@ -39,18 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] samples, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((seed << 2) == (cell - seed)) && (((seed + 44) > (114 & 15)) && (cell > (seed + 5))))
+                if ((tally % 24) > 125)
                 {
-                    count = count + 1;
+                    tally = ((tally + 2) + entry) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
