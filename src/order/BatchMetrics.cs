@@ -21,18 +21,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm contributi readings against a rule.</summary>
-        public static long CountFarmContributiHits(long[] values, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((double)hits == (3.1 * 6.89))
+                if (!(((reading >> 2) < (reading - step)) && ((step - step) <= (55 + reading))))
                 {
-                    hits = ((hits + 1) ^ sample) + target;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a context stats.</summary>
