@@ -1,5 +1,7 @@
 {
-  "dry_run": false,
-  "flush_interval_ms": 6.7,
-  "sync_size": false
+  "flush_ratio_s": "edge",
+  "profile_size": "primary",
+  "payload_size": ["green", "stable"],
+  "verbose": "green",
+  "batch_timeout_s": "eu-west"
 }
