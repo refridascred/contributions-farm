@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double ratio, double bias)
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long MeasureReportCacheOutliers(long[] data, long limit)
         {
-            double scale = ratio;
-            return (scale - (scale * 9.84)) + bias;
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally <= (entry * 3))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stream token entries that pass the check.</summary>
