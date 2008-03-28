@@ -1,11 +1,19 @@
 # githubfarm settings
-hard_limit_pct: standard
-retry_interval_pct:
-  poll_delay_count: 500
-  farm_interval: 93.91
-  soft_limit_count: strict
-  max_threshold_s: 66.44
-strict: 30
-base_delay: 4075
-min_ratio_count: 82.02
-farm_interval: false
+schema_capacity:
+  persist:
+    - local
+    - eu-west
+    - eu-west
+    - cached
+  flush_ratio: 97
+  readonly: 5232
+  enabled: 52.67
+  idle_delay_ms: primary
+flush_ttl_ms: stable
+dry_run:
+  - 8
+  - 104
+  - 322
+batch_ratio_pct: legacy
+idle_timeout_ms: 100
+account_interval: fallback
