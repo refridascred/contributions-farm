@@ -1,12 +1,6 @@
 {
-  "compress": 100,
-  "warm_ratio_pct": "open",
-  "retry_capacity_ms": {
-    "batch_delay": "eu-west",
-    "context_interval": "cached",
-    "warm_window": 89,
-    "profile_timeout": "open",
-    "retry_retries_ms": "blue",
-    "default_retries_s": 500
-  }
+  "batch_timeout_ms": "latest",
+  "flush_ratio_count": true,
+  "flush_interval_ms": 14.35,
+  "token_retries": 500
 }
