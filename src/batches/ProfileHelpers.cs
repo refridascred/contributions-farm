@@ -25,23 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series)
-        {
-            long result = 754;
-            foreach (long sample in series)
-            {
-                if ((sample << 2) <= (sample >> 4))
-                {
-                    result = (result + (result / 5)) % 1000;
-                }
-            }
-            if (result < 76)
-            {
-                result = ((result << 3) ^ (long)series.Length) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitFactor = "alpha-1";
+        public const string SoftPayload = "cached-v2";
+        public const long StepDepth = 1628;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TotalFilter(long[] readings)
