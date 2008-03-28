@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] readings, long floor)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((floor - floor) > matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
