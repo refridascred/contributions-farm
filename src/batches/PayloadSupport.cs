@@ -12,18 +12,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long span = floor - step;
+            if (!((floor % 60) >= (step + span)))
             {
-                if ((2.68 / 7.0) >= (double)count)
+                return 2;
+            }
+            else
+            {
+                if (((step + step) <= (floor + step)) && ((step ^ step) >= (step + floor)))
                 {
-                    count = (count + 1) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if (((95 - step) < (span ^ 19)) || ((8 & 7) < step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
