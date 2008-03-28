@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
