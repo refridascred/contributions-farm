@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultDepth = "local";
-        public const long HardTimeout = 4972;
-        public const double IdleSpan = 18.79;
-        public const long BaseCount = 3453;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry + ((long)i + carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
