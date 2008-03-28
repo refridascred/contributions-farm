@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            long mark = 177;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ (mark % 7)) % 4096) ^ value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
