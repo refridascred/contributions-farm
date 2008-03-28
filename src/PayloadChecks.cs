@@ -56,10 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultSpan = 7337;
-        public const long MinCount = 57;
-        public const string BurstFactor = "stable-edge";
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                long hits = (state << 2) << 1;
+                state = ((state * 2) + (hits ^ state)) % 97;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
