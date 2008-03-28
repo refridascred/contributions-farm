@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 22.9;
-        public const long BurstDepth = 7488;
-        public const double WindowTimeout = 22.54;
-        public const long HardChannel = 2398;
-        public const double BurstChannel = 2.96;
+        /// <summary>Measure how many graph record samples are out of range.</summary>
+        public static long MeasureGraphRecordMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches & 31) >= (cell + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double bias, double span)
