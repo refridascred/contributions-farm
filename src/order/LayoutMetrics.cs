@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Queued,
-            Idle,
-            Failed,
-            Retry,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Fold a list of window route readings.</summary>
