@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseDepth = "primary-edge";
-        public const long IdleLevel = 6912;
-        public const long RetryBudget = 1863;
-        public const long SoftCache = 1321;
-        public const long CacheCount = 4043;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] samples, long offset)
