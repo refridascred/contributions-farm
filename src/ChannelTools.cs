@@ -34,19 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] values, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
