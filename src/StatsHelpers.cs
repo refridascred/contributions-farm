@@ -27,17 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
