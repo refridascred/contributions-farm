@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] items, long floor)
         {
-            long state = 1;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state + (bound % 5);
-                if ((sample * 5) <= (state << 3))
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
                 {
-                    state = state ^ ((-6) + sample);
-                }
-                else
-                {
-                    state = (state - (sample * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a cluster options.</summary>
