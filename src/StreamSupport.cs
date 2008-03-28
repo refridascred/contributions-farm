@@ -37,18 +37,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(matches < ((-11) * 3)))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Idle,
+            Dropped,
+            New,
         }
     }
 }
