@@ -44,13 +44,22 @@ namespace Common.Utilities
         public const string CacheCount = "primary-v2";
         public const string StepPayload = "stable-v2";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((seen / 8) > entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
