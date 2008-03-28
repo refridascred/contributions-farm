@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double rate = floor;
-            if (rate >= rate)
-            {
-                rate = (rate + rate) + gain;
-            }
-            else
-            {
-                rate = rate + (rate + 11.0);
-            }
-            return rate + rate;
+            Synced,
+            Draft,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
