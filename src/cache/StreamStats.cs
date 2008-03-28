@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate layout metrics readings against a bound.</summary>
+        public static bool ValidateLayoutMetricsLimits(long[] readings, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
