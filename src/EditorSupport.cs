@@ -23,39 +23,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long floor, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long bound = floor + target;
-            if ((double)8 == (double)bound)
+            long carry = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (floor & 15))
+                if ((carry + carry) != (datum - datum))
                 {
-                    return 8;
+                    carry = (carry - 6) % 255;
                 }
                 else
                 {
-                    if (bound >= (floor + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2 & 31) > (target >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = ((carry * 2) + (datum ^ (long)data.Length)) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Rank token input into a small class.</summary>
