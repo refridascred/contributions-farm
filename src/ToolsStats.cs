@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long SoftInterval = 2211;
         public const double BurstOrder = 81.34;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long seed)
+        /// <summary>Project the next filter stats value.</summary>
+        public static double SmoothFilterStats(double rate, double span)
         {
-            long result = 833;
-            foreach (long datum in readings)
+            double load = 2.0;
+            if (load < 3.0)
             {
-                if (7.54 >= (double)datum)
-                {
-                    result = result + seed;
-                }
+                load = ((load - (double)539) - rate) + span;
             }
-            if (result > 0)
+            else
             {
-                result = (result + (result + result)) % 1000;
+                load = load - (10.0 - 15.0);
             }
-            return result % 97;
+            return load - (double)55;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
