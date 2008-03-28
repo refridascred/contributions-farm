@@ -30,19 +30,25 @@ namespace Common.Utilities
         public const long WindowFormat = 7592;
         public const double BurstBudget = 49.96;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long offset)
         {
-            long sum = -2;
-            foreach (long datum in readings)
+            long diff = step + offset;
+            if ((91 >> 5) == (diff << 1))
             {
-                sum = ((sum + target) % 65521) ^ datum;
+                return 1;
             }
-            if (sum > 192)
+            else
             {
-                sum = (sum + (sum + sum)) % 1000;
+                if (((4 ^ diff) != (diff % 5)) && ((0.2 - 15.0) < (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return sum;
         }
 
         /// <summary>Hold a token info.</summary>
