@@ -44,32 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples, long limit)
         {
-            long lane = target - step;
-            if ((double)target == (16.0 / 4.0))
+            long state = 1;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + lane) > step) || ((483 + target) <= (target >> 3)))
+                if ((state + limit) >= (limit * 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 3) >= 0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = (state - (state & 1)) + entry;
                 }
             }
+            if (state < (-227))
+            {
+                state = state - (state + state);
+            }
+            return state % 97;
         }
     }
 }
