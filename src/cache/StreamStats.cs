@@ -40,23 +40,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long seed, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long edge = seed + limit;
+            if (limit <= (edge % 5))
             {
-                total = (total ^ (204 << 2)) % 1000;
-                long cur = total;
-                if ((6.47 / 6.0) >= (double)total)
-                {
-                    total = total - (cur + step);
-                    cur = cur ^ (long)i;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((limit ^ limit) > (limit * 2)) || (seed < (seed & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - (-6)) == (edge + edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
