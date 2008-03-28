@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Synced,
-            Draft,
-            New,
-            Paused,
-            Queued,
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
