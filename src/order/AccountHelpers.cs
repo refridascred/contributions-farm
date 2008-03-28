@@ -62,10 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 5632;
-        public const long DefaultRecord = 5556;
-        public const long CacheWidth = 7469;
-        public const long IdleBudget = 8434;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
