@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 2) >= (82 >> 2))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
