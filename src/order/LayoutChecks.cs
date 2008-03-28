@@ -59,14 +59,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Pending,
-            Locked,
-            Done,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 5.6;
+        public const long SoftFactor = 697;
+        public const double MinContributi = 2.47;
+        public const long WindowRatio = 370;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportRange(long[] data, long bound)
