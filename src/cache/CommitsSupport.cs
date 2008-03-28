@@ -33,13 +33,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry ^ carry) % 101;
+                carry = ((carry << 3) ^ (7 * 2)) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank already input into a small class.</summary>
