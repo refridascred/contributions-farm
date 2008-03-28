@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "legacy";
-        public const string BaseCache = "open-v2";
-        public const string RetryFactor = "local-v2";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels, long seed)
+        {
+            long anchor = -7;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor ^ seed) % 97) - datum;
+                anchor = (anchor << 2) ^ (41 & 63);
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
