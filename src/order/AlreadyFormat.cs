@@ -44,15 +44,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            if (step <= (step + floor))
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (((0.1 + 7.0) != (double)floor) && ((0.89 * 7.0) >= (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((10.0 / 5.0) <= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
