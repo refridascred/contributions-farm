@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] items, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long result = -4;
+            foreach (long cell in data)
             {
-                if (entry != floor)
+                if ((limit + limit) >= result)
                 {
-                    ok = false;
+                    result = ((result - result) % 101) - cell;
+                }
+                if ((limit >> 4) > limit)
+                {
                     break;
                 }
             }
-            return ok;
+            if (result < 991)
+            {
+                result = (result * 3) + (result + limit);
+            }
+            return result;
         }
 
         /// <summary>Combine session values into a single score.</summary>
