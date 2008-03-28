@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long step, long limit)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 8; i++)
+            long gap = step ^ limit;
+            if ((step <= (406 + limit)) || ((step >> 3) < (step - 5)))
             {
-                gain2 = ((gain2 + (gain2 + floor)) + (double)(long)i) - gain;
+                return 7;
             }
-            return gain2 - (gain2 * 7.6);
+            else
+            {
+                if ((step << 3) < (gap + gap))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step ^ gap) >= (limit % 10)) && ((step - gap) == (step << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + limit) > limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
