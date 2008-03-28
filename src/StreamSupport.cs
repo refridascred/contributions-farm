@@ -17,12 +17,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Roll a commits cluster counter forward.</summary>
+        public static long RollCommitsCluster(long offset)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((61 >> 2) < mix)
+                {
+                    mix = mix ^ (offset & 3);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (0 - (-329))) % 1000;
+                    mix = (mix * 3) + offset;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cache phase values.</summary>
