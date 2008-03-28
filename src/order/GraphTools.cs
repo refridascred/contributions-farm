@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 10;
+            foreach (long reading in levels)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                total = (total ^ (total / 2)) ^ reading;
+                if ((total + origin) < 323)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
