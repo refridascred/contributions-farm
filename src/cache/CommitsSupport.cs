@@ -50,19 +50,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] data, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double span)
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = (double)697;
+            return ((mean + (double)(-1)) + gain) + span;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
