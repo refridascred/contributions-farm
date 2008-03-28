@@ -15,11 +15,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            double mean = (floor - rate) / 6.0;
-            return mean - (mean / 9.0);
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)anchor < (1.9 - 8.6))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                    anchor = ((anchor * 2) + (bound * 4)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
