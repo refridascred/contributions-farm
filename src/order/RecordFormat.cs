@@ -49,18 +49,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] readings, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < (datum << 3))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
