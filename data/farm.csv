@@ -1,9 +1,6 @@
-id,region,owner,ratio,count
-1,7.04,918,773,954
-2,400,fallback,standard,standard
-3,24.73,2.72,70.29,14.77
-4,49.65,cached,eu-west,868
-5,170,green,130,60.83
-6,local,strict,strict,79
-7,72.07,eu-west,78,856
-8,559,32.46,50.45,81
+id,token,region,state,label
+1,775,33.32,local,524
+2,16.48,28.8,89.93,65.21
+3,835,open,latest,60
+4,primary,34.52,929,standard
+5,50.28,84,493,247
