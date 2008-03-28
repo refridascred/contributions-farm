@@ -20,9 +20,16 @@ namespace Common.Utilities
             return ((mean + (mean / 7.0)) + bias) + offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowDepth = 8061;
-        public const double HardGithubfarm = 59.85;
-        public const double MaxGithubfarm = 40.48;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix << 3) ^ ((long)i << 1);
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
