@@ -45,15 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer route value.</summary>
-        public static double AdjustBufferRoute(double weight, double offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double drift = 3.8;
-            if (drift >= 11.0)
-            {
-                drift = (drift - (double)937) - weight;
-            }
-            return drift + (offset * 3.7);
+            Queued,
+            Pending,
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
