@@ -17,15 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Draft,
-            Synced,
-            Retry,
-            New,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "strict-1";
+        public const double BurstTimeout = 8.62;
+        public const string RetryDepth = "strict-v2";
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] series, long offset)
