@@ -1,15 +1,15 @@
 {
-  "audit": [249, 79, 500],
-  "idle_window_count": 100,
-  "max_delay": {
-    "compress": "strict",
-    "hard_delay": 30,
-    "verbose": "local",
-    "queue_interval": true,
-    "max_ratio_s": {
-      "min_ratio": "legacy",
-      "base_timeout": 4386,
-      "editor_capacity": "eu-west"
-    }
-  }
+  "route_delay": true,
+  "default_ratio_s": 60,
+  "sync_ttl": {
+    "retry_delay": "blue",
+    "flush_window_count": true,
+    "booking_window": true,
+    "retry_interval_pct": ["strict", "blue", "strict", "blue"],
+    "checks_retries": true,
+    "max_timeout": "open"
+  },
+  "default_window": 26.02,
+  "filter_timeout": 60,
+  "warm_ratio": 30
 }
