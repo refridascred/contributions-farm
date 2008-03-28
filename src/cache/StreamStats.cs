@@ -40,13 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
