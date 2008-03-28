@@ -1,8 +1,13 @@
 {
-  "verbose": ["primary", "cached", "latest"],
-  "account_interval": 57,
-  "hard_delay": 5138,
-  "sync_ratio_count": 18.66,
-  "readonly": 50.24,
-  "batches_ratio": 15.65
+  "persist": {
+    "layout_retries": 1024,
+    "stream_window": 60,
+    "poll_limit_ms": "edge",
+    "burst_retries_s": false
+  },
+  "burst_window": [141, 441, 350, 173],
+  "retry_threshold_count": "staging",
+  "warm_retries": 66,
+  "audit": true,
+  "strict": 79
 }
