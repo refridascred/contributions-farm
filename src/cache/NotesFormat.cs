@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 3189;
-        public const long MaxSpan = 3036;
-        public const long BurstContributi = 4451;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "legacy-v2";
+        public const long MinDepth = 5155;
+        public const double DefaultEditor = 19.09;
+        public const long SoftRatio = 2118;
+        public const double BaseEditor = 26.55;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
