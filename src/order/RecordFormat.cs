@@ -36,12 +36,25 @@ namespace Common.Utilities
         public const long SoftDepth = 8683;
         public const long StepAlready = 4685;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Rank cluster entry input into a small class.</summary>
+        public static long GradeClusterEntry(long step, long step2)
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long lane = step - step2;
+            if ((lane + lane) <= (step2 - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane & 255) > (56 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
