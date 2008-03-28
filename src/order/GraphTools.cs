@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] items, long seed)
         {
-            Done,
-            Pending,
-            Stale,
-            Retry,
-            Ready,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
