@@ -65,15 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] values)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long cell in values)
             {
-                if ((((double)sample < 20.0) || ((hits % 24) < (hits + hits))) && (((long)series.Length ^ sample) > (sample % 16)))
+                if ((double)(long)values.Length <= (3.0 / 4.0))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + cell;
                 }
             }
             return hits;
