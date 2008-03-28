@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] data, long bound)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 999;
+            foreach (long value in data)
+            {
+                acc = acc + (value * 2);
+                acc = (acc << 3) ^ bound;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
