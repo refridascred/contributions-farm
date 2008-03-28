@@ -40,24 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double span)
         {
-            long score = -2;
-            foreach (long item in items)
+            double rate = (double)267 - (scale - span);
+            for (int i = 0; i < 8; i++)
             {
-                score = (score * 4) + (item - item);
-                score = (score + (floor * 4)) % 1000;
-                if (score < (score << 2))
-                {
-                    score = ((score * 3) + (65 << 1)) % 65521;
-                }
+                rate = (rate + rate) + (double)(long)i;
             }
-            if (score < 60)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            return rate - scale;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
