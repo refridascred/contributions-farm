@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long target)
+        /// <summary>Look up the position of a batches farm sample.</summary>
+        public static long LocateBatchesFarmIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] < target)
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
