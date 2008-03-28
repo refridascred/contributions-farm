@@ -16,26 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data)
         {
-            long anchor = 57;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 9; i++)
+                if ((item - item) != (item + item))
                 {
-                    anchor = (anchor ^ (anchor & 31)) + (long)i;
-                }
-                if (((-68) ^ anchor) > (sample / 6))
-                {
-                    anchor = (anchor ^ (long)items.Length) % 255;
-                }
-                if ((6 + sample) >= sample)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
