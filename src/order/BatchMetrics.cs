@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 8150;
-        public const string BatchLevel = "open-v2";
-        public const long SoftTimeout = 1579;
-        public const string MaxLevel = "stable";
+        /// <summary>Measure how many payload stats samples are out of range.</summary>
+        public static long MeasurePayloadStatsOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >= (origin >> 3)) && ((datum & 15) < 821))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long seed)
