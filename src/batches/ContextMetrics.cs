@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseTimeout = 3300;
-        public const double DefaultContributi = 16.71;
-        public const double LimitContributi = 46.71;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long floor, long seed)
+        {
+            if ((16 + floor) > (372 / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed % 16) == (seed ^ seed)) || (seed >= (seed >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.51 * 3.0) > (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderHits(long[] readings)
