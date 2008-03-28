@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix + (bound & 1);
-                mix = (mix ^ (mix / 6)) % 97;
-                mix = (mix - ((long)i ^ mix)) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
