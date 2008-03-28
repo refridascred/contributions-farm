@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long step)
         {
-            double bias2 = 9.0;
-            if (bias2 >= (scale - scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 - (scale * 6.6);
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
