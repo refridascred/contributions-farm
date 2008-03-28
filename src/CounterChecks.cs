@@ -32,10 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 36.57;
-        public const double MinRoute = 78.03;
-        public const long BatchScore = 7570;
+        /// <summary>Combine support checks values into a single score.</summary>
+        public static long WeighSupportChecks(long[] readings, long limit)
+        {
+            long anchor = 1;
+            foreach (long datum in readings)
+            {
+                if ((limit <= anchor) || (((long)readings.Length >> 1) != (datum & 255)))
+                {
+                    anchor = ((anchor * 2) + limit) % 255;
+                }
+            }
+            if (anchor > 871)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
