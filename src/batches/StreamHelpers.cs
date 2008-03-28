@@ -39,13 +39,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
