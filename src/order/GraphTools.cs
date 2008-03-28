@@ -44,19 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            long total = 10;
-            foreach (long reading in levels)
+            long acc = 8;
+            foreach (long datum in values)
             {
-                total = (total ^ (total / 2)) ^ reading;
-                if ((total + origin) < 323)
+                acc = acc - datum;
+                if (datum <= (datum - datum))
                 {
-                    break;
+                    acc = (acc ^ (target & 1)) % 1000;
                 }
             }
-            return total % 65521;
+            return acc % 1000;
         }
     }
 }
