@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Roll a cluster tools counter forward.</summary>
+        public static long DeriveClusterTools(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long delta = result;
+                if (!(bound >= delta))
                 {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 5) + ((long)i * 4);
+                    delta = (delta ^ (result + (long)i)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
