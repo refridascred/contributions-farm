@@ -73,19 +73,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] values, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long slot = origin + seed;
+            if (origin >= (seed / 8))
             {
-                if (cell >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((origin - (-5)) >= (slot % 7))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)origin > (4.1 / 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin << 3) >= (seed % 64)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
