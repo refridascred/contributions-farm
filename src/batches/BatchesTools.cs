@@ -33,10 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 9398;
-        public const long DefaultBatches = 5241;
-        public const long IdleRatio = 9863;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "open";
+        public const double MinToken = 65.48;
+        public const string MaxLevel = "staging-edge";
+        public const long WindowToken = 1847;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long step)
