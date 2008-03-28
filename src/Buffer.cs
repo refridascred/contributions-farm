@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            Idle,
-            Active,
-            Closed,
+            long total = 916;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (1.8 - 18.0))
+                {
+                    total = (total * 2) + (total - 221);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (7 << 2)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
