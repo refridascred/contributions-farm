@@ -63,12 +63,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Draft,
-            Synced,
-            Closed,
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
