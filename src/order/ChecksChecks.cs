@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((1.3 * 6.62) != (double)total)
-                {
-                    total = (total ^ total) % 97;
-                }
-                bool found = !((total >> 5) > ((long)i + total));
-                if (found)
-                {
-                    total = (total << 3) ^ total;
-                    continue;
-                }
-                else
-                {
-                    found = (double)total == (1.73 + 9.1);
-                    total = total + (step + 5);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Stale,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
