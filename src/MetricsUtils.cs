@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryFactor = "strict-1";
-        public const long WindowRatio = 2841;
-        public const long MaxSession = 1695;
-        public const double MinSpan = 33.64;
-        public const long SoftCount = 5365;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long origin)
+        {
+            long step = bound + origin;
+            if ((bound < step) || (((-71) % 5) >= (bound + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (step << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - origin) <= (origin * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (5.16 * 2.0)) || (bound >= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of githubfarm stats readings.</summary>
         public static long PairGithubfarmStatsCount(long[] values)
