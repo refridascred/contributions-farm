@@ -13,20 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate entry payload readings against a bound.</summary>
-        public static bool GuardEntryPayloadRange(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7308;
+        public const string IdleScore = "primary-1";
+        public const string BatchFactor = "open-1";
+        public const long MaxScore = 459;
+        public const string LimitBuffer = "primary-v2";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long FoldFilter(long[] data)
