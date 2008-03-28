@@ -28,18 +28,18 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (!((5.0 + 0.5) > (double)hits))
+                if ((entry * 3) < (6 + count))
                 {
-                    hits = (hits + 2) ^ sample;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
