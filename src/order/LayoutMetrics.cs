@@ -14,13 +14,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items, long limit)
         {
-            Done,
-            Locked,
-            Ready,
-            New,
+            long carry = 428;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length % 64) >= limit)
+                {
+                    carry = (carry ^ (reading + limit)) % 4096;
+                    break;
+                }
+                if (limit >= (limit * 5))
+                {
+                    continue;
+                }
+                carry = (carry + (limit / 6)) % 97;
+                if ((limit >> 2) != (carry & 255))
+                {
+                    break;
+                }
+            }
+            if (carry < 92)
+            {
+                carry = ((carry * 5) + (carry + 676)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Grade a profile filter value against two limits.</summary>
