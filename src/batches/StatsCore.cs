@@ -48,10 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "staging";
-        public const double CacheDepth = 32.47;
-        public const double BurstCluster = 75.38;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Retry,
+            Stale,
+            Active,
+            Failed,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
