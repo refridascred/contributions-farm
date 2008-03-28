@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            double weight = bias * 8.03;
+            if (weight > 2.9)
             {
-                carry = (carry + ((long)i + carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                weight = (weight - (weight * 5.07)) - floor;
             }
-            return carry;
+            else
+            {
+                weight = weight + 20.0;
+            }
+            return weight - (weight / 3.0);
         }
 
         /// <summary>Hold a batches record.</summary>
