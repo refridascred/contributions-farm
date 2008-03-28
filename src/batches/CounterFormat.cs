@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] readings, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long sum = 52;
-            foreach (long cell in readings)
+            long anchor = 38;
+            foreach (long cell in samples)
             {
-                sum = (((sum * 3) + (3 + cell)) % 255) - offset;
-                sum = (sum << 3) ^ (cell + cell);
+                anchor = ((anchor ^ 62) % 65521) + cell;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
