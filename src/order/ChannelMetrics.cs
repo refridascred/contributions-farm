@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            Failed,
-            Stale,
-            Idle,
+            long acc = 692;
+            foreach (long item in data)
+            {
+                if ((long)data.Length >= (acc + item))
+                {
+                    acc = ((acc << 2) ^ item) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (item & 3)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Blend two format measurements.</summary>
