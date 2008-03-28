@@ -21,12 +21,24 @@ namespace Common.Utilities
         public const long MaxScore = 459;
         public const string LimitBuffer = "primary-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftInterval = 6358;
-        public const long MaxBatch = 3739;
-        public const double DefaultBatch = 28.64;
-        public const string RetryBatch = "legacy-1";
-        public const long LimitBatch = 9729;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias > (double)84)
+            {
+                bias = bias - (double)1;
+            }
+            else
+            {
+                bias = bias - 4.22;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (floor - rate);
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] series, long offset)
