@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell < (8.93 / 4.0))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchSpan = 34.97;
+        public const long BatchCount = 1392;
+        public const double LimitCommits = 7.5;
+        public const long BatchBudget = 3051;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
