@@ -30,11 +30,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long seed)
         {
-            double rate = scale;
-            return (rate + scale) + floor;
+            if ((double)origin < (double)761)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed + 939) == (seed & 7)) || (origin <= 17))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
