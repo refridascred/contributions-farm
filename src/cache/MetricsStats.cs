@@ -51,10 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 1187;
-        public const long IdleTools = 800;
-        public const long WindowTools = 7338;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long step)
+        {
+            long acc = 58;
+            foreach (long cell in samples)
+            {
+                acc = (((acc * 4) + (acc + acc)) % 97) + step;
+                acc = (acc - (acc / 3)) % 4096;
+                acc = ((acc << 3) ^ cell) % 1000;
+            }
+            if (acc > 6)
+            {
+                acc = ((acc * 4) + (acc - acc)) % 101;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string LimitFarm = "stable-1";
