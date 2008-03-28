@@ -1,15 +1,10 @@
 # Command notes
 
-Keep session and profile names short and lowercase.
-Use metrics settings to tune how often commits data is refreshed.
-Use context settings to tune how often payload data is refreshed.
-
-Keep context and cluster names short and lowercase.
-A batch that stays idle for too long is moved to the notes list.
+The order helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every queue change
-- Validate layout input early
-- Document new editor fields
-- Keep batch values small
+- Keep record values small
+- Review graph limits each release
+- Log every route change
