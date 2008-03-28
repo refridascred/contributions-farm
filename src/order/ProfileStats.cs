@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of payload filter entries.</summary>
-        public static long TallyPayloadFilter(long[] series, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long floor)
         {
-            long state = 682;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)27 != (double)datum)
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
                 {
-                    state = ((state * 3) + seed) % 4096;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
