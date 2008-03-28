@@ -28,18 +28,12 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 3) < (6 + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
