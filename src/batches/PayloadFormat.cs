@@ -15,19 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((((5.0 + 1.0) > (double)sample) && (97 >= (matches >> 3))) && (matches < ((long)readings.Length / 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 6821;
+        public const string BatchSupport = "staging-1";
+        public const string MaxSupport = "latest";
+        public const double DefaultSupport = 80.63;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowLevel = 2541;
