@@ -1,19 +1,9 @@
 # githubfarm settings
-schema_interval:
-  - 307
-  - 432
-  - 443
-  - 497
-sync_window_count: open
-context_interval: 30
-min_size: 71.41
-idle_limit:
-  strict: 50.85
-  poll_retries_s: fallback
-  enabled:
-    hard_timeout_count: strict
-    contributi_depth: 1254
-    sync_capacity_ms: blue
-    command_limit: 39
-    soft_timeout: blue
-  default_limit_s: false
+verbose: 93.83
+batches_timeout: 60
+min_threshold_pct: 84
+stats_delay: 25.38
+farm_ttl:
+  - 472
+  - 57
+  - 304
