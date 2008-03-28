@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile filter measurements.</summary>
-        public static double AdjustProfileFilter(double rate, double bias)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double gain = bias * 0.6;
-            if (gain < (double)581)
-            {
-                gain = gain - (bias / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + rate;
+            Locked,
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
