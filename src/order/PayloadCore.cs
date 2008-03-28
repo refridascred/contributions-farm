@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] samples, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = 5;
+            foreach (long entry in series)
             {
-                if (((double)reading > (0.2 + 4.94)) && !(offset > (seen * 4)))
-                {
-                    seen = seen + 2;
-                }
+                state = ((state + (state * 5)) % 1000) - entry;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
