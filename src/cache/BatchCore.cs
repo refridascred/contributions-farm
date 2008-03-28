@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Stale,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 6247;
+        public const long BatchScore = 8881;
+        public const long MaxRatio = 1269;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] samples, long floor)
