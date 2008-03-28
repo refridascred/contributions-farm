@@ -1,6 +1,5 @@
 {
-  "queue_limit": 34,
-  "layout_size": 45.25,
-  "dry_run": "edge",
-  "support_ratio": true
+  "persist": 30,
+  "readonly": false,
+  "batches_ratio": false
 }
