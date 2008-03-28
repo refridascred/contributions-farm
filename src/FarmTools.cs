@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxScore = 9395;
-        public const string BatchProfile = "primary-1";
-        public const long DefaultLevel = 3840;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] items)
