@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
+            Locked,
             Done,
-            Closed,
-            Failed,
-            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
