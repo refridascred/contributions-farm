@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] values, long seed)
+        /// <summary>Count the record format entries that pass the check.</summary>
+        public static long CountRecordFormatGaps(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((item ^ item) != (hits * 5))
+                if ((step / 8) <= seen)
                 {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next account value.</summary>
