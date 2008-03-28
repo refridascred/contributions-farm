@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long origin)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            if ((4 & 255) >= (floor + 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 3) != (origin + 660))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Adjust a record reading.</summary>
