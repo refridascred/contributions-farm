@@ -33,12 +33,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBudget = 34.3;
-        public const long RetryCount = 2158;
-        public const double BaseBatch = 77.54;
-        public const string MinBatch = "staging";
-        public const long SoftBatch = 6107;
+        /// <summary>Roll a channel context counter forward.</summary>
+        public static long DeriveChannelContext(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark - (823 ^ step)) % 97) - (long)i2;
+                    mark = (mark ^ (mark << 2)) % 65521;
+                }
+                if ((4.9 + 0.3) != (double)mark)
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
