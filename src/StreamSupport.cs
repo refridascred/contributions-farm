@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "latest-1";
-        public const long DefaultInterval = 7310;
-        public const long SoftLayout = 1872;
-        public const string BaseInterval = "stable-v2";
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
