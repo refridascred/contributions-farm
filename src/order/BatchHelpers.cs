@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (scale - (scale * 9.84)) + bias;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum - datum) < datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
