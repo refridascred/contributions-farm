@@ -29,11 +29,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 179;
-        public const long IdleMetric = 4601;
-        public const long DefaultScore = 3886;
-        public const double BaseRatio = 73.48;
-        public const long HardRatio = 9678;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheFactor = 8915;
+        public const long BaseCluster = 6488;
+        public const long DefaultBudget = 3820;
     }
 }
