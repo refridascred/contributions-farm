@@ -1,8 +1,10 @@
 # support settings
-sync_interval_ms: staging
-token_depth:
-  - eu-west
-  - staging
-  - eu-west
-  - latest
-min_timeout_ms: fallback
+min_delay_ms:
+  - 415
+  - 335
+  - 237
+  - 282
+warm_threshold: 10.14
+base_ratio_s: primary
+poll_depth_pct: 60
+audit: 500
