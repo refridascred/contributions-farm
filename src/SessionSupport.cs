@@ -30,26 +30,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings)
-        {
-            long state = 55;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < 2.0)
-                {
-                    state = (state - (state + sample)) % 1000;
-                }
-                if ((sample << 2) <= ((long)readings.Length - sample))
-                {
-                    break;
-                }
-            }
-            if (state > 33)
-            {
-                state = (state << 3) ^ 6;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleWidth = "open-v2";
+        public const long MinNotes = 7940;
+        public const string BatchBudget = "alpha-1";
+        public const long IdleNotes = 4736;
     }
 }
