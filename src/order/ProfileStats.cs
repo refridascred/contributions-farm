@@ -31,39 +31,14 @@ namespace Common.Utilities
         public const long CacheDepth = 4482;
         public const long LimitInterval = 819;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long limit2)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long cur = limit ^ limit2;
-            if ((limit2 >> 5) == (limit / 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)70 == (double)limit) || (cur >= limit2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit >= (double)cur)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit2 + limit2) > (cur * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Synced,
+            Draft,
+            Failed,
         }
     }
 }
