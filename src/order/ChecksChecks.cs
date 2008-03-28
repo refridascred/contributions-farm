@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const string StepFormat = "local-v2";
         public const long SoftCount = 191;
 
-        /// <summary>Audit buffer format readings against a rule.</summary>
-        public static long CountBufferFormatMatches(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (item >= matches)
+                if (cell <= origin)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
