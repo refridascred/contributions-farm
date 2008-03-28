@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 5623;
-        public const long HardDepth = 2308;
-        public const long HardFarm = 4293;
-        public const long BaseWidth = 7506;
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long CountFarmStatsHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((double)item == (7.0 + 3.32)) || (offset >= (seen - 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
