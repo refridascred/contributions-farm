@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
