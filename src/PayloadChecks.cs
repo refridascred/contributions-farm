@@ -52,12 +52,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            Retry,
-            Synced,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
