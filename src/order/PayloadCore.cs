@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long acc = -2;
-            foreach (long sample in values)
-            {
-                acc = (acc ^ (sample + bound)) % 101;
-                if (!(bound > acc))
-                {
-                    acc = (acc << 3) ^ 101;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc << 2);
-                }
-            }
-            return acc;
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
