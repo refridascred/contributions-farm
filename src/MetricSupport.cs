@@ -22,21 +22,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)197 - floor;
+            if (rate2 >= rate2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 + rate;
             }
-            return count;
+            else
+            {
+                rate2 = rate2 - (double)93;
+            }
+            return rate2 + (double)564;
         }
     }
 }
