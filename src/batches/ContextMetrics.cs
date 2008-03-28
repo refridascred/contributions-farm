@@ -55,17 +55,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a farm context reading by value.</summary>
-        public static long SeekFarmContextIndex(long[] items, long floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next buffer value.</summary>
