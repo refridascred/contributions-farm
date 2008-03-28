@@ -26,9 +26,39 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseFactor = 8926;
-        public const long MinPayload = 8110;
-        public const long RetryPayload = 144;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long limit, long limit2)
+        {
+            long next = limit + limit2;
+            if (!(4.5 >= (double)limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((next <= (next + limit2)) || ((limit + limit2) > (limit2 % 24)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit2 - limit) <= (limit << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((19 <= (limit2 << 2)) && (5.51 < (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
