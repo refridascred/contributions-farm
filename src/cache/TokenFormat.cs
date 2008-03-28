@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleDepth = 1288;
-        public const long WindowBuffer = 8017;
-        public const string RetryScore = "strict-1";
-        public const long BatchBuffer = 9413;
+        /// <summary>Check that every counter channel entry stays within the limit.</summary>
+        public static bool ValidateCounterChannelLimits(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long floor, long offset)
