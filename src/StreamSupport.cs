@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
-        {
-            long acc = 5;
-            foreach (long sample in readings)
-            {
-                acc = (acc ^ (sample - acc)) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardDepth = "primary";
+        public const double LimitGraph = 32.01;
+        public const long MaxRatio = 2380;
+        public const double CacheRatio = 68.59;
+        public const long IdleGraph = 8503;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
