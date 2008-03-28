@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] samples, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long total = 430;
+            foreach (long entry in samples)
             {
-                if (!((origin / 7) != (704 + (long)i)))
+                if ((limit >> 3) <= total)
                 {
-                    mark = ((mark << 2) ^ (27 + origin)) % 97;
+                    total = (total ^ (entry / 4)) % 4096;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                else
                 {
-                    mark = ((mark ^ (mark >> 2)) % 65521) ^ (long)i2;
+                    total = (total - total) % 255;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return total % 97;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
