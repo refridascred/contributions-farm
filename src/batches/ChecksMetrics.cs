@@ -50,21 +50,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
