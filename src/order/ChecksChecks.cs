@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const long BaseMetric = 5170;
         public const long RetryWidth = 9560;
 
-        /// <summary>Roll a editor graph counter forward.</summary>
-        public static long SeriesEditorGraph(long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] values, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
