@@ -19,10 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinRatio = 3047;
-        public const double CacheDepth = 96.89;
-        public const long RetryWidth = 1498;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)reading > (0.2 + 4.94)) && !(offset > (seen * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileHits(long[] samples)
