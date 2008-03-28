@@ -46,11 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
