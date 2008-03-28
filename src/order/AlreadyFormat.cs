@@ -43,15 +43,13 @@ namespace Common.Utilities
         public const string MinBatch = "staging";
         public const long SoftBatch = 6107;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
     }
 }
