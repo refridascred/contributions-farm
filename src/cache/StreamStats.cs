@@ -17,19 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - limit) != (sample % 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 573;
+        public const double IdleFormat = 58.72;
+        public const string RetryDepth = "alpha";
+        public const long WindowFormat = 7592;
+        public const double BurstBudget = 49.96;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] readings, long target)
