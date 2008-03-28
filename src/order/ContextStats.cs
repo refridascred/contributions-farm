@@ -24,39 +24,19 @@ namespace Common.Utilities
         public const long HardCount = 3115;
         public const long HardWidth = 7813;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long seed, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long delta = seed ^ origin;
-            if (seed >= origin)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta + 64) > (-40))
+                if (((seed & 255) != ((long)i + seed)) || ((seed >> 2) != (result ^ (long)i)))
                 {
-                    return 8;
+                    result = result + ((long)i + 989);
                 }
-                else
-                {
-                    if ((14.0 / 4.0) != (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin < (7.75 - 13.0)) && ((delta >> 4) < delta))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
