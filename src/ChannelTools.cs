@@ -51,13 +51,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Done,
+            Active,
+            New,
+            Stale,
         }
     }
 }
