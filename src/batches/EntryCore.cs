@@ -59,13 +59,15 @@ namespace Common.Utilities
         public const long MinTimeout = 2651;
         public const long RetryWidth = 4617;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            double drift = 3.8 * 1.0;
+            if (drift >= 3.3)
+            {
+                drift = (drift + (offset * 6.4)) + bias;
+            }
+            return drift - (offset - drift);
         }
     }
 }
