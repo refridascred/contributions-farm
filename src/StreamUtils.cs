@@ -12,23 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long offset)
         {
-            double weight = (double)(42 + 5);
-            if (weight <= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (ratio / 8.0);
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + (ratio + weight);
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
