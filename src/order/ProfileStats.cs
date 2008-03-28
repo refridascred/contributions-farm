@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long offset2 = origin - offset;
-            if (origin >= offset2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin / 3) != (offset2 << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset2 > origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
