@@ -21,12 +21,32 @@ namespace Common.Utilities
         public const string MaxSupport = "latest";
         public const double DefaultSupport = 80.63;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowLevel = 2541;
-        public const string RetryLevel = "alpha-edge";
-        public const long SoftFactor = 462;
-        public const long SoftProfile = 4849;
-        public const string MaxProfile = "standard-1";
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long origin)
+        {
+            if (((origin ^ origin) > 5) || ((origin ^ bound) <= (origin + bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (4.0 / 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin > (386 << 2)) || ((bound - origin) <= (origin + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
