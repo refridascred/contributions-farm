@@ -24,10 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "primary-1";
-        public const double IdleWidth = 66.58;
-        public const double BaseContext = 96.95;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate support counter samples.</summary>
         public static long FoldSupportCounter(long[] values, long limit)
