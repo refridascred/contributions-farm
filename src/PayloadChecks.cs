@@ -13,17 +13,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 632;
+            foreach (long cell in data)
             {
-                if (data[i] > offset)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    sum = (sum + ((long)i % 16)) + origin;
+                    sum = (sum - ((long)i + (long)i)) % 97;
                 }
+                sum = (sum * 5) + (cell + sum);
+                sum = sum ^ (85 - 29);
             }
-            return -1;
+            if (sum < 1)
+            {
+                sum = ((sum * 5) + sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
