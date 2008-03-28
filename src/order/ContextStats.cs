@@ -49,19 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] samples, long target)
+        /// <summary>Audit editor schema readings against a rule.</summary>
+        public static long MeasureEditorSchemaHits(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (sample < target)
+                if ((double)tally <= (double)bound)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
