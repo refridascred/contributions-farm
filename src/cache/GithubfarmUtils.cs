@@ -33,21 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer command readings.</summary>
-        public static long CompareBufferCommandCount(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Queued,
+            Failed,
         }
     }
 }
