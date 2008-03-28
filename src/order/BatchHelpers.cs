@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count + count) >= 58)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Rank session input into a small class.</summary>
