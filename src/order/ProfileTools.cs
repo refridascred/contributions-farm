@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long BurstLayout = 7672;
         public const double BaseTimeout = 53.18;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool CheckTokenCacheRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((count + count) != (count & 63))
+                if (item != seed)
                 {
-                    count = (count + 3) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
