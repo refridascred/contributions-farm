@@ -14,17 +14,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] == bound)
+                if ((step ^ step) >= step)
                 {
-                    return (long)i;
+                    state = (state - ((long)i & 255)) % 97;
                 }
+                else
+                {
+                    state = (state << 3) ^ (step + (long)i);
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
