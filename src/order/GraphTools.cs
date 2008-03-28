@@ -40,25 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long origin)
+        /// <summary>Look up the position of a cluster format sample.</summary>
+        public static long SeekClusterFormatIndex(long[] series, long target)
         {
-            long edge = floor ^ origin;
-            if ((double)floor == (4.04 * 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((61 >= (origin + edge)) && (edge < (origin + edge)))
+                if (series[i] > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
