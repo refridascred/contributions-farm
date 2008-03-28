@@ -1,5 +1,20 @@
 {
-  "batch_delay_count": 61,
-  "layout_depth": "fallback",
-  "soft_timeout_ms": "legacy"
+  "poll_ttl": [410, 1, 357],
+  "buffer_ttl": 250,
+  "burst_capacity_s": 7755,
+  "sync_retries": {
+    "flush_window": "green",
+    "cache_capacity_pct": ["primary", "fallback", "standard"],
+    "route_window": "edge",
+    "verbose": 4501,
+    "farm_limit": 30,
+    "enabled": {
+      "cache_retries": 3372,
+      "poll_retries": "strict",
+      "enabled": 30,
+      "flush_limit_s": "green",
+      "min_retries_count": "primary",
+      "persist": 10.85
+    }
+  }
 }
