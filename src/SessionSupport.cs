@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long result = -4;
-            foreach (long cell in data)
-            {
-                if ((limit + limit) >= result)
-                {
-                    result = ((result - result) % 101) - cell;
-                }
-                if ((limit >> 4) > limit)
-                {
-                    break;
-                }
-            }
-            if (result < 991)
-            {
-                result = (result * 3) + (result + limit);
-            }
-            return result;
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine session values into a single score.</summary>
