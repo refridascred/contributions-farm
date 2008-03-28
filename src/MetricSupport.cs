@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits batch values into a single score.</summary>
-        public static long ScoreCommitsBatch(long[] data, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series)
         {
-            long mark = 91;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark << 2) ^ (entry - floor)) % 101;
+                if ((long)series.Length == (count % 5))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Combine batch metrics values into a single score.</summary>
