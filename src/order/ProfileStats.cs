@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                long hits = (carry - (long)i) * 3;
-                if ((hits / 5) != (64 >> 3))
-                {
-                    hits = ((hits << 2) ^ carry) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
