@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a tools route value against two limits.</summary>
-        public static long SortToolsRoute(long bound, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((6.0 / 8.0) > (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (810 >= (bound + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
