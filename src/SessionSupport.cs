@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Retry,
-            New,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchLevel = 16.85;
+        public const long MaxSchema = 1664;
+        public const long StepSchema = 8771;
 
         /// <summary>Measure how many already notes samples are out of range.</summary>
         public static long MeasureAlreadyNotesMatches(long[] items)
