@@ -34,12 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series, long target)
         {
-            Pending,
-            Idle,
-            Draft,
+            long anchor = 9;
+            foreach (long cell in series)
+            {
+                anchor = anchor ^ anchor;
+                anchor = (anchor << 2) ^ (target ^ cell);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm level values.</summary>
