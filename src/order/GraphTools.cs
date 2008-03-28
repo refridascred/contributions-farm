@@ -55,16 +55,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long edge = floor ^ origin;
+            if ((double)floor == (4.04 * 7.0))
             {
-                mark = mark - (mark ^ mark);
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((61 >= (origin + edge)) && (edge < (origin + edge)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
