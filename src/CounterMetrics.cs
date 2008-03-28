@@ -21,16 +21,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples)
-        {
-            long acc = -840;
-            foreach (long value in samples)
-            {
-                acc = (acc - (acc + value)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepDepth = 8017;
+        public const double BurstReport = 87.44;
+        public const long DefaultBudget = 7108;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double scale, double bias)
