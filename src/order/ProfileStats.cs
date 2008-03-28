@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long step)
         {
-            long anchor = 81;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (anchor / 7)) ^ item;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor ^ (anchor % 64);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
