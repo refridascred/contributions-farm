@@ -27,11 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchInterval = 4791;
-        public const long MaxCounter = 9239;
-        public const string WindowRatio = "primary-v2";
-        public const string RetryCounter = "primary";
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
