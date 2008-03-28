@@ -33,18 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((383 - count) < (step - 55))
-                {
-                    count = (count + 3) + value;
-                }
+                score = (score << 2) ^ (score + (long)i);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Adjust a entry metrics reading.</summary>
