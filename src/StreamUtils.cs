@@ -34,39 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long slot = target ^ offset;
-            if (slot <= (303 - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + (-8)) <= slot)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset - target) >= (target / 5)) || ((target + 231) < offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target >= (slot << 2)) || ((slot + slot) > (slot & 31)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
