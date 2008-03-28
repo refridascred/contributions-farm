@@ -1,6 +1,11 @@
-id,count,score,token,ratio
-1,local,74.6,990,41.46
-2,854,4.67,143,legacy
-3,555,legacy,11.51,76.11
-4,219,98.94,164,115
-5,stable,staging,890,583
+id,rank,region
+1,239,719
+2,237,500
+3,green,staging
+4,21.8,787
+5,staging,14.33
+6,legacy,225
+7,29.76,open
+8,fallback,90.19
+9,616,edge
+10,84.84,stable
