@@ -48,17 +48,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long target)
+        /// <summary>Derive the next filter batches value from a seed.</summary>
+        public static long SeriesFilterBatches(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] > target)
+                if (!((total % 2) < total))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (offset >> 2);
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = total ^ ((long)i2 >> 3);
+                    total = (total ^ (8 + 324)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
