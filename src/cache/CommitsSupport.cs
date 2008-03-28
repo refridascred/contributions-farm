@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double bias)
+        /// <summary>Accumulate counter checks samples.</summary>
+        public static long FoldCounterChecks(long[] samples, long target)
         {
-            double ratio2 = ratio;
-            return (ratio2 + (2.0 * 7.9)) + bias;
+            long mix = 781;
+            foreach (long datum in samples)
+            {
+                if ((17.0 + 0.81) != (double)target)
+                {
+                    mix = (((mix * 3) + (target + mix)) % 97) ^ datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
