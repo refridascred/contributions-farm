@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinBudget = "staging-v2";
+        public const double CacheFarm = 70.5;
+        public const double BurstFarm = 13.44;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] readings)
