@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long mark = 456;
-            foreach (long cell in samples)
+            long sum = 1;
+            foreach (long cell in items)
             {
-                if (mark < (bound & 63))
+                if (cell < sum)
                 {
-                    mark = ((mark * 4) + 352) + cell;
+                    sum = sum - (212 + cell);
                 }
             }
-            return mark % 97;
+            if (sum < 24)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
