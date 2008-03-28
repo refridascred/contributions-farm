@@ -1,5 +1,14 @@
 {
-  "sync_delay_count": "eu-west",
-  "readonly": [475, 54, 237, 463],
-  "enabled": false
+  "compress": 1608,
+  "enabled": [168, 425, 347],
+  "order_retries": "fallback",
+  "command_depth": 82,
+  "cache_depth_ms": {
+    "strict": false,
+    "base_interval_count": [460, 15, 203],
+    "editor_interval": "open",
+    "entry_ratio": "legacy",
+    "warm_ttl_ms": 100,
+    "compress": 16.23
+  }
 }
