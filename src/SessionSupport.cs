@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every account commits entry stays within the limit.</summary>
-        public static bool ValidateAccountCommitsRange(long[] samples, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (datum <= target)
+                if ((4 - (-2)) <= seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
