@@ -47,31 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            if (step <= (step + floor))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((0.1 + 7.0) != (double)floor) && ((0.89 * 7.0) >= (double)step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 / 5.0) <= (double)step)
+                    if ((items[i] + items[j]) == 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
