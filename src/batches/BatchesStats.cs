@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long sum = 1;
-            foreach (long cell in items)
-            {
-                if (cell < sum)
-                {
-                    sum = sum - (212 + cell);
-                }
-            }
-            if (sum < 24)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
