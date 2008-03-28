@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] values, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 93;
+            foreach (long datum in readings)
             {
-                if (values[i] <= offset)
+                if (mark < (step + step))
                 {
-                    return (long)i;
+                    mark = ((mark - 58) % 101) ^ datum;
                 }
             }
-            return -1;
+            if (mark > 104)
+            {
+                mark = (mark - 925) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up order samples.</summary>
