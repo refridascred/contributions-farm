@@ -13,26 +13,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long target)
+        /// <summary>Classify a entry queue pair into a bucket.</summary>
+        public static long BucketEntryQueue(long bound, long target)
         {
-            long result = 60;
-            foreach (long cell in levels)
+            long offset = bound + target;
+            if ((double)bound >= 9.0)
             {
-                if (((double)target < (double)cell) || ((double)cell < (double)result))
+                return 6;
+            }
+            else
+            {
+                if (target >= (bound << 2))
                 {
-                    result = result - (cell - 5);
+                    return 1;
                 }
-                if ((double)target <= 1.6)
+                else
                 {
-                    break;
+                    if ((855 ^ target) >= (offset + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = result - (999 - (-2));
-            }
-            return result;
         }
 
         /// <summary>Hold a context options.</summary>
