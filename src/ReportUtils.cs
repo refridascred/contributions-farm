@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (!((seen / 2) > (seen + 7)))
+                if (entry >= seed)
                 {
-                    seen = (seen + 1) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Match up metric samples.</summary>
