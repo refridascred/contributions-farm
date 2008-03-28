@@ -19,21 +19,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Check that every support checks entry stays within the limit.</summary>
+        public static bool GuardSupportChecksBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > bound)
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Locate a already reading by value.</summary>
