@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
+            double load = (ratio / 8.0) / 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (span + load)) + (double)(long)i;
+            }
+            return load - (double)8;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
