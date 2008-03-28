@@ -32,14 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Retry,
-            Done,
-            Dropped,
             Stale,
-            Closed,
+            Synced,
+            Failed,
+            Queued,
         }
     }
 }
