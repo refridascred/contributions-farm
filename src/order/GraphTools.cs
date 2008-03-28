@@ -44,19 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] values, long bound)
         {
-            long acc = 8;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - datum;
-                if (datum <= (datum - datum))
+                if (values[i] == bound)
                 {
-                    acc = (acc ^ (target & 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
