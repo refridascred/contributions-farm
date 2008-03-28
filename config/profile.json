@@ -1,5 +1,30 @@
 {
-  "poll_ttl": "primary",
-  "retry_size_s": 1580,
-  "metrics_threshold": 24
+  "persist": {
+    "base_size_ms": true,
+    "metric_ratio": "blue",
+    "min_ttl_pct": 30,
+    "entry_interval": "local",
+    "retry_size_ms": {
+      "base_depth_count": 150,
+      "profile_ttl": "standard",
+      "layout_delay": 48.62
+    },
+    "soft_depth_count": {
+      "hard_depth_s": 4.29,
+      "retry_limit_count": [200, 113, 415, 96],
+      "strict": ["fallback", "staging"],
+      "soft_capacity_pct": 250
+    }
+  },
+  "burst_size_ms": 75.92,
+  "channel_capacity": "local",
+  "default_retries_count": {
+    "cache_limit_pct": "standard",
+    "record_limit": 83,
+    "idle_retries_s": true,
+    "audit": 30,
+    "min_limit": 30,
+    "burst_ttl_count": true
+  },
+  "poll_limit_ms": 41.85
 }
