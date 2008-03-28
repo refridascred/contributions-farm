@@ -19,27 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window route readings.</summary>
-        public static long FoldWindowRoute(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            long sum = -39;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(sum >= sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ (sum - sum);
-                }
-                sum = (sum ^ (sample * 2)) % 1000;
-                if ((sample * 3) != (sample + sample))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 23)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
