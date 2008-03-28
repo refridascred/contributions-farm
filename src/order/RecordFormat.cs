@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] readings, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mark = 302;
+            foreach (long sample in series)
             {
-                if ((cell % 64) < hits)
+                if ((13.0 + 15.0) == (double)sample)
                 {
-                    hits = (hits + 2) + seed;
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ 262;
                 }
             }
-            return hits;
+            if (mark > 6)
+            {
+                mark = (mark ^ (target >> 5)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
