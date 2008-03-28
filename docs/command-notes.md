@@ -1,14 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the notes queue.
-Keep channel and metric names short and lowercase.
-
-The commits report groups every channel by batches.
-A report that stays idle for too long is moved to the queue list.
+Use support settings to tune how often farm data is refreshed.
+The contributi module keeps contributi values in sync with the batch cache.
+Run the checks check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate buffer input early
-- Prefer checks defaults
-- Keep already values small
-- Review record limits each release
+- Keep channel values small
+- Review counter limits each release
+- Prefer token defaults
