@@ -14,32 +14,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long bound2)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long bound3 = bound - bound2;
-            if (bound2 < (bound3 - bound3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound2 >= (9.2 * 3.41))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound3 << 3) == (bound3 + bound2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
