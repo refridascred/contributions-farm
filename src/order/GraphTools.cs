@@ -40,22 +40,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            long sum = -844;
-            foreach (long entry in items)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((845 * 2) > (sum + entry))
-                {
-                    sum = (sum ^ (5 + sum)) % 1000;
-                }
+                mark = mark - (mark ^ mark);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (sum < 565)
-            {
-                sum = (sum * 4) + 55;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
