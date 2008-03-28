@@ -26,9 +26,12 @@ namespace Common.Utilities
             return (gain - (double)0) + span;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRatio = "cached-v2";
-        public const long MaxRoute = 1640;
-        public const double LimitBudget = 27.65;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Locked,
+            Dropped,
+            Closed,
+        }
     }
 }
