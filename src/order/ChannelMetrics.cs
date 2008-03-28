@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const string BatchCounter = "local-v2";
         public const string WindowCounter = "strict-edge";
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double gain, double floor)
         {
-            Synced,
-            Failed,
-            Pending,
+            double weight = (gain / 4.0) / 6.0;
+            if (weight < (floor * 16.0))
+            {
+                weight = weight + (floor * 5.5);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
