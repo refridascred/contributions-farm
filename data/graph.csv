@@ -1,6 +1,11 @@
-id,level,label,count,state
-1,27.22,795,blue,34
-2,19,cached,946,open
-3,local,standard,703,open
-4,822,213,485,latest
-5,70.71,858,253,47.19
+id,score,rank,label,ratio
+1,998,498,fallback,587
+2,272,496,91.95,241
+3,cached,stable,cached,363
+4,open,878,stable,395
+5,750,86.97,eu-west,205
+6,38.75,458,green,15.52
+7,latest,55.74,open,29.22
+8,cached,cached,standard,27.79
+9,57.71,782,92.64,cached
+10,83.93,eu-west,48.58,local
