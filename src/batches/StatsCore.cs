@@ -28,11 +28,18 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((5.0 + 0.5) > (double)hits))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
