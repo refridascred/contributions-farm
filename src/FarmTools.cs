@@ -30,25 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            long step = seed - bound;
-            if (((double)bound < (14.0 - 5.71)) && ((7 << 3) == (seed + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= (step - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double rate = scale;
+            return (rate + scale) + floor;
         }
     }
 }
