@@ -51,22 +51,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools record readings against a rule.</summary>
-        public static long TallyToolsRecordGaps(long[] items)
+        /// <summary>Grade a layout channel value against two limits.</summary>
+        public static long SortLayoutChannel(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((origin % 100) < (51 + origin2))
             {
-                if ((count << 3) <= cell)
+                return 7;
+            }
+            else
+            {
+                if ((origin2 >= (origin << 3)) || ((233 - origin) >= (origin & 31)))
                 {
-                    count = count + 3;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((((-4) + origin) > origin2) && ((double)origin <= 9.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin2 + origin) >= origin) && ((double)origin2 > (1.0 - 20.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
