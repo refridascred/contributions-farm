@@ -58,19 +58,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (!(524 >= ((long)i << 1)))
+                if ((datum ^ tally) > (tally >> 1))
                 {
-                    mark = (mark * 4) + (63 >> 2);
+                    tally = (tally + 2) - bound;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
     }
 }
