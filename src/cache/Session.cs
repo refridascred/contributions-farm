@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long MeasureAlreadyCommitsHits(long[] samples)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum >> 1) != (datum % 7)) || ((double)datum <= (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a contributi stats.</summary>
