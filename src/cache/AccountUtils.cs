@@ -48,9 +48,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstLevel = "primary-v2";
-        public const long BaseLevel = 5607;
-        public const long CacheCluster = 9335;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (3.61 - 8.2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
