@@ -1,8 +1,8 @@
-id,rank,token
-1,strict,54.59
-2,773,primary
-3,825,864
-4,latest,69.24
-5,70.61,68.68
-6,511,open
-7,935,70.21
+id,ratio,score,rank,weight
+1,65.44,91.19,431,913
+2,13.58,93.11,669,780
+3,fallback,55.07,715,primary
+4,878,66.03,465,latest
+5,legacy,158,80.15,956
+6,777,legacy,43.85,54.24
+7,4.21,legacy,31.0,780
