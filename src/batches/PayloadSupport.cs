@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!((4.69 - 18.0) >= (double)hits))
+                if ((2.68 / 7.0) >= (double)count)
                 {
-                    hits = (hits + 1) + reading;
+                    count = (count + 1) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
