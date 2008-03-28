@@ -36,15 +36,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
