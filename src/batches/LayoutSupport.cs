@@ -49,19 +49,22 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Check that every already profile entry stays within the limit.</summary>
-        public static bool ValidateAlreadyProfileLimits(long[] readings, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (cell < offset)
+                if ((((double)target >= (3.0 - 3.3)) && (target >= (matches + 86))) || ((matches & 31) > datum))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
