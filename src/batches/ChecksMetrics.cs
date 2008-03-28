@@ -57,18 +57,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((15.0 - 8.16) <= (double)entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
