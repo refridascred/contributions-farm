@@ -33,25 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long target)
+        /// <summary>Compare every pair of buffer command readings.</summary>
+        public static long CompareBufferCommandCount(long[] items)
         {
-            long lane = seed - target;
-            if ((seed + target) >= (lane + lane))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (lane >= (757 / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
