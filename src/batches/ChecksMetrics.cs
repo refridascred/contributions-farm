@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] values, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = (mark * 5) + ((long)i / 2);
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((target * 5) != (value - count)) || ((double)7 >= (double)target))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
