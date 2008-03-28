@@ -34,16 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double ratio, double bias)
         {
-            long anchor = 9;
-            foreach (long cell in series)
+            double gain = (double)(484 / 7);
+            if (gain <= ratio)
             {
-                anchor = anchor ^ anchor;
-                anchor = (anchor << 2) ^ (target ^ cell);
+                gain = gain - (double)22;
             }
-            return anchor;
+            return gain - (gain + bias);
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
