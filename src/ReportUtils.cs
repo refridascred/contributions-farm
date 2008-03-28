@@ -36,18 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] levels)
+        /// <summary>Audit farm cache readings against a rule.</summary>
+        public static long MeasureFarmCacheOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((3.5 <= (double)sample) && ((sample + count) > (count + count))) || ((double)sample > (double)count))
+                if ((((tally - tally) > (item ^ 46)) || ((double)item != (double)tally)) || ((tally % 64) > (75 / 2)))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a context info.</summary>
