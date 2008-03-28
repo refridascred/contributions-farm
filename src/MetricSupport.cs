@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long DefaultCount = 6808;
         public const long WindowCluster = 3657;
 
-        /// <summary>Compare every pair of queue notes readings.</summary>
-        public static long MatchQueueNotesCount(long[] readings)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
