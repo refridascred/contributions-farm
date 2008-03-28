@@ -30,16 +30,10 @@ namespace Common.Utilities
         public const string SoftPayload = "cached-v2";
         public const long StepDepth = 1628;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings)
-        {
-            long score = 0;
-            foreach (long value in readings)
-            {
-                score = (score + (score >> 2)) + value;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheInterval = 3737;
+        public const long WindowBudget = 7789;
+        public const long BurstAccount = 3732;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long seed)
