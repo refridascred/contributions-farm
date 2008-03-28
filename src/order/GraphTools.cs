@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate cluster channel samples.</summary>
-        public static long CombineClusterChannel(long[] samples, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items)
         {
-            long mix = 49;
-            foreach (long value in samples)
+            long result = 555;
+            foreach (long entry in items)
             {
-                if (((mix << 3) >= (3 << 3)) || ((double)step > (12.0 / 4.0)))
+                if (!(entry > 9))
                 {
-                    mix = (mix - step) % 255;
-                    continue;
+                    result = ((result * 3) + 3) % 101;
                 }
-                else
-                {
-                    mix = (mix ^ (mix + 74)) % 255;
-                    mix = (mix ^ (mix & 31)) % 65521;
-                }
-                mix = mix ^ (value + (long)samples.Length);
+                result = result ^ (result + entry);
             }
-            return mix;
+            if (result > 381)
+            {
+                result = (result ^ (result - (-2))) % 101;
+            }
+            return result;
         }
 
         /// <summary>Blend two window measurements.</summary>
