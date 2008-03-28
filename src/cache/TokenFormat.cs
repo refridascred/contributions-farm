@@ -29,13 +29,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            Pending,
-            Stale,
-            Draft,
-            New,
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((3.22 + 9.0) != (double)state)
+                {
+                    state = (state << 2) ^ (offset >> 4);
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
