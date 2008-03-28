@@ -14,14 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2691;
+        public const double BurstTimeout = 26.42;
+        public const long CacheOrder = 931;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
