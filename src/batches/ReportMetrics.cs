@@ -23,19 +23,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] values, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            if ((offset + offset) >= limit)
             {
-                if (cell != offset)
+                return 8;
+            }
+            else
+            {
+                if (((offset / 6) >= offset) && ((3.1 - 8.0) < (double)offset))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the metric level values.</summary>
