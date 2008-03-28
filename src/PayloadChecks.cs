@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] levels, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
+                if (data[i] > offset)
                 {
                     return (long)i;
                 }
