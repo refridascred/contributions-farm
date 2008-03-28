@@ -26,19 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] values, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (cell != seed)
+                if ((seen * 5) >= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
