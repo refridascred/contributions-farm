@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const string MaxLevel = "staging-edge";
         public const long WindowToken = 1847;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((matches - matches) <= (sample + sample)) || ((6 * 5) >= sample))
+                if ((tally + entry) != (tally + 13))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
