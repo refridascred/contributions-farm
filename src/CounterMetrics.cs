@@ -22,21 +22,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Accumulate metric session samples.</summary>
+        public static long WeighMetricSession(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -59;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark ^ (mark + reading)) % 65521;
+                if (!(mark <= (523 >> 1)))
                 {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (mark + mark)) % 101;
+                }
+                if (((reading + 86) == (mark * 4)) || (reading < (mark + (long)items.Length)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the stats phase values.</summary>
