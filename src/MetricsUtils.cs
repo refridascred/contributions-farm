@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long origin)
+        /// <summary>Look up the position of a githubfarm metrics sample.</summary>
+        public static long LookupGithubfarmMetricsIndex(long[] series, long seed)
         {
-            long step = bound + origin;
-            if ((bound < step) || (((-71) % 5) >= (bound + step)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (step << 1))
+                if (series[i] <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - origin) <= (origin * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (5.16 * 2.0)) || (bound >= step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
