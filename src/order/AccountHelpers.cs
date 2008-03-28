@@ -53,17 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a farm payload reading by value.</summary>
