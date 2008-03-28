@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                sum = (sum << 2) ^ (floor % 12);
-                sum = ((sum * 5) + (long)i) % 101;
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
