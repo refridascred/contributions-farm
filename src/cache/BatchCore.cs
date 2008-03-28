@@ -33,22 +33,21 @@ namespace Common.Utilities
         public const double RetryContext = 52.57;
         public const double WindowBudget = 83.51;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count ^ count) != (729 & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 3) ^ reading) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
