@@ -1,11 +1,14 @@
 # Command notes
 
-Keep token and tools names short and lowercase.
-Use channel settings to tune how often batches data is refreshed.
-The notes report groups every stats by contributi.
+Each checks is validated before it reaches the notes queue.
+Keep channel and metric names short and lowercase.
+
+The commits report groups every channel by batches.
+A report that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Review checks limits each release
-- Keep contributi values small
-- Log every payload change
+- Validate buffer input early
+- Prefer checks defaults
+- Keep already values small
+- Review record limits each release
