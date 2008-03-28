@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Grade a counter window value against two limits.</summary>
+        public static long GradeCounterWindow(long bound, long bound2)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            if (520 > (bound2 * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((-9) < (bound ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a profile info.</summary>
