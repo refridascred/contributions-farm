@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Locked,
-            Draft,
-            Active,
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm account readings.</summary>
