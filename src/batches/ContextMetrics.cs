@@ -73,15 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] readings)
         {
-            long mark = -393;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mark = ((mark + 720) % 1000) + value;
+                if (((84 + tally) <= (tally << 1)) && (cell <= (tally / 8)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
