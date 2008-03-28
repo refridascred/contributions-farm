@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
+            Stale,
+            Locked,
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
