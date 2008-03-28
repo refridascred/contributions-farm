@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long MeasureWindowProfileMatches(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if ((bound + seed) < (seed * 2))
             {
-                if ((count / 7) >= (count + datum))
+                return 6;
+            }
+            else
+            {
+                if (((-7) * 3) == (bound ^ bound))
                 {
-                    count = count + 1;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((seed / 3) < (seed / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed == (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit notes graph readings against a rule.</summary>
