@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=306
-log "limit is ${COMMAND_LIMIT}"
-
-for item in fallback staging stable; do
+for item in stable edge staging open; do
     log "checking ${item}"
 done
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
