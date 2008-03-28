@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long target)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
