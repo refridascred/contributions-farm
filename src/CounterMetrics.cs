@@ -27,18 +27,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit context cache readings against a rule.</summary>
-        public static long CountContextCacheHits(long[] readings, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (9 >= count)
+                if (levels[i] >= step)
                 {
-                    count = ((count + 1) ^ entry) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
