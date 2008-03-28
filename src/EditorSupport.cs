@@ -32,31 +32,13 @@ namespace Common.Utilities
         public const string RetryBatch = "legacy-1";
         public const long LimitBatch = 9729;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long step, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if (bound < (bound & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (7.8 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.5 * 7.93) <= (2.58 + 0.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Adjust a window reading.</summary>
