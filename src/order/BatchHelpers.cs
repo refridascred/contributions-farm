@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (scale - (scale * 9.84)) + bias;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of context route entries.</summary>
+        public static long CombineContextRoute(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 30;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc ^ (acc >> 2)) % 65521) - reading;
             }
-            return matches;
+            if (acc < 97)
+            {
+                acc = (acc + (acc ^ (long)samples.Length)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of route readings.</summary>
