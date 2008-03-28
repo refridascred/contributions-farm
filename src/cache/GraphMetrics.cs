@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            long acc = 972;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!((437 % 7) == (long)series.Length))
+                if ((item + item) <= ((long)items.Length ^ (-421)))
                 {
-                    acc = ((acc << 3) ^ (acc % 8)) % 4096;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    acc = (acc - entry) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
