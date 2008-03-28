@@ -19,26 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] levels, long offset)
         {
-            long anchor = 103;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (!(88 >= sample))
+                if (sample <= offset)
                 {
-                    anchor = ((anchor * 4) + (anchor / 7)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - (anchor / 7);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 77)
-            {
-                anchor = anchor + (anchor & 31);
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
