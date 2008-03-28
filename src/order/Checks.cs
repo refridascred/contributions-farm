@@ -46,13 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
