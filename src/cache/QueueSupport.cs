@@ -16,18 +16,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer token readings against a rule.</summary>
-        public static long CountBufferTokenHits(long[] data, long origin)
+        /// <summary>Grade a commits contributi value against two limits.</summary>
+        public static long RankCommitsContributi(long target, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long lane = target ^ offset;
+            if (lane > (target + 422))
             {
-                if (!((425 & 3) <= (cell + cell)))
+                return 4;
+            }
+            else
+            {
+                if (((offset - offset) <= (offset + 4)) && ((offset % 3) < (offset / 8)))
                 {
-                    matches = (matches + 1) + origin;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
