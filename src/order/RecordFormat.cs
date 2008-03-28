@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series, long floor)
         {
-            long mark = 302;
-            foreach (long sample in series)
+            long carry = 8;
+            foreach (long cell in series)
             {
-                if ((13.0 + 15.0) == (double)sample)
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 262;
-                }
+                carry = ((carry - (carry - (long)series.Length)) % 97) - cell;
+                carry = (carry * 5) + ((-7) * 4);
             }
-            if (mark > 6)
+            if (carry < 87)
             {
-                mark = (mark ^ (target >> 5)) % 65521;
+                carry = ((carry * 5) + (floor * 3)) % 1000;
             }
-            return mark % 1000;
+            return carry % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
