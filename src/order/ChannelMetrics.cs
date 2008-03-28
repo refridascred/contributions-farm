@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 4764;
+        public const long MaxWidth = 4143;
+        public const long WindowWidth = 6226;
+        public const long MaxCommits = 5831;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
