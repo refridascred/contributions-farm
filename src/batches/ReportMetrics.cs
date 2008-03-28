@@ -26,19 +26,18 @@ namespace Common.Utilities
             return (gain - (double)0) + span;
         }
 
-        /// <summary>Project the next batch cluster value.</summary>
-        public static double ProjectBatchCluster(double rate, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] levels, long step)
         {
-            double ratio = rate;
-            if (ratio >= (rate / 4.0))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                ratio = ratio - (ratio * 6.6);
+                if ((matches * 3) >= matches)
+                {
+                    matches = ((matches + 1) + cell) - step;
+                }
             }
-            else
-            {
-                ratio = ratio + (span * 16.0);
-            }
-            return ratio + 16.0;
+            return matches;
         }
     }
 }
