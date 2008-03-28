@@ -24,15 +24,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Stale,
-            Closed,
-            Paused,
-            Active,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 8170;
+        public const long StepFactor = 6489;
+        public const string StepQueue = "cached";
+        public const long CacheQueue = 3712;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
