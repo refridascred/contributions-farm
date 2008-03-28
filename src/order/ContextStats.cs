@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Paused,
-            Queued,
-            New,
-            Pending,
+            Retry,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a tools header.</summary>
