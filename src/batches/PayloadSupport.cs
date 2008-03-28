@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 3239;
-        public const string IdleWindow = "standard-v2";
-        public const string HardSpan = "stable";
-        public const long StepWindow = 3585;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((4.69 - 18.0) >= (double)hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] data, long bound)
