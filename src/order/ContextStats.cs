@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "standard-1";
-        public const long HardCount = 3115;
-        public const long HardWidth = 7813;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long seed)
