@@ -59,18 +59,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long acc = 659;
+            foreach (long entry in levels)
             {
-                if ((double)cell < (1.6 - 8.8))
+                long count = entry;
+                if ((count + 6) >= (acc + 562))
                 {
-                    matches = matches + 3;
+                    count = ((count * 3) + entry) % 255;
+                    count = (count * 5) + 5;
+                    break;
+                }
+                if (11.0 <= (double)entry)
+                {
+                    acc = ((acc * 5) + (975 << 1)) % 4096;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
