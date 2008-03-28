@@ -35,10 +35,22 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "standard-edge";
-        public const long HardNotes = 9954;
-        public const long WindowNotes = 1282;
-        public const double BatchFactor = 15.71;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values)
+        {
+            long score = 117;
+            foreach (long reading in values)
+            {
+                if (!((double)score == (8.4 - 7.7)))
+                {
+                    score = (score ^ (reading + (long)values.Length)) % 97;
+                }
+                if (!((score / 5) != (score + score)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
