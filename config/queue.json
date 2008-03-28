@@ -1,5 +1,18 @@
 {
-  "dry_run": ["strict", "blue", "strict", "local"],
-  "verbose": [181, 385],
-  "hard_size": 2728
+  "persist": 500,
+  "min_interval": 437,
+  "schema_timeout": false,
+  "min_size": [500, 12, 363],
+  "retry_delay_ms": "cached",
+  "hard_ttl_count": {
+    "queue_ttl": 12,
+    "retry_delay": {
+      "min_ttl_s": "stable",
+      "persist": "cached",
+      "payload_depth": [336, 465, 213],
+      "idle_ratio": true
+    },
+    "verbose": true,
+    "session_retries": 9006
+  }
 }
