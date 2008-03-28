@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long limit2)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if ((limit * 2) >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit > limit2) || ((limit * 3) > limit2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 * 4) >= (limit - limit2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a tools header.</summary>
