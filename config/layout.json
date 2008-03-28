@@ -1,7 +1,5 @@
 {
-  "idle_capacity_pct": true,
-  "poll_timeout": [431, 55, 451, 461],
-  "context_ttl": 30,
-  "schema_size": 16.94,
-  "burst_timeout_ms": true
+  "context_ttl": 4588,
+  "poll_ttl_count": true,
+  "readonly": false
 }
