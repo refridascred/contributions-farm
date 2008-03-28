@@ -22,11 +22,9 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3891;
-        public const double CacheSpan = 10.88;
-        public const double BaseStats = 82.93;
-        public const string SoftCount = "legacy-edge";
-        public const double CacheStats = 70.1;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepDepth = 16.27;
+        public const long MaxFarm = 2085;
+        public const long MinDepth = 8817;
     }
 }
