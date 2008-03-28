@@ -22,19 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double scale, double bias)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            double bias2 = (scale + 8.7) + scale;
-            if (bias2 >= (bias / 8.0))
+            long diff = origin ^ offset;
+            if ((origin & 15) < (9 & 3))
             {
-                bias2 = bias2 + scale;
+                return 3;
             }
             else
             {
-                bias2 = bias2 + bias;
+                if ((3.0 - 11.0) >= (double)diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.09 - 3.09) <= (double)diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) <= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias2 - scale;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
