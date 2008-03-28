@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long HardSize = 7369;
         public const long IdleCount = 90;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 110;
-        public const long RetryCache = 8127;
-        public const string BaseLevel = "open-edge";
-        public const long HardDepth = 9853;
-        public const long MaxCache = 2446;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] readings)
