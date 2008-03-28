@@ -57,17 +57,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 471;
+            foreach (long sample in values)
             {
-                if (items[i] <= limit)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    total = ((total + total) % 101) - (long)i;
+                }
+                if ((sample < total) || ((sample + total) != (total + total)))
+                {
+                    total = (total ^ target) % 4096;
+                }
+                else
+                {
+                    total = total - (sample - total);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
