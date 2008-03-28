@@ -60,12 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < floor)
+                if (values[i] <= seed)
                 {
                     return (long)i;
                 }
