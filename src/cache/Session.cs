@@ -21,18 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] items, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(hits < (sample & 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + floor;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the metric mode values.</summary>
