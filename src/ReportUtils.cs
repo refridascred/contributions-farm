@@ -13,19 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            double bias = gain * 9.42;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score ^ bound) % 1000) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                bias = ((bias - gain) + (double)(long)i) + offset;
             }
-            return score;
+            return bias - (double)715;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
