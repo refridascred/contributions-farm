@@ -1,13 +1,8 @@
 {
-  "soft_ttl_s": {
-    "persist": false,
-    "cache_window_count": 41.75,
-    "cache_depth_s": 77,
-    "poll_timeout_s": "staging",
-    "max_size": "latest",
-    "warm_size_ms": 3159
-  },
-  "dry_run": false,
-  "payload_limit": 705,
-  "graph_timeout": 60
+  "strict": 7277,
+  "cache_retries": "eu-west",
+  "record_timeout": 705,
+  "sync_capacity": 100,
+  "verbose": "latest",
+  "audit": false
 }
