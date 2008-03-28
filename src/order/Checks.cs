@@ -42,21 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix << 3) ^ mix;
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - ((-573) * 2)) - (long)i2;
-                    mix = (mix * 3) + (mix << 2);
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
