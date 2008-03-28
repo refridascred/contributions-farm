@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] samples, long bound)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (double)bound)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
