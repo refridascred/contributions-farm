@@ -15,12 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleWidth = 44.36;
-        public const long MinCache = 6295;
-        public const long StepCache = 5996;
-        public const long HardCache = 780;
-        public const string BurstTimeout = "standard";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Done,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] items)
