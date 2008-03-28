@@ -28,18 +28,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long seed, long seed2)
         {
-            long result = 2;
-            foreach (long reading in readings)
+            long offset = seed + seed2;
+            if ((offset > (offset + 18)) && ((offset ^ seed2) >= seed2))
             {
-                if ((double)reading <= 11.0)
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) > (seed / 9))
                 {
-                    result = (result << 3) ^ origin;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
