@@ -24,18 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] series, long origin)
+        /// <summary>Count account profile pairs that satisfy a relation.</summary>
+        public static long OverlapAccountProfileCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((origin % 10) <= (0 ^ seen)) && ((origin + entry) <= seen))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
