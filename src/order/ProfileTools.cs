@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
