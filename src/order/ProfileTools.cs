@@ -18,20 +18,11 @@ namespace Common.Utilities
         public const long BurstCache = 9236;
         public const long BatchFactor = 9595;
 
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool CheckTokenCacheRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6516;
+        public const long SoftCount = 4186;
+        public const string BurstCommand = "strict";
+        public const long StepCommand = 9872;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] series, long target)
