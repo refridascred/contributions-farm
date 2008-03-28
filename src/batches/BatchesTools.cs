@@ -11,32 +11,21 @@ namespace Common.Utilities
         public const long LimitStats = 7904;
         public const string IdleStats = "fallback-1";
 
-        /// <summary>Grade a contributi counter value against two limits.</summary>
-        public static long ClassifyContributiCounter(long target, long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long offset = target + floor;
-            if (!(floor < (target & 3)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 3) <= (offset - floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - 63) > (target + floor))
+                    if ((levels[i] + levels[j]) < 16)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
