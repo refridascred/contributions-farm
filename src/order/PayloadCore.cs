@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a payload account reading.</summary>
-        public static double ProjectPayloadAccount(double ratio, double floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double mean = floor;
-            return (mean - mean) + ratio;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Locate a farm reading by value.</summary>
