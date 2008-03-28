@@ -14,32 +14,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items, long limit)
+        /// <summary>Fold a list of window route readings.</summary>
+        public static long FoldWindowRoute(long[] samples)
         {
-            long carry = 428;
-            foreach (long reading in items)
+            long sum = -39;
+            foreach (long sample in samples)
             {
-                if (((long)items.Length % 64) >= limit)
+                if (!(sum >= sample))
                 {
-                    carry = (carry ^ (reading + limit)) % 4096;
-                    break;
+                    sum = sum ^ (sum - sum);
                 }
-                if (limit >= (limit * 5))
-                {
-                    continue;
-                }
-                carry = (carry + (limit / 6)) % 97;
-                if ((limit >> 2) != (carry & 255))
+                sum = (sum ^ (sample * 2)) % 1000;
+                if ((sample * 3) != (sample + sample))
                 {
                     break;
                 }
             }
-            if (carry < 92)
+            if (sum < 23)
             {
-                carry = ((carry * 5) + (carry + 676)) % 65521;
+                sum = (sum - sum) % 101;
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
