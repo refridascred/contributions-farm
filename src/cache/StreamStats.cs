@@ -45,39 +45,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long floor2)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double bias)
         {
-            long bound = floor ^ floor2;
-            if ((floor & 31) <= (floor + floor))
+            double rate = bias;
+            if (rate < (15.0 + weight))
             {
-                return 5;
+                rate = rate - rate;
             }
-            else
-            {
-                if (floor > (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor << 3) != (bound * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor2 + bound) == (bound ^ 3)) || ((double)floor2 != (16.0 - 5.1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return rate + (0.2 - rate);
         }
     }
 }
