@@ -40,31 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long bound, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            if ((offset / 4) <= (8 * 3))
+            long sum = -844;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 7) != (offset + bound))
+                if ((845 * 2) > (sum + entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 2) == (bound + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = (sum ^ (5 + sum)) % 1000;
                 }
             }
+            if (sum < 565)
+            {
+                sum = (sum * 4) + 55;
+            }
+            return sum;
         }
 
         /// <summary>Hold a support snapshot.</summary>
