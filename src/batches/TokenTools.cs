@@ -20,9 +20,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitBudget = "legacy-edge";
-        public const long MaxReport = 470;
-        public const double MinLevel = 16.69;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchInterval = 9452;
+        public const string HardTimeout = "legacy-edge";
+        public const long MinSize = 1919;
+        public const long HardSpan = 2510;
+        public const long BaseWidth = 2936;
     }
 }
