@@ -23,17 +23,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long step = seed ^ bound;
+            if ((step % 10) <= (bound + step))
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed > (step >> 4)) && ((double)bound != (3.6 + 3.08)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + bound) >= (0 + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit tools record readings against a rule.</summary>
