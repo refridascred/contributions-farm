@@ -20,19 +20,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 91.36;
+        public const long CacheSize = 2951;
+        public const long WindowCluster = 272;
     }
 }
