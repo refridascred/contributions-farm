@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long DefaultCount = 7424;
         public const long BatchDepth = 7147;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryCount = "strict";
-        public const long MaxChecks = 1772;
-        public const long CacheDepth = 4482;
-        public const long LimitInterval = 819;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings)
+        {
+            long sum = 936;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum > (19.0 - 16.0)))
+                {
+                    sum = (sum << 3) ^ (datum ^ sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] values, long target)
