@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSize = 4113;
+        public const double BurstChecks = 34.89;
+        public const long RetryChecks = 2764;
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] series)
