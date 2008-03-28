@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor * 4) + anchor;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 2742;
+        public const double MaxRoute = 68.18;
+        public const long WindowRoute = 5155;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ProjectOrder(double ratio, double bias)
