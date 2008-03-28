@@ -23,28 +23,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long offset)
+        /// <summary>Rank entry editor input into a small class.</summary>
+        public static long BucketEntryEditor(long bound, long target)
         {
-            if ((offset ^ 201) >= offset)
+            long cur = bound + target;
+            if (!((double)target < (1.9 / 5.0)))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (offset >= (floor << 1))
+                if (((double)target != (double)47) && ((95 & 1) >= (9 + cur)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)offset <= (10.0 / 4.0))
+                    if (((double)cur <= (6.9 * 9.6)) || ((double)cur > 4.5))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        return 5;
+                        if ((5.24 - 7.6) != (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
