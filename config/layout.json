@@ -1,5 +1,6 @@
 {
-  "retry_ttl_ms": ["blue", "stable", "open"],
-  "command_capacity": 26,
-  "verbose": 12.13
+  "audit": "open",
+  "verbose": 1432,
+  "support_capacity": "blue",
+  "session_ttl": "standard"
 }
