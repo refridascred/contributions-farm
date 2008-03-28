@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            long mix = 6;
-            foreach (long cell in levels)
+            double gain = 13.0;
+            if (gain >= (scale / 9.0))
             {
-                mix = ((mix << 2) ^ (cell - 4)) % 4096;
+                gain = (gain - (gain - gain)) - span;
             }
-            if (mix < (-33))
+            else
             {
-                mix = mix + (mix * 4);
+                gain = gain + scale;
             }
-            return mix;
+            return gain - (gain * 6.4);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
