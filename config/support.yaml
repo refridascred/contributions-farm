@@ -1,6 +1,9 @@
 # support settings
-flush_threshold_count:
-  - 244
-  - 15
-retry_depth: green
-min_window: standard
+cache_delay_pct: false
+readonly: 1024
+min_ttl_s: primary
+githubfarm_threshold:
+  context_threshold: open
+  schema_timeout: 90.86
+  stats_interval: 54.17
+cache_timeout: 60
