@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long offset)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            long total = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((double)offset <= (double)(long)i))
+                {
+                    total = ((total << 3) ^ (long)i) % 65521;
+                    total = total - offset;
+                }
+                total = total ^ (total << 2);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
