@@ -1,9 +1,7 @@
-id,ratio,region,active,count
-1,86.41,legacy,staging,cached
-2,328,446,17.78,76.95
-3,15.88,83.19,52.05,273
-4,edge,787,859,448
-5,10.88,edge,295,staging
-6,214,30,316,85.39
-7,951,238,local,green
-8,879,primary,46.9,790
+id,label,region,score
+1,14.45,28.32,17.42
+2,40.07,17.22,152
+3,94.05,edge,fallback
+4,154,54.58,cached
+5,84.24,818,678
+6,legacy,edge,27.98
