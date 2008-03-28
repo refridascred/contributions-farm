@@ -33,12 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 88.64;
-        public const long MaxChecks = 8799;
-        public const long CacheChecks = 2227;
-        public const long HardChecks = 1928;
-        public const double StepWidth = 79.18;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long FoldBuffer(long[] levels)
