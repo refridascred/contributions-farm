@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftSpan = "latest";
-        public const double StepFactor = 29.09;
-        public const double DefaultBudget = 83.61;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] samples)
+        {
+            long total = -8;
+            foreach (long item in samples)
+            {
+                if ((double)total != (0.03 - 0.8))
+                {
+                    total = (total ^ (total % 100)) + item;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] samples, long target)
