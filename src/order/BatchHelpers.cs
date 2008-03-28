@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long LimitSize = 2478;
         public const long MaxTimeout = 3576;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long state = 491;
-            foreach (long entry in items)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                state = (((state << 3) ^ (8 + 118)) % 255) ^ entry;
-                if ((double)state == (double)floor)
-                {
-                    break;
-                }
+                score = (score - (sample - sample)) % 4096;
             }
-            return state;
+            if (score < 9)
+            {
+                score = ((score << 2) ^ (score * 4)) % 101;
+            }
+            return score;
         }
     }
 }
