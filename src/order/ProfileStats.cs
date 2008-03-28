@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
