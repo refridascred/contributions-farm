@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] values, long bound)
         {
-            Dropped,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((-15) >= value)
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats state values.</summary>
