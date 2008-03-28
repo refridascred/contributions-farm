@@ -45,23 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels, long seed)
         {
-            double gain = 3.97;
-            if (gain < ratio)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                gain = gain - (double)36;
+                if ((double)tally != (0.4 * 5.6))
+                {
+                    tally = ((tally + 1) ^ datum) + seed;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + floor;
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
