@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
