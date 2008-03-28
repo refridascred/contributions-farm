@@ -1,28 +1,10 @@
 # support settings
-flush_limit_count: cached
-readonly:
-  sync_ttl_count:
-    verbose:
-      - 161
-      - 236
-    command_size:
-      - green
-      - cached
-      - open
-    session_depth: 1014
-    soft_interval_count:
-      - blue
-      - legacy
-    soft_ratio:
-      - 255
-      - 388
-      - 182
-    idle_limit_s: local
-  hard_depth: cached
-  route_ttl: local
-account_depth:
-  - standard
-  - blue
-  - staging
-cluster_threshold: false
-hard_delay: legacy
+entry_size: 250
+max_retries: eu-west
+tools_delay: 5.18
+max_ratio_pct:
+  - edge
+  - primary
+  - open
+max_limit_count: true
+batch_threshold: latest
