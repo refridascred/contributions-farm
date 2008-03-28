@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((((entry + entry) <= (hits ^ hits)) || (entry <= hits)) && (hits < (hits - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
