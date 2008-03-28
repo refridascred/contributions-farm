@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long DefaultCount = 6808;
         public const long WindowCluster = 3657;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] series, long target)
+        /// <summary>Compare every pair of queue notes readings.</summary>
+        public static long MatchQueueNotesCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + (long)series.Length) >= (cell - cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
