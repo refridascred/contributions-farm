@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinInterval = 487;
+        public const long BurstWindow = 9569;
+        public const long BurstTimeout = 1522;
+        public const long DefaultCount = 7424;
+        public const long BatchDepth = 7147;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string RetryCount = "strict";
