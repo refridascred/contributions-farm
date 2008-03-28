@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank editor stream input into a small class.</summary>
-        public static long SortEditorStream(long bound, long bound2)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long lane = bound - bound2;
-            if ((2.5 / 2.0) <= (double)lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 / 2) == (11 * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
