@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 9437;
-        public const long WindowLayout = 8141;
-        public const long MinFactor = 6549;
-        public const long RetryFactor = 7821;
-        public const long CacheLayout = 8224;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] readings, long seed)
+        {
+            long acc = 6;
+            foreach (long cell in readings)
+            {
+                if (((double)seed <= (6.2 - 4.49)) && ((cell + seed) > (0 - cell)))
+                {
+                    acc = (acc << 2) ^ (28 - acc);
+                }
+                if ((14 * 5) >= (acc & 15))
+                {
+                    acc = acc - (cell * 5);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc / 5)) % 65521;
+                }
+                if (!(cell < (seed + 64)))
+                {
+                    acc = ((acc << 2) ^ (cell >> 1)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long seed, long floor)
