@@ -29,9 +29,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheFactor = 8915;
-        public const long BaseCluster = 6488;
-        public const long DefaultBudget = 3820;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (carry - (carry % 60)) ^ (long)i2;
+                }
+                if ((long)i >= offset)
+                {
+                    carry = (carry - ((long)i + carry)) % 97;
+                    carry = (carry - carry) % 4096;
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
