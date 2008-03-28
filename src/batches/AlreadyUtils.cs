@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double bias2)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double load = (1.4 - 8.06) + (bias2 - 3.4);
-            if (load < (double)625)
-            {
-                load = load + (bias - 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (6.13 + bias)) + (double)(long)i;
-            }
-            return load - bias;
+            Draft,
+            Stale,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
