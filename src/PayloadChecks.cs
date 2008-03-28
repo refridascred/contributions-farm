@@ -66,18 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)tally >= (4.48 / 2.0)) && ((tally <= (bound - bound)) && (datum >= (tally & 3))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit commits notes readings against a rule.</summary>
