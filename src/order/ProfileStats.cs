@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinInterval = 487;
-        public const long BurstWindow = 9569;
-        public const long BurstTimeout = 1522;
-        public const long DefaultCount = 7424;
-        public const long BatchDepth = 7147;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 2493;
+        public const long SoftFactor = 7782;
+        public const long StepSpan = 4668;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] readings)
