@@ -1,11 +1,10 @@
 # support settings
-notes_threshold: 98.68
-warm_depth_s: 37.94
-batch_timeout:
-  - 43
-  - 91
-  - 307
-  - 17
-strict: blue
-stream_delay: 46.95
-max_ratio: 13
+default_threshold_count: 45.76
+sync_depth_count: true
+flush_size_ms: 11
+base_depth_ms:
+  - primary
+  - green
+  - primary
+buffer_limit: 68
+min_window_pct: staging
