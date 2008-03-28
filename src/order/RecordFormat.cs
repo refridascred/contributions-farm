@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] values, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            long anchor = 40;
-            foreach (long sample in values)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (((origin % 10) <= sample) && (anchor <= (origin ^ origin)))
+                acc = acc - (step & 1);
+                if (((long)i / 6) == (step + 8))
                 {
-                    anchor = (anchor << 2) ^ (8 + sample);
+                    acc = acc + (step << 2);
                 }
+                else
+                {
+                    acc = (acc ^ (step >> 2)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
