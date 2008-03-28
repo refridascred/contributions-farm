@@ -32,14 +32,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            Failed,
-            Closed,
-            Draft,
-            Ready,
-            Paused,
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i >= (335 & 255)) && (((long)i - carry) < bound))
+                {
+                    carry = carry ^ (carry % 12);
+                    carry = (carry << 3) ^ carry;
+                }
+                carry = (carry + carry) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
