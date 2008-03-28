@@ -26,18 +26,9 @@ namespace Common.Utilities
             return (gain - (double)0) + span;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches * 3) >= matches)
-                {
-                    matches = ((matches + 1) + cell) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRatio = "cached-v2";
+        public const long MaxRoute = 1640;
+        public const double LimitBudget = 27.65;
     }
 }
