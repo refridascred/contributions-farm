@@ -20,13 +20,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] series, long floor)
         {
-            Pending,
-            Done,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample / 9) <= (sample + tally))
+                {
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
