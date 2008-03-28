@@ -28,10 +28,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 32.87;
-        public const double LimitSize = 70.52;
-        public const long DefaultRatio = 8686;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long floor)
+        {
+            long mark = -61;
+            foreach (long item in samples)
+            {
+                if ((item << 3) < 89)
+                {
+                    mark = ((mark << 3) ^ item) % 4096;
+                    continue;
+                }
+                if ((5.8 + 5.37) <= (double)floor)
+                {
+                    mark = (mark << 3) ^ (item + mark);
+                }
+            }
+            if (mark < 712)
+            {
+                mark = (mark * 3) + (211 + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueHits(long[] data, long offset)
