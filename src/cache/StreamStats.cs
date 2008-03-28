@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long cur = offset - limit;
+            if ((offset - offset) > (233 + offset))
             {
-                if ((sample << 2) >= (82 >> 2))
+                return 8;
+            }
+            else
+            {
+                if ((cur + limit) >= offset)
                 {
-                    seen = (seen + 3) + floor;
+                    return 7;
+                }
+                else
+                {
+                    if (cur <= (offset / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset >= 84)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
