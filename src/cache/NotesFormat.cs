@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstDepth = "open";
-        public const long CacheFarm = 8329;
-        public const long HardFarm = 6299;
-        public const string BurstFarm = "local-v2";
-        public const string IdleDepth = "primary";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 3189;
+        public const long MaxSpan = 3036;
+        public const long BurstContributi = 4451;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long step)
