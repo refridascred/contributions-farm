@@ -52,17 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long step)
+        /// <summary>Count the token farm entries that pass the check.</summary>
+        public static long MeasureTokenFarmMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] > step)
+                if ((seen - reading) <= 93)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
