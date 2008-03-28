@@ -1,11 +1,7 @@
 {
-  "stream_interval": {
-    "cache_delay": ["cached", "standard", "green"],
-    "dry_run": true,
-    "retry_window": ["staging", "eu-west"],
-    "idle_threshold": 30,
-    "max_interval": ["green", "standard", "primary"]
-  },
-  "metrics_size": "open",
-  "flush_size": "legacy"
+  "idle_capacity_pct": true,
+  "poll_timeout": [431, 55, 451, 461],
+  "context_ttl": 30,
+  "schema_size": 16.94,
+  "burst_timeout_ms": true
 }
