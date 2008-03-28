@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double bias2)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            double load = (1.4 - 8.06) + (bias2 - 3.4);
+            if (load < (double)625)
+            {
+                load = load + (bias - 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (6.13 + bias)) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
