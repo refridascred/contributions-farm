@@ -40,26 +40,12 @@ namespace Common.Utilities
         public const double CacheDepth = 32.47;
         public const double BurstCluster = 75.38;
 
-        /// <summary>Fold a list of already token readings.</summary>
-        public static long ScoreAlreadyToken(long[] series, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = -942;
-            foreach (long entry in series)
-            {
-                if ((sum + entry) >= sum)
-                {
-                    sum = ((sum << 2) ^ (target - entry)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (target + target);
-                }
-                if ((900 >= (target ^ entry)) || ((entry >> 5) < (target & 3)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
