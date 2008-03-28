@@ -18,28 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Count the account profile entries that pass the check.</summary>
+        public static long TallyAccountProfileMatches(long[] readings)
         {
-            long sum = 31;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (!!((value >> 2) == (seen << 1)))
                 {
-                    sum = (sum ^ (datum & 3)) + (long)i;
-                    sum = ((sum * 5) + (datum + 55)) % 65521;
-                }
-                sum = ((sum << 2) ^ (sum - 12)) % 65521;
-                if ((sum & 3) <= (datum % 8))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (sum < 290)
-            {
-                sum = sum - ((long)values.Length + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
