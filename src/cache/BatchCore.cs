@@ -33,31 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a cache context value against two limits.</summary>
-        public static long SortCacheContext(long floor, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long floor)
         {
-            if (((double)seed != (4.94 / 2.0)) || (((-6) ^ seed) >= floor))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor / 6) <= (seed + 22)) && ((seed >> 4) < (seed >> 3)))
+                if ((floor << 2) <= (count ^ floor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + 63) == (floor % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
