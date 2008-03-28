@@ -21,10 +21,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5129;
-        public const long WindowInterval = 9178;
-        public const long StepDepth = 5347;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            New,
+            Closed,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] data)
