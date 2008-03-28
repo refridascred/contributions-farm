@@ -30,21 +30,22 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((7.0 * 0.69) < (double)count)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) + sample) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
