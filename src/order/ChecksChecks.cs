@@ -27,23 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)(long)items.Length != (double)seen)
-                {
-                    seen = ((seen + 3) + sample) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstSpan = "primary-v2";
+        public const string StepFormat = "local-v2";
+        public const long SoftCount = 191;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double ratio, double bias)
