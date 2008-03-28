@@ -1,19 +1,8 @@
 {
-  "hard_size_pct": {
-    "entry_timeout": {
-      "default_window_count": 77,
-      "soft_capacity": false,
-      "filter_depth": 1024
-    },
-    "warm_ttl_pct": {
-      "audit": 100,
-      "context_threshold": true,
-      "warm_size_s": ["open", "strict", "legacy", "legacy"],
-      "sync_ttl_s": "strict"
-    },
-    "poll_size_ms": 4.66
-  },
-  "dry_run": "strict",
-  "verbose": 1024,
-  "enabled": 8422
+  "idle_window": [469, 192, 169, 395],
+  "format_capacity": [317, 98],
+  "warm_depth": 1024,
+  "commits_interval": true,
+  "dry_run": ["staging", "local", "open", "edge"],
+  "retry_delay": 3712
 }
