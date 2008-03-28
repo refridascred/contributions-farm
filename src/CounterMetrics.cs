@@ -22,18 +22,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long result = 759;
-            foreach (long sample in series)
-            {
-                if (0.5 >= (double)sample)
-                {
-                    result = ((result ^ result) % 4096) + limit;
-                }
-            }
-            return result % 4096;
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
