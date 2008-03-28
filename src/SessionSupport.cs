@@ -35,19 +35,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] data, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (datum > seed)
+                if (entry > seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
