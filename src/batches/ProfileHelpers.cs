@@ -40,10 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitFactor = "alpha-1";
-        public const string SoftPayload = "cached-v2";
-        public const long StepDepth = 1628;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long step, long limit)
