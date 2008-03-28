@@ -61,12 +61,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] values, long seed)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a buffer info.</summary>
