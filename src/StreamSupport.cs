@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string BaseCache = "open-v2";
         public const string RetryFactor = "local-v2";
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Idle,
-            Failed,
-            New,
-            Paused,
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
