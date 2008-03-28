@@ -31,19 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items, long offset)
+        /// <summary>Look up the position of a token batch sample.</summary>
+        public static long LocateTokenBatchIndex(long[] data, long target)
         {
-            long result = 5;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ result) % 97) ^ reading;
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > (-1))
-            {
-                result = ((result << 3) ^ offset) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
