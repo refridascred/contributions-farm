@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long MeasureWindowProfileMatches(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((count / 7) >= (count + datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Audit notes graph readings against a rule.</summary>
