@@ -33,10 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitBudget = 6740;
-        public const long BurstLevel = 9565;
-        public const double BurstCommand = 68.8;
-        public const long SoftWidth = 641;
+        /// <summary>Roll a stream queue counter forward.</summary>
+        public static long StepStreamQueue(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
