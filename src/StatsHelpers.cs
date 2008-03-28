@@ -46,19 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] levels, long offset)
         {
-            double mean = scale / 3.0;
-            if (mean <= (double)17)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                mean = (mean - 6.9) + span;
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 7.24);
-            }
-            return mean + (double)73;
+            return stale;
         }
     }
 }
