@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long seed)
         {
-            if ((4 & 255) >= (floor + 2))
+            long edge = step - seed;
+            if ((double)seed >= (5.0 + 0.07))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((origin * 3) != (origin + 660))
+                if ((seed * 5) > 8)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if (15 <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + (-645)) != (edge - edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
