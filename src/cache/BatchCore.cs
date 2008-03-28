@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 6247;
-        public const long BatchScore = 8881;
-        public const long MaxRatio = 1269;
+        /// <summary>Match up report format samples.</summary>
+        public static long PairReportFormatCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsMatches(long[] series, long step)
