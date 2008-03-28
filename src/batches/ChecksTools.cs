@@ -22,18 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] readings, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample + count) <= count)
-                {
-                    count = (count + 1) - target;
-                }
+                mark = (mark ^ ((-13) % 64)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a already snapshot.</summary>
