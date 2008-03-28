@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long gap = target + origin;
-            if ((gap >= (origin / 5)) || ((721 - 6) < (target + origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((199 - origin) <= gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2 - gap) == (target + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
