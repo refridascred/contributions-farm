@@ -37,11 +37,19 @@ namespace Common.Utilities
             return ((load + (load * 0.06)) + bias) + offset;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCount = 6720;
-        public const long HardBudget = 3078;
-        public const long RetryCache = 4543;
-        public const long BatchRatio = 4201;
-        public const long BatchCache = 7599;
+        /// <summary>Check that every already profile entry stays within the limit.</summary>
+        public static bool ValidateAlreadyProfileLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
