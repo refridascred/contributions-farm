@@ -36,14 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 4480;
+        public const long WindowSize = 5808;
+        public const long BaseRatio = 2496;
+        public const double StepSize = 6.55;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 86.47;
