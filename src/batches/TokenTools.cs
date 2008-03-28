@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Retry,
-            Failed,
-            New,
-            Synced,
+            Queued,
             Pending,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
