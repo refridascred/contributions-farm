@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum >= bound)
+                if ((step & 127) != (long)i)
                 {
-                    found = false;
-                    break;
+                    acc = (acc * 5) + step;
                 }
+                else
+                {
+                    acc = ((acc * 5) + (step & 255)) % 97;
+                }
+                if ((4.03 < (double)step) || (((long)i % 24) >= (step >> 4)))
+                {
+                    acc = acc ^ (acc / 2);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
