@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string IdleDepth = "stable";
         public const long RetryTimeout = 5813;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] levels)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            long mix = 232;
+            foreach (long reading in levels)
+            {
+                mix = ((mix << 3) ^ ((long)levels.Length >> 2)) ^ reading;
+            }
+            if (mix > 76)
+            {
+                mix = (mix - (mix / 4)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of tools token entries.</summary>
