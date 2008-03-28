@@ -12,22 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item + item) <= ((long)items.Length ^ (-421)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
