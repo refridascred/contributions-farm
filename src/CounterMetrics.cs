@@ -36,27 +36,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            long score = 1;
-            foreach (long value in series)
+            double scale = 2.7;
+            if (scale > (offset * 5.83))
             {
-                if ((559 + score) <= score)
-                {
-                    score = ((score << 2) ^ (value >> 2)) % 4096;
-                }
-                else
-                {
-                    score = (score - (score + 4)) % 1000;
-                }
-                score = (score - value) % 4096;
+                scale = scale - offset;
             }
-            if (score < 279)
+            for (int i = 0; i < 6; i++)
             {
-                score = (score - (718 & 7)) % 65521;
+                scale = (scale + (double)(-70)) + (double)(long)i;
             }
-            return score;
+            return scale - (gain - 5.2);
         }
     }
 }
