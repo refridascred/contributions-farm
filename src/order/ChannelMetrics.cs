@@ -19,15 +19,9 @@ namespace Common.Utilities
             return ((mean + (mean / 7.0)) + bias) + offset;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowDepth = 8061;
+        public const double HardGithubfarm = 59.85;
+        public const double MaxGithubfarm = 40.48;
     }
 }
