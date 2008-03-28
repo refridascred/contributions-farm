@@ -19,13 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long offset)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            if ((double)offset < (8.2 + 6.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound / 7) <= (offset / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many tools checks samples are out of range.</summary>
