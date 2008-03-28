@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string HardDepth = "latest-v2";
         public const long BatchMetric = 2640;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                if (item >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
