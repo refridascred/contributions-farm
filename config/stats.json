@@ -1,6 +1,8 @@
 {
-  "session_retries": 88,
-  "report_interval": "eu-west",
-  "warm_delay": 92,
-  "enabled": "green"
+  "max_size_ms": 1024,
+  "cache_delay_pct": false,
+  "warm_size_s": [202, 105, 419, 20],
+  "cache_threshold_ms": 2215,
+  "persist": 27,
+  "already_depth": 1707
 }
