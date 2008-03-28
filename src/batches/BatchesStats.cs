@@ -27,12 +27,23 @@ namespace Common.Utilities
         public const long MinLayout = 4836;
         public const string CacheLayout = "staging-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 2436;
-        public const long BaseCommand = 5414;
-        public const long RetryCommand = 4429;
-        public const long SoftSpan = 4345;
-        public const long MinCommand = 3210;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item != (double)hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] items, long floor)
