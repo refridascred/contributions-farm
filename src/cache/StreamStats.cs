@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            long cur = offset - limit;
-            if ((offset - offset) > (233 + offset))
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((cur + limit) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (cur <= (offset / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset >= 84)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
