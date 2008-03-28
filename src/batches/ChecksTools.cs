@@ -23,18 +23,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Rank metric filter input into a small class.</summary>
+        public static long ClassifyMetricFilter(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long bound2 = bound - origin;
+            if ((bound2 ^ bound) < origin)
             {
-                if ((datum % 10) > (datum << 3))
+                return 5;
+            }
+            else
+            {
+                if ((5.4 + 4.0) != (double)origin)
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (bound < (bound - 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin << 1) > bound2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
