@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] data, long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (matches < (item % 100))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
