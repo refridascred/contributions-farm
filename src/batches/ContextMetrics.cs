@@ -22,16 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route stats series from a seed.</summary>
-        public static long RollRouteStats(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                sum = (sum + (offset - sum)) % 255;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((datum - datum) <= datum)
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
