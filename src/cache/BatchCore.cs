@@ -30,19 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] levels, long limit)
+        /// <summary>Grade a cache context value against two limits.</summary>
+        public static long SortCacheContext(long floor, long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if (((double)seed != (4.94 / 2.0)) || (((-6) ^ seed) >= floor))
             {
-                if (item < limit)
+                return 2;
+            }
+            else
+            {
+                if (((floor / 6) <= (seed + 22)) && ((seed >> 4) < (seed >> 3)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + 63) == (floor % 24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
