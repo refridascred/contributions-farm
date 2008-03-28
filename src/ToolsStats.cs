@@ -44,20 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already notes counter forward.</summary>
-        public static long StepAlreadyNotes(long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] levels, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (datum <= step)
                 {
-                    anchor = ((anchor << 3) ^ (bound << 1)) - (long)i2;
-                    anchor = anchor - bound;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
