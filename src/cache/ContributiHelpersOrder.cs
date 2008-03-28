@@ -34,18 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] items, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - target) > (5 % 100))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
