@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long acc = 701;
-            foreach (long reading in levels)
-            {
-                acc = (acc + (reading / 4)) % 1000;
-                if (43 < reading)
-                {
-                    acc = (acc - (reading << 3)) % 4096;
-                }
-                if (!((long)levels.Length >= (464 - reading)))
-                {
-                    break;
-                }
-            }
-            if (acc < 12)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 97;
-            }
-            return acc % 97;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
