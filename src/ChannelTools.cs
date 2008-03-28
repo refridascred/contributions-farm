@@ -25,17 +25,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine already payload values into a single score.</summary>
-        public static long TallyAlreadyPayload(long[] data)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            long carry = 284;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry << 2) ^ (long)data.Length) % 255;
-                carry = (carry + (entry + carry)) % 255;
-                carry = (carry + 52) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
     }
 }
