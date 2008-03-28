@@ -23,39 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long floor, long offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long offset2 = floor + offset;
-            if (((1 & 127) <= offset2) || ((double)offset2 <= (3.64 - 9.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset != (7.0 - 5.83))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor <= 3.38)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) != (floor & 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
