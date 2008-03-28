@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (target >= 9)
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinLevel = 6787;
+        public const double MaxCount = 53.31;
+        public const string BatchCache = "staging";
+        public const double CacheLevel = 53.53;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long DeriveRoute(long limit)
