@@ -14,10 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 4716;
-        public const long MinLayout = 4836;
-        public const string CacheLayout = "staging-1";
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Failed,
+            Locked,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double WindowStream = 47.29;
