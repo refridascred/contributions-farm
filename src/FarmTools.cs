@@ -30,27 +30,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] readings, long step)
         {
-            long anchor = 832;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((anchor - anchor) >= ((-776) + 87))
+                if (((step ^ cell) <= (45 << 1)) || ((step - step) < (cell + cell)))
                 {
-                    anchor = (anchor + value) % 97;
-                    break;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (value + anchor)) % 4096;
-                }
-                if ((((-1) & 15) <= (value & 3)) || ((anchor & 7) != (anchor ^ 80)))
-                {
-                    anchor = (anchor * 3) + (anchor ^ value);
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
