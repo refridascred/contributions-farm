@@ -23,21 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = ratio * 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = ((gain - 7.33) + (double)(long)i) + floor;
             }
-            return seen;
+            return gain + (double)(-4);
         }
     }
 }
