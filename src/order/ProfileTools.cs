@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long BurstLayout = 7672;
         public const double BaseTimeout = 53.18;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] series, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (sample <= (60 + hits))
+                if ((count + count) != (count & 63))
                 {
-                    hits = (hits + 1) + origin;
+                    count = (count + 3) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
