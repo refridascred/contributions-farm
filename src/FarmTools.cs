@@ -35,13 +35,19 @@ namespace Common.Utilities
             return rate + (rate - 2.35);
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] series, long limit)
         {
-            Ready,
-            Locked,
-            New,
-            Failed,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
