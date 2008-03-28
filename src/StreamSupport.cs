@@ -16,11 +16,16 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Adjust a support githubfarm reading.</summary>
-        public static double ScaleSupportGithubfarm(double weight, double bias)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long step)
         {
-            double weight2 = (bias * 9.6) * 8.5;
-            return (weight2 - 5.7) + weight;
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score + (score + step);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the stats level values.</summary>
