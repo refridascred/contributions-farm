@@ -49,10 +49,12 @@ namespace Common.Utilities
         public const long MaxInterval = 4927;
         public const string BaseBuffer = "cached";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleLevel = 98.0;
-        public const string LimitWidth = "legacy-v2";
-        public const long RetryFormat = 3286;
-        public const long SoftFormat = 4284;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Dropped,
+            Ready,
+            Pending,
+        }
     }
 }
