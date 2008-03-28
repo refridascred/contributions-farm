@@ -1,6 +1,5 @@
 {
-  "base_retries": ["latest", "cached"],
-  "idle_limit_count": "legacy",
-  "max_interval_s": 68,
-  "verbose": false
+  "dry_run": false,
+  "flush_interval_ms": 6.7,
+  "sync_size": false
 }
