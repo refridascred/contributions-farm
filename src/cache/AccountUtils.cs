@@ -25,17 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools queue value from a seed.</summary>
-        public static long SeriesToolsQueue(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum + (seed - (long)i);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "staging-1";
+        public const long WindowStats = 6767;
+        public const double MaxStats = 17.01;
 
         /// <summary>Find the first metrics report entry that matches the target.</summary>
         public static long LookupMetricsReportIndex(long[] items, long target)
