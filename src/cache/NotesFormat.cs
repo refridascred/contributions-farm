@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the support graph entries that pass the check.</summary>
-        public static long CountSupportGraphMatches(long[] samples, long floor)
+        /// <summary>Audit checks payload readings against a rule.</summary>
+        public static long AuditChecksPayloadMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((7.0 / 5.0) != (double)hits)
+                if ((reading * 2) <= (reading / 8))
                 {
-                    hits = ((hits + 2) ^ cell) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
