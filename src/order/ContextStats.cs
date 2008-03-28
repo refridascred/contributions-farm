@@ -24,12 +24,40 @@ namespace Common.Utilities
         public const long HardCount = 3115;
         public const long HardWidth = 7813;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultInterval = 4257;
-        public const long HardSize = 6899;
-        public const double WindowFactor = 74.55;
-        public const long RetryEditor = 7637;
-        public const long DefaultWidth = 2405;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long seed, long origin)
+        {
+            long delta = seed ^ origin;
+            if (seed >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((delta + 64) > (-40))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((14.0 / 4.0) != (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin < (7.75 - 13.0)) && ((delta >> 4) < delta))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] samples, long target)
