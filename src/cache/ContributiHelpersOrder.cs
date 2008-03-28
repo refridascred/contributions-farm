@@ -34,22 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] items, long target)
         {
-            long mix = 362;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((7 ^ mix) == (reading << 1))
+                if ((sample - target) > (5 % 100))
                 {
-                    mix = ((mix << 3) ^ (mix << 3)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (mix < 91)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return matches;
         }
     }
 }
