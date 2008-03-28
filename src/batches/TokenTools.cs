@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinBudget = 1767;
-        public const string StepQueue = "staging-v2";
-        public const long LimitScore = 3249;
-        public const string HardQueue = "strict-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7566;
+        public const long CacheRatio = 9650;
+        public const long DefaultRatio = 2539;
+        public const long MaxWidth = 2203;
+        public const long RetryCluster = 4628;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchInterval = 9452;
