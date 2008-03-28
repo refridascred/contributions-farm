@@ -17,25 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a commits cluster counter forward.</summary>
-        public static long RollCommitsCluster(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((61 >> 2) < mix)
-                {
-                    mix = mix ^ (offset & 3);
-                }
-                else
-                {
-                    mix = ((mix * 2) + (0 - (-329))) % 1000;
-                    mix = (mix * 3) + offset;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 3933;
+        public const long RetryLevel = 7481;
+        public const long CacheCount = 3383;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
