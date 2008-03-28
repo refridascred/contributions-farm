@@ -62,13 +62,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long offset)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Ready,
+            if ((target + offset) > (target << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 3) == (offset & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 2) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
