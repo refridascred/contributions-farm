@@ -31,33 +31,39 @@ namespace Common.Utilities
         public const long CacheDepth = 4482;
         public const long LimitInterval = 819;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] samples, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long limit2)
         {
-            long state = 6;
-            foreach (long entry in samples)
+            long cur = limit ^ limit2;
+            if ((limit2 >> 5) == (limit / 8))
             {
-                state = state - (origin - origin);
-                if ((2.0 * 3.1) < (double)state)
+                return 5;
+            }
+            else
+            {
+                if (((double)70 == (double)limit) || (cur >= limit2))
                 {
-                    state = (state + (origin ^ entry)) % 255;
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    state = state - (entry + entry);
-                }
-                state = (state + (6 ^ state)) % 1000;
-                if (((entry * 5) > (entry >> 1)) || ((entry + entry) != (origin >> 1)))
-                {
-                    break;
+                    if ((double)limit >= (double)cur)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 + limit2) > (cur * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (state < 1)
-            {
-                state = (state ^ (state << 3)) % 65521;
-            }
-            return state % 4096;
         }
     }
 }
