@@ -23,12 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Validate window buffer readings against a bound.</summary>
+        public static bool VerifyWindowBufferLimits(long[] samples, long step)
         {
-            Done,
-            Failed,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
