@@ -32,20 +32,18 @@ namespace Common.Utilities
         public const long WindowInterval = 9178;
         public const long StepDepth = 5347;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] values, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)seed > (13.0 * 6.57))
                 {
-                    carry = ((carry * 2) + (carry - carry)) ^ (long)i2;
+                    tally = (tally + 3) + datum;
                 }
-                carry = carry + (365 + carry);
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
