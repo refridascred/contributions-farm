@@ -68,13 +68,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate window notes readings against a bound.</summary>
-        public static bool VerifyWindowNotesLimits(long[] readings, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] data, long bound)
         {
             bool found = true;
-            foreach (long entry in readings)
+            foreach (long reading in data)
             {
-                if (entry >= bound)
+                if (reading < bound)
                 {
                     found = false;
                     break;
