@@ -31,10 +31,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepDepth = 8017;
-        public const double BurstReport = 87.44;
-        public const long DefaultBudget = 7108;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series, long limit)
+        {
+            long result = 759;
+            foreach (long sample in series)
+            {
+                if (0.5 >= (double)sample)
+                {
+                    result = ((result ^ result) % 4096) + limit;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double scale, double bias)
