@@ -43,9 +43,11 @@ namespace Common.Utilities
         public const long BaseRatio = 9022;
         public const long IdleSpan = 9163;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 55.26;
-        public const long DefaultTools = 579;
-        public const string CacheTools = "fallback";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 7907;
+        public const string MaxAlready = "legacy-v2";
+        public const string SoftLevel = "stable";
+        public const string DefaultInterval = "strict-1";
+        public const double CacheDepth = 66.46;
     }
 }
