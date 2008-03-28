@@ -24,28 +24,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of stats filter readings.</summary>
-        public static long CombineStatsFilter(long[] data, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long total = 814;
-            foreach (long cell in data)
-            {
-                total = total ^ (total - cell);
-                total = (total + (cell >> 4)) % 4096;
-                if ((double)cell <= (5.1 + 6.4))
-                {
-                    total = ((total * 3) + (limit ^ cell)) % 101;
-                }
-                else
-                {
-                    total = (total - ((long)data.Length % 2)) % 4096;
-                }
-                if ((double)total >= (double)455)
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Stale,
+            Closed,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
