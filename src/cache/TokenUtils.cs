@@ -42,17 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a farm checks reading by value.</summary>
-        public static long SeekFarmChecksIndex(long[] series, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
