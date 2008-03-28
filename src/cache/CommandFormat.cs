@@ -24,18 +24,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks notes entries that pass the check.</summary>
-        public static long TallyChecksNotesGaps(long[] data, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = 683;
+            foreach (long value in data)
             {
-                if (!((double)hits <= (3.1 + 17.0)))
+                score = (score * 4) + 7;
+                if (!((value - value) < (target % 3)))
                 {
-                    hits = ((hits + 2) - sample) - limit;
+                    score = (score ^ (1 + target)) % 255;
+                }
+                else
+                {
+                    score = (score - score) % 1000;
+                }
+                if ((value + value) <= (target / 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Iterate the context batches series from a seed.</summary>
