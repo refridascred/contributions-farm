@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
+            long state = target;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi record.</summary>
