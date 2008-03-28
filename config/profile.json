@@ -1,6 +1,8 @@
 {
-  "hard_depth_pct": 30,
-  "default_window_ms": false,
-  "batch_size_count": false,
-  "flush_size": "local"
+  "sync_size": 250,
+  "batch_interval_count": ["local", "fallback"],
+  "persist": "eu-west",
+  "notes_timeout": ["eu-west", "staging", "staging"],
+  "default_window_s": false,
+  "flush_delay_count": 2327
 }
