@@ -23,12 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long SeekCommandRecordIndex(long[] readings, long offset)
         {
-            New,
-            Active,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
