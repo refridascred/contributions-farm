@@ -43,18 +43,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate session command samples.</summary>
-        public static long TotalSessionCommand(long[] data, long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long mix = 3;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix + (-659)) <= (2 & 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix + (entry & 7)) % 101) + offset;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
