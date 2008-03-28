@@ -1,5 +1,8 @@
 {
-  "hard_window_pct": 29,
-  "entry_timeout": 78,
-  "soft_threshold_count": 30
+  "idle_capacity_ms": 80.76,
+  "batch_size_pct": 48,
+  "flush_ratio_ms": 0.18,
+  "entry_retries": true,
+  "record_delay": 96,
+  "strict": [218, 151, 102]
 }
