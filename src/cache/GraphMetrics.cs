@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 8673;
-        public const long StepContext = 6148;
-        public const string DefaultTimeout = "strict";
-        public const long SoftContext = 1213;
-        public const string HardLevel = "staging-v2";
+        /// <summary>Measure how many tools checks samples are out of range.</summary>
+        public static long CountToolsChecksHits(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)bound < (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowBuffer = 1634;
