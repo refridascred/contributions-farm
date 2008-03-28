@@ -36,9 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepSpan = 2992;
-        public const string MaxWidth = "legacy-v2";
-        public const long MinSize = 414;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((double)target < (double)target) && (sample <= (sample * 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
