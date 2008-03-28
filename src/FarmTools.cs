@@ -30,24 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long seed)
-        {
-            if ((double)origin < (double)761)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed + 939) == (seed & 7)) || (origin <= 17))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 7809;
+        public const long DefaultOrder = 5207;
+        public const string BatchOrder = "open-edge";
+        public const long StepTimeout = 8065;
+        public const long IdleOrder = 9307;
     }
 }
