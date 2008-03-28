@@ -57,22 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings)
+        /// <summary>Locate a farm payload reading by value.</summary>
+        public static long SeekFarmPayloadIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((seen << 1) > cell) || ((cell & 31) < 46)) || (6 >= (seen - seen)))
+                if (series[i] == step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
