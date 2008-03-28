@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context contributi value against two limits.</summary>
-        public static long GradeContextContributi(long step, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long bound)
         {
-            if ((step << 1) < (step - (-57)))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step < (step & 127)) && (step > 479))
+                if (reading != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >> 3) == (822 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor + floor) > (floor / 3)) && ((step >> 1) > (step << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
