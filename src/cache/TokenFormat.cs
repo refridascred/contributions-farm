@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (2 <= (seen * 5))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultDepth = "local";
+        public const long HardTimeout = 4972;
+        public const double IdleSpan = 18.79;
+        public const long BaseCount = 3453;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
