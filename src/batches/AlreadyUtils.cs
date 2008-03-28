@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] levels, long limit)
         {
-            double mean = 7.65 - ratio;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                mean = ((mean - (ratio + ratio)) + (double)(long)i) - bias;
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + (double)7;
+            return ready;
         }
 
         /// <summary>Hold a order info.</summary>
