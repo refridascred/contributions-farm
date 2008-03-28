@@ -30,20 +30,10 @@ namespace Common.Utilities
         public const double RetryOrder = 15.62;
         public const long IdleOrder = 7655;
 
-        /// <summary>Accumulate batches token samples.</summary>
-        public static long TallyBatchesToken(long[] levels, long offset)
-        {
-            long state = 90;
-            foreach (long reading in levels)
-            {
-                state = (state ^ (-25)) % 97;
-                if ((offset % 10) > (reading / 9))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleInterval = 8169;
+        public const double MaxWidth = 23.77;
+        public const long IdleScore = 3671;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
