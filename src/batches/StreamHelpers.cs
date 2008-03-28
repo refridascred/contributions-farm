@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheLevel = "alpha-1";
-        public const long BaseInterval = 3289;
-        public const long HardLevel = 6679;
-        public const long HardSize = 7975;
-        public const double LimitRecord = 12.18;
+        /// <summary>Adjust a already farm reading.</summary>
+        public static double SmoothAlreadyFarm(double ratio, double offset)
+        {
+            double bias = offset;
+            return (bias - (double)684) + ratio;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordGaps(long[] samples, long bound)
