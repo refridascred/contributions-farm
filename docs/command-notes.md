@@ -1,11 +1,12 @@
 # Command notes
 
-Use support settings to tune how often farm data is refreshed.
-The contributi module keeps contributi values in sync with the batch cache.
-Run the checks check before changing any buffer limits.
+When a batches fails, the filter handler retries a few times before giving up.
+Use token settings to tune how often profile data is refreshed.
+When a notes fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep channel values small
-- Review counter limits each release
-- Prefer token defaults
+- Prefer window defaults
+- Validate report input early
+- Document new batch fields
+- Log every counter change
