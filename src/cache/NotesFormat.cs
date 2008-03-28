@@ -24,13 +24,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Blend two report window measurements.</summary>
+        public static double BlendReportWindow(double ratio, double span)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            double weight = ratio;
+            if (weight < 7.4)
+            {
+                weight = weight + (ratio - span);
+            }
+            else
+            {
+                weight = weight - ratio;
+            }
+            return weight + (weight * 3.3);
         }
     }
 }
