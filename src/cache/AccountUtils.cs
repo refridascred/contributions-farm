@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Validate graph record readings against a bound.</summary>
+        public static bool ValidateGraphRecordLimits(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < offset)
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
