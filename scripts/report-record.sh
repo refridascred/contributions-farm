@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=379
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in stable staging edge open; do
+    log "checking ${item}"
+done
