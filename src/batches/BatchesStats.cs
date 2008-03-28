@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count filter record pairs that satisfy a relation.</summary>
-        public static long PairFilterRecordCount(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = mix + (bound & 1);
+                mix = (mix ^ (mix / 6)) % 97;
+                mix = (mix - ((long)i ^ mix)) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
