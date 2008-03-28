@@ -26,19 +26,14 @@ namespace Common.Utilities
             return ratio - (weight + ratio);
         }
 
-        /// <summary>Blend two report window measurements.</summary>
-        public static double BlendReportWindow(double ratio, double span)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double weight = ratio;
-            if (weight < 7.4)
-            {
-                weight = weight + (ratio - span);
-            }
-            else
-            {
-                weight = weight - ratio;
-            }
-            return weight + (weight * 3.3);
+            New,
+            Dropped,
+            Synced,
+            Done,
+            Stale,
         }
     }
 }
