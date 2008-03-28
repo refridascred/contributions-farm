@@ -50,22 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
+        public static long ClassifyBufferGithubfarm(long offset, long floor)
         {
-            long mark = 28;
-            foreach (long entry in readings)
+            if ((double)offset >= (7.94 * 9.0))
             {
-                if (mark < (mark - 600))
+                return 8;
+            }
+            else
+            {
+                if ((11.0 + 6.31) <= (double)offset)
                 {
-                    mark = mark - entry;
+                    return 6;
                 }
-                if ((mark + entry) > (mark << 1))
+                else
                 {
-                    break;
+                    if (((1.97 + 15.0) != (double)floor) || ((floor % 8) <= floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((offset ^ floor) < (616 - offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
