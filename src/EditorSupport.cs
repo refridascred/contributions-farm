@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Done,
-            Closed,
-            Ready,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
