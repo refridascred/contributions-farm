@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitTimeout = 4145;
-        public const long HardBatches = 9213;
-        public const long DefaultBatches = 9473;
+        /// <summary>Count the commits entry entries that pass the check.</summary>
+        public static long TallyCommitsEntryMatches(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (limit > (item - 734))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a token record reading.</summary>
         public static double AdjustTokenRecord(double scale, double offset)
