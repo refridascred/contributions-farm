@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
