@@ -39,15 +39,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            double gain = 6.0;
-            for (int i = 0; i < 2; i++)
+            long sum = 778;
+            foreach (long sample in items)
             {
-                gain = ((gain - (weight + weight)) + (double)(long)i) - offset;
+                if ((867 * 4) >= sample)
+                {
+                    sum = ((sum << 3) ^ (sample * 3)) % 1000;
+                }
             }
-            return gain - gain;
+            if (sum > 252)
+            {
+                sum = (sum ^ (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank already input into a small class.</summary>
