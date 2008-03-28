@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long BurstEntry = 5803;
         public const double MinEntry = 33.93;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Dropped,
-            Paused,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryTimeout = "standard-v2";
+        public const long WindowCluster = 4264;
+        public const long BatchCluster = 6153;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] values)
