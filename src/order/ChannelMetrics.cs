@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long WindowWidth = 6226;
         public const long MaxCommits = 5831;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Locked,
             Retry,
-            Idle,
-            Closed,
-            Done,
+            Ready,
         }
 
         /// <summary>Find the first cache channel entry that matches the target.</summary>
