@@ -20,22 +20,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] series, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample / 9) <= (sample + tally))
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
