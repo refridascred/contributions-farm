@@ -38,18 +38,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= tally)
                 {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
