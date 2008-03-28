@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            Ready,
-            Paused,
-            Synced,
-            Failed,
+            if ((seed - 455) <= seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((seed >> 3) < seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
