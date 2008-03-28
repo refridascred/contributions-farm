@@ -25,17 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long limit)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long SeriesToolsQueue(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                sum = sum + (seed - (long)i);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first metrics report entry that matches the target.</summary>
