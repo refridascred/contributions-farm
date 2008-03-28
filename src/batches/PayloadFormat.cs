@@ -15,21 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((5.0 + 1.0) > (double)sample) && (97 >= (matches >> 3))) && (matches < ((long)readings.Length / 3)))
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
