@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long SoftProfile = 4849;
         public const string MaxProfile = "standard-1";
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long offset)
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
