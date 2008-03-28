@@ -13,20 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a payload token reading.</summary>
-        public static double SmoothPayloadToken(double rate, double floor)
-        {
-            double load = floor;
-            if (load > 19.0)
-            {
-                load = load - (load * 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load + (double)15;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxScore = 4332;
+        public const long BatchTimeout = 7705;
+        public const long SoftRecord = 4588;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long step, long floor)
