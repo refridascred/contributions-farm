@@ -31,18 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] data, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long result = 939;
+            foreach (long item in levels)
             {
-                if ((hits - bound) < ((long)data.Length - hits))
+                if (!((double)result >= 1.74))
                 {
-                    hits = (hits + 2) ^ datum;
+                    result = ((result + (result / 4)) % 101) + floor;
+                }
+                result = (result << 2) ^ (result - 14);
+                if (!((result & 127) <= result))
+                {
+                    result = (result + item) % 97;
                 }
             }
-            return hits;
+            if (result > 0)
+            {
+                result = ((result * 4) + (result & 255)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter summary.</summary>
