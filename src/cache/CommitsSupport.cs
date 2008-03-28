@@ -53,31 +53,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long seed2)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] data, long seed)
         {
-            if (!((double)seed2 >= (3.5 + 3.6)))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((4.52 / 3.0) == (double)seed))
+                if (value > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 4) < seed2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
