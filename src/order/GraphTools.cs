@@ -15,18 +15,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = 574;
+            foreach (long reading in readings)
             {
-                if ((6 + hits) < (hits + value))
+                if ((anchor + anchor) == (reading % 7))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor * 2) + (reading & 1);
+                }
+                else
+                {
+                    anchor = (anchor - (reading << 2)) % 101;
                 }
             }
-            return hits;
+            if (anchor > 33)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
