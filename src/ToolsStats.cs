@@ -48,21 +48,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Roll a already notes counter forward.</summary>
+        public static long StepAlreadyNotes(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (bound << 1)) - (long)i2;
+                    anchor = anchor - bound;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
