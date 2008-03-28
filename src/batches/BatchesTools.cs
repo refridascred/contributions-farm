@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            long slot = bound + target;
-            if ((double)slot <= (0.22 - 4.44))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((slot - target) > (93 + bound)) || ((bound + slot) > (slot - target)))
+                if ((matches / 6) != (datum & 15))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot << 2) >= ((-96) / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
