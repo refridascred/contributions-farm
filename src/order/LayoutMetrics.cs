@@ -24,17 +24,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a layout token reading by value.</summary>
-        public static long LocateLayoutTokenIndex(long[] samples, long floor)
+        /// <summary>Grade a profile filter value against two limits.</summary>
+        public static long SortProfileFilter(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = target - offset;
+            if (span > (target % 97))
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((target - span) >= 7)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset % 16) > (span << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + 3) >= (target & 255))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
