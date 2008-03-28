@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double bias, double span)
         {
-            long total = 8;
-            foreach (long datum in levels)
+            double ratio = span;
+            if (ratio < bias)
             {
-                if (((total + total) > (96 >> 5)) || ((double)total <= (6.74 - 0.34)))
-                {
-                    total = (total + (datum + datum)) - target;
-                }
+                ratio = ratio - ratio;
             }
-            return total % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (bias * 6.3)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
