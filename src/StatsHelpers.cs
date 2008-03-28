@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long WindowSpan = 557;
         public const string DefaultFactor = "strict-edge";
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
