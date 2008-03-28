@@ -15,15 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            double ratio = (double)8 + floor;
-            if (ratio > (double)(-203))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - (weight + ratio);
+            return count;
         }
 
         /// <summary>Describe the editor mode values.</summary>
