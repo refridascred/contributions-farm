@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] levels, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen << 3) != (sample ^ seen))
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
