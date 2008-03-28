@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((step & 127) != (long)i)
-                {
-                    acc = (acc * 5) + step;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (step & 255)) % 97;
-                }
-                if ((4.03 < (double)step) || (((long)i % 24) >= (step >> 4)))
-                {
-                    acc = acc ^ (acc / 2);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
