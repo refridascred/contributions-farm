@@ -33,32 +33,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a metrics report value against two limits.</summary>
-        public static long BucketMetricsReport(long target, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long bound)
         {
-            long next = target - origin;
-            if ((next + origin) <= (origin % 60))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)next < (15.0 - 1.7))
+                if (cell <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((next >> 2) != (1 / 3)) && ((next / 3) == (target >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
