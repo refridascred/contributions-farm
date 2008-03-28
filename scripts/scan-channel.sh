@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=404
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge local primary open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-standard}"
+mode="${1:-cached}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
