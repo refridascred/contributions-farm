@@ -23,17 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset ^ 201) >= offset)
             {
-                if (samples[i] >= target)
+                return 8;
+            }
+            else
+            {
+                if (offset >= (floor << 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset <= (10.0 / 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
