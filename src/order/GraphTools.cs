@@ -52,10 +52,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstInterval = 542;
-        public const double IdleBudget = 81.4;
-        public const string CacheQueue = "stable-edge";
-        public const string RetryQueue = "staging-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 9894;
+        public const double BaseDepth = 25.81;
+        public const long CachePayload = 6809;
     }
 }
