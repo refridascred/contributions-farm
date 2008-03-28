@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((reading + reading) == (reading * 4))
+                if ((676 & 7) != (floor + reading))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
