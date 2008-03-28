@@ -53,14 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double gain, double offset)
         {
-            Done,
-            Dropped,
-            Idle,
-            Queued,
-            Active,
+            double weight = (offset + offset) + (gain + gain);
+            if (weight <= (double)615)
+            {
+                weight = weight - (offset * 18.0);
+            }
+            return weight - offset;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
