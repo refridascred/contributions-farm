@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((datum + limit) <= (473 & 31)) || !((datum + 53) > datum))
+                if ((seen >> 2) >= reading)
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
