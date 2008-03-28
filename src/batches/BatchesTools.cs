@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const long LimitStats = 7904;
         public const string IdleStats = "fallback-1";
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a contributi counter value against two limits.</summary>
+        public static long ClassifyContributiCounter(long target, long floor)
         {
-            Closed,
-            Paused,
-            Pending,
+            long offset = target + floor;
+            if (!(floor < (target & 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor / 3) <= (offset - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - 63) > (target + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up queue samples.</summary>
