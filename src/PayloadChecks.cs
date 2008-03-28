@@ -48,20 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 77.29;
+        public const long SoftDepth = 1121;
+        public const long IdleBudget = 5226;
+        public const double StepSchema = 8.09;
+        public const double SoftSpan = 17.13;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
