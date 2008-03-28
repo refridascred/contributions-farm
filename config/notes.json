@@ -1,6 +1,6 @@
 {
-  "readonly": 1214,
-  "support_delay": "standard",
-  "context_interval": 51,
-  "notes_ratio": ["local", "stable", "blue", "latest"]
+  "hard_ratio_count": true,
+  "soft_interval_s": false,
+  "base_threshold": "standard",
+  "base_ttl_count": 67.18
 }
