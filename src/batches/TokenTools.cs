@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mix = 811;
-            foreach (long sample in values)
-            {
-                if ((sample % 5) <= (mix / 7))
-                {
-                    mix = ((mix * 2) + mix) - step;
-                }
-                else
-                {
-                    mix = (mix - (sample + mix)) % 65521;
-                }
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
