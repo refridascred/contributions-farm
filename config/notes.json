@@ -1,8 +1,7 @@
 {
-  "tools_delay": 2264,
-  "cache_ratio_ms": [132, 144, 32],
-  "cache_depth_pct": 782,
-  "audit": 37.24,
-  "max_size_count": "stable",
-  "order_timeout": true
+  "tools_depth": 5654,
+  "audit": 56,
+  "max_capacity_pct": [297, 459, 58, 500],
+  "flush_ratio_s": "standard",
+  "batch_delay": 3860
 }
