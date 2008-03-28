@@ -1,8 +1,24 @@
 # entry settings
-poll_retries_ms: strict
-cache_size: true
-sync_ratio_s: 57.99
-batches_ratio:
-  batches_delay: primary
-  batch_ttl_pct: 8249
-  cache_limit: 12
+default_limit_ms:
+  - legacy
+  - eu-west
+  - stable
+persist: blue
+retry_depth_s:
+  - edge
+  - latest
+  - fallback
+  - open
+enabled:
+  - 162
+  - 196
+sync_ttl_s:
+  readonly: 6192
+  githubfarm_window:
+    contributi_timeout: cached
+    commits_threshold: false
+    buffer_capacity: true
+    batch_size_pct: fallback
+    cache_size_pct: 2069
+    flush_delay_s: legacy
+  token_size: green
