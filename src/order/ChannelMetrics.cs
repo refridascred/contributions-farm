@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step - (long)i) > (mark * 5))
-                {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = mark ^ 160;
-                    mark = (mark + (step * 4)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
