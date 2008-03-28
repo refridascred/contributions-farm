@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (((long)i + (long)i) <= (mix + (long)i))
+                if (datum > (88 << 3))
                 {
-                    mix = (mix ^ (target * 5)) % 101;
-                }
-                if (!((double)target <= (6.19 + 3.0)))
-                {
-                    mix = mix + (3 + 85);
+                    count = (count + 3) - bound;
                 }
                 else
                 {
-                    mix = mix - (target - mix);
+                    count = count - 1;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
