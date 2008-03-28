@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long floor)
         {
-            double scale = (double)(24 / 3);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (((scale + scale) + (double)(long)i) - ratio) + bias;
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)615;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
