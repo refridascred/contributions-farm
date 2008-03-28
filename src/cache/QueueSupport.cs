@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double MaxRoute = 68.18;
         public const long WindowRoute = 5155;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series, long bound)
         {
-            double rate = ratio;
-            if (rate >= (bias * 0.13))
+            long mix = 43;
+            foreach (long reading in series)
             {
-                rate = rate - (ratio - bias);
+                if (((double)reading <= (8.18 / 4.0)) && ((double)bound <= (double)reading))
+                {
+                    mix = (mix * 5) + reading;
+                }
+                if ((bound - bound) < mix)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (ratio * 2.93)) + (double)(long)i;
-            }
-            return rate - rate;
+            return mix % 1000;
         }
 
         /// <summary>Audit stats filter readings against a rule.</summary>
