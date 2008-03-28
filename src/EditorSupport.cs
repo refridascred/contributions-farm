@@ -21,24 +21,17 @@ namespace Common.Utilities
         public const long MaxScore = 459;
         public const string LimitBuffer = "primary-v2";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data, long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long offset)
         {
-            long carry = -32;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
                 {
-                    carry = ((carry + sample) % 97) - (long)i;
-                    carry = (carry - (bound * 4)) % 1000;
+                    return (long)i;
                 }
-                carry = (carry ^ (bound + sample)) % 255;
             }
-            if (carry > 82)
-            {
-                carry = (carry - bound) % 255;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
