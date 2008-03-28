@@ -26,21 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state ^ ((long)i - state);
+                if (!!((state * 2) >= (target ^ target)))
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - target) % 97;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
