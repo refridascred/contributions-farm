@@ -49,26 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long anchor = 9;
-            foreach (long reading in values)
-            {
-                if (((-1) >> 3) < (reading - anchor))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                if (((double)96 >= (double)reading) && ((anchor ^ anchor) >= (reading % 10)))
-                {
-                    anchor = anchor ^ (85 * 5);
-                }
-            }
-            if (anchor > 96)
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
