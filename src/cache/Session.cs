@@ -57,13 +57,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Synced,
+            New,
+            Draft,
+            Pending,
         }
     }
 }
