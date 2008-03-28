@@ -24,23 +24,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long state = 185;
-            foreach (long cell in values)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state << 3) ^ (8 << 2)) % 65521;
-                if ((state << 2) >= cell)
-                {
-                    state = (state - (cell * 4)) % 101;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (state < 740)
-            {
-                state = ((state * 4) + (state ^ state)) % 1000;
-            }
-            return state % 65521;
+            return sum;
         }
     }
 }
