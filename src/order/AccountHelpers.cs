@@ -78,14 +78,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Paused,
-            Retry,
-            Closed,
-            New,
-            Stale,
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two commits filter measurements.</summary>
