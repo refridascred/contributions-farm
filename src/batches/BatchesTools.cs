@@ -33,16 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer cluster value from a seed.</summary>
-        public static long DeriveBufferCluster(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 9398;
+        public const long DefaultBatches = 5241;
+        public const long IdleRatio = 9863;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long step)
