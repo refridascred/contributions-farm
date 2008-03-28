@@ -1,20 +1,5 @@
 {
-  "compress": {
-    "hard_threshold": {
-      "readonly": 92,
-      "window_ratio": "latest",
-      "graph_depth": [225, 59],
-      "queue_window": ["local", "blue", "standard", "legacy"],
-      "route_timeout": 63.74
-    },
-    "entry_capacity": [492, 328, 75, 352],
-    "strict": {
-      "layout_retries": 4644,
-      "poll_ttl": 30,
-      "notes_capacity": 5719
-    },
-    "soft_threshold": false
-  },
-  "sync_timeout_pct": 91.2,
-  "dry_run": "legacy"
+  "max_ratio": 32,
+  "cache_limit_ms": "green",
+  "batch_ttl": 60
 }
