@@ -69,18 +69,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit commits notes readings against a rule.</summary>
-        public static long AuditCommitsNotesHits(long[] levels, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((15.0 * 11.0) <= (double)origin)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            New,
+            Queued,
+            Failed,
         }
     }
 }
