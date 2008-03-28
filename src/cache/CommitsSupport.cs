@@ -40,17 +40,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step < (double)floor)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (!((double)floor != (1.56 * 14.0)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - floor) < (1 / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step - floor) >= (floor << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
