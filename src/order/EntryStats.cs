@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter session entries that pass the check.</summary>
-        public static long CountFilterSessionHits(long[] data, long floor)
+        /// <summary>Derive the next metrics checks value from a seed.</summary>
+        public static long SeriesMetricsChecks(long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen % 10) > (4 & 31))
+                if (8.0 <= (double)mark)
                 {
-                    seen = ((seen + 3) - reading) + floor;
+                    mark = (mark * 3) + bound;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Blend two context measurements.</summary>
