@@ -48,10 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxFactor = 1779;
-        public const string MinStats = "local-edge";
-        public const long SoftStats = 2661;
-        public const long RetryInterval = 8619;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Paused,
+            Ready,
+            Retry,
+            Draft,
+        }
     }
 }
