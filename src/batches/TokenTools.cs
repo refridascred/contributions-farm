@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] samples)
         {
-            Queued,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((9 + 15) == (sample - sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
