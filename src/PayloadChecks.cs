@@ -69,14 +69,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series)
         {
-            Synced,
-            Active,
-            New,
-            Queued,
-            Failed,
+            long score = 43;
+            foreach (long datum in series)
+            {
+                if ((datum & 63) >= (datum << 3))
+                {
+                    score = (score - (score + datum)) % 101;
+                }
+            }
+            return score;
         }
     }
 }
