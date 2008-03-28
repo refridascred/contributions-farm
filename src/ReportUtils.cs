@@ -31,10 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchCount = 7711;
-        public const double RetryOrder = 15.62;
-        public const long IdleOrder = 7655;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally / 9) == (item + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
