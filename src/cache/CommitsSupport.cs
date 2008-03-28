@@ -14,15 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long offset)
         {
-            double bias = (13.0 + 3.3) / 4.0;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                bias = (((bias + bias) - (double)(long)i) + scale) - floor;
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + bias;
+            return ok;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
