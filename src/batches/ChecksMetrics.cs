@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank counter batch input into a small class.</summary>
+        public static long BucketCounterBatch(long bound, long step)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long step2 = bound ^ step;
+            if ((step2 & 63) <= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((9 / 6) > step2) || ((bound * 3) < (step >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((19.0 - 8.0) <= (double)step2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
