@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)offset <= (double)(long)i))
+                if ((series[i] == target) && ((series[i] % 5) != 0))
                 {
-                    total = ((total << 3) ^ (long)i) % 65521;
-                    total = total - offset;
+                    return (long)i;
                 }
-                total = total ^ (total << 2);
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
