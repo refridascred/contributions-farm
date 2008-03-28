@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 7094;
-        public const long RetryTimeout = 9798;
-        public const double RetrySpan = 35.29;
-        public const long BaseRatio = 9022;
-        public const long IdleSpan = 9163;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell < (8.93 / 4.0))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowAlready = 7907;
