@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data, long bound)
+        /// <summary>Iterate the route stats series from a seed.</summary>
+        public static long RollRouteStats(long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry % 100) != (entry + count))
-                {
-                    count = (count + 2) + bound;
-                }
+                sum = (sum + (offset - sum)) % 255;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
