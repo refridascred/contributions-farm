@@ -1,7 +1,11 @@
 {
-  "idle_interval": false,
-  "tools_interval": 44,
-  "payload_retries": [465, 348],
-  "poll_size": 27,
-  "githubfarm_depth": [2, 258]
+  "max_retries_count": "open",
+  "already_timeout": ["green", "latest"],
+  "burst_threshold_ms": 21,
+  "flush_window_s": {
+    "cache_threshold": [499, 460, 94],
+    "sync_size_ms": 35.83,
+    "entry_interval": ["edge", "local", "fallback"],
+    "retry_window": "fallback"
+  }
 }
