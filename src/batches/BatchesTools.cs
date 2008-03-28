@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long LimitStats = 7904;
         public const string IdleStats = "fallback-1";
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Failed,
-            Locked,
-            Ready,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 3372;
+        public const string HardMetric = "alpha";
+        public const double BaseSpan = 22.12;
+        public const double BurstMetric = 27.92;
+        public const long MaxMetric = 7345;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] values)
