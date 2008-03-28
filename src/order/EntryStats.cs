@@ -35,16 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                score = (score << 2) ^ (score + (long)i);
-                score = ((score * 4) + (long)i) % 65521;
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Adjust a entry metrics reading.</summary>
