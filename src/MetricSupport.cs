@@ -31,13 +31,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] samples, long origin)
+        /// <summary>Check that every queue format entry stays within the limit.</summary>
+        public static bool GuardQueueFormatRange(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long reading in samples)
+            foreach (long sample in series)
             {
-                if (reading >= origin)
+                if (sample <= offset)
                 {
                     valid = false;
                     break;
