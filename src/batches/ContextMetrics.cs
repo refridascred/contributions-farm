@@ -24,37 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long target)
         {
-            long cur = bound - offset;
-            if (!((double)cur >= (double)offset))
+            if ((step & 31) >= 575)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((5.8 + 1.58) < (double)cur)
+                if ((target >= (step & 31)) || ((double)step > (4.72 / 6.0)))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (!(cur <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (4 >= (cur & 127))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
