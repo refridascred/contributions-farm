@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 4716;
+        public const long MinLayout = 4836;
+        public const string CacheLayout = "staging-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MaxCommits = 49.45;
