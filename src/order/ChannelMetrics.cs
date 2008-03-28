@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] items, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
