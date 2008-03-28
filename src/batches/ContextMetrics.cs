@@ -59,22 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support counter samples.</summary>
-        public static long FoldSupportCounter(long[] values, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] levels)
         {
-            long anchor = -762;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (875 > anchor)
+                if ((seen << 2) > (seen - cell))
                 {
-                    anchor = ((anchor ^ limit) % 101) - reading;
+                    seen = seen + 1;
                 }
             }
-            if (anchor > 45)
-            {
-                anchor = (anchor * 5) + (limit * 3);
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
