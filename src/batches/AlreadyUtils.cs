@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Draft,
-            Stale,
-            Closed,
-            Locked,
-            Ready,
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
