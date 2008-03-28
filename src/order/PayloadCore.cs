@@ -12,17 +12,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] levels, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = seed + limit;
+            if (!((double)limit <= (3.6 - 2.15)))
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)prev >= (9.1 - 8.5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed == (6.0 + 5.24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
