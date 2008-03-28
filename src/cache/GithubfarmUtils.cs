@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank batch contributi input into a small class.</summary>
-        public static long GradeBatchContributi(long limit, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (limit < (seed >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed < (5 * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.05 / 4.0) != (double)limit) || ((double)seed != (6.16 * 4.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
