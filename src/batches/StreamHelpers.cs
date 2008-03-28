@@ -35,12 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((double)floor < (double)state) && ((double)(long)i < (9.5 + 7.0)))
+                {
+                    state = (state + (state & 7)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a farm entry.</summary>
