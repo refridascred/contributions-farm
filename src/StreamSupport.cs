@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double scale, double floor)
-        {
-            double mean = (double)(50 & 3);
-            if (mean > (floor * 20.0))
-            {
-                mean = mean - 7.7;
-            }
-            return mean - scale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "legacy";
+        public const string BaseCache = "open-v2";
+        public const string RetryFactor = "local-v2";
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
