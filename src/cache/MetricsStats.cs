@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result ^ (origin + origin)) % 65521;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepTimeout = 650;
+        public const long BaseAccount = 2225;
+        public const long BatchCount = 4059;
+        public const string BurstInterval = "primary-v2";
 
         /// <summary>Count the account profile entries that pass the check.</summary>
         public static long TallyAccountProfileMatches(long[] readings)
