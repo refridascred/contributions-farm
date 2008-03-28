@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Closed,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSize = 9600;
+        public const long BurstEntry = 5803;
+        public const double MinEntry = 33.93;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
