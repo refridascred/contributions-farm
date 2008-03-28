@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi schema values into a single score.</summary>
-        public static long WeighContributiSchema(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] readings)
         {
-            long total = -2;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((total + value) < 41)
+                if ((matches >= (matches & 3)) || ((183 + matches) <= (sample * 3)))
                 {
-                    total = ((total << 2) ^ (total << 2)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
