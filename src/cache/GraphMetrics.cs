@@ -51,12 +51,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 1634;
-        public const long CacheBuffer = 5548;
-        public const long SoftDepth = 5866;
-        public const long MaxInterval = 4927;
-        public const string BaseBuffer = "cached";
+        /// <summary>Validate order tools readings against a bound.</summary>
+        public static bool ValidateOrderToolsBounds(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
