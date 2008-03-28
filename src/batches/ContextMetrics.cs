@@ -24,14 +24,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "primary-1";
+        public const double IdleWidth = 66.58;
+        public const double BaseContext = 96.95;
 
         /// <summary>Accumulate support counter samples.</summary>
         public static long FoldSupportCounter(long[] values, long limit)
