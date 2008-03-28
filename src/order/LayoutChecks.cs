@@ -33,21 +33,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 60;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((79 >> 2) <= (sample + 411))
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 5) + (sample / 7)) % 97;
+                }
+                else
+                {
+                    score = score + (score * 3);
+                }
+                if ((double)score >= (16.0 - 4.0))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
