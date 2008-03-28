@@ -1,19 +1,20 @@
 # entry settings
-idle_depth_ms:
-  verbose:
-    - 199
-    - 19
-  min_retries: 79
-  metrics_timeout:
-    compress: 91.2
-    cache_ttl: 91
-    readonly: 3821
-    metrics_retries: 100
-    buffer_window: strict
-    flush_timeout_ms: 47.98
-  cache_delay: 8896
-default_delay_ms: 3319
-idle_limit: 500
-layout_threshold: 250
-command_limit: 5249
-cache_ratio_pct: 6086
+cache_size_pct: standard
+poll_ratio:
+  - standard
+  - local
+  - stable
+counter_capacity: true
+format_window: 26.91
+record_delay:
+  retry_delay_pct: eu-west
+  checks_limit: 13.49
+  batch_threshold: 54.22
+  route_threshold: false
+  batch_size: 42.5
+  cache_interval_count:
+    - 368
+    - 380
+    - 139
+    - 401
+farm_ttl: standard
