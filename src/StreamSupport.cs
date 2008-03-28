@@ -17,10 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 3933;
-        public const long RetryLevel = 7481;
-        public const long CacheCount = 3383;
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
