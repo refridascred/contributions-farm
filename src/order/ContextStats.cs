@@ -41,13 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            long result = 374;
+            foreach (long value in samples)
+            {
+                result = (result - (value - value)) % 255;
+                if ((result + result) < (result << 3))
+                {
+                    result = (result * 5) + result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next route value.</summary>
