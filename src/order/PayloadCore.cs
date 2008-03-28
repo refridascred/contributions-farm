@@ -22,12 +22,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            Queued,
-            Failed,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
