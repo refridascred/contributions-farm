@@ -15,24 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long seed, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((bound << 3) < (bound % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (bound % 97))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
