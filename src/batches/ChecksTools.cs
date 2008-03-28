@@ -43,10 +43,12 @@ namespace Common.Utilities
         public const long BaseDepth = 5276;
         public const double MinRatio = 32.74;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9407;
-        public const long LimitFactor = 2894;
-        public const long DefaultBatch = 1963;
-        public const long StepBatch = 5834;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Stale,
+            Pending,
+            Closed,
+        }
     }
 }
