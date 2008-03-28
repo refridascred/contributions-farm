@@ -42,12 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix << 3) ^ mix;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix - ((-573) * 2)) - (long)i2;
+                    mix = (mix * 3) + (mix << 2);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
