@@ -41,18 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] series)
+        /// <summary>Check that every payload batches entry stays within the limit.</summary>
+        public static bool GuardPayloadBatchesLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (8.4 >= (double)reading)
+                if (entry > bound)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
