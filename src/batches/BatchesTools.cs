@@ -39,21 +39,21 @@ namespace Common.Utilities
         public const string MaxLevel = "staging-edge";
         public const long WindowToken = 1847;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step << 1) > (mix * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix + (step + (long)i)) % 65521;
-                    continue;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix << 3) ^ 1) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
     }
 }
