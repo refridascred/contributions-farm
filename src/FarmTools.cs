@@ -24,15 +24,19 @@ namespace Common.Utilities
             return bias3 + (6.7 * 9.0);
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double gain, double span)
+        /// <summary>Validate tools session readings against a bound.</summary>
+        public static bool CheckToolsSessionRange(long[] samples, long target)
         {
-            double rate = 2.6 / 8.0;
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                rate = ((rate + (7.9 - span)) + (double)(long)i) - gain;
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (rate - 2.35);
+            return found;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
