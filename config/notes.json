@@ -1,6 +1,5 @@
 {
-  "soft_window": "eu-west",
-  "flush_capacity": ["local", "standard"],
-  "dry_run": ["cached", "eu-west", "eu-west"],
-  "burst_limit_ms": 859
+  "warm_depth_count": [413, 91, 293],
+  "default_ttl_s": 52.63,
+  "min_depth_ms": 2281
 }
