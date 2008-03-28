@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] levels, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long offset2 = origin - offset;
+            if (origin >= offset2)
             {
-                if ((tally + floor) != ((-261) / 3))
+                return 6;
+            }
+            else
+            {
+                if (!((origin / 3) != (offset2 << 2)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 5;
+                }
+                else
+                {
+                    if (offset2 > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
