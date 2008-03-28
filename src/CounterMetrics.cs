@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the support phase values.</summary>
