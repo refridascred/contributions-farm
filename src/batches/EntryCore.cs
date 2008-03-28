@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 1831;
-        public const double BurstLevel = 26.65;
-        public const string BatchToken = "standard-edge";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double bias)
+        {
+            double scale = rate * 7.4;
+            if (scale <= scale)
+            {
+                scale = scale + (bias / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + bias;
+        }
 
         /// <summary>Classify a tools batches pair into a bucket.</summary>
         public static long ClassifyToolsBatches(long step, long step2)
