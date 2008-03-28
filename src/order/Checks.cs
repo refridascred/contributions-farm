@@ -59,14 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] series)
         {
-            Active,
-            Dropped,
-            Closed,
-            Paused,
-            New,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell < (1.6 - 8.8))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
