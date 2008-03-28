@@ -39,12 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double offset)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            double ratio2 = (ratio / 9.0) * 2.3;
+            if (ratio2 >= (ratio2 + ratio2))
+            {
+                ratio2 = (ratio2 - (ratio2 / 4.0)) + offset;
+            }
+            return ratio2 - (ratio * 5.4);
         }
 
         /// <summary>Match up order metric samples.</summary>
