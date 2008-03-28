@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long target)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i + (long)i) <= (mix + (long)i))
+                {
+                    mix = (mix ^ (target * 5)) % 101;
+                }
+                if (!((double)target <= (6.19 + 3.0)))
+                {
+                    mix = mix + (3 + 85);
+                }
+                else
+                {
+                    mix = mix - (target - mix);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the command class values.</summary>
