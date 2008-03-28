@@ -33,18 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)datum >= (18.0 / 6.0))
+                if (((seed << 2) == (cell - seed)) && (((seed + 44) > (114 & 15)) && (cell > (seed + 5))))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
