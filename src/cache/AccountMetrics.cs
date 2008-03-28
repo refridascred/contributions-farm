@@ -50,28 +50,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long seed, long floor)
+        /// <summary>Grade a command already value against two limits.</summary>
+        public static long RankCommandAlready(long seed, long offset)
         {
-            if ((seed % 60) == (8 >> 4))
+            long slot = seed + offset;
+            if ((seed & 255) <= slot)
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (!((seed >> 3) <= (seed - floor)))
+                if ((seed ^ seed) > (24 + 666))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((7.0 + 4.74) >= (double)seed)
+                    if ((slot ^ seed) < seed)
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
