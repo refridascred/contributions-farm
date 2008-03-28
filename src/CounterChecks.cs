@@ -53,31 +53,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            if ((target + offset) > (target << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 3) == (offset & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 2) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Queued,
         }
     }
 }
