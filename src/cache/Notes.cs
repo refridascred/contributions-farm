@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine session order values into a single score.</summary>
-        public static long DigestSessionOrder(long[] data, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] data, long bound)
         {
-            long total = 35;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                total = (((total * 4) + ((-7) ^ total)) ^ cell) + origin;
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
