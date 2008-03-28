@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            New,
-            Active,
-            Retry,
-            Synced,
-            Stale,
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit buffer token readings against a rule.</summary>
