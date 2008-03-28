@@ -40,10 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 3398;
-        public const string CacheCount = "primary-v2";
-        public const string StepPayload = "stable-v2";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long floor)
+        {
+            long score = -2;
+            foreach (long item in items)
+            {
+                score = (score * 4) + (item - item);
+                score = (score + (floor * 4)) % 1000;
+                if (score < (score << 2))
+                {
+                    score = ((score * 3) + (65 << 1)) % 65521;
+                }
+            }
+            if (score < 60)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterHits(long[] levels)
