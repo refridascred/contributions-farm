@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a window filter counter forward.</summary>
-        public static long StepWindowFilter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((-874) - 97) <= mix)
-                {
-                    break;
-                }
-                mix = (mix * 4) + (long)i;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8792;
+        public const long BatchBatches = 5602;
+        public const long CacheSize = 3245;
+        public const long WindowFactor = 80;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] samples)
