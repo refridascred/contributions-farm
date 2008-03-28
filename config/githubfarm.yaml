@@ -1,9 +1,8 @@
 # githubfarm settings
-audit: latest
-soft_limit_pct:
-  - 494
-  - 50
-  - 197
-  - 177
-dry_run: false
-persist: local
+min_ratio_count: strict
+sync_delay: true
+hard_ttl_pct: legacy
+layout_capacity: true
+verbose:
+  - green
+  - standard
