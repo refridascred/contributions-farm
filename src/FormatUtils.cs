@@ -51,39 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits cluster pair into a bucket.</summary>
-        public static long GradeCommitsCluster(long step, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long delta = step + bound;
-            if (((929 ^ bound) >= (bound - bound)) || ((double)delta != (8.0 - 8.0)))
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((delta & 7) <= (bound + delta)) || ((bound << 1) <= step))
+                total = total - seed;
+                if ((seed + total) != (long)i)
                 {
-                    return 6;
+                    total = (total << 3) ^ (total - (long)i);
                 }
                 else
                 {
-                    if (step >= (delta / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + bound) == (delta / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = ((total * 3) + ((long)i - seed)) % 4096;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
