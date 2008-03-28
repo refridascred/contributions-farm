@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = 7;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample != (5.07 - 9.1)))
-                {
-                    sum = (sum << 3) ^ (sum / 8);
-                }
-            }
-            if (sum < 425)
-            {
-                sum = (sum + (49 - 47)) % 65521;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Hold a payload summary.</summary>
