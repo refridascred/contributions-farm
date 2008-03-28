@@ -23,20 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long sum = 62;
-            foreach (long value in values)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sum / 5) < (value * 2))
-                {
-                    sum = (sum << 2) ^ (57 / 4);
-                }
-                sum = (sum * 3) + sum;
-                sum = ((sum * 4) + (sum >> 1)) % 101;
+                result = (result << 2) ^ (result + limit);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
