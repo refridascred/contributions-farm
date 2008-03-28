@@ -22,15 +22,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a stats counter figure with a bias.</summary>
-        public static double AdjustStatsCounter(double ratio, double span)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            double mean = ratio;
-            if (mean <= (4.0 - span))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - mean;
+            return seen;
         }
     }
 }
