@@ -28,9 +28,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 8400;
-        public const long IdleRoute = 7025;
-        public const long BaseRoute = 8046;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
