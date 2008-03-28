@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long seed)
         {
-            long sum = 60;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((sample + sum) != (sum + sample))
+                if (entry >= seed)
                 {
-                    sum = sum - (sample << 1);
-                }
-                else
-                {
-                    sum = sum + sum;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
