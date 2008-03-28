@@ -34,36 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
-        public static long ClassifyBufferGithubfarm(long offset, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long target)
         {
-            if ((double)offset >= (7.94 * 9.0))
+            if ((9.0 / 4.0) <= (double)target)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((11.0 + 6.31) <= (double)offset)
+                if (target <= (target % 7))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (((1.97 + 15.0) != (double)floor) || ((floor % 8) <= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((offset ^ floor) < (616 - offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
