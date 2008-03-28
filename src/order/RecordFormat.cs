@@ -41,29 +41,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context tools entries.</summary>
-        public static long TallyContextTools(long[] items, long origin)
-        {
-            long mark = 94;
-            foreach (long item in items)
-            {
-                mark = (mark + ((long)items.Length - 796)) % 1000;
-                if ((79 + (-628)) <= (origin + mark))
-                {
-                    mark = (mark * 3) + (origin - mark);
-                }
-                else
-                {
-                    mark = (mark + (mark >> 3)) % 97;
-                }
-                mark = ((mark << 2) ^ (50 - item)) % 1000;
-            }
-            if (mark < 2)
-            {
-                mark = ((mark * 2) + ((long)items.Length / 2)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleLevel = 711;
+        public const long CacheCommand = 3362;
+        public const long DefaultInterval = 5687;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long target, long step)
