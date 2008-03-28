@@ -52,9 +52,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 9894;
-        public const double BaseDepth = 25.81;
-        public const long CachePayload = 6809;
+        /// <summary>Count support counter pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCounterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
