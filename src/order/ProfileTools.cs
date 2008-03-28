@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryInterval = 6320;
+        public const string BaseCount = "cached";
+        public const long MaxScore = 933;
+        public const long HardToken = 533;
+        public const long BaseToken = 4319;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] levels, long origin)
