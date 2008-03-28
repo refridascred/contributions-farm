@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long anchor = 57;
+            foreach (long cell in items)
             {
-                carry = (carry - (long)i) % 255;
-                if ((carry >> 2) >= 849)
-                {
-                    carry = (carry ^ (limit << 1)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (802 + (long)i)) % 101;
-                }
-                carry = carry - ((long)i >> 5);
-                carry = ((carry * 3) + (long)i) % 101;
+                anchor = ((anchor << 2) ^ (anchor + cell)) % 4096;
             }
-            return carry;
+            if (anchor < (-97))
+            {
+                anchor = (anchor ^ (anchor % 97)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cache record.</summary>
