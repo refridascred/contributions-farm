@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 7) >= 436)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a command record reading by value.</summary>
