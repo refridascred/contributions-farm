@@ -13,12 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long floor)
         {
-            Active,
-            Draft,
-            Synced,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a token batch sample.</summary>
