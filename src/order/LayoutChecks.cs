@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long state = 1;
+            foreach (long sample in readings)
             {
-                if (hits >= (hits - 938))
+                state = state + (bound % 5);
+                if ((sample * 5) <= (state << 3))
                 {
-                    hits = (hits + 1) - value;
+                    state = state ^ ((-6) + sample);
+                }
+                else
+                {
+                    state = (state - (sample * 4)) % 101;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a cluster options.</summary>
