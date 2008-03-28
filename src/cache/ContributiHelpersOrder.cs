@@ -34,19 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload batch entries.</summary>
-        public static long CombinePayloadBatch(long[] readings, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            long score = 543;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = (score ^ (99 + score)) - cell;
-                if (((double)limit >= (double)score) || (((long)readings.Length % 64) < (score + limit)))
+                if ((double)item >= (4.0 / 4.0))
                 {
-                    score = ((score << 3) ^ (score ^ limit)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
