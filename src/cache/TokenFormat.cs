@@ -22,17 +22,32 @@ namespace Common.Utilities
         public const string RetryScore = "strict-1";
         public const long BatchBuffer = 9413;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] samples, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor ^ offset;
+            if (((double)offset < (19.0 / 7.0)) && (floor <= offset))
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((diff + diff) >= (offset - 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((diff / 5) < diff) || (offset > (offset * 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
