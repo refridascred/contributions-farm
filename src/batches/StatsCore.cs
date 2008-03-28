@@ -13,19 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Adjust a payload token reading.</summary>
+        public static double SmoothPayloadToken(double rate, double floor)
         {
-            double bias2 = (double)(107 << 3);
-            if (bias2 > (offset + bias2))
+            double load = floor;
+            if (load > 19.0)
             {
-                bias2 = (bias2 + (bias2 * 4.69)) - bias;
+                load = load - (load * 7.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                bias2 = bias2 - 5.82;
+                load = (load + rate) - (double)(long)i;
             }
-            return bias2 + 12.0;
+            return load + (double)15;
         }
 
         /// <summary>Hold a format info.</summary>
