@@ -1,10 +1,4 @@
 # entry settings
-readonly:
-  filter_delay: 500
-  persist: fallback
-  flush_limit_count: fallback
-  default_timeout_count: fallback
-  retry_ttl_count: standard
-graph_timeout: legacy
-cache_depth: stable
-soft_depth_pct: 1024
+min_threshold_ms: 89
+support_window: false
+buffer_limit: open
