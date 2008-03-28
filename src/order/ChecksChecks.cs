@@ -32,31 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Validate commits support readings against a bound.</summary>
+        public static bool ValidateCommitsSupportRange(long[] data, long offset)
         {
-            if (!((bound ^ limit) <= (bound >> 3)))
+            bool valid = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit << 2) > limit) && ((bound ^ bound) >= (bound / 6)))
+                if (reading >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound < 52) && (limit >= (1 * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
