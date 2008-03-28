@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "open";
-        public const double MinToken = 65.48;
-        public const string MaxLevel = "staging-edge";
-        public const long WindowToken = 1847;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 2779;
+        public const long CacheMetric = 4049;
+        public const long BurstMetric = 8569;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] data, long offset)
