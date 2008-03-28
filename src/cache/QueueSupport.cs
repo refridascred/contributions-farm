@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((1.0 - 5.0) > (double)mix)
-                {
-                    mix = (mix + target) % 1000;
-                }
-                if ((double)target >= (double)(long)i)
-                {
-                    mix = (mix * 3) + mix;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit githubfarm route readings against a rule.</summary>
