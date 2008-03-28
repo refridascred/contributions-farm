@@ -49,11 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 3513;
-        public const long SoftFormat = 8641;
-        public const long DefaultFormat = 7480;
-        public const long RetryFormat = 1898;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long seed2)
+        {
+            if (!((double)seed2 >= (3.5 + 3.6)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((4.52 / 3.0) == (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 4) < seed2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardWidth = 5868;
