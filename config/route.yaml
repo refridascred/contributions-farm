@@ -1,13 +1,10 @@
 # route settings
-warm_ttl:
-  - 14
-  - 273
-schema_threshold: fallback
-dry_run: edge
-soft_ttl: 82
-hard_threshold_ms: 65
-verbose:
-  - 46
-  - 101
-  - 157
-  - 320
+base_timeout_s:
+  base_retries_pct: 93.5
+  entry_retries: blue
+  order_ttl: 24.37
+  contributi_size: 75.91
+  burst_timeout_ms: false
+channel_interval: 97
+base_size: eu-west
+record_retries: local
