@@ -12,12 +12,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 3372;
-        public const string HardMetric = "alpha";
-        public const double BaseSpan = 22.12;
-        public const double BurstMetric = 27.92;
-        public const long MaxMetric = 7345;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double bias)
+        {
+            double scale = (double)(24 / 3);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (((scale + scale) + (double)(long)i) - ratio) + bias;
+            }
+            return scale - (double)615;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] values)
