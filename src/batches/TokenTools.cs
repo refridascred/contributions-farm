@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double load = rate;
-            if (load >= (span * 11.0))
-            {
-                load = load - (load / 8.0);
-            }
-            else
-            {
-                load = load - (rate * 7.7);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
