@@ -30,10 +30,22 @@ namespace Common.Utilities
         public const string SoftPayload = "cached-v2";
         public const long StepDepth = 1628;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheInterval = 3737;
-        public const long WindowBudget = 7789;
-        public const long BurstAccount = 3732;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long seed)
