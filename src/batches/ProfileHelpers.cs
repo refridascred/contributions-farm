@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long target)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
