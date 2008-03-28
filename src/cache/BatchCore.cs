@@ -47,12 +47,22 @@ namespace Common.Utilities
         public const double RetryContext = 52.57;
         public const double WindowBudget = 83.51;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items, long target)
         {
-            Pending,
-            Queued,
-            Closed,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count ^ count) != (729 & 7))
+                {
+                    count = ((count + 3) ^ reading) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
