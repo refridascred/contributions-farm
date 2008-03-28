@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up metric account samples.</summary>
-        public static long MatchMetricAccountCount(long[] series)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
