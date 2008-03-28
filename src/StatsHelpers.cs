@@ -36,15 +36,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            double rate = (double)267 - (scale - span);
-            for (int i = 0; i < 8; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                rate = (rate + rate) + (double)(long)i;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return rate - scale;
+            return mark;
         }
 
         /// <summary>Count stats order pairs that satisfy a relation.</summary>
