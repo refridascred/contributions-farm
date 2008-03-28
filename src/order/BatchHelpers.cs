@@ -12,11 +12,12 @@ namespace Common.Utilities
             return (scale - (scale * 9.84)) + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftCount = 9.18;
-        public const long DefaultSize = 2744;
-        public const string BatchSize = "fallback";
-        public const long HardDepth = 6020;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
