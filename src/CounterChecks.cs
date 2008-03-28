@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] series, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (offset <= (offset >> 5))
+                if (reading >= floor)
                 {
-                    carry = (carry + ((-23) * 3)) % 255;
-                    carry = carry - ((long)i >> 1);
+                    valid = false;
+                    break;
                 }
-                carry = (carry ^ (16 + carry)) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Compare every pair of stream account readings.</summary>
