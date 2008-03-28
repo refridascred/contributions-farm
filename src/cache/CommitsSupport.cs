@@ -111,11 +111,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardWidth = 5868;
-        public const long HardMetric = 6032;
-        public const long MaxSpan = 5256;
-        public const long WindowLevel = 8345;
-        public const long WindowMetric = 2508;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Pending,
+            Done,
+            Retry,
+            Synced,
+            Active,
+        }
     }
 }
