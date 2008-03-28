@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BatchScore = 8881;
         public const long MaxRatio = 1269;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
