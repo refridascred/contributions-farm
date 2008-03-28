@@ -37,11 +37,24 @@ namespace Common.Utilities
         public const long SoftContext = 1213;
         public const string HardLevel = "staging-v2";
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a metric cluster value against two limits.</summary>
+        public static long ClassifyMetricCluster(long step, long origin)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            if (12.0 < (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((step * 4) > origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next counter tools value.</summary>
