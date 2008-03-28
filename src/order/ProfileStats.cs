@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] samples, long seed)
         {
-            long anchor = 851;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (!!((-92) > reading))
+                if ((double)seed == (5.4 + 7.8))
                 {
-                    anchor = (anchor * 4) + offset;
+                    seen = (seen + 2) + value;
                 }
-                if ((double)offset == (6.0 - 9.0))
+                else
                 {
-                    anchor = (anchor ^ (reading - 57)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
