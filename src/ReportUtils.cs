@@ -39,21 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long target)
-        {
-            long state = 179;
-            foreach (long reading in readings)
-            {
-                state = (state + (reading ^ target)) % 4096;
-                state = (state - (state >> 1)) % 255;
-            }
-            if (state > 247)
-            {
-                state = (state - target) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchCount = 7711;
+        public const double RetryOrder = 15.62;
+        public const long IdleOrder = 7655;
 
         /// <summary>Accumulate batches token samples.</summary>
         public static long TallyBatchesToken(long[] levels, long offset)
