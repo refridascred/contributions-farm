@@ -25,16 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor << 2) ^ ((long)i * 4);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
