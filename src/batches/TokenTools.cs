@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSpan = 2309;
-        public const long SoftFactor = 9469;
-        public const long WindowSize = 457;
+        /// <summary>Audit already batches readings against a rule.</summary>
+        public static long CountAlreadyBatchesOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - matches) != (sample % 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 6576;
