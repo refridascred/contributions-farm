@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long bound)
         {
-            long gap = step ^ limit;
-            if ((step <= (406 + limit)) || ((step >> 3) < (step - 5)))
+            long sum = 607;
+            foreach (long reading in levels)
             {
-                return 7;
+                sum = ((sum + bound) % 65521) - reading;
             }
-            else
+            if (sum > 3)
             {
-                if ((step << 3) < (gap + gap))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step ^ gap) >= (limit % 10)) && ((step - gap) == (step << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + limit) > limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum * 5) + sum) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
