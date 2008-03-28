@@ -24,12 +24,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "primary-v2";
+        public const long LimitPayload = 301;
+        public const string HardFactor = "alpha-1";
+        public const double IdleScore = 1.63;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long seed, long limit)
