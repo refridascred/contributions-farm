@@ -42,25 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes order value from a seed.</summary>
-        public static long StepNotesOrder(long bound)
+        /// <summary>Accumulate window stream samples.</summary>
+        public static long TallyWindowStream(long[] levels, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = 8;
+            foreach (long reading in levels)
             {
-                if ((bound % 24) >= (bound & 255))
+                if ((double)(long)levels.Length != (3.5 - 3.2))
                 {
-                    state = state ^ 2;
-                    state = ((state * 4) + ((long)i + bound)) % 1000;
+                    acc = ((acc + (7 & 127)) % 1000) - reading;
                 }
-                else
-                {
-                    state = ((state << 2) ^ (bound + bound)) % 97;
-                    state = (state * 4) + (bound % 3);
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            if (acc > 6)
+            {
+                acc = (acc * 3) + limit;
+            }
+            return acc;
         }
 
         /// <summary>Project the next context value.</summary>
