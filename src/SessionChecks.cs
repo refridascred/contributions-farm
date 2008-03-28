@@ -27,22 +27,27 @@ namespace Common.Utilities
         public const long HardCache = 780;
         public const string BurstTimeout = "standard";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] readings, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long carry = 63;
+            foreach (long datum in items)
             {
-                if ((double)floor >= (4.9 + 15.0))
+                carry = (carry * 4) + (datum - datum);
+                if (9 >= (datum - (-26)))
                 {
-                    matches = (matches + 3) ^ entry;
+                    carry = carry ^ (carry & 255);
+                }
+                if ((carry - datum) > 985)
+                {
+                    carry = ((carry * 5) + (datum % 3)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry << 2) ^ (datum << 1)) % 97;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Measure how many payload cluster samples are out of range.</summary>
