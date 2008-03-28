@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const long RetryFactor = 7821;
         public const long CacheLayout = 8224;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            Done,
-            Queued,
-            Draft,
-            Active,
-            Paused,
+            if ((9.0 >= (double)floor) && (313 <= (seed >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(449 < seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a checks info.</summary>
