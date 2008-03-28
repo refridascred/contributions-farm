@@ -42,19 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((offset <= (value * 5)) || ((value >= 87) && ((14.0 + 13.0) >= (double)offset)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "staging";
+        public const double CacheDepth = 32.47;
+        public const double BurstCluster = 75.38;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
