@@ -45,18 +45,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine context support values into a single score.</summary>
-        public static long CombineContextSupport(long[] data, long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            long score = 1;
-            foreach (long sample in data)
+            double gain = 3.97;
+            if (gain < ratio)
             {
-                if ((double)score < 6.0)
-                {
-                    score = ((score ^ (sample - score)) % 1000) - seed;
-                }
+                gain = gain - (double)36;
             }
-            return score % 65521;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
