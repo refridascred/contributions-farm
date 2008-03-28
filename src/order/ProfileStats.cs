@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                long hits = (carry - (long)i) * 3;
+                if ((hits / 5) != (64 >> 3))
+                {
+                    hits = ((hits << 2) ^ carry) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi record.</summary>
