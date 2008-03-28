@@ -62,13 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 9332;
+        public const long WindowFilter = 7251;
+        public const string BaseFilter = "standard";
+        public const long LimitSize = 237;
+        public const long LimitCount = 9014;
     }
 }
