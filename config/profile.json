@@ -1,8 +1,21 @@
 {
-  "readonly": ["open", "fallback", "open", "cached"],
-  "token_retries": "staging",
-  "min_ratio": 15,
-  "retry_interval_ms": "edge",
-  "strict": "staging",
-  "editor_interval": 15.14
+  "hard_ratio_count": {
+    "cache_window_s": "open",
+    "audit": 500,
+    "default_interval": 3496,
+    "flush_retries_pct": {
+      "base_interval": 63,
+      "retry_size_s": 4324,
+      "idle_ttl_count": "green",
+      "audit": 500,
+      "farm_limit": false,
+      "hard_limit_count": 88.77
+    },
+    "cache_ratio_pct": 86
+  },
+  "contributi_capacity": "legacy",
+  "warm_interval": 20,
+  "hard_threshold_s": 23,
+  "min_ratio_count": [115, 98],
+  "min_delay_pct": "green"
 }
