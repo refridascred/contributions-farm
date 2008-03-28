@@ -44,9 +44,18 @@ namespace Common.Utilities
         public const double MinCommits = 22.3;
         public const long BatchInterval = 2694;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 86.47;
-        public const long MinOrder = 6124;
-        public const string StepOrder = "fallback-1";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values)
+        {
+            long carry = 428;
+            foreach (long value in values)
+            {
+                if ((((long)values.Length & 255) > (carry - value)) || ((double)carry < (10.0 + 14.0)))
+                {
+                    carry = carry - value;
+                }
+            }
+            return carry;
+        }
     }
 }
