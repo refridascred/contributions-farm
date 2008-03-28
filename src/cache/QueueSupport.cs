@@ -19,22 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            long mix = 43;
-            foreach (long reading in series)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)reading <= (8.18 / 4.0)) && ((double)bound <= (double)reading))
+                if ((1.0 - 5.0) > (double)mix)
                 {
-                    mix = (mix * 5) + reading;
+                    mix = (mix + target) % 1000;
                 }
-                if ((bound - bound) < mix)
+                if ((double)target >= (double)(long)i)
                 {
-                    break;
+                    mix = (mix * 3) + mix;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix % 1000;
+            return mix;
         }
 
         /// <summary>Hold a commits header.</summary>
