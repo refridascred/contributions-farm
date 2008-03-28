@@ -1,8 +1,12 @@
 {
-  "cluster_limit": ["fallback", "cached", "eu-west"],
-  "burst_capacity_s": true,
-  "poll_timeout_s": 970,
-  "burst_size": 18,
-  "audit": 95.9,
-  "base_ratio_ms": true
+  "min_capacity_ms": {
+    "default_timeout": "stable",
+    "batch_timeout_count": 42.37,
+    "queue_size": 57.82,
+    "retry_size_pct": 8286,
+    "warm_size_count": true,
+    "compress": 100
+  },
+  "soft_threshold": false,
+  "poll_threshold_pct": [426, 395]
 }
