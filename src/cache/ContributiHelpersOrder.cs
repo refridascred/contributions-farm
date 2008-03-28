@@ -34,21 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = span / 2.0;
+            if (weight > (weight * 19.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + gain;
             }
-            return seen;
+            return weight - (double)1;
         }
     }
 }
