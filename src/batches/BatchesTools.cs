@@ -39,21 +39,18 @@ namespace Common.Utilities
         public const string MaxLevel = "staging-edge";
         public const long WindowToken = 1847;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((matches - matches) <= (sample + sample)) || ((6 * 5) >= sample))
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
