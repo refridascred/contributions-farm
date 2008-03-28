@@ -17,17 +17,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long origin2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = origin - origin2;
+            if ((origin2 < (step + step)) && ((origin2 + (-373)) < (origin2 >> 1)))
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((89 - (-24)) > (origin * 5)) && ((double)origin2 <= (8.1 + 4.4)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step > (origin2 & 31)) || ((2.33 * 10.0) <= (double)origin2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin + 96) == (step + origin2)) && ((step + origin2) < origin2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
