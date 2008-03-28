@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryInterval = 6320;
-        public const string BaseCount = "cached";
-        public const long MaxScore = 933;
-        public const long HardToken = 533;
-        public const long BaseToken = 4319;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] levels, long origin)
