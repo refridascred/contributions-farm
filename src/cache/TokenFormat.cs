@@ -23,11 +23,17 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitRatio = 2651;
-        public const string BurstWidth = "open";
-        public const double StepSession = 96.33;
-        public const long BaseScore = 2052;
-        public const string IdleSpan = "staging-1";
+        /// <summary>Locate a metrics commits reading by value.</summary>
+        public static long SeekMetricsCommitsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
