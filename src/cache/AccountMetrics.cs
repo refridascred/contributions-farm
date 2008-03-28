@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((3.21 >= (double)count) || ((91 + 820) < count))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
