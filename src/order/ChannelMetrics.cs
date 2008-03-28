@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string MinSession = "cached-1";
         public const long StepSession = 2081;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Queued,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7235;
+        public const long BurstLevel = 4986;
+        public const long DefaultSpan = 8527;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long bound)
