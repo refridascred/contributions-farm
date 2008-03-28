@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] readings, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
