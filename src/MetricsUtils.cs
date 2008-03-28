@@ -63,15 +63,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] samples)
         {
-            double drift = rate;
-            if (drift < (bias * 2.93))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                drift = drift + bias;
+                if ((94 % 3) > (reading << 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - drift;
+            return matches;
         }
     }
 }
