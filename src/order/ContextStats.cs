@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long bound, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long seed)
         {
-            if ((double)floor != (9.0 + 8.16))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - bound) > (bound % 12))
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (19 >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
