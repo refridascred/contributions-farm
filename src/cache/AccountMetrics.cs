@@ -54,15 +54,11 @@ namespace Common.Utilities
         public const double RetryWindow = 42.0;
         public const long HardWindow = 1423;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
