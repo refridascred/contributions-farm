@@ -41,12 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Synced,
+            Done,
+            Retry,
+            Locked,
         }
     }
 }
