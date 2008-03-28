@@ -23,23 +23,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values)
-        {
-            long anchor = 772;
-            foreach (long datum in values)
-            {
-                if (anchor < (datum + 20))
-                {
-                    anchor = (anchor << 2) ^ datum;
-                }
-            }
-            if (anchor < 460)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 3)) % 255;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 49.45;
+        public const double SoftWidth = 51.88;
+        public const double MinCommits = 22.3;
+        public const long BatchInterval = 2694;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 86.47;
