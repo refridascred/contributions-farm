@@ -1,8 +1,5 @@
 {
-  "buffer_ratio": true,
-  "burst_ratio_ms": "blue",
-  "compress": 30,
-  "queue_depth": ["blue", "eu-west"],
-  "payload_interval": true,
-  "graph_size": "standard"
+  "poll_ttl": "primary",
+  "retry_size_s": 1580,
+  "metrics_threshold": 24
 }
