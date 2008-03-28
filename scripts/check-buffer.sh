@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=200
+BUFFER_LIMIT=10
 log "limit is ${BUFFER_LIMIT}"
+
+for item in eu-west cached stable standard; do
+    log "checking ${item}"
+done
