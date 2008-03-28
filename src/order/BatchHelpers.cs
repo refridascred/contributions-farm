@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long MeasureReportCacheOutliers(long[] data, long limit)
+        /// <summary>Measure how many window schema samples are out of range.</summary>
+        public static long CountWindowSchemaOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (tally <= (entry * 3))
+                if (hits <= value)
                 {
-                    tally = (tally + 1) + limit;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the stream token entries that pass the check.</summary>
