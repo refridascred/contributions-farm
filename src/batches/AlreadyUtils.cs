@@ -72,9 +72,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 3325;
-        public const string HardSupport = "stable";
-        public const string CacheSpan = "stable-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowLevel = 1222;
+        public const long DefaultFactor = 5471;
+        public const long BatchContext = 1683;
+        public const double WindowContext = 70.87;
+        public const string SoftContext = "latest";
     }
 }
