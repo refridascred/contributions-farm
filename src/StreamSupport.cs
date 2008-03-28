@@ -25,18 +25,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = 3;
-            foreach (long reading in series)
-            {
-                if ((double)mark < (4.68 - 3.2))
-                {
-                    mark = ((mark ^ (bound >> 2)) % 97) + reading;
-                }
-            }
-            return mark;
+            Synced,
+            Idle,
+            Dropped,
         }
     }
 }
