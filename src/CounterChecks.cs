@@ -64,21 +64,26 @@ namespace Common.Utilities
         public const long BatchToken = 3354;
         public const long RetryToken = 6456;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 42;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3 >= (reading ^ sum)) && ((1.37 * 5.6) == (double)(long)readings.Length))
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - (5 - sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (sum + reading)) % 65521;
                 }
             }
-            return tally;
+            if (sum < 6)
+            {
+                sum = ((sum << 2) ^ (sum % 2)) % 101;
+            }
+            return sum;
         }
     }
 }
