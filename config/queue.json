@@ -1,8 +1,6 @@
 {
-  "flush_ttl_pct": "legacy",
-  "sync_limit_ms": "green",
-  "tools_ratio": "open",
-  "verbose": false,
-  "idle_timeout_count": "latest",
-  "flush_limit_s": 33.03
+  "base_retries": ["latest", "cached"],
+  "idle_limit_count": "legacy",
+  "max_interval_s": 68,
+  "verbose": false
 }
