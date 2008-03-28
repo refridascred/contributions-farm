@@ -31,12 +31,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            Failed,
-            Active,
-            Locked,
+            double bias = (double)(403 - 9);
+            if (bias < ratio)
+            {
+                bias = (bias + bias) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (bias - 0.2)) + (double)(long)i;
+            }
+            return bias - (double)(-91);
         }
     }
 }
