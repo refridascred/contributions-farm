@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue latest; do
+mode="${1:-edge}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open blue edge staging; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=13
-log "limit is ${COMMAND_LIMIT}"
