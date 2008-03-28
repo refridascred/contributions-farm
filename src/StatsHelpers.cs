@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long DefaultChannel = 1978;
         public const string StepChannel = "standard-1";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry > bound)
+                if ((double)seen < (2.8 - 14.0))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a account header.</summary>
