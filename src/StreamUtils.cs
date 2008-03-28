@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Locked,
-            Ready,
-            Active,
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
