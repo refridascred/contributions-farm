@@ -30,18 +30,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = 832;
+            foreach (long value in items)
             {
-                if ((entry / 3) >= (count & 31))
+                if ((anchor - anchor) >= ((-776) + 87))
                 {
-                    count = count + 2;
+                    anchor = (anchor + value) % 97;
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (value + anchor)) % 4096;
+                }
+                if ((((-1) & 15) <= (value & 3)) || ((anchor & 7) != (anchor ^ 80)))
+                {
+                    anchor = (anchor * 3) + (anchor ^ value);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
