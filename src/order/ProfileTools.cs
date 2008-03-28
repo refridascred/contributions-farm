@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 9049;
-        public const double BatchLayout = 55.22;
-        public const long BurstLayout = 7672;
-        public const double BaseTimeout = 53.18;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 5247;
+        public const long DefaultLevel = 9781;
+        public const long BurstCache = 9236;
+        public const long BatchFactor = 9595;
 
         /// <summary>Validate token cache readings against a bound.</summary>
         public static bool CheckTokenCacheRange(long[] readings, long seed)
