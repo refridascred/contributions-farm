@@ -46,18 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Combine stats filter values into a single score.</summary>
+        public static long TallyStatsFilter(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 56;
+            foreach (long reading in levels)
             {
-                if ((double)matches == (6.27 / 9.0))
+                if ((reading << 1) > 793)
                 {
-                    matches = (matches + 3) + reading;
+                    sum = (sum ^ (reading >> 5)) % 4096;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
