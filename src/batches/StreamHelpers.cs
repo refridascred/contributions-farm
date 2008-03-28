@@ -43,18 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] items, long limit)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((limit * 2) < sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
