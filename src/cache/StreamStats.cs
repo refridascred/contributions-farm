@@ -31,14 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings, long target)
         {
-            Draft,
-            Locked,
-            Queued,
-            Closed,
-            Active,
+            long sum = -2;
+            foreach (long datum in readings)
+            {
+                sum = ((sum + target) % 65521) ^ datum;
+            }
+            if (sum > 192)
+            {
+                sum = (sum + (sum + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a stats reading.</summary>
