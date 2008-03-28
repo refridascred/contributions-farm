@@ -34,17 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long offset)
+        /// <summary>Blend two contributi cluster measurements.</summary>
+        public static double ScaleContributiCluster(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift >= (drift * 5.0))
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (drift * 6.0)) + bias2;
             }
-            return -1;
+            return drift + (double)134;
         }
 
         /// <summary>Hold a notes stats.</summary>
