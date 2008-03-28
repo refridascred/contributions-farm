@@ -1,10 +1,4 @@
 # support settings
-entry_size: 250
-max_retries: eu-west
-tools_delay: 5.18
-max_ratio_pct:
-  - edge
-  - primary
-  - open
-max_limit_count: true
-batch_threshold: latest
+batch_limit_count: local
+burst_ratio: open
+persist: 1786
