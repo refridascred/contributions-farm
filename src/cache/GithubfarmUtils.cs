@@ -34,11 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 7907;
-        public const string MaxAlready = "legacy-v2";
-        public const string SoftLevel = "stable";
-        public const string DefaultInterval = "strict-1";
-        public const double CacheDepth = 66.46;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long target)
+        {
+            long lane = seed - target;
+            if ((seed + target) >= (lane + lane))
+            {
+                return 7;
+            }
+            else
+            {
+                if (lane >= (757 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
