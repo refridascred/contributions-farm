@@ -22,11 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 3) + (long)i) % 255;
+                total = (total - ((long)i ^ total)) % 97;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a command header.</summary>
