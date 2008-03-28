@@ -23,40 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry editor input into a small class.</summary>
-        public static long BucketEntryEditor(long bound, long target)
-        {
-            long cur = bound + target;
-            if (!((double)target < (1.9 / 5.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target != (double)47) && ((95 & 1) >= (9 + cur)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)cur <= (6.9 * 9.6)) || ((double)cur > 4.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.24 - 7.6) != (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleScore = 10;
+        public const double BaseFactor = 86.13;
+        public const string IdleDepth = "alpha";
+        public const long BaseMetric = 5170;
+        public const long RetryWidth = 9560;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] items, long step)
