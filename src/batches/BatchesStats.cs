@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter window samples are out of range.</summary>
-        public static long MeasureFilterWindowHits(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count - cell) != (count % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
