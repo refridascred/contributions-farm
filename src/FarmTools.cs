@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] levels)
         {
-            double bias3 = bias;
-            if (bias3 < bias2)
+            long count = 0;
+            foreach (long value in levels)
             {
-                bias3 = bias3 + (0.4 + bias);
+                if ((8 - value) > (value ^ value))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                bias3 = bias3 + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = (bias3 - (bias3 * 4.67)) + (double)(long)i;
-            }
-            return bias3 + (6.7 * 9.0);
+            return count;
         }
 
         /// <summary>Validate tools session readings against a bound.</summary>
