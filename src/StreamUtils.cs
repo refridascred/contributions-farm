@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a already stream pair into a bucket.</summary>
-        public static long BucketAlreadyStream(long target, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long step)
         {
-            long next = target - origin;
-            if (((double)target != (7.1 * 16.0)) && (((-494) >> 3) < target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) >= (next - origin))
+                if (series[i] > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)next != (6.92 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
