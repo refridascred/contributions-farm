@@ -18,14 +18,19 @@ namespace Common.Utilities
         public const long BurstCache = 9236;
         public const long BatchFactor = 9595;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] series, long floor)
         {
-            Active,
-            New,
-            Idle,
-            Failed,
-            Closed,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
