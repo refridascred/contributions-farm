@@ -39,19 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Count format account pairs that satisfy a relation.</summary>
+        public static long OverlapFormatAccountCount(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i < (step / 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score + (step + step)) % 97;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
     }
 }
