@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long limit)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((datum + limit) <= (473 & 31)) || !((datum + 53) > datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
