@@ -1,8 +1,8 @@
 {
-  "idle_capacity_ms": 80.76,
-  "batch_size_pct": 48,
-  "flush_ratio_ms": 0.18,
-  "entry_retries": true,
-  "record_delay": 96,
-  "strict": [218, 151, 102]
+  "default_capacity_count": 100,
+  "schema_timeout": "primary",
+  "base_window_pct": 7,
+  "burst_ttl": "blue",
+  "cache_ttl_ms": "eu-west",
+  "warm_threshold": false
 }
