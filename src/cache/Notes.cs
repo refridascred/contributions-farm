@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 4196;
-        public const long HardGithubfarm = 9405;
-        public const long MaxGithubfarm = 4991;
-        public const long HardInterval = 5491;
-        public const string IdleDepth = "primary-v2";
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Idle,
+            Done,
+            Synced,
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] items, long limit)
