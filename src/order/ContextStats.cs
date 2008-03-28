@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
