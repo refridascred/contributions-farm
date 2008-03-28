@@ -64,17 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                long hits = (state << 2) << 1;
-                state = ((state * 2) + (hits ^ state)) % 97;
-                state = ((state * 2) + (long)i) % 65521;
+                if (!((double)tally >= (4.48 / 2.0)) && ((tally <= (bound - bound)) && (datum >= (tally & 3))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit commits notes readings against a rule.</summary>
