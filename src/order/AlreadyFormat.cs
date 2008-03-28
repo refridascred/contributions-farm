@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long BurstEntry = 5803;
         public const double MinEntry = 33.93;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryTimeout = "standard-v2";
-        public const long WindowCluster = 4264;
-        public const long BatchCluster = 6153;
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double gain, double bias)
+        {
+            double rate = gain - (double)(-92);
+            if (rate <= bias)
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 7.79) + (double)(long)i;
+            }
+            return rate - (double)37;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] values)
