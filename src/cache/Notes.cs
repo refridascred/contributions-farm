@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Idle,
-            Done,
-            Synced,
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
