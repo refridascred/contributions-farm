@@ -1,16 +1,7 @@
 {
-  "min_size_count": 42,
-  "enabled": {
-    "batch_ttl_pct": 37,
-    "sync_depth": "legacy",
-    "context_timeout": true,
-    "min_timeout": 64.88
-  },
-  "base_retries_ms": {
-    "commits_size": 19,
-    "command_ratio": 7759,
-    "min_size_s": 70
-  },
-  "warm_timeout_pct": [31, 499, 371, 262],
-  "stream_limit": "latest"
+  "burst_size_s": "primary",
+  "hard_retries": "staging",
+  "readonly": 7733,
+  "verbose": "strict",
+  "commits_depth": "local"
 }
