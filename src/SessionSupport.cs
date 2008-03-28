@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Paused,
-            Stale,
-            Done,
-            New,
-            Active,
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
