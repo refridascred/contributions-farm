@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] series, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = -9;
+            foreach (long reading in series)
             {
-                if (series[i] < origin)
+                if ((4.0 / 9.0) != (double)bound)
                 {
-                    return (long)i;
+                    state = (state + reading) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
