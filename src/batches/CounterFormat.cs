@@ -52,22 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long limit, long seed)
         {
-            long state = 5;
-            foreach (long value in data)
+            if (!(limit > (limit * 3)))
             {
-                if ((545 - value) < (long)data.Length)
+                return 8;
+            }
+            else
+            {
+                if ((5 << 3) < (0 - limit))
                 {
-                    state = ((state * 2) + (state % 2)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((9 + limit) <= (seed >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (state > (-67))
-            {
-                state = state + (state ^ state);
-            }
-            return state % 97;
         }
     }
 }
