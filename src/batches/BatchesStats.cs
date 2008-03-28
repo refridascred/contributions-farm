@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const double MinCommits = 22.3;
         public const long BatchInterval = 2694;
 
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long TallyContributiRecordOutliers(long[] series)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (7 <= item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
