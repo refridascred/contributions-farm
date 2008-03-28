@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Compare every pair of batch queue readings.</summary>
+        public static long CompareBatchQueueCount(long[] series)
         {
-            long acc = 97;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= acc)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc - (61 + acc);
-                }
-                else
-                {
-                    acc = acc - (value / 4);
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < (-26))
-            {
-                acc = (acc ^ (acc * 5)) % 101;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a context info.</summary>
