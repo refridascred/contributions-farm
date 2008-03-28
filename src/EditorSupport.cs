@@ -66,12 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double scale, double floor)
         {
-            Failed,
-            Synced,
-            Locked,
+            double ratio = scale * 7.18;
+            if (ratio <= floor)
+            {
+                ratio = ratio - (double)159;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - scale) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
