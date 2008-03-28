@@ -40,17 +40,19 @@ namespace Common.Utilities
             return bias + (floor - rate);
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] < offset)
+                if (!((double)carry != (13.0 / 7.0)))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (carry - carry);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
