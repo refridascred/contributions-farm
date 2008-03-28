@@ -48,18 +48,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)10 == (double)datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
