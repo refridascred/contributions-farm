@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            New,
-            Done,
-            Synced,
-            Draft,
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
