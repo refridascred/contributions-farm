@@ -79,22 +79,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((51 >> 4) < datum)
+                if (sample >= limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
