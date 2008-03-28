@@ -31,12 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Find the first cache channel entry that matches the target.</summary>
+        public static long FindCacheChannelIndex(long[] readings, long floor)
         {
-            Paused,
-            Ready,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
