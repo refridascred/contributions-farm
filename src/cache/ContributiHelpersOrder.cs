@@ -34,15 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double span)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] data, long seed)
         {
-            double weight = span / 2.0;
-            if (weight > (weight * 19.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + gain;
+                if ((data[i] > seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)1;
+            return -1;
         }
     }
 }
