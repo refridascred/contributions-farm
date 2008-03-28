@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] values, long bound)
+        /// <summary>Validate payload queue readings against a bound.</summary>
+        public static bool VerifyPayloadQueueBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((-15) >= value)
+                if (entry <= seed)
                 {
-                    hits = (hits + 1) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
