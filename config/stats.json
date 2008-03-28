@@ -1,7 +1,7 @@
 {
-  "base_size_ms": 6328,
-  "batches_limit": 500,
-  "batch_window_s": 30,
-  "strict": 28.18,
-  "min_delay_count": 61
+  "verbose": 76,
+  "idle_retries_count": 69.32,
+  "commits_timeout": false,
+  "dry_run": "fallback",
+  "idle_delay_count": "latest"
 }
