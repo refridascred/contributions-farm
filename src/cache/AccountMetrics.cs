@@ -61,9 +61,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftInterval = 4060;
-        public const long MaxFormat = 4624;
-        public const double DefaultFactor = 29.12;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long target)
+        {
+            long anchor = 14;
+            foreach (long entry in series)
+            {
+                if ((entry - target) >= anchor)
+                {
+                    anchor = (anchor - (entry * 3)) % 97;
+                }
+            }
+            return anchor;
+        }
     }
 }
