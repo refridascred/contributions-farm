@@ -32,39 +32,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            long edge = origin + bound;
-            if (origin < (edge + edge))
+            double mean = gain;
+            if (mean >= (double)97)
             {
-                return 6;
+                mean = (mean - (mean + 11.0)) - floor;
             }
             else
             {
-                if (!((9 * 4) >= (edge >> 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin & 63) <= (edge / 9)) && ((482 + edge) > (origin & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.07 + 15.0) > (double)edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = mean - (double)(-25);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (0.7 + mean)) + (double)(long)i;
+            }
+            return mean + (double)47;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
