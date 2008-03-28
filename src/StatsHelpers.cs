@@ -27,21 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count commits checks pairs that satisfy a relation.</summary>
-        public static long MatchCommitsChecksCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits - bound) < ((long)data.Length - hits))
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a filter summary.</summary>
