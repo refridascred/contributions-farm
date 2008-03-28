@@ -19,19 +19,15 @@ namespace Common.Utilities
             return (ratio2 + (2.0 * 7.9)) + bias;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] series, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double gain = 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = ((gain - (weight + weight)) + (double)(long)i) - offset;
             }
-            return valid;
+            return gain - gain;
         }
 
         /// <summary>Rank already input into a small class.</summary>
