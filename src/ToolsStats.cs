@@ -56,22 +56,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((sample * 5) > (tally >> 2)) && (5 < (sample + 8)))
+                if (entry < target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the support kind values.</summary>
