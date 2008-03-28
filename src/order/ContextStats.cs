@@ -55,39 +55,12 @@ namespace Common.Utilities
             return gain + (13.0 + 2.89);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long seed)
-        {
-            if ((target ^ target) > (target ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 255) > (target + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= (6.49 - 6.9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultInterval = 4257;
+        public const long HardSize = 6899;
+        public const double WindowFactor = 74.55;
+        public const long RetryEditor = 7637;
+        public const long DefaultWidth = 2405;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] samples, long target)
