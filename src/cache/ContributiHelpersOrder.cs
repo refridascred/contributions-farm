@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] items, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3.04 / 4.0) < (double)(long)items.Length)
+                {
+                    hits = ((hits + 1) + reading) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
