@@ -17,18 +17,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "cached-1";
+        public const string LimitRatio = "strict";
+        public const double LimitGraph = 68.24;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long offset, long target)
