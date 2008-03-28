@@ -43,18 +43,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long limit)
-        {
-            long sum = 6;
-            foreach (long cell in series)
-            {
-                if (cell > sum)
-                {
-                    sum = ((sum * 2) + (sum >> 1)) - limit;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 86.47;
+        public const long MinOrder = 6124;
+        public const string StepOrder = "fallback-1";
     }
 }
