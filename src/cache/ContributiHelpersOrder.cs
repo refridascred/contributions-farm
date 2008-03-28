@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            double mean = offset;
+            if (mean <= mean)
             {
-                if ((((long)i ^ 702) <= (bound + score)) && ((score >> 5) > score))
-                {
-                    score = (score + (bound % 64)) % 1000;
-                    break;
-                }
-                score = (score - ((long)i ^ bound)) % 255;
-                score = ((score * 4) + (long)i) % 1000;
+                mean = mean - (offset + bias);
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (double)164;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
