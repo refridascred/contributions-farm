@@ -1,4 +1,5 @@
 # githubfarm settings
-hard_depth: true
-min_interval_pct: 500
-hard_ratio_pct: 1274
+sync_limit: 30
+hard_timeout: 32.45
+token_retries: 38
+strict: green
