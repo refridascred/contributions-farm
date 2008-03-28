@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches contributi reading by value.</summary>
-        public static long FindBatchesContributiIndex(long[] data, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
