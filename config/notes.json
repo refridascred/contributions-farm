@@ -1,7 +1,5 @@
 {
-  "default_size_count": ["legacy", "legacy"],
-  "dry_run": 84.16,
-  "poll_interval_ms": false,
-  "audit": "latest",
-  "batches_limit": "open"
+  "compress": 250,
+  "min_limit_pct": true,
+  "audit": "staging"
 }
