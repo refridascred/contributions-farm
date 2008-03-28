@@ -32,23 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long bound)
         {
-            double mean = gain;
-            if (mean >= (double)97)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (mean + 11.0)) - floor;
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)(-25);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (0.7 + mean)) + (double)(long)i;
-            }
-            return mean + (double)47;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
