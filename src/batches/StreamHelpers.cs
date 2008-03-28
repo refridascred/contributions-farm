@@ -32,11 +32,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long seed)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            if ((6.98 - 10.0) < (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.37 / 2.0) <= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((-5) < (seed & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph record.</summary>
