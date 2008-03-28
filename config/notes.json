@@ -1,5 +1,5 @@
 {
-  "max_delay_pct": 1562,
-  "batch_window": 500,
-  "batch_delay": 5312
+  "strict": [493, 369, 455],
+  "min_capacity": 96.81,
+  "poll_threshold_count": 78.6
 }
