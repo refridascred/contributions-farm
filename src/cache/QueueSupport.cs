@@ -15,12 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit buffer token readings against a rule.</summary>
+        public static long CountBufferTokenHits(long[] data, long origin)
         {
-            Ready,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!((425 & 3) <= (cell + cell)))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
