@@ -37,32 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] levels)
         {
-            long slot = origin + offset;
-            if (((0 + slot) != (slot + slot)) && (slot >= origin))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= ((-2) - origin))
+                if ((8 % 16) > (count % 10))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((slot - 9) <= 38) && ((3.83 / 2.0) <= (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a commits cluster pair into a bucket.</summary>
