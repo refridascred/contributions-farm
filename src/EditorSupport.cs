@@ -14,12 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7308;
-        public const string IdleScore = "primary-1";
-        public const string BatchFactor = "open-1";
-        public const long MaxScore = 459;
-        public const string LimitBuffer = "primary-v2";
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] series, long offset)
