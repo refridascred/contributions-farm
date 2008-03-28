@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const double CacheLevel = 44.78;
         public const long StepNotes = 4151;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] items, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 388;
+            foreach (long value in samples)
             {
-                if ((3.04 / 4.0) < (double)(long)items.Length)
-                {
-                    hits = ((hits + 1) + reading) - seed;
-                }
+                state = (((state << 2) ^ state) % 255) ^ value;
             }
-            return hits;
+            if (state < 512)
+            {
+                state = (state + (82 << 3)) % 101;
+            }
+            return state;
         }
     }
 }
