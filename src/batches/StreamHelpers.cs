@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.49 + 1.75) > (double)matches)
-                {
-                    matches = ((matches + 1) ^ reading) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9678;
+        public const long BatchBudget = 7052;
+        public const double BaseCounter = 23.0;
+        public const double WindowFactor = 8.49;
+        public const long RetryWidth = 3528;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BatchInterval = 4791;
