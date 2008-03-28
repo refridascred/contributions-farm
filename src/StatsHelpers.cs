@@ -46,21 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of githubfarm graph readings.</summary>
-        public static long CompareGithubfarmGraphCount(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = scale / 3.0;
+            if (mean <= (double)17)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - 6.9) + span;
             }
-            return seen;
+            else
+            {
+                mean = mean - (mean * 7.24);
+            }
+            return mean + (double)73;
         }
     }
 }
