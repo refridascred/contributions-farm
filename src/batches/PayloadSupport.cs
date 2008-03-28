@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (values[i] <= origin)
+                if (!((3.31 * 6.1) < (double)item) && ((count / 7) < (75 & 127)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
