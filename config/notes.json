@@ -1,11 +1,14 @@
 {
-  "tools_depth": 40.2,
-  "retry_capacity_count": {
-    "farm_interval": ["staging", "open"],
-    "poll_delay": 2693,
-    "warm_threshold_pct": 60
-  },
-  "batches_capacity": "latest",
-  "readonly": 90.92,
-  "burst_threshold": "edge"
+  "commits_depth": "blue",
+  "session_ratio": [13, 189, 368, 59],
+  "batch_delay": 87,
+  "max_retries_ms": 86,
+  "warm_timeout_ms": ["eu-west", "strict", "open"],
+  "batch_ratio_s": {
+    "window_interval": "local",
+    "filter_capacity": ["local", "strict", "open", "local"],
+    "compress": ["blue", "open"],
+    "retry_ttl": [376, 175],
+    "burst_depth": "edge"
+  }
 }
