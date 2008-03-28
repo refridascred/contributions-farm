@@ -16,15 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Synced,
-            Dropped,
-            Stale,
-            Failed,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSpan = 2309;
+        public const long SoftFactor = 9469;
+        public const long WindowSize = 457;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 6576;
