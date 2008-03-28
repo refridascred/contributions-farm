@@ -34,21 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Pending,
+            Ready,
+            Locked,
         }
     }
 }
