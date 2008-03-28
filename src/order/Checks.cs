@@ -59,25 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] values, long step)
         {
-            long acc = 659;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                long count = entry;
-                if ((count + 6) >= (acc + 562))
+                if ((step * 3) < (step + matches))
                 {
-                    count = ((count * 3) + entry) % 255;
-                    count = (count * 5) + 5;
-                    break;
-                }
-                if (11.0 <= (double)entry)
-                {
-                    acc = ((acc * 5) + (975 << 1)) % 4096;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
