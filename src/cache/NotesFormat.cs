@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate profile metric samples.</summary>
-        public static long CombineProfileMetric(long[] data, long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = 9;
-            foreach (long datum in data)
-            {
-                if ((double)seed >= 5.0)
-                {
-                    acc = (acc - (4 << 1)) ^ datum;
-                }
-            }
-            return acc;
+            Failed,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the entry class values.</summary>
