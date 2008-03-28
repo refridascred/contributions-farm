@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BaseSchema = 4594;
         public const double DefaultLevel = 65.32;
 
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long TallyBatchContext(long[] values)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double bias, double span)
         {
-            long sum = 64;
-            foreach (long cell in values)
-            {
-                if (1.4 <= (double)(long)values.Length)
-                {
-                    sum = ((sum ^ (sum / 5)) % 1000) - cell;
-                }
-            }
-            return sum % 65521;
+            double gain = bias;
+            return (gain - (double)0) + span;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
