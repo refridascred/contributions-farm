@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long step)
+        /// <summary>Digest a series of payload filter entries.</summary>
+        public static long TallyPayloadFilter(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 682;
+            foreach (long datum in series)
             {
-                if (items[i] > step)
+                if ((double)27 != (double)datum)
                 {
-                    return (long)i;
+                    state = ((state * 3) + seed) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Hold a entry summary.</summary>
