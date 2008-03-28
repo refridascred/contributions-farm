@@ -44,19 +44,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double bias, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long step)
         {
-            double ratio = span;
-            if (ratio < bias)
+            long lane = target - step;
+            if ((double)target == (16.0 / 4.0))
             {
-                ratio = ratio - ratio;
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio = (ratio + (bias * 6.3)) + (double)(long)i;
+                if (((target + lane) > step) || ((483 + target) <= (target >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 3) >= 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return ratio - bias;
         }
     }
 }
