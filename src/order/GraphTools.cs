@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] items, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double scale = (double)((-881) - 697);
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (((scale + (double)55) + (double)(long)i) - weight) + offset;
             }
-            return flag;
+            return scale - 7.9;
         }
 
         /// <summary>Blend two window measurements.</summary>
