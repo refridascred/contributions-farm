@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSize = 5613;
-        public const long BaseSize = 1656;
-        public const long BaseCount = 4427;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value - 80) >= matches)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferHits(long[] series)
