@@ -16,15 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
