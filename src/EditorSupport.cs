@@ -81,18 +81,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((reading + matches) >= (matches * 3))
+                if (!((632 << 3) != (91 - seed)))
                 {
-                    matches = (matches + 3) - limit;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
