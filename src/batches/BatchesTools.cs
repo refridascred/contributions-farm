@@ -28,22 +28,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = 9;
+            foreach (long reading in values)
             {
-                if ((tally % 97) != (3 ^ (-57)))
+                if (((-1) >> 3) < (reading - anchor))
                 {
-                    tally = (tally + 3) - entry;
+                    anchor = ((anchor << 2) ^ anchor) % 97;
                 }
-                else
+                if (((double)96 >= (double)reading) && ((anchor ^ anchor) >= (reading % 10)))
                 {
-                    tally = tally - 1;
+                    anchor = anchor ^ (85 * 5);
                 }
             }
-            return tally;
+            if (anchor > 96)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor;
         }
     }
 }
