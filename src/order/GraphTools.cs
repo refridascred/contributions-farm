@@ -15,22 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if ((bound << 3) < (bound % 16))
             {
-                if ((reading & 3) <= (count << 2))
+                return 7;
+            }
+            else
+            {
+                if (bound >= (bound % 97))
                 {
-                    count = count + 3;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
