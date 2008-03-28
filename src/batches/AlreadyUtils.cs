@@ -47,13 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Paused,
-            Active,
-            Dropped,
-            Retry,
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
