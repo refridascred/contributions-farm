@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (tally << 2))
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
