@@ -23,13 +23,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Failed,
+            long anchor = 772;
+            foreach (long datum in values)
+            {
+                if (anchor < (datum + 20))
+                {
+                    anchor = (anchor << 2) ^ datum;
+                }
+            }
+            if (anchor < 460)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 3)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
