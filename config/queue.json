@@ -1,8 +1,6 @@
 {
-  "retry_delay_s": "primary",
-  "max_delay_pct": 60.83,
-  "tools_limit": ["standard", "local", "open"],
-  "max_capacity": "green",
-  "buffer_delay": true,
-  "layout_interval": "local"
+  "retry_limit_count": 37,
+  "cache_size_ms": 500,
+  "persist": "open",
+  "dry_run": [170, 440]
 }
