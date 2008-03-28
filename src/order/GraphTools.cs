@@ -58,21 +58,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count support counter pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCounterCount(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Ready,
         }
     }
 }
