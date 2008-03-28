@@ -29,22 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = 3;
+            foreach (long value in series)
             {
-                if ((hits << 2) < (1 % 7))
+                if ((1.7 + 15.0) < (double)value)
                 {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc + (341 + acc)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
