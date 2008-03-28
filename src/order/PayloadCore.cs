@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySize = 5969;
+        public const long IdleInterval = 293;
+        public const long IdleGraph = 648;
+        public const long BaseBudget = 7346;
+        public const long BatchWidth = 6636;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
