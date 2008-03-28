@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long seed)
         {
-            if ((double)floor > 1.1)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 2) < origin)
+                if (values[i] > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 15) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (20.0 <= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a context contributi value against two limits.</summary>
