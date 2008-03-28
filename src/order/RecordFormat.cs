@@ -49,25 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cluster entry input into a small class.</summary>
-        public static long GradeClusterEntry(long step, long step2)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            long lane = step - step2;
-            if ((lane + lane) <= (step2 - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((lane & 255) > (56 * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double scale = ratio / 4.0;
+            return scale + (bias + bias);
         }
     }
 }
