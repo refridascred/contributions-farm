@@ -1,10 +1,12 @@
 # support settings
-default_threshold_count: 45.76
-sync_depth_count: true
-flush_size_ms: 11
-base_depth_ms:
-  - primary
-  - green
-  - primary
-buffer_limit: 68
-min_window_pct: staging
+burst_ttl_pct: false
+retry_threshold_s: true
+warm_depth_s: false
+githubfarm_retries:
+  record_ttl: 1024
+  metrics_retries: 7208
+  default_delay:
+    - stable
+    - local
+    - stable
+verbose: 44
