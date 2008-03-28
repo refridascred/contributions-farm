@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] levels, long seed)
         {
-            if ((double)offset < (8.2 + 6.2))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 7) <= (offset / 4))
+                if (item <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many tools checks samples are out of range.</summary>
