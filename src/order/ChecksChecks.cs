@@ -50,10 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardFactor = "open-edge";
-        public const long CacheCommits = 4494;
-        public const long DefaultCommits = 2105;
-        public const double HardCommits = 35.35;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((step << 3) >= 217)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
