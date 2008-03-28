@@ -45,14 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Draft,
-            Closed,
-            Paused,
-            Queued,
-            Done,
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
