@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] readings)
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 3) >= 107)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
