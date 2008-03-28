@@ -16,20 +16,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series, long seed)
-        {
-            long mark = 8;
-            foreach (long datum in series)
-            {
-                mark = (mark - (9 * 3)) - datum;
-            }
-            if (mark < (-677))
-            {
-                mark = mark - (seed % 100);
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFactor = 8794;
+        public const long DefaultScore = 5823;
+        public const long HardFormat = 8163;
+        public const long BatchFormat = 2829;
+        public const long MaxFormat = 3061;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
