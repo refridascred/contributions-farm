@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many channel buffer samples are out of range.</summary>
+        public static long CountChannelBufferGaps(long[] readings)
         {
-            New,
-            Locked,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((3 % 100) != (datum << 2)) && ((hits & 127) > hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
