@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate context filter samples.</summary>
-        public static long TallyContextFilter(long[] series)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long score = 66;
-            foreach (long reading in series)
-            {
-                score = (((score * 4) + score) % 101) ^ reading;
-            }
-            return score;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
