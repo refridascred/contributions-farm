@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            double mean = offset;
-            if (mean <= mean)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (offset + bias);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (double)164;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
