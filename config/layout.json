@@ -1,5 +1,6 @@
 {
-  "max_ttl_ms": "eu-west",
-  "batch_retries_pct": [237, 395],
-  "burst_depth_count": 7849
+  "buffer_ratio": [318, 360, 205],
+  "schema_ratio": 500,
+  "max_window_s": "strict",
+  "max_retries_s": 65.21
 }
