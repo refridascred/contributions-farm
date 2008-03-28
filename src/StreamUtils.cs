@@ -35,12 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
