@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardInterval = 5491;
         public const string IdleDepth = "primary-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 8698;
-        public const double HardWidth = 35.14;
-        public const string LimitWidth = "open-1";
-        public const double WindowRatio = 6.64;
-        public const long StepFactor = 9713;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!((5.93 - 2.5) >= (double)entry))
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsBounds(long[] values, long seed)
