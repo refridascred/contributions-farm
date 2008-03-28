@@ -73,17 +73,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] levels, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target > (offset - offset)) || ((offset - 2) >= target))
             {
-                if (levels[i] < origin)
+                return 2;
+            }
+            else
+            {
+                if ((offset < (target & 3)) && ((1.6 * 5.6) >= (double)offset))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (target & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
