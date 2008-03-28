@@ -23,11 +23,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 4480;
-        public const long WindowSize = 5808;
-        public const long BaseRatio = 2496;
-        public const double StepSize = 6.55;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Dropped,
+            Paused,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 86.47;
