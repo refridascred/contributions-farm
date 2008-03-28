@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long acc = 69;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = (((acc << 2) ^ item) % 97) - floor;
             }
-            return anchor;
+            if (acc > 988)
+            {
+                acc = ((acc << 3) ^ (3 ^ acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account class values.</summary>
