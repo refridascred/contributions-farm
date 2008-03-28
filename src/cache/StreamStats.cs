@@ -36,35 +36,35 @@ namespace Common.Utilities
         public const string HardFactor = "alpha-1";
         public const double IdleScore = 1.63;
 
-        /// <summary>Rank cluster contributi input into a small class.</summary>
-        public static long GradeClusterContributi(long limit, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long floor2)
         {
-            long span = limit ^ origin;
-            if (((-2) + limit) < ((-6) + limit))
+            long bound = floor ^ floor2;
+            if ((floor & 31) <= (floor + floor))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((11.0 * 19.0) >= (double)span) || ((1.39 - 6.29) > (double)span))
+                if (floor > (bound + bound))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (origin < (limit % 12))
+                    if (!((floor << 3) != (bound * 4)))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if ((span >= limit) && ((limit ^ 29) <= origin))
+                        if (((floor2 + bound) == (bound ^ 3)) || ((double)floor2 != (16.0 - 5.1)))
                         {
-                            return 3;
+                            return 8;
                         }
                         else
                         {
-                            return 6;
+                            return 3;
                         }
                     }
                 }
