@@ -68,13 +68,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate window notes readings against a bound.</summary>
+        public static bool VerifyWindowNotesLimits(long[] readings, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
