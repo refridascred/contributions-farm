@@ -33,10 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 2493;
-        public const long SoftFactor = 7782;
-        public const long StepSpan = 4668;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long offset)
+        {
+            long anchor = 851;
+            foreach (long reading in levels)
+            {
+                if (!!((-92) > reading))
+                {
+                    anchor = (anchor * 4) + offset;
+                }
+                if ((double)offset == (6.0 - 9.0))
+                {
+                    anchor = (anchor ^ (reading - 57)) % 101;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long limit, long step)
