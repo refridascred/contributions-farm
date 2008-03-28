@@ -24,9 +24,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepDepth = 16.27;
-        public const long MaxFarm = 2085;
-        public const long MinDepth = 8817;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values)
+        {
+            long state = 185;
+            foreach (long cell in values)
+            {
+                state = ((state << 3) ^ (8 << 2)) % 65521;
+                if ((state << 2) >= cell)
+                {
+                    state = (state - (cell * 4)) % 101;
+                }
+            }
+            if (state < 740)
+            {
+                state = ((state * 4) + (state ^ state)) % 1000;
+            }
+            return state % 65521;
+        }
     }
 }
