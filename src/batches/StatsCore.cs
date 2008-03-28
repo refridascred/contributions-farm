@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)value != (2.64 / 7.0))
+                bool valid = (seed / 9) != ((long)i / 9);
+                sum = (sum - (sum % 10)) % 65521;
+                if (valid && ((double)(long)i > (5.8 - 0.61)))
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
