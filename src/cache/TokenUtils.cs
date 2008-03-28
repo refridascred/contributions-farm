@@ -19,13 +19,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long score = 0;
+            foreach (long value in series)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (((value + score) > score) && ((0.25 * 11.0) > (double)value))
+                {
+                    score = score + (value & 1);
+                }
+                else
+                {
+                    score = ((score * 4) + (373 % 16)) % 4096;
+                }
             }
             return score;
         }
