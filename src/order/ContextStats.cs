@@ -45,10 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "cached-1";
-        public const string LimitRatio = "strict";
-        public const double LimitGraph = 68.24;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Draft,
+            Closed,
+            Paused,
+            Queued,
+            Done,
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long offset, long target)
