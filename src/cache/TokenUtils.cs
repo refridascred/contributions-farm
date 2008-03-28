@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 1823;
+        public const long SoftSize = 2584;
+        public const long HardWidth = 2588;
+        public const long MaxStats = 195;
+        public const string BurstStats = "standard-1";
     }
 }
