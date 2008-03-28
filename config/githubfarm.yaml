@@ -1,11 +1,16 @@
 # githubfarm settings
-poll_ratio_s: false
-persist: 7
-poll_delay:
-  sync_depth:
-    - legacy
-    - primary
-    - standard
-    - local
-  max_threshold: 2684
-  soft_capacity: strict
+hard_threshold_count: 57.91
+buffer_ttl:
+  readonly: standard
+  hard_retries_s: 30
+  warm_delay_ms: 2772
+  farm_timeout:
+    - 238
+    - 159
+    - 101
+  cache_threshold: 25
+burst_depth_s:
+  - 56
+  - 349
+  - 360
+strict: 479
