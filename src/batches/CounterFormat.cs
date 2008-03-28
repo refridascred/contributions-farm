@@ -22,15 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Draft,
-            Pending,
-            Dropped,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "standard-edge";
+        public const long BaseStream = 5923;
+        public const long StepInterval = 7238;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] data, long bound)
