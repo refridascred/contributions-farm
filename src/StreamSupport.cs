@@ -23,11 +23,13 @@ namespace Common.Utilities
             return (weight2 - 5.7) + weight;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            Synced,
+            New,
+            Pending,
+            Draft,
         }
     }
 }
