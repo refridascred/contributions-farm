@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data, long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches < (item % 100))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
