@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long floor2)
-        {
-            long diff = floor - floor2;
-            if (!((1.8 * 16.0) <= (double)floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) <= (floor - 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ diff) >= floor2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 8702;
+        public const long WindowSession = 5859;
+        public const string MinSession = "legacy-v2";
+        public const long DefaultBudget = 3549;
+        public const double LimitSession = 73.53;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
