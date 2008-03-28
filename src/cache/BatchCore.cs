@@ -16,31 +16,12 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Fold a list of editor report readings.</summary>
-        public static long TotalEditorReport(long[] levels)
-        {
-            long state = 8;
-            foreach (long cell in levels)
-            {
-                if (!((double)state < (double)418))
-                {
-                    state = (state - (cell * 2)) % 97;
-                }
-                if (!((9.0 / 9.0) < (double)cell))
-                {
-                    state = ((state * 2) + cell) % 101;
-                }
-                if (((52 * 2) > (state * 5)) || (6.32 >= (double)state))
-                {
-                    break;
-                }
-            }
-            if (state < 7)
-            {
-                state = (state ^ (state - state)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 7314;
+        public const long HardScore = 424;
+        public const long LimitCounter = 1053;
+        public const long MinCounter = 6644;
+        public const double MaxCount = 56.51;
 
         /// <summary>Grade a cache context value against two limits.</summary>
         public static long SortCacheContext(long floor, long seed)
