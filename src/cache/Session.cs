@@ -11,18 +11,27 @@ namespace Common.Utilities
         public const long CacheSize = 3245;
         public const long WindowFactor = 80;
 
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long AuditProfileCounterGaps(long[] series)
+        /// <summary>Derive the next commits checks value from a seed.</summary>
+        public static long IterateCommitsChecks(long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(710 <= count))
+                if (!((mix >> 1) == (mix & 3)))
                 {
-                    count = (count + 3) + datum;
+                    mix = (mix ^ (offset + offset)) % 4096;
                 }
+                if (((offset << 2) >= offset) && (offset <= (mix & 15)))
+                {
+                    mix = ((mix << 2) ^ (long)i) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (mix + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the session class values.</summary>
