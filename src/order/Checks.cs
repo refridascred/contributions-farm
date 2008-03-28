@@ -42,21 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
