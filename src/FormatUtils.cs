@@ -29,19 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] data, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long anchor = 33;
+            foreach (long datum in readings)
             {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor * 5) + datum;
             }
-            return ready;
+            if (anchor > 816)
+            {
+                anchor = (anchor * 2) + ((long)readings.Length + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Count the token farm entries that pass the check.</summary>
