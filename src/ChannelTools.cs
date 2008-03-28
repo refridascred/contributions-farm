@@ -15,14 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many notes batch samples are out of range.</summary>
+        public static long AuditNotesBatchGaps(long[] samples)
         {
-            Paused,
-            Closed,
-            Locked,
-            Draft,
-            Failed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample ^ sample) <= (sample + hits)) && ((sample / 9) < (hits << 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
