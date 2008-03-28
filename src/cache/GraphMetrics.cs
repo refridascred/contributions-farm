@@ -12,17 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long bound)
+        /// <summary>Validate channel commits readings against a bound.</summary>
+        public static bool GuardChannelCommitsLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (items[i] == bound)
+                if (entry < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
