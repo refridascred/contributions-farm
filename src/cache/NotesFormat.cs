@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the support graph entries that pass the check.</summary>
+        public static long CountSupportGraphMatches(long[] samples, long floor)
         {
-            Active,
-            Failed,
-            Dropped,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((7.0 / 5.0) != (double)hits)
+                {
+                    hits = ((hits + 2) ^ cell) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
