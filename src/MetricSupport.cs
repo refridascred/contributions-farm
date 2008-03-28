@@ -28,11 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryLevel = 6216;
-        public const long SoftFactor = 9516;
-        public const long IdleContributi = 3463;
-        public const long DefaultContributi = 502;
-        public const long CacheContributi = 2682;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
