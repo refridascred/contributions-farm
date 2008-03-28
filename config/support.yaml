@@ -1,6 +1,8 @@
 # support settings
-burst_depth: eu-west
-dry_run: strict
-window_interval: primary
-hard_limit_pct: true
-filter_window: 6201
+min_ratio: false
+metric_ttl: 4531
+max_retries_pct:
+  sync_capacity: false
+  tools_depth: 21.3
+  max_capacity_count: true
+  burst_timeout: 45
