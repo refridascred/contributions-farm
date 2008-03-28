@@ -1,11 +1,5 @@
 {
-  "base_capacity_count": false,
-  "persist": 30,
-  "strict": {
-    "warm_ratio": "fallback",
-    "base_limit_ms": 30.09,
-    "sync_limit": 59.76,
-    "max_capacity": "blue"
-  },
-  "stream_delay": "local"
+  "cache_size": ["legacy", "stable", "open", "strict"],
+  "buffer_ratio": ["cached", "blue", "fallback", "blue"],
+  "burst_timeout": "edge"
 }
