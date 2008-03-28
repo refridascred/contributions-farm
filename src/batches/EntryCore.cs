@@ -36,11 +36,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 4795;
-        public const long RetryChannel = 3539;
-        public const long HardTimeout = 911;
-        public const long MaxWidth = 9057;
-        public const double MinLevel = 65.72;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseSpan = 2021;
+        public const long WindowContext = 5615;
+        public const long CacheBudget = 5065;
     }
 }
