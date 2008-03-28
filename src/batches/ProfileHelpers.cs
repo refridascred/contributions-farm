@@ -84,19 +84,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long total = 75;
-            foreach (long sample in values)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total - (3 * 3)) - sample;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result + (origin % 60)) % 65521) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    result = (result + (long)i3) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (total < (-220))
-            {
-                total = (total + floor) % 65521;
-            }
-            return total;
+            return result;
         }
     }
 }
