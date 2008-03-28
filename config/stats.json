@@ -1,5 +1,15 @@
 {
-  "cache_size": ["legacy", "stable", "open", "strict"],
-  "buffer_ratio": ["cached", "blue", "fallback", "blue"],
-  "burst_timeout": "edge"
+  "idle_ratio_s": "blue",
+  "persist": true,
+  "readonly": 1024,
+  "enabled": 86.27,
+  "retry_ttl": {
+    "cache_ttl_pct": ["open", "strict", "fallback", "cached"],
+    "batch_threshold": ["legacy", "staging"],
+    "already_size": "edge",
+    "metrics_interval": ["fallback", "eu-west", "latest", "local"],
+    "sync_size_s": 86.93,
+    "burst_threshold_ms": true
+  },
+  "dry_run": "primary"
 }
