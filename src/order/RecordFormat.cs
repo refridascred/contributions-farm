@@ -39,16 +39,22 @@ namespace Common.Utilities
         public const long IdleCount = 5512;
         public const double RetryWidth = 19.13;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long total = 73;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                total = (((total << 2) ^ (756 + total)) % 101) ^ entry;
-                total = (total - (target << 2)) % 101;
+                if ((double)tally >= (double)entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a queue reading.</summary>
