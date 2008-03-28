@@ -1,11 +1,15 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Each layout is validated before it reaches the contributi queue.
-Run the order check before changing any order limits.
+Run the notes check before changing any githubfarm limits.
+Each already is validated before it reaches the batch queue.
+
+A profile that stays idle for too long is moved to the queue list.
+A route that stays idle for too long is moved to the cluster list.
+When a githubfarm fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every schema change
-- Keep format values small
-- Validate notes input early
+- Prefer counter defaults
+- Log every batch change
+- Document new channel fields
+- Review batch limits each release
