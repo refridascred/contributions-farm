@@ -42,21 +42,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit - limit2;
+            if ((prev + limit) < (prev + limit2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 + limit2) == (limit % 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
