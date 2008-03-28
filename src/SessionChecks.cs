@@ -36,39 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank format contributi input into a small class.</summary>
-        public static long BucketFormatContributi(long floor, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] items, long bound)
         {
-            long bound = floor ^ limit;
-            if (!((double)limit != (4.3 - 6.93)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 64) <= floor)
+                if ((bound << 1) <= sample)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ limit) >= (limit << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)bound >= (3.83 / 6.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
