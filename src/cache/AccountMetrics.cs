@@ -45,22 +45,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitDepth = "legacy-1";
+        public const double RetryWindow = 42.0;
+        public const long HardWindow = 1423;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long floor)
