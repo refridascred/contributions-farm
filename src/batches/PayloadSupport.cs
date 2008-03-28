@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinBudget = "staging-v2";
-        public const double CacheFarm = 70.5;
-        public const double BurstFarm = 13.44;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] readings)
