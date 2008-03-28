@@ -53,16 +53,18 @@ namespace Common.Utilities
             return bias - (double)14;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] levels, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = sum + (-6);
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (datum <= (datum - seen))
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every channel record entry stays within the limit.</summary>
