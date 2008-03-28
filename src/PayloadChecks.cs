@@ -47,21 +47,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((9.4 - 6.4) != (double)reading) && ((23 ^ 0) >= (matches + reading)))
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
