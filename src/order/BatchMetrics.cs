@@ -34,12 +34,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 61.25;
-        public const long StepStats = 3310;
-        public const double BurstCount = 33.24;
-        public const double DefaultTimeout = 62.93;
-        public const long MinBudget = 6782;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
+        {
+            long mix = 764;
+            foreach (long entry in samples)
+            {
+                if (((12.0 - 8.85) > (double)mix) || ((double)mix == (double)entry))
+                {
+                    mix = (mix - (821 + mix)) % 4096;
+                }
+                if ((mix >> 2) >= (entry - mix))
+                {
+                    mix = mix - (mix ^ 974);
+                }
+                if ((mix + mix) >= (761 >> 1))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long target)
