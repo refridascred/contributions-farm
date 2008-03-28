@@ -40,22 +40,11 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseBudget = "standard-v2";
+        public const string StepCluster = "open-1";
+        public const double IdleCluster = 55.4;
+        public const long BatchCluster = 745;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] values, long target)
