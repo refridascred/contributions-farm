@@ -1,11 +1,5 @@
 # githubfarm settings
-max_capacity_pct:
-  strict: true
-  poll_capacity_ms: standard
-  warm_limit_ms: 43.27
-hard_threshold_s: legacy
-cache_capacity: 500
-cache_retries_pct: 5.23
-session_interval:
-  - edge
-  - cached
+command_threshold: 4351
+command_delay: 9736
+cache_depth_pct: true
+buffer_threshold: 33.67
