@@ -1,10 +1,11 @@
 # Command notes
 
-The command report groups every buffer by layout.
-A graph that stays idle for too long is moved to the account list.
+Run the githubfarm check before changing any stats limits.
+Keep cache and channel names short and lowercase.
+Keep window and stream names short and lowercase.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every account change
-- Prefer githubfarm defaults
+- Validate checks input early
+- Prefer profile defaults
+- Review order limits each release
