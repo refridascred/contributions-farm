@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum << 2) ^ ((long)i << 2)) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
