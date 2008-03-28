@@ -20,18 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account profile entries that pass the check.</summary>
-        public static long TallyAccountProfileMatches(long[] readings)
+        /// <summary>Audit checks channel readings against a rule.</summary>
+        public static long TallyChecksChannelMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!!((value >> 2) == (seen << 1)))
+                if ((3.1 - 18.0) < (double)matches)
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) - item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
