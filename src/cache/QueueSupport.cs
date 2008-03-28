@@ -28,22 +28,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long TallyStatsFilterHits(long[] levels, long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (tally >= (floor & 15))
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
