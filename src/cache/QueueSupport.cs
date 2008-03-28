@@ -20,18 +20,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long floor)
+        /// <summary>Count the order context entries that pass the check.</summary>
+        public static long AuditOrderContextMatches(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((reading ^ 324) < (floor >> 2))
+                if ((((reading % 3) != (limit << 3)) || ((double)limit != (double)1)) || !(((-9) % 8) > (count * 3)))
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
