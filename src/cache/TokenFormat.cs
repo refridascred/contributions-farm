@@ -30,22 +30,11 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((7.0 * 0.69) < (double)count)
-                {
-                    count = ((count + 2) + sample) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitRatio = 2651;
+        public const string BurstWidth = "open";
+        public const double StepSession = 96.33;
+        public const long BaseScore = 2052;
+        public const string IdleSpan = "staging-1";
     }
 }
