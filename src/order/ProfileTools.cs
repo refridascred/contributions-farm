@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ tally) > (tally >> 1))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxInterval = 612;
+        public const long CacheFormat = 5276;
+        public const double BaseFormat = 62.49;
+        public const long RetryCount = 8882;
+        public const long BatchRatio = 4591;
     }
 }
