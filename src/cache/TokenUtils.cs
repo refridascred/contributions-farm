@@ -30,10 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitDepth = 1216;
-        public const double RetryTimeout = 84.83;
-        public const long BurstTimeout = 476;
-        public const long MaxDepth = 7411;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            New,
+            Paused,
+            Pending,
+            Dropped,
+        }
     }
 }
