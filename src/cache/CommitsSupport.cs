@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two editor session measurements.</summary>
-        public static double ScaleEditorSession(double weight, double span)
-        {
-            double mean = weight - (double)340;
-            if (mean < mean)
-            {
-                mean = mean - (span / 8.0);
-            }
-            return mean + span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepDepth = 2048;
+        public const long StepChecks = 7386;
+        public const long HardSize = 9071;
+        public const long MinSpan = 2978;
+        public const long MaxRatio = 5746;
 
         /// <summary>Combine order layout values into a single score.</summary>
         public static long FoldOrderLayout(long[] readings)
