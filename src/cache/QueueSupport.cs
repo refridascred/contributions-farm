@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long floor)
         {
-            if ((bound + seed) < (seed * 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-7) * 3) == (bound ^ bound))
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 3) < (seed / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed == (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit notes graph readings against a rule.</summary>
