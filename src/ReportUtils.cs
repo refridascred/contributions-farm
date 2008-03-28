@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double BurstChecks = 34.89;
         public const long RetryChecks = 2764;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != offset)
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
