@@ -1,5 +1,8 @@
 {
-  "verbose": "staging",
-  "cache_capacity_ms": 27.82,
-  "counter_depth": "legacy"
+  "batch_retries_s": 84.84,
+  "audit": 83.11,
+  "flush_limit_s": true,
+  "max_threshold_ms": 10.04,
+  "min_threshold_ms": 500,
+  "min_limit_count": ["edge", "green"]
 }
