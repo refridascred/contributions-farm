@@ -27,25 +27,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long offset)
-        {
-            if (!((step / 3) < (step % 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.3 - 4.4) < (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinTimeout = "standard-v2";
+        public const long MinScore = 5895;
+        public const long HardSize = 2767;
+        public const long RetryScore = 6571;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
