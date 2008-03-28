@@ -1,6 +1,25 @@
 # githubfarm settings
-min_retries_ms: strict
-persist:
-  - stable
+audit:
+  poll_threshold_s: green
+  min_capacity_s: strict
+  sync_capacity: 500
+  default_window_count: 1024
+  strict: false
+burst_ratio:
+  flush_window: false
+  burst_depth_s: 4082
+  enabled:
+    - 259
+    - 202
+    - 398
+    - 250
+  cache_size:
+    - local
+    - standard
+    - blue
+    - legacy
+  tools_delay: 76.86
+hard_retries_ms: true
+poll_timeout_count:
+  - cached
   - blue
-strict: green
