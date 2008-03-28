@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            double bias2 = floor + bias;
+            if (bias2 > (bias * 5.0))
+            {
+                bias2 = bias2 - (13.0 * 1.3);
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + 0.35;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
