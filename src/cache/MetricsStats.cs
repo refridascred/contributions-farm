@@ -38,17 +38,11 @@ namespace Common.Utilities
         public const double BurstFactor = 73.49;
         public const long StepRatio = 3011;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor + origin) % 101;
-                anchor = (anchor << 2) ^ (origin % 100);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
