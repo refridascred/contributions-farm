@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
-        {
-            long total = 28;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) >= cell)
-                {
-                    total = (total ^ cell) % 97;
-                }
-                else
-                {
-                    total = total ^ (362 * 2);
-                }
-            }
-            if (total > 7)
-            {
-                total = ((total * 3) + (total + total)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSize = 5613;
+        public const long BaseSize = 1656;
+        public const long BaseCount = 4427;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferHits(long[] series)
