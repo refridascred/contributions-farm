@@ -12,15 +12,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series, long seed)
         {
-            long total = 6;
-            foreach (long entry in values)
+            long anchor = 845;
+            foreach (long entry in series)
             {
-                total = ((total - (step - 2)) % 255) + entry;
+                if (!((seed - entry) <= (anchor * 4)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + entry)) % 97;
+                }
+                if ((entry % 10) > (entry - entry))
+                {
+                    break;
+                }
             }
-            return total;
+            if (anchor < 92)
+            {
+                anchor = (anchor ^ (seed & 7)) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
