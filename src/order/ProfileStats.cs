@@ -29,12 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Level { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryCount = "strict";
+        public const long MaxChecks = 1772;
+        public const long CacheDepth = 4482;
+        public const long LimitInterval = 819;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] data, long seed)
