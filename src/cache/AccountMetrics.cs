@@ -45,18 +45,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally != (0.4 * 5.6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 1) ^ datum) + seed;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
