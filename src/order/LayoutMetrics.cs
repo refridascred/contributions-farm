@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] levels, long seed)
         {
-            Stale,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen << 3) != (sample ^ seen))
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of window route readings.</summary>
