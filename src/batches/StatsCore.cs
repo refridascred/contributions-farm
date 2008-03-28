@@ -49,18 +49,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit already format readings against a rule.</summary>
-        public static long CountAlreadyFormatGaps(long[] items, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading & 255) <= 1))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Done,
+            Ready,
+            New,
         }
     }
 }
