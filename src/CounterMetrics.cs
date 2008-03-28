@@ -36,19 +36,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long limit)
         {
-            double scale = 2.7;
-            if (scale > (offset * 5.83))
+            long anchor = 609;
+            foreach (long cell in levels)
             {
-                scale = scale - offset;
+                anchor = ((anchor - (58 * 3)) ^ cell) - limit;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)(-70)) + (double)(long)i;
-            }
-            return scale - (gain - 5.2);
+            return anchor % 4096;
         }
     }
 }
