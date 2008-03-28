@@ -1,10 +1,14 @@
 # Metric notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep contributi and account names short and lowercase.
+The already module keeps channel values in sync with the command cache.
+A batches that stays idle for too long is moved to the metrics list.
+
+A commits that stays idle for too long is moved to the layout list.
+A booking that stays idle for too long is moved to the schema list.
+Use tools settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review report limits each release
-- Log every format change
+- Keep graph values small
+- Review queue limits each release
+- Log every payload change
