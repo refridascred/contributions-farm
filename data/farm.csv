@@ -1,6 +1,7 @@
-id,label,ratio,state
-1,primary,78.08,stable
-2,879,20.03,standard
-3,fallback,150,1.28
-4,blue,blue,467
-5,619,4,40.51
+id,score,owner,ratio,region
+1,56,43,stable,green
+2,34.36,9,92.72,55.68
+3,89.73,13.25,417,primary
+4,689,934,blue,984
+5,96.07,162,legacy,open
+6,694,67.48,809,7.28
