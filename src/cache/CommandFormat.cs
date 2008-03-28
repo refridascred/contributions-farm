@@ -25,19 +25,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] series, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor << 2) ^ ((long)i * 4);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
