@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = floor;
+            if (rate >= rate)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + rate) + gain;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate + 11.0);
+            }
+            return rate + rate;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
