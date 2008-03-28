@@ -31,19 +31,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            double bias = (double)(403 - 9);
-            if (bias < ratio)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias + bias) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (bias - 0.2)) + (double)(long)i;
-            }
-            return bias - (double)(-91);
+            return count;
         }
     }
 }
