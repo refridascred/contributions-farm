@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long step)
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            long total = 669;
+            foreach (long entry in values)
+            {
+                total = ((total + (step + total)) % 65521) + entry;
+            }
+            return total;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
