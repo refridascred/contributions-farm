@@ -28,15 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster metric reading.</summary>
-        public static double AdjustClusterMetric(double ratio, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            double rate = 1.33;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate + (rate + span)) + (double)(long)i) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate - (double)514;
+            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
