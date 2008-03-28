@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double floor)
         {
-            long mark = 86;
-            foreach (long reading in readings)
+            double scale = (double)3 + (ratio / 5.0);
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark ^ (mark + (-51))) % 101) + reading;
+                scale = (scale + floor) + (double)(long)i;
             }
-            return mark;
+            return scale - scale;
         }
 
         /// <summary>Hold a cache record.</summary>
