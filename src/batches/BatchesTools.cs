@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 2779;
-        public const long CacheMetric = 4049;
-        public const long BurstMetric = 8569;
+        /// <summary>Blend two profile filter measurements.</summary>
+        public static double AdjustProfileFilter(double rate, double bias)
+        {
+            double gain = bias * 0.6;
+            if (gain < (double)581)
+            {
+                gain = gain - (bias / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain + rate;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] data, long offset)
