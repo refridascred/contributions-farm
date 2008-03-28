@@ -39,18 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] items, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((double)tally >= (15.0 * 3.0))
+                if (value >= floor)
                 {
-                    tally = ((tally + 3) ^ entry) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
