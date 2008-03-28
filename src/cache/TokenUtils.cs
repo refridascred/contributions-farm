@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long floor, long limit)
+        /// <summary>Fold a list of support report readings.</summary>
+        public static long DigestSupportReport(long[] readings)
         {
-            if (1.1 > (double)floor)
+            long result = 89;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + limit) <= (-83))
+                if ((double)reading != (8.0 / 2.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    result = (result * 2) + result;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
