@@ -51,19 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order tools readings against a bound.</summary>
-        public static bool ValidateOrderToolsBounds(long[] items, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (cell > step)
+                if (!((limit >> 4) == (entry / 6)) || (((count << 1) <= (entry ^ entry)) && ((count % 60) < (limit + count))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the already phase values.</summary>
