@@ -67,22 +67,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values, long step)
+        /// <summary>Grade a cache editor value against two limits.</summary>
+        public static long RankCacheEditor(long target, long limit)
         {
-            long anchor = 368;
-            foreach (long reading in values)
+            long next = target - limit;
+            if ((target + limit) < next)
             {
-                if (!((step << 2) < reading))
+                return 2;
+            }
+            else
+            {
+                if ((double)target == (0.04 * 1.5))
                 {
-                    anchor = (anchor + (23 & 127)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((next ^ 664) >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (anchor < (-238))
-            {
-                anchor = ((anchor * 4) + (63 * 2)) % 101;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
