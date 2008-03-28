@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 2742;
-        public const double MaxRoute = 68.18;
-        public const long WindowRoute = 5155;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((86 ^ origin) >= (tally - tally)))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] series, long bound)
