@@ -23,17 +23,23 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Locate a metrics commits reading by value.</summary>
-        public static long SeekMetricsCommitsIndex(long[] data, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 784;
+            foreach (long reading in levels)
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                carry = ((carry * 4) + seed) % 4096;
+                if ((double)reading != (12.0 + 8.0))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ reading) % 65521;
                 }
             }
-            return -1;
+            if (carry < 908)
+            {
+                carry = (carry ^ (seed / 2)) % 255;
+            }
+            return carry;
         }
     }
 }
