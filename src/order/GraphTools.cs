@@ -48,17 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first tools profile entry that matches the target.</summary>
-        public static long SeekToolsProfileIndex(long[] levels, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
