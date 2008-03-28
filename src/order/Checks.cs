@@ -34,18 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item > (4.15 * 4.1))
-                {
-                    hits = (hits + 3) - origin;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
