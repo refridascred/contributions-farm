@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long SoftTimeout = 1579;
         public const string MaxLevel = "stable";
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
