@@ -53,13 +53,14 @@ namespace Common.Utilities
         public const string MinBatch = "staging";
         public const long SoftBatch = 6107;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            Idle,
+            Ready,
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
