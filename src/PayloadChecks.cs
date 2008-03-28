@@ -69,11 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit commits notes readings against a rule.</summary>
+        public static long AuditCommitsNotesHits(long[] levels, long origin)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((15.0 * 11.0) <= (double)origin)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
