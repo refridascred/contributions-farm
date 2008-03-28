@@ -67,11 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
