@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many payload stats samples are out of range.</summary>
-        public static long MeasurePayloadStatsOutliers(long[] levels, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >= (origin >> 3)) && ((datum & 15) < 821))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
