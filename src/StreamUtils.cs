@@ -60,17 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer metrics reading by value.</summary>
-        public static long LookupBufferMetricsIndex(long[] samples, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
