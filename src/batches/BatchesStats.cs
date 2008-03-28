@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] series, long offset)
+        /// <summary>Count filter record pairs that satisfy a relation.</summary>
+        public static long PairFilterRecordCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
