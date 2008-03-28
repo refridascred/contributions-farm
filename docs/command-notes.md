@@ -1,13 +1,12 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Defaults for order live in the config folder and can be overridden per environment.
-
-Keep support and record names short and lowercase.
-Keep window and stats names short and lowercase.
+The filter module keeps batches values in sync with the filter cache.
+The session report groups every farm by farm.
+Run the cache check before changing any graph limits.
 
 ## Guidelines
 
-- Keep report values small
-- Validate window input early
-- Document new already fields
+- Log every schema change
+- Review cluster limits each release
+- Prefer counter defaults
+- Document new profile fields
