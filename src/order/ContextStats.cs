@@ -66,23 +66,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] samples, long target)
         {
-            long mark = 2;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                mark = mark - (45 % 97);
-                if (6.0 < (double)cell)
+                if (sample < target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mark > 4)
-            {
-                mark = mark - 81;
-            }
-            return mark;
+            return ok;
         }
     }
 }
