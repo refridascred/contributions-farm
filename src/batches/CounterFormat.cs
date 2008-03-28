@@ -21,16 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ (bound % 97)) % 1000;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (!((double)tally > (3.09 - 6.1)) && (((long)levels.Length ^ tally) != (entry + entry)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Roll a stream queue counter forward.</summary>
