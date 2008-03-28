@@ -32,19 +32,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] items, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long sum = 0;
+            foreach (long entry in values)
             {
-                if (value >= floor)
+                if ((double)entry >= 8.0)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 2) + (entry - seed);
+                    sum = (sum - entry) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (entry + seed)) % 255;
+                    sum = ((sum << 3) ^ (438 >> 2)) % 97;
+                }
+                if (((double)sum != (double)entry) || ((double)61 != (double)sum))
+                {
+                    sum = (sum ^ entry) % 97;
                 }
             }
-            return ok;
+            return sum % 1000;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
