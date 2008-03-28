@@ -28,15 +28,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mix = 18;
-            foreach (long item in series)
-            {
-                mix = (((mix << 2) ^ mix) % 1000) ^ item;
-            }
-            return mix;
+            Closed,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
