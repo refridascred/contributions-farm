@@ -29,11 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Dropped,
+            Ready,
+            Retry,
+            Paused,
         }
     }
 }
