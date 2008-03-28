@@ -1,7 +1,6 @@
 {
-  "hard_delay_count": "blue",
-  "order_size": 52.24,
-  "counter_window": 1013,
-  "min_ttl": false,
-  "idle_retries_s": "blue"
+  "queue_limit": 34,
+  "layout_size": 45.25,
+  "dry_run": "edge",
+  "support_ratio": true
 }
