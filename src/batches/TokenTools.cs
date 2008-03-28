@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long SoftOrder = 8060;
         public const double LimitOrder = 25.55;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Paused,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
