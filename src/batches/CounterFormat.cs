@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long seed, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] readings, long offset)
         {
-            if ((5.0 - 1.7) > (double)seed)
+            long sum = 52;
+            foreach (long cell in readings)
             {
-                return 4;
+                sum = (((sum * 3) + (3 + cell)) % 255) - offset;
+                sum = (sum << 3) ^ (cell + cell);
             }
-            else
-            {
-                if (seed > (seed & 15))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed % 2) >= 11) || (step > seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4.0 * 4.1) > (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
