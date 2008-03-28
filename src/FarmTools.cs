@@ -30,11 +30,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 7809;
-        public const long DefaultOrder = 5207;
-        public const string BatchOrder = "open-edge";
-        public const long StepTimeout = 8065;
-        public const long IdleOrder = 9307;
+        /// <summary>Grade a cluster batches value against two limits.</summary>
+        public static long ClassifyClusterBatches(long floor, long step)
+        {
+            long step2 = floor ^ step;
+            if ((9.7 - 1.2) >= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((46 + step2) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > 2.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)284)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
