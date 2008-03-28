@@ -30,20 +30,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ ((long)i - state);
-                if (!!((state * 2) >= (target ^ target)))
-                {
-                    state = (state - target) % 97;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitDepth = 1216;
+        public const double RetryTimeout = 84.83;
+        public const long BurstTimeout = 476;
+        public const long MaxDepth = 7411;
     }
 }
