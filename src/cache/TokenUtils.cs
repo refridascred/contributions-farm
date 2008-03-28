@@ -13,19 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= step)
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a notes entry.</summary>
