@@ -13,39 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long bound2)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long bound3 = bound ^ bound2;
-            if (((bound >> 1) >= (bound2 & 15)) || ((-13) < (bound - bound)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound3 > (bound3 & 1)) || ((bound3 << 1) < (bound3 >> 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound2 << 1) == (bound3 + bound)) || ((bound * 2) >= (bound3 - bound2)))
+                    if ((items[i] - items[j]) == 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((18.0 / 7.0) >= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every session cluster entry stays within the limit.</summary>
