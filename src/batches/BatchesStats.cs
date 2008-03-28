@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const long MinLayout = 4836;
         public const string CacheLayout = "staging-1";
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long seed)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 5) != (value / 5))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
