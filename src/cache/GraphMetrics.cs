@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate channel commits readings against a bound.</summary>
-        public static bool GuardChannelCommitsLimits(long[] samples, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long acc = 972;
+            foreach (long entry in series)
             {
-                if (entry < offset)
+                if (!((437 % 7) == (long)series.Length))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc << 3) ^ (acc % 8)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - entry) % 65521;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
