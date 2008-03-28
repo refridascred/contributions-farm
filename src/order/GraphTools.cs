@@ -31,21 +31,13 @@ namespace Common.Utilities
             return scale + (double)(-49);
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
