@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepTimeout = 650;
-        public const long BaseAccount = 2225;
-        public const long BatchCount = 4059;
-        public const string BurstInterval = "primary-v2";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] values, long origin)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the account profile entries that pass the check.</summary>
         public static long TallyAccountProfileMatches(long[] readings)
