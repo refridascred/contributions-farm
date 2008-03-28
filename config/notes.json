@@ -1,14 +1,6 @@
 {
-  "commits_depth": "blue",
-  "session_ratio": [13, 189, 368, 59],
-  "batch_delay": 87,
-  "max_retries_ms": 86,
-  "warm_timeout_ms": ["eu-west", "strict", "open"],
-  "batch_ratio_s": {
-    "window_interval": "local",
-    "filter_capacity": ["local", "strict", "open", "local"],
-    "compress": ["blue", "open"],
-    "retry_ttl": [376, 175],
-    "burst_depth": "edge"
-  }
+  "burst_size": true,
+  "queue_limit": 90.08,
+  "max_retries": 61.53,
+  "cache_ratio": [128, 71, 356]
 }
