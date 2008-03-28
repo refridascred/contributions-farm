@@ -49,14 +49,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Closed,
-            Pending,
-            Done,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 9200;
+        public const double BatchWindow = 55.59;
+        public const double BurstFactor = 73.49;
+        public const long StepRatio = 3011;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
