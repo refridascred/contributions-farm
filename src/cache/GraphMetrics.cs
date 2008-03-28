@@ -35,25 +35,12 @@ namespace Common.Utilities
         public const long SoftContext = 1213;
         public const string HardLevel = "staging-v2";
 
-        /// <summary>Grade a metric cluster value against two limits.</summary>
-        public static long ClassifyMetricCluster(long step, long origin)
-        {
-            if (12.0 < (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step * 4) > origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 1634;
+        public const long CacheBuffer = 5548;
+        public const long SoftDepth = 5866;
+        public const long MaxInterval = 4927;
+        public const string BaseBuffer = "cached";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double IdleLevel = 98.0;
