@@ -36,17 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 5;
+            foreach (long value in data)
             {
-                if (data[i] >= bound)
+                if ((545 - value) < (long)data.Length)
                 {
-                    return (long)i;
+                    state = ((state * 2) + (state % 2)) % 255;
                 }
             }
-            return -1;
+            if (state > (-67))
+            {
+                state = state + (state ^ state);
+            }
+            return state % 97;
         }
     }
 }
