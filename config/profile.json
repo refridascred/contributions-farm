@@ -1,8 +1,8 @@
 {
-  "idle_window": [469, 192, 169, 395],
-  "format_capacity": [317, 98],
-  "warm_depth": 1024,
-  "commits_interval": true,
-  "dry_run": ["staging", "local", "open", "edge"],
-  "retry_delay": 3712
+  "readonly": ["open", "fallback", "open", "cached"],
+  "token_retries": "staging",
+  "min_ratio": 15,
+  "retry_interval_ms": "edge",
+  "strict": "staging",
+  "editor_interval": 15.14
 }
