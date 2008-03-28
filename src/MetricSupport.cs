@@ -31,19 +31,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every queue format entry stays within the limit.</summary>
-        public static bool GuardQueueFormatRange(long[] series, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Locked,
         }
     }
 }
