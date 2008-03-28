@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySize = 5969;
-        public const long IdleInterval = 293;
-        public const long IdleGraph = 648;
-        public const long BaseBudget = 7346;
-        public const long BatchWidth = 6636;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 60.18;
+        public const double RetrySpan = 40.37;
+        public const long DefaultInterval = 1634;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
