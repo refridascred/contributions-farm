@@ -1,6 +1,7 @@
 {
-  "cluster_threshold": "standard",
-  "counter_limit": ["fallback", "eu-west"],
-  "hard_retries_s": 58.05,
-  "channel_size": 13
+  "batch_ttl_ms": 8643,
+  "token_ttl": [210, 227, 206, 385],
+  "compress": 7305,
+  "max_depth_count": false,
+  "idle_retries_pct": "open"
 }
