@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (88 << 3))
-                {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
