@@ -31,12 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Draft,
+            Dropped,
+            Synced,
+            Active,
+            Paused,
             Retry,
-            Stale,
         }
 
         /// <summary>Hold a checks info.</summary>
