@@ -30,13 +30,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            Locked,
-            Retry,
-            New,
-            Stale,
+            long mix = 4;
+            foreach (long cell in samples)
+            {
+                if ((2 - mix) < (cell ^ mix))
+                {
+                    mix = ((mix << 2) ^ cell) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (cell >> 3)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
