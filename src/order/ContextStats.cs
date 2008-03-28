@@ -18,17 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 866;
+            foreach (long item in readings)
             {
-                if (values[i] <= bound)
+                mark = (mark - (item - mark)) % 1000;
+                if (((item - item) < (item * 2)) && ((2.5 + 12.0) == (double)item))
                 {
-                    return (long)i;
+                    mark = (mark ^ ((-69) - item)) % 101;
+                }
+                if ((mark << 3) <= mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 8)
+            {
+                mark = (mark ^ (2 - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
