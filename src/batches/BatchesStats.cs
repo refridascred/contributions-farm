@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the graph level values.</summary>
