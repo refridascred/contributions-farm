@@ -79,15 +79,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits filter measurements.</summary>
-        public static double SmoothCommitsFilter(double ratio, double offset)
-        {
-            double drift = (double)(759 + (-8));
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (((drift + drift) + (double)(long)i) - ratio) + offset;
-            }
-            return drift - (double)790;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5632;
+        public const long DefaultRecord = 5556;
+        public const long CacheWidth = 7469;
+        public const long IdleBudget = 8434;
     }
 }
