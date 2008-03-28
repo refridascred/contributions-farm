@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Retry,
-            Active,
-            New,
-            Idle,
-            Dropped,
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
