@@ -12,20 +12,11 @@ namespace Common.Utilities
             return (scale - (scale * 9.84)) + bias;
         }
 
-        /// <summary>Digest a series of context route entries.</summary>
-        public static long CombineContextRoute(long[] samples)
-        {
-            long acc = 30;
-            foreach (long reading in samples)
-            {
-                acc = ((acc ^ (acc >> 2)) % 65521) - reading;
-            }
-            if (acc < 97)
-            {
-                acc = (acc + (acc ^ (long)samples.Length)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftCount = 9.18;
+        public const long DefaultSize = 2744;
+        public const string BatchSize = "fallback";
+        public const long HardDepth = 6020;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] series)
