@@ -64,13 +64,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
