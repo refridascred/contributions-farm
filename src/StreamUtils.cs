@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
             public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
