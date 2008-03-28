@@ -115,31 +115,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long target, long offset)
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long AuditQueueFarmHits(long[] items)
         {
-            if ((target > (offset - offset)) || ((offset - 2) >= target))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset < (target & 3)) && ((1.6 * 5.6) >= (double)offset))
+                if ((matches << 1) <= (datum ^ datum))
                 {
-                    return 0;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (offset >= (target & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
