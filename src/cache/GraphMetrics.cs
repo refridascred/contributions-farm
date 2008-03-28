@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] readings, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 177;
+            foreach (long value in items)
             {
-                if ((floor - floor) > matches)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                mark = ((mark ^ (mark % 7)) % 4096) ^ value;
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
