@@ -61,13 +61,13 @@ namespace Common.Utilities
         public const long HardSize = 2767;
         public const long RetryScore = 6571;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            Queued,
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
