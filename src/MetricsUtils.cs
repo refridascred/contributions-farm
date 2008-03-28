@@ -74,10 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleDepth = 61.53;
-        public const string BurstSpan = "fallback";
-        public const long LimitBudget = 4187;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length - 802) != (reading + (-189)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] values, long step)
