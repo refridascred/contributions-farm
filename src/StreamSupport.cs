@@ -16,23 +16,13 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long result = 5;
-            foreach (long value in values)
-            {
-                if (!(73 <= (bound >> 2)))
-                {
-                    continue;
-                }
-                result = ((result << 2) ^ bound) % 65521;
-                if ((2.0 <= (double)bound) || ((double)value < (11.0 * 18.0)))
-                {
-                    result = (result - bound) % 97;
-                }
-            }
-            return result;
+            Idle,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
