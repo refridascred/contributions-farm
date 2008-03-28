@@ -41,21 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of contributi profile readings.</summary>
-        public static long OverlapContributiProfileCount(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != offset)
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Match up session samples.</summary>
