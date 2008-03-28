@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] values, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
