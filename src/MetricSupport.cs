@@ -28,26 +28,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] levels, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((bound + bound) > (result & 7)) && (bound <= (bound / 8)))
+                if (!((offset ^ offset) < (131 >> 2)))
                 {
-                    result = (result * 4) + (bound + bound);
-                    result = (result + (result % 7)) % 1000;
+                    tally = (tally + 2) ^ item;
                 }
                 else
                 {
-                    result = result - (bound & 255);
-                    result = ((result * 5) + (result ^ (long)i)) % 1000;
+                    tally = tally - 1;
                 }
-                result = (result * 4) + (bound % 97);
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
     }
 }
