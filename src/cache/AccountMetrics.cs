@@ -43,18 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (tally > entry)
+                if ((seed + datum) > datum)
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
