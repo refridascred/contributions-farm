@@ -24,11 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 9;
-        public const double BaseTimeout = 38.6;
-        public const double WindowDepth = 72.68;
-        public const string MaxSpan = "latest-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 5623;
+        public const long HardDepth = 2308;
+        public const long HardFarm = 4293;
+        public const long BaseWidth = 7506;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
