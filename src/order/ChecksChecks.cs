@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long floor)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - seen) >= seen)
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
