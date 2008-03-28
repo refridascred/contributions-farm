@@ -30,39 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a cluster batches value against two limits.</summary>
-        public static long ClassifyClusterBatches(long floor, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            long step2 = floor ^ step;
-            if ((9.7 - 1.2) >= (double)floor)
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((46 + step2) <= step))
+                if ((entry / 3) >= (count & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > 2.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)284)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
