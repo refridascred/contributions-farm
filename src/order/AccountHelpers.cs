@@ -12,24 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long origin, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] items, long floor)
         {
-            if ((limit + limit) >= (6 - 486))
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 2) > (origin + (-2)))
+                if (cell != floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
