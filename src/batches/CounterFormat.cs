@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Find the first session window entry that matches the target.</summary>
+        public static long SeekSessionWindowIndex(long[] items, long step)
         {
-            long anchor = 38;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor ^ 62) % 65521) + cell;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
