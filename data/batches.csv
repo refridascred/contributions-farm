@@ -1,9 +1,7 @@
-id,token,score
-1,cached,942
-2,444,187
-3,latest,staging
-4,494,primary
-5,eu-west,935
-6,local,fallback
-7,69.54,latest
-8,open,325
+id,active,ratio,token,weight
+1,507,blue,43.33,612
+2,77.16,41.57,921,21.72
+3,43,60.47,staging,67.84
+4,59.78,708,266,590
+5,76.77,fallback,32.51,11.69
+6,staging,strict,stable,322
