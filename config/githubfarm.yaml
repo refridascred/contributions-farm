@@ -1,4 +1,18 @@
 # githubfarm settings
-audit: true
-poll_interval: false
-cache_delay: blue
+retry_window_count: blue
+poll_delay_ms: 24.16
+audit:
+  hard_interval_ms:
+    - 137
+    - 37
+    - 99
+  notes_retries: edge
+  verbose:
+    verbose: 250
+    commits_delay: green
+    cache_ratio: fallback
+    poll_capacity: 57
+    readonly: false
+    queue_retries: true
+  base_delay_ms: 73.3
+  window_depth: 9
