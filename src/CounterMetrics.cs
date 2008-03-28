@@ -42,17 +42,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            double gain = scale + bias;
+            if (gain >= (double)52)
             {
-                acc = (acc + 62) % 1000;
-                acc = (acc << 2) ^ (origin % 5);
-                acc = ((acc * 5) + (long)i) % 1000;
+                gain = gain - bias;
             }
-            return acc;
+            else
+            {
+                gain = gain + (double)(-50);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (scale - 2.0)) - (double)(long)i;
+            }
+            return gain - (9.61 - 13.0);
         }
     }
 }
