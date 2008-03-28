@@ -37,18 +37,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] values, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((reading / 8) != (40 - 8)) && ((reading + tally) <= (long)values.Length))
+                if ((double)mark < (9.4 * 13.0))
                 {
-                    tally = (tally + 3) + limit;
+                    mark = ((mark * 4) + (limit - (long)i)) % 65521;
+                    mark = mark - ((long)i - (long)i);
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next editor value.</summary>
