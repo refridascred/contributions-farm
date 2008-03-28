@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first entry batches entry that matches the target.</summary>
-        public static long FindEntryBatchesIndex(long[] data, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
