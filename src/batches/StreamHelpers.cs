@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9678;
-        public const long BatchBudget = 7052;
-        public const double BaseCounter = 23.0;
-        public const double WindowFactor = 8.49;
-        public const long RetryWidth = 3528;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BatchInterval = 4791;
