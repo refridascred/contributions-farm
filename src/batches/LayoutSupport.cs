@@ -30,11 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a route notes figure with a bias.</summary>
-        public static double SmoothRouteNotes(double bias, double offset)
+        /// <summary>Scale a session githubfarm figure with a bias.</summary>
+        public static double SmoothSessionGithubfarm(double weight, double span)
         {
-            double load = (double)(653 & 63);
-            return ((load + (load * 0.06)) + bias) + offset;
+            double load = (double)(-908) - (double)12;
+            if (load >= (double)8)
+            {
+                load = (load - (weight - load)) + span;
+            }
+            return load + weight;
         }
 
         /// <summary>Check that every already profile entry stays within the limit.</summary>
