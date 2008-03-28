@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const double WindowRatio = 6.64;
         public const long StepFactor = 9713;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] values, long seed)
         {
-            Pending,
-            Active,
-            Stale,
-            Dropped,
-            Draft,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine session order values into a single score.</summary>
