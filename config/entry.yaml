@@ -1,13 +1,12 @@
 # entry settings
-max_interval_count: 83.63
-soft_retries_s: blue
-strict:
-  - 180
-  - 275
-  - 92
-default_size_pct: edge
-queue_delay:
-  - 243
-  - 218
-  - 100
-poll_depth_s: 28
+context_size: 48
+record_ratio:
+  - primary
+  - stable
+idle_ratio: 48.59
+max_size: 100
+channel_timeout:
+  - latest
+  - local
+  - latest
+checks_retries: 36.3
