@@ -23,18 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] series, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)offset > (double)tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
