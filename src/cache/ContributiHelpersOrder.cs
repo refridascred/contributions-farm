@@ -14,10 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepCount = 62.18;
-        public const double CacheLevel = 44.78;
-        public const long StepNotes = 4151;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] samples)
