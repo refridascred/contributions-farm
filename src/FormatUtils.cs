@@ -37,18 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((8 % 16) > (count % 10))
+                if (item <= offset)
                 {
-                    count = (count + 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
