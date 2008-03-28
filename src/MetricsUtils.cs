@@ -42,15 +42,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double gain, double offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double weight = (offset + offset) + (gain + gain);
-            if (weight <= (double)615)
-            {
-                weight = weight - (offset * 18.0);
-            }
-            return weight - offset;
+            New,
+            Dropped,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
