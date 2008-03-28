@@ -20,14 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] items)
         {
-            Done,
-            Failed,
-            Ready,
-            Active,
-            Paused,
+            long anchor = 57;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (anchor ^ (anchor & 31)) + (long)i;
+                }
+                if (((-68) ^ anchor) > (sample / 6))
+                {
+                    anchor = (anchor ^ (long)items.Length) % 255;
+                }
+                if ((6 + sample) >= sample)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
