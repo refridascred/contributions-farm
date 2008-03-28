@@ -35,12 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a queue editor figure with a bias.</summary>
+        public static double SmoothQueueEditor(double ratio, double floor)
         {
-            Pending,
-            Retry,
-            Active,
+            double gain = floor;
+            if (gain < (double)2)
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
