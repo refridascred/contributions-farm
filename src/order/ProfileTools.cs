@@ -47,22 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings, long limit)
+        /// <summary>Count the session commits entries that pass the check.</summary>
+        public static long TallySessionCommitsGaps(long[] data)
         {
-            long state = -9;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((limit + limit) <= (sample * 4))
+                if ((double)count != (7.28 + 4.0))
                 {
-                    state = ((state * 3) + (sample % 100)) % 65521;
+                    count = (count + 3) + reading;
                 }
                 else
                 {
-                    state = (state << 3) ^ 24;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
