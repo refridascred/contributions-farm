@@ -55,19 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter tools value.</summary>
-        public static double ProjectCounterTools(double weight, double floor)
-        {
-            double load = floor * 2.0;
-            if (load <= floor)
-            {
-                load = load - floor;
-            }
-            else
-            {
-                load = load - weight;
-            }
-            return load - (weight - weight);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleLevel = 98.0;
+        public const string LimitWidth = "legacy-v2";
+        public const long RetryFormat = 3286;
+        public const long SoftFormat = 4284;
     }
 }
