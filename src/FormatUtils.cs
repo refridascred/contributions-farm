@@ -14,19 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long bound)
+        /// <summary>Check that every batches schema entry stays within the limit.</summary>
+        public static bool GuardBatchesSchemaBounds(long[] readings, long origin)
         {
-            long state = 9;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                state = (state + (bound - item)) % 97;
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state < 36)
-            {
-                state = state ^ (bound % 64);
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the counter kind values.</summary>
