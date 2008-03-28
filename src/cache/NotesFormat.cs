@@ -26,14 +26,14 @@ namespace Common.Utilities
             return ratio - (weight + ratio);
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            New,
-            Dropped,
-            Synced,
+            Retry,
             Done,
+            Dropped,
             Stale,
+            Closed,
         }
     }
 }
