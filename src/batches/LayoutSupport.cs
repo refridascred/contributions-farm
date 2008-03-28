@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long BatchCounter = 9585;
         public const long IdleCounter = 2280;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Locked,
-            Dropped,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "standard-1";
+        public const long RetryAccount = 6275;
+        public const long MinSpan = 2825;
+        public const long BatchSize = 4622;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long origin)
