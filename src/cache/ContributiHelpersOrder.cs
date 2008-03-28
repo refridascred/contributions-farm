@@ -32,18 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = 362;
+            foreach (long reading in series)
             {
-                if ((double)item >= (4.0 / 4.0))
+                if ((7 ^ mix) == (reading << 1))
                 {
-                    tally = tally + 2;
+                    mix = ((mix << 3) ^ (mix << 3)) % 65521;
                 }
             }
-            return tally;
+            if (mix < 91)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
     }
 }
