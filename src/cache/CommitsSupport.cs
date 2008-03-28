@@ -14,19 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double ratio2 = ratio;
+            return (ratio2 + (2.0 * 7.9)) + bias;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
