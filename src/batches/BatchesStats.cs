@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((offset - 63) <= entry) && (((2.77 * 11.0) <= (double)offset) || ((entry % 8) > count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
