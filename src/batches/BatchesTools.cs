@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long LimitStats = 7904;
         public const string IdleStats = "fallback-1";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Stale,
+            Closed,
             Paused,
-            Ready,
-            Retry,
-            Failed,
+            Pending,
         }
 
         /// <summary>Match up queue samples.</summary>
