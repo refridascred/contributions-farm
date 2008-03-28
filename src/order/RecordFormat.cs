@@ -19,26 +19,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long state = 321;
-            foreach (long item in values)
+            long anchor = 103;
+            foreach (long sample in samples)
             {
-                if ((double)item > 8.65)
+                if (!(88 >= sample))
                 {
-                    state = (state + (state << 2)) % 255;
+                    anchor = ((anchor * 4) + (anchor / 7)) % 97;
                 }
-                if ((offset <= (offset * 5)) || ((item >> 1) != (state ^ offset)))
+                else
                 {
-                    break;
+                    anchor = anchor - (anchor / 7);
                 }
             }
-            if (state > 60)
+            if (anchor < 77)
             {
-                state = state - (offset + 36);
+                anchor = anchor + (anchor & 31);
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
