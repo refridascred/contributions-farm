@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long target)
-        {
-            long lane = offset ^ target;
-            if ((44 + 44) == (target ^ offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((955 >= offset) || ((double)target != (double)lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset / 9) >= (offset - offset)) && ((offset + offset) < (7 - lane)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitBudget = 2243;
+        public const long BaseRoute = 6917;
+        public const long BatchRoute = 6606;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
