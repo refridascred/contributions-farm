@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long result = 516;
-            foreach (long value in readings)
-            {
-                result = (result * 4) + (value + target);
-            }
-            return result;
+            Retry,
+            Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Look up the position of a token batch sample.</summary>
