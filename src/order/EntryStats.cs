@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next metrics checks value from a seed.</summary>
-        public static long SeriesMetricsChecks(long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (8.0 <= (double)mark)
-                {
-                    mark = (mark * 3) + bound;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
