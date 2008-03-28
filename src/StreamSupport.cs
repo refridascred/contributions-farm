@@ -16,11 +16,23 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long result = 5;
+            foreach (long value in values)
+            {
+                if (!(73 <= (bound >> 2)))
+                {
+                    continue;
+                }
+                result = ((result << 2) ^ bound) % 65521;
+                if ((2.0 <= (double)bound) || ((double)value < (11.0 * 18.0)))
+                {
+                    result = (result - bound) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the stats level values.</summary>
