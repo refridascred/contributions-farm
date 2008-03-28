@@ -14,19 +14,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long bound3 = bound - bound2;
+            if (bound2 < (bound3 - bound3))
             {
-                if (reading != bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound2 >= (9.2 * 3.41))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound3 << 3) == (bound3 + bound2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a metric entry.</summary>
