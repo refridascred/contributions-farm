@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitWidth = 66.74;
-        public const double CacheToken = 25.29;
-        public const long DefaultToken = 1935;
-        public const long RetryTimeout = 3509;
-        public const long SoftToken = 6862;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (target >= 9)
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
