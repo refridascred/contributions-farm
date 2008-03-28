@@ -33,17 +33,31 @@ namespace Common.Utilities
         public const long MinSpan = 2825;
         public const long BatchSize = 4622;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 7;
+            foreach (long entry in values)
             {
-                if (data[i] == origin)
+                mix = (mix ^ offset) % 255;
+                if (((mix & 127) <= (offset - mix)) || ((offset ^ entry) > (offset ^ mix)))
                 {
-                    return (long)i;
+                    mix = mix - (entry / 9);
+                }
+                else
+                {
+                    mix = (mix + ((-57) % 12)) % 65521;
+                }
+                if ((entry + entry) == (offset * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 6)
+            {
+                mix = (mix - (mix - mix)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine stats filter values into a single score.</summary>
