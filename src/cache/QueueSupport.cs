@@ -16,25 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a commits contributi value against two limits.</summary>
-        public static long RankCommitsContributi(long target, long offset)
+        /// <summary>Audit notes graph readings against a rule.</summary>
+        public static long CountNotesGraphMatches(long[] values)
         {
-            long lane = target ^ offset;
-            if (lane > (target + 422))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset - offset) <= (offset + 4)) && ((offset % 3) < (offset / 8)))
+                if (((double)tally >= (5.92 / 7.0)) && !((double)value != (20.0 + 2.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
