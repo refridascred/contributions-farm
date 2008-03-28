@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 1782;
+        public const long SoftChannel = 6549;
+        public const long BurstLevel = 9953;
+        public const long DefaultChannel = 1978;
+        public const string StepChannel = "standard-1";
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] samples, long bound)
