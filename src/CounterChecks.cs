@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long AuditSchemaLayoutMatches(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count + count) > (count >> 1))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
