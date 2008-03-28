@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of batch queue readings.</summary>
-        public static long CompareBatchQueueCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheRatio = 3806;
+        public const long BurstLevel = 1246;
+        public const long MinLevel = 8747;
+        public const long RetryGithubfarm = 2333;
+        public const long WindowDepth = 8730;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long target)
