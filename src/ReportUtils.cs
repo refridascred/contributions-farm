@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((seen / 2) > (seen + 7)))
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up metric samples.</summary>
