@@ -1,7 +1,13 @@
 {
-  "sync_size_pct": false,
-  "cache_ratio_count": "latest",
-  "hard_retries": 5688,
-  "max_size_s": "latest",
-  "default_ttl_ms": 88
+  "sync_timeout_s": "green",
+  "sync_interval_pct": [389, 470, 213],
+  "default_interval_pct": 69.21,
+  "notes_depth": {
+    "flush_window_ms": 2428,
+    "command_threshold": 30,
+    "cache_threshold": "staging",
+    "profile_limit": 93.02,
+    "cache_capacity_s": 9320
+  },
+  "retry_ttl": 29
 }
