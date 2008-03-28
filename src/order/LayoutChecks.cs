@@ -68,11 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 9015;
-        public const long DefaultBudget = 231;
-        public const long SoftBatch = 7542;
-        public const long StepTimeout = 2706;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Pending,
+            Locked,
+            Done,
+            Retry,
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
