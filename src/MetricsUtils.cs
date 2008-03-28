@@ -47,32 +47,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache editor value against two limits.</summary>
-        public static long RankCacheEditor(long target, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long next = target - limit;
-            if ((target + limit) < next)
+            long acc = 390;
+            foreach (long cell in readings)
             {
-                return 2;
+                if ((acc > cell) && ((acc >> 1) == (6 - acc)))
+                {
+                    acc = ((acc << 2) ^ acc) % 65521;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (acc ^ (long)i) % 65521;
+                }
+                acc = ((acc * 3) + (cell ^ acc)) % 1000;
             }
-            else
+            if (acc < 568)
             {
-                if ((double)target == (0.04 * 1.5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((next ^ 664) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = (acc ^ (acc ^ acc)) % 255;
             }
+            return acc;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
