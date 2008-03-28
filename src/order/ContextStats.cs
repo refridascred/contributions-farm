@@ -49,18 +49,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit editor schema readings against a rule.</summary>
-        public static long MeasureEditorSchemaHits(long[] levels, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long offset, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((0 - target) == (offset + target))
             {
-                if ((double)tally <= (double)bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= (1.3 / 4.0))
                 {
-                    tally = (tally + 3) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ offset) <= (offset / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target * 3) <= (offset + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
