@@ -30,22 +30,9 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate checks stats samples.</summary>
-        public static long CombineChecksStats(long[] samples, long limit)
-        {
-            long state = 9;
-            foreach (long datum in samples)
-            {
-                if ((limit / 4) != (datum / 4))
-                {
-                    state = state - (limit + 70);
-                }
-            }
-            if (state > 76)
-            {
-                state = (state << 2) ^ (limit << 3);
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseFactor = 8926;
+        public const long MinPayload = 8110;
+        public const long RetryPayload = 144;
     }
 }
