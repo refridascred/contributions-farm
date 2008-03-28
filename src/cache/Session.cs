@@ -34,26 +34,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long total = -818;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((origin / 2) > total))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ (total ^ origin)) % 101;
-                }
-                if (!((5.8 * 7.0) > (double)cell))
-                {
-                    total = (total ^ (origin % 2)) % 97;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 4)
-            {
-                total = total + (total - 0);
-            }
-            return total % 1000;
+            return tally;
         }
     }
 }
