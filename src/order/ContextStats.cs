@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] items, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (reading >= offset)
+                if ((floor >> 5) < 8)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
