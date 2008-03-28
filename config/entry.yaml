@@ -1,4 +1,27 @@
 # entry settings
-flush_ttl_ms: 63.3
-enabled: 7305
-burst_window: 82.33
+contributi_window: 46.0
+hard_limit_ms: 74
+report_delay:
+  compress: false
+  batch_limit: true
+  idle_ratio_s:
+    order_ratio: 16
+    metric_threshold: primary
+    min_ttl_ms: true
+    enabled: false
+    soft_depth_s: 250
+  sync_ratio_s: 4.45
+max_timeout_pct: 56.67
+compress:
+  max_timeout_count: blue
+  enabled: strict
+  compress:
+    - 497
+    - 78
+    - 184
+  audit:
+    - 28
+    - 284
+    - 163
+    - 223
+  batch_threshold_pct: staging
