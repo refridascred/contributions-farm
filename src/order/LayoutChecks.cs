@@ -57,18 +57,17 @@ namespace Common.Utilities
         public const long BaseScore = 6134;
         public const long BaseSize = 1797;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] samples, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((offset + tally) <= (sample % 5))
-                {
-                    tally = tally + 1;
-                }
+                total = (total + total) % 4096;
+                total = total - total;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the route mode values.</summary>
