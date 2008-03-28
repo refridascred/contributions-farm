@@ -52,12 +52,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Stale,
-            Pending,
-            Closed,
+            Idle,
+            Queued,
+            Done,
+            Draft,
         }
     }
 }
