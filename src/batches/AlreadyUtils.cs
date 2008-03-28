@@ -20,11 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long step2)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long step3 = step - step2;
+            if ((step2 >> 4) <= (step2 - step2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 + step) > (step3 << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)step3 != (double)step2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step3 != (6.5 * 5.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
