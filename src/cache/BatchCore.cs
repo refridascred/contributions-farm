@@ -23,23 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel entry readings.</summary>
-        public static long ScoreChannelEntry(long[] series)
-        {
-            long result = -1;
-            foreach (long reading in series)
-            {
-                if (!((7.09 / 6.0) == (double)reading))
-                {
-                    result = result ^ (result >> 4);
-                }
-                if ((reading >= result) || ((5 / 7) > result))
-                {
-                    result = (result ^ (reading * 5)) % 65521;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 5927;
+        public const double MaxMetric = 77.72;
+        public const string DefaultRatio = "fallback-1";
+        public const long BurstMetric = 3618;
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
