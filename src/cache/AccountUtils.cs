@@ -39,15 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            Queued,
+            Draft,
+            Closed,
         }
     }
 }
