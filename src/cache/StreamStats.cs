@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.3 < (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
