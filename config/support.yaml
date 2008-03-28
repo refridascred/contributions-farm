@@ -1,6 +1,11 @@
 # support settings
-burst_threshold_pct: 62.94
-compress: 30
-window_window: eu-west
-enabled: 4.76
-verbose: stable
+notes_threshold: 98.68
+warm_depth_s: 37.94
+batch_timeout:
+  - 43
+  - 91
+  - 307
+  - 17
+strict: blue
+stream_delay: 46.95
+max_ratio: 13
