@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] samples, long limit)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((45 + value) >= (value / 2))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
