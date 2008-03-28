@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double bias2)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            double mean = bias2;
-            return mean + (bias / 6.0);
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum << 2) ^ (floor % 12);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
