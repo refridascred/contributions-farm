@@ -1,5 +1,5 @@
 # githubfarm settings
-token_ratio: 44
-support_threshold: 31.25
-compress: false
-audit: 5920
+order_ratio: 3777
+poll_capacity: 40.12
+buffer_delay: 100
+dry_run: 60
