@@ -41,19 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] data, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
