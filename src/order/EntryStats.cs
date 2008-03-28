@@ -28,15 +28,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
