@@ -1,17 +1,14 @@
 # entry settings
-burst_delay_pct:
-  - edge
+retry_depth_count: local
+hard_delay_ms:
   - local
-  - strict
-default_interval: 2686
-buffer_delay: true
-batch_delay:
-  dry_run: true
-  batch_ttl:
-    - 44
-    - 382
-    - 438
-  readonly: 29
-  poll_capacity_s: 2.14
-  batches_interval: standard
-max_threshold_count: 89
+  - local
+  - green
+batches_timeout:
+  batch_delay:
+    - cached
+    - blue
+  channel_window: standard
+  poll_depth_count: latest
+persist: strict
+compress: 75.65
