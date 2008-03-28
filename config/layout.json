@@ -1,7 +1,8 @@
 {
-  "batch_ttl_ms": 8643,
-  "token_ttl": [210, 227, 206, 385],
-  "compress": 7305,
-  "max_depth_count": false,
-  "idle_retries_pct": "open"
+  "commits_timeout": 1342,
+  "enabled": ["eu-west", "primary", "blue"],
+  "default_retries": 73.39,
+  "contributi_capacity": true,
+  "idle_timeout_ms": "eu-west",
+  "idle_size_ms": "open"
 }
