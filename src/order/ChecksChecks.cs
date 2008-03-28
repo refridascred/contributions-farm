@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long BaseMetric = 5170;
         public const long RetryWidth = 9560;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSize = 6473;
+        public const double StepInterval = 25.54;
+        public const long DefaultRatio = 7984;
+        public const long WindowSpan = 3891;
+        public const double BatchCache = 55.13;
     }
 }
