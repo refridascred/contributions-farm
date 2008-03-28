@@ -1,13 +1,8 @@
 {
-  "burst_timeout_count": 30,
+  "flush_ttl_pct": "legacy",
+  "sync_limit_ms": "green",
+  "tools_ratio": "open",
   "verbose": false,
-  "window_ratio": 83.85,
-  "enabled": 43,
-  "metric_ratio": ["fallback", "legacy"],
-  "contributi_delay": {
-    "default_threshold": 9539,
-    "cluster_retries": 3064,
-    "base_depth_ms": "blue",
-    "max_size_count": false
-  }
+  "idle_timeout_count": "latest",
+  "flush_limit_s": 33.03
 }
