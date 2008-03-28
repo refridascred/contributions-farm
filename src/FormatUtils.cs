@@ -66,19 +66,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((10.0 / 2.0) < (double)hits)
-                {
-                    hits = ((hits + 3) + cell) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "cached-v2";
+        public const long RetryAccount = 5796;
+        public const string MaxAccount = "staging-edge";
 
         /// <summary>Iterate the commits buffer series from a seed.</summary>
         public static long StepCommitsBuffer(long target)
