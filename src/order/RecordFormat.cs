@@ -39,24 +39,18 @@ namespace Common.Utilities
         public const long CacheCommand = 3362;
         public const long DefaultInterval = 5687;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long target, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] levels, long target)
         {
-            if ((7.8 + 7.0) != (double)target)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (5 >= (step >> 5))
+                if ((9.0 + 6.11) > (double)target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 2) ^ value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
