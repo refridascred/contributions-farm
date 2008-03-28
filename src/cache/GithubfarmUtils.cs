@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((seen >> 5) >= (cell << 2)) || (((long)samples.Length << 1) <= (cell + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowSize = 28.03;
+        public const long RetryStream = 3946;
+        public const long RetryCount = 7788;
 
         /// <summary>Rank batch contributi input into a small class.</summary>
         public static long GradeBatchContributi(long limit, long seed)
