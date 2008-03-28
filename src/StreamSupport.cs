@@ -25,11 +25,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseDepth = 77.55;
-        public const long HardChecks = 9655;
-        public const long CacheRatio = 4399;
-        public const double HardRatio = 2.59;
-        public const long WindowInterval = 5963;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen - origin) > origin)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
+        }
     }
 }
