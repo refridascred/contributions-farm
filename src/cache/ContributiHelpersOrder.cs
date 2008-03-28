@@ -29,14 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Idle,
-            Dropped,
-            Ready,
-            Retry,
-            Paused,
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
