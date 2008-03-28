@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] samples, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample + (-602)) >= (4 << 1))
+                if ((((long)i ^ 702) <= (bound + score)) && ((score >> 5) > score))
                 {
-                    tally = (tally + 1) - seed;
+                    score = (score + (bound % 64)) % 1000;
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score - ((long)i ^ bound)) % 255;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
