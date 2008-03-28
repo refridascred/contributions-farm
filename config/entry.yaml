@@ -1,24 +1,5 @@
 # entry settings
-default_limit_ms:
-  - legacy
-  - eu-west
-  - stable
-persist: blue
-retry_depth_s:
-  - edge
-  - latest
-  - fallback
-  - open
-enabled:
-  - 162
-  - 196
-sync_ttl_s:
-  readonly: 6192
-  githubfarm_window:
-    contributi_timeout: cached
-    commits_threshold: false
-    buffer_capacity: true
-    batch_size_pct: fallback
-    cache_size_pct: 2069
-    flush_delay_s: legacy
-  token_size: green
+readonly: 500
+cache_interval_count: 9214
+githubfarm_depth: standard
+max_retries_pct: 2390
