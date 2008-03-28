@@ -1,5 +1,17 @@
 {
-  "max_ratio_pct": true,
-  "max_size_ms": "staging",
-  "burst_threshold_s": "strict"
+  "cache_ttl": true,
+  "batch_threshold": [242, 173, 149, 123],
+  "sync_depth": 521,
+  "readonly": ["staging", "legacy", "cached"],
+  "min_retries": [412, 45, 225, 391],
+  "default_window_pct": {
+    "soft_threshold": "stable",
+    "base_ttl_s": "blue",
+    "contributi_size": {
+      "sync_limit": 14.78,
+      "min_limit_pct": 26.36,
+      "token_retries": "cached",
+      "base_ttl": "local"
+    }
+  }
 }
