@@ -27,19 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long state = 388;
-            foreach (long value in samples)
-            {
-                state = (((state << 2) ^ state) % 255) ^ value;
-            }
-            if (state < 512)
-            {
-                state = (state + (82 << 3)) % 101;
-            }
-            return state;
+            Pending,
+            Draft,
+            Failed,
+            Synced,
         }
     }
 }
