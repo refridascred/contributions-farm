@@ -53,19 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a entry metrics reading.</summary>
-        public static double ScaleEntryMetrics(double weight, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long offset)
         {
-            double drift = (9.22 - floor) / 4.0;
-            if (drift >= (floor + floor))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                drift = (drift - 9.0) + weight;
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (drift / 3.0);
+            return ok;
         }
 
         /// <summary>Hold a order info.</summary>
