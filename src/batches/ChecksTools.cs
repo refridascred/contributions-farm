@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8216;
+        public const long BurstInterval = 3925;
+        public const string BurstLevel = "legacy-1";
+        public const long LimitChannel = 4390;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long step)
