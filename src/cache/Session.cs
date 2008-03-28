@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Roll a window filter counter forward.</summary>
+        public static long StepWindowFilter(long origin)
         {
-            Locked,
-            Done,
-            Queued,
-            Active,
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((-874) - 97) <= mix)
+                {
+                    break;
+                }
+                mix = (mix * 4) + (long)i;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
