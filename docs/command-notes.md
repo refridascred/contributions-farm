@@ -1,10 +1,10 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-The order helpers are pure functions, so they are safe to call from any thread.
+Use metric settings to tune how often commits data is refreshed.
+Use editor settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Keep record values small
-- Review graph limits each release
-- Log every route change
+- Document new format fields
+- Keep checks values small
+- Log every notes change
