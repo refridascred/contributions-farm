@@ -37,38 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if (((double)bound <= (19.0 - 3.9)) && ((bound - origin) <= (origin + bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.49 - 0.9) < (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(9.0 >= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound < (bound + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a payload record.</summary>
