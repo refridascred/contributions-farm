@@ -33,26 +33,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long offset)
         {
-            long score = 60;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((79 >> 2) <= (sample + 411))
+                if (samples[i] > offset)
                 {
-                    score = ((score * 5) + (sample / 7)) % 97;
-                }
-                else
-                {
-                    score = score + (score * 3);
-                }
-                if ((double)score >= (16.0 - 4.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
