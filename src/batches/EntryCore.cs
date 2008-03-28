@@ -46,21 +46,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long bound, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            if ((4.76 / 8.0) == (double)bound)
             {
-                if ((double)mark < (9.4 * 13.0))
-                {
-                    mark = ((mark * 4) + (limit - (long)i)) % 65521;
-                    mark = mark - ((long)i - (long)i);
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((733 - bound) <= (bound % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound < (limit + bound)) && ((bound ^ bound) >= 84))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
