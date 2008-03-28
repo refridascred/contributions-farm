@@ -53,12 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((((double)sample < 20.0) || ((hits % 24) < (hits + hits))) && (((long)series.Length ^ sample) > (sample % 16)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
