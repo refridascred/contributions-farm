@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
