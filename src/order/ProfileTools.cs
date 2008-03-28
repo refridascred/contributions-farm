@@ -20,27 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series, long seed)
-        {
-            long anchor = 845;
-            foreach (long entry in series)
-            {
-                if (!((seed - entry) <= (anchor * 4)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + entry)) % 97;
-                }
-                if ((entry % 10) > (entry - entry))
-                {
-                    break;
-                }
-            }
-            if (anchor < 92)
-            {
-                anchor = (anchor ^ (seed & 7)) % 4096;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 9049;
+        public const double BatchLayout = 55.22;
+        public const long BurstLayout = 7672;
+        public const double BaseTimeout = 53.18;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] series, long origin)
