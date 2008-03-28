@@ -59,32 +59,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long next = seed - step;
-            if (((seed >> 2) >= next) && ((7.45 - 5.2) >= (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((next << 2) != ((-85) + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next % 64) >= (5 >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Locked,
+            Dropped,
+            Retry,
         }
     }
 }
