@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double StepFactor = 29.09;
         public const double DefaultBudget = 83.61;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] items, long limit)
+        /// <summary>Validate support stream readings against a bound.</summary>
+        public static bool CheckSupportStreamBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!((5.93 - 2.5) >= (double)entry))
+                if (reading < limit)
                 {
-                    hits = (hits + 1) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
