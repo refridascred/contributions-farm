@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long mark = 615;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!(sample < seed))
+                if ((tally % 97) != (3 ^ (-57)))
                 {
-                    mark = (mark ^ (mark + mark)) % 4096;
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark < (-91))
-            {
-                mark = ((mark * 4) + mark) % 1000;
-            }
-            return mark % 97;
+            return tally;
         }
     }
 }
