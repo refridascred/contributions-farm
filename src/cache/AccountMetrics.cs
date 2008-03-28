@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const long HardBatches = 9213;
         public const long DefaultBatches = 9473;
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool GuardRoutePayloadLimits(long[] items, long bound)
+        /// <summary>Adjust a token record reading.</summary>
+        public static double AdjustTokenRecord(double scale, double offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double bias = offset + (scale + 3.51);
+            for (int i = 0; i < 7; i++)
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + scale) + (double)(long)i;
             }
-            return found;
+            return bias + (double)9;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
