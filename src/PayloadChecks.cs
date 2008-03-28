@@ -13,25 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] values, long bound)
         {
-            long sum = 632;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (((cell <= (matches - cell)) || ((matches - cell) == (bound & 7))) || ((cell << 2) >= (bound + matches)))
                 {
-                    sum = (sum + ((long)i % 16)) + origin;
-                    sum = (sum - ((long)i + (long)i)) % 97;
+                    matches = matches + 2;
                 }
-                sum = (sum * 5) + (cell + sum);
-                sum = sum ^ (85 - 29);
             }
-            if (sum < 1)
-            {
-                sum = ((sum * 5) + sum) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
