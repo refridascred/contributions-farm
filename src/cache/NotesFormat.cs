@@ -32,21 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up stream cluster samples.</summary>
-        public static long PairStreamClusterCount(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count >= 3.0)
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) + value) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
