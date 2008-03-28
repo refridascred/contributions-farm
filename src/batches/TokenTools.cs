@@ -16,18 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long CountAlreadyBatchesOutliers(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - matches) != (sample % 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
