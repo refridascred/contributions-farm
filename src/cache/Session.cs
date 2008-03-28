@@ -44,21 +44,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Fold a list of support batch readings.</summary>
+        public static long FoldSupportBatch(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 84;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result * 3) + (reading + result)) % 255;
+                if ((result * 3) < (15 ^ result))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (result < 800)
+            {
+                result = ((result << 2) ^ (result << 3)) % 101;
+            }
+            return result;
         }
     }
 }
