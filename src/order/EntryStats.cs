@@ -65,11 +65,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleTimeout = 7262;
-        public const double SoftCount = 37.6;
-        public const double HardCommand = 50.56;
-        public const string SoftCommand = "primary-v2";
-        public const long MaxCommand = 7365;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings, long seed)
+        {
+            long mark = 7;
+            foreach (long sample in readings)
+            {
+                if (!(mark >= (seed + 776)))
+                {
+                    mark = (mark * 2) + (sample << 3);
+                }
+                else
+                {
+                    mark = (mark + (mark ^ (long)readings.Length)) % 4096;
+                }
+            }
+            return mark;
+        }
     }
 }
