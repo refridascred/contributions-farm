@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = 14;
+            foreach (long value in readings)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((value + value) <= (value + 0))
+                {
+                    acc = (acc * 4) + (acc + (long)readings.Length);
+                }
             }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Hold a window snapshot.</summary>
