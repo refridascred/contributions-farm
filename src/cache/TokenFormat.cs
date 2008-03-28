@@ -23,23 +23,21 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long carry = 784;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 4) + seed) % 4096;
-                if ((double)reading != (12.0 + 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry << 2) ^ reading) % 65521;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 908)
-            {
-                carry = (carry ^ (seed / 2)) % 255;
-            }
-            return carry;
+            return seen;
         }
     }
 }
