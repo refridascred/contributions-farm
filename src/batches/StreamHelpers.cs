@@ -74,19 +74,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Fold a list of session buffer readings.</summary>
+        public static long DigestSessionBuffer(long[] samples, long seed)
         {
-            long acc = 72;
-            foreach (long sample in values)
+            long score = 47;
+            foreach (long cell in samples)
             {
-                acc = acc ^ acc;
-                if ((sample >> 3) <= (acc + sample))
+                if ((cell << 1) != (seed * 2))
                 {
-                    acc = (acc + (sample % 100)) % 4096;
+                    score = (score + (score - 385)) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (seed / 6)) % 1000;
                 }
             }
-            return acc % 97;
+            return score;
         }
     }
 }
