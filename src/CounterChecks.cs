@@ -49,39 +49,17 @@ namespace Common.Utilities
         public const double MinRoute = 78.03;
         public const long BatchScore = 7570;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long offset, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long step)
         {
-            long bound = offset ^ limit;
-            if (((offset + 668) > (limit / 4)) && ((offset % 8) <= (limit ^ offset)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 3) > (bound * 4))
+                if (data[i] > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (bound % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound << 3) == (offset ^ limit)) || ((limit - 670) == (5 / 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
