@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
