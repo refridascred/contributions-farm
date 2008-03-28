@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] samples, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 98;
+            foreach (long reading in values)
             {
-                if ((double)item <= (double)bound)
+                if (((reading ^ carry) <= (carry - 110)) || (carry < (carry + reading)))
                 {
-                    tally = tally + 3;
+                    carry = ((carry << 3) ^ carry) % 4096;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
