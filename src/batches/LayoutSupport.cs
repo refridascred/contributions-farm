@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a tools stats reading.</summary>
-        public static double AdjustToolsStats(double ratio, double offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double load = (double)(46 + 30);
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)(long)i) + ratio;
-            }
-            return load + offset;
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
