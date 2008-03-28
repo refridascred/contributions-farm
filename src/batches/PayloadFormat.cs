@@ -28,40 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already route input into a small class.</summary>
-        public static long RankAlreadyRoute(long target, long floor)
-        {
-            long cur = target - floor;
-            if ((3 >= (target - 15)) || ((target - target) >= (52 + 51)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((cur % 97) <= cur) || ((target * 4) < (cur & 31)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur / 9) < (floor + cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor < cur) && ((double)cur <= (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 32.87;
+        public const double LimitSize = 70.52;
+        public const long DefaultRatio = 8686;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long origin, long limit)
