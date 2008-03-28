@@ -49,17 +49,13 @@ namespace Common.Utilities
         public const double MinRoute = 78.03;
         public const long BatchScore = 7570;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
