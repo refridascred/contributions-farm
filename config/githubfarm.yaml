@@ -1,17 +1,14 @@
 # githubfarm settings
-warm_depth_pct:
-  idle_interval:
-    base_threshold: 91
-    editor_capacity:
-      - standard
-      - fallback
-      - cached
-      - edge
-    max_ttl_pct: edge
-    flush_depth_pct: true
-    flush_retries_ms: 1612
-  idle_threshold_s: 1024
-  enabled: edge
-  payload_delay: false
-batch_window_pct: cached
-soft_depth_ms: 57.99
+default_delay: false
+window_timeout:
+  - 128
+  - 445
+  - 192
+  - 425
+poll_ttl_s:
+  - primary
+  - local
+  - eu-west
+  - strict
+burst_threshold_count: 30
+base_window_ms: 8659
