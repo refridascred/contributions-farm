@@ -34,12 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] series, long step)
         {
-            Locked,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((6.5 - 3.52) < (double)tally))
+                {
+                    tally = ((tally + 1) - cell) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
