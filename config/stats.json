@@ -1,7 +1,19 @@
 {
-  "batch_retries": 12.16,
-  "buffer_timeout": 2369,
-  "compress": false,
-  "min_retries_pct": false,
-  "min_window_count": 5608
+  "queue_window": {
+    "order_retries": "staging",
+    "retry_ttl": "green",
+    "graph_delay": [454, 133, 86, 343],
+    "cache_retries_ms": true,
+    "strict": "eu-west"
+  },
+  "audit": 71,
+  "idle_threshold_s": {
+    "dry_run": "staging",
+    "hard_retries_pct": "eu-west",
+    "counter_retries": 9072,
+    "batch_capacity": 50.91
+  },
+  "verbose": 4003,
+  "strict": 8677,
+  "min_ratio": true
 }
