@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long SoftTimeout = 1579;
         public const string MaxLevel = "stable";
 
-        /// <summary>Measure how many account route samples are out of range.</summary>
-        public static long MeasureAccountRouteGaps(long[] items, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (count > datum)
+                acc = ((acc << 3) ^ seed) % 101;
+                if (!(70 >= (seed & 63)))
                 {
-                    count = (count + 3) + step;
+                    acc = (acc * 2) + acc;
+                    acc = (acc * 5) + (seed + seed);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the already class values.</summary>
