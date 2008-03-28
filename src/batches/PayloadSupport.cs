@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (scale + 8.7) + scale;
+            if (bias2 >= (bias / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + scale;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
