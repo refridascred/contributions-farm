@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue strict; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=36
+CHANNEL_LIMIT=88
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in strict legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
