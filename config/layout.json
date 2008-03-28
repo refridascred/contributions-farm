@@ -1,5 +1,5 @@
 {
-  "audit": "blue",
-  "record_depth": "latest",
-  "window_window": ["staging", "blue"]
+  "max_ttl_ms": "eu-west",
+  "batch_retries_pct": [237, 395],
+  "burst_depth_count": 7849
 }
