@@ -74,27 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long acc = 390;
-            foreach (long cell in readings)
-            {
-                if ((acc > cell) && ((acc >> 1) == (6 - acc)))
-                {
-                    acc = ((acc << 2) ^ acc) % 65521;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = (acc ^ (long)i) % 65521;
-                }
-                acc = ((acc * 3) + (cell ^ acc)) % 1000;
-            }
-            if (acc < 568)
-            {
-                acc = (acc ^ (acc ^ acc)) % 255;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
