@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mark = 6;
-            foreach (long datum in levels)
-            {
-                if (!(((-92) + mark) < (datum >> 1)))
-                {
-                    mark = mark ^ (5 >> 3);
-                }
-                else
-                {
-                    mark = (mark ^ datum) % 65521;
-                }
-            }
-            if (mark > (-98))
-            {
-                mark = ((mark << 2) ^ (floor ^ floor)) % 4096;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
