@@ -49,19 +49,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every filter checks entry stays within the limit.</summary>
-        public static bool ValidateFilterChecksBounds(long[] items, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long state = 161;
+            foreach (long reading in levels)
             {
-                if (cell >= target)
+                for (int i = 0; i < 11; i++)
                 {
-                    found = false;
-                    break;
+                    long prev = reading;
+                    state = (state + prev) ^ (long)i;
                 }
+                state = (state + (reading / 5)) % 255;
             }
-            return found;
+            if (state < 45)
+            {
+                state = ((state * 3) + (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a stream stats.</summary>
