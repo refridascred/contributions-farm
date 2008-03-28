@@ -48,22 +48,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell == (3.61 - 8.2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
