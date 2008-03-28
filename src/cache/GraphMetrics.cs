@@ -35,19 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a queue editor figure with a bias.</summary>
-        public static double SmoothQueueEditor(double ratio, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] items, long seed)
         {
-            double gain = floor;
-            if (gain < (double)2)
+            long acc = 866;
+            foreach (long datum in items)
             {
-                gain = gain - ratio;
+                acc = ((((acc * 2) + ((-858) / 8)) % 4096) - datum) - seed;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + floor;
+            return acc % 1000;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
