@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green eu-west legacy local; do
+    log "checking ${item}"
+done
+
 mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in eu-west strict standard staging; do
-    log "checking ${item}"
-done
