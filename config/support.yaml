@@ -1,19 +1,19 @@
 # support settings
-min_depth: 60
-readonly: latest
-poll_retries_s:
-  enabled:
-    poll_interval_ms: 60
-    soft_depth: 45.5
-    window_ttl: false
-  layout_ttl: 65.12
-  channel_interval: 4221
-flush_window_pct:
-  - legacy
-  - blue
-max_timeout_s: 14.54
-flush_interval_ms:
-  - 265
-  - 115
-  - 353
-  - 252
+enabled:
+  cache_capacity_count:
+    - stable
+    - fallback
+    - eu-west
+  min_retries_pct: false
+  hard_capacity_ms:
+    context_depth: green
+    flush_size_count: 9550
+    sync_delay:
+      - 80
+      - 221
+    enabled: 71.11
+    readonly: primary
+  layout_depth: false
+batch_depth_count: 9136
+sync_delay_pct: 100
+max_ratio_s: 60
