@@ -32,28 +32,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] samples, long seed)
         {
-            long sum = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((double)entry >= 8.0)
+                if (datum > seed)
                 {
-                    sum = (sum * 2) + (entry - seed);
-                    sum = (sum - entry) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (entry + seed)) % 255;
-                    sum = ((sum << 3) ^ (438 >> 2)) % 97;
-                }
-                if (((double)sum != (double)entry) || ((double)61 != (double)sum))
-                {
-                    sum = (sum ^ entry) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
