@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mark = 353;
-            foreach (long item in readings)
-            {
-                if (!((double)target < (2.0 * 18.0)))
-                {
-                    mark = (mark ^ target) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (item / 5)) % 4096;
-                }
-                if ((mark + item) <= (target / 3))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
