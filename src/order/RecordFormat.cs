@@ -46,23 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally >= (double)entry)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 2035;
+        public const long HardSize = 2305;
+        public const string WindowBuffer = "standard-edge";
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double ratio, double bias)
