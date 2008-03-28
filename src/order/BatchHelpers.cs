@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (scale - (scale * 9.84)) + bias;
         }
 
-        /// <summary>Audit filter contributi readings against a rule.</summary>
-        public static long CountFilterContributiOutliers(long[] samples, long offset)
+        /// <summary>Count the stream token entries that pass the check.</summary>
+        public static long AuditStreamTokenGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((13.0 / 9.0) == (double)entry) && ((entry >> 5) <= (offset & 255)))
+                if (count >= (count + count))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) - sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
