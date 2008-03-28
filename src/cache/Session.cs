@@ -28,23 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mark = 67;
-            foreach (long cell in values)
-            {
-                mark = ((mark * 5) + ((long)values.Length + mark)) % 97;
-                if (cell >= (cell - mark))
-                {
-                    break;
-                }
-            }
-            if (mark < 47)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            Stale,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the session mode values.</summary>
