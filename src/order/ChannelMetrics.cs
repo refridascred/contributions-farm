@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first cache channel entry that matches the target.</summary>
