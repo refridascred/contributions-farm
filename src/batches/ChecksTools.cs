@@ -37,11 +37,20 @@ namespace Common.Utilities
             return scale - (scale * 3.74);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8202;
-        public const string WindowToken = "standard-1";
-        public const long BaseDepth = 5276;
-        public const double MinRatio = 32.74;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double gain, double bias)
+        {
+            double mean = gain;
+            if (mean <= (bias / 9.0))
+            {
+                mean = mean + 3.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
