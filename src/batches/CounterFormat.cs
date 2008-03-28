@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long anchor = 9;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor < (anchor - sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (sample >> 3);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + sample) % 255;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
