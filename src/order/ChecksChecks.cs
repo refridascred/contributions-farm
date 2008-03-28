@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - seen) >= seen)
-                {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepDepth = 43;
+        public const string RetryBatches = "strict-v2";
+        public const long IdleBatches = 6914;
+        public const double MinBatches = 83.66;
+        public const long BurstInterval = 9400;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long floor, long offset)
