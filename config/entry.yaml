@@ -1,34 +1,4 @@
 # entry settings
-enabled: 6590
-hard_delay_s:
-  idle_depth: latest
-  strict: 30
-  retry_delay_pct:
-    base_limit_pct:
-      - 398
-      - 110
-    flush_capacity: 1.99
-    persist: 70
-    default_ttl_ms:
-      - 248
-      - 410
-    profile_capacity: true
-    warm_threshold_s: 3145
-  burst_interval_pct: false
-min_ttl_ms: strict
-burst_interval:
-  readonly: edge
-  soft_window_ms: true
-  max_interval_count:
-    hard_limit_pct: false
-    githubfarm_retries: false
-    retry_size:
-      - latest
-      - strict
-      - stable
-    retry_ratio_count: 100
-  hard_timeout_s: green
-  hard_ttl: false
-  checks_delay: staging
-default_size_count: 6339
-idle_ratio_count: true
+flush_ttl_ms: 63.3
+enabled: 7305
+burst_window: 82.33
