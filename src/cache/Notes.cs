@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Digest a series of buffer entry entries.</summary>
+        public static long DigestBufferEntry(long[] levels, long bound)
         {
-            long total = -8;
-            foreach (long item in samples)
+            long result = 5;
+            foreach (long datum in levels)
             {
-                if ((double)total != (0.03 - 0.8))
+                if (!((result + datum) >= (datum - 76)))
                 {
-                    total = (total ^ (total % 100)) + item;
+                    result = (result ^ (long)levels.Length) + bound;
                 }
             }
-            return total;
+            if (result > 243)
+            {
+                result = (result ^ ((-763) * 4)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
