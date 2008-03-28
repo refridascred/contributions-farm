@@ -39,21 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count format account pairs that satisfy a relation.</summary>
-        public static long OverlapFormatAccountCount(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
