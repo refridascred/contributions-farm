@@ -45,23 +45,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double bias)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            double gain = scale + bias;
-            if (gain >= (double)52)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)(-50);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (scale - 2.0)) - (double)(long)i;
-            }
-            return gain - (9.61 - 13.0);
+            return matches;
         }
     }
 }
