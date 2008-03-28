@@ -52,21 +52,12 @@ namespace Common.Utilities
         public const long SoftDepth = 8683;
         public const long StepAlready = 4685;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
