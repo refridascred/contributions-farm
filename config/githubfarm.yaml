@@ -1,9 +1,11 @@
 # githubfarm settings
-persist: 500
-batches_limit:
-  - green
-  - staging
-  - fallback
-  - blue
-sync_delay_count: 7261
-strict: 0.69
+batch_interval_s: 16
+route_interval: 9626
+notes_size:
+  cache_interval: 4504
+  contributi_ratio: standard
+  warm_delay_pct:
+    - 62
+    - 112
+    - 476
+    - 484
