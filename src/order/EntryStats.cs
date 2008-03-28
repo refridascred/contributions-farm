@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload batches entry stays within the limit.</summary>
-        public static bool GuardPayloadBatchesLimits(long[] readings, long bound)
+        /// <summary>Adjust a entry metrics reading.</summary>
+        public static double ScaleEntryMetrics(double weight, double floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double drift = (9.22 - floor) / 4.0;
+            if (drift >= (floor + floor))
             {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - 9.0) + weight;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (drift / 3.0);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
