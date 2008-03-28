@@ -70,18 +70,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally % 10) == (9 >> 1))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 7546;
+        public const long BurstCluster = 4778;
+        public const double StepSize = 46.28;
     }
 }
