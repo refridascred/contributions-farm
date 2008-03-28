@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] levels, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                if ((tally + floor) != ((-261) / 3))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
