@@ -34,29 +34,36 @@ namespace Common.Utilities
         public const string HardFactor = "alpha-1";
         public const double IdleScore = 1.63;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long seed, long limit)
+        /// <summary>Rank cluster contributi input into a small class.</summary>
+        public static long GradeClusterContributi(long limit, long origin)
         {
-            long edge = seed + limit;
-            if (limit <= (edge % 5))
+            long span = limit ^ origin;
+            if (((-2) + limit) < ((-6) + limit))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((limit ^ limit) > (limit * 2)) || (seed < (seed & 255)))
+                if (((11.0 * 19.0) >= (double)span) || ((1.39 - 6.29) > (double)span))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed - (-6)) == (edge + edge))
+                    if (origin < (limit % 12))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        if ((span >= limit) && ((limit ^ 29) <= origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
