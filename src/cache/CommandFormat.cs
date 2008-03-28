@@ -41,22 +41,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the support context entries that pass the check.</summary>
-        public static long AuditSupportContextOutliers(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((count + count) == (4 + cell))
+                if ((double)tally >= (15.0 * 3.0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = ((tally + 3) ^ entry) - bound;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
