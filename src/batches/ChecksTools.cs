@@ -34,18 +34,39 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools buffer samples are out of range.</summary>
-        public static long TallyToolsBufferOutliers(long[] data, long origin)
+        /// <summary>Rank already format input into a small class.</summary>
+        public static long SortAlreadyFormat(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long slot = floor - seed;
+            if ((double)seed == (3.11 - 3.63))
             {
-                if ((tally >> 4) > (15 - 837))
+                return 2;
+            }
+            else
+            {
+                if (((8 - slot) > (seed + seed)) && ((floor << 1) == (seed % 12)))
                 {
-                    tally = ((tally + 3) - item) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if (2 >= (slot >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor & 255) >= (floor * 5)) && ((1.0 - 8.8) < (double)slot))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
