@@ -38,13 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Paused,
-            Done,
             New,
-            Closed,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Match up farm samples.</summary>
