@@ -12,18 +12,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long TallyGithubfarmContributiGaps(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if (bound > (origin / 8))
             {
-                if (((long)values.Length * 3) != (hits % 64))
+                return 2;
+            }
+            else
+            {
+                if ((bound - origin) < (origin % 16))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if (!(bound <= (bound & 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
