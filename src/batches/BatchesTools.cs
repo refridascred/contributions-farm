@@ -39,21 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 615;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(sample < seed))
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (mark + mark)) % 4096;
                 }
             }
-            return matches;
+            if (mark < (-91))
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
