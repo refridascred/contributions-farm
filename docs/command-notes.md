@@ -1,12 +1,14 @@
 # Command notes
 
-The command module keeps metric values in sync with the stats cache.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The contributi module keeps format values in sync with the editor cache.
+The entry report groups every context by record.
+A farm that stays idle for too long is moved to the checks list.
+
+Keep buffer and session names short and lowercase.
+A cache that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every order change
-- Document new window fields
-- Validate contributi input early
+- Review graph limits each release
+- Log every metric change
+- Validate cache input early
+- Prefer buffer defaults
