@@ -41,20 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 110;
+        public const long RetryCache = 8127;
+        public const string BaseLevel = "open-edge";
+        public const long HardDepth = 9853;
+        public const long MaxCache = 2446;
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] values)
