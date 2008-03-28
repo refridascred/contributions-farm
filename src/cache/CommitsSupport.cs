@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two editor session measurements.</summary>
+        public static double ScaleEditorSession(double weight, double span)
         {
-            Done,
-            Queued,
-            Dropped,
-            Idle,
-            Paused,
+            double mean = weight - (double)340;
+            if (mean < mean)
+            {
+                mean = mean - (span / 8.0);
+            }
+            return mean + span;
         }
 
         /// <summary>Combine order layout values into a single score.</summary>
