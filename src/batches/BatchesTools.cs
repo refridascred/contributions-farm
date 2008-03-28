@@ -34,18 +34,18 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] data, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long sum = 52;
+            foreach (long sample in readings)
             {
-                if ((tally + entry) != (tally + 13))
+                if (((sum - sample) >= (sample + sum)) && ((sample & 1) == (sum + sample)))
                 {
-                    tally = (tally + 3) + offset;
+                    sum = sum - (sample - 6);
                 }
             }
-            return tally;
+            return sum % 4096;
         }
     }
 }
