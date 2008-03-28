@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultCount = 1463;
-        public const string RetryFarm = "staging-v2";
-        public const long IdleInterval = 1658;
-        public const long IdleCount = 6895;
-        public const string DefaultFarm = "stable-v2";
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Classify a filter cache pair into a bucket.</summary>
         public static long ClassifyFilterCache(long seed, long limit)
