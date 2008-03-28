@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank layout counter input into a small class.</summary>
-        public static long RankLayoutCounter(long target, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings)
         {
-            if (!((7 * 2) == (floor & 127)))
+            long sum = 7;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor & 3) == (floor - floor)) && ((41 % 60) >= (target & 127)))
+                if (!((double)sample != (5.07 - 9.1)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= (66 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((335 / 3) < (floor - 857))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum << 3) ^ (sum / 8);
                 }
             }
+            if (sum < 425)
+            {
+                sum = (sum + (49 - 47)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a payload summary.</summary>
