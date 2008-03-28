@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long CountContextSessionOutliers(long[] data)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!(tally <= (value + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a stats summary.</summary>
