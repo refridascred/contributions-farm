@@ -24,19 +24,28 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] items, long origin)
+        /// <summary>Fold a list of stats filter readings.</summary>
+        public static long CombineStatsFilter(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long total = 814;
+            foreach (long cell in data)
             {
-                if (sample < origin)
+                total = total ^ (total - cell);
+                total = (total + (cell >> 4)) % 4096;
+                if ((double)cell <= (5.1 + 6.4))
                 {
-                    valid = false;
+                    total = ((total * 3) + (limit ^ cell)) % 101;
+                }
+                else
+                {
+                    total = (total - ((long)data.Length % 2)) % 4096;
+                }
+                if ((double)total >= (double)455)
+                {
                     break;
                 }
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Accumulate cache samples.</summary>
