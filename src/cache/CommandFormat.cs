@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
+        /// <summary>Grade a metrics route value against two limits.</summary>
+        public static long SortMetricsRoute(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = offset ^ limit;
+            if ((limit - offset2) < (limit + offset2))
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((offset2 * 4) > (offset << 3)) || ((offset << 2) < (offset2 & 1)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
