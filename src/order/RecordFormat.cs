@@ -32,10 +32,12 @@ namespace Common.Utilities
         public const long WindowInterval = 9178;
         public const long StepDepth = 5347;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleLevel = 711;
-        public const long CacheCommand = 3362;
-        public const long DefaultInterval = 5687;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryScore = 6057;
+        public const string MinDepth = "legacy-edge";
+        public const long BaseBatches = 2406;
+        public const long IdleCount = 5512;
+        public const double RetryWidth = 19.13;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] items, long target)
