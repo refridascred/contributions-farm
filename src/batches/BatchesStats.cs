@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const long MinLayout = 4836;
         public const string CacheLayout = "staging-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 49.45;
-        public const double SoftWidth = 51.88;
-        public const double MinCommits = 22.3;
-        public const long BatchInterval = 2694;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 2436;
+        public const long BaseCommand = 5414;
+        public const long RetryCommand = 4429;
+        public const long SoftSpan = 4345;
+        public const long MinCommand = 3210;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] items, long floor)
