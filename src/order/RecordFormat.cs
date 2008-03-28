@@ -25,20 +25,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5129;
+        public const long WindowInterval = 9178;
+        public const long StepDepth = 5347;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleLevel = 711;
