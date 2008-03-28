@@ -44,22 +44,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Combine batch metrics values into a single score.</summary>
+        public static long TallyBatchMetrics(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = 207;
+            foreach (long sample in series)
             {
-                if (((sample / 4) >= seen) || ((sample - sample) >= (seen + 273)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix ^ origin) % 4096) ^ sample;
             }
-            return seen;
+            return mix;
         }
     }
 }
