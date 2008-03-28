@@ -55,21 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Accumulate batches token samples.</summary>
+        public static long TallyBatchesToken(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 90;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state ^ (-25)) % 97;
+                if ((offset % 10) > (reading / 9))
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a context info.</summary>
