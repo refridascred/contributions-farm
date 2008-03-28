@@ -33,19 +33,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long bound)
+        /// <summary>Accumulate support counter samples.</summary>
+        public static long FoldSupportCounter(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long anchor = -762;
+            foreach (long reading in values)
             {
-                if (cell <= bound)
+                if (875 > anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor ^ limit) % 101) - reading;
                 }
             }
-            return flag;
+            if (anchor > 45)
+            {
+                anchor = (anchor * 5) + (limit * 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
