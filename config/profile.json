@@ -1,8 +1,10 @@
 {
-  "hard_delay_pct": 28.02,
-  "retry_retries": true,
-  "warm_capacity": 69.05,
-  "batches_ttl": 1024,
-  "max_interval_s": 30,
-  "session_ratio": "staging"
+  "flush_timeout": 74,
+  "readonly": {
+    "tools_capacity": true,
+    "hard_delay": 250,
+    "hard_size_ms": 94.92
+  },
+  "min_depth_ms": [432, 50, 256, 258],
+  "token_size": 47
 }
