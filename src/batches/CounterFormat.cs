@@ -16,17 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (bound % 97)) % 1000;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank token input into a small class.</summary>
