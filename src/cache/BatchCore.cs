@@ -24,11 +24,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 5927;
-        public const double MaxMetric = 77.72;
-        public const string DefaultRatio = "fallback-1";
-        public const long BurstMetric = 3618;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
