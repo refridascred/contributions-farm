@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every counter channel entry stays within the limit.</summary>
-        public static bool ValidateCounterChannelLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinLevel = 8193;
+        public const double CacheCluster = 56.57;
+        public const string BaseCluster = "alpha-edge";
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long floor, long offset)
