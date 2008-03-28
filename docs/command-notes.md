@@ -1,11 +1,11 @@
 # Command notes
 
-Run the githubfarm check before changing any stats limits.
-Keep cache and channel names short and lowercase.
-Keep window and stream names short and lowercase.
+Keep token and tools names short and lowercase.
+Use channel settings to tune how often batches data is refreshed.
+The notes report groups every stats by contributi.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer profile defaults
-- Review order limits each release
+- Review checks limits each release
+- Keep contributi values small
+- Log every payload change
