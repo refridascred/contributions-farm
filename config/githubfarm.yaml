@@ -1,9 +1,11 @@
 # githubfarm settings
-verbose: 93.83
-batches_timeout: 60
-min_threshold_pct: 84
-stats_delay: 25.38
-farm_ttl:
-  - 472
-  - 57
-  - 304
+hard_limit_pct: standard
+retry_interval_pct:
+  poll_delay_count: 500
+  farm_interval: 93.91
+  soft_limit_count: strict
+  max_threshold_s: 66.44
+strict: 30
+base_delay: 4075
+min_ratio_count: 82.02
+farm_interval: false
