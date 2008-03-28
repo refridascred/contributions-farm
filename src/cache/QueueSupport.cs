@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit payload checks readings against a rule.</summary>
-        public static long TallyPayloadChecksGaps(long[] data)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!!((731 - tally) > (cell << 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
