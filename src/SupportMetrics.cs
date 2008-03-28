@@ -72,12 +72,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long target, long step)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long diff = target - step;
+            if ((target >= (target - 1)) || ((6.68 * 11.0) >= (double)diff))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < (diff * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - target) <= ((-9) * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)diff > (5.17 * 19.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
