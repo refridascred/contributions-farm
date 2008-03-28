@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 63.53;
-        public const double BurstDepth = 89.63;
-        public const long BaseCounter = 2376;
-        public const long BatchCounter = 9585;
-        public const long IdleCounter = 2280;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Closed,
+            Active,
+            Locked,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleAccount = "standard-1";
