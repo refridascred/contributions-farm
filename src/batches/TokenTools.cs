@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 3449;
-        public const double MinEditor = 1.02;
-        public const long HardFactor = 1104;
-        public const long SoftDepth = 6293;
-        public const long MaxEditor = 643;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values, long step)
+        {
+            long mix = 811;
+            foreach (long sample in values)
+            {
+                if ((sample % 5) <= (mix / 7))
+                {
+                    mix = ((mix * 2) + mix) - step;
+                }
+                else
+                {
+                    mix = (mix - (sample + mix)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchCluster = 7566;
