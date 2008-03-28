@@ -1,13 +1,11 @@
 # Command notes
 
-Keep contributi and context names short and lowercase.
-A stream that stays idle for too long is moved to the token list.
-
-A entry that stays idle for too long is moved to the already list.
-Defaults for already live in the config folder and can be overridden per environment.
+Keep token and queue names short and lowercase.
+The batches report groups every report by session.
+Use record settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer githubfarm defaults
-- Keep account values small
+- Prefer profile defaults
+- Validate already input early
+- Keep contributi values small
