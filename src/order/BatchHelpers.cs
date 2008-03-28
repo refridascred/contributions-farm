@@ -34,11 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long mark = -1;
+            foreach (long entry in levels)
+            {
+                mark = (mark ^ (origin << 1)) ^ entry;
+            }
+            return mark;
         }
     }
 }
