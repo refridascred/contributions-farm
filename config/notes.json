@@ -1,6 +1,5 @@
 {
-  "burst_size": true,
-  "queue_limit": 90.08,
-  "max_retries": 61.53,
-  "cache_ratio": [128, 71, 356]
+  "min_timeout_pct": true,
+  "buffer_timeout": "legacy",
+  "contributi_size": true
 }
