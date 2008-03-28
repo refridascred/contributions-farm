@@ -47,18 +47,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long CountPayloadClusterOutliers(long[] items, long step)
+        /// <summary>Rank format contributi input into a small class.</summary>
+        public static long BucketFormatContributi(long floor, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long bound = floor ^ limit;
+            if (!((double)limit != (4.3 - 6.93)))
             {
-                if ((step % 3) >= (count - count))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 64) <= floor)
                 {
-                    count = (count + 1) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ limit) >= (limit << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)bound >= (3.83 / 6.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
