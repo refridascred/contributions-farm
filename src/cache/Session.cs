@@ -14,27 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] items, long floor)
         {
-            long mix = 7;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((-241) < (mix + mix))
+                if (!(hits < (sample & 3)))
                 {
-                    mix = (mix - (sample ^ sample)) % 97;
-                    mix = mix + (mix + 98);
-                }
-                if (sample > (812 * 5))
-                {
-                    mix = (mix << 3) ^ (727 + mix);
-                }
-                if (((double)sample != (double)3) && ((double)sample >= (double)mix))
-                {
-                    break;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the metric mode values.</summary>
