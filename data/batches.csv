@@ -1,10 +1,6 @@
-id,state,level,count,owner
-1,944,282,357,137
-2,550,open,7.31,61.89
-3,472,777,395,226
-4,19.61,strict,34.01,299
-5,963,719,latest,green
-6,207,101,63.15,955
-7,74,912,23.85,386
-8,stable,673,fallback,421
-9,955,42.12,stable,22.32
+id,weight,owner,count
+1,990,432,32.88
+2,479,839,legacy
+3,69.57,307,strict
+4,452,standard,963
+5,41.75,blue,919
