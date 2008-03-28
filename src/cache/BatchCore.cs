@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BatchScore = 8881;
         public const long MaxRatio = 1269;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] series, long step)
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - matches) < (step & 15))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
