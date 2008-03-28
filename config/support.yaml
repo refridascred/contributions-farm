@@ -1,12 +1,20 @@
 # support settings
-persist: 28.36
-flush_ttl_ms: 1024
-sync_ttl_pct: 81.27
-profile_capacity:
-  cache_size: eu-west
-  metric_depth: 66.86
-  min_delay_count: primary
-burst_ratio:
-  - green
-  - local
-  - standard
+enabled: 8338
+flush_retries_pct:
+  stats_limit: 51
+  compress:
+    - open
+    - fallback
+  audit: 9171
+  order_interval:
+    support_ttl: 43.49
+    enabled: latest
+    soft_delay_s: true
+    command_ratio: true
+    already_threshold: edge
+  warm_interval:
+    - primary
+    - stable
+    - local
+context_retries: 86.25
+persist: false
