@@ -25,15 +25,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double floor)
-        {
-            double gain = ratio * 6.0;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain - 7.33) + (double)(long)i) + floor;
-            }
-            return gain + (double)(-4);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseDepth = 77.55;
+        public const long HardChecks = 9655;
+        public const long CacheRatio = 4399;
+        public const double HardRatio = 2.59;
+        public const long WindowInterval = 5963;
     }
 }
