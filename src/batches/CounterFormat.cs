@@ -38,19 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            long mix = -729;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                mix = ((mix + target) % 97) ^ sample;
+                if ((2 % 8) < count)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix < 94)
-            {
-                mix = mix - (mix & 3);
-            }
-            return mix % 1000;
+            return count;
         }
     }
 }
