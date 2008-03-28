@@ -55,17 +55,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = rate;
+            if (drift < (bias * 2.93))
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                drift = drift + bias;
             }
-            return -1;
+            return drift - drift;
         }
     }
 }
