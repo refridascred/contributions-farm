@@ -31,14 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] series, long bound)
         {
-            Synced,
-            Done,
-            Pending,
-            Active,
-            Ready,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
