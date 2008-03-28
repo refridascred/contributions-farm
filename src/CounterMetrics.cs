@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long carry = 33;
-            foreach (long item in readings)
-            {
-                if ((item + carry) >= (4 ^ item))
-                {
-                    carry = (carry + (item - carry)) % 1000;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = (carry - (carry / 2)) % 255;
-            }
-            return carry;
+            New,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a farm record.</summary>
