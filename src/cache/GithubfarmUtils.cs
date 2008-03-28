@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowSize = 28.03;
-        public const long RetryStream = 3946;
-        public const long RetryCount = 7788;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank batch contributi input into a small class.</summary>
         public static long GradeBatchContributi(long limit, long seed)
