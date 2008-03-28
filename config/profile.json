@@ -1,8 +1,8 @@
 {
-  "persist": 100,
-  "warm_limit_s": ["eu-west", "green"],
-  "tools_retries": [183, 301],
-  "account_timeout": "latest",
-  "graph_ratio": "open",
-  "counter_size": 757
+  "verbose": ["primary", "cached", "latest"],
+  "account_interval": 57,
+  "hard_delay": 5138,
+  "sync_ratio_count": 18.66,
+  "readonly": 50.24,
+  "batches_ratio": 15.65
 }
