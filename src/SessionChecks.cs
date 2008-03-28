@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window buffer readings against a bound.</summary>
-        public static bool VerifyWindowBufferLimits(long[] samples, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long limit)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Describe the account class values.</summary>
