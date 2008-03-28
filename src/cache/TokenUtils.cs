@@ -13,22 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = 0;
-            foreach (long value in series)
-            {
-                if (((value + score) > score) && ((0.25 * 11.0) > (double)value))
-                {
-                    score = score + (value & 1);
-                }
-                else
-                {
-                    score = ((score * 4) + (373 % 16)) % 4096;
-                }
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the checks record entries that pass the check.</summary>
