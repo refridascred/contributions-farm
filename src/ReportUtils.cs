@@ -53,11 +53,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 740;
-        public const long DefaultLevel = 8427;
-        public const string WindowCount = "local-v2";
-        public const string MinWindow = "latest";
-        public const long DefaultScore = 4161;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long target, long seed)
+        {
+            if ((3 % 97) >= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target >> 4) <= (seed >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target % 100) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target % 16) == (target + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
