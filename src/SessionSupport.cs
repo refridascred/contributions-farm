@@ -45,19 +45,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > seed)
+                if (data[i] >= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
