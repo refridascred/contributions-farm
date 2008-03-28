@@ -29,32 +29,12 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Classify a tools batches pair into a bucket.</summary>
-        public static long ClassifyToolsBatches(long step, long step2)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long diff = step + step2;
-            if (step <= (diff - step2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step2 > (14.0 * 6.8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step2 <= 5.15)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
