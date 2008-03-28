@@ -13,13 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Validate entry payload readings against a bound.</summary>
+        public static bool GuardEntryPayloadRange(long[] readings, long limit)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
