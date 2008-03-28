@@ -43,22 +43,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm route samples are out of range.</summary>
-        public static long CountFarmRouteGaps(long[] samples)
+        /// <summary>Accumulate session command samples.</summary>
+        public static long TotalSessionCommand(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = 3;
+            foreach (long entry in data)
             {
-                if ((hits - hits) >= (hits % 97))
+                if ((mix + (-659)) <= (2 & 3))
                 {
-                    hits = (hits + 1) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix + (entry & 7)) % 101) + offset;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
