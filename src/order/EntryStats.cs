@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample <= limit)
+                if (!((result + result) < (result >> 2)))
                 {
-                    stale = false;
-                    break;
+                    result = ((result << 2) ^ offset) % 65521;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a notes info.</summary>
