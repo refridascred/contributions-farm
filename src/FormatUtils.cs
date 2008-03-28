@@ -29,19 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 33;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor * 5) + datum;
-            }
-            if (anchor > 816)
-            {
-                anchor = (anchor * 2) + ((long)readings.Length + anchor);
-            }
-            return anchor;
+            Draft,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the token farm entries that pass the check.</summary>
