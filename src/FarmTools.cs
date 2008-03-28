@@ -35,23 +35,21 @@ namespace Common.Utilities
             return rate + (rate - 2.35);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long sum = 89;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - (long)items.Length) % 255;
-                if ((offset > (172 * 3)) && ((1 - (-53)) <= entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 98)
-            {
-                sum = sum - (offset % 3);
-            }
-            return sum;
+            return tally;
         }
     }
 }
