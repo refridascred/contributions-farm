@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (datum < offset)
+                if (count < (0 >> 1))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
