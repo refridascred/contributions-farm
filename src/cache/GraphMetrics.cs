@@ -37,18 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many tools checks samples are out of range.</summary>
-        public static long CountToolsChecksHits(long[] values, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)bound < (double)value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
