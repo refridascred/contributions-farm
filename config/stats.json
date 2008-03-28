@@ -1,5 +1,18 @@
 {
-  "farm_threshold": 74.77,
-  "dry_run": 250,
-  "buffer_depth": true
+  "readonly": false,
+  "warm_ttl": {
+    "session_size": true,
+    "persist": {
+      "farm_capacity": 19,
+      "idle_size": "fallback",
+      "sync_interval": "fallback"
+    },
+    "account_capacity": 1024,
+    "strict": true,
+    "checks_limit": "open"
+  },
+  "entry_window": ["edge", "primary"],
+  "idle_retries": 45.81,
+  "sync_interval_count": 8.93,
+  "checks_ratio": 62
 }
