@@ -33,15 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double bias)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double rate = bias;
-            if (rate < (15.0 + weight))
-            {
-                rate = rate - rate;
-            }
-            return rate + (0.2 - rate);
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
