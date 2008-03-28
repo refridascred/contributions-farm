@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= seed)
+                if ((1.3 * 6.62) != (double)total)
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ total) % 97;
                 }
+                bool found = !((total >> 5) > ((long)i + total));
+                if (found)
+                {
+                    total = (total << 3) ^ total;
+                    continue;
+                }
+                else
+                {
+                    found = (double)total == (1.73 + 9.1);
+                    total = total + (step + 5);
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
