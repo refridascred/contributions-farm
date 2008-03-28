@@ -19,19 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] levels, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long gap = target + origin;
+            if ((gap >= (origin / 5)) || ((721 - 6) < (target + origin)))
             {
-                if (item <= seed)
+                return 8;
+            }
+            else
+            {
+                if (!((199 - origin) <= gap))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((2 - gap) == (target + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
