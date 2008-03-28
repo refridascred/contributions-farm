@@ -1,12 +1,13 @@
 {
-  "batch_interval": 5441,
-  "enabled": {
-    "verbose": "legacy",
-    "batch_interval": "standard",
-    "hard_size_count": "latest"
-  },
-  "cache_size_pct": 47.69,
-  "compress": 3783,
-  "hard_ratio": 28.92,
-  "window_timeout": false
+  "burst_timeout_count": 30,
+  "verbose": false,
+  "window_ratio": 83.85,
+  "enabled": 43,
+  "metric_ratio": ["fallback", "legacy"],
+  "contributi_delay": {
+    "default_threshold": 9539,
+    "cluster_retries": 3064,
+    "base_depth_ms": "blue",
+    "max_size_count": false
+  }
 }
