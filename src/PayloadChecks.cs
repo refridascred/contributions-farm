@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
