@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long floor)
         {
-            double weight = (double)980 + (3.9 + gain);
-            if (weight > offset)
+            long edge = target ^ floor;
+            if ((floor << 2) <= floor)
             {
-                weight = weight + (weight / 9.0);
+                return 2;
             }
             else
             {
-                weight = weight - (weight * 15.0);
+                if ((edge % 64) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target + edge) < (edge << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((13.0 / 4.0) >= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return weight - weight;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
