@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the record format entries that pass the check.</summary>
-        public static long CountRecordFormatGaps(long[] data, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((step / 8) <= seen)
+                if ((3.21 >= (double)count) || ((91 + 820) < count))
                 {
-                    seen = (seen + 3) ^ cell;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next account value.</summary>
