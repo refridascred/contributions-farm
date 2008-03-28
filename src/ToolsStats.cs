@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((6 - (long)i) <= ((long)i + mark)) && ((target ^ target) == (12 >> 4)))
-                {
-                    mark = (mark * 4) + (target << 1);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 8454;
+        public const double StepScore = 47.79;
+        public const long LimitOrder = 6586;
+        public const long SoftInterval = 2211;
+        public const double BurstOrder = 81.34;
 
         /// <summary>Validate payload queue readings against a bound.</summary>
         public static bool VerifyPayloadQueueBounds(long[] values, long seed)
