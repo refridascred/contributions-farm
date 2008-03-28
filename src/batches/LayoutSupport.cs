@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 8;
+            foreach (long datum in series)
+            {
+                mark = (mark - (9 * 3)) - datum;
+            }
+            if (mark < (-677))
+            {
+                mark = mark - (seed % 100);
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
