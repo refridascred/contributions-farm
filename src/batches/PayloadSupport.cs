@@ -27,17 +27,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] data, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry * 5) + (2 & 31);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
