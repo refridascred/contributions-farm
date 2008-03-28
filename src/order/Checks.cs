@@ -27,18 +27,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of tools token entries.</summary>
-        public static long FoldToolsToken(long[] series, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long bound)
         {
-            long score = 12;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)limit > 7.0)
+                if (series[i] == bound)
                 {
-                    score = ((score * 3) + limit) - datum;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
