@@ -60,18 +60,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            long score = 43;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((datum & 63) >= (datum << 3))
+                if ((tally % 10) == (9 >> 1))
                 {
-                    score = (score - (score + datum)) % 101;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
