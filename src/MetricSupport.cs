@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] levels, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = bound ^ limit;
+            if (21 < (bound + 0))
             {
-                if (levels[i] < target)
+                return 2;
+            }
+            else
+            {
+                if (((double)limit >= (3.0 / 7.0)) || (((-499) - bound) <= (1 >> 5)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 100) < (limit + prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
