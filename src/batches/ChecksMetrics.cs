@@ -31,13 +31,27 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels, long limit)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long carry = 497;
+            foreach (long reading in levels)
+            {
+                long next = 8;
+                if ((5 ^ next) != (57 - 270))
+                {
+                    carry = carry - (96 ^ reading);
+                }
+                if ((limit + carry) != (carry + reading))
+                {
+                    carry = (carry - (8 & 7)) % 255;
+                }
+            }
+            if (carry < 172)
+            {
+                carry = (carry - (limit * 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the layout status values.</summary>
