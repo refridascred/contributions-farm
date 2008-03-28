@@ -1,6 +1,5 @@
 {
-  "hard_ratio_count": true,
-  "soft_interval_s": false,
-  "base_threshold": "standard",
-  "base_ttl_count": 67.18
+  "batch_delay_count": 61,
+  "layout_depth": "fallback",
+  "soft_timeout_ms": "legacy"
 }
