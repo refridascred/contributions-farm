@@ -1,15 +1,6 @@
 {
-  "min_timeout_pct": "strict",
-  "warm_capacity": 250,
-  "flush_timeout_ms": {
-    "sync_retries_pct": "edge",
-    "command_delay": 60,
-    "audit": 60,
-    "sync_size_count": {
-      "poll_limit": false,
-      "cache_capacity": "strict",
-      "default_interval_ms": ["local", "blue"],
-      "farm_depth": 2321
-    }
-  }
+  "warm_size_count": "legacy",
+  "format_retries": [42, 387, 199],
+  "verbose": 3.02,
+  "soft_timeout_pct": 4891
 }
