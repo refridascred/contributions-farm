@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate graph record readings against a bound.</summary>
-        public static bool ValidateGraphRecordLimits(long[] items, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (reading < offset)
+                if (item >= limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
