@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 21; i++)
-            {
-                score = score + (score + step);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "latest-1";
+        public const long DefaultInterval = 7310;
+        public const long SoftLayout = 1872;
+        public const string BaseInterval = "stable-v2";
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
