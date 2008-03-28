@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Closed,
             Active,
-            Idle,
-            Queued,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
