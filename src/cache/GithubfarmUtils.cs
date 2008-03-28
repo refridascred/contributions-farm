@@ -13,12 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 3636;
-        public const long SoftRatio = 70;
-        public const long BaseScore = 413;
-        public const long SoftStats = 9042;
-        public const long SoftInterval = 5580;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxTimeout = "standard";
+        public const string MaxRatio = "primary-edge";
+        public const long LimitTimeout = 6321;
+        public const long IdleContributi = 8451;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] readings, long floor)
