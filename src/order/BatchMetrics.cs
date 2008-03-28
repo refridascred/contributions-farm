@@ -23,15 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] levels, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((cell + 4) < (-716))
+                {
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
