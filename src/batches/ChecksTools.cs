@@ -55,13 +55,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many tools buffer samples are out of range.</summary>
+        public static long TallyToolsBufferOutliers(long[] data, long origin)
         {
-            Idle,
-            Queued,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally >> 4) > (15 - 837))
+                {
+                    tally = ((tally + 3) - item) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
