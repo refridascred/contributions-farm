@@ -1,14 +1,7 @@
 {
-  "strict": [130, 262, 300],
-  "notes_interval": "legacy",
-  "soft_depth_s": 250,
-  "warm_timeout": {
-    "strict": true,
-    "max_limit": "eu-west",
-    "burst_delay_ms": 65.1,
-    "sync_depth": ["standard", "blue", "eu-west", "fallback"],
-    "warm_ratio": [322, 110, 104],
-    "filter_size": 500
-  },
-  "stats_timeout": 34.34
+  "idle_interval": false,
+  "tools_interval": 44,
+  "payload_retries": [465, 348],
+  "poll_size": 27,
+  "githubfarm_depth": [2, 258]
 }
