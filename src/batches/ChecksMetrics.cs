@@ -27,26 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long floor)
         {
-            long result = 3;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result & 7) != (item + result))
+                if (data[i] <= floor)
                 {
-                    result = (result + (4 % 10)) % 255;
-                }
-                else
-                {
-                    result = (result - (result / 6)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 0)
-            {
-                result = result + (result >> 5);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
