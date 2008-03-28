@@ -30,9 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 91.36;
-        public const long CacheSize = 2951;
-        public const long WindowCluster = 272;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
     }
 }
