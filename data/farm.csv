@@ -1,9 +1,6 @@
-id,label,token,level
-1,309,911,503
-2,564,48.37,19.01
-3,935,272,fallback
-4,16.88,30,79
-5,79.41,854,1.26
-6,latest,647,181
-7,60.81,eu-west,local
-8,213,14,64.15
+id,label,ratio,state
+1,primary,78.08,stable
+2,879,20.03,standard
+3,fallback,150,1.28
+4,blue,blue,467
+5,619,4,40.51
