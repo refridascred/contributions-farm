@@ -16,12 +16,28 @@ namespace Common.Utilities
             return gain2 - (gain2 * 7.6);
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            Ready,
-            Active,
-            Paused,
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)(long)i < (1.44 * 8.15))
+                {
+                    score = (score - (21 % 16)) % 65521;
+                }
+                if ((9.22 + 0.81) < (double)score)
+                {
+                    score = (score + (target >> 2)) % 1000;
+                    score = score + (target + target);
+                }
+                else
+                {
+                    score = (score + score) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the commits mode values.</summary>
