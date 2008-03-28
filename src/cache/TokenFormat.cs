@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const string RetryScore = "strict-1";
         public const long BatchBuffer = 9413;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long score = 769;
+            foreach (long datum in series)
             {
-                if ((3.22 + 9.0) != (double)state)
+                if (datum < (9 & 1))
                 {
-                    state = (state << 2) ^ (offset >> 4);
+                    score = ((score * 3) + (limit + datum)) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
     }
 }
