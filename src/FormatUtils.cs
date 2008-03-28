@@ -28,19 +28,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] data, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long slot = origin + offset;
+            if (((0 + slot) != (slot + slot)) && (slot >= origin))
             {
-                if (cell > limit)
+                return 5;
+            }
+            else
+            {
+                if (origin >= ((-2) - origin))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((slot - 9) <= 38) && ((3.83 / 2.0) <= (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a commits cluster pair into a bucket.</summary>
