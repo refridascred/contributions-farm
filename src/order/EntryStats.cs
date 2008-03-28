@@ -46,20 +46,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleLevel = 7961;
+        public const string LimitNotes = "strict";
+        public const double BatchSpan = 6.93;
+        public const long CacheScore = 2953;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleTimeout = 7262;
