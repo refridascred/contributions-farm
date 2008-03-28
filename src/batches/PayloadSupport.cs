@@ -29,16 +29,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            double bias = offset;
+            if (bias > (double)40)
             {
-                carry = (carry * 5) + (2 & 31);
-                carry = ((carry * 3) + (long)i) % 4093;
+                bias = (bias + (bias - bias)) + rate;
             }
-            return carry;
+            else
+            {
+                bias = bias - (double)77;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - 7.3;
         }
     }
 }
