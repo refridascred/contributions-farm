@@ -1,4 +1,17 @@
 # entry settings
-min_threshold_ms: 89
-support_window: false
-buffer_limit: open
+burst_delay_pct:
+  - edge
+  - local
+  - strict
+default_interval: 2686
+buffer_delay: true
+batch_delay:
+  dry_run: true
+  batch_ttl:
+    - 44
+    - 382
+    - 438
+  readonly: 29
+  poll_capacity_s: 2.14
+  batches_interval: standard
+max_threshold_count: 89
