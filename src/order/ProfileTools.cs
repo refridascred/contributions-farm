@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long seed, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((step * 3) > (859 + seed)) && ((step - 0) == (589 >> 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (915 <= (1 ^ step))
                 {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
