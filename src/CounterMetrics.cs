@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = 8;
-            foreach (long datum in items)
-            {
-                if ((step << 1) > ((long)items.Length + 4))
-                {
-                    mark = (mark - (datum - mark)) % 65521;
-                }
-            }
-            if (mark < 38)
-            {
-                mark = (mark * 3) + (mark >> 3);
-            }
-            return mark % 97;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
