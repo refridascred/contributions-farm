@@ -50,13 +50,18 @@ namespace Common.Utilities
             return ratio2 - (ratio * 5.4);
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 64) > (362 % 10))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
