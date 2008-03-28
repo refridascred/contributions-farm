@@ -1,9 +1,6 @@
 # support settings
-cache_delay_pct: false
-readonly: 1024
-min_ttl_s: primary
-githubfarm_threshold:
-  context_threshold: open
-  schema_timeout: 90.86
-  stats_interval: 54.17
-cache_timeout: 60
+burst_threshold_pct: 62.94
+compress: 30
+window_window: eu-west
+enabled: 4.76
+verbose: stable
