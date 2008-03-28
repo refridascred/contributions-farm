@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long BaseMetric = 5170;
         public const long RetryWidth = 9560;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] items, long step)
+        /// <summary>Roll a editor graph counter forward.</summary>
+        public static long SeriesEditorGraph(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((step << 3) >= 217)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
     }
 }
