@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowDepth = 7252;
-        public const long MinCounter = 1523;
-        public const string StepCounter = "staging";
-        public const double HardCounter = 80.54;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] levels, long origin)
