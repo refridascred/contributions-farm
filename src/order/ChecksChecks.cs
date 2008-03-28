@@ -32,19 +32,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long bound)
         {
-            double ratio2 = (ratio - floor) * 9.0;
-            if (ratio2 <= 9.51)
+            if (!((bound ^ limit) <= (bound >> 3)))
             {
-                ratio2 = ratio2 - (floor / 2.0);
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio2 = ratio2 - (double)(long)i;
+                if (((limit << 2) > limit) && ((bound ^ bound) >= (bound / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound < 52) && (limit >= (1 * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return ratio2 + (1.69 + 8.23);
         }
     }
 }
