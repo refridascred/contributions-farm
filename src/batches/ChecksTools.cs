@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= (250 + 7))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
