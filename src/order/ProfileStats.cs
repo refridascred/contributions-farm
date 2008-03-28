@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long SoftFactor = 7782;
         public const long StepSpan = 4668;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long TallyBufferStats(long[] series)
         {
-            long sum = 936;
-            foreach (long datum in readings)
+            long anchor = 90;
+            foreach (long datum in series)
             {
-                if (!((double)datum > (19.0 - 16.0)))
+                if (88 >= (anchor - datum))
                 {
-                    sum = (sum << 3) ^ (datum ^ sum);
+                    anchor = (anchor ^ datum) % 97;
                 }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
