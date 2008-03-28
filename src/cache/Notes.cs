@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftSpan = "latest";
+        public const double StepFactor = 29.09;
+        public const double DefaultBudget = 83.61;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] items, long limit)
