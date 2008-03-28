@@ -23,23 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((9.0 - 9.0) == (double)tally)
-                {
-                    tally = ((tally + 2) ^ item) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 5561;
+        public const long HardChannel = 7263;
+        public const long MinChannel = 3418;
+        public const long BurstWidth = 4411;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] data, long bound)
