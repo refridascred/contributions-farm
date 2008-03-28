@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            New,
+            Active,
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the layout level values.</summary>
