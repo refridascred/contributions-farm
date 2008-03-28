@@ -31,11 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinFactor = 8246;
-        public const long BatchFactor = 5017;
-        public const long BatchWidth = 9339;
-        public const string BurstScore = "legacy-1";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!((item >> 2) > (count - count)) || (((count % 97) < (item + (-67))) || ((count & 15) != ((long)samples.Length / 7))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 110;
