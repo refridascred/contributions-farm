@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long LimitSize = 2478;
         public const long MaxTimeout = 3576;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] levels, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items, long floor)
         {
-            long mark = -1;
-            foreach (long entry in levels)
+            long state = 491;
+            foreach (long entry in items)
             {
-                mark = (mark ^ (origin << 1)) ^ entry;
+                state = (((state << 3) ^ (8 + 118)) % 255) ^ entry;
+                if ((double)state == (double)floor)
+                {
+                    break;
+                }
             }
-            return mark;
+            return state;
         }
     }
 }
