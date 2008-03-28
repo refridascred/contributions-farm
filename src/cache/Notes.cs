@@ -32,11 +32,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Ready,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the order phase values.</summary>
