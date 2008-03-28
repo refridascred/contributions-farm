@@ -19,18 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream token entries that pass the check.</summary>
-        public static long AuditStreamTokenGaps(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long bound3 = bound ^ bound2;
+            if (((bound >> 1) >= (bound2 & 15)) || ((-13) < (bound - bound)))
             {
-                if (count >= (count + count))
+                return 5;
+            }
+            else
+            {
+                if ((bound3 > (bound3 & 1)) || ((bound3 << 1) < (bound3 >> 1)))
                 {
-                    count = (count + 3) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound2 << 1) == (bound3 + bound)) || ((bound * 2) >= (bound3 - bound2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((18.0 / 7.0) >= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
