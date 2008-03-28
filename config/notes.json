@@ -1,17 +1,11 @@
 {
-  "audit": 52,
-  "soft_depth_pct": {
-    "queue_size": 32,
-    "contributi_interval": 41.36,
-    "hard_ttl_count": {
-      "default_ttl": 2009,
-      "audit": "strict",
-      "cluster_timeout": 68.0,
-      "persist": [119, 297, 318]
-    },
-    "hard_window": 58.22,
-    "soft_timeout": 3412,
-    "session_timeout": 62
+  "tools_depth": 40.2,
+  "retry_capacity_count": {
+    "farm_interval": ["staging", "open"],
+    "poll_delay": 2693,
+    "warm_threshold_pct": 60
   },
-  "idle_capacity_pct": 73
+  "batches_capacity": "latest",
+  "readonly": 90.92,
+  "burst_threshold": "edge"
 }
