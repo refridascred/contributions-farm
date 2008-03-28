@@ -46,12 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 255) > (cell & 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of contributi profile readings.</summary>
