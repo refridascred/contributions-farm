@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] values, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item << 1) <= (limit * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
