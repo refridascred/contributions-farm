@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseDepth = "primary-edge";
+        public const long IdleLevel = 6912;
+        public const long RetryBudget = 1863;
+        public const long SoftCache = 1321;
+        public const long CacheCount = 4043;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] samples, long offset)
