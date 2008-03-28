@@ -24,22 +24,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Count the record already entries that pass the check.</summary>
-        public static long TallyRecordAlreadyGaps(long[] items, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (value > ((long)items.Length + 89))
+                if (cell > limit)
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Classify a commits cluster pair into a bucket.</summary>
