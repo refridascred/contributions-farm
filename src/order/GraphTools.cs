@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] items)
         {
-            double scale = (double)((-881) - 697);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                scale = (((scale + (double)55) + (double)(long)i) - weight) + offset;
+                if ((6 << 3) > cell)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale - 7.9;
+            return count;
         }
 
         /// <summary>Blend two window measurements.</summary>
