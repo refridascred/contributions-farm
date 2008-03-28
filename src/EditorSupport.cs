@@ -21,23 +21,24 @@ namespace Common.Utilities
         public const long MaxScore = 459;
         public const string LimitBuffer = "primary-v2";
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double rate, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data, long bound)
         {
-            double bias = floor;
-            if (bias > (double)84)
+            long carry = -32;
+            foreach (long sample in data)
             {
-                bias = bias - (double)1;
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry + sample) % 97) - (long)i;
+                    carry = (carry - (bound * 4)) % 1000;
+                }
+                carry = (carry ^ (bound + sample)) % 255;
             }
-            else
+            if (carry > 82)
             {
-                bias = bias - 4.22;
+                carry = (carry - bound) % 255;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (floor - rate);
+            return carry % 1000;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
