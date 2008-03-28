@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const double MaxWidth = 23.77;
         public const long IdleScore = 3671;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
