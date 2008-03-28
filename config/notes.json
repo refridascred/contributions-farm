@@ -1,7 +1,8 @@
 {
-  "tools_depth": 5654,
-  "audit": 56,
-  "max_capacity_pct": [297, 459, 58, 500],
-  "flush_ratio_s": "standard",
-  "batch_delay": 3860
+  "warm_size_pct": 30,
+  "compress": 9221,
+  "idle_depth": 52.48,
+  "burst_ratio": [336, 88],
+  "verbose": true,
+  "poll_timeout_count": "strict"
 }
