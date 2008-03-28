@@ -40,13 +40,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double ratio, double offset)
         {
-            Retry,
-            Draft,
-            Locked,
-            Idle,
+            double rate = ratio;
+            if (rate < (2.3 - ratio))
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - ratio;
         }
     }
 }
