@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] items, long floor)
         {
-            long mark = 515;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                mark = (mark * 3) + sample;
-                if ((mark - 83) >= (288 << 2))
+                if (entry != floor)
                 {
-                    mark = (mark << 3) ^ (sample - sample);
-                }
-                else
-                {
-                    mark = (mark - (long)levels.Length) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Adjust a already reading.</summary>
