@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
