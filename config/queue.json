@@ -1,16 +1,7 @@
 {
-  "idle_limit": {
-    "hard_window_count": 88.3,
-    "max_timeout": "open",
-    "poll_capacity": ["primary", "primary"]
-  },
-  "hard_window_pct": 63.33,
-  "idle_depth_pct": {
-    "cluster_threshold": 41,
-    "readonly": true,
-    "already_window": "primary",
-    "default_threshold_pct": 30,
-    "warm_window": 90,
-    "compress": 76.35
-  }
+  "readonly": 6766,
+  "format_size": 3215,
+  "sync_retries": "latest",
+  "default_timeout_count": 8214,
+  "min_delay_ms": true
 }
