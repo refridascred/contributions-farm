@@ -29,15 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Audit record stream readings against a rule.</summary>
+        public static long MeasureRecordStreamOutliers(long[] data, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (((-5) + tally) < (value / 9))
+                {
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
