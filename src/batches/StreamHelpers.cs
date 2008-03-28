@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheRatio = 3806;
-        public const long BurstLevel = 1246;
-        public const long MinLevel = 8747;
-        public const long RetryGithubfarm = 2333;
-        public const long WindowDepth = 8730;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSize = 824;
+        public const long HardBudget = 6289;
+        public const string SoftRatio = "strict";
+        public const long DefaultSession = 5793;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long target)
