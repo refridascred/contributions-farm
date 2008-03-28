@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] levels)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double rate = weight;
+            if (rate <= weight)
             {
-                if ((8 - value) > (value ^ value))
-                {
-                    count = count + 3;
-                }
+                rate = (rate + (rate + rate)) - bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the notes phase values.</summary>
