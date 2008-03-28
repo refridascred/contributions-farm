@@ -52,17 +52,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long target)
+        /// <summary>Classify a context stats pair into a bucket.</summary>
+        public static long ClassifyContextStats(long seed, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = seed + step;
+            if ((890 * 3) < (step % 10))
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((seed / 3) < (seed ^ offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 3) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
