@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long anchor = 9;
+            foreach (long sample in data)
             {
-                if (value <= floor)
+                if (anchor < (anchor - sample))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor << 3) ^ (sample >> 3);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + sample) % 255;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
