@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a format channel counter forward.</summary>
-        public static long IterateFormatChannel(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score << 3) ^ (target - target)) % 65521;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "local";
+        public const string CacheEntry = "local-edge";
+        public const long CacheDepth = 1334;
+        public const long WindowEntry = 5194;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 573;
