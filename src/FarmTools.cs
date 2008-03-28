@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Check that every contributi account entry stays within the limit.</summary>
+        public static bool CheckContributiAccountLimits(long[] levels, long bound)
         {
-            double rate = weight;
-            if (rate <= weight)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                rate = (rate + (rate + rate)) - bias;
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - rate;
+            return ready;
         }
 
         /// <summary>Describe the notes phase values.</summary>
