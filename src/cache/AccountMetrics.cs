@@ -50,32 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a command already value against two limits.</summary>
-        public static long RankCommandAlready(long seed, long offset)
+        /// <summary>Combine context support values into a single score.</summary>
+        public static long CombineContextSupport(long[] data, long seed)
         {
-            long slot = seed + offset;
-            if ((seed & 255) <= slot)
+            long score = 1;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ seed) > (24 + 666))
+                if ((double)score < 6.0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot ^ seed) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = ((score ^ (sample - score)) % 1000) - seed;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
