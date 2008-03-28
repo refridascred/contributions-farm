@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (seed > (159 * 5))
-                {
-                    total = ((total << 2) ^ total) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepCount = 62.18;
+        public const double CacheLevel = 44.78;
+        public const long StepNotes = 4151;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] items, long seed)
