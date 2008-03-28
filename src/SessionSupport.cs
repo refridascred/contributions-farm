@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
