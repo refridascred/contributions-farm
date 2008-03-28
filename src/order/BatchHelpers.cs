@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean + (weight + mean);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardBudget = 57.17;
-        public const double RetryFormat = 50.67;
-        public const long LimitSize = 2478;
-        public const long MaxTimeout = 3576;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum - datum) < datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] levels)
