@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double rate, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long bound)
         {
-            double load = (double)(4 + 6);
-            for (int i = 0; i < 3; i++)
+            long state = 9;
+            foreach (long item in samples)
             {
-                load = ((load - bias) + (double)(long)i) + rate;
+                state = (state + (bound - item)) % 97;
             }
-            return load - bias;
+            if (state < 36)
+            {
+                state = state ^ (bound % 64);
+            }
+            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
