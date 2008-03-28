@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 8.62;
         public const string RetryDepth = "strict-v2";
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 88.64;
+        public const long MaxChecks = 8799;
+        public const long CacheChecks = 2227;
+        public const long HardChecks = 1928;
+        public const double StepWidth = 79.18;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long FoldBuffer(long[] levels)
