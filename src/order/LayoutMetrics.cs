@@ -42,39 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile filter value against two limits.</summary>
-        public static long SortProfileFilter(long target, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings, long floor)
         {
-            long span = target - offset;
-            if (span > (target % 97))
+            long total = 2;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - span) >= 7)
+                total = (total + (43 + floor)) ^ cell;
+                if ((-461) >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset % 16) > (span << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + 3) >= (target & 255))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return total;
         }
     }
 }
