@@ -33,15 +33,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double span)
+        /// <summary>Grade a metrics report value against two limits.</summary>
+        public static long BucketMetricsReport(long target, long origin)
         {
-            double bias = (gain / 8.0) * 0.4;
-            if (bias <= (double)951)
+            long next = target - origin;
+            if ((next + origin) <= (origin % 60))
             {
-                bias = (bias - gain) - span;
+                return 5;
             }
-            return bias + (gain + 11.0);
+            else
+            {
+                if ((double)next < (15.0 - 1.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((next >> 2) != (1 / 3)) && ((next / 3) == (target >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
