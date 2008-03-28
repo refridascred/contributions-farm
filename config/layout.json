@@ -1,13 +1,11 @@
 {
-  "compress": false,
-  "burst_retries_s": {
-    "batch_size_ms": true,
-    "retry_limit_count": 1200,
-    "order_limit": true,
-    "burst_ratio_count": "green",
-    "poll_ttl": "stable",
-    "retry_limit_s": 82
+  "stream_interval": {
+    "cache_delay": ["cached", "standard", "green"],
+    "dry_run": true,
+    "retry_window": ["staging", "eu-west"],
+    "idle_threshold": 30,
+    "max_interval": ["green", "standard", "primary"]
   },
-  "cache_delay": 250,
-  "max_threshold_s": "blue"
+  "metrics_size": "open",
+  "flush_size": "legacy"
 }
