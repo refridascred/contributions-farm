@@ -29,15 +29,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long anchor = 609;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor - (58 * 3)) ^ cell) - limit;
-            }
-            return anchor % 4096;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
