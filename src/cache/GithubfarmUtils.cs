@@ -43,13 +43,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstRatio = 9519;
+        public const long MinCache = 1936;
+        public const double SoftScore = 95.51;
     }
 }
