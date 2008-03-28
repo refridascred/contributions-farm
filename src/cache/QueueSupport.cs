@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 88;
+            foreach (long datum in items)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                result = ((result << 3) ^ (result % 16)) % 255;
+                if ((datum >= result) && ((13.0 - 4.55) <= (double)datum))
                 {
-                    return (long)i;
+                    result = (result ^ (result - result)) % 65521;
+                }
+                else
+                {
+                    result = result + (-68);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
