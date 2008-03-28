@@ -1,5 +1,19 @@
 # support settings
-sync_size: 6.15
-min_capacity_ms: 250
-warm_threshold: legacy
-hard_window_ms: 51.16
+min_depth: 60
+readonly: latest
+poll_retries_s:
+  enabled:
+    poll_interval_ms: 60
+    soft_depth: 45.5
+    window_ttl: false
+  layout_ttl: 65.12
+  channel_interval: 4221
+flush_window_pct:
+  - legacy
+  - blue
+max_timeout_s: 14.54
+flush_interval_ms:
+  - 265
+  - 115
+  - 353
+  - 252
