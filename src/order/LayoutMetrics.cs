@@ -37,19 +37,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings, long floor)
-        {
-            long total = 2;
-            foreach (long cell in readings)
-            {
-                total = (total + (43 + floor)) ^ cell;
-                if ((-461) >= floor)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepSpan = 2992;
+        public const string MaxWidth = "legacy-v2";
+        public const long MinSize = 414;
     }
 }
