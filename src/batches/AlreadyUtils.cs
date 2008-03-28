@@ -61,18 +61,15 @@ namespace Common.Utilities
         public const long HardSize = 2767;
         public const long RetryScore = 6571;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] samples, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)cell > (6.36 + 3.7))
-                {
-                    count = (count + 1) + bound;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
