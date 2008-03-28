@@ -25,11 +25,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
