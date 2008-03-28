@@ -52,24 +52,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total - seed;
-                if ((seed + total) != (long)i)
+                if (levels[i] > step)
                 {
-                    total = (total << 3) ^ (total - (long)i);
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total * 3) + ((long)i - seed)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
