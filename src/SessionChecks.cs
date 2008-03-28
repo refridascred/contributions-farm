@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] data, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((17.0 - 10.0) == (double)count)
+                {
+                    count = ((count + 1) ^ reading) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
