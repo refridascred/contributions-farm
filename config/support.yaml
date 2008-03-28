@@ -1,20 +1,26 @@
 # support settings
-enabled: 8338
-flush_retries_pct:
-  stats_limit: 51
-  compress:
-    - open
+retry_capacity_ms:
+  - 259
+  - 33
+  - 413
+base_threshold_s: true
+idle_timeout_ms: 100
+enabled:
+  soft_ratio_pct:
+    soft_interval_ms: blue
+    window_interval: standard
+    strict: open
+    order_size:
+      - 145
+      - 325
+    flush_depth:
+      - 216
+      - 492
+  warm_size: latest
+  poll_delay: 96.2
+  stats_limit: legacy
+  warm_delay_s:
+    - legacy
     - fallback
-  audit: 9171
-  order_interval:
-    support_ttl: 43.49
-    enabled: latest
-    soft_delay_s: true
-    command_ratio: true
-    already_threshold: edge
-  warm_interval:
-    - primary
-    - stable
-    - local
-context_retries: 86.25
-persist: false
+    - edge
+  hard_interval: 30
