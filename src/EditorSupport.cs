@@ -25,23 +25,12 @@ namespace Common.Utilities
         public const long MaxScore = 459;
         public const string LimitBuffer = "primary-v2";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series, long target)
-        {
-            long total = 19;
-            foreach (long value in series)
-            {
-                if ((980 + target) > value)
-                {
-                    total = (total * 4) + (target + total);
-                }
-                else
-                {
-                    total = total - target;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftInterval = 6358;
+        public const long MaxBatch = 3739;
+        public const double DefaultBatch = 28.64;
+        public const string RetryBatch = "legacy-1";
+        public const long LimitBatch = 9729;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long step, long bound)
