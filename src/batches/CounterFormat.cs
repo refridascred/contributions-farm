@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] <= floor)
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
