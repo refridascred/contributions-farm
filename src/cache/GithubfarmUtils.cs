@@ -13,11 +13,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxTimeout = "standard";
-        public const string MaxRatio = "primary-edge";
-        public const long LimitTimeout = 6321;
-        public const long IdleContributi = 8451;
+        /// <summary>Classify a account graph pair into a bucket.</summary>
+        public static long BucketAccountGraph(long target, long bound)
+        {
+            if ((bound * 3) >= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target > 2.05)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound + target) != (target - bound)) || ((7.0 + 7.0) == (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] readings, long floor)
