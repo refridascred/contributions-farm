@@ -55,12 +55,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Audit already format readings against a rule.</summary>
+        public static long CountAlreadyFormatGaps(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading & 255) <= 1))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
     }
 }
