@@ -1,35 +1,5 @@
 # githubfarm settings
-flush_ratio:
-  - 34
-  - 225
-  - 209
-  - 145
-dry_run: false
-verbose: false
-commits_retries:
-  - green
-  - staging
-  - green
-  - fallback
-strict:
-  warm_limit: 28.34
-  persist: 94.99
-  burst_interval: false
-  sync_limit_pct:
-    support_delay: green
-    readonly: eu-west
-    batch_window_ms: false
-    flush_retries_pct:
-      - 173
-      - 208
-    poll_capacity_s: 1024
-    flush_retries: 38.55
-  strict:
-    default_limit: 71.74
-    filter_threshold: 9
-    burst_delay_pct: 23.2
-  flush_size_s:
-    min_interval_ms: standard
-    base_delay_pct: 1024
-    max_timeout: 7342
-enabled: latest
+token_ratio: 44
+support_threshold: 31.25
+compress: false
+audit: 5920
