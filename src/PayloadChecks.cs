@@ -26,17 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
+                if ((double)offset > (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
