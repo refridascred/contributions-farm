@@ -56,19 +56,12 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Synced,
+            Draft,
         }
     }
 }
