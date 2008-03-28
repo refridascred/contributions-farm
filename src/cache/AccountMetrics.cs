@@ -83,12 +83,9 @@ namespace Common.Utilities
         public const double SoftFilter = 25.04;
         public const long WindowFilter = 7772;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftInterval = 4060;
+        public const long MaxFormat = 4624;
+        public const double DefaultFactor = 29.12;
     }
 }
