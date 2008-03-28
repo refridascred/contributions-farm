@@ -13,21 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)origin > (9.4 + 1.2)))
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - (state / 2)) % 4096;
                 }
+                state = state + origin;
+                state = (state + ((long)i * 5)) % 4096;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
