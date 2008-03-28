@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "legacy-1";
+        public const double BurstOrder = 53.43;
+        public const long SoftOrder = 8060;
+        public const double LimitOrder = 25.55;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaRange(long[] levels, long bound)
