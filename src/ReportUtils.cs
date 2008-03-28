@@ -21,16 +21,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 179;
+            foreach (long reading in readings)
             {
-                acc = acc - (1 * 5);
-                acc = ((acc * 2) + (long)i) % 65521;
+                state = (state + (reading ^ target)) % 4096;
+                state = (state - (state >> 1)) % 255;
             }
-            return acc;
+            if (state > 247)
+            {
+                state = (state - target) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit farm cache readings against a rule.</summary>
