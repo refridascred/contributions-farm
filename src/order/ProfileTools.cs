@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 5247;
-        public const long DefaultLevel = 9781;
-        public const long BurstCache = 9236;
-        public const long BatchFactor = 9595;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordLimits(long[] series, long floor)
