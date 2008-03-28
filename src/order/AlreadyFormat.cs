@@ -15,18 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long bound)
         {
             long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)anchor < (1.9 - 8.6))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                    anchor = ((anchor * 2) + (bound * 4)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                anchor = (anchor + 8) % 255;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
             return anchor;
         }
