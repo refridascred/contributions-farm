@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] samples, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!((step >> 5) <= step))
+                if (datum <= floor)
                 {
-                    anchor = anchor - (long)i;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor + (anchor ^ 471)) % 101;
-                }
-                anchor = (anchor + (1 << 1)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
