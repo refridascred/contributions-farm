@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings, long bound)
         {
-            double scale = gain;
-            if (scale < (5.0 - scale))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale + 6.0) - span;
+                if (cell <= (250 + 7))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 9.0) - (double)(long)i;
-            }
-            return scale - (scale * 3.74);
+            return tally;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
