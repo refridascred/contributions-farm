@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] series)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((4 - (-2)) <= seen)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
