@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first session window entry that matches the target.</summary>
-        public static long SeekSessionWindowIndex(long[] items, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 856;
+            foreach (long value in readings)
             {
-                if (items[i] <= step)
+                state = (state - ((long)readings.Length & 1)) % 255;
+                state = (state - (state % 3)) % 101;
+                if (((state % 60) >= (value << 2)) && ((state + state) != (408 % 2)))
                 {
-                    return (long)i;
+                    state = state + (value & 3);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
