@@ -31,15 +31,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a session githubfarm figure with a bias.</summary>
-        public static double SmoothSessionGithubfarm(double weight, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long origin)
         {
-            double load = (double)(-908) - (double)12;
-            if (load >= (double)8)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (weight - load)) + span;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return load + weight;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm entry readings.</summary>
