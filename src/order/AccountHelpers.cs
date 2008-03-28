@@ -39,10 +39,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7199;
-        public const long HardSize = 7369;
-        public const long IdleCount = 90;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!!((count * 4) == (value - value)))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] data, long origin)
