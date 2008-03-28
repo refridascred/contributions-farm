@@ -31,14 +31,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Done,
-            New,
-            Pending,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 8400;
+        public const long IdleRoute = 7025;
+        public const long BaseRoute = 8046;
     }
 }
