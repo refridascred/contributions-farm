@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] data, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = 92;
+            foreach (long reading in items)
             {
-                if ((value - 80) >= matches)
+                if (reading < 5)
                 {
-                    matches = (matches + 2) + floor;
+                    sum = (sum - sum) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
