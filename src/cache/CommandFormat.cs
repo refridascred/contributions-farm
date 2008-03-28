@@ -24,27 +24,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long score = 683;
-            foreach (long value in data)
-            {
-                score = (score * 4) + 7;
-                if (!((value - value) < (target % 3)))
-                {
-                    score = (score ^ (1 + target)) % 255;
-                }
-                else
-                {
-                    score = (score - score) % 1000;
-                }
-                if ((value + value) <= (target / 3))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Synced,
+            Done,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Iterate the context batches series from a seed.</summary>
