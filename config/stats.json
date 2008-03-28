@@ -1,6 +1,16 @@
 {
-  "dry_run": true,
-  "soft_depth": "green",
-  "cache_threshold_count": "staging",
-  "schema_ttl": "local"
+  "base_ttl_ms": "local",
+  "burst_delay": {
+    "cache_depth": {
+      "enabled": "staging",
+      "metric_timeout": 88.05,
+      "order_timeout": "strict",
+      "sync_timeout": "staging",
+      "hard_interval_count": 42
+    },
+    "batch_size_s": true,
+    "base_size_s": 250,
+    "default_depth": 100
+  },
+  "warm_size": false
 }
