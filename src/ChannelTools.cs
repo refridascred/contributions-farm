@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long total = 7;
-            foreach (long datum in samples)
-            {
-                total = ((total * 3) + (datum ^ 46)) % 97;
-            }
-            return total % 1000;
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every support checks entry stays within the limit.</summary>
