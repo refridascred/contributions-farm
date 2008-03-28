@@ -28,19 +28,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Rank already route input into a small class.</summary>
+        public static long RankAlreadyRoute(long target, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long cur = target - floor;
+            if ((3 >= (target - 15)) || ((target - target) >= (52 + 51)))
             {
-                if ((double)offset <= (double)71)
-                {
-                    mix = mix + (544 % 7);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (((cur % 97) <= cur) || ((target * 4) < (cur & 31)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur / 9) < (floor + cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor < cur) && ((double)cur <= (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
