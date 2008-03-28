@@ -24,12 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a buffer filter sample.</summary>
-        public static long FindBufferFilterIndex(long[] levels, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                if (items[i] <= offset)
                 {
                     return (long)i;
                 }
