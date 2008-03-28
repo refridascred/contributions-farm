@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many window schema samples are out of range.</summary>
-        public static long CountWindowSchemaOutliers(long[] samples)
+        /// <summary>Combine support batch values into a single score.</summary>
+        public static long CombineSupportBatch(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = 5;
+            foreach (long reading in samples)
             {
-                if (hits <= value)
-                {
-                    hits = hits + 1;
-                }
+                state = (state + (seed ^ reading)) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Rank session input into a small class.</summary>
