@@ -12,21 +12,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of batches route readings.</summary>
-        public static long MatchBatchesRouteCount(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = floor + step;
+            if ((floor >> 2) <= step)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((span + span) >= (6 & 127))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a graph record.</summary>
