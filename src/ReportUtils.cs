@@ -51,18 +51,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm cache readings against a rule.</summary>
-        public static long MeasureFarmCacheOutliers(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((tally - tally) > (item ^ 46)) || ((double)item != (double)tally)) || ((tally % 64) > (75 / 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
