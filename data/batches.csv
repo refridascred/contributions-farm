@@ -1,7 +1,6 @@
-id,score,label
-1,standard,832
-2,79,363
-3,21.08,fallback
-4,latest,cached
-5,green,staging
-6,36.34,eu-west
+id,count,rank,token
+1,73.69,62.82,310
+2,103,59.96,84.06
+3,63,eu-west,836
+4,161,620,cached
+5,32,692,88.01
