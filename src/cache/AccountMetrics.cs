@@ -23,15 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double span)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double offset)
         {
-            double ratio = 7.92;
-            if (ratio < (double)312)
+            double drift = 4.6;
+            if (drift < (7.0 - drift))
             {
-                ratio = ratio - (ratio + span);
+                drift = (drift + offset) + rate;
             }
-            return ratio + weight;
+            else
+            {
+                drift = drift + (offset * 8.36);
+            }
+            return drift + (double)31;
         }
 
         /// <summary>Check that every route payload entry stays within the limit.</summary>
