@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 4196;
+        public const long HardGithubfarm = 9405;
+        public const long MaxGithubfarm = 4991;
+        public const long HardInterval = 5491;
+        public const string IdleDepth = "primary-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MaxLayout = 8698;
