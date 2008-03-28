@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer command entries that pass the check.</summary>
-        public static long TallyBufferCommandMatches(long[] data, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((target / 7) <= (64 + 7))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
