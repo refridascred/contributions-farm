@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ((mean + (mean / 7.0)) + bias) + offset;
         }
 
-        /// <summary>Find the first cache channel entry that matches the target.</summary>
-        public static long FindCacheChannelIndex(long[] readings, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
