@@ -49,13 +49,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long step)
         {
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            long next = seed - step;
+            if (((seed >> 2) >= next) && ((7.45 - 5.2) >= (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next << 2) != ((-85) + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next % 64) >= (5 >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
