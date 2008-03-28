@@ -57,12 +57,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(524 >= ((long)i << 1)))
+                {
+                    mark = (mark * 4) + (63 >> 2);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
