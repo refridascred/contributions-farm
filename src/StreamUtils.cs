@@ -20,11 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] readings, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((((offset ^ count) != (datum << 1)) && ((4.6 * 9.3) > (double)datum)) || ((datum + count) <= (offset + datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
