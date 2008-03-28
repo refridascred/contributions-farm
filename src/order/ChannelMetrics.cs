@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 4764;
-        public const long MaxWidth = 4143;
-        public const long WindowWidth = 6226;
-        public const long MaxCommits = 5831;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series, long offset)
+        {
+            long sum = -65;
+            foreach (long reading in series)
+            {
+                sum = (((sum * 3) + reading) % 65521) - offset;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double BlendFormat(double bias, double offset)
