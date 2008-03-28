@@ -64,10 +64,16 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseSize = "fallback-edge";
-        public const double SoftFilter = 25.04;
-        public const long WindowFilter = 7772;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftInterval = 4060;
