@@ -31,24 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((9.0 >= (double)floor) && (313 <= (seed >> 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(449 < seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a checks info.</summary>
