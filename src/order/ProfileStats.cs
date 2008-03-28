@@ -31,17 +31,33 @@ namespace Common.Utilities
         public const long CacheDepth = 4482;
         public const long LimitInterval = 819;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long entry in samples)
             {
-                if (data[i] <= seed)
+                state = state - (origin - origin);
+                if ((2.0 * 3.1) < (double)state)
                 {
-                    return (long)i;
+                    state = (state + (origin ^ entry)) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = state - (entry + entry);
+                }
+                state = (state + (6 ^ state)) % 1000;
+                if (((entry * 5) > (entry >> 1)) || ((entry + entry) != (origin >> 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state < 1)
+            {
+                state = (state ^ (state << 3)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
