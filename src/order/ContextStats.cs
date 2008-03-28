@@ -40,11 +40,30 @@ namespace Common.Utilities
             return gain + (13.0 + 2.89);
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long carry = 742;
+            foreach (long value in data)
+            {
+                if ((9 + 9) >= (0 + (long)data.Length))
+                {
+                    carry = carry - (carry - carry);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (2 / 7);
+                }
+                if ((value / 3) <= (carry ^ carry))
+                {
+                    break;
+                }
+            }
+            if (carry > 112)
+            {
+                carry = (carry << 3) ^ (6 / 6);
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of support entries.</summary>
