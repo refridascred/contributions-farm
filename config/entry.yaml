@@ -1,6 +1,43 @@
 # entry settings
-idle_depth_ms: false
-soft_retries_s:
-  - latest
-  - cached
-enabled: standard
+hard_threshold_s:
+  idle_timeout_count:
+    contributi_retries: 6133
+    audit: 9982
+    warm_capacity: primary
+  compress: true
+  poll_ttl_ms:
+    - latest
+    - strict
+    - staging
+  poll_interval:
+    sync_delay_s:
+      - 325
+      - 67
+      - 314
+    cache_threshold_ms: false
+    strict: primary
+    hard_delay: 78
+    warm_ttl_s: standard
+warm_ratio_pct:
+  - fallback
+  - edge
+  - staging
+  - standard
+max_retries:
+  warm_limit_count: 1101
+  route_delay: false
+  dry_run:
+    batch_limit_pct: 77.44
+    warm_delay_s: 65.33
+    verbose:
+      - standard
+      - cached
+      - stable
+    default_retries_s: primary
+  min_limit: 82.16
+  warm_capacity_pct: legacy
+  idle_depth_ms: 594
+default_retries_pct:
+  - primary
+  - fallback
+  - fallback
