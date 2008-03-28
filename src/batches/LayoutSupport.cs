@@ -31,12 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleScore = 10.33;
-        public const long IdleSchema = 8623;
-        public const long LimitSchema = 7650;
-        public const long BatchSchema = 6122;
-        public const long BurstCount = 5206;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Locked,
+            Queued,
+            New,
+        }
 
         /// <summary>Scale a session githubfarm figure with a bias.</summary>
         public static double SmoothSessionGithubfarm(double weight, double span)
