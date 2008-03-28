@@ -39,12 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            Locked,
+            Stale,
+            Draft,
         }
     }
 }
