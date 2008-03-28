@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 9600;
-        public const long BurstEntry = 5803;
-        public const double MinEntry = 33.93;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Retry,
+            Pending,
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ProjectWindow(double gain, double bias)
