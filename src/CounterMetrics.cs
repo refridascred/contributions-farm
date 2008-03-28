@@ -48,12 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Locked,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxFactor = 1779;
+        public const string MinStats = "local-edge";
+        public const long SoftStats = 2661;
+        public const long RetryInterval = 8619;
     }
 }
