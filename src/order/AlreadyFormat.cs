@@ -39,24 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a channel context counter forward.</summary>
-        public static long DeriveChannelContext(long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark - (823 ^ step)) % 97) - (long)i2;
-                    mark = (mark ^ (mark << 2)) % 65521;
-                }
-                if ((4.9 + 0.3) != (double)mark)
-                {
-                    mark = mark - mark;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the record class values.</summary>
