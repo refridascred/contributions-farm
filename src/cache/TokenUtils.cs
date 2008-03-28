@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] < bound)
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
