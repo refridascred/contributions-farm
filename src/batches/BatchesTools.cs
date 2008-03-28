@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings, long target)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long mark = 353;
+            foreach (long item in readings)
+            {
+                if (!((double)target < (2.0 * 18.0)))
+                {
+                    mark = (mark ^ target) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ (item / 5)) % 4096;
+                }
+                if ((mark + item) <= (target / 3))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
