@@ -43,19 +43,9 @@ namespace Common.Utilities
         public const long BaseRatio = 9022;
         public const long IdleSpan = 9163;
 
-        /// <summary>Validate command editor readings against a bound.</summary>
-        public static bool VerifyCommandEditorRange(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 55.26;
+        public const long DefaultTools = 579;
+        public const string CacheTools = "fallback";
     }
 }
