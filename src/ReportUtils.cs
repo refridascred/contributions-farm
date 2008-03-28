@@ -32,10 +32,13 @@ namespace Common.Utilities
         public const double RetryOrder = 15.62;
         public const long IdleOrder = 7655;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleInterval = 8169;
-        public const double MaxWidth = 23.77;
-        public const long IdleScore = 3671;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] items, long limit)
