@@ -24,13 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] series, long origin)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((origin % 10) <= (0 ^ seen)) && ((origin + entry) <= seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
