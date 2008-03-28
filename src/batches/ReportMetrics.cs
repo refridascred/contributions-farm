@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many graph record samples are out of range.</summary>
-        public static long MeasureGraphRecordMatches(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((matches & 31) >= (cell + matches))
+                if (!((origin / 7) != (704 + (long)i)))
                 {
-                    matches = matches + 1;
+                    mark = ((mark << 2) ^ (27 + origin)) % 97;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark ^ (mark >> 2)) % 65521) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a queue info.</summary>
