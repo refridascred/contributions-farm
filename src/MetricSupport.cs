@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long target)
         {
-            Closed,
-            Ready,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
