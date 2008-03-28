@@ -48,15 +48,9 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] data, long floor)
-        {
-            long mix = 0;
-            foreach (long entry in data)
-            {
-                mix = (((mix - mix) % 1000) - entry) - floor;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstLevel = "primary-v2";
+        public const long BaseLevel = 5607;
+        public const long CacheCluster = 9335;
     }
 }
