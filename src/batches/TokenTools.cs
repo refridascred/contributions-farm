@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long step)
-        {
-            long carry = 32;
-            foreach (long datum in readings)
-            {
-                carry = (carry << 3) ^ (step + datum);
-                carry = carry ^ 8;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 9884;
+        public const long BatchSchema = 7111;
+        public const string WindowSchema = "strict";
+        public const long DefaultSchema = 6502;
+        public const long BaseDepth = 1522;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string LimitBudget = "legacy-edge";
