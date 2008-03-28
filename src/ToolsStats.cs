@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double bias, double floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            double rate = floor;
-            if (rate < (double)27)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                rate = (rate + rate) + bias;
+                if (((6 - (long)i) <= ((long)i + mark)) && ((target ^ target) == (12 >> 4)))
+                {
+                    mark = (mark * 4) + (target << 1);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (double)(-6);
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
