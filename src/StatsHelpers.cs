@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySize = 4484;
-        public const long MaxGraph = 1153;
-        public const long IdleBudget = 7802;
-        public const long BurstRatio = 2643;
-        public const long SoftGraph = 3819;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] samples, long bound)
