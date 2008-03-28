@@ -1,7 +1,6 @@
 {
-  "already_ttl": 500,
-  "max_delay_pct": [452, 161],
-  "channel_delay": 41,
-  "audit": 30,
-  "base_capacity_pct": "cached"
+  "min_delay_pct": 40.38,
+  "batch_limit": 30,
+  "max_capacity_pct": ["blue", "primary", "strict", "blue"],
+  "sync_interval_count": 100
 }
