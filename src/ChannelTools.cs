@@ -33,14 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine already payload values into a single score.</summary>
+        public static long TallyAlreadyPayload(long[] data)
         {
-            Synced,
-            Done,
-            Active,
-            New,
-            Stale,
+            long carry = 284;
+            foreach (long entry in data)
+            {
+                carry = ((carry << 2) ^ (long)data.Length) % 255;
+                carry = (carry + (entry + carry)) % 255;
+                carry = (carry + 52) % 97;
+            }
+            return carry;
         }
     }
 }
