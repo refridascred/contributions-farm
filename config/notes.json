@@ -1,6 +1,20 @@
 {
-  "verbose": "green",
-  "support_timeout": "legacy",
-  "session_capacity": 65.72,
-  "readonly": 77.99
+  "sync_timeout_ms": false,
+  "batch_ratio_ms": "legacy",
+  "commits_threshold": "green",
+  "burst_depth_ms": {
+    "compress": {
+      "verbose": 7116,
+      "retry_depth": ["stable", "primary"],
+      "persist": 49.2,
+      "flush_limit_pct": ["latest", "cached", "strict", "standard"],
+      "idle_delay_ms": 2338,
+      "poll_capacity_count": false
+    },
+    "hard_interval": [455, 30, 77, 85],
+    "burst_window": "latest",
+    "poll_ratio_ms": "open"
+  },
+  "channel_threshold": false,
+  "soft_ttl_ms": 9.69
 }
