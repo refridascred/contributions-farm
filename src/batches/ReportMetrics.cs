@@ -24,13 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 9;
+        public const double BaseTimeout = 38.6;
+        public const double WindowDepth = 72.68;
+        public const string MaxSpan = "latest-v2";
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
