@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long MatchQueueStreamCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 6;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (cell - 4)) % 4096;
             }
-            return seen;
+            if (mix < (-33))
+            {
+                mix = mix + (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
