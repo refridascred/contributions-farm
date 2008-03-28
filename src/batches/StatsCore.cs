@@ -13,18 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (((item >> 3) < (long)levels.Length) || ((item >> 4) == (30 / 5)))
+                if (reading <= target)
                 {
-                    matches = (matches + 3) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
