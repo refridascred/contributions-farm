@@ -44,21 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm entry readings.</summary>
-        public static long MatchGithubfarmEntryCount(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)tally >= 5.5)
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
