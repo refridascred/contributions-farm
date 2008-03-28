@@ -16,18 +16,30 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] series, long step)
+        /// <summary>Fold a list of editor report readings.</summary>
+        public static long TotalEditorReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long state = 8;
+            foreach (long cell in levels)
             {
-                if ((datum - matches) < (step & 15))
+                if (!((double)state < (double)418))
                 {
-                    matches = matches + 2;
+                    state = (state - (cell * 2)) % 97;
+                }
+                if (!((9.0 / 9.0) < (double)cell))
+                {
+                    state = ((state * 2) + cell) % 101;
+                }
+                if (((52 * 2) > (state * 5)) || (6.32 >= (double)state))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 7)
+            {
+                state = (state ^ (state - state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Grade a cache context value against two limits.</summary>
