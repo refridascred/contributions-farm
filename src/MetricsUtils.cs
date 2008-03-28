@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a githubfarm metrics sample.</summary>
-        public static long LookupGithubfarmMetricsIndex(long[] series, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)980 + (3.9 + gain);
+            if (weight > offset)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight / 9.0);
             }
-            return -1;
+            else
+            {
+                weight = weight - (weight * 15.0);
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the token state values.</summary>
