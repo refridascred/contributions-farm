@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many channel buffer samples are out of range.</summary>
-        public static long CountChannelBufferGaps(long[] readings)
+        /// <summary>Rank layout counter input into a small class.</summary>
+        public static long RankLayoutCounter(long target, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if (!((7 * 2) == (floor & 127)))
             {
-                if (((3 % 100) != (datum << 2)) && ((hits & 127) > hits))
+                return 1;
+            }
+            else
+            {
+                if (((floor & 3) == (floor - floor)) && ((41 % 60) >= (target & 127)))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (66 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((335 / 3) < (floor - 857))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
