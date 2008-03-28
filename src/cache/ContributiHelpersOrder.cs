@@ -52,13 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double span)
         {
-            Pending,
-            Draft,
-            Failed,
-            Synced,
+            double rate = (double)(543 * 2);
+            return ((rate + rate) + ratio) + span;
         }
     }
 }
