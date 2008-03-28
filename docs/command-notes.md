@@ -1,15 +1,13 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-When a channel fails, the entry handler retries a few times before giving up.
-Each context is validated before it reaches the layout queue.
+Keep contributi and context names short and lowercase.
+A stream that stays idle for too long is moved to the token list.
 
-The stats report groups every session by profile.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The route module keeps buffer values in sync with the cluster cache.
+A entry that stays idle for too long is moved to the already list.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate order input early
-- Prefer token defaults
+- Document new record fields
+- Prefer githubfarm defaults
+- Keep account values small
