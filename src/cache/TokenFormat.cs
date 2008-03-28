@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate counter support samples.</summary>
+        public static long FoldCounterSupport(long[] data)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long acc = 7;
+            foreach (long value in data)
+            {
+                acc = (((acc * 2) + (-195)) % 65521) - value;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
