@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels, long offset)
         {
-            long gap = floor ^ limit;
-            if ((9.0 + 9.24) > (double)floor)
+            long sum = 37;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - limit) <= (floor ^ floor))
+                sum = (sum ^ (sum * 4)) % 65521;
+                if (2.39 > (double)sum)
                 {
-                    return 0;
+                    sum = sum + offset;
+                    continue;
                 }
-                else
-                {
-                    if ((123 % 8) > (limit & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor <= (floor + gap)) && (gap > limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = sum - (410 - cell);
             }
+            return sum % 65521;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
