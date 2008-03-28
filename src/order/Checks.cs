@@ -46,18 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((9 / 8) <= count)
-                {
-                    count = ((count + 2) + reading) - bound;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
