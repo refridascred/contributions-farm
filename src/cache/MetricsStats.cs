@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] values, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long score = -78;
+            foreach (long item in values)
             {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score + (score + 196)) % 101) ^ item) + offset;
             }
-            return valid;
+            if (score < 5)
+            {
+                score = ((score * 3) + (long)values.Length) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the account profile entries that pass the check.</summary>
