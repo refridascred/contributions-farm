@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Fold a list of githubfarm account readings.</summary>
