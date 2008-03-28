@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Measure how many filter window samples are out of range.</summary>
+        public static long MeasureFilterWindowHits(long[] items)
         {
-            long acc = 14;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((value + value) <= (value + 0))
+                if ((count - cell) != (count % 8))
                 {
-                    acc = (acc * 4) + (acc + (long)readings.Length);
+                    count = count + 3;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Hold a window snapshot.</summary>
