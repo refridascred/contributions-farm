@@ -1,14 +1,12 @@
 # Command notes
 
-When a farm fails, the checks handler retries a few times before giving up.
-A commits that stays idle for too long is moved to the checks list.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-When a metric fails, the checks handler retries a few times before giving up.
-A context that stays idle for too long is moved to the stats list.
+The command module keeps metric values in sync with the stats cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The contributi module keeps format values in sync with the editor cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Log every command change
-- Validate support input early
+- Prefer payload defaults
+- Log every order change
+- Document new window fields
+- Validate contributi input early
