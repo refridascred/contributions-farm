@@ -70,13 +70,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Validate session editor readings against a bound.</summary>
+        public static bool GuardSessionEditorLimits(long[] readings, long limit)
         {
-            Idle,
-            Stale,
-            Failed,
-            Draft,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
