@@ -70,9 +70,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 7546;
-        public const long BurstCluster = 4778;
-        public const double StepSize = 46.28;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
