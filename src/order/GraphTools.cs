@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((6 << 3) > cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardSize = 3961;
+        public const long WindowTimeout = 9594;
+        public const long IdleMetric = 1651;
+        public const long StepMetric = 9134;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double gain, double offset)
