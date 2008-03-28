@@ -35,15 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double ratio, double bias)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values, long step)
         {
-            double gain = (double)(484 / 7);
-            if (gain <= ratio)
+            long count = 0;
+            foreach (long value in values)
             {
-                gain = gain - (double)22;
+                if ((383 - count) < (step - 55))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return gain - (gain + bias);
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
