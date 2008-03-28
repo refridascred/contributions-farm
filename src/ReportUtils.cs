@@ -13,15 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] values, long bound)
         {
-            double bias = gain * 9.42;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                bias = ((bias - gain) + (double)(long)i) + offset;
+                if (item != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - (double)715;
+            return stale;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
