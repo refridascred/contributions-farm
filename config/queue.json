@@ -1,8 +1,16 @@
 {
-  "counter_capacity": false,
-  "warm_retries": [278, 259, 117, 15],
-  "token_retries": false,
-  "stream_retries": "strict",
-  "default_capacity_pct": "cached",
-  "flush_delay_count": 58.6
+  "default_delay_count": "blue",
+  "context_depth": 968,
+  "base_timeout": {
+    "order_capacity": "blue",
+    "poll_size_pct": false,
+    "verbose": {
+      "session_limit": [490, 175],
+      "tools_delay": 9375,
+      "enabled": 17
+    }
+  },
+  "batch_window_ms": true,
+  "batch_retries_s": 1024,
+  "warm_interval_pct": "local"
 }
