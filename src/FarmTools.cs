@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every contributi account entry stays within the limit.</summary>
-        public static bool CheckContributiAccountLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxScore = 9395;
+        public const string BatchProfile = "primary-1";
+        public const long DefaultLevel = 3840;
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] items)
