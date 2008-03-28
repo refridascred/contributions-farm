@@ -50,21 +50,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of format schema readings.</summary>
-        public static long MatchFormatSchemaCount(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches ^ 505) <= matches)
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 2) ^ datum) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
