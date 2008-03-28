@@ -31,14 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            Dropped,
-            Synced,
-            Active,
-            Paused,
-            Retry,
+            double bias = (13.0 + 3.3) / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (((bias + bias) - (double)(long)i) + scale) - floor;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a checks info.</summary>
