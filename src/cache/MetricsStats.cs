@@ -60,10 +60,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 8730;
-        public const long StepDepth = 5012;
-        public const double IdleTimeout = 86.0;
-        public const double MinFilter = 89.36;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
