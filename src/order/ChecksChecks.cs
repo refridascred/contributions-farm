@@ -27,19 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardFactor = "open-edge";
+        public const long CacheCommits = 4494;
+        public const long DefaultCommits = 2105;
+        public const double HardCommits = 35.35;
     }
 }
