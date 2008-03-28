@@ -45,10 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitDepth = "legacy-1";
-        public const double RetryWindow = 42.0;
-        public const long HardWindow = 1423;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally > entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long step, long step2)
