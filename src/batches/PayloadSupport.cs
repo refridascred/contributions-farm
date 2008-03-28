@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] items, long step)
         {
-            long mark = 21;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!((entry - mark) >= (mark - entry)))
+                if (!((double)matches == (17.0 - 2.83)))
                 {
-                    mark = (mark + (entry << 2)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ entry) % 97;
+                    matches = ((matches + 1) + value) - step;
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
