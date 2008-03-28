@@ -1,5 +1,8 @@
 {
-  "burst_retries_s": 5.32,
-  "strict": 500,
-  "farm_window": 37
+  "record_threshold": 25.34,
+  "report_delay": "edge",
+  "retry_retries": 500,
+  "flush_size_count": 690,
+  "buffer_size": [454, 288, 241, 443],
+  "cache_ttl_pct": 60
 }
