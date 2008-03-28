@@ -59,21 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (gain / 8.0) * 0.4;
+            if (bias <= (double)951)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias - gain) - span;
             }
-            return seen;
+            return bias + (gain + 11.0);
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
