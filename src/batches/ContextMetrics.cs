@@ -24,24 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if ((step & 31) >= 575)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target >= (step & 31)) || ((double)step > (4.72 / 6.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
