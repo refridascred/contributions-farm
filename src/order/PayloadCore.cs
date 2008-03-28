@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.95 * 2.03) < (double)hits)
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two tools route measurements.</summary>
