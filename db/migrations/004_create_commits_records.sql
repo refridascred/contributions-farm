@@ -4,10 +4,9 @@ CREATE TABLE IF NOT EXISTS commits_records (
     token TEXT,
     level INTEGER,
     rank INTEGER,
-    owner TEXT NOT NULL
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
 
-INSERT INTO commits_records (token, level, rank, owner) VALUES ('primary', 55, 55, 'stable');
-INSERT INTO commits_records (token, level, rank, owner) VALUES ('fallback', 82, 63, 'eu-west');
+INSERT INTO commits_records (token, level, rank, active) VALUES ('legacy', 80, 23, 94);
