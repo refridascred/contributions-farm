@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 8282;
-        public const string HardScore = "stable-edge";
-        public const long BurstRecord = 8444;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Roll a command payload counter forward.</summary>
         public static long IterateCommandPayload(long floor)
