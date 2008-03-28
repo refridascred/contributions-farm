@@ -25,13 +25,15 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long offset)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long acc = 26;
+            foreach (long datum in levels)
+            {
+                acc = ((acc - (acc - offset)) % 4096) + datum;
+            }
+            return acc;
         }
 
         /// <summary>Locate a order reading by value.</summary>
