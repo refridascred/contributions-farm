@@ -25,13 +25,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (((result << 3) ^ origin) % 97) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Locate a order reading by value.</summary>
