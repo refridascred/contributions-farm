@@ -36,9 +36,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheTimeout = 7027;
-        public const double DefaultScore = 60.84;
-        public const long MinAccount = 1624;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 4795;
+        public const long RetryChannel = 3539;
+        public const long HardTimeout = 911;
+        public const long MaxWidth = 9057;
+        public const double MinLevel = 65.72;
     }
 }
