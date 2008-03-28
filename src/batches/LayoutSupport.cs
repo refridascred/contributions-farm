@@ -16,11 +16,13 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxScore = 4222;
-        public const string DefaultWidth = "fallback-v2";
-        public const string RetryReport = "primary-v2";
-        public const double MinCount = 9.52;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
