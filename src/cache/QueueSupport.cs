@@ -38,13 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit githubfarm route readings against a rule.</summary>
+        public static long CountGithubfarmRouteHits(long[] items)
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((535 + 140) <= (matches % 100))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
     }
 }
