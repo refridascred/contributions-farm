@@ -33,22 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] levels, long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count & 3) <= (count + cell))
-                {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
