@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFactor = 8794;
-        public const long DefaultScore = 5823;
-        public const long HardFormat = 8163;
-        public const long BatchFormat = 2829;
-        public const long MaxFormat = 3061;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 63.53;
+        public const double BurstDepth = 89.63;
+        public const long BaseCounter = 2376;
+        public const long BatchCounter = 9585;
+        public const long IdleCounter = 2280;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long RollStats(long limit)
