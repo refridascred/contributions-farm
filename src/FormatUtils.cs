@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            double bias2 = floor + bias;
-            if (bias2 > (bias * 5.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 - (13.0 * 1.3);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + 0.35;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
