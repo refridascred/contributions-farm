@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series, long seed)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = 36;
-            foreach (long sample in series)
-            {
-                mix = ((mix * 3) + seed) + sample;
-            }
-            if (mix > 118)
-            {
-                mix = ((mix << 2) ^ (seed & 3)) % 255;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
