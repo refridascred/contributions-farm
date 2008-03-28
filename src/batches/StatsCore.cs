@@ -38,13 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            Retry,
-            Stale,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (2.64 / 7.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
