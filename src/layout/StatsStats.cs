@@ -39,17 +39,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long target)
+        /// <summary>Accumulate booking samples.</summary>
+        public static long ScoreBooking(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 344;
+            foreach (long datum in levels)
             {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                mix = ((mix << 2) ^ (datum - 73)) % 97;
+                mix = ((mix << 3) ^ datum) % 97;
+                mix = (mix * 3) + limit;
+                if ((3.7 + 20.0) == (double)mix)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 361)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix % 97;
         }
     }
 }
