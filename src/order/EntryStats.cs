@@ -38,38 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if (offset <= (65 ^ offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (9.63 * 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5 % 16) != (origin + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin <= (origin + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
