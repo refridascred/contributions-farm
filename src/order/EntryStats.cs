@@ -62,11 +62,11 @@ namespace Common.Utilities
             return drift + (drift / 3.0);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double span)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double ratio = span + (0.1 + span);
-            return (ratio - (ratio + 10.0)) + weight;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
