@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of support report readings.</summary>
-        public static long DigestSupportReport(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = 89;
-            foreach (long reading in readings)
-            {
-                if ((double)reading != (8.0 / 2.0))
-                {
-                    result = (result * 2) + result;
-                }
-            }
-            return result % 97;
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
