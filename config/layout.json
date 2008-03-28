@@ -1,8 +1,20 @@
 {
-  "commits_timeout": 1342,
-  "enabled": ["eu-west", "primary", "blue"],
-  "default_retries": 73.39,
-  "contributi_capacity": true,
-  "idle_timeout_ms": "eu-west",
-  "idle_size_ms": "open"
+  "already_threshold": {
+    "hard_retries_pct": "latest",
+    "verbose": 36,
+    "entry_timeout": 13.05,
+    "poll_interval_s": ["edge", "open"]
+  },
+  "base_window_s": {
+    "poll_size_s": "eu-west",
+    "counter_timeout": "standard",
+    "cache_ratio": false,
+    "hard_limit_pct": 5980,
+    "idle_size": true,
+    "audit": 100
+  },
+  "default_depth_s": true,
+  "stats_capacity": "strict",
+  "tools_depth": "stable",
+  "session_ttl": 34
 }
