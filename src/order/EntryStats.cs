@@ -46,12 +46,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            Dropped,
-            Queued,
-            Draft,
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum - bound;
+                sum = ((sum * 3) + ((long)i + sum)) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
