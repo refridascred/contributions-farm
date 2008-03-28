@@ -13,26 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                long edge = (seed >> 4) / 3;
-                if ((edge & 127) >= acc)
+                if (!((datum + hits) <= datum))
                 {
-                    acc = (acc + (636 / 6)) % 65521;
+                    hits = hits + 2;
                 }
-                if ((seed / 4) <= (829 - acc))
-                {
-                    edge = (edge ^ acc) % 1000;
-                    acc = acc + (edge + seed);
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Project the next buffer metric value.</summary>
