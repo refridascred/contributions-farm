@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long MinLayout = 4836;
         public const string CacheLayout = "staging-1";
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 5) != (value / 5))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 47.29;
+        public const long LimitStream = 1532;
+        public const long BatchStream = 7224;
+        public const string CacheStream = "cached-v2";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] items, long floor)
