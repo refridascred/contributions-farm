@@ -20,23 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            long anchor = 9;
-            foreach (long item in items)
+            long carry = 89;
+            foreach (long reading in readings)
             {
-                anchor = anchor + item;
-                if (!((anchor + anchor) <= item))
+                if (841 >= (reading * 2))
                 {
-                    anchor = (anchor ^ (item - anchor)) % 65521;
+                    carry = carry - carry;
                 }
-                if ((anchor ^ 870) == (anchor - anchor))
+                else
                 {
-                    break;
+                    carry = carry - (57 + reading);
                 }
             }
-            return anchor;
+            if (carry > 15)
+            {
+                carry = (carry + (carry << 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the record kind values.</summary>
