@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if (((85 + bound) >= floor) && (((-1) >> 4) <= bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (5.62 / 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7 < (floor + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
