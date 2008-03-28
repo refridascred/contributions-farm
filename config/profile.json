@@ -1,5 +1,8 @@
 {
-  "base_delay_ms": 60.29,
-  "window_capacity": 6867,
-  "context_limit": "green"
+  "hard_delay_pct": 28.02,
+  "retry_retries": true,
+  "warm_capacity": 69.05,
+  "batches_ttl": 1024,
+  "max_interval_s": 30,
+  "session_ratio": "staging"
 }
