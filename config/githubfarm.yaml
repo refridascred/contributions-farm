@@ -1,8 +1,9 @@
 # githubfarm settings
-contributi_depth: open
-retry_window: 85.44
-idle_size_ms:
-  batch_size_count: primary
-  burst_window_count: strict
-  context_retries: green
-  batch_retries_ms: 250
+persist: 500
+batches_limit:
+  - green
+  - staging
+  - fallback
+  - blue
+sync_delay_count: 7261
+strict: 0.69
