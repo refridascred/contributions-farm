@@ -43,22 +43,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] series, long limit)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((limit >> 4) == (entry / 6)) || (((count << 1) <= (entry ^ entry)) && ((count % 60) < (limit + count))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the already phase values.</summary>
