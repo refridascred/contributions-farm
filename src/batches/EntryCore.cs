@@ -29,21 +29,21 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Match up batch record samples.</summary>
-        public static long PairBatchRecordCount(long[] series)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long tally = 0;
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 2)
+                    if ((series[i] + series[j]) < 13)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
