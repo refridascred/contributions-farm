@@ -53,20 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double offset)
-        {
-            double scale = rate;
-            if (scale <= 14.0)
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + 18.0) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepTimeout = 47.65;
+        public const string HardPayload = "fallback-edge";
+        public const long BaseScore = 6134;
+        public const long BaseSize = 1797;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterGaps(long[] samples, long offset)
