@@ -1,9 +1,8 @@
 # support settings
-flush_depth_ms: legacy
-cache_depth_ms:
-  - edge
-  - local
-route_interval:
-  - cached
-  - blue
-buffer_limit: stable
+sync_interval_ms: staging
+token_depth:
+  - eu-west
+  - staging
+  - eu-west
+  - latest
+min_timeout_ms: fallback
