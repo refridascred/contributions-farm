@@ -15,12 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] values)
         {
-            Dropped,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((6 + hits) < (hits + value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
