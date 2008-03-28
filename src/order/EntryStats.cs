@@ -41,18 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum - bound;
-                sum = ((sum * 3) + ((long)i + sum)) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 1429;
+        public const double StepRoute = 25.02;
+        public const string LimitInterval = "alpha-1";
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ScaleChannel(double weight, double span)
