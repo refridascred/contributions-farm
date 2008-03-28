@@ -21,22 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] series, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(((reading >> 2) < (reading - step)) && ((step - step) <= (55 + reading))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Blend two window measurements.</summary>
