@@ -13,34 +13,35 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long floor2)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            if ((floor & 63) <= (floor2 + floor))
+            long edge = origin + bound;
+            if (origin < (edge + edge))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((floor + floor2) >= (floor2 << 1))
+                if (!((9 * 4) >= (edge >> 3)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if (((floor2 >> 1) < floor2) && (0.1 >= (double)floor))
+                    if (((origin & 63) <= (edge / 9)) && ((482 + edge) > (origin & 255)))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)floor2 < (1.0 + 3.58))
+                        if ((0.07 + 15.0) > (double)edge)
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
-                            return 5;
+                            return 2;
                         }
                     }
                 }
