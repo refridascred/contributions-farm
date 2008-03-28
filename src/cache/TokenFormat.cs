@@ -13,14 +13,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleDepth = 1288;
+        public const long WindowBuffer = 8017;
+        public const string RetryScore = "strict-1";
+        public const long BatchBuffer = 9413;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long offset)
