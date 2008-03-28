@@ -1,5 +1,5 @@
 {
-  "batches_window": 38,
-  "sync_window": "eu-west",
-  "max_window": "edge"
+  "retry_ttl_ms": ["blue", "stable", "open"],
+  "command_capacity": 26,
+  "verbose": 12.13
 }
