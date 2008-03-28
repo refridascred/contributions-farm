@@ -21,18 +21,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] readings, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((((offset ^ count) != (datum << 1)) && ((4.6 * 9.3) > (double)datum)) || ((datum + count) <= (offset + datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the support kind values.</summary>
