@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor + 0) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
