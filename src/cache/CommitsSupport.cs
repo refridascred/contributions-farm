@@ -33,22 +33,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = 778;
-            foreach (long sample in items)
-            {
-                if ((867 * 4) >= sample)
-                {
-                    sum = ((sum << 3) ^ (sample * 3)) % 1000;
-                }
-            }
-            if (sum > 252)
-            {
-                sum = (sum ^ (sum + sum)) % 97;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank already input into a small class.</summary>
