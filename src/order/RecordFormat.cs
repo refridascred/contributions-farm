@@ -49,13 +49,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long seed)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            if ((double)target > (8.0 / 2.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (20.0 > (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next schema value.</summary>
