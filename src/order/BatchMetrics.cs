@@ -83,18 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] samples, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (((floor * 5) > (cell << 2)) && !((matches + 51) >= (matches + 71)))
+                if (value >= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
