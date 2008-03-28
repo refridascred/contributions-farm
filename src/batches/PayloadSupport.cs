@@ -12,32 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long span = floor - step;
-            if (!((floor % 60) >= (step + span)))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step + step) <= (floor + step)) && ((step ^ step) >= (step + floor)))
+                if (!((37 < ((long)readings.Length / 3)) && ((value + matches) < matches)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((95 - step) < (span ^ 19)) || ((8 & 7) < step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
