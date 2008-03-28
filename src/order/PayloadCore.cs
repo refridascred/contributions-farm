@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Adjust a payload account reading.</summary>
+        public static double ProjectPayloadAccount(double ratio, double floor)
         {
-            long mix = 341;
-            foreach (long datum in samples)
-            {
-                if (((68 + mix) >= mix) && (7.0 <= (double)mix))
-                {
-                    mix = mix + datum;
-                }
-            }
-            return mix;
+            double mean = floor;
+            return (mean - mean) + ratio;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
