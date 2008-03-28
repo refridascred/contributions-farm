@@ -1,7 +1,23 @@
 {
-  "batches_capacity": false,
-  "verbose": "stable",
-  "record_window": false,
-  "burst_ratio_pct": true,
-  "counter_retries": 11.93
+  "batch_ttl": ["cached", "open"],
+  "flush_capacity": {
+    "cluster_window": "standard",
+    "soft_window_pct": 5917,
+    "poll_size_count": "primary",
+    "batches_interval": 4775
+  },
+  "commits_depth": true,
+  "burst_interval_pct": {
+    "account_delay": [149, 25, 432],
+    "compress": 8.48,
+    "counter_capacity": {
+      "cache_window": 96,
+      "metric_capacity": "standard",
+      "persist": true,
+      "poll_ratio": false,
+      "support_threshold": [175, 278, 392]
+    }
+  },
+  "compress": "stable",
+  "verbose": [406, 267, 214, 195]
 }
