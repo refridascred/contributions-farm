@@ -24,12 +24,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate route command samples.</summary>
