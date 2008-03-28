@@ -1,7 +1,5 @@
 {
-  "burst_size_s": "primary",
-  "hard_retries": "staging",
-  "readonly": 7733,
-  "verbose": "strict",
-  "commits_depth": "local"
+  "batches_interval": 11.77,
+  "warm_interval_count": "open",
+  "channel_size": true
 }
