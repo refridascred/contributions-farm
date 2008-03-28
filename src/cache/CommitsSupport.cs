@@ -25,19 +25,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (reading < origin)
                 {
-                    result = (((result << 3) ^ origin) % 97) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Locate a order reading by value.</summary>
