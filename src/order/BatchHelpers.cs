@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine support batch values into a single score.</summary>
-        public static long CombineSupportBatch(long[] samples, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            long state = 5;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                state = (state + (seed ^ reading)) % 101;
+                if ((count + count) >= 58)
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank session input into a small class.</summary>
