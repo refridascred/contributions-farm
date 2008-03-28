@@ -1,6 +1,5 @@
 {
-  "min_delay_pct": 40.38,
-  "batch_limit": 30,
-  "max_capacity_pct": ["blue", "primary", "strict", "blue"],
-  "sync_interval_count": 100
+  "burst_retries_s": 5.32,
+  "strict": 500,
+  "farm_window": 37
 }
