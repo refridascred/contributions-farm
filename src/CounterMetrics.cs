@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long carry = 33;
+            foreach (long item in readings)
+            {
+                if ((item + carry) >= (4 ^ item))
+                {
+                    carry = (carry + (item - carry)) % 1000;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = (carry - (carry / 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a farm record.</summary>
