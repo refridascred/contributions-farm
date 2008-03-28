@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm commits readings against a bound.</summary>
-        public static bool CheckFarmCommitsBounds(long[] data, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Failed,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
