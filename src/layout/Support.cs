@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long carry = 335;
-            foreach (long sample in readings)
-            {
-                carry = (carry ^ (carry + limit)) ^ sample;
-            }
-            if (carry < 76)
-            {
-                carry = (carry - (carry + carry)) % 1000;
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
