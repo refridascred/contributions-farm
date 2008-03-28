@@ -47,21 +47,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stats order pairs that satisfy a relation.</summary>
-        public static long CompareStatsOrderCount(long[] items)
+        /// <summary>Compare every pair of githubfarm graph readings.</summary>
+        public static long CompareGithubfarmGraphCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 7)
+                    if ((samples[i] ^ samples[j]) > 9)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
