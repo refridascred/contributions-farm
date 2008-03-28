@@ -39,15 +39,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            double ratio2 = (ratio / 9.0) * 2.3;
-            if (ratio2 >= (ratio2 + ratio2))
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                ratio2 = (ratio2 - (ratio2 / 4.0)) + offset;
+                if ((((-42) % 12) != (carry + carry)) || ((double)target < (double)(long)i))
+                {
+                    carry = (carry - (5 + target)) % 97;
+                    carry = carry + (carry / 6);
+                }
+                carry = (carry ^ (target ^ carry)) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return ratio2 - (ratio * 5.4);
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
