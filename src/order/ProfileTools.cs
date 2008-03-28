@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long limit)
+        /// <summary>Grade a tools route value against two limits.</summary>
+        public static long SortToolsRoute(long bound, long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if ((6.0 / 8.0) > (double)limit)
             {
-                if (reading != limit)
+                return 8;
+            }
+            else
+            {
+                if (810 >= (bound + limit))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
