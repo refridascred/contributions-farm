@@ -1,15 +1,7 @@
 {
-  "idle_ratio_s": "blue",
-  "persist": true,
-  "readonly": 1024,
-  "enabled": 86.27,
-  "retry_ttl": {
-    "cache_ttl_pct": ["open", "strict", "fallback", "cached"],
-    "batch_threshold": ["legacy", "staging"],
-    "already_size": "edge",
-    "metrics_interval": ["fallback", "eu-west", "latest", "local"],
-    "sync_size_s": 86.93,
-    "burst_threshold_ms": true
-  },
-  "dry_run": "primary"
+  "readonly": 39.96,
+  "metric_limit": 60,
+  "persist": 5767,
+  "metric_depth": 6.1,
+  "base_retries_s": 8
 }
