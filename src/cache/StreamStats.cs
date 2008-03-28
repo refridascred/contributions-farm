@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
         {
-            double scale = (double)3 + (ratio / 5.0);
-            for (int i = 0; i < 7; i++)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                scale = (scale + floor) + (double)(long)i;
+                carry = (carry - (long)i) % 255;
+                if ((carry >> 2) >= 849)
+                {
+                    carry = (carry ^ (limit << 1)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (802 + (long)i)) % 101;
+                }
+                carry = carry - ((long)i >> 5);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return scale - scale;
+            return carry;
         }
 
         /// <summary>Hold a cache record.</summary>
