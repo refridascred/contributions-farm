@@ -71,32 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context stats pair into a bucket.</summary>
-        public static long ClassifyContextStats(long seed, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long target)
         {
-            long offset = seed + step;
-            if ((890 * 3) < (step % 10))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 3) < (seed ^ offset))
+                if (readings[i] > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 3) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
