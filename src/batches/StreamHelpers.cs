@@ -59,12 +59,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Compare every pair of format schema readings.</summary>
+        public static long MatchFormatSchemaCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
