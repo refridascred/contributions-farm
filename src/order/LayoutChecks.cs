@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] items, long floor)
+        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
+        public static double ScaleGithubfarmEntry(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = scale / 2.0;
+            if (weight >= (double)249)
             {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight - floor);
             }
-            return -1;
+            return weight - (double)5;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
