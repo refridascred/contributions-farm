@@ -81,19 +81,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values, long limit)
         {
-            long mark = 65;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                mark = mark + (5 - mark);
-                if ((double)value >= (16.0 + 6.9))
+                if ((reading + matches) >= (matches * 3))
                 {
-                    break;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
     }
 }
