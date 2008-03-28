@@ -42,15 +42,19 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double gain, double span)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double span)
         {
-            double drift = (double)(4 & 63);
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)(173 - 23);
+            if (ratio <= ratio)
             {
-                drift = (((drift - (drift * 8.3)) + (double)(long)i) + gain) - span;
+                ratio = ((ratio - 7.25) - bias) - span;
             }
-            return drift - (drift + drift);
+            else
+            {
+                ratio = ratio + (ratio * 4.0);
+            }
+            return ratio - (ratio + 4.4);
         }
     }
 }
