@@ -1,5 +1,9 @@
 # githubfarm settings
-sync_limit: 30
-hard_timeout: 32.45
-token_retries: 38
-strict: green
+audit: latest
+soft_limit_pct:
+  - 494
+  - 50
+  - 197
+  - 177
+dry_run: false
+persist: local
