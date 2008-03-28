@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Blend two format measurements.</summary>
