@@ -50,18 +50,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] values, long bound)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches ^ 505) <= matches)
-                {
-                    matches = ((matches + 2) ^ datum) + bound;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
