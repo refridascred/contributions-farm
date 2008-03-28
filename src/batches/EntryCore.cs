@@ -12,12 +12,11 @@ namespace Common.Utilities
             return mean + (bias / 6.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxDepth = 8217;
-        public const long SoftLevel = 9833;
-        public const double WindowProfile = 93.83;
-        public const long BaseScore = 311;
-        public const double RetryRatio = 15.81;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxRatio = 72.17;
+        public const string WindowCount = "stable-edge";
+        public const long WindowQueue = 3584;
+        public const double StepScore = 80.36;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] values)
