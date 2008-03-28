@@ -1,22 +1,22 @@
 # entry settings
-persist:
-  support_retries: blue
-  compress: 6829
-  metrics_capacity:
-    githubfarm_capacity: 2822
-    max_limit_ms: cached
-    min_timeout_count:
-      - primary
-      - primary
-      - local
-      - open
-    session_depth: eu-west
-    soft_window_ms: 7669
-  audit: local
-  burst_timeout_pct: 10.95
-idle_window:
-  - edge
+checks_threshold:
+  soft_delay:
+    batch_size_count: 13.25
+    default_capacity_s: 33.16
+    batch_capacity_ms: false
+  warm_retries_ms: true
+  sync_interval_ms: 7
+  enabled:
+    - 291
+    - 225
+    - 245
+    - 293
+verbose:
+  - 460
+  - 45
+  - 296
+warm_timeout_ms:
+  - eu-west
   - green
-dry_run:
-  - 49
-  - 303
+audit: blue
+min_delay_ms: staging
