@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSize = 4113;
-        public const double BurstChecks = 34.89;
-        public const long RetryChecks = 2764;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchLevel = 778;
+        public const double WindowEditor = 80.93;
+        public const long LimitEditor = 8813;
+        public const long CacheScore = 7712;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] levels, long offset)
