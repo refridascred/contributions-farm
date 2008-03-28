@@ -30,21 +30,25 @@ namespace Common.Utilities
         public const string SoftPayload = "cached-v2";
         public const long StepDepth = 1628;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = step - limit;
+            if ((11.0 - 6.0) != (double)limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)prev > 17.0)
                 {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
