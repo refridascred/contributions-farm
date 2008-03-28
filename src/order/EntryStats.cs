@@ -20,12 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the filter session entries that pass the check.</summary>
+        public static long CountFilterSessionHits(long[] data, long floor)
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen % 10) > (4 & 31))
+                {
+                    seen = ((seen + 3) - reading) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream class values.</summary>
