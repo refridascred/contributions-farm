@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double ratio, double bias)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double scale = (double)(372 + 62);
-            if (scale >= (double)55)
-            {
-                scale = scale + (double)0;
-            }
-            else
-            {
-                scale = scale - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - bias;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
