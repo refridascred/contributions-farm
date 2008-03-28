@@ -43,24 +43,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Measure how many farm route samples are out of range.</summary>
+        public static long CountFarmRouteGaps(long[] samples)
         {
-            long state = 161;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if ((hits - hits) >= (hits % 97))
                 {
-                    long prev = reading;
-                    state = (state + prev) ^ (long)i;
+                    hits = (hits + 1) - datum;
                 }
-                state = (state + (reading / 5)) % 255;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state < 45)
-            {
-                state = ((state * 3) + (state + state)) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
