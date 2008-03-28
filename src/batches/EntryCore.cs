@@ -57,11 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardDepth = "primary";
-        public const long MaxInterval = 335;
-        public const long MinTimeout = 2651;
-        public const long RetryWidth = 4617;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((reading / 8) != (40 - 8)) && ((reading + tally) <= (long)values.Length))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double bias, double offset)
