@@ -23,16 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result << 2) ^ (result + limit);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
