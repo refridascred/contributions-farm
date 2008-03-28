@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long step, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((5.0 + 8.0) != (double)offset)
             {
-                if (items[i] > offset)
+                return 8;
+            }
+            else
+            {
+                if (offset < (702 >> 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
