@@ -1,8 +1,6 @@
 {
-  "already_size": "standard",
-  "contributi_delay": "eu-west",
-  "idle_size": 12,
-  "min_threshold_ms": true,
-  "token_timeout": 100,
-  "soft_ratio": "local"
+  "dry_run": true,
+  "soft_depth": "green",
+  "cache_threshold_count": "staging",
+  "schema_ttl": "local"
 }
