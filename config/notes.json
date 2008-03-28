@@ -1,5 +1,6 @@
 {
-  "warm_depth_count": [413, 91, 293],
-  "default_ttl_s": 52.63,
-  "min_depth_ms": 2281
+  "readonly": 1214,
+  "support_delay": "standard",
+  "context_interval": 51,
+  "notes_ratio": ["local", "stable", "blue", "latest"]
 }
