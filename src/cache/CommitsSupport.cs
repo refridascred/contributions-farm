@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] readings, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long acc = 6;
-            foreach (long cell in readings)
-            {
-                if (((double)seed <= (6.2 - 4.49)) && ((cell + seed) > (0 - cell)))
-                {
-                    acc = (acc << 2) ^ (28 - acc);
-                }
-                if ((14 * 5) >= (acc & 15))
-                {
-                    acc = acc - (cell * 5);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc / 5)) % 65521;
-                }
-                if (!(cell < (seed + 64)))
-                {
-                    acc = ((acc << 2) ^ (cell >> 1)) % 97;
-                }
-            }
-            return acc;
+            Dropped,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Adjust a queue reading.</summary>
