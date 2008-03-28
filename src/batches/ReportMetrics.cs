@@ -24,18 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long CountFarmStatsHits(long[] values, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)item == (7.0 + 3.32)) || (offset >= (seen - 4)))
-                {
-                    seen = seen + 1;
-                }
+                total = total - (34 / 5);
+                total = total + (total + offset);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the metric level values.</summary>
