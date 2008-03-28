@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long SoftInterval = 2211;
         public const double BurstOrder = 81.34;
 
-        /// <summary>Validate payload queue readings against a bound.</summary>
-        public static bool VerifyPayloadQueueBounds(long[] values, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long result = 833;
+            foreach (long datum in readings)
             {
-                if (entry <= seed)
+                if (7.54 >= (double)datum)
                 {
-                    ok = false;
-                    break;
+                    result = result + seed;
                 }
             }
-            return ok;
+            if (result > 0)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
