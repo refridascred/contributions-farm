@@ -35,15 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] items, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long origin)
         {
-            long acc = 866;
-            foreach (long datum in items)
+            long result = 2;
+            foreach (long reading in readings)
             {
-                acc = ((((acc * 2) + ((-858) / 8)) % 4096) - datum) - seed;
+                if ((double)reading <= 11.0)
+                {
+                    result = (result << 3) ^ origin;
+                }
             }
-            return acc % 1000;
+            return result % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
