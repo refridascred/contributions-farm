@@ -1,12 +1,10 @@
 # Command notes
 
-Each account is validated before it reaches the layout queue.
-Run the metrics check before changing any checks limits.
-The support report groups every queue by session.
+The command report groups every buffer by layout.
+A graph that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review counter limits each release
-- Document new window fields
-- Keep layout values small
+- Validate githubfarm input early
+- Log every account change
+- Prefer githubfarm defaults
