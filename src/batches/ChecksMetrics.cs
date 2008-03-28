@@ -39,17 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Locate a stream support reading by value.</summary>
+        public static long SeekStreamSupportIndex(long[] series, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix * 2) + mix;
-                mix = ((mix << 3) ^ (step / 3)) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((series[i] > step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
