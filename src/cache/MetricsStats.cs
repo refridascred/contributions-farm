@@ -39,11 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 9200;
-        public const double BatchWindow = 55.59;
-        public const double BurstFactor = 73.49;
-        public const long StepRatio = 3011;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum + (-6);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every channel record entry stays within the limit.</summary>
         public static bool VerifyChannelRecordRange(long[] items, long offset)
