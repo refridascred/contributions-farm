@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 8193;
-        public const double CacheCluster = 56.57;
-        public const string BaseCluster = "alpha-edge";
+        /// <summary>Fold a list of already cache readings.</summary>
+        public static long FoldAlreadyCache(long[] samples, long bound)
+        {
+            long anchor = -66;
+            foreach (long item in samples)
+            {
+                if ((item * 3) <= item)
+                {
+                    anchor = (((anchor << 3) ^ item) % 97) + bound;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
