@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mean + (weight + mean);
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardBudget = 57.17;
+        public const double RetryFormat = 50.67;
+        public const long LimitSize = 2478;
+        public const long MaxTimeout = 3576;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] levels, long origin)
