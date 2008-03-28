@@ -41,11 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxInterval = 612;
-        public const long CacheFormat = 5276;
-        public const double BaseFormat = 62.49;
-        public const long RetryCount = 8882;
-        public const long BatchRatio = 4591;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
