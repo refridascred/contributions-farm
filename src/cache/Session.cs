@@ -43,21 +43,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] == limit)
                 {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
