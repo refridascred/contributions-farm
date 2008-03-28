@@ -14,23 +14,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] items, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((step ^ step) >= step)
+                if ((double)(long)items.Length != (double)seen)
                 {
-                    state = (state - ((long)i & 255)) % 97;
+                    seen = ((seen + 3) + sample) + bound;
                 }
                 else
                 {
-                    state = (state << 3) ^ (step + (long)i);
+                    seen = seen - 1;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Project the next graph value.</summary>
