@@ -30,13 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the checks record entries that pass the check.</summary>
+        public static long AuditChecksRecordHits(long[] samples)
         {
-            New,
-            Paused,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally >> 5) <= cell)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
