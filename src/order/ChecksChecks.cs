@@ -45,19 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits support readings against a bound.</summary>
-        public static bool ValidateCommitsSupportRange(long[] data, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
