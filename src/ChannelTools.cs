@@ -32,23 +32,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((1.1 * 3.0) < (double)(long)i)
-                {
-                    acc = (acc * 5) + (long)i;
-                }
-                else
-                {
-                    acc = (acc + (103 - (long)i)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Closed,
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the support mode values.</summary>
