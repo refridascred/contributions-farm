@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] series, long origin)
+        /// <summary>Audit payload checks readings against a rule.</summary>
+        public static long TallyPayloadChecksGaps(long[] data)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long cell in data)
             {
-                if (!((86 ^ origin) >= (tally - tally)))
+                if (!!((731 - tally) > (cell << 3)))
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
