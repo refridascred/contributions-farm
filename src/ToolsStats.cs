@@ -63,18 +63,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already session readings against a rule.</summary>
-        public static long AuditAlreadySessionHits(long[] levels, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((sample * 3) <= (141 + seed)))
+                if (series[i] > seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
