@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels)
-        {
-            long score = 7;
-            foreach (long sample in levels)
-            {
-                score = ((score << 2) ^ (sample + score)) % 97;
-                if (!((double)sample < (double)27))
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                if ((sample + (long)levels.Length) > (28 + sample))
-                {
-                    score = (score << 2) ^ (604 / 9);
-                }
-                else
-                {
-                    score = (score ^ (14 + sample)) % 65521;
-                }
-            }
-            if (score < 4)
-            {
-                score = (score << 3) ^ (score + 291);
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstDepth = "open";
+        public const long CacheFarm = 8329;
+        public const long HardFarm = 6299;
+        public const string BurstFarm = "local-v2";
+        public const string IdleDepth = "primary";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long step)
