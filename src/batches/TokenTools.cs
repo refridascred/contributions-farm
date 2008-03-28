@@ -19,11 +19,16 @@ namespace Common.Utilities
         public const long MaxWidth = 2203;
         public const long RetryCluster = 4628;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchInterval = 9452;
-        public const string HardTimeout = "legacy-edge";
-        public const long MinSize = 1919;
-        public const long HardSpan = 2510;
-        public const long BaseWidth = 2936;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 4) + ((long)i - 241)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
