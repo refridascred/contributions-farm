@@ -51,27 +51,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long sum = 43;
-            foreach (long item in items)
-            {
-                if ((double)item > (5.4 + 18.0))
-                {
-                    sum = sum - (sum & 1);
-                }
-                sum = sum ^ (item ^ sum);
-                if (sum < (873 ^ sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 91)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
