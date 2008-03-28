@@ -33,38 +33,18 @@ namespace Common.Utilities
         public const double LimitSize = 70.52;
         public const long DefaultRatio = 8686;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] data, long offset)
         {
-            if ((limit + origin) >= (origin << 1))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(limit >= (limit + origin)))
+                if ((((long)data.Length - value) == (253 + tally)) || ((double)offset <= (2.84 + 20.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((1.8 - 9.8) == (double)limit) && (origin > (origin / 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(limit < (483 / 7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
