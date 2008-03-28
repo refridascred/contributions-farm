@@ -33,21 +33,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long target)
         {
-            long state = 68;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - (state - 321)) % 65521;
-                state = state - (state & 3);
-                state = ((state << 2) ^ (value << 1)) % 4096;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 5)
-            {
-                state = ((state * 2) + (state << 3)) % 255;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
