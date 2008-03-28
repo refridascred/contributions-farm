@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(50 & 3);
+            if (mean > (floor * 20.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - 7.7;
             }
-            return seen;
+            return mean - scale;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
