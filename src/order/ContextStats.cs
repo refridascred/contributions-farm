@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long limit2)
         {
-            double ratio = weight;
-            if (ratio <= ratio)
+            if ((limit * 2) >= limit)
             {
-                ratio = ratio - (weight + span);
+                return 3;
             }
             else
             {
-                ratio = ratio + (span - 2.8);
+                if ((limit > limit2) || ((limit * 3) > limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit2 * 4) >= (limit - limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)72) + (double)(long)i;
-            }
-            return ratio + (double)71;
         }
 
         /// <summary>Hold a tools header.</summary>
