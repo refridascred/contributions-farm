@@ -44,24 +44,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next filter batches value from a seed.</summary>
-        public static long SeriesFilterBatches(long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long state = -9;
+            foreach (long sample in readings)
             {
-                if (!((total % 2) < total))
+                if ((limit + limit) <= (sample * 4))
                 {
-                    total = (total << 2) ^ (offset >> 2);
+                    state = ((state * 3) + (sample % 100)) % 65521;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                else
                 {
-                    total = total ^ ((long)i2 >> 3);
-                    total = (total ^ (8 + 324)) % 65521;
+                    state = (state << 3) ^ 24;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
