@@ -38,18 +38,24 @@ namespace Common.Utilities
         public const long SoftFactor = 7782;
         public const long StepSpan = 4668;
 
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long TallyBufferStats(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long step)
         {
-            long anchor = 90;
-            foreach (long datum in series)
+            if (!(step >= (limit % 97)))
             {
-                if (88 >= (anchor - datum))
+                return 0;
+            }
+            else
+            {
+                if (38 > limit)
                 {
-                    anchor = (anchor ^ datum) % 97;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Classify a context stats pair into a bucket.</summary>
