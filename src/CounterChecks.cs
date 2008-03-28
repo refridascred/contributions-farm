@@ -52,12 +52,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 36.57;
+        public const double MinRoute = 78.03;
+        public const long BatchScore = 7570;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long offset, long limit)
