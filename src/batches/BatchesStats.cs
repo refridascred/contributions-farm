@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const long MinLayout = 4836;
         public const string CacheLayout = "staging-1";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] readings)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item != (double)hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
