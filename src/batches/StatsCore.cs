@@ -13,10 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxScore = 4332;
-        public const long BatchTimeout = 7705;
-        public const long SoftRecord = 4588;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((item >> 3) < (long)levels.Length) || ((item >> 4) == (30 / 5)))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long step, long floor)
