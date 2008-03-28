@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            Paused,
-            Ready,
-            Done,
-            Dropped,
-            Retry,
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)(-6) != (double)sum)
+                {
+                    sum = (sum ^ (467 - sum)) % 97;
+                }
+                sum = ((sum * 5) + (floor + sum)) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the token class values.</summary>
