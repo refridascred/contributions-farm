@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Derive the next channel farm value from a seed.</summary>
+        public static long StepChannelFarm(long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state - ((long)i >> 4)) % 97;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
