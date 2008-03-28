@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] values, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((double)floor > 1.1)
             {
-                if (((target * 5) != (value - count)) || ((double)7 >= (double)target))
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 2) < origin)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor & 15) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (20.0 <= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
