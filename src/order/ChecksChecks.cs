@@ -33,27 +33,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples, long step)
+        /// <summary>Digest a series of farm batch entries.</summary>
+        public static long WeighFarmBatch(long[] levels)
         {
-            long acc = 74;
-            foreach (long item in samples)
+            long total = 747;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if (entry > total)
                 {
-                    acc = acc - ((long)i ^ acc);
+                    total = (total ^ ((-628) << 1)) % 4096;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
+                else
                 {
-                    acc = (acc - (step % 64)) - (long)i2;
-                }
-                acc = acc + (item ^ item);
-                if ((double)step <= (0.27 - 3.31))
-                {
-                    break;
+                    total = total + ((long)levels.Length - 9);
                 }
             }
-            return acc;
+            return total;
         }
     }
 }
