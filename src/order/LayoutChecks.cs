@@ -62,19 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate session editor readings against a bound.</summary>
-        public static bool GuardSessionEditorLimits(long[] readings, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (reading > limit)
+                if ((9.58 - 3.27) < (double)reading)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
