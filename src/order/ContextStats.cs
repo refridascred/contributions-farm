@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitBudget = 2243;
-        public const long BaseRoute = 6917;
-        public const long BatchRoute = 6606;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long bound, long floor)
+        {
+            if ((double)floor != (9.0 + 8.16))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - bound) > (bound % 12))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (19 >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
