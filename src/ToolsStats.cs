@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long acc = 32;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc << 1) >= 245)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (((acc * 3) + (-4)) % 65521) - item;
-                }
-                if (867 >= (acc ^ acc))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
