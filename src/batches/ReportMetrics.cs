@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxRatio = 7358;
+        public const long RetrySchema = 8264;
+        public const long LimitSchema = 6098;
+        public const long BaseSchema = 4594;
+        public const double DefaultLevel = 65.32;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] samples, long target)
