@@ -27,12 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            Locked,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Adjust a metric reading.</summary>
