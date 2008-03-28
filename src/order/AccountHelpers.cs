@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 255) > (cell & 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinFactor = 8246;
+        public const long BatchFactor = 5017;
+        public const long BatchWidth = 9339;
+        public const string BurstScore = "legacy-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 110;
