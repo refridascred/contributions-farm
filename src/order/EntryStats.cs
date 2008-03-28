@@ -61,11 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleTimeout = 7262;
+        public const double SoftCount = 37.6;
+        public const double HardCommand = 50.56;
+        public const string SoftCommand = "primary-v2";
+        public const long MaxCommand = 7365;
     }
 }
