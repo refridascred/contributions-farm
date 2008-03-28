@@ -34,15 +34,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long bound)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long seed)
         {
-            long mix = 878;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((((mix << 3) ^ 356) % 4096) ^ sample) - bound;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next buffer route value.</summary>
