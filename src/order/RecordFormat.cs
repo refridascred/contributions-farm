@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const long CacheCommand = 3362;
         public const long DefaultInterval = 5687;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 20.04;
+        public const long DefaultAlready = 2668;
+        public const long BatchSpan = 8618;
+        public const long SoftDepth = 8683;
+        public const long StepAlready = 4685;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] readings)
