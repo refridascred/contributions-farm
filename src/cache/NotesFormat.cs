@@ -15,14 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            Draft,
-            Active,
-            Done,
-            Locked,
-            Pending,
+            double ratio = (double)8 + floor;
+            if (ratio > (double)(-203))
+            {
+                ratio = ratio + weight;
+            }
+            return ratio - (weight + ratio);
         }
 
         /// <summary>Blend two report window measurements.</summary>
