@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowInterval = 69.23;
+        public const long HardSession = 9181;
+        public const string MinSession = "cached-1";
+        public const long StepSession = 2081;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
