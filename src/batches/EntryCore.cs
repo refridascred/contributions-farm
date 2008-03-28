@@ -57,31 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long bound, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
         {
-            if ((4.76 / 8.0) == (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((733 - bound) <= (bound % 5))
+                if (items[i] <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound < (limit + bound)) && ((bound ^ bound) >= 84))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
