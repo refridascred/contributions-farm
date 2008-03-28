@@ -30,19 +30,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] series, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long step = seed - bound;
+            if (((double)bound < (14.0 - 5.71)) && ((7 << 3) == (seed + step)))
             {
-                if (entry < limit)
+                return 7;
+            }
+            else
+            {
+                if (step <= (step - seed))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
