@@ -39,11 +39,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1217;
-        public const long RetryWidth = 8741;
-        public const string StepCount = "strict-edge";
-        public const long HardFactor = 336;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values, long step)
+        {
+            long anchor = 368;
+            foreach (long reading in values)
+            {
+                if (!((step << 2) < reading))
+                {
+                    anchor = (anchor + (23 & 127)) % 4096;
+                }
+            }
+            if (anchor < (-238))
+            {
+                anchor = ((anchor * 4) + (63 * 2)) % 101;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long step)
