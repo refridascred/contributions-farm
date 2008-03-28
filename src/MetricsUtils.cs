@@ -52,22 +52,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((94 % 3) > (reading << 3))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches + 3;
+                    sum = ((sum ^ (sum & 127)) % 255) ^ (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 7; i3++)
                 {
-                    matches = matches - 1;
+                    sum = (((sum << 2) ^ 711) % 65521) - (long)i3;
                 }
+                sum = (sum << 2) ^ (sum + (long)i);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
