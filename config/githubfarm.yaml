@@ -1,9 +1,7 @@
 # githubfarm settings
-report_delay: true
-poll_ttl_ms:
-  - 481
-  - 286
-  - 18
-  - 31
-hard_ratio_count: 7763
-already_depth: 1321
+poll_interval: fallback
+sync_window_pct: local
+base_delay_s: 3983
+retry_retries_pct: primary
+metric_retries: 100
+batch_ratio_pct: 77
