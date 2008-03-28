@@ -1,7 +1,6 @@
-id,label,region,score
-1,14.45,28.32,17.42
-2,40.07,17.22,152
-3,94.05,edge,fallback
-4,154,54.58,cached
-5,84.24,818,678
-6,legacy,edge,27.98
+id,count,level
+1,stable,35.27
+2,fallback,50.57
+3,46,78.64
+4,833,784
+5,259,standard
