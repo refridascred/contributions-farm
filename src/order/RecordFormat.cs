@@ -65,22 +65,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long target, long step)
         {
-            if ((double)target > (8.0 / 2.0))
+            if ((7.8 + 7.0) != (double)target)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (20.0 > (double)target)
+                if (5 >= (step >> 5))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 8;
+                    return 6;
                 }
             }
         }
