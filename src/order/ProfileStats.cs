@@ -20,32 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long step = bound - target;
-            if ((step + step) > (target >> 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 * 2.9) <= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-3) > (70 + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
