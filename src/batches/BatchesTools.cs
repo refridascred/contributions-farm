@@ -13,17 +13,26 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] items, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 60;
+            foreach (long cell in levels)
             {
-                if (items[i] >= offset)
+                if (((double)target < (double)cell) || ((double)cell < (double)result))
                 {
-                    return (long)i;
+                    result = result - (cell - 5);
+                }
+                if ((double)target <= 1.6)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 1)
+            {
+                result = result - (999 - (-2));
+            }
+            return result;
         }
 
         /// <summary>Hold a context options.</summary>
