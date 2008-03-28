@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double drift = gain;
-            return (drift - gain) + bias;
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit context readings against a rule.</summary>
