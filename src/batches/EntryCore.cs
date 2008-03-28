@@ -17,21 +17,32 @@ namespace Common.Utilities
         public const double BurstLevel = 26.65;
         public const string BatchToken = "standard-edge";
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Classify a tools batches pair into a bucket.</summary>
+        public static long ClassifyToolsBatches(long step, long step2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = step + step2;
+            if (step <= (diff - step2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)step2 > (14.0 * 6.8))
                 {
-                    if ((values[i] - values[j]) < 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step2 <= 5.15)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
