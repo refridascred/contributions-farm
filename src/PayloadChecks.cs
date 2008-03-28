@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] values, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((cell <= (matches - cell)) || ((matches - cell) == (bound & 7))) || ((cell << 2) >= (bound + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Retry,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
