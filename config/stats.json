@@ -1,7 +1,7 @@
 {
-  "soft_limit_count": "edge",
-  "burst_window_pct": 61,
-  "record_size": 1505,
-  "cache_delay_s": "stable",
-  "batches_capacity": true
+  "base_size_ms": 6328,
+  "batches_limit": 500,
+  "batch_window_s": 30,
+  "strict": 28.18,
+  "min_delay_count": 61
 }
