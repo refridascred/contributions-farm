@@ -39,17 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream support reading by value.</summary>
-        public static long SeekStreamSupportIndex(long[] series, long step)
+        /// <summary>Grade a context contributi value against two limits.</summary>
+        public static long GradeContextContributi(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step << 1) < (step - (-57)))
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((step < (step & 127)) && (step > 479))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >> 3) == (822 * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor + floor) > (floor / 3)) && ((step >> 1) > (step << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
