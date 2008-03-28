@@ -71,12 +71,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long target)
         {
-            New,
-            Active,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
