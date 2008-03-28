@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
