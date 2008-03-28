@@ -45,17 +45,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long bound)
+        /// <summary>Project the next buffer metric value.</summary>
+        public static double ProjectBufferMetric(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(7 >> 5);
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = (((mean + mean) - (double)(long)i) - ratio) - span;
             }
-            return -1;
+            return mean + mean;
         }
     }
 }
