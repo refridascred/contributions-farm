@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
+            Active,
             Failed,
-            New,
-            Stale,
-            Synced,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the entry class values.</summary>
