@@ -36,21 +36,27 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 1;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((559 + score) <= score)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (value >> 2)) % 4096;
                 }
+                else
+                {
+                    score = (score - (score + 4)) % 1000;
+                }
+                score = (score - value) % 4096;
             }
-            return matches;
+            if (score < 279)
+            {
+                score = (score - (718 & 7)) % 65521;
+            }
+            return score;
         }
     }
 }
