@@ -39,22 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] samples, long origin)
         {
-            long carry = 510;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (((1.0 - 2.0) > (9.42 - 7.31)) || ((double)carry <= (1.5 / 3.0)))
+                if (value > origin)
                 {
-                    carry = (((carry << 3) ^ (step & 1)) % 4096) ^ sample;
-                }
-                else
-                {
-                    carry = (carry * 2) + carry;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
