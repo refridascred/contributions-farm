@@ -33,14 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Dropped,
-            Pending,
-            Retry,
-            Done,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinBudget = 12.63;
+        public const long WindowFilter = 5532;
+        public const long IdleFilter = 6071;
+        public const long CacheFilter = 1118;
+        public const string HardFilter = "legacy-v2";
     }
 }
