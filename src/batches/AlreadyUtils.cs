@@ -67,11 +67,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowLevel = 1222;
-        public const long DefaultFactor = 5471;
-        public const long BatchContext = 1683;
-        public const double WindowContext = 70.87;
-        public const string SoftContext = "latest";
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double offset)
+        {
+            double bias = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias + (offset - offset)) + (double)(long)i) - scale;
+            }
+            return bias + (double)326;
+        }
     }
 }
