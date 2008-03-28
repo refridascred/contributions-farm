@@ -43,13 +43,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] values, long floor)
         {
-            Stale,
-            Queued,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (6.0 <= (double)tally)
+                {
+                    tally = ((tally + 1) + sample) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
