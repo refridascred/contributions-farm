@@ -1,6 +1,7 @@
 {
-  "strict": false,
-  "batch_ratio_s": 23.9,
-  "stream_window": [423, 154],
-  "dry_run": ["local", "strict", "edge", "local"]
+  "sync_size_pct": false,
+  "cache_ratio_count": "latest",
+  "hard_retries": 5688,
+  "max_size_s": "latest",
+  "default_ttl_ms": 88
 }
