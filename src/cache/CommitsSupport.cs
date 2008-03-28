@@ -49,11 +49,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] levels, long target)
         {
-            double mean = (double)697;
-            return ((mean + (double)(-1)) + gain) + span;
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (tally < (sample - sample))
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
