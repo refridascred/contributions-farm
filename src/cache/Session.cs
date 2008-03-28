@@ -14,12 +14,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = 7;
+            foreach (long sample in readings)
+            {
+                if ((-241) < (mix + mix))
+                {
+                    mix = (mix - (sample ^ sample)) % 97;
+                    mix = mix + (mix + 98);
+                }
+                if (sample > (812 * 5))
+                {
+                    mix = (mix << 3) ^ (727 + mix);
+                }
+                if (((double)sample != (double)3) && ((double)sample >= (double)mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric mode values.</summary>
