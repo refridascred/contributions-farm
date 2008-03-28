@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long floor)
+        /// <summary>Iterate the stream support series from a seed.</summary>
+        public static long RollStreamSupport(long limit)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = anchor + (anchor % 10);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the command class values.</summary>
