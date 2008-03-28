@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long anchor = 57;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor + cell)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor < (-97))
-            {
-                anchor = (anchor ^ (anchor % 97)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
