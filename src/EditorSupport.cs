@@ -53,19 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double scale, double floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
         {
-            double ratio = scale * 7.18;
-            if (ratio <= floor)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio - (double)159;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark + (mark & 127)) % 97) - (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio + scale;
+            return mark;
         }
 
         /// <summary>Describe the contributi level values.</summary>
