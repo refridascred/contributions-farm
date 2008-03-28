@@ -27,18 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] values)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen * 5) >= seen)
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
                 {
-                    seen = (seen + 1) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a notes entry.</summary>
