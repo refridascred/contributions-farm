@@ -42,22 +42,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metrics stats values into a single score.</summary>
-        public static long TallyMetricsStats(long[] series, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long score = 18;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((origin << 3) == (740 * 4)) || ((cell - origin) != (cell - cell)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 3) + (1 % 7)) % 101;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 0)
-            {
-                score = score - origin;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
