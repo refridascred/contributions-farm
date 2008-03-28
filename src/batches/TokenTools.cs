@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long SoftDepth = 6293;
         public const long MaxEditor = 643;
 
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long AuditEntryRecordHits(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = 32;
+            foreach (long datum in readings)
             {
-                if (value <= hits)
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry << 3) ^ (step + datum);
+                carry = carry ^ 8;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
