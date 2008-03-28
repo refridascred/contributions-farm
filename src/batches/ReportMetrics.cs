@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double bias, double span)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double gain = bias;
-            return (gain - (double)0) + span;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
