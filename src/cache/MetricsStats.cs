@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result ^ (origin + origin)) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the account profile entries that pass the check.</summary>
