@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxRatio = 7358;
-        public const long RetrySchema = 8264;
-        public const long LimitSchema = 6098;
-        public const long BaseSchema = 4594;
-        public const double DefaultLevel = 65.32;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 22.9;
+        public const long BurstDepth = 7488;
+        public const double WindowTimeout = 22.54;
+        public const long HardChannel = 2398;
+        public const double BurstChannel = 2.96;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double bias, double span)
