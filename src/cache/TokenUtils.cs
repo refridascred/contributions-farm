@@ -12,21 +12,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Classify a cluster route pair into a bucket.</summary>
+        public static long RankClusterRoute(long origin, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            if (((double)floor <= (4.8 / 9.0)) && ((6.0 + 0.2) != (double)origin))
             {
-                if (!((double)origin > (9.4 + 1.2)))
-                {
-                    state = (state - (state / 2)) % 4096;
-                }
-                state = state + origin;
-                state = (state + ((long)i * 5)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((floor <= (origin ^ origin)) && (origin > 589))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((387 + floor) >= (origin / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin + floor) != ((-38) * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
