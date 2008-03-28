@@ -77,12 +77,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            Paused,
-            Idle,
-            Queued,
+            double load = (floor + weight) + (double)1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 4.6) + (double)(long)i;
+            }
+            return load - (double)(-68);
         }
     }
 }
