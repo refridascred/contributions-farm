@@ -31,19 +31,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!((item >> 2) > (count - count)) || (((count % 97) < (item + (-67))) || ((count & 15) != ((long)samples.Length / 7))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7199;
+        public const long HardSize = 7369;
+        public const long IdleCount = 90;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 110;
