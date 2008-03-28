@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] samples, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (datum <= floor)
+                if ((sample + (-602)) >= (4 << 1))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
