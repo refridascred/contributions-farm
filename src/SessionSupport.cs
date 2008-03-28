@@ -30,18 +30,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Measure how many already notes samples are out of range.</summary>
-        public static long MeasureAlreadyNotesMatches(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (8 <= entry)
+                if (value <= seed)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
