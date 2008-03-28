@@ -1,16 +1,16 @@
 # Command notes
 
-Each account is validated before it reaches the notes queue.
-Keep notes and stats names short and lowercase.
-Use notes settings to tune how often format data is refreshed.
+Use batches settings to tune how often batches data is refreshed.
+The profile report groups every record by counter.
+The window module keeps stream values in sync with the notes cache.
 
-Defaults for token live in the config folder and can be overridden per environment.
-Run the tools check before changing any schema limits.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often cluster data is refreshed.
+The metrics report groups every queue by schema.
+Each editor is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer token defaults
-- Review queue limits each release
-- Log every format change
+- Document new farm fields
+- Prefer buffer defaults
+- Validate cluster input early
+- Log every token change
