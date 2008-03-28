@@ -81,18 +81,19 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] values, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!((632 << 3) != (91 - seed)))
+                if (entry >= seed)
                 {
-                    hits = (hits + 1) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
