@@ -59,20 +59,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            long total = 504;
-            foreach (long datum in items)
+            long score = 0;
+            foreach (long value in readings)
             {
-                total = ((total ^ (floor / 8)) % 4096) + datum;
-                total = total ^ (total << 1);
+                score = (score + (score >> 2)) + value;
             }
-            if (total < 1)
-            {
-                total = (total - floor) % 255;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Match up entry samples.</summary>
