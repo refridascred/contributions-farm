@@ -86,15 +86,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Locate a buffer metrics reading by value.</summary>
+        public static long LookupBufferMetricsIndex(long[] samples, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
