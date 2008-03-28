@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] values, long seed)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mix = ((mix << 3) ^ (cell - cell)) % 255;
-                if ((cell % 16) >= offset)
+                if ((item ^ item) != (hits * 5))
                 {
-                    mix = (mix * 4) + (cell ^ (-43));
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix < 9)
-            {
-                mix = (mix ^ (mix & 7)) % 101;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
