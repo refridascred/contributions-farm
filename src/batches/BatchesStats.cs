@@ -15,12 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples, long bound)
         {
-            Stale,
-            Synced,
-            New,
+            long mark = 456;
+            foreach (long cell in samples)
+            {
+                if (mark < (bound & 63))
+                {
+                    mark = ((mark * 4) + 352) + cell;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
