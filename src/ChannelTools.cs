@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series, long limit)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long TallyMetricWindowGaps(long[] samples)
         {
-            long acc = 78;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((limit * 5) == (value ^ limit))
+                if (!((double)sample > (6.0 + 10.0)))
                 {
-                    acc = (acc << 2) ^ 78;
+                    count = count + 1;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Check that every support checks entry stays within the limit.</summary>
