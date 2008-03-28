@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const string StepFormat = "local-v2";
         public const long SoftCount = 191;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long offset)
         {
-            double mean = (6.82 * 8.7) + (bias / 7.0);
-            return (mean + mean) + ratio;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
