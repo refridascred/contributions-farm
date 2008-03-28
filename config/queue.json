@@ -1,7 +1,18 @@
 {
-  "audit": "local",
-  "poll_capacity": 21.03,
-  "default_timeout_ms": true,
-  "retry_limit": "latest",
-  "buffer_size": "staging"
+  "base_capacity_pct": 33,
+  "editor_timeout": false,
+  "default_ratio_s": [173, 477, 217],
+  "max_capacity_pct": {
+    "compress": {
+      "hard_timeout_count": "primary",
+      "batches_limit": "open",
+      "batch_capacity_ms": 60,
+      "sync_limit_ms": ["blue", "eu-west", "local"],
+      "retry_retries_ms": 1024
+    },
+    "verbose": ["strict", "blue", "edge", "fallback"],
+    "support_ratio": 67
+  },
+  "batch_retries": 500,
+  "batch_timeout": "latest"
 }
