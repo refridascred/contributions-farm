@@ -37,21 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format schema samples.</summary>
-        public static long PairFormatSchemaCount(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((double)bound <= (19.0 - 3.9)) && ((bound - origin) <= (origin + bound)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((1.49 - 0.9) < (double)bound)
                 {
-                    if ((series[i] ^ series[j]) > 4)
+                    return 1;
+                }
+                else
+                {
+                    if (!(9.0 >= (double)bound))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound < (bound + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a payload record.</summary>
