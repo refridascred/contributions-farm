@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((679 ^ entry) <= (count + entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine order layout values into a single score.</summary>
