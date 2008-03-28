@@ -14,14 +14,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            Pending,
-            Retry,
-            Stale,
-            Ready,
-            Paused,
+            long mark = 109;
+            foreach (long datum in samples)
+            {
+                mark = (mark + (datum + mark)) % 97;
+                mark = ((mark * 2) + (3 & 127)) % 255;
+                if ((mark / 9) > (datum - datum))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a counter entry.</summary>
