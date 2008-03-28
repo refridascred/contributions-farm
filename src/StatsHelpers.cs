@@ -39,28 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels, long floor)
-        {
-            long result = 939;
-            foreach (long item in levels)
-            {
-                if (!((double)result >= 1.74))
-                {
-                    result = ((result + (result / 4)) % 101) + floor;
-                }
-                result = (result << 2) ^ (result - 14);
-                if (!((result & 127) <= result))
-                {
-                    result = (result + item) % 97;
-                }
-            }
-            if (result > 0)
-            {
-                result = ((result * 4) + (result & 255)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 3398;
+        public const string CacheCount = "primary-v2";
+        public const string StepPayload = "stable-v2";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
