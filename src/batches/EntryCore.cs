@@ -46,9 +46,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseSpan = 2021;
-        public const long WindowContext = 5615;
-        public const long CacheBudget = 5065;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
