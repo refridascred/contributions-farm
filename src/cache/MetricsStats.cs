@@ -25,11 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] items, long floor)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((((hits ^ hits) >= sample) && (hits > (hits - 1))) && (4.4 < (double)floor))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
