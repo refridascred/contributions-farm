@@ -24,17 +24,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark ^ ((long)i >> 5)) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryWidth = 28.16;
+        public const double HardFormat = 36.11;
+        public const double RetryFormat = 38.05;
+        public const double MinFormat = 34.58;
+        public const long LimitDepth = 112;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
