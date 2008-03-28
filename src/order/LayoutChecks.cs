@@ -55,11 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 6794;
-        public const double HardCount = 8.45;
-        public const long StepRoute = 8430;
-        public const long CacheWidth = 3509;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 9015;
