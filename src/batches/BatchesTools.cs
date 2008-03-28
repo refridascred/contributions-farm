@@ -27,26 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long TallyCommandBuffer(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long offset)
         {
-            long state = 85;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item / 4) != (item * 4))
+                if (items[i] >= offset)
                 {
-                    state = ((state << 2) ^ (item >> 4)) % 97;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state & 7)) % 255;
+                    return (long)i;
                 }
             }
-            if (state < 0)
-            {
-                state = (state + 4) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
