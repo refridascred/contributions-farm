@@ -56,21 +56,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next layout batches value from a seed.</summary>
-        public static long StepLayoutBatches(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = carry ^ carry;
-                if ((double)step >= (double)carry)
-                {
-                    carry = ((carry << 3) ^ ((long)i - (long)i)) % 97;
-                    carry = (carry ^ (carry >> 5)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 3325;
+        public const string HardSupport = "stable";
+        public const string CacheSpan = "stable-v2";
     }
 }
