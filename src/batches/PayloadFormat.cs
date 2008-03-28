@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the record buffer series from a seed.</summary>
-        public static long SeriesRecordBuffer(long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
