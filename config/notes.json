@@ -1,12 +1,11 @@
 {
-  "min_capacity_ms": {
-    "default_timeout": "stable",
-    "batch_timeout_count": 42.37,
-    "queue_size": 57.82,
-    "retry_size_pct": 8286,
-    "warm_size_count": true,
-    "compress": 100
+  "warm_interval": "strict",
+  "stats_window": 46.44,
+  "default_threshold_s": {
+    "max_interval_count": ["eu-west", "legacy"],
+    "hard_threshold_s": 57.09,
+    "warm_ratio_count": 30
   },
-  "soft_threshold": false,
-  "poll_threshold_pct": [426, 395]
+  "retry_capacity": 2772,
+  "dry_run": "latest"
 }
