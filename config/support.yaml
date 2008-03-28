@@ -1,4 +1,24 @@
 # support settings
-batch_limit_count: local
-burst_ratio: open
-persist: 1786
+enabled:
+  hard_threshold:
+    window_depth: 100
+    poll_ttl_count: 25.31
+    cache_ratio_count: true
+    sync_limit_ms: 66
+    hard_capacity_ms: false
+  dry_run:
+    record_delay:
+      - 343
+      - 186
+    tools_limit: true
+    context_size: stable
+  retry_threshold_pct: 57.95
+  readonly: false
+  batch_ttl_count: standard
+record_ratio:
+  - 331
+  - 5
+  - 113
+stats_ttl: 1024
+base_timeout: stable
+hard_size: blue
