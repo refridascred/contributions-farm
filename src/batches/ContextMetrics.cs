@@ -51,11 +51,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a cluster stream figure with a bias.</summary>
-        public static double BlendClusterStream(double ratio, double span)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            double drift = span;
-            return (drift - span) + ratio;
+            double ratio = offset;
+            if (ratio < (double)977)
+            {
+                ratio = (ratio - ratio) + bias;
+            }
+            return ratio - (0.4 / 2.0);
         }
     }
 }
