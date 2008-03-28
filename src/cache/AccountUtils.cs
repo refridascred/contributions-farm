@@ -39,13 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public double Flag { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((long)i < (step / 5))
+                {
+                    score = (score + (step + step)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
