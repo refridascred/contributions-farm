@@ -41,10 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 1429;
-        public const double StepRoute = 25.02;
-        public const string LimitInterval = "alpha-1";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (8.4 >= (double)reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ScaleChannel(double weight, double span)
