@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double ScaleGithubfarmEntry(double scale, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] levels, long origin)
         {
-            double weight = scale / 2.0;
-            if (weight >= (double)249)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                weight = weight + (weight - floor);
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - (double)5;
+            return flag;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
