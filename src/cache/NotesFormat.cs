@@ -45,18 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading != (9.7 + 3.0))
+                if (series[i] > origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
