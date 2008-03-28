@@ -46,38 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long step, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if ((double)step < (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)floor != (1.56 * 14.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - floor) < (1 / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - floor) >= (floor << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
