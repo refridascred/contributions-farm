@@ -1,6 +1,18 @@
 {
-  "enabled": "edge",
-  "verbose": true,
-  "poll_size_ms": [60, 473, 395],
-  "flush_capacity_s": 49
+  "support_capacity": 72.67,
+  "dry_run": "latest",
+  "max_interval_pct": 13.2,
+  "enabled": 40.97,
+  "cache_limit": {
+    "compress": 7995,
+    "base_ratio_ms": {
+      "poll_retries_count": "staging",
+      "warm_depth": 90,
+      "context_window": "stable"
+    },
+    "idle_capacity": 5.0,
+    "retry_window_count": 54,
+    "batch_window_ms": 18.86,
+    "base_timeout": 7154
+  }
 }
