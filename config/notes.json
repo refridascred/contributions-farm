@@ -1,5 +1,15 @@
 {
-  "persist": 30,
-  "readonly": false,
-  "batches_ratio": false
+  "sync_limit_ms": true,
+  "dry_run": {
+    "cache_ratio": true,
+    "max_limit": "open",
+    "default_window_ms": {
+      "retry_limit_pct": "strict",
+      "account_capacity": "legacy",
+      "warm_ratio_pct": 58
+    }
+  },
+  "account_limit": "stable",
+  "flush_retries_ms": 500,
+  "sync_limit_count": "legacy"
 }
