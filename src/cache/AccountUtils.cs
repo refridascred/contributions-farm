@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long step, long offset)
-        {
-            if ((5.0 + 8.0) != (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (702 >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardWidth = 2403;
+        public const long BaseTimeout = 5494;
+        public const long DefaultBuffer = 3840;
+        public const long BurstBuffer = 8463;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BurstStats = "staging-1";
