@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] readings, long offset)
         {
-            Stale,
-            Draft,
-            Queued,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading % 3) < (reading + tally)))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
