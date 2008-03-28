@@ -31,12 +31,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 77.29;
-        public const long SoftDepth = 1121;
-        public const long IdleBudget = 5226;
-        public const double StepSchema = 8.09;
-        public const double SoftSpan = 17.13;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
