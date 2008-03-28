@@ -22,18 +22,17 @@ namespace Common.Utilities
         public const string RetryScore = "strict-1";
         public const long BatchBuffer = 9413;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long limit)
         {
-            long score = 769;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < (9 & 1))
+                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
                 {
-                    score = ((score * 3) + (limit + datum)) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
