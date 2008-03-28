@@ -12,27 +12,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm account readings.</summary>
-        public static long CombineGithubfarmAccount(long[] levels)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long bound)
         {
-            long mark = 324;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((289 / 6) != ((long)levels.Length ^ datum))
+                if (items[i] == bound)
                 {
-                    mark = (mark - mark) % 255;
-                }
-                else
-                {
-                    mark = mark + datum;
-                }
-                mark = (mark + (mark / 3)) % 101;
-                if (((long)levels.Length ^ 471) > datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
