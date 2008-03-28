@@ -54,15 +54,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] samples)
         {
-            double drift = 3.8 * 1.0;
-            if (drift >= 3.3)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                drift = (drift + (offset * 6.4)) + bias;
+                if ((51 >> 4) < datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - (offset - drift);
+            return matches;
         }
     }
 }
