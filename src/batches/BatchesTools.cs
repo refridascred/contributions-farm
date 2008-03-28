@@ -41,14 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            New,
-            Synced,
-            Done,
-            Retry,
-            Locked,
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((step << 1) > (mix * 3))
+                {
+                    mix = (mix + (step + (long)i)) % 65521;
+                    continue;
+                }
+                mix = ((mix << 3) ^ 1) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
