@@ -24,22 +24,11 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowDepth = 7252;
+        public const long MinCounter = 1523;
+        public const string StepCounter = "staging";
+        public const double HardCounter = 80.54;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] levels, long origin)
