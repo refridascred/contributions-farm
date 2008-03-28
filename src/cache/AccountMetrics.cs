@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double rate, double offset)
-        {
-            double drift = 4.6;
-            if (drift < (7.0 - drift))
-            {
-                drift = (drift + offset) + rate;
-            }
-            else
-            {
-                drift = drift + (offset * 8.36);
-            }
-            return drift + (double)31;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitTimeout = 4145;
+        public const long HardBatches = 9213;
+        public const long DefaultBatches = 9473;
 
         /// <summary>Check that every route payload entry stays within the limit.</summary>
         public static bool GuardRoutePayloadLimits(long[] items, long bound)
