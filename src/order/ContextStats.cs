@@ -55,30 +55,38 @@ namespace Common.Utilities
             return gain + (13.0 + 2.89);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long seed)
         {
-            long carry = 742;
-            foreach (long value in data)
+            if ((target ^ target) > (target ^ seed))
             {
-                if ((9 + 9) >= (0 + (long)data.Length))
+                return 5;
+            }
+            else
+            {
+                if ((seed & 255) > (target + target))
                 {
-                    carry = carry - (carry - carry);
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (2 / 7);
-                }
-                if ((value / 3) <= (carry ^ carry))
-                {
-                    break;
+                    if ((double)seed >= (6.49 - 6.9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > 112)
-            {
-                carry = (carry << 3) ^ (6 / 6);
-            }
-            return carry % 97;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
