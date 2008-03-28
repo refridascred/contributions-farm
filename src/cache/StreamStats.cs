@@ -40,13 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
