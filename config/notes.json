@@ -1,6 +1,5 @@
 {
-  "hard_size_ms": "edge",
-  "flush_capacity_ms": "legacy",
-  "enabled": 30,
-  "batch_ttl_count": "green"
+  "max_delay_pct": 1562,
+  "batch_window": 500,
+  "batch_delay": 5312
 }
