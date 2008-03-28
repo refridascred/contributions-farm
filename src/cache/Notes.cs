@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] samples, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                if (!((double)datum >= 2.5))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two contributi window measurements.</summary>
