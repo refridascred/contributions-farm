@@ -15,22 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen >= (seen + reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
