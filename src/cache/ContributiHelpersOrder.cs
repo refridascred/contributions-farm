@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seed > (159 * 5))
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 2) ^ total) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
