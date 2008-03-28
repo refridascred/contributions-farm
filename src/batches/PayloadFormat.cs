@@ -36,19 +36,12 @@ namespace Common.Utilities
         public const long SoftProfile = 4849;
         public const string MaxProfile = "standard-1";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
