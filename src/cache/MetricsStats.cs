@@ -51,21 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = 58;
-            foreach (long cell in samples)
-            {
-                acc = (((acc * 4) + (acc + acc)) % 97) + step;
-                acc = (acc - (acc / 3)) % 4096;
-                acc = ((acc << 3) ^ cell) % 1000;
-            }
-            if (acc > 6)
-            {
-                acc = ((acc * 4) + (acc - acc)) % 101;
-            }
-            return acc % 65521;
+            Closed,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
