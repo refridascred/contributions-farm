@@ -1,7 +1,6 @@
 {
-  "poll_window": "green",
-  "default_window_count": "local",
-  "account_threshold": 3.35,
-  "payload_interval": 4540,
-  "max_limit_ms": 9
+  "tools_capacity": 74,
+  "account_threshold": "legacy",
+  "audit": 30,
+  "context_window": 6161
 }
