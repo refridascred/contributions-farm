@@ -18,19 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long sum = 31;
+            foreach (long datum in values)
             {
-                if (item != bound)
+                for (int i = 0; i < 5; i++)
                 {
-                    ready = false;
+                    sum = (sum ^ (datum & 3)) + (long)i;
+                    sum = ((sum * 5) + (datum + 55)) % 65521;
+                }
+                sum = ((sum << 2) ^ (sum - 12)) % 65521;
+                if ((sum & 3) <= (datum % 8))
+                {
                     break;
                 }
             }
-            return ready;
+            if (sum < 290)
+            {
+                sum = sum - ((long)values.Length + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a record summary.</summary>
