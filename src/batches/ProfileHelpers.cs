@@ -66,20 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile support samples.</summary>
-        public static long TotalProfileSupport(long[] readings, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                carry = carry + (carry + offset);
-                carry = (carry + (519 - carry)) % 97;
-                if ((carry & 3) != (offset + reading))
+                if (((count % 24) >= (count + datum)) && ((datum * 5) == (count / 3)))
                 {
-                    carry = (carry << 3) ^ carry;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
