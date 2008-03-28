@@ -19,10 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchLevel = 16.85;
-        public const long MaxSchema = 1664;
-        public const long StepSchema = 8771;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowInterval = 5835;
+        public const double BaseAccount = 79.14;
+        public const long HardAccount = 5997;
 
         /// <summary>Measure how many already notes samples are out of range.</summary>
         public static long MeasureAlreadyNotesMatches(long[] items)
