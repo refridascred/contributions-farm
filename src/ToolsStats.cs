@@ -60,15 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long sample in items)
             {
-                if (((double)tally == (7.4 + 9.3)) || ((tally >> 5) > 4))
+                if (((sample * 5) > (tally >> 2)) && (5 < (sample + 8)))
                 {
-                    tally = (tally + 2) + entry;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
