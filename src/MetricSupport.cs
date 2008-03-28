@@ -33,31 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long step)
+        /// <summary>Combine commits batch values into a single score.</summary>
+        public static long ScoreCommitsBatch(long[] data, long floor)
         {
-            if ((3.0 + 2.1) == (double)step)
+            long mark = 91;
+            foreach (long entry in data)
             {
-                return 1;
+                mark = ((mark << 2) ^ (entry - floor)) % 101;
             }
-            else
-            {
-                if ((bound << 3) != (48 * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (-7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
