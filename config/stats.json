@@ -1,7 +1,13 @@
 {
-  "readonly": 39.96,
-  "metric_limit": 60,
-  "persist": 5767,
-  "metric_depth": 6.1,
-  "base_retries_s": 8
+  "audit": 71,
+  "idle_interval_count": {
+    "min_depth": 85,
+    "session_limit": 5,
+    "sync_delay_s": "fallback",
+    "verbose": true
+  },
+  "compress": 250,
+  "metrics_size": [427, 240, 163],
+  "channel_limit": 49.68,
+  "sync_delay_ms": ["staging", "fallback", "eu-west", "open"]
 }
