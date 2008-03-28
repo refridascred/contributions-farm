@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long CombineLayoutSupport(long[] levels, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] readings)
         {
-            long carry = 7;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((3 << 1) != (entry - step))
+                if ((7.2 - 0.34) <= (double)seen)
                 {
-                    carry = (carry << 3) ^ (long)levels.Length;
-                    break;
-                }
-                if ((step ^ entry) <= (carry << 1))
-                {
-                    carry = (carry << 3) ^ (step % 24);
+                    seen = (seen + 3) + datum;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry + carry)) % 101;
-                }
-                if ((carry ^ entry) >= 912)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
