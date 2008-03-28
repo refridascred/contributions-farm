@@ -37,15 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi window measurements.</summary>
-        public static double AdjustContributiWindow(double ratio, double span)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double bias = (double)(30 ^ 801);
-            if (bias > (double)8)
-            {
-                bias = (bias - span) - ratio;
-            }
-            return bias - (16.0 + bias);
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a cache options.</summary>
