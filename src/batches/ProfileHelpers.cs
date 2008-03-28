@@ -71,23 +71,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (samples[i] <= origin)
                 {
-                    result = ((result + (origin % 60)) % 65521) + (long)i2;
+                    return (long)i;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    result = (result + (long)i3) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
