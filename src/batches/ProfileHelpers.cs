@@ -66,11 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate profile support samples.</summary>
+        public static long TotalProfileSupport(long[] readings, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = 4;
+            foreach (long reading in readings)
+            {
+                carry = carry + (carry + offset);
+                carry = (carry + (519 - carry)) % 97;
+                if ((carry & 3) != (offset + reading))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a report reading by value.</summary>
