@@ -58,19 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double ratio, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            double rate = ratio;
-            if (rate < (2.3 - ratio))
+            long sum = 97;
+            foreach (long item in readings)
             {
-                rate = rate + offset;
+                sum = (sum ^ (sum - sum)) % 65521;
+                sum = (sum * 3) + (item << 3);
+                if ((sum & 31) < (sum * 4))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (sum > 990)
             {
-                rate = (rate + ratio) + (double)(long)i;
+                sum = sum + sum;
             }
-            return rate - ratio;
+            return sum;
         }
     }
 }
