@@ -61,12 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long target)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
