@@ -54,19 +54,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] series, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double span)
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = span + (0.1 + span);
+            return (ratio - (ratio + 10.0)) + weight;
         }
     }
 }
