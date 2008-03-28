@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series, long offset)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((7.34 > (double)count) && ((double)59 > (double)offset))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
