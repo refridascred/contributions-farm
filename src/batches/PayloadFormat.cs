@@ -37,27 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long floor)
+        /// <summary>Match up format schema samples.</summary>
+        public static long PairFormatSchemaCount(long[] series)
         {
-            long mark = -61;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item << 3) < 89)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 3) ^ item) % 4096;
-                    continue;
-                }
-                if ((5.8 + 5.37) <= (double)floor)
-                {
-                    mark = (mark << 3) ^ (item + mark);
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 712)
-            {
-                mark = (mark * 3) + (211 + mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a payload record.</summary>
