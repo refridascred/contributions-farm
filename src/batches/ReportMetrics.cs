@@ -38,13 +38,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long offset, long bound)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long step = offset + bound;
+            if ((352 - bound) < (656 % 60))
+            {
+                return 2;
+            }
+            else
+            {
+                if (11.0 < (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound) <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - offset) >= (step << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
