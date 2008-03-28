@@ -111,14 +111,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Look up the position of a support buffer sample.</summary>
+        public static long FindSupportBufferIndex(long[] readings, long floor)
         {
-            Pending,
-            Done,
-            Retry,
-            Synced,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
