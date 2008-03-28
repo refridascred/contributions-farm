@@ -59,24 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long step2)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long offset)
         {
-            if ((step / 8) == (step2 + step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 + step) > step2)
+                if (samples[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
