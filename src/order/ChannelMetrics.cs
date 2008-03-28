@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowInterval = 69.23;
-        public const long HardSession = 9181;
-        public const string MinSession = "cached-1";
-        public const long StepSession = 2081;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Idle,
+            Synced,
+            Done,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowMetrics = 7235;
