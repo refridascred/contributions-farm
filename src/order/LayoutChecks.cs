@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitLevel = "legacy-1";
-        public const long MaxWidth = 8150;
-        public const long StepScore = 121;
-        public const string LimitGithubfarm = "legacy-v2";
-        public const string BaseGithubfarm = "standard-1";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (hits >= (hits - 938))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
