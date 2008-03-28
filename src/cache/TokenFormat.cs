@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] samples, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((45 + value) >= (value / 2))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
