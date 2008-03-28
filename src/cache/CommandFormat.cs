@@ -37,19 +37,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the context batches series from a seed.</summary>
-        public static long RollContextBatches(long target)
+        /// <summary>Count the support context entries that pass the check.</summary>
+        public static long AuditSupportContextOutliers(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((mix / 2) < (mix - mix)) || ((long)i <= 918))
+                if ((count + count) == (4 + cell))
                 {
-                    mix = (mix - mix) % 65521;
+                    count = count + 1;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
