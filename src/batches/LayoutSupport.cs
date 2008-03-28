@@ -23,12 +23,16 @@ namespace Common.Utilities
         public const long BatchFormat = 2829;
         public const long MaxFormat = 3061;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            Locked,
-            Queued,
-            New,
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark - ((long)i + mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Scale a session githubfarm figure with a bias.</summary>
