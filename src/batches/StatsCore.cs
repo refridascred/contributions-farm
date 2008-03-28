@@ -13,18 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double bias2 = (double)(107 << 3);
+            if (bias2 > (offset + bias2))
             {
-                if ((long)items.Length == (reading & 127))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = (bias2 + (bias2 * 4.69)) - bias;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - 5.82;
+            }
+            return bias2 + 12.0;
         }
 
         /// <summary>Hold a format info.</summary>
