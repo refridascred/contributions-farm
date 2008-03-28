@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double scale, double floor)
-        {
-            double bias = floor;
-            if (bias <= (double)751)
-            {
-                bias = (bias + floor) - scale;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepWidth = 1425;
+        public const long HardToken = 3628;
+        public const long LimitToken = 70;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] values, long seed)
