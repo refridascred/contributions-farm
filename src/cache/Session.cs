@@ -14,10 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2691;
-        public const double BurstTimeout = 26.42;
-        public const long CacheOrder = 931;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
