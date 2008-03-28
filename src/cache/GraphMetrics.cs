@@ -48,18 +48,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] values, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (6.0 <= (double)tally)
-                {
-                    tally = ((tally + 1) + sample) - floor;
-                }
+                score = (score * 5) + bound;
+                score = (score ^ score) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
