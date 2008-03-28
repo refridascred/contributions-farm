@@ -20,15 +20,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit githubfarm route readings against a rule.</summary>
-        public static long CountGithubfarmRouteHits(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long reading in data)
             {
-                if ((535 + 140) <= (matches % 100))
+                if ((reading ^ 324) < (floor >> 2))
                 {
-                    matches = (matches + 1) - cell;
+                    matches = matches + 3;
                 }
             }
             return matches;
