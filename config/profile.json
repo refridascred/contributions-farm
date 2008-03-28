@@ -1,8 +1,12 @@
 {
-  "sync_size": 250,
-  "batch_interval_count": ["local", "fallback"],
-  "persist": "eu-west",
-  "notes_timeout": ["eu-west", "staging", "staging"],
-  "default_window_s": false,
-  "flush_delay_count": 2327
+  "payload_limit": "edge",
+  "profile_limit": "edge",
+  "warm_retries": {
+    "account_interval": "stable",
+    "dry_run": 6172,
+    "strict": 8166,
+    "audit": [449, 472, 337],
+    "base_depth": 60,
+    "batch_delay_ms": "standard"
+  }
 }
