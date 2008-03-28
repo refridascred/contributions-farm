@@ -24,15 +24,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Locate a layout token reading by value.</summary>
+        public static long LocateLayoutTokenIndex(long[] samples, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
