@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long seed, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((5.0 - 1.7) > (double)seed)
             {
-                if ((9.95 / 3.0) > (double)count)
+                return 4;
+            }
+            else
+            {
+                if (seed > (seed & 15))
                 {
-                    count = (count + 2) + item;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((seed % 2) >= 11) || (step > seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4.0 * 4.1) > (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
