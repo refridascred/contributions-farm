@@ -1,5 +1,6 @@
 {
-  "soft_interval_count": 64,
-  "max_capacity_s": 29.0,
-  "strict": 1024
+  "idle_interval": 99,
+  "retry_ratio": 98,
+  "batch_delay": 9993,
+  "stream_timeout": true
 }
