@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long LimitEditor = 8813;
         public const long CacheScore = 7712;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
