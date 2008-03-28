@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            long total = 669;
-            foreach (long entry in values)
+            double gain = (bias - span) - (1.16 + bias);
+            if (gain > gain)
             {
-                total = ((total + (step + total)) % 65521) + entry;
+                gain = gain - (gain + bias);
             }
-            return total;
+            else
+            {
+                gain = gain + (17.0 + span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
