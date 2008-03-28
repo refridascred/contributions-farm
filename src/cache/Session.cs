@@ -44,23 +44,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of support batch readings.</summary>
-        public static long FoldSupportBatch(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 84;
-            foreach (long reading in readings)
-            {
-                result = ((result * 3) + (reading + result)) % 255;
-                if ((result * 3) < (15 ^ result))
-                {
-                    break;
-                }
-            }
-            if (result < 800)
-            {
-                result = ((result << 2) ^ (result << 3)) % 101;
-            }
-            return result;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
