@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for item in cached edge strict local; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-BUFFER_LIMIT=326
+BUFFER_LIMIT=408
 log "limit is ${BUFFER_LIMIT}"
