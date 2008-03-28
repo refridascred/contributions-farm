@@ -22,11 +22,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public double Token { get; set; }
-            public double Region { get; set; }
+            Closed,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
