@@ -31,25 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            long next = offset ^ target;
-            if ((-76) < offset)
+            long score = 6;
+            foreach (long sample in levels)
             {
-                return 7;
+                score = ((score << 2) ^ (sample + (long)levels.Length)) % 4096;
             }
-            else
-            {
-                if ((target < 92) || (next > (next % 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the buffer state values.</summary>
