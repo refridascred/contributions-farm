@@ -1,8 +1,5 @@
 {
-  "strict": 4,
-  "profile_threshold": 100,
-  "enabled": false,
-  "account_ratio": "green",
-  "editor_depth": "edge",
-  "verbose": true
+  "entry_retries": "stable",
+  "soft_limit_count": "staging",
+  "cache_timeout_pct": 250
 }
