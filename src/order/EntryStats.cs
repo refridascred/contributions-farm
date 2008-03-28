@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
