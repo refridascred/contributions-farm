@@ -61,13 +61,13 @@ namespace Common.Utilities
         public const long HardSize = 2767;
         public const long RetryScore = 6571;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Queued,
-            Active,
-            Retry,
-            New,
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
