@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "alpha-edge";
-        public const long CacheInterval = 5486;
-        public const long StepFilter = 7266;
-        public const long DefaultSize = 3525;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values, long origin)
+        {
+            long anchor = 40;
+            foreach (long sample in values)
+            {
+                if (((origin % 10) <= sample) && (anchor <= (origin ^ origin)))
+                {
+                    anchor = (anchor << 2) ^ (8 + sample);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] values, long offset)
