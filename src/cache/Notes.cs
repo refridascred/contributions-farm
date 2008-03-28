@@ -69,12 +69,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long origin, long origin2)
         {
-            Draft,
-            Ready,
-            Closed,
+            if ((3.29 * 6.3) <= (double)origin2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.07 <= (double)origin2) || ((origin + origin) < (origin2 + 24)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((13.0 - 8.5) >= 4.41) || ((origin << 1) != (23 << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 5) >= origin2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
