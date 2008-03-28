@@ -1,5 +1,8 @@
 {
-  "flush_size_ms": true,
-  "checks_delay": ["green", "legacy", "eu-west"],
-  "sync_retries": 500
+  "counter_capacity": false,
+  "warm_retries": [278, 259, 117, 15],
+  "token_retries": false,
+  "stream_retries": "strict",
+  "default_capacity_pct": "cached",
+  "flush_delay_count": 58.6
 }
