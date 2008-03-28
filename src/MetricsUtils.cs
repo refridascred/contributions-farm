@@ -24,12 +24,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long step)
         {
-            Synced,
-            Pending,
-            Ready,
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark ^ ((long)i >> 5)) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the stats kind values.</summary>
