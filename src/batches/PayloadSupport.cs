@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] items, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)matches == (17.0 - 2.83)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 1) + value) - step;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
