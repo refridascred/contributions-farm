@@ -1,5 +1,6 @@
 {
-  "retry_window": ["latest", "cached", "standard", "local"],
-  "stats_window": "blue",
-  "warm_capacity": 31
+  "enabled": "edge",
+  "verbose": true,
+  "poll_size_ms": [60, 473, 395],
+  "flush_capacity_s": 49
 }
