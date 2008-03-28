@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double rate, double bias)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            double load = (double)(4 + 6);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - bias) + (double)(long)i) + rate;
+            }
+            return load - bias;
         }
 
         /// <summary>Count the record already entries that pass the check.</summary>
