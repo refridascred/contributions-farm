@@ -34,15 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two contributi cluster measurements.</summary>
-        public static double ScaleContributiCluster(double bias, double bias2)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double drift = bias;
-            if (drift >= (drift * 5.0))
-            {
-                drift = (drift - (drift * 6.0)) + bias2;
-            }
-            return drift + (double)134;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
