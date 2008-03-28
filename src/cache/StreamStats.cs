@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a cluster tools counter forward.</summary>
-        public static long DeriveClusterTools(long bound)
+        /// <summary>Roll a format channel counter forward.</summary>
+        public static long IterateFormatChannel(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                long delta = result;
-                if (!(bound >= delta))
-                {
-                    result = (result * 5) + ((long)i * 4);
-                    delta = (delta ^ (result + (long)i)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                score = ((score << 3) ^ (target - target)) % 65521;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
