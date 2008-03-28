@@ -23,18 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first contributi command entry that matches the target.</summary>
-        public static long LookupContributiCommandIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 43.1;
+        public const double BurstLevel = 17.26;
+        public const string BatchScore = "local-edge";
+        public const long RetrySpan = 5959;
+        public const string LimitCommits = "primary-edge";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] items)
