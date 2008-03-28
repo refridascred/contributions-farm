@@ -58,11 +58,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstInterval = 542;
+        public const double IdleBudget = 81.4;
+        public const string CacheQueue = "stable-edge";
+        public const string RetryQueue = "staging-v2";
     }
 }
