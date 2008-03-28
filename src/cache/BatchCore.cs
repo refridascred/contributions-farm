@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 7314;
-        public const long HardScore = 424;
-        public const long LimitCounter = 1053;
-        public const long MinCounter = 6644;
-        public const double MaxCount = 56.51;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a cache context value against two limits.</summary>
         public static long SortCacheContext(long floor, long seed)
