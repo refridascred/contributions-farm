@@ -1,30 +1,4 @@
 # support settings
-schema_capacity: 16
-min_size: 26.31
-max_ratio_s: true
-support_timeout:
-  flush_size: 30
-  enabled: eu-west
-  base_interval_ms:
-    base_depth:
-      - 37
-      - 230
-      - 79
-      - 209
-    strict: true
-    stats_capacity: 14.29
-    sync_depth: false
-    batch_delay_count: 71
-    warm_limit_s: 40
-  min_ratio_s: edge
-verbose:
-  idle_timeout_pct:
-    - 167
-    - 289
-  sync_ttl: true
-  flush_retries_s: local
-  base_capacity_count:
-    githubfarm_threshold: local
-    batch_threshold_count: 100
-    editor_size: true
-hard_delay: local
+entry_ttl: 2041
+min_timeout: 61.71
+burst_ratio_count: 92
