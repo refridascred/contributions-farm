@@ -34,15 +34,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
