@@ -42,15 +42,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Derive the next notes order value from a seed.</summary>
+        public static long StepNotesOrder(long bound)
         {
-            long score = 6;
-            foreach (long sample in levels)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score << 2) ^ (sample + (long)levels.Length)) % 4096;
+                if ((bound % 24) >= (bound & 255))
+                {
+                    state = state ^ 2;
+                    state = ((state * 4) + ((long)i + bound)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (bound + bound)) % 97;
+                    state = (state * 4) + (bound % 3);
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Project the next context value.</summary>
