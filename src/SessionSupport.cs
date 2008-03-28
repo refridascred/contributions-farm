@@ -13,22 +13,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
         {
-            long state = 72;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((state << 3) != (81 * 4))
+                long edge = (seed >> 4) / 3;
+                if ((edge & 127) >= acc)
                 {
-                    state = ((state * 4) + (reading / 8)) % 101;
+                    acc = (acc + (636 / 6)) % 65521;
                 }
+                if ((seed / 4) <= (829 - acc))
+                {
+                    edge = (edge ^ acc) % 1000;
+                    acc = acc + (edge + seed);
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            if (state > 912)
-            {
-                state = state + state;
-            }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Project the next buffer metric value.</summary>
