@@ -1,8 +1,6 @@
 {
-  "hard_interval_s": false,
-  "verbose": 73,
-  "token_capacity": 28,
-  "hard_threshold": ["legacy", "primary"],
-  "burst_capacity": 100,
-  "payload_depth": 85.74
+  "audit": 6372,
+  "cache_depth": ["open", "blue", "blue", "blue"],
+  "default_retries_ms": "green",
+  "soft_interval_ms": 9298
 }
