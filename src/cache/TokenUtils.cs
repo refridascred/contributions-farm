@@ -28,23 +28,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double rate, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            double mean = (double)(3 / 4);
-            if (mean < (rate / 4.0))
+            long score = 619;
+            foreach (long cell in series)
             {
-                mean = mean + mean;
+                if ((cell >> 3) >= (cell + 9))
+                {
+                    score = score + 344;
+                }
             }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)(-312)) + (double)(long)i;
-            }
-            return mean - (rate / 7.0);
+            return score;
         }
 
         /// <summary>Locate a farm checks reading by value.</summary>
