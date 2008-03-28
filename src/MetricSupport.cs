@@ -60,22 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] levels, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (!((offset ^ offset) < (131 >> 2)))
+                if (((sample / 4) >= seen) || ((sample - sample) >= (seen + 273)))
                 {
-                    tally = (tally + 2) ^ item;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
