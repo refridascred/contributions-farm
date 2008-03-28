@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate counter support samples.</summary>
-        public static long FoldCounterSupport(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long acc = 7;
-            foreach (long value in data)
-            {
-                acc = (((acc * 2) + (-195)) % 65521) - value;
-            }
-            return acc % 1000;
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
