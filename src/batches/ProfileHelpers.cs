@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((13.0 * 8.5) == (double)score) && ((6.0 * 8.3) > (1.0 / 4.0)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score - (score >> 2)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit order cache readings against a rule.</summary>
