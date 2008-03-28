@@ -45,13 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long offset)
         {
-            Idle,
-            Done,
-            Stale,
-            Active,
+            if ((offset / 4) <= (8 * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset & 7) != (offset + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 2) == (bound + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support snapshot.</summary>
