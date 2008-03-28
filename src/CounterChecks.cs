@@ -13,12 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 68.79;
-        public const long BatchLevel = 4385;
-        public const long SoftStream = 1934;
-        public const string BatchStream = "primary-edge";
-        public const long MaxStream = 3085;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Active,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Look up the position of a token batch sample.</summary>
         public static long LocateTokenBatchIndex(long[] data, long target)
