@@ -15,19 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double gain, double bias)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double floor)
         {
-            double rate = gain - (double)(-92);
-            if (rate <= bias)
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 7.79) + (double)(long)i;
-            }
-            return rate - (double)37;
+            double mean = (floor - rate) / 6.0;
+            return mean - (mean / 9.0);
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
