@@ -24,10 +24,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "staging-1";
-        public const long WindowStats = 6767;
-        public const double MaxStats = 17.01;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate route command samples.</summary>
         public static long TallyRouteCommand(long[] items, long seed)
