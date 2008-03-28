@@ -12,24 +12,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long seed2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values, long bound)
         {
-            if (((-549) + 8) < seed)
+            long acc = -2;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 / 2) != (seed2 >> 1))
+                acc = (acc ^ (sample + bound)) % 101;
+                if (!(bound > acc))
                 {
-                    return 2;
+                    acc = (acc << 3) ^ 101;
                 }
                 else
                 {
-                    return 7;
+                    acc = (acc * 4) + (acc << 2);
                 }
             }
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
