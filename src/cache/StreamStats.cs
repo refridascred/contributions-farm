@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
