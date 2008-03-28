@@ -46,14 +46,17 @@ namespace Common.Utilities
         public const long CacheDepth = 4482;
         public const long LimitInterval = 819;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long target)
         {
-            Ready,
-            New,
-            Synced,
-            Draft,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
