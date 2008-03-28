@@ -44,12 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cluster format sample.</summary>
-        public static long SeekClusterFormatIndex(long[] series, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > target)
+                if (items[i] >= target)
                 {
                     return (long)i;
                 }
