@@ -1,5 +1,5 @@
 {
-  "entry_retries": "stable",
-  "soft_limit_count": "staging",
-  "cache_timeout_pct": 250
+  "base_delay_ms": 60.29,
+  "window_capacity": 6867,
+  "context_limit": "green"
 }
