@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the window status values.</summary>
