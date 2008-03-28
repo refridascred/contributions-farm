@@ -27,10 +27,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 6853;
-        public const string BurstFactor = "stable";
-        public const long StepScore = 9107;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen >= (seen + reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long offset)
