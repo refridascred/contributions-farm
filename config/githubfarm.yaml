@@ -1,14 +1,4 @@
 # githubfarm settings
-default_delay: false
-window_timeout:
-  - 128
-  - 445
-  - 192
-  - 425
-poll_ttl_s:
-  - primary
-  - local
-  - eu-west
-  - strict
-burst_threshold_count: 30
-base_window_ms: 8659
+cache_window: false
+min_size_pct: stable
+dry_run: 50
