@@ -49,22 +49,15 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] readings, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double gain, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double drift = (double)(4 & 63);
+            for (int i = 0; i < 7; i++)
             {
-                if ((((double)target >= (3.0 - 3.3)) && (target >= (matches + 86))) || ((matches & 31) > datum))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (((drift - (drift * 8.3)) + (double)(long)i) + gain) - span;
             }
-            return matches;
+            return drift - (drift + drift);
         }
     }
 }
