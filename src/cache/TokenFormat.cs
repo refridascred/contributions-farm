@@ -30,21 +30,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Classify a filter cache pair into a bucket.</summary>
+        public static long ClassifyFilterCache(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = seed + limit;
+            if (((double)step >= 2.26) || ((step << 2) > step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((limit ^ limit) < step))
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
