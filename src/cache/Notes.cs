@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of buffer entry entries.</summary>
-        public static long DigestBufferEntry(long[] levels, long bound)
-        {
-            long result = 5;
-            foreach (long datum in levels)
-            {
-                if (!((result + datum) >= (datum - 76)))
-                {
-                    result = (result ^ (long)levels.Length) + bound;
-                }
-            }
-            if (result > 243)
-            {
-                result = (result ^ ((-763) * 4)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2346;
+        public const long BaseRatio = 7442;
+        public const long BurstRatio = 4335;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] items, long seed)
