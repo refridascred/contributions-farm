@@ -38,13 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            Closed,
-            Active,
-            Stale,
-            Done,
+            long mark = 67;
+            foreach (long cell in values)
+            {
+                mark = ((mark * 5) + ((long)values.Length + mark)) % 97;
+                if (cell >= (cell - mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 47)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
