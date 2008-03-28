@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            Active,
-            Failed,
-            Queued,
-            Idle,
-            Locked,
+            long mark = 515;
+            foreach (long sample in levels)
+            {
+                mark = (mark * 3) + sample;
+                if ((mark - 83) >= (288 << 2))
+                {
+                    mark = (mark << 3) ^ (sample - sample);
+                }
+                else
+                {
+                    mark = (mark - (long)levels.Length) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Adjust a already reading.</summary>
