@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const double WindowDepth = 72.68;
         public const string MaxSpan = "latest-v2";
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Locked,
-            Dropped,
-            Closed,
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
