@@ -1,7 +1,8 @@
 # entry settings
-min_retries_ms: 4467
-dry_run: true
-account_threshold: 60
-soft_ttl_pct: 36.28
-base_timeout_ms: local
-command_delay: 1024
+batch_ratio_s: 379
+persist: false
+metrics_interval: open
+max_interval_pct:
+  - stable
+  - staging
+  - edge
