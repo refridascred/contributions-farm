@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = 607;
-            foreach (long reading in levels)
-            {
-                sum = ((sum + bound) % 65521) - reading;
-            }
-            if (sum > 3)
-            {
-                sum = ((sum * 5) + sum) % 4096;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
