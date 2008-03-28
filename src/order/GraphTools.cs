@@ -20,26 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            long anchor = 574;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((anchor + anchor) == (reading % 7))
+                if ((17.0 / 6.0) != (double)matches)
                 {
-                    anchor = (anchor * 2) + (reading & 1);
+                    matches = (matches + 2) + sample;
                 }
                 else
                 {
-                    anchor = (anchor - (reading << 2)) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (anchor > 33)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
