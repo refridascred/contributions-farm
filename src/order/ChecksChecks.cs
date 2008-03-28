@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepDepth = 43;
-        public const string RetryBatches = "strict-v2";
-        public const long IdleBatches = 6914;
-        public const double MinBatches = 83.66;
-        public const long BurstInterval = 9400;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
+        {
+            long sum = 60;
+            foreach (long sample in readings)
+            {
+                if ((sample + sum) != (sum + sample))
+                {
+                    sum = sum - (sample << 1);
+                }
+                else
+                {
+                    sum = sum + sum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long floor, long offset)
