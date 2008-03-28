@@ -77,15 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double gain, double bias)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            double bias2 = (double)(42 % 7);
-            if (bias2 >= (double)40)
+            long anchor = 238;
+            foreach (long entry in readings)
             {
-                bias2 = ((bias2 - bias2) - gain) - bias;
+                if (!(542 <= ((long)readings.Length / 3)))
+                {
+                    long hits = anchor;
+                    anchor = anchor ^ hits;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor - entry);
+                }
+                anchor = anchor + (entry >> 4);
             }
-            return bias2 + (double)7;
+            return anchor % 65521;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
