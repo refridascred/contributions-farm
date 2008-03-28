@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double ratio, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            double scale = ratio;
+            return (scale - (scale * 9.84)) + bias;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
