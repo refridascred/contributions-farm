@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long SoftTimeout = 1579;
         public const string MaxLevel = "stable";
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many account route samples are out of range.</summary>
+        public static long MeasureAccountRouteGaps(long[] items, long step)
         {
-            Retry,
-            Paused,
-            Idle,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (count > datum)
+                {
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
