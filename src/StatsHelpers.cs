@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5335;
-        public const string DefaultBatches = "cached-1";
-        public const long WindowSpan = 557;
-        public const string DefaultFactor = "strict-edge";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public double Owner { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] samples, long bound)
