@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Rank cluster githubfarm input into a small class.</summary>
+        public static long RankClusterGithubfarm(long origin, long floor)
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            if ((origin + origin) > origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor % 2) > (floor & 63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Adjust a schema reading.</summary>
