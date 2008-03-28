@@ -13,31 +13,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long origin, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings)
         {
-            if (bound > (origin / 8))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - origin) < (origin % 16))
+                if ((entry << 2) > (entry + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(bound <= (bound & 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a cluster options.</summary>
