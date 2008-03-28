@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long CacheCommand = 3362;
         public const long DefaultInterval = 5687;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] levels, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((9.0 + 6.11) > (double)target)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order readings.</summary>
