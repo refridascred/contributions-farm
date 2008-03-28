@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] levels)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
+            long carry = 9;
+            foreach (long entry in levels)
+            {
+                if ((carry + entry) < (carry - carry))
+                {
+                    carry = carry ^ (carry >> 2);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry + entry);
+                }
+                if (((-75) ^ carry) >= 719)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
