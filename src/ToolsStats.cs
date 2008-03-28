@@ -77,14 +77,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
+            New,
+            Ready,
+            Pending,
+            Retry,
             Active,
-            Done,
-            Failed,
-            Draft,
-            Dropped,
         }
     }
 }
