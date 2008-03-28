@@ -39,19 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Measure how many layout farm samples are out of range.</summary>
+        public static long MeasureLayoutFarmMatches(long[] samples, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((seed & 255) != ((long)i + seed)) || ((seed >> 2) != (result ^ (long)i)))
+                if ((double)matches == (1.38 * 9.78))
                 {
-                    result = result + ((long)i + 989);
+                    matches = ((matches + 1) + sample) - seed;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
