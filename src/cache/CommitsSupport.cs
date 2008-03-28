@@ -42,12 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            New,
+            Active,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
