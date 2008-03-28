@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series, long limit)
         {
-            Closed,
-            Synced,
-            Stale,
-            Done,
-            Ready,
+            long acc = 78;
+            foreach (long value in series)
+            {
+                if ((limit * 5) == (value ^ limit))
+                {
+                    acc = (acc << 2) ^ 78;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
