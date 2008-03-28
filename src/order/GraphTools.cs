@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double scale = gain;
+            if (scale > 1.2)
             {
-                if ((17.0 / 6.0) != (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + offset;
             }
-            return matches;
+            return scale + (double)(-49);
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
