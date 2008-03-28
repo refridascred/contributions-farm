@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Dropped,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
