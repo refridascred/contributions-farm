@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stream account readings.</summary>
-        public static long CompareStreamAccountCount(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 516;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result * 4) + (value + target);
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
