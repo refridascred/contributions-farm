@@ -28,31 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long limit, long seed)
-        {
-            if (!(limit > (limit * 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5 << 3) < (0 - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 + limit) <= (seed >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitBudget = 6740;
+        public const long BurstLevel = 9565;
+        public const double BurstCommand = 68.8;
+        public const long SoftWidth = 641;
     }
 }
