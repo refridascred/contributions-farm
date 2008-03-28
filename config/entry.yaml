@@ -1,6 +1,12 @@
 # entry settings
-strict: 250
-soft_limit_pct: 40
-audit: blue
-batch_size: eu-west
-retry_depth: 79
+strict: 63.41
+soft_size_pct: green
+verbose: legacy
+audit:
+  burst_limit: 60.43
+  base_window_pct: 40.0
+  strict:
+    - blue
+    - green
+flush_ratio_s: cached
+burst_threshold_count: 30
