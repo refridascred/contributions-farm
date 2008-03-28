@@ -19,10 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 6558;
-        public const string BatchCache = "legacy-1";
-        public const long HardCache = 7174;
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double bias)
+        {
+            double drift = (scale - scale) / 7.0;
+            if (drift > (double)(-6))
+            {
+                drift = drift - scale;
+            }
+            return drift + (drift + bias);
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinBudget = 12.63;
