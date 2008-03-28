@@ -61,19 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel record entry stays within the limit.</summary>
-        public static bool VerifyChannelRecordRange(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8583;
+        public const double WindowSize = 27.94;
+        public const double BurstDepth = 8.57;
     }
 }
