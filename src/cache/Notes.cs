@@ -23,32 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long bound)
+        /// <summary>Blend two contributi window measurements.</summary>
+        public static double AdjustContributiWindow(double ratio, double span)
         {
-            long step = seed ^ bound;
-            if ((step % 10) <= (bound + step))
+            double bias = (double)(30 ^ 801);
+            if (bias > (double)8)
             {
-                return 7;
+                bias = (bias - span) - ratio;
             }
-            else
-            {
-                if ((seed > (step >> 4)) && ((double)bound != (3.6 + 3.08)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + bound) >= (0 + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias - (16.0 + bias);
         }
 
         /// <summary>Grade a layout channel value against two limits.</summary>
