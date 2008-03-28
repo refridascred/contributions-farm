@@ -35,22 +35,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] data, long seed)
         {
-            long score = 117;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (!((double)score == (8.4 - 7.7)))
+                if (datum > seed)
                 {
-                    score = (score ^ (reading + (long)values.Length)) % 97;
-                }
-                if (!((score / 5) != (score + score)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
