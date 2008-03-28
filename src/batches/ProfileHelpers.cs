@@ -24,18 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count account profile pairs that satisfy a relation.</summary>
-        public static long OverlapAccountProfileCount(long[] items)
+        /// <summary>Audit order cache readings against a rule.</summary>
+        public static long CountOrderCacheHits(long[] levels, long offset)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell % 7) > (cell << 2))
                 {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - offset;
                 }
             }
             return count;
