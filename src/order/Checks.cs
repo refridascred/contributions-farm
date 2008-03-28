@@ -34,17 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] readings, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] > seed)
+                if ((double)item > (4.15 * 4.1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
