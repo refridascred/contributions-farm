@@ -59,15 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] series, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] samples, long floor)
         {
             long matches = 0;
-            foreach (long item in series)
+            foreach (long cell in samples)
             {
-                if ((matches + (-5)) >= offset)
+                if (((floor * 5) > (cell << 2)) && !((matches + 51) >= (matches + 71)))
                 {
-                    matches = (matches + 3) + item;
+                    matches = matches + 1;
                 }
             }
             return matches;
