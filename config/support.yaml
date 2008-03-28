@@ -1,26 +1,6 @@
 # support settings
-retry_capacity_ms:
-  - 259
-  - 33
-  - 413
-base_threshold_s: true
-idle_timeout_ms: 100
-enabled:
-  soft_ratio_pct:
-    soft_interval_ms: blue
-    window_interval: standard
-    strict: open
-    order_size:
-      - 145
-      - 325
-    flush_depth:
-      - 216
-      - 492
-  warm_size: latest
-  poll_delay: 96.2
-  stats_limit: legacy
-  warm_delay_s:
-    - legacy
-    - fallback
-    - edge
-  hard_interval: 30
+burst_depth: eu-west
+dry_run: strict
+window_interval: primary
+hard_limit_pct: true
+filter_window: 6201
