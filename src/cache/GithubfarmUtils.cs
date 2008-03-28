@@ -27,11 +27,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchSpan = 34.97;
-        public const long BatchCount = 1392;
-        public const double LimitCommits = 7.5;
-        public const long BatchBudget = 3051;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
