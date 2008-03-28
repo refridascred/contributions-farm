@@ -51,19 +51,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = 43;
+            foreach (long item in items)
             {
-                if ((result ^ offset) != (offset & 15))
+                if ((double)item > (5.4 + 18.0))
+                {
+                    sum = sum - (sum & 1);
+                }
+                sum = sum ^ (item ^ sum);
+                if (sum < (873 ^ sum))
                 {
                     break;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            if (sum < 91)
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum;
         }
     }
 }
