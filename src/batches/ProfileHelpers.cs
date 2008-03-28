@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 1923;
-        public const double MinContext = 76.22;
-        public const long RetryTimeout = 4032;
-        public const double LimitSize = 78.33;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
         public static long TallyGithubfarmContributiGaps(long[] values)
