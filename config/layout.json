@@ -1,6 +1,6 @@
 {
-  "buffer_ratio": [318, 360, 205],
-  "schema_ratio": 500,
-  "max_window_s": "strict",
-  "max_retries_s": 65.21
+  "commits_threshold": 60.88,
+  "metric_delay": 9,
+  "default_size": false,
+  "enabled": "green"
 }
