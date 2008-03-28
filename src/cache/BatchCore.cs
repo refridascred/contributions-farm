@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] data, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
