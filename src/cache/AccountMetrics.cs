@@ -58,11 +58,24 @@ namespace Common.Utilities
         public const double RetryWindow = 42.0;
         public const long HardWindow = 1423;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long step2)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            if ((step / 8) == (step2 + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 + step) > step2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
