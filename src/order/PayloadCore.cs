@@ -12,30 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long seed2)
         {
-            long prev = seed + limit;
-            if (!((double)limit <= (3.6 - 2.15)))
+            if (((-549) + 8) < seed)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((double)prev >= (9.1 - 8.5))
+                if ((seed2 / 2) != (seed2 >> 1))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((double)seed == (6.0 + 5.24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 7;
                 }
             }
         }
