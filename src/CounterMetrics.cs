@@ -27,23 +27,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric session samples.</summary>
-        public static long WeighMetricSession(long[] items)
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long CountContextCacheHits(long[] readings, long bound)
         {
-            long mark = -59;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark ^ (mark + reading)) % 65521;
-                if (!(mark <= (523 >> 1)))
+                if (9 >= count)
                 {
-                    mark = (mark ^ (mark + mark)) % 101;
-                }
-                if (((reading + 86) == (mark * 4)) || (reading < (mark + (long)items.Length)))
-                {
-                    break;
+                    count = ((count + 1) ^ entry) - bound;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
