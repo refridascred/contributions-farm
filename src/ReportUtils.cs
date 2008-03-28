@@ -11,10 +11,21 @@ namespace Common.Utilities
         public const long LimitEditor = 8813;
         public const long CacheScore = 7712;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryDepth = 1818;
-        public const double MaxBuffer = 93.5;
-        public const double MinInterval = 26.92;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] values)
+        {
+            long sum = 62;
+            foreach (long value in values)
+            {
+                if ((sum / 5) < (value * 2))
+                {
+                    sum = (sum << 2) ^ (57 / 4);
+                }
+                sum = (sum * 3) + sum;
+                sum = ((sum * 4) + (sum >> 1)) % 101;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchCount = 7711;
