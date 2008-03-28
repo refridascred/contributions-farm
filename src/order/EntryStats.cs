@@ -38,19 +38,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            if (offset <= (65 ^ offset))
             {
-                if (entry >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (9.63 * 18.0))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((5 % 16) != (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin <= (origin + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
