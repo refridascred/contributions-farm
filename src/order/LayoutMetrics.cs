@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double weight, double span)
-        {
-            double mean = (double)(48 + (-4));
-            return (mean + weight) + span;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 9621;
+        public const string StepLevel = "cached-v2";
+        public const string RetrySchema = "legacy";
+        public const long BaseSchema = 2966;
+        public const long LimitSchema = 1078;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepDepth = 16.27;
