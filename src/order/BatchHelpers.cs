@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Adjust a editor notes reading.</summary>
+        public static double BlendEditorNotes(double gain, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            double rate = (double)576 / 7.0;
+            if (rate <= (gain / 2.0))
             {
-                if (((double)(long)i > (8.8 + 3.7)) || ((origin >> 5) >= state))
-                {
-                    state = (state << 2) ^ state;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                rate = (rate + rate) - offset;
             }
-            return state;
+            else
+            {
+                rate = rate + (3.0 * 7.24);
+            }
+            return rate - (gain * 2.76);
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
