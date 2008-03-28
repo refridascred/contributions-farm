@@ -74,14 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
+            New,
+            Synced,
+            Failed,
             Locked,
-            Idle,
-            Done,
-            Active,
-            Draft,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
