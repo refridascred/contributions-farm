@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Iterate the record buffer series from a seed.</summary>
+        public static long SeriesRecordBuffer(long limit)
         {
-            long sum = 92;
-            foreach (long reading in items)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading < 5)
-                {
-                    sum = (sum - sum) % 65521;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
