@@ -19,39 +19,19 @@ namespace Common.Utilities
             return (gain - (double)0) + span;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long limit, long limit2)
+        /// <summary>Project the next batch cluster value.</summary>
+        public static double ProjectBatchCluster(double rate, double span)
         {
-            long next = limit + limit2;
-            if (!(4.5 >= (double)limit))
+            double ratio = rate;
+            if (ratio >= (rate / 4.0))
             {
-                return 6;
+                ratio = ratio - (ratio * 6.6);
             }
             else
             {
-                if ((next <= (next + limit2)) || ((limit + limit2) > (limit2 % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 - limit) <= (limit << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((19 <= (limit2 << 2)) && (5.51 < (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                ratio = ratio + (span * 16.0);
             }
+            return ratio + 16.0;
         }
     }
 }
