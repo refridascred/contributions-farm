@@ -14,11 +14,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
             public double Rank { get; set; }
-            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
