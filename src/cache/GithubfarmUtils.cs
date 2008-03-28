@@ -13,28 +13,28 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a account graph pair into a bucket.</summary>
-        public static long BucketAccountGraph(long target, long bound)
+        /// <summary>Rank batch contributi input into a small class.</summary>
+        public static long GradeBatchContributi(long limit, long seed)
         {
-            if ((bound * 3) >= target)
+            if (limit < (seed >> 5))
             {
                 return 4;
             }
             else
             {
-                if ((double)target > 2.05)
+                if (seed < (5 * 3))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (((bound + target) != (target - bound)) || ((7.0 + 7.0) == (double)bound))
+                    if (((6.05 / 4.0) != (double)limit) || ((double)seed != (6.16 * 4.0)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        return 1;
                     }
                 }
             }
