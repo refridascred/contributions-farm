@@ -13,18 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long SeekCommandRecordIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 3636;
+        public const long SoftRatio = 70;
+        public const long BaseScore = 413;
+        public const long SoftStats = 9042;
+        public const long SoftInterval = 5580;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] readings, long floor)
