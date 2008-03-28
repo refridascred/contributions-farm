@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long RetryFactor = 7821;
         public const long CacheLayout = 8224;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Draft,
+            Active,
+            Paused,
         }
 
         /// <summary>Validate layout batches readings against a bound.</summary>
