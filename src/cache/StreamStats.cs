@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "local";
-        public const string CacheEntry = "local-edge";
-        public const long CacheDepth = 1334;
-        public const long WindowEntry = 5194;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (9.3 < (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 573;
