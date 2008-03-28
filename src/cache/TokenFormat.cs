@@ -30,11 +30,17 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinBudget = 12.63;
-        public const long WindowFilter = 5532;
-        public const long IdleFilter = 6071;
-        public const long CacheFilter = 1118;
-        public const string HardFilter = "legacy-v2";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
