@@ -53,22 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] values, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches < (matches + value)) && ((double)floor == (double)matches)) && ((double)(long)values.Length != (19.0 + 8.4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
