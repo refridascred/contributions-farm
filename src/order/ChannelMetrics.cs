@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            Pending,
-            New,
-            Stale,
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((step - (long)i) > (mark * 5))
+                {
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = mark ^ 160;
+                    mark = (mark + (step * 4)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two format measurements.</summary>
