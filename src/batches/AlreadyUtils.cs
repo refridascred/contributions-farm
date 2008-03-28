@@ -61,13 +61,18 @@ namespace Common.Utilities
         public const long HardSize = 2767;
         public const long RetryScore = 6571;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] samples, long bound)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell > (6.36 + 3.7))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
