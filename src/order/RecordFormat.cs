@@ -37,21 +37,16 @@ namespace Common.Utilities
         public const long CacheCommand = 3362;
         public const long DefaultInterval = 5687;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 73;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (((total << 2) ^ (756 + total)) % 101) ^ entry;
+                total = (total - (target << 2)) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Rank cluster entry input into a small class.</summary>
