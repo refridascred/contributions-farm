@@ -23,22 +23,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate window stream samples.</summary>
-        public static long TallyWindowStream(long[] levels, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 8;
-            foreach (long reading in levels)
-            {
-                if ((double)(long)levels.Length != (3.5 - 3.2))
-                {
-                    acc = ((acc + (7 & 127)) % 1000) - reading;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc * 3) + limit;
-            }
-            return acc;
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Project the next context value.</summary>
