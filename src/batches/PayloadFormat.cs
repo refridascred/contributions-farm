@@ -63,21 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((limit + origin) >= (origin << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(limit >= (limit + origin)))
                 {
-                    if ((values[i] + values[j]) > 3)
+                    return 3;
+                }
+                else
+                {
+                    if (((1.8 - 9.8) == (double)limit) && (origin > (origin / 7)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(limit < (483 / 7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
