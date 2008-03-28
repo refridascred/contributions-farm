@@ -23,11 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double mean = (double)(522 / 9);
-            return ((mean + (mean / 7.0)) + bias) + offset;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
