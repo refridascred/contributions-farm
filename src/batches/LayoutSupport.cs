@@ -24,13 +24,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Idle,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleScore = 10.33;
+        public const long IdleSchema = 8623;
+        public const long LimitSchema = 7650;
+        public const long BatchSchema = 6122;
+        public const long BurstCount = 5206;
 
         /// <summary>Scale a session githubfarm figure with a bias.</summary>
         public static double SmoothSessionGithubfarm(double weight, double span)
