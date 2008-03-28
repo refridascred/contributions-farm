@@ -46,11 +46,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleLevel = 7961;
-        public const string LimitNotes = "strict";
-        public const double BatchSpan = 6.93;
-        public const long CacheScore = 2953;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)floor <= (4.82 / 4.0))
+                {
+                    score = (score - (floor % 64)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (score + 9)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleTimeout = 7262;
