@@ -33,22 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm batch entries.</summary>
-        public static long WeighFarmBatch(long[] levels)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            long total = 747;
-            foreach (long entry in levels)
+            double ratio2 = (ratio - floor) * 9.0;
+            if (ratio2 <= 9.51)
             {
-                if (entry > total)
-                {
-                    total = (total ^ ((-628) << 1)) % 4096;
-                }
-                else
-                {
-                    total = total + ((long)levels.Length - 9);
-                }
+                ratio2 = ratio2 - (floor / 2.0);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 + (1.69 + 8.23);
         }
     }
 }
