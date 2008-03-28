@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] readings, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (!((result + result) < (result >> 2)))
+                if (entry > step)
                 {
-                    result = ((result << 2) ^ offset) % 65521;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Derive the next metrics checks value from a seed.</summary>
