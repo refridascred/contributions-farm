@@ -25,15 +25,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long acc = 26;
-            foreach (long datum in levels)
-            {
-                acc = ((acc - (acc - offset)) % 4096) + datum;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
