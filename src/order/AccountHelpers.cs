@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long bound, long target)
-        {
-            if ((target + bound) != (bound + 207))
-            {
-                return 3;
-            }
-            else
-            {
-                if (19.0 > (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)7 < (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 8282;
+        public const string HardScore = "stable-edge";
+        public const long BurstRecord = 8444;
 
         /// <summary>Roll a command payload counter forward.</summary>
         public static long IterateCommandPayload(long floor)
