@@ -1,5 +1,6 @@
 {
-  "min_timeout_pct": true,
-  "buffer_timeout": "legacy",
-  "contributi_size": true
+  "verbose": "green",
+  "support_timeout": "legacy",
+  "session_capacity": 65.72,
+  "readonly": 77.99
 }
