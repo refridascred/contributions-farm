@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Paused,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 2541;
+        public const string RetryLevel = "alpha-edge";
+        public const long SoftFactor = 462;
+        public const long SoftProfile = 4849;
+        public const string MaxProfile = "standard-1";
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
