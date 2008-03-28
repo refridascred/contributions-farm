@@ -16,21 +16,11 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Adjust a support githubfarm reading.</summary>
+        public static double ScaleSupportGithubfarm(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight2 = (bias * 9.6) * 8.5;
+            return (weight2 - 5.7) + weight;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
