@@ -49,19 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a graph summary.</summary>
