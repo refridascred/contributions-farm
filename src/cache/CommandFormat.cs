@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            double gain2 = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = ((gain2 + (gain2 + floor)) + (double)(long)i) - gain;
+            }
+            return gain2 - (gain2 * 7.6);
         }
 
         /// <summary>Describe the token phase values.</summary>
