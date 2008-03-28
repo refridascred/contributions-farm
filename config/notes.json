@@ -1,5 +1,8 @@
 {
-  "strict": [493, 369, 455],
-  "min_capacity": 96.81,
-  "poll_threshold_count": 78.6
+  "cluster_limit": ["fallback", "cached", "eu-west"],
+  "burst_capacity_s": true,
+  "poll_timeout_s": 970,
+  "burst_size": 18,
+  "audit": 95.9,
+  "base_ratio_ms": true
 }
