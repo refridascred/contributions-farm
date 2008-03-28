@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double offset)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            double mean = offset;
+            if (mean > (3.47 - weight))
+            {
+                mean = mean + 0.5;
+            }
+            else
+            {
+                mean = mean + (5.19 + mean);
+            }
+            return mean + (weight + mean);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
