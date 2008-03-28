@@ -12,19 +12,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a command payload counter forward.</summary>
-        public static long IterateCommandPayload(long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long origin, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            if ((limit + limit) >= (6 - 486))
             {
-                if ((double)(long)i > (5.0 * 0.8))
-                {
-                    sum = (sum + (floor - 95)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((limit << 2) > (origin + (-2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
