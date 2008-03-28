@@ -64,12 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 1673;
-        public const long CacheSize = 9318;
-        public const string SoftCount = "staging-edge";
-        public const long LimitProfile = 1013;
-        public const string MinTimeout = "fallback-1";
+        /// <summary>Iterate the schema session series from a seed.</summary>
+        public static long SeriesSchemaSession(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix - (mix << 3)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardWidth = 5868;
