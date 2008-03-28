@@ -28,13 +28,12 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 4297;
+        public const double MaxReport = 42.06;
+        public const string HardSize = "staging-1";
+        public const double CacheReport = 72.57;
+        public const double SoftReport = 16.73;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftCluster = "staging";
