@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepWidth = 1425;
-        public const long HardToken = 3628;
-        public const long LimitToken = 70;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] levels)
+        {
+            long state = 72;
+            foreach (long reading in levels)
+            {
+                if ((state << 3) != (81 * 4))
+                {
+                    state = ((state * 4) + (reading / 8)) % 101;
+                }
+            }
+            if (state > 912)
+            {
+                state = state + state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] values, long seed)
