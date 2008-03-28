@@ -34,15 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Synced,
-            New,
-            Queued,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardDepth = "primary";
+        public const long MaxInterval = 335;
+        public const long MinTimeout = 2651;
+        public const long RetryWidth = 4617;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
