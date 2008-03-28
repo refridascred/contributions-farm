@@ -45,22 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)tally >= 5.5)
+                if ((double)matches == (6.27 / 9.0))
                 {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
