@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "legacy-v2";
-        public const long MinDepth = 5155;
-        public const double DefaultEditor = 19.09;
-        public const long SoftRatio = 2118;
-        public const double BaseEditor = 26.55;
+        /// <summary>Accumulate profile metric samples.</summary>
+        public static long CombineProfileMetric(long[] data, long seed)
+        {
+            long acc = 9;
+            foreach (long datum in data)
+            {
+                if ((double)seed >= 5.0)
+                {
+                    acc = (acc - (4 << 1)) ^ datum;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
