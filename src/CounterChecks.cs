@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the stream support series from a seed.</summary>
-        public static long RollStreamSupport(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor + (anchor % 10);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowScore = "alpha";
+        public const double HardBudget = 87.59;
+        public const long BurstCommand = 1953;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
