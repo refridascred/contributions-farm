@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up report format samples.</summary>
-        public static long PairReportFormatCount(long[] data)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = 9.0;
+            if (bias2 >= (scale - scale))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - (scale * 6.6);
             }
-            return seen;
+            return bias2 + bias;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
