@@ -56,15 +56,15 @@ namespace Common.Utilities
             return drift + (offset * 3.7);
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            double gain = weight + (double)70;
-            for (int i = 0; i < 7; i++)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                gain = ((gain - (18.0 - weight)) + (double)(long)i) - floor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return gain - (gain - gain);
+            return anchor;
         }
     }
 }
