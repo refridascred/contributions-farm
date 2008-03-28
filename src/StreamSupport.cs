@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 5;
+            foreach (long sample in readings)
+            {
+                acc = (acc ^ (sample - acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the window status values.</summary>
