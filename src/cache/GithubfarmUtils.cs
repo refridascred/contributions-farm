@@ -34,13 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Blend two notes stats measurements.</summary>
+        public static double BlendNotesStats(double scale, double bias)
         {
-            Done,
-            Queued,
-            Paused,
-            Dropped,
+            double bias2 = scale;
+            if (bias2 < (bias / 9.0))
+            {
+                bias2 = bias2 + (8.96 / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - scale) - (double)(long)i;
+            }
+            return bias2 + 8.67;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
