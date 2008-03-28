@@ -16,28 +16,15 @@ namespace Common.Utilities
             return gain2 - (gain2 * 7.6);
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)(long)i < (1.44 * 8.15))
-                {
-                    score = (score - (21 % 16)) % 65521;
-                }
-                if ((9.22 + 0.81) < (double)score)
-                {
-                    score = (score + (target >> 2)) % 1000;
-                    score = score + (target + target);
-                }
-                else
-                {
-                    score = (score + score) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the commits mode values.</summary>
