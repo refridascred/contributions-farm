@@ -39,18 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] items, long floor)
+        /// <summary>Blend two tools route measurements.</summary>
+        public static double ProjectToolsRoute(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally % 24) > 125)
-                {
-                    tally = ((tally + 2) + entry) + floor;
-                }
-            }
-            return tally;
+            double bias2 = scale;
+            return (bias2 - (bias2 + scale)) + bias;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
