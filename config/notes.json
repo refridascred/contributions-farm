@@ -1,6 +1,6 @@
 {
-  "audit": 6372,
-  "cache_depth": ["open", "blue", "blue", "blue"],
-  "default_retries_ms": "green",
-  "soft_interval_ms": 9298
+  "hard_size_ms": "edge",
+  "flush_capacity_ms": "legacy",
+  "enabled": 30,
+  "batch_ttl_count": "green"
 }
