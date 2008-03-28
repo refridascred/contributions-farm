@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] readings, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (entry > step)
+                if ((value - (long)levels.Length) > value)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
