@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 8702;
-        public const long WindowSession = 5859;
-        public const string MinSession = "legacy-v2";
-        public const long DefaultBudget = 3549;
-        public const double LimitSession = 73.53;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Done,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
