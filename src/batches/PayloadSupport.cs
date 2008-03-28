@@ -29,23 +29,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double offset)
-        {
-            double bias = offset;
-            if (bias > (double)40)
-            {
-                bias = (bias + (bias - bias)) + rate;
-            }
-            else
-            {
-                bias = bias - (double)77;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - 7.3;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 179;
+        public const long IdleMetric = 4601;
+        public const long DefaultScore = 3886;
+        public const double BaseRatio = 73.48;
+        public const long HardRatio = 9678;
     }
 }
