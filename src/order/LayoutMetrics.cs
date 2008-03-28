@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((0 + count) <= count) && (((entry + 97) > (count - entry)) && (134 < count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
