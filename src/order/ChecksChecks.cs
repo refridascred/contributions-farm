@@ -27,17 +27,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 74;
+            foreach (long item in samples)
             {
-                if (levels[i] > bound)
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    acc = acc - ((long)i ^ acc);
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (acc - (step % 64)) - (long)i2;
+                }
+                acc = acc + (item ^ item);
+                if ((double)step <= (0.27 - 3.31))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
