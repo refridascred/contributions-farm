@@ -38,10 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardFactor = "legacy-1";
-        public const long LimitBatch = 931;
-        public const long CacheWidth = 5621;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double offset)
+        {
+            double scale = rate;
+            if (scale <= 14.0)
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 18.0) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
