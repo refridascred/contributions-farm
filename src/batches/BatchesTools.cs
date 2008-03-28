@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long target)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long slot = bound + target;
+            if ((double)slot <= (0.22 - 4.44))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((slot - target) > (93 + bound)) || ((bound + slot) > (slot - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot << 2) >= ((-96) / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a entry queue pair into a bucket.</summary>
