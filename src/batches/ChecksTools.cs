@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] readings, long target)
         {
-            New,
-            Paused,
-            Closed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + count) <= count)
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
