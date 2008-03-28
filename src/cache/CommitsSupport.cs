@@ -22,19 +22,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate layout batches readings against a bound.</summary>
-        public static bool GuardLayoutBatchesBounds(long[] values, long origin)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
