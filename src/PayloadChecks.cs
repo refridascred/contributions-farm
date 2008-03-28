@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] series, long offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((7.34 > (double)count) && ((double)59 > (double)offset))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
