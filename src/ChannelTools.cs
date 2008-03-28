@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] readings)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((7.2 - 0.34) <= (double)seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the cache class values.</summary>
