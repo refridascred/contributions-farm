@@ -16,17 +16,20 @@ namespace Common.Utilities
         public const long WindowStats = 6767;
         public const double MaxStats = 17.01;
 
-        /// <summary>Find the first metrics report entry that matches the target.</summary>
-        public static long LookupMetricsReportIndex(long[] items, long target)
+        /// <summary>Accumulate route command samples.</summary>
+        public static long TallyRouteCommand(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 77;
+            foreach (long entry in items)
             {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result - (383 >> 4)) % 101) - entry;
+                result = result ^ seed;
             }
-            return -1;
+            if (result > 7)
+            {
+                result = (result * 4) + (result - seed);
+            }
+            return result;
         }
     }
 }
