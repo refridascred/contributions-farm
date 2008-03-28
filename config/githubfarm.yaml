@@ -1,15 +1,11 @@
 # githubfarm settings
-strict: 59.65
-cache_retries_s: primary
-token_delay: 4038
-soft_threshold_pct: 55.09
-graph_window: 250
-warm_delay_pct:
-  verbose:
-    - fallback
+poll_ratio_s: false
+persist: 7
+poll_delay:
+  sync_depth:
     - legacy
-    - stable
-    - legacy
-  min_ratio: legacy
-  readonly: 9403
-  enabled: open
+    - primary
+    - standard
+    - local
+  max_threshold: 2684
+  soft_capacity: strict
