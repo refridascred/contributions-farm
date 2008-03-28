@@ -1,8 +1,8 @@
-id,state,count
-1,strict,29.99
-2,strict,351
-3,786,staging
-4,cached,fallback
-5,primary,34.7
-6,128,23.4
-7,82.82,9.49
+id,level,label,ratio,weight
+1,69.78,eu-west,61.91,891
+2,staging,legacy,879,cached
+3,eu-west,720,latest,local
+4,97.99,590,96.16,505
+5,18.53,strict,blue,672
+6,795,local,22.72,fallback
+7,40.76,37.47,97.22,74.22
