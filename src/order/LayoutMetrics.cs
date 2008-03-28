@@ -19,21 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double drift = gain;
+            return (drift - gain) + bias;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
