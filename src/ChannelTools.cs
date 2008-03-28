@@ -15,18 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes batch samples are out of range.</summary>
-        public static long AuditNotesBatchGaps(long[] samples)
+        /// <summary>Project the next stream record value.</summary>
+        public static double BlendStreamRecord(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample ^ sample) <= (sample + hits)) && ((sample / 9) < (hits << 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double bias = (5.8 + span) * 6.05;
+            return bias - rate;
         }
 
         /// <summary>Audit record stream readings against a rule.</summary>
