@@ -1,13 +1,17 @@
 # githubfarm settings
-hard_size_pct:
-  - 469
-  - 59
-  - 243
-  - 201
-verbose:
-  - latest
-  - staging
-  - strict
-  - standard
-stream_delay: eu-west
-flush_interval_count: 3.77
+warm_depth_pct:
+  idle_interval:
+    base_threshold: 91
+    editor_capacity:
+      - standard
+      - fallback
+      - cached
+      - edge
+    max_ttl_pct: edge
+    flush_depth_pct: true
+    flush_retries_ms: 1612
+  idle_threshold_s: 1024
+  enabled: edge
+  payload_delay: false
+batch_window_pct: cached
+soft_depth_ms: 57.99
