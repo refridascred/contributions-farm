@@ -59,15 +59,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
