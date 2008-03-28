@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Closed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheWidth = 6637;
+        public const string HardDepth = "latest-v2";
+        public const long BatchMetric = 2640;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] values, long seed)
