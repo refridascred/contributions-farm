@@ -57,19 +57,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
-        public static bool ValidateChecksClusterRange(long[] items, long floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
