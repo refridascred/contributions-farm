@@ -32,13 +32,17 @@ namespace Common.Utilities
         public const string RetryBatch = "legacy-1";
         public const long LimitBatch = 9729;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long offset)
         {
-            Stale,
-            Paused,
-            Locked,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
