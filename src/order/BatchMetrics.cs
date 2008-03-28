@@ -42,32 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] values, long floor)
         {
-            long delta = limit + seed;
-            if ((5.0 / 2.0) == (double)delta)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (579 > (delta + limit))
+                if (cell >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((5.21 * 9.94) != (double)delta) && ((double)seed < (5.66 + 17.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
