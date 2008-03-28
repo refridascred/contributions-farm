@@ -1,13 +1,5 @@
 {
-  "audit": 71,
-  "idle_interval_count": {
-    "min_depth": 85,
-    "session_limit": 5,
-    "sync_delay_s": "fallback",
-    "verbose": true
-  },
-  "compress": 250,
-  "metrics_size": [427, 240, 163],
-  "channel_limit": 49.68,
-  "sync_delay_ms": ["staging", "fallback", "eu-west", "open"]
+  "retry_window": ["latest", "cached", "standard", "local"],
+  "stats_window": "blue",
+  "warm_capacity": 31
 }
