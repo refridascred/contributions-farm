@@ -1,22 +1,6 @@
 {
-  "stats_ttl": [235, 262, 101],
-  "report_threshold": {
-    "schema_limit": "eu-west",
-    "audit": 8142,
-    "sync_size": "strict",
-    "session_window": 71.53,
-    "metrics_depth": {
-      "sync_limit": 30,
-      "retry_depth_count": 25.34,
-      "batch_ttl_pct": "staging",
-      "burst_size_count": "standard"
-    }
-  },
-  "hard_ttl_count": {
-    "graph_interval": 75.28,
-    "strict": "latest",
-    "metrics_window": 4262,
-    "audit": [115, 63],
-    "farm_retries": 30
-  }
+  "soft_window": "eu-west",
+  "flush_capacity": ["local", "standard"],
+  "dry_run": ["cached", "eu-west", "eu-west"],
+  "burst_limit_ms": 859
 }
