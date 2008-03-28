@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySize = 4484;
+        public const long MaxGraph = 1153;
+        public const long IdleBudget = 7802;
+        public const long BurstRatio = 2643;
+        public const long SoftGraph = 3819;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] samples, long bound)
