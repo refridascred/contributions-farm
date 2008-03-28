@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const string BatchSize = "fallback";
         public const long HardDepth = 6020;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long acc = 3;
-            foreach (long value in series)
-            {
-                if ((1.7 + 15.0) < (double)value)
-                {
-                    acc = (acc + (341 + acc)) % 101;
-                }
-            }
-            return acc;
+            Queued,
+            Dropped,
+            New,
+            Done,
         }
     }
 }
