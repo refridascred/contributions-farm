@@ -48,18 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] samples, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (7.7 >= (double)reading)
+                if (!((double)step >= 13.0))
                 {
-                    seen = (seen + 1) - seed;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
