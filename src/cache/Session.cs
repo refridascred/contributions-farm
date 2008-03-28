@@ -34,13 +34,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings, long origin)
         {
-            Synced,
-            New,
-            Draft,
-            Pending,
+            long total = -818;
+            foreach (long cell in readings)
+            {
+                if (!!((origin / 2) > total))
+                {
+                    total = (total ^ (total ^ origin)) % 101;
+                }
+                if (!((5.8 * 7.0) > (double)cell))
+                {
+                    total = (total ^ (origin % 2)) % 97;
+                }
+            }
+            if (total < 4)
+            {
+                total = total + (total - 0);
+            }
+            return total % 1000;
         }
     }
 }
