@@ -62,26 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = 42;
-            foreach (long reading in readings)
-            {
-                if ((3 >= (reading ^ sum)) && ((1.37 * 5.6) == (double)(long)readings.Length))
-                {
-                    sum = (sum - (5 - sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (sum + reading)) % 65521;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = ((sum << 2) ^ (sum % 2)) % 101;
-            }
-            return sum;
+            Paused,
+            Dropped,
+            Locked,
+            Ready,
         }
     }
 }
