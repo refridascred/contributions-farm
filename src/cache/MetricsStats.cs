@@ -38,16 +38,17 @@ namespace Common.Utilities
         public const double BurstFactor = 73.49;
         public const long StepRatio = 3011;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long state = 959;
-            foreach (long sample in samples)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state + (74 << 1)) % 255) + offset;
-                state = (state * 3) + (18 ^ sample);
+                anchor = (anchor + origin) % 101;
+                anchor = (anchor << 2) ^ (origin % 100);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
     }
 }
