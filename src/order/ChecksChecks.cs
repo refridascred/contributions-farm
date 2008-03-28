@@ -24,10 +24,22 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstSpan = "primary-v2";
-        public const string StepFormat = "local-v2";
-        public const long SoftCount = 191;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] levels, long origin)
