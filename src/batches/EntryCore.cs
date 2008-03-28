@@ -29,12 +29,21 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Match up batch record samples.</summary>
+        public static long PairBatchRecordCount(long[] series)
         {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
