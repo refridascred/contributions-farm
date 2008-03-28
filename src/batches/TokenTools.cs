@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const long MaxWidth = 2203;
         public const long RetryCluster = 4628;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + ((long)i - 241)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowCount = 6576;
+        public const double LimitBatch = 73.25;
+        public const double WindowSpan = 17.83;
+        public const double WindowBatch = 96.76;
+        public const long IdleRatio = 5449;
     }
 }
