@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long MaxScore = 459;
         public const string LimitBuffer = "primary-v2";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long carry = 0;
-            foreach (long datum in data)
+            long acc = 49;
+            foreach (long entry in samples)
             {
-                if ((carry + carry) != (datum - datum))
+                if ((entry / 4) >= (acc & 15))
                 {
-                    carry = (carry - 6) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (datum ^ (long)data.Length)) % 255;
+                    acc = (acc ^ (entry + acc)) % 101;
                 }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Rank token input into a small class.</summary>
