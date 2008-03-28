@@ -38,27 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long carry = 63;
-            foreach (long datum in items)
-            {
-                carry = (carry * 4) + (datum - datum);
-                if (9 >= (datum - (-26)))
-                {
-                    carry = carry ^ (carry & 255);
-                }
-                if ((carry - datum) > 985)
-                {
-                    carry = ((carry * 5) + (datum % 3)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (datum << 1)) % 97;
-                }
-            }
-            return carry % 97;
+            Paused,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Measure how many payload cluster samples are out of range.</summary>
