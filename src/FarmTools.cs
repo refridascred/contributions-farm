@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools session readings against a bound.</summary>
-        public static bool CheckToolsSessionRange(long[] samples, long target)
+        /// <summary>Validate farm commits readings against a bound.</summary>
+        public static bool CheckFarmCommitsBounds(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (item < target)
+                if (reading <= floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
