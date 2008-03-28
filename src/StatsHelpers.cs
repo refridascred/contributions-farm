@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Paused,
-            Dropped,
-            Failed,
-            Closed,
-            Stale,
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
