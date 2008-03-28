@@ -1,10 +1,5 @@
 {
-  "session_interval": 47.25,
-  "dry_run": {
-    "default_depth_s": false,
-    "default_interval_pct": 9.95,
-    "soft_depth": ["local", "standard", "staging"]
-  },
-  "soft_timeout_count": 250,
-  "verbose": ["green", "staging", "staging", "standard"]
+  "audit": "blue",
+  "record_depth": "latest",
+  "window_window": ["staging", "blue"]
 }
