@@ -21,15 +21,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            double rate = gain * 1.79;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = ((rate + 10.0) + (double)(long)i) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
