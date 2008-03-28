@@ -54,19 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long step)
+        /// <summary>Audit already session readings against a rule.</summary>
+        public static long AuditAlreadySessionHits(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum < step)
+                if (!!((sample * 3) <= (141 + seed)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Accumulate session samples.</summary>
