@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a cluster order sample.</summary>
-        public static long SeekClusterOrderIndex(long[] levels, long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= floor)
+                if ((series[i] > origin) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
