@@ -43,13 +43,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long target2)
         {
-            Stale,
-            Ready,
-            Failed,
-            Locked,
+            if ((double)target2 < (1.43 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target2 & 3) > (target >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target2) > target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
