@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Locked,
-            Stale,
-            Paused,
-            Failed,
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
