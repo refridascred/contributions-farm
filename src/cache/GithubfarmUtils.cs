@@ -31,14 +31,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Idle,
-            Active,
-            Locked,
-            Pending,
-            Retry,
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a format summary.</summary>
