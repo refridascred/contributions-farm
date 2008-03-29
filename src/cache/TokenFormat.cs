@@ -24,23 +24,22 @@ namespace Common.Utilities
             return drift - (double)12;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double weight, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            double drift = (double)((-760) * 2);
-            if (drift < offset)
+            long mark = 762;
+            foreach (long cell in readings)
             {
-                drift = drift + (double)24;
+                if (((mark % 5) == (mark * 5)) && (cell < (mark + mark)))
+                {
+                    mark = ((mark << 2) ^ mark) % 1000;
+                }
+                else
+                {
+                    mark = mark - (mark * 2);
+                }
             }
-            else
-            {
-                drift = drift - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - weight;
+            return mark % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
