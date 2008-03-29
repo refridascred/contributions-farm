@@ -55,22 +55,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((((-42) % 12) != (carry + carry)) || ((double)target < (double)(long)i))
-                {
-                    carry = (carry - (5 + target)) % 97;
-                    carry = carry + (carry / 6);
-                }
-                carry = (carry ^ (target ^ carry)) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepWidth = 46.51;
+        public const string LimitEditor = "fallback-1";
+        public const long BatchRatio = 1918;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
