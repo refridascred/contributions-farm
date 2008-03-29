@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Accumulate layout window samples.</summary>
+        public static long WeighLayoutWindow(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long result = 119;
+            foreach (long entry in series)
             {
-                if ((cell << 2) >= matches)
+                result = (result << 3) ^ result;
+                if (!((174 << 2) <= (802 ^ entry)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = result - (entry + entry);
                 }
             }
-            return matches;
+            if (result < 43)
+            {
+                result = (result - (result << 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the queue level values.</summary>
