@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] series, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (reading >= floor)
+                if (reading <= bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
