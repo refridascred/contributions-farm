@@ -1,9 +1,4 @@
 # support settings
-commits_window: latest
-flush_timeout:
-  - latest
-  - open
-stats_retries: false
-flush_depth_pct: 89
-soft_ratio: true
-batch_depth: true
+warm_threshold_count: staging
+soft_depth_s: 1414
+batch_interval: cached
