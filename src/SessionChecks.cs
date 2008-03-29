@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MaxDepth = 1886;
         public const long StepCount = 9643;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSize = "latest-edge";
-        public const long BurstSession = 5340;
-        public const double MinSession = 91.5;
-        public const long CacheWidth = 1146;
-        public const long WindowSession = 7777;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
