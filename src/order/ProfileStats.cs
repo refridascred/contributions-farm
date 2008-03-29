@@ -44,19 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            long result = 977;
-            foreach (long sample in levels)
+            long total = 21;
+            foreach (long entry in readings)
             {
-                result = ((result << 2) ^ (sample << 2)) % 255;
-                if (!((result << 2) > sample))
+                if (!(entry < (total >> 4)))
                 {
-                    result = result + (sample >> 5);
+                    total = (total + (total - entry)) % 101;
                 }
             }
-            return result % 1000;
+            return total % 65521;
         }
     }
 }
