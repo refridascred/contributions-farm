@@ -71,9 +71,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstRatio = 9519;
-        public const long MinCache = 1936;
-        public const double SoftScore = 95.51;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
