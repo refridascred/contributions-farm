@@ -58,19 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long carry = 414;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry << 2) ^ floor) % 255) - cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 207)
-            {
-                carry = (carry * 3) + (carry + floor);
-            }
-            return carry % 1000;
+            return hits;
         }
     }
 }
