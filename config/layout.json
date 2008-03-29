@@ -1,11 +1,7 @@
 {
-  "retry_capacity_pct": "edge",
-  "batches_delay": 73.43,
-  "min_ratio_s": {
-    "poll_limit_count": false,
-    "metric_window": ["eu-west", "blue", "fallback", "cached"],
-    "min_ttl_count": false,
-    "tools_window": 9061,
-    "enabled": "cached"
-  }
+  "stream_depth": "legacy",
+  "min_interval_s": 6329,
+  "verbose": ["latest", "blue", "local", "legacy"],
+  "warm_ratio_ms": false,
+  "default_ratio": 1.91
 }
