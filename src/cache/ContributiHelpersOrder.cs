@@ -26,31 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long target2)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long limit)
         {
-            if ((target < (139 + target)) && ((3 % 16) <= (4 + target2)))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ target) < (target2 - 55))
+                if (reading != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((99 - target2) <= target2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
