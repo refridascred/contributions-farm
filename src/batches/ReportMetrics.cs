@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio - 4.0;
         }
 
-        /// <summary>Count the format counter entries that pass the check.</summary>
-        public static long MeasureFormatCounterMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (18.0 > (double)entry)
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 8903;
+        public const long BaseEditor = 3072;
+        public const long LimitFactor = 4904;
+        public const string RetryRatio = "standard-v2";
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] levels, long floor)
