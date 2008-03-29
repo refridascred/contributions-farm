@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the route record series from a seed.</summary>
-        public static long SeriesRouteRecord(long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Draft,
+            Ready,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Grade a format command value against two limits.</summary>
