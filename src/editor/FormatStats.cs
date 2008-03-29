@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((count >> 3) >= (cell * 3)) || (count < (7 << 3)))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next metric value.</summary>
