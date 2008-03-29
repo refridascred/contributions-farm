@@ -23,12 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Dropped,
-            Locked,
-            New,
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a counter entry.</summary>
