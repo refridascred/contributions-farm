@@ -1,6 +1,14 @@
 # githubfarm settings
-strict: 24
-default_size_count: 250
-already_size: green
-default_limit_s: 8
-base_threshold_count: strict
+retry_interval_pct: primary
+retry_capacity: 39
+hard_timeout_s: 7537
+flush_ratio: 488
+base_ratio_s:
+  context_delay:
+    - 296
+    - 466
+    - 151
+  poll_threshold_pct: strict
+  default_size_count: edge
+  cache_threshold: legacy
+  idle_threshold: legacy
