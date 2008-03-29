@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
-        public static long CompareProfileChannelCount(long[] samples)
+        /// <summary>Validate already graph readings against a bound.</summary>
+        public static bool GuardAlreadyGraphBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value > limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the order kind values.</summary>
