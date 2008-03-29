@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            Locked,
+            Pending,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
