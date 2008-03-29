@@ -14,19 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen + 32) >= (seen / 3))
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 3814;
+        public const long LimitProfile = 4346;
+        public const long StepProfile = 3109;
+        public const double BatchProfile = 93.54;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 6473;
