@@ -57,25 +57,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long limit, long target)
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long FoldTokenSession(long[] readings, long origin)
         {
-            long lane = limit + target;
-            if (((double)lane <= (3.1 * 7.59)) || ((lane + limit) < (94 + lane)))
+            long state = 8;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 12) <= (787 & 3))
+                if (82 < (origin - sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    state = (state ^ ((-977) - 88)) % 65521;
                 }
             }
+            if (state > (-172))
+            {
+                state = (state << 2) ^ (origin % 7);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the payload level values.</summary>
