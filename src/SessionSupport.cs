@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long result = 821;
+            foreach (long reading in samples)
+            {
+                result = (result + (27 / 6)) % 65521;
+                if (!((reading + 4) > (reading >> 2)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of counter profile entries.</summary>
