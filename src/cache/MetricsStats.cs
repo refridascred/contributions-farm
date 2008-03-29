@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels, long floor)
         {
-            long score = -78;
-            foreach (long item in values)
+            long anchor = 231;
+            foreach (long value in levels)
             {
-                score = (((score + (score + 196)) % 101) ^ item) + offset;
+                if (11 < (value >> 3))
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 2)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ value) % 97;
+                }
             }
-            if (score < 5)
+            if (anchor > 8)
             {
-                score = ((score * 3) + (long)values.Length) % 65521;
+                anchor = anchor + (floor / 9);
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
