@@ -38,11 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            Retry,
+            Closed,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Scale a account editor figure with a bias.</summary>
