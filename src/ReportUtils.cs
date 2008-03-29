@@ -42,19 +42,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats tools readings against a bound.</summary>
-        public static bool ValidateStatsToolsBounds(long[] series, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double rate = 0.54 * 6.87;
+            if (rate > bias)
             {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - bias) + offset;
             }
-            return valid;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - (bias / 6.0);
         }
 
         /// <summary>Rank queue input into a small class.</summary>
