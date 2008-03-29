@@ -34,19 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double gain, double floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            double weight = (gain / 4.0) / 6.0;
-            if (weight < (floor * 16.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (floor * 5.5);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - floor;
+            return matches;
         }
     }
 }
