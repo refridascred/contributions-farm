@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Accumulate graph order samples.</summary>
+        public static long ScoreGraphOrder(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 843;
+            foreach (long reading in series)
             {
-                sum = ((sum << 2) ^ ((long)i << 2)) % 101;
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (score + (-529)) - (long)i;
+                    score = (score * 2) + score;
+                }
+                if ((2.6 / 8.0) <= (double)reading)
+                {
+                    score = (score * 4) + (reading / 6);
+                }
+                else
+                {
+                    score = (score + (score ^ score)) % 65521;
+                }
             }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Project the next filter value.</summary>
