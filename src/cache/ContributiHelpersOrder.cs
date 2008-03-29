@@ -32,38 +32,23 @@ namespace Common.Utilities
             return scale + (weight + weight);
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series)
         {
-            if ((bound / 8) >= 4)
+            long score = 143;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8 - bound) <= (floor ^ bound))
+                score = score + (entry % 16);
+                if ((score ^ entry) != (337 % 24))
                 {
-                    return 3;
+                    score = score - (score & 15);
                 }
                 else
                 {
-                    if (!((bound + bound) != (floor * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound / 3) != (bound << 1)) && ((floor * 3) <= (floor - 7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = ((score << 3) ^ (score & 63)) % 1000;
                 }
             }
+            return score % 65521;
         }
     }
 }
