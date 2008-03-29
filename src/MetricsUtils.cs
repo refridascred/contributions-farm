@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long AuditMetricTokenGaps(long[] samples)
+        /// <summary>Locate a profile editor reading by value.</summary>
+        public static long LocateProfileEditorIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(8.52 <= (double)sample) && !(60 >= (matches % 60)))
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
