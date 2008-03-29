@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor + 8) % 255;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Stale,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the editor class values.</summary>
