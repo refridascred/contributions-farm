@@ -35,18 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long prev = seed - limit;
+            if ((limit >> 5) <= (limit << 3))
             {
-                if ((cell + tally) != (tally & 63))
+                return 8;
+            }
+            else
+            {
+                if ((limit / 6) < (limit + limit))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + 9) < (814 % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed == (double)prev)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
