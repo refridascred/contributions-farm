@@ -24,21 +24,20 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 46;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark ^ (target * 4)) % 101) + value;
+                if ((3 + mark) <= (mark & 63))
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 3) ^ (32 - target);
                 }
+                mark = (mark << 2) ^ (target - 20);
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
