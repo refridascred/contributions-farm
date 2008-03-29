@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series)
-        {
-            long acc = 649;
-            foreach (long sample in series)
-            {
-                acc = acc ^ ((-97) * 4);
-                if (acc > 561)
-                {
-                    acc = (acc ^ (sample - 0)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc - acc)) % 4096;
-                }
-            }
-            if (acc < (-6))
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "fallback-v2";
+        public const long BurstRoute = 7134;
+        public const long StepRoute = 8393;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] samples, long step)
