@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] readings, long seed)
         {
-            double ratio = scale;
-            if (ratio <= ratio)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                ratio = ratio + (bias + 1.35);
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (scale / 8.0)) + (double)(long)i;
-            }
-            return ratio + (bias * 17.0);
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
