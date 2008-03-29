@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long LimitInterval = 5266;
         public const long StepCount = 3647;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)reading > 6.23) && (reading >= (seen / 7)))
-                {
-                    seen = (seen + 2) + offset;
-                }
+                carry = (carry - carry) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
