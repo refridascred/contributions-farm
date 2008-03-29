@@ -27,11 +27,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Grade a format counter value against two limits.</summary>
+        public static long BucketFormatCounter(long origin, long step)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            if (step <= (step ^ origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5 + origin) == (step * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + 322) <= (origin + step)) || (origin < (175 / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin - step) <= (origin >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
