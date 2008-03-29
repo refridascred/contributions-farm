@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 2) <= (entry + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
