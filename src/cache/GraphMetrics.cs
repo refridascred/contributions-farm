@@ -53,31 +53,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series, long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long seed)
         {
-            long result = 40;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
                 {
-                    result = (((result * 2) + (18 ^ seed)) % 97) - (long)i;
-                }
-                result = (result << 2) ^ (result >> 1);
-                if ((465 % 100) < (result + result))
-                {
-                    result = (result + ((long)series.Length * 2)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (result - result)) % 101;
-                }
-                if ((result > (result - sample)) || ((1.7 - 9.58) >= (double)seed))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
     }
 }
