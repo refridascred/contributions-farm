@@ -56,15 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            long acc = 20;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc + acc) + value) - offset;
+                if ((hits >> 1) < (sample & 127))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Grade a graph githubfarm value against two limits.</summary>
