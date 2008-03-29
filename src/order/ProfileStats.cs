@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
