@@ -32,18 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] series, long bound)
         {
-            long state = 107;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (((state >> 5) >= (state / 5)) || ((state & 1) >= (state / 3)))
+                if (reading >= bound)
                 {
-                    state = ((state ^ state) % 101) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ready;
         }
 
         /// <summary>Measure how many stats editor samples are out of range.</summary>
