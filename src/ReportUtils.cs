@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((count - sample) <= (count << 3))
+                if (origin >= (value - origin))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
