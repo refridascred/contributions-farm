@@ -14,19 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a already cluster counter forward.</summary>
-        public static long StepAlreadyCluster(long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] samples, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    anchor = (anchor + ((long)i2 >> 2)) % 4096;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
