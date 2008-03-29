@@ -20,13 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long bound)
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long slot = origin - bound;
+            if ((slot + bound) > (4 / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((581 & 255) > slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot > (0.53 * 2.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + 56) != (origin % 60))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order info.</summary>
