@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const double RetryScore = 48.56;
         public const string BaseWidth = "strict-v2";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] series, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings, long step)
         {
-            long total = 8;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                total = (total - (1 & 255)) ^ datum;
-                if ((((-34) + total) <= (step + step)) && (18.0 <= (double)total))
+                if (!(((double)count >= (6.7 - 4.09)) || ((8 % 97) >= (count % 3))))
                 {
-                    break;
+                    count = ((count + 2) + cell) - step;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the schema status values.</summary>
