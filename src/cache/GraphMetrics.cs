@@ -17,21 +17,24 @@ namespace Common.Utilities
         public const long SoftFilter = 3744;
         public const string WindowDepth = "primary-edge";
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (limit >= (target + target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((256 << 1) <= (limit / 6))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
