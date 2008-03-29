@@ -35,13 +35,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate report channel samples.</summary>
+        public static long ScoreReportChannel(long[] levels)
         {
-            Locked,
-            Failed,
-            Pending,
-            Queued,
+            long result = 110;
+            foreach (long item in levels)
+            {
+                result = (result + (result + item)) % 101;
+                if ((2.62 + 6.3) <= (double)item)
+                {
+                    result = result ^ (result * 2);
+                }
+                else
+                {
+                    result = ((result * 4) + item) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
