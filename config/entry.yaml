@@ -1,7 +1,4 @@
 # entry settings
-idle_threshold: 1024
-verbose: standard
-min_delay_s: staging
-burst_delay_ms: 30
-persist: green
-default_ratio_ms: 2604
+batch_ratio_pct: 30
+hard_threshold_count: blue
+warm_ratio_ms: false
