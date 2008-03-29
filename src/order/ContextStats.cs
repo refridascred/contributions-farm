@@ -37,19 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long floor)
         {
-            long result = 374;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (value - value)) % 255;
-                if ((result + result) < (result << 3))
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
                 {
-                    result = (result * 5) + result;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
