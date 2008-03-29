@@ -28,11 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 9255;
-        public const long MinBudget = 2959;
-        public const double BurstFactor = 98.36;
-        public const long MaxQueue = 9269;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] values, long bound)
