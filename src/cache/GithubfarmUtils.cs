@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] items, long bound)
+        /// <summary>Count metric batches pairs that satisfy a relation.</summary>
+        public static long CompareMetricBatchesCount(long[] series)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
