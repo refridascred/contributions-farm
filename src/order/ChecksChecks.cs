@@ -27,17 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a order channel reading by value.</summary>
-        public static long FindOrderChannelIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 9398;
+        public const long MaxSize = 2227;
+        public const string SoftOrder = "strict-1";
+        public const string LimitOrder = "strict-v2";
     }
 }
