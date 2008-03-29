@@ -34,19 +34,35 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] series, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long anchor = 87;
+            foreach (long item in samples)
             {
-                if (value < offset)
+                anchor = (anchor ^ anchor) % 4096;
+                if (!((11.0 / 6.0) == (double)anchor))
                 {
-                    found = false;
+                    anchor = (anchor + (item ^ anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + (item * 4);
+                }
+                if ((494 + item) == (item / 9))
+                {
+                    anchor = anchor ^ (anchor & 1);
+                }
+                if (((double)anchor <= (8.12 / 6.0)) && ((item + item) > (item % 16)))
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor > 563)
+            {
+                anchor = ((anchor * 5) + (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
     }
 }
