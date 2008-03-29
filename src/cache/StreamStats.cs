@@ -29,25 +29,11 @@ namespace Common.Utilities
         public const long WindowFormat = 7592;
         public const double BurstBudget = 49.96;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double span)
         {
-            long diff = step + offset;
-            if ((91 >> 5) == (diff << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((4 ^ diff) != (diff % 5)) && ((0.2 - 15.0) < (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double weight2 = (double)4 + (double)2;
+            return ((weight2 + (double)40) + weight) + span;
         }
 
         /// <summary>Hold a token info.</summary>
