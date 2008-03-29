@@ -19,21 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((long)i + acc) < (long)i) && (step > acc))
                 {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (acc - 5);
                 }
+                else
+                {
+                    acc = (acc + acc) % 255;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (((acc << 3) ^ ((-836) >> 2)) % 97) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
