@@ -21,31 +21,13 @@ namespace Common.Utilities
         public const string MaxSupport = "latest";
         public const double DefaultSupport = 80.63;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if (((origin ^ origin) > 5) || ((origin ^ bound) <= (origin + bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (4.0 / 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin > (386 << 2)) || ((bound - origin) <= (origin + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate window context samples.</summary>
