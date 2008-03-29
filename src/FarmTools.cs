@@ -35,39 +35,15 @@ namespace Common.Utilities
             return gain + (gain * 7.34);
         }
 
-        /// <summary>Rank report counter input into a small class.</summary>
-        public static long RankReportCounter(long offset, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            long slot = offset ^ target;
-            if (!((double)offset < (8.0 + 7.77)))
+            double bias2 = (bias / 9.0) - bias;
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                bias2 = ((bias2 - (double)86) + (double)(long)i) - scale;
             }
-            else
-            {
-                if (!(offset >= (5 << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot + slot) >= ((-736) << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)slot != (2.0 / 5.0)) && ((offset % 12) < slot))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return bias2 + (double)2;
         }
     }
 }
