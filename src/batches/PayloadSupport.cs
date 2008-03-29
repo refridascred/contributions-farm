@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue buffer sample.</summary>
-        public static long LocateQueueBufferIndex(long[] readings, long origin)
+        /// <summary>Measure how many already queue samples are out of range.</summary>
+        public static long AuditAlreadyQueueOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                if (!(((item ^ item) >= (matches << 3)) || ((double)item != (8.02 - 3.0))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
