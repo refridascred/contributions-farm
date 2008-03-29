@@ -19,22 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] readings, long limit)
         {
-            long score = 710;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score <= (bound + score)) && ((score / 7) == (reading * 4)))
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    score = score ^ (432 ^ reading);
-                }
-                if ((139 + bound) >= bound)
-                {
-                    score = (score << 3) ^ (15 + reading);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
