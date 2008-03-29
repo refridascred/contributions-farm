@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepDepth = 2048;
-        public const long StepChecks = 7386;
-        public const long HardSize = 9071;
-        public const long MinSpan = 2978;
-        public const long MaxRatio = 5746;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Retry,
+            Closed,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] levels, long limit)
