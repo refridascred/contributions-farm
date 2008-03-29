@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
