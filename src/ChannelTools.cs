@@ -25,13 +25,16 @@ namespace Common.Utilities
         public const long StepDepth = 1781;
         public const long CacheDepth = 1631;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state << 2) ^ (floor ^ floor)) % 255;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
