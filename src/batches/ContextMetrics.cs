@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long step, long offset)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            if (((-817) ^ step) == (offset + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((16 - offset) < (step + offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= 15.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate buffer graph readings against a bound.</summary>
