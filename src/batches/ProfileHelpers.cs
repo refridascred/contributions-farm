@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Digest a series of cache command entries.</summary>
+        public static long DigestCacheCommand(long[] levels)
         {
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 48;
+            foreach (long sample in levels)
+            {
+                if (!(state < (3 ^ state)))
+                {
+                    state = (state ^ (0 % 10)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (sample + state);
+                }
+            }
+            if (state < 99)
+            {
+                state = (state + (state - 3)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
