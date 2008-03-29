@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample < (matches + matches))
+                if ((double)tally > (2.2 * 1.73))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
