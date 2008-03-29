@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double rate, double bias)
+        /// <summary>Audit notes batch readings against a rule.</summary>
+        public static long AuditNotesBatchHits(long[] levels, long offset)
         {
-            double scale = rate * 7.4;
-            if (scale <= scale)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = scale + (bias / 7.0);
+                if ((seen << 1) > ((-964) + item))
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + bias;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
