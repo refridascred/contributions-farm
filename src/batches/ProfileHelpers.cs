@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 2733;
-        public const double WindowEntry = 21.16;
-        public const string BurstWidth = "primary-edge";
-        public const double SoftEntry = 13.36;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftSize = "legacy-v2";
+        public const double BurstCount = 98.32;
+        public const long BaseBuffer = 6519;
+        public const long MaxFactor = 1088;
+        public const long LimitBuffer = 2278;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
