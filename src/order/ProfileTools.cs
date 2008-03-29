@@ -15,24 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Iterate the tools support series from a seed.</summary>
+        public static long SeriesToolsSupport(long seed)
         {
-            long mix = -455;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value - value) > (mix + value))
-                {
-                    mix = ((mix << 3) ^ (347 + 5)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ value;
-                }
-                if (mix > (value >> 1))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
             return mix;
         }
