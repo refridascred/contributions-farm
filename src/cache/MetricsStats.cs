@@ -27,17 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long bound)
+        /// <summary>Fold a list of token queue readings.</summary>
+        public static long WeighTokenQueue(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 929;
+            foreach (long sample in data)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                if ((0 - mix) >= (mix >> 5))
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ (mix / 5)) % 255) ^ sample;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
