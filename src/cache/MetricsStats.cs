@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of token queue readings.</summary>
-        public static long WeighTokenQueue(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values)
         {
-            long mix = 929;
-            foreach (long sample in data)
+            long acc = 824;
+            foreach (long entry in values)
             {
-                if ((0 - mix) >= (mix >> 5))
+                acc = (acc << 3) ^ (entry - acc);
+                if ((4.61 * 6.6) < (double)entry)
                 {
-                    mix = (((mix << 2) ^ (mix / 5)) % 255) ^ sample;
+                    acc = acc + (acc + entry);
                 }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
