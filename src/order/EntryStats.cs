@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long step)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
