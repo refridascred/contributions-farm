@@ -56,17 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] samples, long bound)
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long WeighTokenChannel(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 13;
+            foreach (long item in samples)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                if ((item + result) > (item << 1))
                 {
-                    return (long)i;
+                    result = (result - (4 + 942)) % 4096;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a stats options.</summary>
