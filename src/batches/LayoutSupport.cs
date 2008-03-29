@@ -54,18 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine stats filter values into a single score.</summary>
-        public static long TallyStatsFilter(long[] levels)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long sum = 56;
-            foreach (long reading in levels)
-            {
-                if ((reading << 1) > 793)
-                {
-                    sum = (sum ^ (reading >> 5)) % 4096;
-                }
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
