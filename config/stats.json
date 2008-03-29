@@ -1,7 +1,11 @@
 {
-  "githubfarm_timeout": 500,
-  "retry_threshold_s": ["eu-west", "strict"],
-  "cache_interval_ms": false,
-  "audit": "fallback",
-  "min_ttl_pct": 6271
+  "persist": false,
+  "token_timeout": {
+    "warm_retries_pct": true,
+    "counter_delay": 1024,
+    "idle_ratio_count": 6999,
+    "editor_threshold": 7995
+  },
+  "flush_ratio": "staging",
+  "base_window_s": 500
 }
