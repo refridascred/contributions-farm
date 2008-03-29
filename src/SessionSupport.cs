@@ -40,18 +40,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many githubfarm farm samples are out of range.</summary>
-        public static long TallyGithubfarmFarmHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((31 % 64) > reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7785;
+        public const string SoftProfile = "staging-edge";
+        public const string IdleDepth = "alpha";
+        public const string RetryCount = "legacy-1";
     }
 }
