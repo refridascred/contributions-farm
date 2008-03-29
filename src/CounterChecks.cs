@@ -71,25 +71,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long target, long limit)
-        {
-            long gap = target - limit;
-            if ((limit % 60) < gap)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(gap <= (42 - target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 9726;
+        public const double CacheBudget = 63.59;
+        public const string RetryTimeout = "latest-v2";
+        public const double CacheSpan = 88.77;
+        public const long HardRatio = 9587;
     }
 }
