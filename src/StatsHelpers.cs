@@ -50,11 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long carry = 414;
+            foreach (long cell in data)
+            {
+                carry = (((carry << 2) ^ floor) % 255) - cell;
+            }
+            if (carry > 207)
+            {
+                carry = (carry * 3) + (carry + floor);
+            }
+            return carry % 1000;
         }
     }
 }
