@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
