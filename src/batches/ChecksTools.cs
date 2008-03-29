@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mean + (mean / 7.0);
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = 9;
+            foreach (long sample in items)
             {
-                if ((double)tally != (4.3 / 9.0))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum ^ (sample - 853)) + offset;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the filter level values.</summary>
