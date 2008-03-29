@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long origin, long step)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            long cur = origin - step;
+            if ((4.25 < (double)step) || ((double)cur < (5.3 * 2.6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.0 / 7.0) >= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
