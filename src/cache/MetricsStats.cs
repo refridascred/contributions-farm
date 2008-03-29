@@ -55,12 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 8781;
-        public const string DefaultFormat = "local-1";
-        public const long MaxFormat = 7135;
-        public const string HardWidth = "alpha-edge";
-        public const long BurstWidth = 7732;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
+        {
+            long acc = 792;
+            foreach (long datum in data)
+            {
+                acc = acc ^ (acc >> 1);
+                acc = (acc + (acc ^ datum)) % 1000;
+                acc = ((acc * 5) + acc) % 65521;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BaseSpan = 4824;
