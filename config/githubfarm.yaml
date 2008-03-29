@@ -1,5 +1,27 @@
 # githubfarm settings
-compress: 12
-batch_size_ms: fallback
-flush_depth_pct: 60
-base_delay: green
+sync_depth_pct: primary
+strict: false
+payload_window: 5.57
+max_limit_ms:
+  persist:
+    - strict
+    - standard
+    - fallback
+    - cached
+  session_threshold:
+    idle_depth_pct: cached
+    soft_ttl_s: stable
+    default_window_count: open
+    notes_window:
+      - blue
+      - strict
+    enabled:
+      - 287
+      - 33
+  compress:
+    readonly: true
+    cache_interval: 8814
+    hard_size: local
+    compress: cached
+    format_capacity: 5405
+max_ttl_ms: primary
