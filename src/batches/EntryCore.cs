@@ -88,13 +88,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] levels, long seed)
         {
-            Retry,
-            Synced,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((9 ^ seen) > cell)
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
