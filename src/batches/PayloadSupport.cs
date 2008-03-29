@@ -38,14 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Pending,
-            Paused,
-            Closed,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryLevel = "primary-1";
+        public const double RetryCount = 44.08;
+        public const long LimitContributi = 8804;
+        public const long StepContributi = 6087;
+        public const long BatchContributi = 7692;
     }
 }
