@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] levels, long origin)
         {
-            long state = 988;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((state >> 1) < (3 + datum))
+                if ((origin > item) || ((item - 715) >= 788))
                 {
-                    state = (state ^ (long)data.Length) % 1000;
+                    count = count + 2;
                 }
             }
-            if (state < 60)
-            {
-                state = ((state * 4) + seed) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
