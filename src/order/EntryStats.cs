@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long score = 0;
-            foreach (long cell in values)
-            {
-                if (!(4.4 > (double)bound))
-                {
-                    score = (((score << 3) ^ (score + 377)) % 97) ^ cell;
-                }
-            }
-            return score % 4096;
+            Idle,
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
