@@ -20,18 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks channel readings against a rule.</summary>
-        public static long TallyChecksChannelMatches(long[] values)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.1 - 18.0) < (double)matches)
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
                 {
-                    matches = (matches + 1) - item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
