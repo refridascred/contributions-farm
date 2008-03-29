@@ -1,13 +1,29 @@
 # entry settings
-verbose: strict
-order_ttl: legacy
-flush_threshold_count: 344
-entry_capacity: 60
-base_timeout_s:
-  already_delay: 59
-  enabled: legacy
-  flush_capacity_ms: 1543
-  verbose: true
-  min_retries: staging
-  warm_timeout_ms: 43.37
-session_threshold: true
+route_limit:
+  soft_capacity_pct: 30
+  strict:
+    soft_window:
+      - fallback
+      - primary
+      - edge
+    idle_window:
+      - green
+      - strict
+      - standard
+    compress: stable
+    burst_ratio_count: false
+    max_size_count: true
+  burst_size: legacy
+  window_interval: 250
+  batch_threshold_pct:
+    - stable
+    - eu-west
+    - legacy
+    - edge
+warm_delay_pct:
+  default_timeout_s: 453
+  dry_run: 56.64
+  enabled: true
+  verbose: legacy
+  compress: 9614
+session_timeout: eu-west
