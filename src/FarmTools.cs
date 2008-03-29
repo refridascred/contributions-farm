@@ -5,36 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items, long floor)
+        /// <summary>Audit report farm readings against a rule.</summary>
+        public static long CountReportFarmGaps(long[] levels, long target)
         {
-            long acc = 92;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((3.4 / 5.0) >= (double)reading)
+                if ((target & 1) >= ((long)levels.Length / 7))
                 {
-                    acc = (acc - (acc + 32)) % 1000;
-                    acc = (acc * 2) + (floor + acc);
-                    break;
-                }
-                if ((acc - (-7)) == (floor - floor))
-                {
-                    acc = acc + (743 + floor);
-                }
-                else
-                {
-                    acc = (acc + reading) % 101;
-                }
-                if ((double)floor <= 0.68)
-                {
-                    break;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            if (acc < 776)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
