@@ -38,18 +38,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long floor, long target)
         {
-            long acc = 226;
-            foreach (long cell in data)
+            long step = floor + target;
+            if ((floor / 5) != (floor + floor))
             {
-                if (752 > cell)
+                return 5;
+            }
+            else
+            {
+                if (((18.0 + 2.41) > (double)target) && ((9.5 * 6.9) == (double)step))
                 {
-                    acc = (acc ^ acc) + bound;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return acc % 4096;
         }
     }
 }
