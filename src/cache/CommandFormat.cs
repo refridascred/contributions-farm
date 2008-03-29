@@ -22,12 +22,32 @@ namespace Common.Utilities
         public const string WindowScore = "staging-1";
         public const long BatchWidth = 1901;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long floor, long seed)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            long slot = floor - seed;
+            if ((floor + floor) >= (floor & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + seed) < (seed ^ slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
