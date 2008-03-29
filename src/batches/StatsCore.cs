@@ -71,14 +71,18 @@ namespace Common.Utilities
         public const double CacheOrder = 85.53;
         public const long CacheRatio = 5380;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            Failed,
-            Pending,
-            Done,
-            Ready,
-            New,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (4 > (615 + matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
