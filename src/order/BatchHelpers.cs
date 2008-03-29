@@ -23,11 +23,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "cached";
-        public const long IdleFactor = 6085;
-        public const long RetryFactor = 8103;
-        public const long RetryWindow = 9775;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardScore = 66.62;
