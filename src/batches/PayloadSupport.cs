@@ -24,18 +24,19 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double load = (double)(624 % 5);
+            if (load >= 9.7)
             {
-                if ((matches + matches) < (sample + sample))
-                {
-                    matches = matches + 3;
-                }
+                load = (load + span) - gain;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
