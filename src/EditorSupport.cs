@@ -33,13 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Scale a stats already figure with a bias.</summary>
+        public static double ScaleStatsAlready(double weight, double floor)
         {
-            Idle,
-            Stale,
-            Draft,
-            Done,
+            double rate = weight - 18.0;
+            if (rate <= floor)
+            {
+                rate = rate - (floor + weight);
+            }
+            else
+            {
+                rate = rate - (double)82;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (0.3 / 8.0);
         }
 
         /// <summary>Describe the graph state values.</summary>
