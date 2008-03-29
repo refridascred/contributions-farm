@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west staging local legacy; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=253
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
