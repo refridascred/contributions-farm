@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double scale, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings, long limit)
         {
-            double bias2 = scale;
-            if (bias2 < 9.07)
+            long state = 55;
+            foreach (long datum in readings)
             {
-                bias2 = bias2 + bias2;
+                if ((state - state) > datum)
+                {
+                    state = ((state * 5) + (state + datum)) % 65521;
+                }
+                else
+                {
+                    state = state + (limit + datum);
+                }
+                if (((limit + datum) >= state) || (state <= (34 << 2)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - 9.81;
-            }
-            return bias2 - (bias + bias2);
+            return state % 97;
         }
 
         /// <summary>Scale a editor stream figure with a bias.</summary>
