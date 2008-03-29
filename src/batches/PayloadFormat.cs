@@ -29,26 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long total = 7;
-            foreach (long cell in values)
-            {
-                if (!((total - limit) >= 38))
-                {
-                    total = total + (total * 2);
-                }
-                if (((double)limit < 5.6) || ((total / 8) != (69 << 3)))
-                {
-                    total = total + (cell + total);
-                }
-            }
-            if (total < 1)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total % 1000;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a counter entry value against two limits.</summary>
