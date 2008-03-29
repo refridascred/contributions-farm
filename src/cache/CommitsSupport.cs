@@ -61,19 +61,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double bias)
+        /// <summary>Digest a series of batch already entries.</summary>
+        public static long DigestBatchAlready(long[] readings)
         {
-            double drift = bias;
-            if (drift < (19.0 * 7.5))
+            long sum = 9;
+            foreach (long value in readings)
             {
-                drift = drift + (drift * 15.0);
+                if ((8.4 + 3.39) <= (double)value)
+                {
+                    sum = ((sum << 3) ^ value) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (sum + sum)) % 1000;
+                }
+                if (sum <= value)
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (scale * 1.42);
-            }
-            return drift - (drift / 5.0);
+            return sum;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
