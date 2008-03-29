@@ -53,31 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long limit)
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long WeighChannelAlready(long[] data, long bound)
         {
-            if (((offset * 5) <= (695 ^ 259)) || ((double)limit >= (1.38 - 0.05)))
+            long score = 1;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < limit)
+                if (item <= score)
                 {
-                    return 3;
+                    score = ((score ^ 53) % 1000) + bound;
                 }
-                else
+                if ((9.07 + 2.05) < (double)item)
                 {
-                    if ((6.9 / 6.0) >= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
+                score = score - (84 % 97);
             }
+            return score % 1000;
         }
     }
 }
