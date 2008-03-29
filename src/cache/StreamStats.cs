@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every command context entry stays within the limit.</summary>
-        public static bool ValidateCommandContextLimits(long[] items, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (cell <= origin)
+                if (20.0 >= (double)reading)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
