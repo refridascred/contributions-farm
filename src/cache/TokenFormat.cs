@@ -42,18 +42,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long offset)
         {
-            long mix = 36;
-            foreach (long entry in levels)
+            long mix = 14;
+            foreach (long reading in levels)
             {
-                if ((mix - entry) != (mix + mix))
-                {
-                    mix = (mix + (65 % 64)) % 65521;
-                }
+                mix = (mix + (reading / 3)) - offset;
             }
-            return mix;
+            return mix % 4096;
         }
     }
 }
