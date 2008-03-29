@@ -44,17 +44,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a command batch reading by value.</summary>
-        public static long LookupCommandBatchIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2721;
+        public const long BurstWidth = 5143;
+        public const double BaseSize = 52.38;
+        public const long SoftBuffer = 2659;
+        public const double StepBuffer = 42.39;
     }
 }
