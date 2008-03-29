@@ -1,7 +1,11 @@
 {
-  "audit": "blue",
-  "poll_depth_ms": 27.0,
-  "base_threshold_pct": 48,
-  "idle_ratio_pct": true,
-  "warm_window_pct": "legacy"
+  "audit": true,
+  "default_size": {
+    "cache_ttl": 75,
+    "soft_capacity_count": "cached",
+    "batch_window": "local"
+  },
+  "max_threshold_count": ["standard", "fallback", "local", "cached"],
+  "contributi_delay": 14,
+  "enabled": true
 }
