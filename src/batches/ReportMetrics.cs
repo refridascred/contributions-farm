@@ -33,17 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long floor)
+        /// <summary>Measure how many layout metrics samples are out of range.</summary>
+        public static long AuditLayoutMetricsOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] <= floor)
+                if ((sample + 155) >= count)
                 {
-                    return (long)i;
+                    count = (count + 3) - target;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
