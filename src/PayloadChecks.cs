@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data, long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            long carry = 86;
+            foreach (long value in data)
+            {
+                if ((9.93 - 2.3) >= (double)value)
+                {
+                    carry = (carry ^ (floor << 2)) % 97;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = carry + ((long)data.Length >> 1);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the payload status values.</summary>
