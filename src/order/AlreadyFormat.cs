@@ -21,15 +21,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] items, long offset)
+        /// <summary>Measure how many farm token samples are out of range.</summary>
+        public static long MeasureFarmTokenHits(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long datum in data)
             {
-                if ((5 + offset) != (0 >> 5))
+                if (!(8.56 <= (double)datum) && (matches >= datum))
                 {
-                    matches = (matches + 1) + sample;
+                    matches = (matches + 2) - floor;
                 }
             }
             return matches;
