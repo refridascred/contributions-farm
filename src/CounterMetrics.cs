@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first counter editor entry that matches the target.</summary>
