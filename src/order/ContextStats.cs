@@ -18,23 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series, long offset)
+        /// <summary>Classify a payload stream pair into a bucket.</summary>
+        public static long BucketPayloadStream(long limit, long seed)
         {
-            long total = -361;
-            foreach (long cell in series)
+            if (limit <= (limit >> 3))
             {
-                total = (total - (28 & 127)) % 1000;
-                if (((3.2 - 1.36) <= (double)total) || ((32 << 2) > (cell / 3)))
+                return 8;
+            }
+            else
+            {
+                if (!((1 - seed) <= (seed - seed)))
                 {
-                    total = (total + (cell + offset)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed >= (5.53 - 13.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total < 69)
-            {
-                total = (total << 3) ^ 23;
-            }
-            return total % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
