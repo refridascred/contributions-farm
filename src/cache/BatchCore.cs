@@ -45,23 +45,26 @@ namespace Common.Utilities
         public const long MinCount = 5814;
         public const string MinEntry = "cached-1";
 
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long WeighChannelAlready(long[] data, long bound)
+        /// <summary>Combine layout cluster values into a single score.</summary>
+        public static long DigestLayoutCluster(long[] series, long step)
         {
-            long score = 1;
-            foreach (long item in data)
+            long anchor = 26;
+            foreach (long cell in series)
             {
-                if (item <= score)
+                if (((step - cell) <= step) && (((long)series.Length / 7) < (step % 8)))
                 {
-                    score = ((score ^ 53) % 1000) + bound;
+                    anchor = anchor - (step ^ 164);
                 }
-                if ((9.07 + 2.05) < (double)item)
+                else
                 {
-                    break;
+                    anchor = (anchor * 4) + (anchor + anchor);
                 }
-                score = score - (84 % 97);
             }
-            return score % 1000;
+            if (anchor < 359)
+            {
+                anchor = (anchor ^ (8 % 5)) % 255;
+            }
+            return anchor;
         }
     }
 }
