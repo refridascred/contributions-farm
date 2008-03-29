@@ -1,7 +1,6 @@
-id,score,state,owner,region
-1,6.47,staging,eu-west,eu-west
-2,85.67,primary,83.16,668
-3,24.05,stable,965,stable
-4,eu-west,edge,25.33,116
-5,63,12.3,509,943
-6,560,461,742,legacy
+id,count,region
+1,90.74,primary
+2,68.58,877
+3,828,68
+4,green,372
+5,254,21.66
