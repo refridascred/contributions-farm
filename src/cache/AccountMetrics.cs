@@ -33,26 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph filter readings.</summary>
-        public static long CombineGraphFilter(long[] readings, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long bound)
         {
-            long acc = 81;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((acc ^ origin) == (origin ^ origin)) && (acc > (origin * 5)))
+                if (series[i] >= bound)
                 {
-                    break;
-                }
-                if (((origin << 3) <= acc) && ((double)acc >= (double)16))
-                {
-                    acc = (((acc << 3) ^ (acc + 6)) % 255) - entry;
-                }
-                if (!(((-24) / 9) > (acc + origin)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
