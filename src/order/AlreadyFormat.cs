@@ -42,12 +42,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            Done,
-            Retry,
-            Closed,
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor - ((long)i << 2)) % 101;
+                anchor = (anchor + (origin + anchor)) % 65521;
+                anchor = (anchor ^ ((long)i << 2)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a context options.</summary>
