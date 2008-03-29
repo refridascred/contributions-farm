@@ -88,17 +88,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Queued,
+            Paused,
         }
     }
 }
