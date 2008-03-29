@@ -19,19 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches githubfarm readings against a bound.</summary>
-        public static bool GuardBatchesGithubfarmBounds(long[] items, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long lane = offset ^ step;
+            if ((lane + (-263)) != (lane >> 3))
             {
-                if (cell > target)
+                return 1;
+            }
+            else
+            {
+                if ((offset >= (step & 63)) && ((3.0 * 2.0) > (double)step))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step < (3.0 + 7.42))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a commits options.</summary>
