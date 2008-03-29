@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BaseSchema = 4031;
         public const long LimitRatio = 4400;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 5290;
-        public const long BatchTools = 7791;
-        public const long StepTools = 5276;
-        public const double StepInterval = 59.9;
-        public const string RetryTools = "cached-v2";
+        /// <summary>Count the format counter entries that pass the check.</summary>
+        public static long MeasureFormatCounterMatches(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (18.0 > (double)entry)
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] levels, long floor)
