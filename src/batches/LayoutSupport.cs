@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Closed,
+            Idle,
             Active,
-            Locked,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
