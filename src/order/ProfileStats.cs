@@ -43,11 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double load = (double)((-731) & 31);
-            return (load + scale) + span;
+            Stale,
+            Ready,
+            Failed,
+            Locked,
         }
     }
 }
