@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = mark - (long)i2;
+                }
+                if ((mark + (long)i) <= ((long)i ^ 732))
+                {
+                    mark = (mark << 2) ^ offset;
+                    mark = (mark ^ (590 - offset)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (21 + mark);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
