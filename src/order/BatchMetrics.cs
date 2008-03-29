@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 113;
+            foreach (long item in data)
+            {
+                if ((904 ^ 39) == (item * 3))
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
