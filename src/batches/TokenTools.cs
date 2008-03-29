@@ -23,11 +23,12 @@ namespace Common.Utilities
             return drift - (double)99;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowCount = 6576;
-        public const double LimitBatch = 73.25;
-        public const double WindowSpan = 17.83;
-        public const double WindowBatch = 96.76;
-        public const long IdleRatio = 5449;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Paused,
+            Pending,
+            New,
+        }
     }
 }
