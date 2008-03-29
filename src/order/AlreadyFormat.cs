@@ -59,11 +59,39 @@ namespace Common.Utilities
         public const long MaxNotes = 3882;
         public const string StepTimeout = "strict";
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long bound, long target)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            long offset = bound ^ target;
+            if (((offset - offset) < 91) || ((target + bound) <= (6 ^ offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound ^ offset) > offset) && ((target << 3) != (target * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + bound) >= (8 << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
