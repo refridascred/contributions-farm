@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((seed + 332) > (4 * 3))
-                {
-                    score = (score << 3) ^ 8;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Paused,
+            Ready,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
