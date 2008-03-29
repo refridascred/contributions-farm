@@ -38,11 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
