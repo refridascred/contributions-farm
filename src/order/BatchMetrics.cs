@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const string LimitEditor = "fallback-1";
         public const long BatchRatio = 1918;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            Done,
-            New,
-            Stale,
-            Draft,
+            long carry = 888;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 4) + carry) + entry;
+            }
+            if (carry < 7)
+            {
+                carry = ((carry * 2) + (carry & 127)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many queue farm samples are out of range.</summary>
