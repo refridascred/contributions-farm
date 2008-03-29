@@ -27,18 +27,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many farm token samples are out of range.</summary>
-        public static long MeasureFarmTokenHits(long[] data, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(8.56 <= (double)datum) && (matches >= datum))
+                if (readings[i] >= step)
                 {
-                    matches = (matches + 2) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
