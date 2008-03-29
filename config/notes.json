@@ -1,14 +1,7 @@
 {
-  "batch_capacity": {
-    "default_size_ms": "fallback",
-    "retry_limit": {
-      "layout_capacity": "fallback",
-      "soft_window_s": [168, 16, 185],
-      "hard_limit": false
-    },
-    "readonly": "standard",
-    "stream_interval": "fallback"
-  },
-  "burst_depth_ms": 78.36,
-  "base_retries_count": "edge"
+  "readonly": 90.13,
+  "soft_window_ms": "open",
+  "default_threshold_count": "blue",
+  "record_limit": "blue",
+  "strict": 12
 }
