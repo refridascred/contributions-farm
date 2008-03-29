@@ -33,11 +33,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally + value) != (value % 97))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
