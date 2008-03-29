@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double bias, double offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] levels, long bound)
         {
-            double rate = (double)(407 ^ 253);
-            if (rate >= (9.4 * 0.13))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (rate - offset);
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (bias - 14.0);
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
