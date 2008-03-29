@@ -16,12 +16,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowDepth = 91.37;
-        public const long BatchScore = 1175;
-        public const double CacheWidth = 43.03;
-        public const double SoftChannel = 1.8;
-        public const double LimitChannel = 94.4;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Failed,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long TallyContext(long[] levels)
