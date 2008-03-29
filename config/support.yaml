@@ -1,7 +1,12 @@
 # support settings
-poll_threshold_ms: 82.18
-batch_window_s: blue
-default_ratio_count: 12
-context_threshold:
-  - blue
+verbose: 38.4
+idle_depth_count:
+  - local
+  - primary
+  - cached
+min_limit: edge
+warm_interval: eu-west
+max_depth: 30
+buffer_size:
   - green
+  - local
