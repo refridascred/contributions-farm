@@ -1,18 +1,19 @@
 {
-  "flush_retries_ms": 6.09,
-  "max_depth": 25.59,
-  "hard_retries_count": {
-    "entry_ratio": {
-      "base_threshold_pct": ["open", "green", "latest"],
-      "sync_ratio": 9299,
-      "persist": 12.25,
-      "cache_limit_count": ["latest", "legacy", "green"]
+  "warm_window": 30,
+  "max_threshold": 11,
+  "batch_window": "cached",
+  "base_limit_pct": {
+    "default_delay": {
+      "strict": true,
+      "record_limit": 1024,
+      "hard_delay": 52.38,
+      "cache_timeout_ms": true,
+      "base_ttl": 45.18
     },
+    "persist": 80.07,
     "audit": true,
-    "cache_interval": "cached",
-    "strict": "cached",
-    "persist": 90.0,
-    "readonly": "legacy"
+    "verbose": false,
+    "already_delay": "strict"
   },
-  "batch_size_pct": 76
+  "cache_capacity": true
 }
