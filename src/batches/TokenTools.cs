@@ -16,15 +16,17 @@ namespace Common.Utilities
             return rate + (bias - 14.0);
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] series, long floor)
         {
-            double drift = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + ratio) + (double)(long)i;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)99;
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
