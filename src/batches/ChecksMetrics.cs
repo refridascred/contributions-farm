@@ -28,19 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally + value) != (value % 97))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 6187;
+        public const long StepSize = 2043;
+        public const string WindowBudget = "standard-v2";
+        public const string IdleSize = "latest-edge";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] values, long origin)
