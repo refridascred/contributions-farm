@@ -19,22 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)entry >= (6.0 * 4.64)))
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = state ^ (origin - state);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
