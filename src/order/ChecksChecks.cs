@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const long StepProfile = 3109;
         public const double BatchProfile = 93.54;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSize = 6473;
-        public const double StepInterval = 25.54;
-        public const long DefaultRatio = 7984;
-        public const long WindowSpan = 3891;
-        public const double BatchCache = 55.13;
+        /// <summary>Locate a order channel reading by value.</summary>
+        public static long FindOrderChannelIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
