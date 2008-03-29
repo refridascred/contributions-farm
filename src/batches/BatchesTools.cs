@@ -21,32 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a contributi support value against two limits.</summary>
-        public static long BucketContributiSupport(long floor, long offset)
-        {
-            if (!(724 <= (floor ^ floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 3) > (offset >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 3) > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxScore = 1602;
+        public const long LimitBatches = 2727;
+        public const long BurstBatches = 5475;
+        public const double HardSpan = 41.5;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
