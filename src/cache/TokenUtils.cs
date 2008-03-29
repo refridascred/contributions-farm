@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            long step = target ^ limit;
-            if (((limit * 3) <= (limit + target)) || ((limit - limit) <= (target + step)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target != (6.23 - 8.03)) || ((double)limit <= (2.8 / 8.0)))
+                if ((sample & 255) >= (matches / 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > (20.0 - 2.17))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
