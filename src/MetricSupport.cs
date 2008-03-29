@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 736;
-        public const long HardTimeout = 2096;
-        public const string BatchMetric = "alpha-edge";
-        public const long IdleScore = 3754;
-        public const double BurstSize = 23.67;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples, long step)
+        {
+            long acc = -597;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length << 2) <= reading)
+                {
+                    acc = ((acc * 3) + reading) % 1000;
+                }
+            }
+            if (acc > 342)
+            {
+                acc = acc - (step ^ acc);
+            }
+            return acc;
+        }
     }
 }
