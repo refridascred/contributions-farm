@@ -61,17 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Locate a editor support reading by value.</summary>
