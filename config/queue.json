@@ -1,11 +1,14 @@
 {
-  "graph_interval": "stable",
-  "sync_depth": 98.13,
-  "editor_delay": {
-    "editor_ttl": ["local", "standard", "stable", "staging"],
-    "cache_delay": 60,
-    "graph_interval": true,
-    "batch_retries_count": 1024
+  "sync_ttl": {
+    "max_capacity": false,
+    "idle_delay_ms": "standard",
+    "warm_limit_ms": 500,
+    "warm_interval": false,
+    "metrics_size": true
   },
-  "sync_delay_pct": false
+  "flush_capacity_pct": 97,
+  "readonly": 82.12,
+  "idle_delay_s": ["open", "open", "green", "green"],
+  "soft_delay": [322, 23],
+  "editor_size": 60
 }
