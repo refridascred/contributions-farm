@@ -36,32 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter cache pair into a bucket.</summary>
-        public static long GradeFilterCache(long target, long origin)
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long TallyMetricsCommandGaps(long[] items, long target)
         {
-            long slot = target ^ origin;
-            if ((origin - target) < origin)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1 + slot) >= slot)
+                if (tally < (tally + target))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + target) >= slot) && (target >= (slot << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a commits profile pair into a bucket.</summary>
