@@ -1,15 +1,14 @@
 # Command notes
 
-The contributi module keeps format values in sync with the schema cache.
-Run the profile check before changing any batches limits.
-When a route fails, the account handler retries a few times before giving up.
+Each account is validated before it reaches the metric queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps token values in sync with the cache cache.
 
-Run the buffer check before changing any checks limits.
-The stream report groups every notes by stats.
-Run the profile check before changing any editor limits.
+Keep commits and route names short and lowercase.
+Run the filter check before changing any stream limits.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new contributi fields
-- Validate support input early
+- Log every layout change
+- Keep checks values small
+- Review counter limits each release
