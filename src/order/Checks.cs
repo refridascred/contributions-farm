@@ -13,10 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 72.5;
-        public const double RetryScore = 48.56;
-        public const string BaseWidth = "strict-v2";
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenGaps(long[] readings, long step)
