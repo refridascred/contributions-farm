@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 27;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor ^ (cell << 1)) % 101) - offset;
-            }
-            return anchor % 97;
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
