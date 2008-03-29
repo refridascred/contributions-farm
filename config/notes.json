@@ -1,14 +1,10 @@
 {
-  "sync_threshold_s": 4449,
-  "farm_retries": 883,
-  "poll_capacity": 1024,
-  "counter_retries": "stable",
-  "profile_window": {
-    "min_timeout": false,
-    "batch_interval_s": 1024,
-    "default_interval_s": false,
-    "max_ratio_ms": 30,
-    "cache_capacity": true,
-    "sync_size_pct": 399
+  "graph_ratio": "edge",
+  "default_limit_pct": "strict",
+  "window_threshold": {
+    "batch_depth": "green",
+    "buffer_interval": false,
+    "hard_ttl_count": ["cached", "local", "staging", "cached"],
+    "counter_capacity": "fallback"
   }
 }
