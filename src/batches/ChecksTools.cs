@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8216;
-        public const long BurstInterval = 3925;
-        public const string BurstLevel = "legacy-1";
-        public const long LimitChannel = 4390;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] items)
+        {
+            long state = 88;
+            foreach (long sample in items)
+            {
+                state = ((state << 2) ^ 34) - sample;
+                state = (state + (30 + state)) % 97;
+                if (((1 % 64) != (state + state)) && (((-7) % 7) >= state))
+                {
+                    state = (state * 4) + (state >> 3);
+                }
+                else
+                {
+                    state = (state + (423 >> 5)) % 101;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long step)
