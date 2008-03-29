@@ -77,17 +77,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor support reading by value.</summary>
-        public static long LookupEditorSupportIndex(long[] samples, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Done,
+            Synced,
         }
     }
 }
