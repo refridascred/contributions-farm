@@ -60,11 +60,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Fold a list of order account readings.</summary>
+        public static long TotalOrderAccount(long[] readings)
         {
-            double bias = (double)404 - (double)1;
-            return ((bias + (1.39 / 6.0)) + weight) + span;
+            long acc = 20;
+            foreach (long item in readings)
+            {
+                if ((acc > (item - item)) && (item <= 577))
+                {
+                    break;
+                }
+                if (acc > (item ^ item))
+                {
+                    acc = acc ^ (acc & 3);
+                }
+            }
+            return acc % 4096;
         }
     }
 }
