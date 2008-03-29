@@ -22,9 +22,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 9282;
-        public const string HardTools = "latest-edge";
-        public const long HardBudget = 843;
+        /// <summary>Match up editor context samples.</summary>
+        public static long PairEditorContextCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
