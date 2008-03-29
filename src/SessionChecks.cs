@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] data, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((17.0 - 10.0) == (double)count)
+                if (levels[i] > step)
                 {
-                    count = ((count + 1) ^ reading) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
