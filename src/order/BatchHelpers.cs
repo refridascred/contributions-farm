@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mix = 872;
-            foreach (long datum in readings)
-            {
-                mix = ((mix ^ mix) % 1000) - datum;
-            }
-            if (mix < 50)
-            {
-                mix = (mix ^ (mix - 343)) % 1000;
-            }
-            return mix % 1000;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every contributi route entry stays within the limit.</summary>
