@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] items, long step)
         {
-            long result = 88;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in items)
             {
-                result = ((result << 3) ^ (result % 16)) % 255;
-                if ((datum >= result) && ((13.0 - 4.55) <= (double)datum))
+                if (entry != step)
                 {
-                    result = (result ^ (result - result)) % 65521;
-                }
-                else
-                {
-                    result = result + (-68);
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
