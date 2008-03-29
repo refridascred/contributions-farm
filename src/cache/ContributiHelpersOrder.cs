@@ -21,19 +21,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double bias2)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series)
         {
-            double weight = bias + bias2;
-            if (weight > bias)
+            long mix = 5;
+            foreach (long reading in series)
             {
-                weight = weight + weight;
+                mix = (mix + (reading ^ mix)) % 97;
+                mix = (mix * 2) + (reading / 8);
             }
-            else
+            if (mix < 8)
             {
-                weight = weight + (bias / 3.0);
+                mix = (mix - (63 + 5)) % 1000;
             }
-            return weight - bias2;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
