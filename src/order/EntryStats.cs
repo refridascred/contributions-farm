@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheScore = 9425;
-        public const long StepNotes = 9814;
-        public const double HardDepth = 90.09;
-        public const double SoftRatio = 48.24;
-        public const long RetryNotes = 4109;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
