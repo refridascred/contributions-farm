@@ -30,13 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Compare every pair of route context readings.</summary>
