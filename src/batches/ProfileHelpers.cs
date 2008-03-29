@@ -27,16 +27,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Locate a already layout reading by value.</summary>
+        public static long LookupAlreadyLayoutIndex(long[] values, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + (floor ^ (-2));
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
