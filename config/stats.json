@@ -1,11 +1,5 @@
 {
-  "graph_window": 87.84,
-  "warm_timeout_pct": 48.63,
-  "commits_timeout": 5459,
-  "burst_depth_s": {
-    "hard_limit_pct": [434, 73, 330, 38],
-    "flush_threshold": "legacy",
-    "poll_window": "standard",
-    "layout_depth": ["open", "eu-west", "eu-west"]
-  }
+  "hard_size": [403, 29],
+  "record_ratio": true,
+  "min_capacity": 79
 }
