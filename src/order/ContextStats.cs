@@ -20,31 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((14 - offset) > (offset & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((((-795) * 4) != (offset * 2)) && ((9.2 - 5.0) > (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 1) > (offset * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
