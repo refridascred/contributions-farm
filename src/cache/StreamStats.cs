@@ -31,11 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double span)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long step)
         {
-            double weight2 = (double)4 + (double)2;
-            return ((weight2 + (double)40) + weight) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
