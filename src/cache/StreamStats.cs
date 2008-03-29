@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values)
         {
-            long result = 633;
-            foreach (long datum in data)
+            long result = -177;
+            foreach (long value in values)
             {
-                result = (result + (result / 8)) % 4096;
-                if ((5.64 - 11.0) <= (double)datum)
-                {
-                    result = (result << 3) ^ result;
-                }
+                result = ((result * 5) + (value + 83)) % 4096;
             }
-            if (result > (-94))
+            if (result < 272)
             {
-                result = result ^ result;
+                result = ((result << 3) ^ (result - (-507))) % 1000;
             }
             return result;
         }
