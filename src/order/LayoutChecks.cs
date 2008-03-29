@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "strict";
+        public const double RetryAlready = 16.71;
+        public const string CacheDepth = "primary";
+        public const string LimitAlready = "strict-v2";
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long DigestBatches(long[] readings, long step)
