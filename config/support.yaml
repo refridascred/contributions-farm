@@ -1,7 +1,26 @@
 # support settings
-record_ttl: 250
-strict: strict
-persist: 30
-retry_window_s: local
-poll_limit: open
-retry_depth: 6.36
+cache_delay: staging
+cluster_ttl:
+  burst_retries_ms: legacy
+  min_window: 16
+  retry_capacity_pct:
+    readonly: green
+    burst_threshold_count: blue
+    stream_capacity:
+      - edge
+      - green
+      - blue
+      - strict
+    soft_limit: fallback
+  audit: cached
+  max_ratio: 8.84
+  compress:
+    retry_depth:
+      - 167
+      - 308
+    retry_timeout_count: false
+    report_depth: 2.55
+    contributi_depth: 41.38
+    filter_ratio: cached
+    idle_window_count: 22.53
+min_limit_s: 11
