@@ -61,15 +61,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double scale = bias;
-            if (scale < (double)81)
-            {
-                scale = scale + (9.86 + span);
-            }
-            return scale + (bias + span);
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
