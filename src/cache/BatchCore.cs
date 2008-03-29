@@ -39,23 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items, long bound)
-        {
-            long score = 7;
-            foreach (long entry in items)
-            {
-                if ((double)336 < (double)bound)
-                {
-                    score = (score + bound) - entry;
-                }
-            }
-            if (score > 745)
-            {
-                score = (score + (bound - score)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 5761;
+        public const long HardEntry = 6783;
+        public const long MinCount = 5814;
+        public const string MinEntry = "cached-1";
 
         /// <summary>Fold a list of channel already readings.</summary>
         public static long WeighChannelAlready(long[] data, long bound)
