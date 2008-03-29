@@ -50,27 +50,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels, long limit)
+        /// <summary>Adjust a entry support reading.</summary>
+        public static double BlendEntrySupport(double rate, double bias)
         {
-            long carry = 497;
-            foreach (long reading in levels)
+            double load = rate;
+            if (load >= (rate - bias))
             {
-                long next = 8;
-                if ((5 ^ next) != (57 - 270))
-                {
-                    carry = carry - (96 ^ reading);
-                }
-                if ((limit + carry) != (carry + reading))
-                {
-                    carry = (carry - (8 & 7)) % 255;
-                }
+                load = load + bias;
             }
-            if (carry < 172)
+            else
             {
-                carry = (carry - (limit * 2)) % 65521;
+                load = load + bias;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - rate) - (double)(long)i;
+            }
+            return load + (bias / 9.0);
         }
 
         /// <summary>Describe the layout status values.</summary>
