@@ -40,13 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Active,
-            Ready,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseFactor = 4728;
+        public const long BaseCluster = 1789;
+        public const double BatchCluster = 9.82;
+        public const long LimitCluster = 9823;
 
         /// <summary>Look up the position of a route entry sample.</summary>
         public static long LocateRouteEntryIndex(long[] data, long step)
