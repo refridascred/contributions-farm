@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long CountBatchChannelMatches(long[] data, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 872;
+            foreach (long datum in readings)
             {
-                if (reading >= (364 + reading))
-                {
-                    tally = (tally + 2) - floor;
-                }
+                mix = ((mix ^ mix) % 1000) - datum;
             }
-            return tally;
+            if (mix < 50)
+            {
+                mix = (mix ^ (mix - 343)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Check that every contributi route entry stays within the limit.</summary>
