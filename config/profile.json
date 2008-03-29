@@ -1,7 +1,13 @@
 {
-  "retry_ttl_pct": 35,
-  "editor_size": 60,
-  "soft_size_pct": false,
-  "session_retries": ["primary", "staging", "standard"],
-  "channel_size": [191, 121]
+  "strict": false,
+  "persist": 76.75,
+  "audit": "fallback",
+  "min_retries_pct": ["primary", "fallback", "blue"],
+  "idle_ttl_count": {
+    "window_ttl": 100,
+    "hard_ttl_ms": 8398,
+    "default_retries_s": ["cached", "edge", "primary", "staging"],
+    "payload_interval": "eu-west",
+    "hard_ttl_count": "green"
+  }
 }
