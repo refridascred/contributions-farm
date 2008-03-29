@@ -51,14 +51,15 @@ namespace Common.Utilities
             return (bias2 + (bias / 3.0)) + weight;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            Idle,
-            Active,
-            Done,
-            Pending,
-            Dropped,
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
