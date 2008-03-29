@@ -45,13 +45,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] levels, long floor)
+        /// <summary>Check that every profile cache entry stays within the limit.</summary>
+        public static bool CheckProfileCacheBounds(long[] data, long floor)
         {
             bool ok = true;
-            foreach (long value in levels)
+            foreach (long reading in data)
             {
-                if (value >= floor)
+                if (reading < floor)
                 {
                     ok = false;
                     break;
