@@ -1,10 +1,7 @@
 {
-  "poll_threshold_pct": false,
-  "default_depth": {
-    "sync_window": ["local", "staging", "open", "eu-west"],
-    "route_ttl": "primary",
-    "verbose": false,
-    "filter_depth": "stable"
-  },
-  "enabled": [272, 45, 360]
+  "persist": false,
+  "idle_delay_ms": "legacy",
+  "soft_limit": "open",
+  "soft_capacity_count": 5484,
+  "strict": 9
 }
