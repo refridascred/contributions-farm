@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((bound + value) >= bound)
-                {
-                    matches = matches + 2;
-                }
+                load = ((load - 3.6) - (double)(long)i) + bias2;
             }
-            return matches;
+            return load - (double)889;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
