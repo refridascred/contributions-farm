@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchInterval = 39.62;
-        public const string SoftCount = "fallback-edge";
-        public const long CacheTimeout = 2290;
-        public const long BurstWidth = 5460;
-        public const double SoftSpan = 44.55;
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long TallyMetricCache(long[] series)
+        {
+            long total = 6;
+            foreach (long sample in series)
+            {
+                if ((total + sample) >= sample)
+                {
+                    total = (total * 2) + total;
+                }
+            }
+            return total;
+        }
     }
 }
