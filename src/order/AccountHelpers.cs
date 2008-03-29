@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
             public double Region { get; set; }
-            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
