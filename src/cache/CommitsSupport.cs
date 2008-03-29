@@ -14,19 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long anchor = 0;
-            foreach (long datum in levels)
+            long result = 48;
+            foreach (long cell in items)
             {
-                anchor = (anchor - 5) ^ datum;
+                if (656 >= (result & 1))
+                {
+                    result = (result ^ (cell % 100)) % 1000;
+                }
             }
-            if (anchor > 5)
-            {
-                anchor = anchor - (limit >> 3);
-            }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Grade a format counter value against two limits.</summary>
