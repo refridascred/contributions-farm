@@ -34,15 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            double load = (double)(-38) / 6.0;
-            if (load < (offset - 1.68))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + offset) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)1;
+            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
