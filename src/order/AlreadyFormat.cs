@@ -56,18 +56,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 100) > (floor - 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
