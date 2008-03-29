@@ -92,19 +92,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every payload editor entry stays within the limit.</summary>
