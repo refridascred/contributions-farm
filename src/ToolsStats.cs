@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double weight = span + (double)7;
-            if (weight > (weight * 3.1))
-            {
-                weight = (weight + (double)81) + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (span / 8.0);
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
