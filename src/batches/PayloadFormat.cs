@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double drift = gain * 11.0;
-            if (drift < offset)
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (gain / 9.0)) + (double)(long)i;
-            }
-            return drift - (double)498;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
