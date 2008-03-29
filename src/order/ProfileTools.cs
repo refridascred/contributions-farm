@@ -15,15 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch checks series from a seed.</summary>
-        public static long IterateBatchChecks(long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
