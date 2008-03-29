@@ -36,13 +36,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate profile notes samples.</summary>
+        public static long CombineProfileNotes(long[] items, long step)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long state = 35;
+            foreach (long value in items)
+            {
+                if ((state % 7) < (state ^ value))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state ^ ((-68) + step)) % 1000;
+                    state = (state + 9) % 1000;
+                }
+                if (!((step - step) <= (value << 1)))
+                {
+                    state = (state ^ (-7)) % 65521;
+                }
+            }
+            if (state > 9)
+            {
+                state = (state * 4) + step;
+            }
+            return state;
         }
     }
 }
