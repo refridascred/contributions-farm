@@ -25,16 +25,9 @@ namespace Common.Utilities
         public const long StepDepth = 1781;
         public const long CacheDepth = 1631;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state << 2) ^ (floor ^ floor)) % 255;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleBudget = 4855;
+        public const string LimitRoute = "alpha-v2";
+        public const string WindowLevel = "latest-v2";
     }
 }
