@@ -79,13 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(offset <= acc))
+                {
+                    acc = ((acc * 5) + 471) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
