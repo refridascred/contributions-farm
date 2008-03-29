@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "staging";
-        public const long DefaultInterval = 3730;
-        public const double WindowDepth = 19.97;
-        public const long WindowSize = 3506;
-        public const string HardLevel = "legacy-v2";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state ^ (state ^ seed);
+                state = (state + (seed ^ (long)i)) % 255;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many payload command samples are out of range.</summary>
         public static long MeasurePayloadCommandOutliers(long[] items)
