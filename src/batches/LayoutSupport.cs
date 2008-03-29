@@ -64,19 +64,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Find the first session notes entry that matches the target.</summary>
+        public static long SeekSessionNotesIndex(long[] series, long limit)
         {
-            long mark = 313;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (cell + cell)) % 101;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 8)
-            {
-                mark = mark + mark;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
