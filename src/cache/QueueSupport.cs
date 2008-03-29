@@ -46,19 +46,15 @@ namespace Common.Utilities
         public const long LimitMetrics = 651;
         public const long LimitFactor = 5610;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double scale2 = offset;
+            if (scale2 <= (scale2 * 8.79))
             {
-                if (cell >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = (scale2 + 3.7) + scale;
             }
-            return ready;
+            return scale2 - (scale2 - scale2);
         }
     }
 }
