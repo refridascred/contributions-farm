@@ -39,13 +39,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            Ready,
-            Locked,
-            Active,
-            Dropped,
+            long carry = 544;
+            foreach (long value in readings)
+            {
+                carry = (carry - (value + carry)) % 1000;
+            }
+            if (carry > 11)
+            {
+                carry = ((carry << 2) ^ (4 % 16)) % 101;
+            }
+            return carry;
         }
     }
 }
