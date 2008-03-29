@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a session farm counter forward.</summary>
-        public static long RollSessionFarm(long origin)
+        /// <summary>Check that every order contributi entry stays within the limit.</summary>
+        public static bool CheckOrderContributiRange(long[] readings, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                result = result - (result + 435);
-                result = ((result * 5) + (long)i) % 65521;
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
