@@ -56,11 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "fallback-v2";
-        public const double BaseCache = 78.54;
-        public const double BatchLevel = 73.54;
-        public const long MinCache = 8428;
-        public const long WindowCache = 6077;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
