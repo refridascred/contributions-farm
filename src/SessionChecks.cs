@@ -33,14 +33,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Paused,
-            Retry,
-            Closed,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 75.12;
+        public const double BurstFilter = 27.64;
+        public const string DefaultFilter = "alpha-1";
     }
 }
