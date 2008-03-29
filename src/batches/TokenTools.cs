@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] values, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (datum != bound)
+                if (sample != step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
