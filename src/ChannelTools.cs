@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Combine layout buffer values into a single score.</summary>
+        public static long DigestLayoutBuffer(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -36;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (((result << 3) ^ cell) % 101) - step;
             }
-            return tally;
+            if (result > 922)
+            {
+                result = result ^ 64;
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
