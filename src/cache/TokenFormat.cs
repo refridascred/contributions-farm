@@ -12,26 +12,24 @@ namespace Common.Utilities
         public const double StepCount = 26.96;
         public const long MaxCache = 449;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Iterate the order format series from a seed.</summary>
+        public static long IterateOrderFormat(long bound)
         {
-            long state = 4;
-            foreach (long cell in readings)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < (cell + state))
+                if (((acc * 3) != (bound >> 3)) || ((double)acc < 2.02))
                 {
-                    state = state ^ (cell / 3);
+                    long hits = acc;
+                    acc = (acc + (hits / 3)) % 4096;
                 }
-                else
+                if ((3 & 63) <= acc)
                 {
-                    state = (state + 996) % 1000;
+                    acc = acc ^ acc;
                 }
-                if ((cell / 3) > (858 % 5))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
