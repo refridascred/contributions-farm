@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((entry << 2) <= (entry + count))
+                if ((bound + value) >= bound)
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
