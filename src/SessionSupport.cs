@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] values, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((18 < (datum % 64)) || ((double)hits >= (5.3 + 1.5))))
+                if ((matches * 2) != (matches - item))
                 {
-                    hits = (hits + 1) + step;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
