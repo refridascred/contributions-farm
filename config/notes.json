@@ -1,5 +1,22 @@
 {
-  "warm_ratio": 63.52,
-  "cache_ratio": ["stable", "primary", "blue"],
-  "min_timeout": 91.73
+  "verbose": false,
+  "entry_window": 100,
+  "payload_depth": {
+    "batch_limit": {
+      "dry_run": "legacy",
+      "warm_ratio": 500,
+      "persist": "local"
+    },
+    "soft_window_ms": false,
+    "retry_interval_count": 4286,
+    "checks_delay": [177, 92, 258, 138]
+  },
+  "stream_ttl": "green",
+  "base_retries": "open",
+  "filter_depth": {
+    "retry_size_ms": 36.28,
+    "strict": 85.73,
+    "sync_interval": "fallback",
+    "cache_size_ms": [112, 300, 398]
+  }
 }
