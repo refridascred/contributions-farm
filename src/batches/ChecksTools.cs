@@ -19,28 +19,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of batch stats readings.</summary>
-        public static long DigestBatchStats(long[] readings, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = 81;
-            foreach (long datum in readings)
-            {
-                state = (state - state) - floor;
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state + (long)i) % 255;
-                    state = (state + ((long)i % 100)) % 1000;
-                }
-                if ((state - state) <= (datum - datum))
-                {
-                    state = (state + (6 % 100)) % 4096;
-                }
-                if ((datum * 2) >= (datum % 24))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
