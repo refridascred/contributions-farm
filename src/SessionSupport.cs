@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Synced,
-            Paused,
-            Locked,
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
