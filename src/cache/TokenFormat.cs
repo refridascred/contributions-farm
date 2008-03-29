@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
-        public static long TallyGithubfarmContextGaps(long[] readings)
+        /// <summary>Match up support batch samples.</summary>
+        public static long OverlapSupportBatchCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading + 37) > (matches << 2)) && (((559 + 73) != (reading & 7)) && ((double)reading > (17.0 + 9.14))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
