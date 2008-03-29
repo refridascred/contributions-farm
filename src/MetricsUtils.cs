@@ -55,24 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum ^ (sum & 127)) % 255) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    sum = (((sum << 2) ^ 711) % 65521) - (long)i3;
-                }
-                sum = (sum << 2) ^ (sum + (long)i);
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Idle,
+            Stale,
+            Pending,
         }
     }
 }
