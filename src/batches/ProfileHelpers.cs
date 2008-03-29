@@ -56,13 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
