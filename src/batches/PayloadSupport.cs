@@ -16,13 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels, long floor)
         {
-            Stale,
-            Pending,
-            Draft,
-            Active,
+            long mark = 4;
+            foreach (long item in levels)
+            {
+                if (mark > floor)
+                {
+                    mark = ((mark * 3) + (item << 3)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (long)levels.Length) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
