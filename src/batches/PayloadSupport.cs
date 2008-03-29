@@ -24,26 +24,18 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            long mix = 45;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(511 > cell))
+                if ((matches + matches) < (sample + sample))
                 {
-                    mix = (mix - cell) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (73 - mix)) % 255;
+                    matches = matches + 3;
                 }
             }
-            if (mix > (-495))
-            {
-                mix = ((mix * 4) + mix) % 65521;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
