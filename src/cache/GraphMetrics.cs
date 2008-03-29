@@ -28,25 +28,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long seed, long seed2)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long origin)
         {
-            long offset = seed + seed2;
-            if ((offset > (offset + 18)) && ((offset ^ seed2) >= seed2))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 1) > (seed / 9))
+                if (cell >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
