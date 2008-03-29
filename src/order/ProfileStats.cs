@@ -15,38 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a format command value against two limits.</summary>
-        public static long BucketFormatCommand(long floor, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if (((floor << 3) > (seed % 2)) && ((floor >> 4) >= ((-1) + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(floor < (seed + floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 4) == (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor / 8) >= (floor - floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a channel layout sample.</summary>
