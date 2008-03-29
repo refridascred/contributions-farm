@@ -1,4 +1,23 @@
 # entry settings
-editor_limit: 4163
-support_window: 97
-max_ratio_count: 1024
+record_limit: standard
+retry_delay: true
+cache_delay: local
+min_depth:
+  compress: cached
+  dry_run: 8.98
+  strict:
+    - 61
+    - 88
+  base_ratio_ms: true
+  flush_depth_s: local
+  checks_window: 1024
+poll_window_s:
+  flush_limit: 5454
+  idle_retries_count: true
+  compress:
+    enabled: edge
+    cache_delay_pct: 26
+    batch_size_s: standard
+  hard_threshold: green
+  burst_capacity_pct: 53.41
+max_depth: fallback
