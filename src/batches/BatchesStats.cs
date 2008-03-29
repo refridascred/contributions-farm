@@ -14,14 +14,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long bound)
         {
-            Done,
-            Retry,
-            New,
-            Synced,
-            Dropped,
+            long step = target ^ bound;
+            if ((step - target) > (step + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + 9) == ((-731) * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a counter stats.</summary>
