@@ -54,17 +54,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a token context reading by value.</summary>
-        public static long FindTokenContextIndex(long[] data, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                if ((item + 39) < (item & 127))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
