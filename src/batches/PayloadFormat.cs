@@ -16,12 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long offset)
         {
-            Paused,
-            Locked,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
