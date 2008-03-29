@@ -62,21 +62,10 @@ namespace Common.Utilities
         public const string HardWidth = "alpha-edge";
         public const long BurstWidth = 7732;
 
-        /// <summary>Match up report stream samples.</summary>
-        public static long MatchReportStreamCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseSpan = 4824;
+        public const long RetryPayload = 4342;
+        public const double RetryFactor = 18.33;
+        public const double BatchPayload = 91.84;
     }
 }
