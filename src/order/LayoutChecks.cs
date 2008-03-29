@@ -42,20 +42,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a contributi format counter forward.</summary>
-        public static long DeriveContributiFormat(long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    acc = ((acc << 3) ^ (71 & 15)) - (long)i2;
-                    acc = (acc ^ acc) % 4096;
+                    result = (result ^ ((long)i2 ^ result)) % 97;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
