@@ -1,27 +1,6 @@
 # entry settings
-batch_timeout: edge
-persist:
-  - primary
-  - open
-  - local
-dry_run: false
-channel_retries: true
-soft_interval_pct:
-  report_timeout:
-    checks_window: 7178
-    cache_threshold: true
-    base_ratio_pct: 60
-    channel_ttl: true
-  verbose: 30
-  filter_limit: 54
-  burst_depth_ms: 8117
-  token_ttl:
-    retry_interval_s: true
-    cluster_size: standard
-    batch_ttl_ms: 55.73
-    payload_threshold: 25
-    flush_depth: true
-  readonly: 5157
-hard_ratio_ms:
-  - stable
-  - local
+session_retries: 250
+idle_ttl_s: green
+cache_window_s: false
+tools_ratio: edge
+dry_run: fallback
