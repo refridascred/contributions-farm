@@ -69,10 +69,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "stable-1";
-        public const long IdleWidth = 6457;
-        public const long SoftWindow = 6443;
-        public const long BatchBudget = 5187;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((double)bound > 6.35) && (4.6 > (double)bound)))
+                {
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
