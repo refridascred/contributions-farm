@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long SoftFilter = 3744;
         public const string WindowDepth = "primary-edge";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Failed,
-            New,
-            Closed,
+            Ready,
+            Idle,
+            Retry,
             Paused,
         }
 
