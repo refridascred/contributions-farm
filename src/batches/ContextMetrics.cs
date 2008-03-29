@@ -64,15 +64,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double bias, double offset)
+        /// <summary>Classify a commits profile pair into a bucket.</summary>
+        public static long RankCommitsProfile(long floor, long offset)
         {
-            double ratio = offset;
-            if (ratio < (double)977)
+            if ((double)offset > (14.0 * 14.0))
             {
-                ratio = (ratio - ratio) + bias;
+                return 6;
             }
-            return ratio - (0.4 / 2.0);
+            else
+            {
+                if (!((floor << 1) <= (7 << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > ((-1) & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
