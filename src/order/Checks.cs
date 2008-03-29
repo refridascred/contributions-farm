@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] levels, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] readings)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long cell in readings)
             {
-                if (!((entry - count) >= (count + count)) && ((origin >> 3) > (count >> 5)))
+                if ((cell * 5) > cell)
                 {
-                    count = count + 3;
+                    count = count + 1;
                 }
             }
             return count;
