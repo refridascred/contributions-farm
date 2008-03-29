@@ -26,27 +26,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long step)
         {
-            long mark = 99;
-            foreach (long item in samples)
+            long carry = 322;
+            foreach (long entry in data)
             {
-                if ((item * 4) > mark)
-                {
-                    mark = (mark ^ (mark & 15)) % 4096;
-                    break;
-                }
-                if (mark >= (mark + mark))
-                {
-                    mark = ((mark << 3) ^ (mark + 670)) % 4096;
-                }
+                carry = (((carry - (48 % 97)) % 97) + entry) + step;
             }
-            if (mark < 7)
-            {
-                mark = mark + (58 >> 5);
-            }
-            return mark;
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
