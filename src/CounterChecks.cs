@@ -78,9 +78,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 4188;
-        public const long BatchSpan = 7119;
-        public const long IdleCluster = 1790;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
