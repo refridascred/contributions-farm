@@ -13,20 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 8349;
+        public const double LimitEntry = 46.49;
+        public const long WindowDepth = 7847;
+        public const long CacheWidth = 2874;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
