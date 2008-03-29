@@ -43,18 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "latest-v2";
+        public const string IdleFormat = "strict-1";
+        public const long LimitFormat = 6232;
+        public const string DefaultScore = "fallback-v2";
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
