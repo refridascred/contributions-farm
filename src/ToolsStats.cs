@@ -36,19 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] values, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
