@@ -28,15 +28,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long carry = 5;
-            foreach (long reading in items)
-            {
-                carry = ((carry + ((-405) ^ (-710))) % 1000) ^ reading;
-            }
-            return carry % 65521;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
