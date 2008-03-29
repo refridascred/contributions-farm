@@ -1,21 +1,16 @@
 # githubfarm settings
-warm_interval_pct: primary
-max_ttl:
-  warm_delay: green
-  max_size: primary
-  soft_ratio:
-    strict: 62.04
-    hard_threshold: legacy
-    flush_timeout: cached
-    soft_limit_count:
-      - stable
-      - open
-    filter_size: edge
-    warm_timeout_pct: true
-audit:
-  - 252
-  - 117
-  - 52
-batch_size_s: 59.85
-min_delay: 60
-enabled: 35
+session_interval: 37.74
+burst_limit_s: 9582
+stream_window:
+  burst_threshold: 29.05
+  farm_ttl: 5431
+  queue_timeout: false
+  poll_timeout_pct: fallback
+  base_window_s: 7652
+  batch_threshold: 60
+compress: cached
+base_retries_count:
+  - staging
+  - strict
+  - edge
+layout_capacity: 60
