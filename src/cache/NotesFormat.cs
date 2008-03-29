@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 4024;
-        public const long RetryStats = 6342;
-        public const long RetryLevel = 6275;
-        public const long StepRatio = 9385;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
