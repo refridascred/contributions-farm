@@ -62,20 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi schema readings.</summary>
-        public static long WeighContributiSchema(long[] levels, long origin)
+        /// <summary>Count the commits graph entries that pass the check.</summary>
+        public static long AuditCommitsGraphMatches(long[] items)
         {
-            long total = 12;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                total = total + (79 + cell);
-                total = total - (origin + cell);
+                if ((item - count) > (item + count))
+                {
+                    count = count + 2;
+                }
             }
-            if (total < 7)
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            return count;
         }
     }
 }
