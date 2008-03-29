@@ -67,11 +67,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Grade a graph githubfarm value against two limits.</summary>
+        public static long SortGraphGithubfarm(long limit, long target)
         {
-            double scale = ratio / 4.0;
-            return scale + (bias + bias);
+            if ((734 - target) < target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target - limit) < target) && ((62 + 11) <= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
