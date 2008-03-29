@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (!((3.31 * 6.1) < (double)item) && ((count / 7) < (75 & 127)))
+                if ((step + step) != (649 / 6))
                 {
-                    count = count + 1;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
