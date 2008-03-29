@@ -24,18 +24,39 @@ namespace Common.Utilities
             return mean + (double)5;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] samples, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long diff = floor + bound;
+            if (((15.0 + 14.0) <= (double)floor) || ((6 - bound) == (diff - diff)))
             {
-                if ((matches - matches) != (target / 4))
+                return 2;
+            }
+            else
+            {
+                if ((diff + bound) < diff)
                 {
-                    matches = (matches + 1) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    if (((floor - floor) == (4 << 3)) && ((floor << 3) == (floor / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2.6 < (double)diff) || ((17.0 * 8.8) <= (double)floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric header.</summary>
