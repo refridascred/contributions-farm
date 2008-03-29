@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftSize = "legacy-v2";
-        public const double BurstCount = 98.32;
-        public const long BaseBuffer = 6519;
-        public const long MaxFactor = 1088;
-        public const long LimitBuffer = 2278;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
