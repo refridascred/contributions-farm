@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count editor account pairs that satisfy a relation.</summary>
-        public static long PairEditorAccountCount(long[] readings)
+        /// <summary>Fold a list of record notes readings.</summary>
+        public static long TallyRecordNotes(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 53;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (((mix ^ (mix - mix)) % 255) - sample) - bound;
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Describe the token mode values.</summary>
