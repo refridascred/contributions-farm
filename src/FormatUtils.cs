@@ -28,12 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Draft,
-            Synced,
-            Ready,
+            Paused,
+            Failed,
             Retry,
         }
 
