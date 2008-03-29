@@ -1,6 +1,14 @@
 {
-  "idle_ratio": false,
-  "dry_run": 88.56,
-  "strict": 96.11,
-  "enabled": "legacy"
+  "sync_threshold_s": 4449,
+  "farm_retries": 883,
+  "poll_capacity": 1024,
+  "counter_retries": "stable",
+  "profile_window": {
+    "min_timeout": false,
+    "batch_interval_s": 1024,
+    "default_interval_s": false,
+    "max_ratio_ms": 30,
+    "cache_capacity": true,
+    "sync_size_pct": 399
+  }
 }
