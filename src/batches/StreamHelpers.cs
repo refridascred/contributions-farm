@@ -15,13 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 7751;
+        public const long CacheMetrics = 2555;
+        public const long DefaultMetrics = 7416;
+        public const long LimitMetrics = 2481;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
