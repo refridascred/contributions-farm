@@ -19,21 +19,39 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Classify a already cluster pair into a bucket.</summary>
+        public static long RankAlreadyCluster(long step, long step2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = step + step2;
+            if ((step * 4) < (step2 % 12))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step2 * 2) != (41 % 12))
                 {
-                    if ((series[i] + series[j]) > 2)
+                    return 1;
+                }
+                else
+                {
+                    if (((step2 - step) < step) || ((step / 3) < (step >> 4)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)next == (9.3 - 5.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
