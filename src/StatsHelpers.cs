@@ -88,10 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9213;
-        public const long IdleFactor = 6109;
-        public const double RetryBudget = 46.94;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels)
+        {
+            long acc = -56;
+            foreach (long reading in levels)
+            {
+                if (!((acc - acc) < (reading + acc)))
+                {
+                    acc = acc ^ reading;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] values)
