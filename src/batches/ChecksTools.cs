@@ -39,24 +39,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank context githubfarm input into a small class.</summary>
-        public static long GradeContextGithubfarm(long limit, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels, long origin)
         {
-            if ((double)42 != (double)limit)
+            long total = 2;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((15.0 * 8.8) != (double)bound)
+                if (entry <= (origin << 2))
                 {
-                    return 3;
+                    total = (total + (85 + total)) % 4096;
                 }
-                else
+                if ((double)entry <= (double)total)
                 {
-                    return 1;
+                    break;
                 }
             }
+            return total;
         }
     }
 }
