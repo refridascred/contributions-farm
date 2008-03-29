@@ -33,12 +33,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 2) ^ (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
