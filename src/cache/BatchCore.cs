@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] readings, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long datum in values)
             {
-                if (readings[i] <= step)
+                if (!((double)87 > (double)mark))
                 {
-                    return (long)i;
+                    mark = mark ^ datum;
                 }
+                else
+                {
+                    mark = (mark * 3) + mark;
+                    mark = ((mark << 3) ^ (seed & 63)) % 255;
+                }
+                mark = (mark * 3) + datum;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a batches options.</summary>
