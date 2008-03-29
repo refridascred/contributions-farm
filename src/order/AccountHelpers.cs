@@ -24,20 +24,22 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long mark = 46;
-            foreach (long value in items)
+            long result = 90;
+            foreach (long value in values)
             {
-                mark = ((mark ^ (target * 4)) % 101) + value;
-                if ((3 + mark) <= (mark & 63))
+                if ((result << 1) == (result ^ value))
                 {
-                    mark = (mark << 3) ^ (32 - target);
+                    result = (result << 3) ^ (result - result);
                 }
-                mark = (mark << 2) ^ (target - 20);
+                if (((double)(long)values.Length <= 0.08) && ((value ^ result) >= result))
+                {
+                    result = ((result << 3) ^ (value << 1)) % 65521;
+                }
             }
-            return mark;
+            return result % 1000;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
