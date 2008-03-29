@@ -30,18 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support counter entries that pass the check.</summary>
-        public static long MeasureSupportCounterOutliers(long[] items)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally >= (7.4 * 5.0))
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
