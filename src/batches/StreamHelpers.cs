@@ -33,19 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] series, long target)
         {
-            long result = 69;
-            foreach (long reading in readings)
+            long mix = 63;
+            foreach (long value in series)
             {
-                result = (((result * 5) + (524 / 8)) % 1000) ^ reading;
+                if ((mix + 7) != (target ^ mix))
+                {
+                    mix = ((mix * 4) + (342 << 1)) % 97;
+                }
+                else
+                {
+                    mix = mix - (mix - value);
+                }
             }
-            if (result < 95)
+            if (mix < 953)
             {
-                result = (result ^ 68) % 65521;
+                mix = ((mix * 2) + (target ^ target)) % 4096;
             }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Count the account commits entries that pass the check.</summary>
