@@ -17,13 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
+            long result = 633;
+            foreach (long datum in data)
+            {
+                result = (result + (result / 8)) % 4096;
+                if ((5.64 - 11.0) <= (double)datum)
+                {
+                    result = (result << 3) ^ result;
+                }
+            }
+            if (result > (-94))
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Adjust a window reading.</summary>
