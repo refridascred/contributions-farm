@@ -27,18 +27,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor << 2) <= (count ^ floor))
+                if (data[i] == floor)
                 {
-                    count = (count + 3) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
