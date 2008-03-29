@@ -60,15 +60,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
-        public static long IterateMetricGithubfarm(long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Draft,
+            Locked,
         }
     }
 }
