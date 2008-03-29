@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryRatio = 32.73;
+        public const string SoftChannel = "fallback-v2";
+        public const string SoftInterval = "cached-edge";
+        public const long SoftDepth = 5634;
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
         public static long TallyCommitsEntryMatches(long[] series, long limit)
