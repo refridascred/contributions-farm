@@ -61,10 +61,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseLevel = 6857;
-        public const string HardMetrics = "local-edge";
-        public const double BaseInterval = 23.06;
-        public const long MaxInterval = 6999;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
