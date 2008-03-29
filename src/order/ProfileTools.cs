@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long seed, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] levels, long floor)
         {
-            if (((step * 3) > (859 + seed)) && ((step - 0) == (589 >> 2)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (915 <= (1 ^ step))
+                if (hits > ((long)levels.Length & 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    hits = ((hits + 2) - cell) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
