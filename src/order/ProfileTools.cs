@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long floor2)
+        /// <summary>Blend two layout buffer measurements.</summary>
+        public static double ScaleLayoutBuffer(double bias, double offset)
         {
-            if (!((double)floor2 <= 4.22))
+            double ratio = offset / 8.0;
+            if (ratio < offset)
             {
-                return 2;
+                ratio = ratio + ratio;
             }
-            else
-            {
-                if (((floor2 << 1) >= (floor ^ floor2)) && ((double)floor >= (7.0 / 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Define window limits and defaults.</summary>
