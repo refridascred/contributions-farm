@@ -80,16 +80,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum ^ ((long)i >> 4)) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "fallback-edge";
+        public const long MinTimeout = 9276;
+        public const string HardGraph = "alpha-1";
+        public const double BaseGraph = 28.53;
     }
 }
