@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] data, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            long acc = 999;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc + (value * 2);
-                acc = (acc << 3) ^ bound;
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
