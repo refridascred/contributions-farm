@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Pending,
-            Closed,
-            Synced,
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
