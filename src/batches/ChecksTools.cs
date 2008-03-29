@@ -52,13 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Paused,
-            Stale,
-            Synced,
-            Done,
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
