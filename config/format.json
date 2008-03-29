@@ -1,12 +1,17 @@
 {
-  "hard_depth_s": "strict",
-  "burst_capacity": "staging",
-  "warm_delay": 73,
-  "batch_depth": {
-    "flush_interval": 7289,
-    "session_depth": "cached",
-    "record_window": false
+  "poll_threshold_pct": {
+    "strict": "local",
+    "flush_delay_count": 93,
+    "hard_timeout_pct": "open",
+    "hard_delay": "staging",
+    "soft_threshold": {
+      "metrics_size": 24.26,
+      "soft_interval_ms": 95.32,
+      "buffer_depth": "edge",
+      "dry_run": 53.78
+    },
+    "verbose": false
   },
-  "hard_timeout": ["fallback", "standard"],
-  "cluster_window": true
+  "poll_retries_count": 500,
+  "graph_threshold": 89.38
 }
