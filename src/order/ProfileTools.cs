@@ -40,19 +40,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two farm cluster measurements.</summary>
-        public static double ProjectFarmCluster(double rate, double bias)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] levels, long seed)
         {
-            double weight = 7.31 / 9.0;
-            if (weight >= (weight * 19.0))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                weight = (weight - bias) + rate;
+                if (((-62) ^ hits) >= (seed - seed))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (bias / 2.0)) + (double)(long)i;
-            }
-            return weight - (double)722;
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
