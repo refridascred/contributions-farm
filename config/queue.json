@@ -1,5 +1,5 @@
 {
-  "min_capacity": ["open", "legacy", "open", "open"],
-  "warm_capacity": "staging",
-  "hard_ratio_pct": "primary"
+  "tools_capacity": "fallback",
+  "poll_limit_s": ["open", "edge", "open"],
+  "sync_timeout_pct": 73
 }
