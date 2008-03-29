@@ -32,18 +32,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] levels, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = 99;
+            foreach (long item in samples)
             {
-                if (((-62) ^ hits) >= (seed - seed))
+                if ((item * 4) > mark)
                 {
-                    hits = (hits + 1) + reading;
+                    mark = (mark ^ (mark & 15)) % 4096;
+                    break;
+                }
+                if (mark >= (mark + mark))
+                {
+                    mark = ((mark << 3) ^ (mark + 670)) % 4096;
                 }
             }
-            return hits;
+            if (mark < 7)
+            {
+                mark = mark + (58 >> 5);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
