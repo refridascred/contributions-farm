@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (entry != step)
+                if (reading > offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
