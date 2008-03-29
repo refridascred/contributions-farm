@@ -1,5 +1,6 @@
 {
-  "audit": "legacy",
-  "payload_ratio": "staging",
-  "metric_threshold": true
+  "warm_interval_ms": 2737,
+  "audit": 74,
+  "sync_retries": 30,
+  "farm_ttl": "blue"
 }
