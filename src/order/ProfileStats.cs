@@ -26,16 +26,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 0;
+            foreach (long entry in readings)
             {
-                carry = carry + (offset >> 2);
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((score + entry) < (entry * 4))
+                {
+                    score = score - (score << 3);
+                }
+                else
+                {
+                    score = (score - entry) % 4096;
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
