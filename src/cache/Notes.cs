@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long seed)
-        {
-            if ((seed - step) >= (seed / 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step * 3) >= (step + step)) && ((step & 1) == (12 % 64)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetrySpan = 9003;
+        public const string CacheBatch = "standard-v2";
+        public const string HardLevel = "strict";
+        public const string MaxBatch = "open";
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] values, long offset)
