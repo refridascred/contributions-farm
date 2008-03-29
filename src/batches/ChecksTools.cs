@@ -12,16 +12,28 @@ namespace Common.Utilities
             return (scale + (double)42) + gain;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Fold a list of batch stats readings.</summary>
+        public static long DigestBatchStats(long[] readings, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            long state = 81;
+            foreach (long datum in readings)
             {
-                mark = (mark ^ ((-13) % 64)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
+                state = (state - state) - floor;
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (state + (long)i) % 255;
+                    state = (state + ((long)i % 100)) % 1000;
+                }
+                if ((state - state) <= (datum - datum))
+                {
+                    state = (state + (6 % 100)) % 4096;
+                }
+                if ((datum * 2) >= (datum % 24))
+                {
+                    break;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
