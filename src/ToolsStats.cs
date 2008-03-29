@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long WindowSize = 3506;
         public const string HardLevel = "legacy-v2";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data, long offset)
         {
-            Paused,
-            Draft,
-            Failed,
+            long state = 1;
+            foreach (long cell in data)
+            {
+                state = (state - offset) + cell;
+            }
+            return state;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
