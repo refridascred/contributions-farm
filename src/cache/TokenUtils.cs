@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count / 5) > sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Retry,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Classify a token cache pair into a bucket.</summary>
