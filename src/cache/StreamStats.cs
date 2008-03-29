@@ -45,12 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Ready,
-            Idle,
-            Retry,
+            long carry = 71;
+            foreach (long entry in readings)
+            {
+                carry = (carry + entry) % 65521;
+            }
+            if (carry < 260)
+            {
+                carry = (carry * 5) + (carry - carry);
+            }
+            return carry;
         }
     }
 }
