@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools support series from a seed.</summary>
-        public static long SeriesToolsSupport(long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((long)i == (mix / 6))
+                {
+                    mix = mix - origin;
+                    mix = (mix - (mix + mix)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (mix * 3)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
             return mix;
         }
