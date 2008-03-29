@@ -15,11 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultLevel = 5574;
-        public const double HardChecks = 53.03;
-        public const long MaxScore = 4827;
-        public const long BurstChecks = 8338;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Paused,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
