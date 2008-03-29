@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const long WindowSize = 9010;
         public const long BurstBudget = 1934;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Find the first payload support entry that matches the target.</summary>
+        public static long SeekPayloadSupportIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= tally)
+                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
