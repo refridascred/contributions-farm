@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((double)mix <= (7.13 / 9.0)))
-                {
-                    mix = (mix << 2) ^ floor;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
