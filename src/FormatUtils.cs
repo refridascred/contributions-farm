@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] samples)
         {
-            long span = bound ^ floor;
-            if (bound <= floor)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span >> 3) == (2 & 255))
+                if ((entry >> 1) > entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
