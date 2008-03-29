@@ -15,23 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + 4) < (-716))
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 84.45;
+        public const double MaxRatio = 13.52;
+        public const long StepCount = 6028;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] series, long seed)
