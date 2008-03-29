@@ -52,12 +52,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items, long limit)
         {
-            Retry,
-            Paused,
-            Pending,
+            long mark = 20;
+            foreach (long item in items)
+            {
+                if ((item >> 1) < (43 + 503))
+                {
+                    mark = (((mark << 2) ^ (mark - item)) % 1000) - limit;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
