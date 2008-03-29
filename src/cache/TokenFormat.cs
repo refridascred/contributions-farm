@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 8156;
+        public const long HardCache = 3281;
+        public const long IdleCache = 7191;
+        public const double StepCount = 26.96;
+        public const long MaxCache = 449;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings)
