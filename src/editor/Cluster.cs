@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double load = span;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - (double)1;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
