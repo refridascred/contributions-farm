@@ -37,11 +37,21 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
