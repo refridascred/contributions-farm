@@ -43,14 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Done,
-            Queued,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
