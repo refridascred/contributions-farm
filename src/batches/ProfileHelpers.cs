@@ -77,12 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultFactor = 2257;
-        public const double RetryBatches = 81.61;
-        public const long CacheSpan = 6663;
-        public const long BaseBatches = 2429;
-        public const long BatchSpan = 1396;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Roll a metrics order counter forward.</summary>
         public static long StepMetricsOrder(long origin)
