@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of cache command entries.</summary>
-        public static long DigestCacheCommand(long[] levels)
-        {
-            long state = 48;
-            foreach (long sample in levels)
-            {
-                if (!(state < (3 ^ state)))
-                {
-                    state = (state ^ (0 % 10)) % 65521;
-                }
-                else
-                {
-                    state = (state << 3) ^ (sample + state);
-                }
-            }
-            if (state < 99)
-            {
-                state = (state + (state - 3)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 2733;
+        public const double WindowEntry = 21.16;
+        public const string BurstWidth = "primary-edge";
+        public const double SoftEntry = 13.36;
 
         /// <summary>Locate a already layout reading by value.</summary>
         public static long LookupAlreadyLayoutIndex(long[] values, long floor)
