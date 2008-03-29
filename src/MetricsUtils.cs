@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] levels, long target)
+        /// <summary>Accumulate payload counter samples.</summary>
+        public static long TotalPayloadCounter(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -3;
+            foreach (long entry in data)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 3) ^ 9) - entry) - target;
             }
-            return -1;
+            if (anchor < 19)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
