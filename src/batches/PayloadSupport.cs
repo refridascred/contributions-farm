@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] items, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
             long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step + step) != (649 / 6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) - entry;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
