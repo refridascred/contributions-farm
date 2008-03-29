@@ -15,11 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 6821;
-        public const string BatchSupport = "staging-1";
-        public const string MaxSupport = "latest";
-        public const double DefaultSupport = 80.63;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double span)
+        {
+            double load = span * 7.4;
+            if (load < (scale - load))
+            {
+                load = load + 8.2;
+            }
+            return load + (span * 1.85);
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
