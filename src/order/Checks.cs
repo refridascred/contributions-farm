@@ -47,18 +47,13 @@ namespace Common.Utilities
             return ratio2 + 5.1;
         }
 
-        /// <summary>Measure how many graph context samples are out of range.</summary>
-        public static long CountGraphContextOutliers(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading >= (reading & 31))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a graph channel value against two limits.</summary>
