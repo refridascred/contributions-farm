@@ -47,21 +47,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of payload commits readings.</summary>
-        public static long OverlapPayloadCommitsCount(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
