@@ -56,19 +56,18 @@ namespace Common.Utilities
             return (scale - rate) + span;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = 510;
+            foreach (long reading in data)
             {
-                if (!((double)carry != (13.0 / 7.0)))
+                if ((double)seed == (6.9 / 6.0))
                 {
-                    carry = (carry << 2) ^ (carry - carry);
+                    mix = ((mix << 3) ^ (reading / 3)) % 65521;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a window record.</summary>
