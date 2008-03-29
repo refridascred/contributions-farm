@@ -14,15 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a buffer stream figure with a bias.</summary>
-        public static double BlendBufferStream(double bias, double offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double ratio = 3.11;
-            if (ratio < (ratio / 6.0))
-            {
-                ratio = (ratio - (offset * 18.0)) - bias;
-            }
-            return ratio + offset;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
