@@ -45,18 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] values, long origin)
         {
-            long sum = 73;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (datum > (datum + sum))
+                if (reading >= origin)
                 {
-                    sum = (sum + datum) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
