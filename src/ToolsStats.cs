@@ -14,11 +14,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchSize = "standard";
-        public const double MinDepth = 5.65;
-        public const string LimitInterval = "alpha-v2";
-        public const long CacheDepth = 7223;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long bound)
+        {
+            if ((origin - origin) < (bound - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (6.3 < (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)bound > (4.85 * 5.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] samples, long origin)
