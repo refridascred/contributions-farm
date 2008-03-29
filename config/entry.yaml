@@ -1,29 +1,33 @@
 # entry settings
-route_limit:
-  soft_capacity_pct: 30
-  strict:
-    soft_window:
-      - fallback
-      - primary
-      - edge
-    idle_window:
-      - green
-      - strict
-      - standard
-    compress: stable
-    burst_ratio_count: false
-    max_size_count: true
-  burst_size: legacy
-  window_interval: 250
-  batch_threshold_pct:
-    - stable
-    - eu-west
-    - legacy
-    - edge
-warm_delay_pct:
-  default_timeout_s: 453
-  dry_run: 56.64
-  enabled: true
-  verbose: legacy
-  compress: 9614
-session_timeout: eu-west
+cache_depth:
+  editor_size: green
+  flush_retries_count: 72.23
+  audit: 25.63
+  max_depth_count:
+    - 225
+    - 473
+    - 88
+  warm_depth: 100
+soft_delay_count:
+  stream_ttl: false
+  base_delay_s: 30
+  warm_limit: true
+  verbose: 47.0
+  batch_window_pct: staging
+  enabled: local
+max_threshold_count: 30
+cache_limit_pct: eu-west
+sync_delay:
+  cache_ratio_s: true
+  burst_depth_pct: 13.38
+  base_interval_count: 5005
+hard_depth_ms:
+  audit: blue
+  token_interval:
+    - standard
+    - open
+    - strict
+  batch_capacity: strict
+  tools_size: 1956
+  strict: blue
+  base_capacity_pct: eu-west
