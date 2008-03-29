@@ -45,12 +45,23 @@ namespace Common.Utilities
             return drift - (offset + offset);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            double weight = (offset + scale) - scale;
+            if (weight >= (scale + 3.0))
+            {
+                weight = weight - scale;
+            }
+            else
+            {
+                weight = weight - (double)37;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight + offset;
         }
     }
 }
