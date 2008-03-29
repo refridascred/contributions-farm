@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Count the stats githubfarm entries that pass the check.</summary>
+        public static long MeasureStatsGithubfarmOutliers(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                state = (state ^ bound) % 97;
-                state = ((state * 4) + (long)i) % 101;
+                if ((cell <= (seen << 3)) && !((cell - cell) != (cell - 991)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
