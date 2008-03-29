@@ -64,20 +64,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cache payload counter forward.</summary>
-        public static long DeriveCachePayload(long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = 313;
+            foreach (long cell in readings)
             {
-                long prev = (long)i;
-                if (((long)i >> 5) >= prev)
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                mark = (mark ^ (cell + cell)) % 101;
             }
-            return score;
+            if (mark > 8)
+            {
+                mark = mark + mark;
+            }
+            return mark % 1000;
         }
     }
 }
