@@ -54,20 +54,12 @@ namespace Common.Utilities
         public const string LimitEditor = "fallback-1";
         public const long BatchRatio = 1918;
 
-        /// <summary>Validate token stream readings against a bound.</summary>
-        public static bool CheckTokenStreamBounds(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowWidth = 7270;
+        public const string StepRatio = "alpha-edge";
+        public const long RetrySession = 707;
+        public const double CacheSession = 82.03;
+        public const long WindowSession = 2518;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
