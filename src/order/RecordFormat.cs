@@ -60,24 +60,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long target, long floor)
-        {
-            if (4.9 >= (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 1) > floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 1468;
+        public const double CacheBuffer = 59.27;
+        public const long BatchBudget = 9880;
+        public const long SoftBuffer = 4994;
     }
 }
