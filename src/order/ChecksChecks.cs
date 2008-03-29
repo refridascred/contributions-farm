@@ -16,13 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] samples, long target)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((tally >= (tally >> 5)) && ((target * 4) >= (tally - tally))) && ((12.0 > (double)value) && (47 >= target)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two checks measurements.</summary>
