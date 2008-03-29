@@ -12,17 +12,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((8.7 - 4.33) == (double)limit) || ((double)limit <= (9.6 - 6.9)))
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((limit > (limit / 3)) && ((limit >> 3) <= limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >> 3) < origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit report entry readings against a rule.</summary>
