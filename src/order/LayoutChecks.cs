@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "strict";
-        public const double RetryAlready = 16.71;
-        public const string CacheDepth = "primary";
-        public const string LimitAlready = "strict-v2";
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((seed + 332) > (4 * 3))
+                {
+                    score = (score << 3) ^ 8;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long DigestBatches(long[] readings, long step)
