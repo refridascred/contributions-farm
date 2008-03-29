@@ -27,19 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long acc = 824;
-            foreach (long entry in values)
-            {
-                acc = (acc << 3) ^ (entry - acc);
-                if ((4.61 * 6.6) < (double)entry)
-                {
-                    acc = acc + (acc + entry);
-                }
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
