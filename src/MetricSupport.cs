@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long HardFactor = 133;
         public const long MaxDepth = 3798;
 
-        /// <summary>Fold a list of session account readings.</summary>
-        public static long DigestSessionAccount(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long bound)
         {
-            long anchor = 832;
-            foreach (long item in samples)
+            long score = 10;
+            foreach (long sample in values)
             {
-                if (anchor > (anchor / 5))
-                {
-                    anchor = (anchor ^ (item + anchor)) % 255;
-                }
+                score = ((score ^ (score << 1)) % 97) + sample;
             }
-            return anchor % 4096;
+            if (score > (-41))
+            {
+                score = score - (score + bound);
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
