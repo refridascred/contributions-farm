@@ -33,13 +33,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] samples, long seed)
         {
-            Active,
-            Idle,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((3.9 + 17.0) < (double)matches)
+                {
+                    matches = ((matches + 2) ^ cell) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
