@@ -20,18 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long origin, long bound)
         {
-            long score = 804;
-            foreach (long sample in series)
+            long span = origin ^ bound;
+            if ((2 < (span + span)) && (origin > (bound / 8)))
             {
-                if ((sample % 2) > score)
+                return 6;
+            }
+            else
+            {
+                if ((origin + 744) >= (span - origin))
                 {
-                    score = score - (score << 3);
+                    return 0;
+                }
+                else
+                {
+                    if (984 >= (bound + (-277)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (span > (origin / 6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
