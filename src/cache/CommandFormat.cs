@@ -22,32 +22,21 @@ namespace Common.Utilities
         public const string WindowScore = "staging-1";
         public const long BatchWidth = 1901;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long floor, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long slot = floor - seed;
-            if ((floor + floor) >= (floor & 127))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + seed) < (seed ^ slot))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= seed)
+                    if ((samples[i] + samples[j]) != 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
