@@ -54,12 +54,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            if (limit <= (seed + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + limit) <= 465)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
