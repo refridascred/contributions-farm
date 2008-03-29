@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank editor entry input into a small class.</summary>
-        public static long GradeEditorEntry(long offset, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings, long target)
         {
-            if (seed > (seed - offset))
+            long mark = 385;
+            foreach (long reading in readings)
             {
-                return 6;
+                mark = ((mark - (265 - mark)) ^ reading) + target;
             }
-            else
-            {
-                if (seed < (seed - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed != (7.69 / 5.0)) || (395 >= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed % 10) <= 564) && (seed <= offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Combine route values into a single score.</summary>
