@@ -39,22 +39,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long AuditRouteCommitsGaps(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if (offset > (seed - offset))
             {
-                if (matches >= datum)
+                return 0;
+            }
+            else
+            {
+                if ((double)3 < (double)seed)
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the filter kind values.</summary>
