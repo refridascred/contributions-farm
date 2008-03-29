@@ -23,15 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] levels, long origin)
         {
-            long sum = 84;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum * 5) + (sum + sum)) % 255) + item;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
