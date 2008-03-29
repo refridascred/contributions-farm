@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepRatio = 8391;
-        public const double WindowCache = 54.12;
-        public const long LimitCache = 9119;
-        public const double SoftScore = 61.64;
-        public const long RetryTimeout = 8525;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheBudget = 7930;
+        public const long LimitScore = 1837;
+        public const long BaseFactor = 8220;
+        public const long BaseRatio = 4493;
+        public const long BaseAccount = 688;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
