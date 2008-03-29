@@ -1,5 +1,13 @@
 {
-  "tools_timeout": 81.79,
-  "token_timeout": false,
-  "soft_ttl_pct": 79.05
+  "tools_limit": 22.48,
+  "editor_threshold": {
+    "sync_retries": "legacy",
+    "poll_capacity": [102, 161, 339, 337],
+    "persist": 77,
+    "dry_run": true,
+    "strict": "fallback"
+  },
+  "default_interval": 500,
+  "max_interval_ms": [355, 373],
+  "default_timeout_s": 32.8
 }
