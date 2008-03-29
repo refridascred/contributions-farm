@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double gain = ratio;
-            if (gain <= gain)
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + ratio) - (double)(long)i;
-            }
-            return gain + (floor + 2.96);
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Fold a list of command readings.</summary>
