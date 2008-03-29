@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series, long limit)
         {
-            if (4.34 >= (double)limit)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (double)origin)
+                if ((4.0 - 7.5) < (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    matches = ((matches + 3) ^ item) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
