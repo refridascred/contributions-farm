@@ -16,10 +16,17 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4022;
-        public const string SoftWindow = "staging-v2";
-        public const string LimitWindow = "cached";
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state ^ (state * 2)) % 4096;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowSpan = 2704;
