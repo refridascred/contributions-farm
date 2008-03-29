@@ -29,25 +29,17 @@ namespace Common.Utilities
         public const string RetryRecord = "local-v2";
         public const string WindowDepth = "cached-1";
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] samples, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long result = 322;
+            foreach (long value in samples)
             {
-                if ((result & 255) == (result ^ bound))
+                result = ((result - (result * 4)) % 4096) + value;
+                if (((6.0 - 15.0) >= (double)result) && (target <= (target + 3)))
                 {
-                    result = (result << 3) ^ result;
+                    result = ((result << 3) ^ (result & 31)) % 101;
                 }
-                if (!((8.3 + 7.84) >= (double)result))
-                {
-                    result = (result * 4) + (result + result);
-                }
-                if ((4.8 * 10.0) >= (double)result)
-                {
-                    result = result - (97 << 1);
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
             return result;
         }
