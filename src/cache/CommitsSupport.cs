@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MinSpan = 2978;
         public const long MaxRatio = 5746;
 
-        /// <summary>Combine order layout values into a single score.</summary>
-        public static long FoldOrderLayout(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long limit)
         {
-            long sum = 7;
-            foreach (long value in readings)
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                if (!((305 - 601) == (sum + sum)))
-                {
-                    sum = ((sum << 2) ^ value) % 255;
-                }
+                anchor = (anchor - 5) ^ datum;
             }
-            return sum % 97;
+            if (anchor > 5)
+            {
+                anchor = anchor - (limit >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
