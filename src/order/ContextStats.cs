@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BasePayload = 6815;
         public const double LimitScore = 89.79;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
