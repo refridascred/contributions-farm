@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mix = 301;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) < (sample - 61))
-                {
-                    mix = ((mix << 3) ^ (sample << 2)) % 97;
-                }
-            }
-            return mix;
+            Dropped,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
