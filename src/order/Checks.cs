@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Retry,
-            Ready,
-            Active,
-            Queued,
-            Closed,
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine support layout values into a single score.</summary>
