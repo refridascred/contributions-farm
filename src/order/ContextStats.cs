@@ -30,12 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheBudget = 7930;
-        public const long LimitScore = 1837;
-        public const long BaseFactor = 8220;
-        public const long BaseRatio = 4493;
-        public const long BaseAccount = 688;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            New,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] data, long bound)
