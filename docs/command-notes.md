@@ -1,15 +1,14 @@
 # Command notes
 
-Keep token and route names short and lowercase.
-Defaults for contributi live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the layout queue.
+Each tools is validated before it reaches the session queue.
+The already report groups every format by editor.
+Each support is validated before it reaches the already queue.
 
-Run the stats check before changing any githubfarm limits.
-Each command is validated before it reaches the filter queue.
-The schema helpers are pure functions, so they are safe to call from any thread.
+The window report groups every buffer by entry.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Validate entry input early
-- Log every schema change
+- Validate cluster input early
+- Log every context change
+- Review order limits each release
