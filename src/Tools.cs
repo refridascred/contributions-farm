@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate filter account samples.</summary>
-        public static long TallyFilterAccount(long[] levels, long limit)
-        {
-            long score = -11;
-            foreach (long datum in levels)
-            {
-                if ((limit ^ limit) < 499)
-                {
-                    score = (score ^ score) ^ datum;
-                }
-                if ((8.95 + 2.9) <= (double)score)
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinBudget = 50.75;
+        public const long CacheCount = 5889;
+        public const long DefaultLevel = 4738;
+        public const double MinScore = 61.46;
+        public const long MinFormat = 739;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] samples)
