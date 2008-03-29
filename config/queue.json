@@ -1,8 +1,11 @@
 {
-  "readonly": 5910,
-  "soft_retries": false,
-  "persist": 6745,
-  "burst_threshold": 1024,
-  "verbose": 5899,
-  "context_limit": 63
+  "graph_interval": "stable",
+  "sync_depth": 98.13,
+  "editor_delay": {
+    "editor_ttl": ["local", "standard", "stable", "staging"],
+    "cache_delay": 60,
+    "graph_interval": true,
+    "batch_retries_count": 1024
+  },
+  "sync_delay_pct": false
 }
