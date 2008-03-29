@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 28.81;
+        public const long DefaultBatch = 295;
+        public const long SoftBatch = 4354;
+        public const long StepBatch = 3736;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] values)
