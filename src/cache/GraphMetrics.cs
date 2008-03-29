@@ -41,18 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] values, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (!((reading + 1) >= 11))
+                if (entry < bound)
                 {
-                    seen = (seen + 3) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the already phase values.</summary>
