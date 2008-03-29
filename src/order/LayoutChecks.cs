@@ -42,13 +42,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Roll a contributi format counter forward.</summary>
+        public static long DeriveContributiFormat(long bound)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc << 3) ^ (71 & 15)) - (long)i2;
+                    acc = (acc ^ acc) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
