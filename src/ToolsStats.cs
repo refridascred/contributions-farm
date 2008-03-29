@@ -64,14 +64,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long RollContextSession(long floor)
         {
-            New,
-            Ready,
-            Pending,
-            Retry,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
