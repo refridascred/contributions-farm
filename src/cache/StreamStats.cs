@@ -38,25 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long seed, long offset)
-        {
-            if (offset > (seed - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)3 < (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheLevel = 3.34;
+        public const long HardGithubfarm = 2434;
+        public const long WindowGithubfarm = 347;
+        public const string BurstBudget = "latest-v2";
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
