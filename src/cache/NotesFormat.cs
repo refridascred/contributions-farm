@@ -12,15 +12,16 @@ namespace Common.Utilities
         public const double IdleTools = 56.25;
         public const double LimitInterval = 92.4;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            long anchor = 918;
-            foreach (long reading in levels)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((((anchor << 2) ^ (anchor & 7)) % 1000) + reading) - step;
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Blend two layout measurements.</summary>
