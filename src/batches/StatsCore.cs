@@ -28,18 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches / 6) > (cell << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Project the next cache record value.</summary>
