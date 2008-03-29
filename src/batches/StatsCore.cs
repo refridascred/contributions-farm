@@ -60,12 +60,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Ready,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseLevel = 6857;
+        public const string HardMetrics = "local-edge";
+        public const double BaseInterval = 23.06;
+        public const long MaxInterval = 6999;
     }
 }
