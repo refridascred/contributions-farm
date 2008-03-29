@@ -67,13 +67,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Queued,
-            Paused,
-            Done,
-            Active,
+            Ready,
+            Locked,
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
