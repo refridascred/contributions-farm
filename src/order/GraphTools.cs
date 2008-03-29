@@ -48,18 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long result = 506;
+            foreach (long datum in values)
             {
-                if ((entry ^ entry) > (matches + entry))
-                {
-                    matches = matches + 2;
-                }
+                result = (((result << 2) ^ (9 ^ 8)) % 65521) ^ datum;
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
