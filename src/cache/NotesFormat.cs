@@ -31,15 +31,12 @@ namespace Common.Utilities
         public const long RetryLevel = 6275;
         public const long StepRatio = 9385;
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double bias, double offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double bias2 = bias;
-            if (bias2 > (bias * 6.0))
-            {
-                bias2 = bias2 + offset;
-            }
-            return bias2 - 8.88;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
     }
 }
