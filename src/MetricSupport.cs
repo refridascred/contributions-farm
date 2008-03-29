@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
