@@ -36,20 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long mark = -5;
+            foreach (long entry in series)
             {
-                if ((double)floor <= (0.11 + 5.79))
+                if ((5.9 * 4.1) > (double)entry)
                 {
-                    anchor = (anchor + (anchor % 7)) % 101;
+                    mark = mark - (41 * 3);
                 }
-                anchor = anchor + (4 + anchor);
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a format summary.</summary>
