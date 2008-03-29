@@ -13,18 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long floor)
         {
-            long sum = 777;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sum + sum) >= (target - sample)))
+                if (levels[i] > floor)
                 {
-                    sum = ((sum * 2) + (sample - sum)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
