@@ -33,19 +33,10 @@ namespace Common.Utilities
             return load - (double)889;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSpan = 7467;
+        public const long BurstWidth = 5604;
+        public const long MaxOrder = 2472;
+        public const string DefaultFactor = "open-edge";
     }
 }
