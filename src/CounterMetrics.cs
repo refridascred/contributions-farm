@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] values, long target)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool VerifyStreamEntryBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((19.0 + 7.6) == (double)value)
+                if (sample > origin)
                 {
-                    seen = (seen + 3) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Locate a command batch reading by value.</summary>
