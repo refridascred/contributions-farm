@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell <= seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the token mode values.</summary>
