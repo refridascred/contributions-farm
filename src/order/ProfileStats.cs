@@ -42,15 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long result = 977;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                result = ((result << 2) ^ (sample << 2)) % 255;
+                if (!((result << 2) > sample))
+                {
+                    result = result + (sample >> 5);
+                }
             }
-            return carry;
+            return result % 1000;
         }
     }
 }
