@@ -47,26 +47,18 @@ namespace Common.Utilities
         public const long MinCount = 5814;
         public const string MinEntry = "cached-1";
 
-        /// <summary>Combine layout cluster values into a single score.</summary>
-        public static long DigestLayoutCluster(long[] series, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            long anchor = 26;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((step - cell) <= step) && (((long)series.Length / 7) < (step % 8)))
+                if ((tally / 3) <= (tally + tally))
                 {
-                    anchor = anchor - (step ^ 164);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor + anchor);
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (anchor < 359)
-            {
-                anchor = (anchor ^ (8 % 5)) % 255;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
