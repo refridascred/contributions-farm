@@ -12,20 +12,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((seed >> 2) <= score))
-                {
-                    score = (score ^ score) % 101;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheRatio = "strict-edge";
+        public const long SoftFilter = 3744;
+        public const string WindowDepth = "primary-edge";
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] items)
