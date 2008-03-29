@@ -1,6 +1,15 @@
 # entry settings
-persist: green
-poll_depth_s: green
-soft_interval_ms: false
-editor_interval: 77.69
-account_interval: false
+graph_size: 77.42
+dry_run: 30
+audit:
+  metrics_interval: 30
+  soft_ttl: stable
+  stats_ratio: green
+  max_limit_count:
+    hard_ratio_count: legacy
+    metrics_depth: 57.61
+    base_interval: true
+    batch_retries: standard
+    verbose: false
+  default_ratio_s: edge
+retry_threshold: 4214
