@@ -16,22 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache command readings against a rule.</summary>
-        public static long MeasureCacheCommandHits(long[] levels, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((8.3 / 4.0) > (double)entry)
+                if (cell > limit)
                 {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Look up the position of a channel layout sample.</summary>
