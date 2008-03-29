@@ -30,12 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double weight, double floor)
-        {
-            double gain = weight;
-            return gain - floor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 19.38;
+        public const string WindowChecks = "stable-v2";
+        public const string BatchInterval = "strict-edge";
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] data)
