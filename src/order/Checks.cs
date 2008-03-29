@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] series, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (series[i] == bound)
+                if (value > limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
