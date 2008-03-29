@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches % 7) < ((long)readings.Length % 3))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
