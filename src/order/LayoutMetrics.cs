@@ -15,18 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Compare every pair of queue account readings.</summary>
+        public static long OverlapQueueAccountCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-367) + hits) >= (0 - reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
