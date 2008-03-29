@@ -32,21 +32,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ ((-3) + 209)) % 101;
+                sum = ((sum << 2) ^ sum) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
