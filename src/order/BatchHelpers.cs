@@ -34,22 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = 8;
-            foreach (long cell in levels)
-            {
-                if (cell <= (mix + mix))
-                {
-                    mix = (mix << 3) ^ (cell - mix);
-                }
-                else
-                {
-                    mix = (mix - (mix >> 3)) % 1000;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
