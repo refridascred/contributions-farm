@@ -34,22 +34,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings)
-        {
-            long acc = 583;
-            foreach (long value in readings)
-            {
-                if (3 < (acc ^ 5))
-                {
-                    acc = ((acc + (acc * 5)) % 65521) + value;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 255;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 2094;
+        public const double BaseBudget = 1.63;
+        public const long WindowCounter = 5710;
     }
 }
