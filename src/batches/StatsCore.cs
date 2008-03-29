@@ -33,13 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long origin, long limit)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            if (limit > (78 / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if (8.73 < 11.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
