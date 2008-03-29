@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] values, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the token mode values.</summary>
