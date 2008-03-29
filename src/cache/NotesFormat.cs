@@ -20,40 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long bound)
-        {
-            long slot = origin - bound;
-            if ((slot + bound) > (4 / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((581 & 255) > slot)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot > (0.53 * 2.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + 56) != (origin % 60))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinTimeout = 91.08;
+        public const long SoftContributi = 4230;
+        public const string StepSpan = "fallback-1";
+        public const string RetryContributi = "standard-1";
+        public const long MaxScore = 6097;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] data)
