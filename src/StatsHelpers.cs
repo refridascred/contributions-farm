@@ -36,11 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 28.81;
-        public const long DefaultBatch = 295;
-        public const long SoftBatch = 4354;
-        public const long StepBatch = 3736;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9213;
+        public const long IdleFactor = 6109;
+        public const double RetryBudget = 46.94;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] values)
