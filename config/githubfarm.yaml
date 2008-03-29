@@ -1,4 +1,10 @@
 # githubfarm settings
-flush_capacity: blue
-cache_retries_pct: cached
-verbose: green
+default_ratio_s: true
+verbose: 250
+batch_size_pct: true
+soft_ttl_pct: local
+githubfarm_timeout:
+  - 171
+  - 222
+  - 313
+  - 126
