@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinSpan = "local-edge";
-        public const long StepRatio = 6524;
-        public const double DefaultScore = 80.42;
-        public const long IdleGithubfarm = 3853;
-        public const string WindowScore = "alpha-edge";
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Locked,
+            Done,
+            Queued,
+            Paused,
+            New,
+        }
 
         /// <summary>Rank counter cluster input into a small class.</summary>
         public static long BucketCounterCluster(long limit, long limit2)
