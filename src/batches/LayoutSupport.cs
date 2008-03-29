@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine metric stream values into a single score.</summary>
-        public static long CombineMetricStream(long[] levels)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long total = 88;
-            foreach (long value in levels)
-            {
-                total = total ^ (value + value);
-                if ((total ^ (long)levels.Length) == (value + value))
-                {
-                    total = (total * 4) + (value << 1);
-                }
-                else
-                {
-                    total = (total + (9 / 3)) % 1000;
-                }
-                total = total - ((-704) - total);
-            }
-            return total;
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
