@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
+            Paused,
+            Synced,
+            Done,
             Ready,
-            New,
-            Failed,
         }
 
         /// <summary>Hold a session summary.</summary>
