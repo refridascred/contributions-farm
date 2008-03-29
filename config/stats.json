@@ -1,8 +1,8 @@
 {
-  "soft_delay": 11.99,
-  "enabled": true,
-  "window_timeout": 250,
-  "burst_capacity_s": false,
-  "min_window_count": 46.72,
-  "account_ratio": 47
+  "poll_ttl_ms": 83.41,
+  "window_ratio": 5243,
+  "command_interval": "standard",
+  "sync_interval_pct": "legacy",
+  "idle_timeout_s": "local",
+  "batches_timeout": [371, 52, 170, 420]
 }
