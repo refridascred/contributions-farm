@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long seed, long origin)
         {
-            long state = 856;
-            foreach (long value in readings)
+            if (seed < (seed - seed))
             {
-                state = (state - ((long)readings.Length & 1)) % 255;
-                state = (state - (state % 3)) % 101;
-                if (((state % 60) >= (value << 2)) && ((state + state) != (408 % 2)))
+                return 1;
+            }
+            else
+            {
+                if ((14.0 * 2.41) < (double)seed)
                 {
-                    state = state + (value & 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((9.56 - 8.19) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Match up counter stats samples.</summary>
