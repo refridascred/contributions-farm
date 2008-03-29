@@ -47,9 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFactor = 59.5;
-        public const long SoftFilter = 5588;
-        public const long HardFilter = 746;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Done,
+            Locked,
+            Stale,
+            Active,
+            Idle,
+        }
     }
 }
