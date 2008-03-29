@@ -27,15 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next cache record value.</summary>
-        public static double ScaleCacheRecord(double scale, double offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double load = (double)(6 + 692);
-            if (load >= 3.0)
-            {
-                load = (load + (double)33) - scale;
-            }
-            return load + (offset * 8.0);
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
