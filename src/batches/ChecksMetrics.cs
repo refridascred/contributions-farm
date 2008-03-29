@@ -39,12 +39,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryBudget = 9615;
-        public const double WindowRatio = 59.64;
-        public const string StepSize = "latest";
-        public const double SoftSize = 15.29;
-        public const double MaxToken = 22.82;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
