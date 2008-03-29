@@ -13,11 +13,30 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double span)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long DigestCounterProfile(long[] items)
         {
-            double rate = gain;
-            return (rate + 2.07) + span;
+            long mark = 76;
+            foreach (long reading in items)
+            {
+                if (!((1 ^ mark) == (mark / 3)))
+                {
+                    mark = ((mark * 4) + (117 - mark)) % 97;
+                }
+                if ((mark & 1) == (mark + reading))
+                {
+                    mark = mark - (reading / 9);
+                }
+                if ((reading >> 4) < (mark ^ 59))
+                {
+                    break;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up editor context samples.</summary>
