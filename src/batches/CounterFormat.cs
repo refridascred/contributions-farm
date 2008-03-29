@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload stats values into a single score.</summary>
-        public static long WeighPayloadStats(long[] samples, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long result = 8;
-            foreach (long entry in samples)
-            {
-                if ((70 & 127) != (entry >> 3))
-                {
-                    result = ((result * 4) + result) - floor;
-                }
-            }
-            return result;
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a notes info.</summary>
