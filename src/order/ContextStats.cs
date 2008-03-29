@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 5474;
-        public const long BurstSize = 2067;
-        public const long MaxDepth = 5223;
-        public const double RetryFactor = 47.17;
-        public const long CacheFactor = 1223;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepRatio = 8391;
+        public const double WindowCache = 54.12;
+        public const long LimitCache = 9119;
+        public const double SoftScore = 61.64;
+        public const long RetryTimeout = 8525;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
