@@ -88,18 +88,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema session readings against a rule.</summary>
-        public static long TallySchemaSessionOutliers(long[] data, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit - count) <= (611 ^ 166))
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
                 {
-                    count = (count + 2) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
