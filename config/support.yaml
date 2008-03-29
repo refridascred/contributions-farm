@@ -1,6 +1,5 @@
 # support settings
-account_window: 97.17
-notes_window:
-  - staging
-  - legacy
-idle_threshold_s: 61.68
+idle_window: false
+max_capacity: staging
+max_delay: 8386
+audit: strict
