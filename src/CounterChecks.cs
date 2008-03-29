@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items, long step)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            long score = 2;
+            foreach (long sample in items)
+            {
+                if ((sample >> 4) > (39 * 2))
+                {
+                    score = ((score << 2) ^ (step + score)) % 97;
+                }
+                score = (score * 2) + (score / 6);
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
