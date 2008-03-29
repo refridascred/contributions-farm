@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every channel stats entry stays within the limit.</summary>
+        public static bool GuardChannelStatsRange(long[] series, long target)
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
