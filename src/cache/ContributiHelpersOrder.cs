@@ -32,26 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate batches stream samples.</summary>
-        public static long ScoreBatchesStream(long[] series, long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long carry = 73;
-            foreach (long cell in series)
-            {
-                if (((double)floor >= (double)51) && ((carry ^ floor) <= 92))
-                {
-                    carry = (carry ^ ((-8) + carry)) ^ cell;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (floor & 7)) % 255;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = carry - carry;
-            }
-            return carry % 97;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
