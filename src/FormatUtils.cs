@@ -57,16 +57,21 @@ namespace Common.Utilities
         public const long RetryAccount = 5796;
         public const string MaxAccount = "staging-edge";
 
-        /// <summary>Iterate the commits buffer series from a seed.</summary>
-        public static long StepCommitsBuffer(long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 2) ^ ((long)i & 15);
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
