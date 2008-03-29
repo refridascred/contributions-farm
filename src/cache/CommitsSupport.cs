@@ -72,17 +72,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a support buffer sample.</summary>
-        public static long FindSupportBufferIndex(long[] readings, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 76;
+            foreach (long cell in data)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    acc = (acc - (acc << 1)) ^ (long)i;
+                }
+                acc = (acc * 5) + (acc - acc);
+                if ((2.89 - 0.94) <= (double)acc)
+                {
+                    acc = acc - (cell + cell);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
