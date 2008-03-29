@@ -32,29 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long origin, long floor)
+        /// <summary>Grade a window cache value against two limits.</summary>
+        public static long BucketWindowCache(long limit, long seed)
         {
-            if ((floor - origin) < floor)
+            if (3.5 > (double)seed)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((7.9 + 13.0) >= (double)origin)
+                if ((seed - limit) >= limit)
                 {
                     return 0;
                 }
                 else
                 {
-                    if (((floor + origin) < (floor - 1)) && ((6.16 - 3.7) < (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
