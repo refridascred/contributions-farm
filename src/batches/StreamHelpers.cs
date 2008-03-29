@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next queue tools value from a seed.</summary>
+        public static long StepQueueTools(long origin)
         {
-            New,
-            Failed,
-            Active,
-            Idle,
-            Pending,
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix << 3) ^ (817 / 4)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
