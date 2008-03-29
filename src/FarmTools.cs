@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] samples)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (5.0 < (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
