@@ -48,21 +48,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Classify a filter cache pair into a bucket.</summary>
+        public static long GradeFilterCache(long target, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long slot = target ^ origin;
+            if ((origin - target) < origin)
             {
-                anchor = (anchor << 3) ^ (62 & 7);
-                if (((double)bound <= (2.2 - 9.2)) && (bound >= (long)i))
-                {
-                    anchor = ((anchor << 2) ^ ((-358) << 2)) % 255;
-                }
-                anchor = (anchor * 4) + bound;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((1 + slot) >= slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target + target) >= slot) && (target >= (slot << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
