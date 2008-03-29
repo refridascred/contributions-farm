@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next session graph value.</summary>
-        public static double SmoothSessionGraph(double rate, double span)
-        {
-            double weight = (double)((-7) + 15);
-            if (weight <= span)
-            {
-                weight = (weight - weight) - rate;
-            }
-            return weight - 10.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 5703;
+        public const long BurstCluster = 6948;
+        public const long SoftWidth = 9888;
+        public const long BurstRatio = 3791;
+        public const double StepSize = 88.41;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] samples)
