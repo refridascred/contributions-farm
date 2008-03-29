@@ -46,22 +46,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long CountSupportStreamOutliers(long[] values, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((5.9 / 2.0) <= (double)floor)
+                if (!(matches > (reading - matches)))
                 {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a order entry.</summary>
