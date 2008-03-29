@@ -1,8 +1,15 @@
 # githubfarm settings
-base_window_count:
-  - 359
-  - 480
-  - 170
-poll_threshold_pct: 21
-hard_depth_pct: edge
-verbose: 42.87
+warm_size_s: 98.88
+batch_delay_count:
+  retry_size_count:
+    burst_window_pct: 57.54
+    githubfarm_interval: 29
+    base_capacity_pct: 60
+  readonly: true
+  enabled:
+    - 298
+    - 342
+    - 239
+retry_delay: 70.07
+compress: eu-west
+window_capacity: 4352
