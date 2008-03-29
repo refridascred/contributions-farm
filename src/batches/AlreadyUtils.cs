@@ -31,22 +31,22 @@ namespace Common.Utilities
             return rate - (scale + rate);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((item + matches) <= item) && !((218 - 32) > item))
+                if ((reading - 5) == (tally << 1))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a stats stats.</summary>
