@@ -52,17 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -20;
+            foreach (long value in levels)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
+                if (((7.0 * 4.85) <= (double)total) && (total > ((-404) >> 2)))
                 {
-                    return (long)i;
+                    total = (((total * 3) + (total / 6)) % 1000) - value;
+                }
+                if ((4.78 * 4.9) >= (double)floor)
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
