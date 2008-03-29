@@ -59,13 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Adjust a context account reading.</summary>
+        public static double SmoothContextAccount(double gain, double offset)
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            double bias = gain;
+            return bias + (offset / 6.0);
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
