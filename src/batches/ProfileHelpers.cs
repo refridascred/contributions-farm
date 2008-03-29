@@ -44,11 +44,38 @@ namespace Common.Utilities
             return drift + (drift * 3.42);
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double weight, double bias)
+        /// <summary>Classify a order farm pair into a bucket.</summary>
+        public static long BucketOrderFarm(long floor, long offset)
         {
-            double bias2 = bias;
-            return (bias2 + (bias / 3.0)) + weight;
+            if (((floor ^ offset) >= (offset ^ offset)) && ((0 >> 5) > (floor << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) <= (offset << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset << 3) != (floor ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= (offset / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
