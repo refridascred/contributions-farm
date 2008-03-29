@@ -58,38 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long target, long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((3 % 97) >= target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 4) <= (seed >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target % 100) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target % 16) == (target + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
