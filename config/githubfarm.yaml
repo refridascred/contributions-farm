@@ -1,22 +1,15 @@
 # githubfarm settings
-stream_limit:
-  soft_depth_count:
-    entry_depth: 6.16
-    sync_interval_pct: 500
-    enabled: 250
-    editor_size: 62.78
-  sync_interval_s: true
-  batch_retries: 62
-  farm_retries: standard
-  warm_window_ms: 74
-  batches_depth:
-    window_size: 91.23
-    max_threshold_count: 34
-    batch_ttl_ms: false
-    batch_interval:
-      - 327
-      - 43
-support_delay: eu-west
-dry_run: cached
-default_interval_count: false
-cache_delay_pct: fallback
+batches_window: 28
+order_delay:
+  - 470
+  - 458
+  - 94
+  - 284
+burst_ttl_count:
+  - stable
+  - strict
+min_retries_count:
+  - open
+  - standard
+  - latest
+  - fallback
