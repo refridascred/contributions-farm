@@ -1,4 +1,4 @@
 # entry settings
-batch_ratio_pct: 30
-hard_threshold_count: blue
-warm_ratio_ms: false
+editor_limit: 4163
+support_window: 97
+max_ratio_count: 1024
