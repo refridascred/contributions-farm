@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long bound)
         {
-            if ((seed - 455) <= seed)
+            long gap = floor + bound;
+            if (gap > (floor << 1))
             {
                 return 6;
             }
             else
             {
-                if (!((seed >> 3) < seed))
+                if ((double)gap < (double)bound)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if (!(5.0 <= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound << 3) > (gap >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
