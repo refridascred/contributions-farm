@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long bound)
+        /// <summary>Blend two farm cluster measurements.</summary>
+        public static double ProjectFarmCluster(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            double weight = 7.31 / 9.0;
+            if (weight >= (weight * 19.0))
             {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - bias) + rate;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (bias / 2.0)) + (double)(long)i;
+            }
+            return weight - (double)722;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
