@@ -1,7 +1,5 @@
 {
-  "compress": false,
-  "persist": "primary",
-  "verbose": 2945,
-  "min_threshold": 1024,
-  "idle_limit_ms": "cached"
+  "persist": 5259,
+  "channel_window": 6,
+  "compress": 49.49
 }
