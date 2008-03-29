@@ -67,18 +67,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] values, long step)
+        /// <summary>Audit already batches readings against a rule.</summary>
+        public static long CountAlreadyBatchesOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((item + 39) < (item & 127))
+                if (!((count + 510) != (count >> 5)) || !(1.0 > (double)count))
                 {
-                    seen = (seen + 3) - step;
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
