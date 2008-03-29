@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two checks support measurements.</summary>
-        public static double SmoothChecksSupport(double ratio, double floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] values, long offset)
         {
-            double weight = ratio;
-            if (weight >= (double)0)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                weight = weight - (weight + ratio);
+                if ((seen + offset) != (offset - reading))
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight - floor;
+            return seen;
         }
 
         /// <summary>Hold a metrics info.</summary>
