@@ -40,11 +40,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchRatio = 39.85;
-        public const string DefaultRatio = "local-1";
-        public const double BurstMetrics = 39.86;
-        public const string SoftWidth = "cached-edge";
-        public const string SoftLevel = "alpha-1";
+        /// <summary>Measure how many githubfarm farm samples are out of range.</summary>
+        public static long TallyGithubfarmFarmHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((31 % 64) > reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
