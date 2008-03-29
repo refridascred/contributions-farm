@@ -52,12 +52,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Paused,
-            Queued,
-            Active,
+            Draft,
+            Closed,
+            Ready,
+            Retry,
+            Locked,
         }
     }
 }
