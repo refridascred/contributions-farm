@@ -27,12 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 5649;
+        public const long CacheCommits = 1074;
+        public const string RetryCommits = "stable";
+        public const long MaxBudget = 4388;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long step, long limit)
