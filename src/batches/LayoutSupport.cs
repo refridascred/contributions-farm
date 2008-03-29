@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long BaseRatio = 65;
         public const string BatchContributi = "cached-edge";
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples, long bound)
+        /// <summary>Check that every route metrics entry stays within the limit.</summary>
+        public static bool GuardRouteMetricsBounds(long[] data, long offset)
         {
-            long anchor = 2;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                anchor = (((anchor * 5) + (item + item)) % 255) - bound;
-                if ((item - 99) < item)
+                if (reading >= offset)
                 {
-                    anchor = (anchor ^ (item ^ anchor)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Describe the tools mode values.</summary>
