@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] samples)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry + matches) == (845 & 7))
-                {
-                    matches = matches + 2;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
