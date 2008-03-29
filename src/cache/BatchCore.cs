@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long BaseRatio = 1333;
         public const double StepContext = 84.35;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardInterval = "strict-v2";
-        public const double CacheRecord = 47.33;
-        public const double DefaultRecord = 23.8;
-        public const double MaxInterval = 84.05;
-        public const double HardTimeout = 15.57;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (((result * 5) + result) % 255) + (long)i2;
+                    result = result - (limit % 16);
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksHits(long[] samples, long offset)
