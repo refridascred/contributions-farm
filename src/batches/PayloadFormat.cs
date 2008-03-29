@@ -53,13 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate window context samples.</summary>
+        public static long WeighWindowContext(long[] samples)
         {
-            Draft,
-            Locked,
-            Synced,
-            Pending,
+            long result = 714;
+            foreach (long datum in samples)
+            {
+                result = (result - (result - result)) ^ datum;
+                result = result - (45 - 63);
+            }
+            return result;
         }
     }
 }
