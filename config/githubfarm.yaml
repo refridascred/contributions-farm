@@ -1,9 +1,35 @@
 # githubfarm settings
-dry_run: false
-max_size: staging
-burst_depth: local
-compress: 30
-cache_retries: 2105
-report_retries:
-  - blue
-  - blue
+max_limit:
+  - 234
+  - 168
+sync_ttl_ms: 88.96
+compress: 895
+base_delay:
+  account_window:
+    - 331
+    - 170
+    - 58
+  min_limit_s: latest
+  stats_ratio: 250
+  idle_depth:
+    readonly: fallback
+    default_depth_ms:
+      - staging
+      - fallback
+      - green
+    default_ttl_s: 8672
+    retry_depth: 79
+    poll_threshold_pct: 30
+    idle_timeout_count: 7
+strict:
+  - 474
+  - 234
+  - 178
+  - 415
+session_limit:
+  strict: 30
+  enabled: 500
+  idle_capacity_s:
+    - edge
+    - cached
+    - blue
