@@ -1,9 +1,8 @@
 {
-  "soft_interval_s": "strict",
-  "tools_interval": {
-    "readonly": true,
-    "max_size_pct": 100,
-    "idle_capacity_s": 2822
-  },
-  "sync_timeout_s": 22
+  "token_ratio": "stable",
+  "sync_size_pct": [311, 239],
+  "flush_ttl_s": "standard",
+  "soft_capacity": 9531,
+  "verbose": [379, 291, 338, 344],
+  "default_size_pct": "eu-west"
 }
