@@ -60,13 +60,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor << 3) ^ (62 & 7);
+                if (((double)bound <= (2.2 - 9.2)) && (bound >= (long)i))
+                {
+                    anchor = ((anchor << 2) ^ ((-358) << 2)) % 255;
+                }
+                anchor = (anchor * 4) + bound;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next buffer value.</summary>
