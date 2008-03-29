@@ -15,21 +15,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -455;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value - value) > (mix + value))
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 3) ^ (347 + 5)) % 101;
+                }
+                else
+                {
+                    mix = mix ^ value;
+                }
+                if (mix > (value >> 1))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Accumulate metric samples.</summary>
