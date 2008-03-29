@@ -30,19 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long seed)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
