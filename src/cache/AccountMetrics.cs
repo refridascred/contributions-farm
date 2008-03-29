@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] data, long target)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= target)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
