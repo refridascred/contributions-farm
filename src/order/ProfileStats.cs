@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Iterate the route record series from a seed.</summary>
+        public static long SeriesRouteRecord(long seed)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit cache command readings against a rule.</summary>
