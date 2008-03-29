@@ -1,5 +1,5 @@
 {
-  "max_timeout": 1024,
-  "warm_size_s": [201, 498, 92, 240],
-  "editor_ttl": "edge"
+  "batch_window_s": "staging",
+  "buffer_size": false,
+  "base_timeout_count": "blue"
 }
