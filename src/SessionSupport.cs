@@ -28,23 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate already commits samples.</summary>
-        public static long WeighAlreadyCommits(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] values, long origin)
         {
-            long anchor = 60;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (7 <= (reading - anchor))
+                if (sample <= origin)
                 {
-                    anchor = ((anchor << 2) ^ reading) % 97;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor << 3) ^ (anchor % 64);
             }
-            if (anchor < 46)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 4096;
+            return ok;
         }
     }
 }
