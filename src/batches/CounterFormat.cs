@@ -39,31 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report order value against two limits.</summary>
-        public static long ClassifyReportOrder(long bound, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            if ((bound << 3) != (offset * 4))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) > (offset ^ 2))
+                    if ((levels[i] - levels[j]) > 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
