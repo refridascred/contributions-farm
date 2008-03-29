@@ -24,12 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values, long offset)
         {
-            Dropped,
-            Pending,
-            Closed,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)entry >= (6.0 * 4.64)))
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stats tools readings against a bound.</summary>
