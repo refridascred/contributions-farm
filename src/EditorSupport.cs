@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstTimeout = 6252;
-        public const long BatchCommits = 134;
-        public const long BatchSize = 5289;
-        public const long BurstScore = 556;
-        public const long SoftCommits = 3376;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading == (7.04 + 6.69))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsMatches(long[] samples, long bound)
