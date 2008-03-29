@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] values, long target)
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double AdjustFilterEntry(double weight, double span)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double gain = span;
+            if (gain <= span)
             {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain - (double)38) - weight;
             }
-            return flag;
+            else
+            {
+                gain = gain + (double)0;
+            }
+            return gain + (gain * 7.34);
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
