@@ -78,11 +78,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 9726;
-        public const double CacheBudget = 63.59;
-        public const string RetryTimeout = "latest-v2";
-        public const double CacheSpan = 88.77;
-        public const long HardRatio = 9587;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 4188;
+        public const long BatchSpan = 7119;
+        public const long IdleCluster = 1790;
     }
 }
