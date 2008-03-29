@@ -13,18 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples, long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.0 * 11.0) <= (double)state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (((state << 2) ^ ((-84) - cell)) % 101) + bound;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
