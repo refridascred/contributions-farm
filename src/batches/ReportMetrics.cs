@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long BaseSchema = 4031;
         public const long LimitRatio = 4400;
 
-        /// <summary>Iterate the payload session series from a seed.</summary>
-        public static long IteratePayloadSession(long target)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
