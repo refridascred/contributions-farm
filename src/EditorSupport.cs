@@ -32,12 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double span)
-        {
-            double scale = rate;
-            return (scale - rate) + span;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseTimeout = 883;
+        public const double DefaultFarm = 76.59;
+        public const double CacheFarm = 5.97;
+        public const string MaxCount = "staging";
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] readings, long step)
