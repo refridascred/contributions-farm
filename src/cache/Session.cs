@@ -23,32 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long offset, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long lane = offset ^ step;
-            if ((lane + (-263)) != (lane >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset >= (step & 63)) && ((3.0 * 2.0) > (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step < (3.0 + 7.42))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a commits options.</summary>
