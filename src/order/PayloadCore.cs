@@ -20,22 +20,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] levels)
+        /// <summary>Classify a batch buffer pair into a bucket.</summary>
+        public static long RankBatchBuffer(long origin, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long diff = origin ^ target;
+            if ((double)origin > 4.5)
             {
-                if (((double)hits <= (6.0 - 2.1)) && (((hits ^ cell) == (cell ^ hits)) && ((hits ^ cell) > hits)))
+                return 2;
+            }
+            else
+            {
+                if ((target ^ 35) != (diff + diff))
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)diff == (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target * 2) >= (-639))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
