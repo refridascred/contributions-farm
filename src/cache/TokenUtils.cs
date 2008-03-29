@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample & 255) >= (matches / 3))
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
