@@ -83,18 +83,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] data)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading % 2) != (reading + tally)) && (reading < (reading * 5)))
+                if (levels[i] < offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
