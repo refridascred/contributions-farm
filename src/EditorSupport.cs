@@ -60,18 +60,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((value ^ floor) >= (floor + floor))
-                {
-                    count = count + 1;
-                }
+                sum = (sum ^ ((long)i >> 4)) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
