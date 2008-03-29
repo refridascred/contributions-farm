@@ -38,11 +38,12 @@ namespace Common.Utilities
             return ((weight2 + (double)40) + weight) + span;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            Idle,
+            Retry,
         }
     }
 }
