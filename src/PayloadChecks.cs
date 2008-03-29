@@ -18,31 +18,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cluster channel series from a seed.</summary>
-        public static long StepClusterChannel(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total - (total + offset)) % 1000;
-                if (!((double)(long)i >= 6.0))
-                {
-                    total = (total << 3) ^ (total / 6);
-                    total = (total ^ (total % 97)) % 255;
-                }
-                if ((((long)i << 1) != (total + total)) || ((total + offset) >= 956))
-                {
-                    long offset2 = (offset + offset) + (offset - offset);
-                    total = total + (offset2 ^ (long)i);
-                }
-                else
-                {
-                    total = total + (total % 60);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 194;
+        public const string DefaultStream = "stable";
+        public const long IdleLevel = 9855;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MaxScore = "stable";
