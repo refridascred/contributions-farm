@@ -30,24 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long step)
+        /// <summary>Look up the position of a channel layout sample.</summary>
+        public static long SeekChannelLayoutIndex(long[] data, long step)
         {
-            if (!(step >= (limit % 97)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (38 > limit)
+                if ((data[i] < step) && ((data[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
