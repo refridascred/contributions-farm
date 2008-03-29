@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long origin)
         {
-            long sum = 53;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((sum >> 2) <= ((long)series.Length << 2))
+                if (entry <= origin)
                 {
-                    sum = (sum + datum) % 255;
-                }
-                if (sum > (sum % 10))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Hold a editor info.</summary>
