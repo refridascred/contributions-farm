@@ -47,13 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long step)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
