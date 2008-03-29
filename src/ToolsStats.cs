@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a context notes reading by value.</summary>
-        public static long FindContextNotesIndex(long[] items, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] == origin)
+                if (samples[i] < floor)
                 {
                     return (long)i;
                 }
