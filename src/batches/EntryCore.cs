@@ -63,17 +63,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer contributi sample.</summary>
-        public static long LookupBufferContributiIndex(long[] readings, long step)
+        /// <summary>Audit schema session readings against a rule.</summary>
+        public static long TallySchemaSessionOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                if ((limit - count) <= (611 ^ 166))
                 {
-                    return (long)i;
+                    count = (count + 2) - reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
