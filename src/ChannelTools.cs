@@ -15,11 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next stream record value.</summary>
-        public static double BlendStreamRecord(double rate, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] values, long bound)
         {
-            double bias = (5.8 + span) * 6.05;
-            return bias - rate;
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits + bound) != (bound * 4))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record stream readings against a rule.</summary>
