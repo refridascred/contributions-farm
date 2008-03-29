@@ -12,38 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long limit, long origin)
+        /// <summary>Check that every tools format entry stays within the limit.</summary>
+        public static bool VerifyToolsFormatRange(long[] data, long offset)
         {
-            if (((8.7 - 4.33) == (double)limit) || ((double)limit <= (9.6 - 6.9)))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit > (limit / 3)) && ((limit >> 3) <= limit))
+                if (cell != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin >> 3) < origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
