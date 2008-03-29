@@ -1,13 +1,8 @@
 {
-  "tools_limit": 22.48,
-  "editor_threshold": {
-    "sync_retries": "legacy",
-    "poll_capacity": [102, 161, 339, 337],
-    "persist": 77,
-    "dry_run": true,
-    "strict": "fallback"
-  },
-  "default_interval": 500,
-  "max_interval_ms": [355, 373],
-  "default_timeout_s": 32.8
+  "dry_run": false,
+  "report_limit": ["staging", "strict"],
+  "cache_ratio_count": ["staging", "stable", "standard"],
+  "min_capacity": "stable",
+  "retry_ratio_count": "eu-west",
+  "soft_capacity": "local"
 }
