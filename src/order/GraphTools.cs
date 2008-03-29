@@ -48,12 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] levels)
         {
-            Failed,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ entry) > (matches + entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
