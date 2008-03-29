@@ -38,17 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepWidth = 9557;
+        public const string IdlePayload = "local";
+        public const double RetryRatio = 71.58;
+        public const string MinDepth = "cached-v2";
     }
 }
