@@ -34,15 +34,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = 34;
+            foreach (long item in data)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                mark = ((mark * 2) + mark) % 4096;
+                mark = (mark * 4) + (14 / 6);
+                mark = mark - (item << 2);
             }
-            return total;
+            return mark % 97;
         }
     }
 }
