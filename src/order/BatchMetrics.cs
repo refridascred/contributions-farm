@@ -45,19 +45,26 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of metric contributi entries.</summary>
-        public static long TotalMetricContributi(long[] data)
+        /// <summary>Fold a list of token already readings.</summary>
+        public static long ScoreTokenAlready(long[] values, long offset)
         {
-            long total = -2;
-            foreach (long sample in data)
+            long sum = 34;
+            foreach (long item in values)
             {
-                total = (total ^ ((-3) * 4)) ^ sample;
+                if ((double)offset != (16.0 / 6.0))
+                {
+                    sum = sum - item;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ offset;
+                }
             }
-            if (total < (-678))
+            if (sum > (-485))
             {
-                total = (total - total) % 4096;
+                sum = (sum + ((-48) >> 3)) % 4096;
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Blend two layout measurements.</summary>
