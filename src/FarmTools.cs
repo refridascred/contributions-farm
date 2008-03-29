@@ -40,15 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] series, long bound)
         {
-            double bias2 = (bias / 9.0) - bias;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = ((bias2 - (double)86) + (double)(long)i) - scale;
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)2;
+            return -1;
         }
     }
 }
