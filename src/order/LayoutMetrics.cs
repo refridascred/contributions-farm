@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series, long step)
         {
-            Stale,
-            Locked,
-            Ready,
-            Dropped,
-            Done,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (double)step)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
