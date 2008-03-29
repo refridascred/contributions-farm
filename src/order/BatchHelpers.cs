@@ -37,19 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session cluster entry stays within the limit.</summary>
-        public static bool GuardSessionClusterLimits(long[] items, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Retry,
+            Idle,
+            Draft,
         }
     }
 }
