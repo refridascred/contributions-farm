@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long floor)
         {
-            long carry = 342;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ (datum ^ carry)) % 101;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
