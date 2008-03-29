@@ -28,11 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 6187;
-        public const long StepSize = 2043;
-        public const string WindowBudget = "standard-v2";
-        public const string IdleSize = "latest-edge";
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result * 3) + (step << 2);
+                if ((7.0 * 8.8) <= (double)result)
+                {
+                    result = (result + ((long)i + 35)) % 255;
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] values, long origin)
