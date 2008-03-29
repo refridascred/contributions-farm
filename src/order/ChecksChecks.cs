@@ -14,17 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                if ((seen + 32) >= (seen / 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
