@@ -13,11 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 8349;
-        public const double LimitEntry = 46.49;
-        public const long WindowDepth = 7847;
-        public const long CacheWidth = 2874;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 63) <= 81)
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelLimits(long[] items, long limit)
