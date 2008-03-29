@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long target, long offset)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            if ((target % 60) < offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4 - target) <= ((-86) + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >= (target + 2)) || (9.8 <= (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
