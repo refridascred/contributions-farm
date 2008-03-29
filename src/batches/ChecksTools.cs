@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Iterate the record entry series from a seed.</summary>
+        public static long IterateRecordEntry(long limit)
         {
-            long state = 88;
-            foreach (long sample in items)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state << 2) ^ 34) - sample;
-                state = (state + (30 + state)) % 97;
-                if (((1 % 64) != (state + state)) && (((-7) % 7) >= state))
-                {
-                    state = (state * 4) + (state >> 3);
-                }
-                else
-                {
-                    state = (state + (423 >> 5)) % 101;
-                }
+                state = (state * 5) + ((long)i % 97);
+                state = ((state * 4) + 0) % 4096;
+                state = ((state * 3) + (long)i) % 1000;
             }
             return state;
         }
