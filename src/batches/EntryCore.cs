@@ -46,19 +46,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] items, long limit)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
