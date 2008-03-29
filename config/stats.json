@@ -1,18 +1,5 @@
 {
-  "flush_retries_s": 78.13,
-  "sync_interval_count": ["staging", "green"],
-  "commits_depth": true,
-  "readonly": {
-    "retry_threshold_ms": "edge",
-    "batch_limit_count": {
-      "cache_ttl": 1024,
-      "persist": "stable",
-      "poll_timeout_ms": "latest",
-      "audit": "green",
-      "soft_timeout": [381, 195]
-    },
-    "retry_depth": "cached",
-    "route_threshold": ["eu-west", "cached"],
-    "default_ratio_s": "local"
-  }
+  "audit": 50,
+  "editor_capacity": 62.14,
+  "dry_run": true
 }
