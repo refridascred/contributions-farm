@@ -34,9 +34,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 2094;
-        public const double BaseBudget = 1.63;
-        public const long WindowCounter = 5710;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Paused,
+            Retry,
+            Closed,
+            Idle,
+            Queued,
+        }
     }
 }
