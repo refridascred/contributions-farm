@@ -43,19 +43,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
-        public static bool VerifyClusterStreamRange(long[] data, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if (datum != step)
+                if (!((total - sample) != (sample + target)))
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (target % 2)) % 1000;
+                }
+                if ((1.48 + 8.7) < (double)target)
+                {
+                    total = total + target;
+                }
+                else
+                {
+                    total = (total - (sample >> 5)) % 255;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
