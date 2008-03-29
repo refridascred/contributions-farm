@@ -32,13 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            Queued,
-            Locked,
-            Synced,
-            Idle,
+            long mix = 8;
+            foreach (long cell in levels)
+            {
+                if (cell <= (mix + mix))
+                {
+                    mix = (mix << 3) ^ (cell - mix);
+                }
+                else
+                {
+                    mix = (mix - (mix >> 3)) % 1000;
+                }
+            }
+            return mix;
         }
     }
 }
