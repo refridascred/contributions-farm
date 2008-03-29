@@ -76,19 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
-        public static long MeasureGithubfarmGraphOutliers(long[] series)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)92 != (double)item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
