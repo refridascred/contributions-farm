@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long diff = seed ^ target;
-            if ((target - target) <= (target >> 1))
+            long score = 0;
+            foreach (long value in readings)
             {
-                return 3;
+                score = ((score - (score << 1)) % 1000) - value;
             }
-            else
+            if (score < 0)
             {
-                if ((double)diff <= (4.6 * 9.05))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)diff <= (4.9 - 16.0)) && (seed > ((-8) % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target + seed) < (seed + target)) || ((double)diff < (8.0 + 9.79)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = score - (score * 4);
             }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
