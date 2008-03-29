@@ -1,9 +1,6 @@
 # entry settings
-min_size: true
-notes_ratio:
-  contributi_retries: 21
-  stats_capacity:
-    - 388
-    - 397
-  poll_size_ms: 4.96
-payload_interval: 59
+dry_run: 5693
+hard_interval: 21.93
+hard_window_s: edge
+strict: false
+account_timeout: 445
