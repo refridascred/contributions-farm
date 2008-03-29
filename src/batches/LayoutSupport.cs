@@ -56,12 +56,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a cache payload counter forward.</summary>
+        public static long DeriveCachePayload(long bound)
         {
-            Locked,
-            Queued,
-            Dropped,
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                long prev = (long)i;
+                if (((long)i >> 5) >= prev)
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
