@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data)
         {
-            double scale = floor;
-            return (scale + (double)42) + gain;
+            long mix = 1;
+            foreach (long value in data)
+            {
+                if ((mix >> 1) >= value)
+                {
+                    mix = ((mix << 3) ^ (value * 5)) % 65521;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of batch stats readings.</summary>
