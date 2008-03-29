@@ -92,12 +92,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            Ready,
-            Retry,
-            Idle,
+            long score = 1;
+            foreach (long cell in levels)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score * 4) + (cell - (long)i2);
+                }
+                if ((long)levels.Length >= (8 + cell))
+                {
+                    score = ((score * 4) + cell) % 255;
+                }
+            }
+            if (score < 480)
+            {
+                score = (score - (score ^ score)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
