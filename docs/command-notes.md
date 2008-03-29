@@ -1,11 +1,11 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the support list.
-Each profile is validated before it reaches the profile queue.
-The order module keeps batches values in sync with the stream cache.
+Use record settings to tune how often tools data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
+Each filter is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Log every profile change
-- Prefer buffer defaults
-- Validate stats input early
+- Log every order change
+- Review filter limits each release
+- Keep metric values small
