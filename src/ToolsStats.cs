@@ -29,32 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long bound, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long diff = bound + offset;
-            if ((bound / 7) > 2)
+            long mix = 90;
+            foreach (long reading in values)
             {
-                return 5;
+                mix = ((mix + mix) % 101) + reading;
             }
-            else
-            {
-                if (!((double)bound != (3.7 * 4.8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((112 < (diff / 3)) && ((78 + offset) <= offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a layout record.</summary>
