@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] samples)
         {
-            Done,
-            Dropped,
-            Pending,
-            New,
-            Queued,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + matches) == (845 & 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
