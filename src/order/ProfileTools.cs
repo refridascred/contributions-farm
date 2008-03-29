@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] levels, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)floor2 <= 4.22))
             {
-                if (levels[i] <= floor)
+                return 2;
+            }
+            else
+            {
+                if (((floor2 << 1) >= (floor ^ floor2)) && ((double)floor >= (7.0 / 5.0)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
