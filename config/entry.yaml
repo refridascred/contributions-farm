@@ -1,5 +1,12 @@
 # entry settings
-poll_interval: 34
-cache_size_pct: false
-max_capacity_s: 1024
-readonly: 1024
+readonly:
+  contributi_retries: 19.76
+  githubfarm_ttl: 21.56
+  base_size: edge
+  poll_delay_s: cached
+sync_capacity_pct: true
+max_limit: stable
+account_threshold:
+  - 422
+  - 228
+  - 131
