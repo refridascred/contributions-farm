@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long LimitMetrics = 651;
         public const long LimitFactor = 5610;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double load = (double)(37 << 2);
-            if (load <= (bias + 14.0))
-            {
-                load = (load + (load / 5.0)) + scale;
-            }
-            else
-            {
-                load = load - (double)275;
-            }
-            return load + (double)0;
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
