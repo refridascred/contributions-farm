@@ -1,12 +1,5 @@
 # githubfarm settings
-hard_ratio: 250
-base_depth_s: 1024
-retry_interval: 30
-contributi_threshold: 2908
-max_retries:
-  entry_ttl: blue
-  profile_ttl: legacy
-  max_window:
-    - latest
-    - strict
-    - legacy
+compress: 12
+batch_size_ms: fallback
+flush_depth_pct: 60
+base_delay: green
