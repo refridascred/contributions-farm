@@ -46,10 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 4442;
-        public const double MinCounter = 48.79;
-        public const string MaxCounter = "local-1";
-        public const string SoftCount = "staging-v2";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Stale,
+            New,
+            Closed,
+            Dropped,
+        }
     }
 }
