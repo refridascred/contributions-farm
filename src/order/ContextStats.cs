@@ -29,10 +29,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 19.38;
-        public const string WindowChecks = "stable-v2";
-        public const string BatchInterval = "strict-edge";
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] samples, long step)
