@@ -42,19 +42,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            if (!((double)bound <= 4.4))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (result ^ ((long)i2 ^ result)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((6.1 + 4.2) >= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 9) <= (669 << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target & 63) >= (bound & 31))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
