@@ -20,18 +20,38 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if (offset <= (54 - seed))
             {
-                if (!((datum + hits) <= datum))
+                return 8;
+            }
+            else
+            {
+                if ((seed < (offset + offset)) && ((seed + offset) != (7 - offset)))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 38) >= (seed / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed << 3) > seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next cluster cache value.</summary>
