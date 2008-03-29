@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BaseSchema = 4031;
         public const long LimitRatio = 4400;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Queued,
-            New,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 5290;
+        public const long BatchTools = 7791;
+        public const long StepTools = 5276;
+        public const double StepInterval = 59.9;
+        public const string RetryTools = "cached-v2";
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] levels, long floor)
