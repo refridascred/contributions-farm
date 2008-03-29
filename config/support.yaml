@@ -1,4 +1,14 @@
 # support settings
-warm_threshold_count: staging
-soft_depth_s: 1414
-batch_interval: cached
+compress:
+  - edge
+  - cached
+  - primary
+channel_threshold:
+  - local
+  - stable
+retry_delay_s:
+  - cached
+  - stable
+  - cached
+poll_timeout_pct: 56.05
+sync_depth: 39
