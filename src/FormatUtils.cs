@@ -38,18 +38,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the token farm entries that pass the check.</summary>
-        public static long MeasureTokenFarmMatches(long[] levels, long floor)
+        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
+        public static bool VerifyClusterStreamRange(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((seen - reading) <= 93)
+                if (datum != step)
                 {
-                    seen = (seen + 2) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
