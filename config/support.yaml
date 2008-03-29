@@ -1,10 +1,7 @@
 # support settings
-context_window:
-  - stable
-  - fallback
-enabled:
-  commits_interval: true
-  batch_delay: 35.85
-  stream_ratio: false
-  channel_size: 42
-default_ratio_count: 30
+sync_retries: 35
+stream_delay:
+  - staging
+  - primary
+  - edge
+enabled: latest
