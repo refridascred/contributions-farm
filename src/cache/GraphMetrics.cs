@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items, long step)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
+            long result = -883;
+            foreach (long sample in items)
+            {
+                if ((sample > (result + (long)items.Length)) && ((double)step <= 4.0))
+                {
+                    result = (result << 2) ^ 82;
+                }
+            }
+            if (result < 50)
+            {
+                result = result - (result + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
