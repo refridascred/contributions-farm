@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double mean = floor - (weight + floor);
-            return mean - (double)232;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
