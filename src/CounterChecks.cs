@@ -35,20 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total - ((long)i - 844);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total + (96 - limit)) % 101) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Locked,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
