@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double rate, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] series, long origin)
         {
-            double mean = rate;
-            if (mean < (double)66)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                mean = (mean - (double)(-437)) + floor;
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + (double)5;
+            return ok;
         }
 
         /// <summary>Rank session input into a small class.</summary>
