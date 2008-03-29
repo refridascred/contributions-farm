@@ -36,18 +36,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mark = -5;
-            foreach (long entry in series)
-            {
-                if ((5.9 * 4.1) > (double)entry)
-                {
-                    mark = mark - (41 * 3);
-                }
-            }
-            return mark;
+            Idle,
+            Active,
+            Locked,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a format summary.</summary>
