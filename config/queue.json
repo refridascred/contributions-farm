@@ -1,7 +1,5 @@
 {
-  "sync_threshold": 100,
-  "max_capacity_s": 8571,
-  "filter_limit": 32,
-  "flush_interval_s": 34.91,
-  "sync_size_ms": 17
+  "min_capacity": ["open", "legacy", "open", "open"],
+  "warm_capacity": "staging",
+  "hard_ratio_pct": "primary"
 }
