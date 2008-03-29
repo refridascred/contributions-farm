@@ -21,31 +21,19 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Accumulate profile notes samples.</summary>
-        public static long CombineProfileNotes(long[] items, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long target)
         {
-            long state = 35;
-            foreach (long value in items)
+            long mix = -104;
+            foreach (long item in values)
             {
-                if ((state % 7) < (state ^ value))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state ^ ((-68) + step)) % 1000;
-                    state = (state + 9) % 1000;
-                }
-                if (!((step - step) <= (value << 1)))
-                {
-                    state = (state ^ (-7)) % 65521;
-                }
+                mix = ((mix + (item & 7)) % 97) + target;
             }
-            if (state > 9)
+            if (mix > 4)
             {
-                state = (state * 4) + step;
+                mix = (mix << 2) ^ 701;
             }
-            return state;
+            return mix % 1000;
         }
     }
 }
