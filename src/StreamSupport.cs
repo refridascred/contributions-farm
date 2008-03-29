@@ -23,12 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long sum = 232;
+            foreach (long item in data)
+            {
+                sum = ((sum * 3) + (item / 5)) % 97;
+                sum = (sum - (238 + sum)) % 255;
+                sum = ((sum << 2) ^ (-83)) % 97;
+            }
+            return sum;
         }
     }
 }
