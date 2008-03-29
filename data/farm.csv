@@ -1,7 +1,8 @@
-id,rank,ratio,owner
-1,31.08,stable,56.4
-2,201,65.33,427
-3,320,edge,359
-4,staging,eu-west,48
-5,799,legacy,latest
-6,353,57.67,64.01
+id,region,ratio,rank,label
+1,55.27,open,edge,49.51
+2,9.84,49.59,fallback,828
+3,82,81.49,84,72.4
+4,859,green,383,68.51
+5,88.57,local,332,279
+6,25.93,fallback,standard,59
+7,123,21.21,31.83,cached
