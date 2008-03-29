@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            Draft,
-            New,
-            Retry,
-            Synced,
-            Stale,
+            long sum = 69;
+            foreach (long datum in readings)
+            {
+                if ((5.0 / 7.0) > (double)datum)
+                {
+                    sum = ((sum * 2) + ((-89) + datum)) % 101;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
