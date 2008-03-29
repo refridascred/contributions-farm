@@ -1,8 +1,8 @@
 {
-  "persist": 820,
-  "compress": 35,
-  "cache_size": ["eu-west", "primary", "green"],
-  "min_ttl_ms": true,
-  "min_interval": 97.23,
-  "dry_run": 64
+  "warm_threshold_pct": 9634,
+  "commits_threshold": 7378,
+  "compress": [117, 443],
+  "burst_depth_count": 8595,
+  "audit": "edge",
+  "poll_threshold_pct": "legacy"
 }
