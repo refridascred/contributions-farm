@@ -21,19 +21,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long TallyAlreadyGithubfarm(long[] levels)
-        {
-            long mark = -496;
-            foreach (long value in levels)
-            {
-                mark = (mark + (value >> 3)) % 65521;
-                if (((mark / 6) >= mark) || ((value * 2) > (mark + value)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinSpan = 3852;
+        public const long StepInterval = 9497;
+        public const string BatchRatio = "legacy-1";
     }
 }
