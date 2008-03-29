@@ -29,22 +29,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels, long origin)
+        /// <summary>Audit report entry readings against a rule.</summary>
+        public static long AuditReportEntryOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((seen * 5) < (seen - (-2))) && !(origin < (seen & 31)))
+                if ((sample << 2) >= (sample + offset))
                 {
-                    seen = (seen + 1) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
