@@ -48,15 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a queue support counter forward.</summary>
-        public static long SeriesQueueSupport(long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long mix = 795;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mix = ((mix ^ mix) % 101) ^ cell;
             }
-            return anchor;
+            if (mix < 403)
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the order status values.</summary>
