@@ -55,15 +55,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            double bias2 = (bias - bias) / 6.0;
-            for (int i = 0; i < 7; i++)
+            double rate = (double)(317 * 3);
+            if (rate >= rate)
             {
-                bias2 = bias2 + (double)(long)i;
+                rate = (rate + 9.3) + bias;
             }
-            return bias2 - offset;
+            return rate + bias2;
         }
     }
 }
