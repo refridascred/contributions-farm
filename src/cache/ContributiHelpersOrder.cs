@@ -21,11 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
