@@ -55,18 +55,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long AuditAccountCommitsGaps(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((hits << 1) < (reading + hits)) && (((double)hits != (double)8) || ((reading * 3) > reading)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
