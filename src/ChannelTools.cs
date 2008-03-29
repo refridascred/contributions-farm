@@ -31,14 +31,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] items)
         {
-            Paused,
-            Done,
-            Draft,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (3.76 / 4.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
