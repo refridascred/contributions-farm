@@ -5,31 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Classify a record tools pair into a bucket.</summary>
+        public static long GradeRecordTools(long target, long step)
         {
-            long result = 89;
-            foreach (long datum in data)
+            long span = target + step;
+            if ((step + span) >= step)
             {
-                if ((result - result) <= ((long)data.Length * 2))
+                return 8;
+            }
+            else
+            {
+                if (!(span > (step + target)))
                 {
-                    result = result ^ result;
-                    break;
-                }
-                if ((result + result) >= (datum << 1))
-                {
-                    result = (result - (datum + result)) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (datum + datum)) % 4096;
+                    if ((span >> 3) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step < (target ^ 627))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (result > 621)
-            {
-                result = ((result * 3) + result) % 97;
-            }
-            return result;
         }
 
         /// <summary>Hold a batch header.</summary>
