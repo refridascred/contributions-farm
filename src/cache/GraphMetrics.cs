@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] series)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((7.6 - 3.95) == (double)sample) && ((seen + sample) < 7))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
