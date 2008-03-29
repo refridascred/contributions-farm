@@ -20,31 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a token cache pair into a bucket.</summary>
-        public static long BucketTokenCache(long origin, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long step)
         {
-            if ((3.8 * 4.0) > (double)origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (9.9 * 17.0))
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step + step) >= step) || ((step * 2) != (step + (-360))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate batch cluster readings against a bound.</summary>
