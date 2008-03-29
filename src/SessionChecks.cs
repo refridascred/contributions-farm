@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 3853;
         public const string WindowScore = "alpha-edge";
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long floor)
-        {
-            if ((floor + 7) >= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor < (step / 8)) || (40 > floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 5959;
+        public const double MaxMetric = 1.74;
+        public const long DefaultSize = 4528;
+        public const long WindowWidth = 6134;
+        public const long LimitSpan = 6855;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
