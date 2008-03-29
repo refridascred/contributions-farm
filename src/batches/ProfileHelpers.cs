@@ -78,15 +78,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long step, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            if (((double)limit <= 15.0) && (limit <= (step >> 4)))
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((step & 15) >= (step - 488))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit != (9.7 + 15.0)) || ((limit << 2) == (5 * 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step < 7.01)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
