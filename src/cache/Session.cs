@@ -60,14 +60,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count window token pairs that satisfy a relation.</summary>
+        public static long CompareWindowTokenCount(long[] samples)
         {
-            Closed,
-            Done,
-            Synced,
-            Active,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
