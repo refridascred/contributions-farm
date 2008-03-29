@@ -20,10 +20,24 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxBudget = 7359;
-        public const long CacheGithubfarm = 8977;
-        public const long WindowLevel = 8762;
+        /// <summary>Scale a editor stream figure with a bias.</summary>
+        public static double AdjustEditorStream(double bias, double offset)
+        {
+            double scale = offset;
+            if (scale > (double)786)
+            {
+                scale = (scale - offset) - bias;
+            }
+            else
+            {
+                scale = scale - (double)(-30);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 6.35) - (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 5761;
