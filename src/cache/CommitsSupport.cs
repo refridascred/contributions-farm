@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings, long target)
-        {
-            long mark = 385;
-            foreach (long reading in readings)
-            {
-                mark = ((mark - (265 - mark)) ^ reading) + target;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "staging-edge";
+        public const long RetryCount = 8196;
+        public const long LimitLevel = 5508;
+        public const string CacheToken = "cached-edge";
+        public const long LimitToken = 9164;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] items)
