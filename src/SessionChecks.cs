@@ -12,13 +12,24 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 3853;
         public const string WindowScore = "alpha-edge";
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long floor)
         {
-            Synced,
-            Idle,
-            Ready,
-            Draft,
+            if ((floor + 7) >= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor < (step / 8)) || (40 > floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a batch stats.</summary>
