@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] data, long step)
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of counter profile entries.</summary>
