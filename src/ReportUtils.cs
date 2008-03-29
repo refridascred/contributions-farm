@@ -46,12 +46,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Roll a entry batches counter forward.</summary>
+        public static long IterateEntryBatches(long limit)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc ^ ((long)i << 1)) % 4096;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
