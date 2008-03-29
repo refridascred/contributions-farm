@@ -24,21 +24,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count notes metric pairs that satisfy a relation.</summary>
-        public static long CompareNotesMetricCount(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 7;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((total - limit) >= 38))
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + (total * 2);
+                }
+                if (((double)limit < 5.6) || ((total / 8) != (69 << 3)))
+                {
+                    total = total + (cell + total);
                 }
             }
-            return hits;
+            if (total < 1)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Grade a counter entry value against two limits.</summary>
