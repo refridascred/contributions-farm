@@ -78,11 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
