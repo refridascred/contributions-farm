@@ -42,27 +42,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long target)
-        {
-            long total = 6;
-            foreach (long sample in values)
-            {
-                if (!((total - sample) != (sample + target)))
-                {
-                    total = (total ^ (target % 2)) % 1000;
-                }
-                if ((1.48 + 8.7) < (double)target)
-                {
-                    total = total + target;
-                }
-                else
-                {
-                    total = (total - (sample >> 5)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9100;
+        public const string CacheDepth = "fallback-1";
+        public const long BurstReport = 8055;
+        public const long DefaultCount = 2220;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BaseAccount = "cached-v2";
