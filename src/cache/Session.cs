@@ -60,22 +60,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of order account readings.</summary>
-        public static long TotalOrderAccount(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = 20;
-            foreach (long item in readings)
-            {
-                if ((acc > (item - item)) && (item <= 577))
-                {
-                    break;
-                }
-                if (acc > (item ^ item))
-                {
-                    acc = acc ^ (acc & 3);
-                }
-            }
-            return acc % 4096;
+            Closed,
+            Done,
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
