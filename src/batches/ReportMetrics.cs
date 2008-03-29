@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a report batch counter forward.</summary>
-        public static long DeriveReportBatch(long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long mix = 163;
+            foreach (long entry in data)
             {
-                state = ((state << 3) ^ 1) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                if ((origin + origin) <= mix)
+                {
+                    mix = mix - (origin + entry);
+                }
             }
-            return state;
+            if (mix < (-2))
+            {
+                mix = ((mix << 3) ^ origin) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the payload session series from a seed.</summary>
