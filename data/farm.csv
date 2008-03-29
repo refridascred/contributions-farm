@@ -1,8 +1,7 @@
-id,region
-1,4.23
-2,736
-3,432
-4,45
-5,staging
-6,local
-7,681
+id,rank,state,owner
+1,green,edge,846
+2,77.45,10.92,legacy
+3,754,edge,78.67
+4,922,734,488
+5,714,staging,open
+6,883,cached,101
