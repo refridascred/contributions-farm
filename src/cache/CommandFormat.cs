@@ -40,19 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < limit)
+                if (items[i] > target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
