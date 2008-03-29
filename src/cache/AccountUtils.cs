@@ -51,11 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Adjust a batch cache reading.</summary>
+        public static double ScaleBatchCache(double gain, double bias)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            double load = gain;
+            if (load > (gain / 5.0))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + (double)1;
         }
     }
 }
