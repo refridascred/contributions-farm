@@ -1,5 +1,12 @@
 {
-  "warm_ttl_pct": 0.91,
-  "compress": [254, 147],
-  "soft_window_count": 60
+  "dry_run": 9815,
+  "max_size": true,
+  "retry_retries_s": {
+    "token_capacity": "legacy",
+    "max_depth_count": "latest",
+    "idle_delay": "stable"
+  },
+  "compress": 1024,
+  "context_capacity": true,
+  "profile_threshold": "open"
 }
