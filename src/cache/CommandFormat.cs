@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((64 >> 1) != (tally & 3))
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 2) + item) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
