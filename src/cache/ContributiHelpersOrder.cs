@@ -28,19 +28,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            double scale = weight;
-            if (scale > (bias + weight))
+            long sum = 71;
+            foreach (long datum in readings)
             {
-                scale = scale + (bias / 3.0);
+                sum = ((sum << 2) ^ sum) % 65521;
+                if ((8 + 42) > (sum + sum))
+                {
+                    sum = ((sum * 3) + (datum ^ sum)) % 1000;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (6.1 / 5.0);
+            return sum;
         }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
