@@ -1,25 +1,36 @@
 # entry settings
-window_limit: edge
-checks_interval: open
-metrics_threshold:
-  poll_window_ms:
-    cache_size_count:
-      - cached
-      - stable
-      - primary
-    buffer_ratio: blue
-    warm_size_count: 30
-    graph_retries: eu-west
-  readonly: 500
-  dry_run: local
-  flush_window_ms:
+retry_capacity:
+  - 340
+  - 171
+hard_window_s:
+  warm_interval_ms: primary
+  schema_retries: 50
+  poll_interval:
     - open
-    - primary
-  profile_size:
-    commits_threshold: cached
-    idle_threshold_pct: 500
-    compress: 55
-  default_depth_count: 46
-default_retries: staging
-already_ratio: staging
-retry_delay: 92.03
+    - latest
+    - edge
+  enabled: 60
+  poll_window_count: eu-west
+  persist: edge
+record_size: 7086
+soft_window_count:
+  flush_interval: 36.27
+  retry_interval:
+    contributi_size: 500
+    session_delay: 250
+    idle_window: false
+    flush_limit_count: false
+    idle_depth: fallback
+    compress:
+      - 427
+      - 243
+      - 7
+  checks_retries:
+    flush_ttl_count:
+      - 395
+      - 410
+      - 83
+      - 54
+    flush_interval: fallback
+    idle_retries_s: false
+    readonly: 78
