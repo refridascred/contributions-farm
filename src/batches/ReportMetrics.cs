@@ -33,18 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout metrics samples are out of range.</summary>
-        public static long AuditLayoutMetricsOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + 155) >= count)
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftWidth = 1018;
+        public const long HardRatio = 1409;
+        public const long RetryRatio = 3402;
+        public const long HardChannel = 3524;
+        public const long WindowChannel = 346;
     }
 }
