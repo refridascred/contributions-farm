@@ -30,19 +30,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every profile cache entry stays within the limit.</summary>
-        public static bool CheckProfileCacheBounds(long[] data, long floor)
+        /// <summary>Count the stats cache entries that pass the check.</summary>
+        public static long TallyStatsCacheMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading < floor)
+                if ((6.2 / 9.0) > (double)entry)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
