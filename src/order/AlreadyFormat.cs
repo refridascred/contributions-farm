@@ -35,27 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (result ^ (result - result)) ^ (long)i2;
-                }
-                if ((result ^ origin) < (815 << 1))
-                {
-                    result = result - (2 - origin);
-                }
-                else
-                {
-                    result = result + result;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of commits stats entries.</summary>
