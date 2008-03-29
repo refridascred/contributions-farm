@@ -33,22 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples, long floor)
+        /// <summary>Count account stats pairs that satisfy a relation.</summary>
+        public static long OverlapAccountStatsCount(long[] levels)
         {
-            long score = 72;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (430 <= score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
-                }
-                if (entry > (entry - 26))
-                {
-                    score = (score * 5) + (4 - floor);
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
