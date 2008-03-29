@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 3904;
-        public const long CacheCount = 9630;
-        public const long DefaultCache = 2762;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double span)
+        {
+            double load = span - (span - span);
+            if (load <= 4.24)
+            {
+                load = load + gain;
+            }
+            else
+            {
+                load = load - (9.53 / 2.0);
+            }
+            return load + (load + gain);
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
