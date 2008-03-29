@@ -30,13 +30,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Locked,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftLevel = "latest-v2";
+        public const string LimitChannel = "primary-1";
+        public const long IdleChannel = 272;
+        public const long WindowSize = 9010;
+        public const long BurstBudget = 1934;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] values)
