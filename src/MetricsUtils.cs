@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload counter samples.</summary>
-        public static long TotalPayloadCounter(long[] data, long target)
+        /// <summary>Locate a layout payload reading by value.</summary>
+        public static long LookupLayoutPayloadIndex(long[] items, long limit)
         {
-            long anchor = -3;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 3) ^ 9) - entry) - target;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 19)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
