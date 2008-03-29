@@ -47,15 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch metrics values into a single score.</summary>
-        public static long TallyBatchMetrics(long[] series, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] items, long limit)
         {
-            long mix = 207;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = ((mix ^ origin) % 4096) ^ sample;
+                if (99 <= (limit + limit))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
