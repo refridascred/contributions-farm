@@ -13,17 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first stream editor entry that matches the target.</summary>
-        public static long LookupStreamEditorIndex(long[] series, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
