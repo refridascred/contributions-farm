@@ -1,7 +1,5 @@
 {
-  "record_threshold": ["primary", "strict", "edge", "latest"],
-  "metrics_timeout": true,
-  "flush_window": ["legacy", "blue"],
-  "default_retries_count": ["standard", "cached", "open"],
-  "hard_interval": "primary"
+  "warm_ratio": 63.52,
+  "cache_ratio": ["stable", "primary", "blue"],
+  "min_timeout": 91.73
 }
