@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Idle,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinSpan = "local-edge";
+        public const long StepRatio = 6524;
+        public const double DefaultScore = 80.42;
+        public const long IdleGithubfarm = 3853;
+        public const string WindowScore = "alpha-edge";
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamBounds(long[] levels, long target)
