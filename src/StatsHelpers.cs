@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleBudget = 5067;
-        public const long BatchScore = 1772;
-        public const long StepTools = 4709;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((42 << 2) < (cell % 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long seed, long step)
