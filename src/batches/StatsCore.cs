@@ -28,24 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            if ((5.8 - 5.6) != (double)floor)
+            long score = 8;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 5) != (step ^ step))
+                if (7.78 <= (double)56)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    score = ((score * 3) + (item - item)) % 4096;
                 }
             }
+            return score;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
