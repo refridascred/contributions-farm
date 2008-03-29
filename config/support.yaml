@@ -1,5 +1,4 @@
 # support settings
-idle_window: false
-max_capacity: staging
-max_delay: 8386
-audit: strict
+route_limit: true
+min_interval_ms: 31
+default_capacity_ms: latest
