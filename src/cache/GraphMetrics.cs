@@ -41,10 +41,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 97.02;
-        public const string LimitRatio = "primary";
-        public const long IdleTimeout = 6119;
-        public const long CacheTimeout = 4789;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series, long seed)
+        {
+            long result = 40;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (((result * 2) + (18 ^ seed)) % 97) - (long)i;
+                }
+                result = (result << 2) ^ (result >> 1);
+                if ((465 % 100) < (result + result))
+                {
+                    result = (result + ((long)series.Length * 2)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (result - result)) % 101;
+                }
+                if ((result > (result - sample)) || ((1.7 - 9.58) >= (double)seed))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
     }
 }
