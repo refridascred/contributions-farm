@@ -21,9 +21,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinSpan = 3852;
-        public const long StepInterval = 9497;
-        public const string BatchRatio = "legacy-1";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] values, long origin)
+        {
+            long anchor = -458;
+            foreach (long value in values)
+            {
+                if (1.0 >= (double)origin)
+                {
+                    anchor = (anchor + value) % 101;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor << 2) ^ (origin & 3);
+            }
+            return anchor;
+        }
     }
 }
