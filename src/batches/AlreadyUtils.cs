@@ -5,33 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long anchor = 810;
-            foreach (long entry in data)
-            {
-                if ((entry + 5) >= anchor)
-                {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - entry)) % 255;
-                    anchor = (anchor * 5) + (3 % 5);
-                }
-                anchor = (anchor * 2) + (anchor + 24);
-                anchor = anchor - (entry % 8);
-                if ((anchor / 3) >= (6 + anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = (anchor ^ (anchor ^ (-31))) % 101;
-            }
-            return anchor % 65521;
+            Active,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
