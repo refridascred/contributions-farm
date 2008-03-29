@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank cluster token input into a small class.</summary>
+        public static long RankClusterToken(long seed, long step)
         {
-            Locked,
-            Ready,
-            Idle,
-            Done,
+            if (!((step * 2) <= (step * 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step == (0.2 - 9.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 2) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
