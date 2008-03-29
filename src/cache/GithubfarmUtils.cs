@@ -22,39 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long origin, long bound)
+        /// <summary>Accumulate checks session samples.</summary>
+        public static long TallyChecksSession(long[] data, long limit)
         {
-            long span = origin ^ bound;
-            if ((2 < (span + span)) && (origin > (bound / 8)))
+            long carry = 60;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + 744) >= (span - origin))
+                if ((limit * 2) == (carry - limit))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (984 >= (bound + (-277)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (span > (origin / 6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (((carry * 3) + (carry / 4)) % 65521) ^ entry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
