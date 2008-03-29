@@ -12,18 +12,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] levels, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((bound & 15) < tally) && (bound <= (datum & 15)))
-                {
-                    tally = tally + 2;
-                }
+                state = (state + (target - 4)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
