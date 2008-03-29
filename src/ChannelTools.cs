@@ -15,18 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] values, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((hits + bound) != (bound * 4))
+                if (entry >= bound)
                 {
-                    hits = (hits + 3) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit record stream readings against a rule.</summary>
