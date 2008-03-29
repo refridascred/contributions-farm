@@ -1,19 +1,12 @@
 # support settings
-enabled:
-  cache_capacity_count:
-    - stable
-    - fallback
-    - eu-west
-  min_retries_pct: false
-  hard_capacity_ms:
-    context_depth: green
-    flush_size_count: 9550
-    sync_delay:
-      - 80
-      - 221
-    enabled: 71.11
-    readonly: primary
-  layout_depth: false
-batch_depth_count: 9136
-sync_delay_pct: 100
-max_ratio_s: 60
+cluster_threshold: 7077
+default_threshold_ms: 48
+profile_size: fallback
+base_retries_pct:
+  - staging
+  - stable
+idle_threshold_pct:
+  - 334
+  - 276
+  - 379
+cache_retries: true
