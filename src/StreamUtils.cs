@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
