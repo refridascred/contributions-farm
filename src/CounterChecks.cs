@@ -46,31 +46,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank editor metrics input into a small class.</summary>
-        public static long GradeEditorMetrics(long step, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series, long bound)
         {
-            if ((step / 9) > step)
+            long sum = 6;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 2) >= step)
+                if (bound >= ((-411) >> 2))
                 {
-                    return 1;
+                    sum = ((sum + bound) % 1000) ^ item;
                 }
                 else
                 {
-                    if (floor <= (step & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum + sum) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
