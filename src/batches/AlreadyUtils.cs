@@ -49,23 +49,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long floor)
         {
-            long gap = step - origin;
-            if ((origin << 1) != (step - origin))
+            long diff = step ^ floor;
+            if ((floor + step) > (floor * 2))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((step < gap) || ((origin + step) <= (gap ^ gap)))
+                if ((step > (step - 9)) || ((floor * 2) <= (diff + diff)))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    return 4;
                 }
             }
         }
