@@ -37,18 +37,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long bound)
+        /// <summary>Roll a record checks counter forward.</summary>
+        public static long StepRecordChecks(long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)matches == (2.9 + 5.66))
+                if ((floor >> 3) > (floor >> 5))
                 {
-                    matches = ((matches + 1) - sample) - bound;
+                    acc = ((acc << 3) ^ (acc % 2)) % 65521;
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
