@@ -19,16 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools queue counter forward.</summary>
-        public static long StepToolsQueue(long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] readings, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                carry = (carry * 4) + carry;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((4.0 - 0.4) >= (double)origin)
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
