@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate commits githubfarm samples.</summary>
-        public static long DigestCommitsGithubfarm(long[] readings)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long state = 102;
-            foreach (long item in readings)
-            {
-                if (state <= (state << 3))
-                {
-                    state = ((state + (state - state)) % 65521) + item;
-                }
-            }
-            return state % 1000;
+            Done,
+            Dropped,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
