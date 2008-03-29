@@ -5,15 +5,36 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long acc = 92;
+            foreach (long reading in items)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((3.4 / 5.0) >= (double)reading)
+                {
+                    acc = (acc - (acc + 32)) % 1000;
+                    acc = (acc * 2) + (floor + acc);
+                    break;
+                }
+                if ((acc - (-7)) == (floor - floor))
+                {
+                    acc = acc + (743 + floor);
+                }
+                else
+                {
+                    acc = (acc + reading) % 101;
+                }
+                if ((double)floor <= 0.68)
+                {
+                    break;
+                }
             }
-            return score;
+            if (acc < 776)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
