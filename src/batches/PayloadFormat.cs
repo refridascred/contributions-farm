@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Queued,
-            Closed,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultLevel = 5574;
+        public const double HardChecks = 53.03;
+        public const long MaxScore = 4827;
+        public const long BurstChecks = 8338;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 1796;
