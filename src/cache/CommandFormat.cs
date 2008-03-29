@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] levels, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
