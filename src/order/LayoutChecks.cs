@@ -56,17 +56,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Look up the position of a counter order sample.</summary>
+        public static long SeekCounterOrderIndex(long[] samples, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + total) % 4096;
-                total = total - total;
-                total = ((total * 2) + (long)i) % 101;
+                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
