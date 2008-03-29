@@ -46,13 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long CountSupportStreamOutliers(long[] values, long floor)
         {
-            Locked,
-            Pending,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((5.9 / 2.0) <= (double)floor)
+                {
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order entry.</summary>
