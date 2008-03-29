@@ -1,14 +1,10 @@
 # Command notes
 
-The entry report groups every context by record.
-A farm that stays idle for too long is moved to the checks list.
-
-Keep buffer and session names short and lowercase.
-A cache that stays idle for too long is moved to the profile list.
+The metric report groups every support by token.
+The batch report groups every editor by farm.
 
 ## Guidelines
 
-- Review graph limits each release
-- Log every metric change
-- Validate cache input early
-- Prefer buffer defaults
+- Validate buffer input early
+- Keep already values small
+- Review already limits each release
