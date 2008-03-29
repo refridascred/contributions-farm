@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double bias, double bias2)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long step2)
         {
-            double mean = bias + 18.0;
-            if (mean > bias2)
+            if (step2 >= ((-54) + 904))
             {
-                mean = mean - (bias / 2.0);
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - (bias2 + bias)) + (double)(long)i;
+                if (!((step2 + 875) > (8 * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mean + (mean * 4.0);
         }
 
         /// <summary>Roll a order counter forward.</summary>
