@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "strict-edge";
-        public const long MaxWidth = 2931;
-        public const long BatchFactor = 8584;
-        public const long IdleFarm = 1109;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Queued,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Look up the position of a support already sample.</summary>
         public static long FindSupportAlreadyIndex(long[] samples, long floor)
