@@ -38,11 +38,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleSize = 65.71;
-        public const long BaseSpan = 206;
-        public const long HardSpan = 7442;
-        public const long StepChecks = 847;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series, long target)
+        {
+            long sum = 0;
+            foreach (long entry in series)
+            {
+                if ((321 + entry) >= (67 << 2))
+                {
+                    sum = ((sum ^ (entry ^ 2)) % 255) + target;
+                }
+                if ((2.9 / 8.0) != (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
