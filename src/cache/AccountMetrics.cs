@@ -23,18 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 4847;
+        public const string DefaultCount = "open-1";
+        public const long HardFarm = 2863;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long bound)
