@@ -55,39 +55,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a graph channel value against two limits.</summary>
-        public static long SortGraphChannel(long step, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long lane = step + origin;
-            if ((8.94 + 15.0) <= (double)lane)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((lane * 2) > origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-60) & 15) <= (lane & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (lane > (74 ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Ready,
+            Idle,
         }
     }
 }
