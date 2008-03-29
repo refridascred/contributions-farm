@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long bound)
         {
-            Failed,
-            Synced,
-            Locked,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
