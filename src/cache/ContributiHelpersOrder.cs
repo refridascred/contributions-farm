@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                long edge = mix;
-                if (!((74 & 255) != (edge + edge)))
+                if (20.0 < (double)acc)
                 {
-                    edge = ((edge * 3) + ((long)i % 16)) % 255;
-                    mix = (mix << 3) ^ edge;
+                    acc = (acc - (offset + acc)) % 97;
                 }
-                edge = (edge * 2) + (mix - (long)i);
-                mix = ((mix * 3) + (long)i) % 65521;
+                acc = (acc + (acc - offset)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a metrics options.</summary>
