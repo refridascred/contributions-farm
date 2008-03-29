@@ -23,12 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 6613;
+        public const long HardAlready = 3888;
+        public const double MinFactor = 62.64;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
