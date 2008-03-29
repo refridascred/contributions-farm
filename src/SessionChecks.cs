@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinDepth = 6517;
+        public const long WindowReport = 6877;
+        public const double MinReport = 1.33;
+        public const long MaxDepth = 1886;
+        public const long StepCount = 9643;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MinSize = "latest-edge";
