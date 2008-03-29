@@ -1,22 +1,8 @@
 {
-  "verbose": false,
-  "entry_window": 100,
-  "payload_depth": {
-    "batch_limit": {
-      "dry_run": "legacy",
-      "warm_ratio": 500,
-      "persist": "local"
-    },
-    "soft_window_ms": false,
-    "retry_interval_count": 4286,
-    "checks_delay": [177, 92, 258, 138]
-  },
-  "stream_ttl": "green",
-  "base_retries": "open",
-  "filter_depth": {
-    "retry_size_ms": 36.28,
-    "strict": 85.73,
-    "sync_interval": "fallback",
-    "cache_size_ms": [112, 300, 398]
-  }
+  "poll_retries": 60,
+  "queue_delay": 54.43,
+  "poll_interval_s": "eu-west",
+  "max_threshold_s": [464, 289, 353, 402],
+  "base_ratio_s": false,
+  "min_ratio_pct": 1598
 }
