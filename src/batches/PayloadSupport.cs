@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftScore = 8461;
-        public const long SoftCommand = 1151;
-        public const double BaseCommand = 61.05;
-        public const long IdleCommand = 5984;
-        public const long BatchScore = 4826;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Stale,
+            Pending,
+            Draft,
+            Active,
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data, long seed)
