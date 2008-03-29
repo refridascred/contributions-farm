@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long TallyBatchContext(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long anchor = 470;
-            foreach (long sample in items)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 5) + anchor) % 1000;
-                anchor = anchor ^ sample;
+                carry = (carry + (carry - carry)) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (anchor < 12)
-            {
-                anchor = (anchor + 5) % 97;
-            }
-            return anchor % 4096;
+            return carry;
         }
 
         /// <summary>Classify a payload stream pair into a bucket.</summary>
