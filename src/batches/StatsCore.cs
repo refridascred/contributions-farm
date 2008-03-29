@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long WindowDepth = 7847;
         public const long CacheWidth = 2874;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] items, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((entry <= (origin << 2)) || ((entry - origin) >= (origin - entry)))
+                if (datum > limit)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
