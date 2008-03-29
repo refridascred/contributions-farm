@@ -29,18 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double load = ratio;
+            if (load > (bias * 7.9))
             {
-                if ((5.53 * 6.87) > (double)tally)
-                {
-                    tally = (tally + 3) - entry;
-                }
+                load = load - (ratio - load);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load / 7.0)) + (double)(long)i;
+            }
+            return load - bias;
         }
     }
 }
