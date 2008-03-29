@@ -39,14 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
+            Stale,
+            Ready,
             Locked,
-            Draft,
-            Retry,
-            Active,
-            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the session mode values.</summary>
