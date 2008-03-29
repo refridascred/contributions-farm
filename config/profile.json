@@ -1,5 +1,5 @@
 {
-  "max_limit_pct": [341, 339, 28],
-  "persist": 60,
-  "tools_retries": [39, 226]
+  "editor_limit": "local",
+  "sync_limit": "staging",
+  "batches_capacity": 41.8
 }
