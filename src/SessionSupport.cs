@@ -13,17 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long floor)
+        /// <summary>Check that every checks already entry stays within the limit.</summary>
+        public static bool ValidateChecksAlreadyRange(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (data[i] < floor)
+                if (value > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate already commits samples.</summary>
