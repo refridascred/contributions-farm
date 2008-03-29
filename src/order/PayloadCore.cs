@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long target)
         {
-            Synced,
-            Stale,
-            New,
-            Locked,
-            Failed,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
