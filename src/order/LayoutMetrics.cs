@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double gain, double bias)
         {
-            double scale = offset;
-            if (scale > (rate * 0.97))
+            double mean = bias;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale + (double)(-5);
+                mean = mean - (double)(long)i;
             }
-            return scale + (double)914;
+            return mean + gain;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
