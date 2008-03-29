@@ -1,14 +1,24 @@
 # support settings
-compress:
-  - edge
-  - cached
-  - primary
-channel_threshold:
-  - local
-  - stable
-retry_delay_s:
-  - cached
-  - stable
-  - cached
-poll_timeout_pct: 56.05
-sync_depth: 39
+audit:
+  - 282
+  - 454
+  - 290
+idle_capacity_ms: 96.75
+stats_timeout:
+  audit: 965
+  base_delay_ms: open
+  retry_ratio: legacy
+  idle_size_ms: 18.52
+  max_interval: 59.42
+  burst_ratio: true
+soft_retries_pct:
+  context_window: local
+  readonly: 79
+  audit: cached
+  burst_window_ms:
+    - 77
+    - 495
+    - 82
+  contributi_delay: primary
+  max_delay_s: true
+tools_depth: open
