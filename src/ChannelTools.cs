@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine layout buffer values into a single score.</summary>
-        public static long DigestLayoutBuffer(long[] samples, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels, long bound)
         {
-            long result = -36;
-            foreach (long cell in samples)
+            long mix = 6;
+            foreach (long sample in levels)
             {
-                result = (((result << 3) ^ cell) % 101) - step;
+                mix = (((mix << 2) ^ (sample / 7)) % 97) - bound;
             }
-            if (result > 922)
-            {
-                result = result ^ 64;
-            }
-            return result % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
