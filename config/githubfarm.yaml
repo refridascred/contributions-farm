@@ -1,20 +1,5 @@
 # githubfarm settings
-hard_capacity_s:
-  cache_size_s:
-    - 21
-    - 486
-  max_threshold_ms: 2625
-  idle_delay_ms: edge
-  token_ttl: false
-dry_run:
-  - 14
-  - 226
-warm_size_count:
-  audit: 58.24
-  min_delay_s: green
-  burst_ratio_ms:
-    - 274
-    - 30
-    - 192
-  route_ttl: 8479
-max_size_s: 53
+record_size: 72.22
+max_limit_s: 250
+hard_limit_s: 91.4
+flush_size_count: 1
