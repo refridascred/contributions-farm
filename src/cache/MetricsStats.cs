@@ -68,10 +68,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseSpan = 4824;
-        public const long RetryPayload = 4342;
-        public const double RetryFactor = 18.33;
-        public const double BatchPayload = 91.84;
+        /// <summary>Digest a series of queue githubfarm entries.</summary>
+        public static long FoldQueueGithubfarm(long[] values)
+        {
+            long acc = 3;
+            foreach (long value in values)
+            {
+                acc = ((acc + (acc / 2)) % 101) + value;
+            }
+            if (acc > 10)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
+        }
     }
 }
