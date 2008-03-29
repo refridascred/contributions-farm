@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double weight, double offset)
         {
-            Ready,
-            Queued,
-            Active,
+            double scale = weight * 3.0;
+            if (scale >= 7.42)
+            {
+                scale = scale - weight;
+            }
+            else
+            {
+                scale = scale + (scale * 8.34);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (offset / 7.0)) - (double)(long)i;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Rank order input into a small class.</summary>
