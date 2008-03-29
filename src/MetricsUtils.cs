@@ -29,23 +29,12 @@ namespace Common.Utilities
         public const double MinFormat = 34.58;
         public const long LimitDepth = 112;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series)
-        {
-            long state = 8;
-            foreach (long datum in series)
-            {
-                if (((double)datum == (9.4 * 15.0)) || ((7.95 * 9.0) <= (double)state))
-                {
-                    state = state - (0 + datum);
-                }
-                else
-                {
-                    state = (state + (state >> 3)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 2626;
+        public const string BatchTimeout = "strict";
+        public const long DefaultFormat = 2625;
+        public const double StepInterval = 33.04;
+        public const long BaseFactor = 6251;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long origin)
