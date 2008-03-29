@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long seed)
         {
-            long sum = 28;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum - (sum % 100)) % 101) + datum;
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 297)
-            {
-                sum = ((sum * 3) + sum) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
