@@ -25,18 +25,11 @@ namespace Common.Utilities
             return load - (double)903;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitFactor = 8504;
+        public const long DefaultRatio = 3272;
+        public const long BatchBudget = 3793;
+        public const double LimitCache = 3.41;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepSize = 5197;
