@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BaseRatio = 1333;
         public const double StepContext = 84.35;
 
-        /// <summary>Adjust a channel metrics reading.</summary>
-        public static double SmoothChannelMetrics(double bias, double offset)
-        {
-            double load = offset;
-            if (load < load)
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)(-2)) - (double)(long)i;
-            }
-            return load - (double)903;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardInterval = "strict-v2";
+        public const double CacheRecord = 47.33;
+        public const double DefaultRecord = 23.8;
+        public const double MaxInterval = 84.05;
+        public const double HardTimeout = 15.57;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long LimitFactor = 8504;
