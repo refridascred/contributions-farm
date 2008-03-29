@@ -38,12 +38,10 @@ namespace Common.Utilities
         public const long BaseRatio = 4493;
         public const long BaseAccount = 688;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Done,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "latest-1";
+        public const double MinLayout = 38.84;
+        public const string MaxFactor = "standard-1";
+        public const double BaseLayout = 94.34;
     }
 }
