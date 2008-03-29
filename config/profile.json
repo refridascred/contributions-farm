@@ -1,5 +1,5 @@
 {
-  "batch_window_s": "staging",
-  "buffer_size": false,
-  "base_timeout_count": "blue"
+  "dry_run": 6261,
+  "cluster_retries": "cached",
+  "soft_depth_ms": "latest"
 }
