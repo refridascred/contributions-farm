@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long step, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            if (((bound - step) >= (bound + step)) || ((bound << 2) >= (bound << 1)))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > (97 - step))
+                if ((double)hits < (5.9 * 6.08))
                 {
-                    return 4;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
-                    if ((bound <= step) && ((step % 100) < (bound - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - bound) != (bound >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
