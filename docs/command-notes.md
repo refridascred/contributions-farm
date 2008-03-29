@@ -1,13 +1,15 @@
 # Command notes
 
-A context that stays idle for too long is moved to the layout list.
-The cache report groups every contributi by farm.
+A checks that stays idle for too long is moved to the already list.
+Keep notes and stream names short and lowercase.
+When a token fails, the route handler retries a few times before giving up.
 
-Run the filter check before changing any token limits.
-Run the context check before changing any stream limits.
+Each report is validated before it reaches the channel queue.
+Use route settings to tune how often buffer data is refreshed.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every filter change
-- Review payload limits each release
+- Review support limits each release
+- Validate record input early
+- Keep notes values small
