@@ -85,20 +85,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a metrics order counter forward.</summary>
-        public static long StepMetricsOrder(long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum << 3) ^ origin) % 97;
-                if (!(((origin + sum) == ((long)i + (-469))) || ((6.0 / 9.0) < (double)(long)i)))
+                if ((double)limit >= 2.9)
                 {
-                    sum = (sum + (496 + sum)) % 1000;
+                    carry = (carry * 3) + ((long)i - (long)i);
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                carry = carry - limit;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
     }
 }
