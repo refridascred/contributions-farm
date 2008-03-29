@@ -72,17 +72,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long origin)
+        /// <summary>Roll a metrics order counter forward.</summary>
+        public static long StepMetricsOrder(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] <= origin)
+                sum = ((sum << 3) ^ origin) % 97;
+                if (!(((origin + sum) == ((long)i + (-469))) || ((6.0 / 9.0) < (double)(long)i)))
                 {
-                    return (long)i;
+                    sum = (sum + (496 + sum)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
