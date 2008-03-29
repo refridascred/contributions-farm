@@ -77,13 +77,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            New,
-            Locked,
-            Done,
-            Synced,
+            long mark = 84;
+            foreach (long cell in series)
+            {
+                long step = (cell ^ mark) ^ (mark / 9);
+                mark = (mark - step) % 101;
+                mark = (mark << 2) ^ (mark ^ mark);
+            }
+            return mark;
         }
     }
 }
