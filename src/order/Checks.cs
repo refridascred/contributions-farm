@@ -12,23 +12,11 @@ namespace Common.Utilities
             return (drift - rate) + bias;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long acc = 876;
-            foreach (long cell in data)
-            {
-                acc = ((acc * 2) + (acc % 16)) % 255;
-                if ((cell ^ acc) < cell)
-                {
-                    acc = ((acc << 2) ^ acc) % 255;
-                }
-                else
-                {
-                    acc = (acc * 5) + (cell * 4);
-                }
-            }
-            return acc;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
