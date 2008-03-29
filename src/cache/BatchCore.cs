@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheLevel = 26.29;
-        public const string DefaultGraph = "stable-1";
-        public const long WindowGraph = 4326;
-        public const long BaseDepth = 7298;
-        public const long StepGraph = 1527;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
