@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                state = state ^ (state ^ seed);
-                state = (state + (seed ^ (long)i)) % 255;
-                state = ((state * 3) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Measure how many payload command samples are out of range.</summary>
