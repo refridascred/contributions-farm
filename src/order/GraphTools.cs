@@ -35,11 +35,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            double bias2 = bias + span;
+            return bias2 + bias;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
