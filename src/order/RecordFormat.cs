@@ -43,14 +43,12 @@ namespace Common.Utilities
             return gain - (double)950;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryRatio = 20.54;
+        public const long RetryLevel = 5418;
+        public const long HardCount = 289;
+        public const double RetryContext = 66.82;
+        public const string LimitContext = "staging-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryScore = 1468;
