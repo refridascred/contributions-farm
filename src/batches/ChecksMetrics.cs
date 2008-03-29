@@ -48,23 +48,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a entry support reading.</summary>
-        public static double BlendEntrySupport(double rate, double bias)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double load = rate;
-            if (load >= (rate - bias))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - rate) - (double)(long)i;
-            }
-            return load + (bias / 9.0);
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
