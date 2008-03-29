@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] samples, long limit)
         {
-            Draft,
-            Locked,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)count < (1.21 + 8.2))
+                {
+                    count = ((count + 3) ^ sample) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
