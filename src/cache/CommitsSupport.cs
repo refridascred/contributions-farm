@@ -27,17 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry ^ carry) % 101;
-                carry = ((carry << 3) ^ (7 * 2)) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the session state values.</summary>
