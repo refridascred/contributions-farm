@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 573;
-        public const double IdleFormat = 58.72;
-        public const string RetryDepth = "alpha";
-        public const long WindowFormat = 7592;
-        public const double BurstBudget = 49.96;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double weight, double span)
