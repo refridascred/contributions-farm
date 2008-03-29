@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultCount = 291;
-        public const long SoftAlready = 2446;
-        public const long RetryFactor = 6902;
-        public const double StepAlready = 80.42;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] data, long step)
