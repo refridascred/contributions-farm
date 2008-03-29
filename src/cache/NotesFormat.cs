@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((4.0 - 7.5) < (double)matches)
+                if (item > origin)
                 {
-                    matches = ((matches + 3) ^ item) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a editor stats.</summary>
