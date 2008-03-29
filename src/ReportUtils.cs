@@ -58,28 +58,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long origin, long origin2)
         {
-            if (!(target < (limit << 2)))
+            if ((4.0 + 5.6) != (double)origin2)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (limit >= (70 >> 3))
+                if ((origin2 - 876) <= origin2)
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((target - limit) != (limit / 5))
+                    if ((858 + origin) < origin2)
                     {
                         return 7;
                     }
                     else
                     {
-                        return 1;
+                        return 3;
                     }
                 }
             }
