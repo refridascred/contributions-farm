@@ -41,11 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5649;
-        public const long CacheCommits = 1074;
-        public const string RetryCommits = "stable";
-        public const long MaxBudget = 4388;
+        /// <summary>Match up payload counter samples.</summary>
+        public static long OverlapPayloadCounterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long step, long limit)
