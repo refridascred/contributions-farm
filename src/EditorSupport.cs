@@ -63,21 +63,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
-        public static long MatchLayoutFarmCount(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (state - (long)i) % 255;
+                if (!((step << 2) <= (step % 7)))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i + step)) % 4096;
+                }
+                state = (state ^ (step - state)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
