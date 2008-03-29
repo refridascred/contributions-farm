@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long step)
+        /// <summary>Count record support pairs that satisfy a relation.</summary>
+        public static long PairRecordSupportCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
