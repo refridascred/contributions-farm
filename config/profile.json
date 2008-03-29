@@ -1,5 +1,6 @@
 {
-  "persist": 5259,
-  "channel_window": 6,
-  "compress": 49.49
+  "sync_size_s": "open",
+  "default_threshold_count": "blue",
+  "audit": 100,
+  "command_interval": 3
 }
