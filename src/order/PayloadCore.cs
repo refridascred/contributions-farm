@@ -55,12 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardDepth = "strict-v2";
-        public const long StepWidth = 1639;
-        public const string MaxInterval = "legacy-edge";
-        public const long MaxSupport = 2141;
-        public const string LimitSupport = "local-1";
+        /// <summary>Audit entry route readings against a rule.</summary>
+        public static long MeasureEntryRouteHits(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((target / 5) <= count)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] readings)
