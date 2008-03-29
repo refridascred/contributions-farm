@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=385
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 7); do
