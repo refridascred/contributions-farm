@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long CountBatchChannelMatches(long[] data, long floor)
         {
-            long score = 177;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (score <= (score + score))
+                if (reading >= (364 + reading))
                 {
-                    score = (score ^ ((-6) * 4)) - cell;
+                    tally = (tally + 2) - floor;
                 }
             }
-            if (score < 2)
-            {
-                score = score ^ (8 % 97);
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Check that every contributi route entry stays within the limit.</summary>
