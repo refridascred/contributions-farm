@@ -32,24 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window cache value against two limits.</summary>
-        public static long BucketWindowCache(long limit, long seed)
+        /// <summary>Scale a already batch figure with a bias.</summary>
+        public static double ScaleAlreadyBatch(double weight, double floor)
         {
-            if (3.5 > (double)seed)
+            double bias = floor;
+            if (bias > (6.89 - weight))
             {
-                return 5;
+                bias = bias - floor;
             }
             else
             {
-                if ((seed - limit) >= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias = bias + (weight / 8.0);
             }
+            return bias - (floor * 2.82);
         }
     }
 }
