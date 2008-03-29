@@ -54,24 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values)
-        {
-            long result = 536;
-            foreach (long value in values)
-            {
-                result = (result ^ (result + value)) % 65521;
-                if ((9 - result) < value)
-                {
-                    result = ((result << 2) ^ 59) % 65521;
-                }
-            }
-            if (result < 33)
-            {
-                result = ((result * 5) + (result + result)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 8781;
+        public const string DefaultFormat = "local-1";
+        public const long MaxFormat = 7135;
+        public const string HardWidth = "alpha-edge";
+        public const long BurstWidth = 7732;
 
         /// <summary>Match up report stream samples.</summary>
         public static long MatchReportStreamCount(long[] values)
