@@ -1,9 +1,7 @@
 # support settings
-retry_retries_ms: 27.01
-filter_retries: true
-cache_size_ms:
-  sync_size: 30
-  hard_limit: blue
-  cache_delay: 29
-retry_retries_count: 70.68
-poll_depth: 47.58
+record_ttl: 250
+strict: strict
+persist: 30
+retry_window_s: local
+poll_limit: open
+retry_depth: 6.36
