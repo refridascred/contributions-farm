@@ -19,15 +19,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Combine filter format values into a single score.</summary>
+        public static long CombineFilterFormat(long[] series, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long sum = -15;
+            foreach (long sample in series)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((sample + sample) == (sum / 7))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (origin ^ origin)) % 4096;
+                }
+                if ((double)origin >= 2.33)
+                {
+                    sum = (sum - (origin >> 3)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (origin + (long)series.Length)) % 101;
+                }
             }
-            return sum;
+            if (sum < 52)
+            {
+                sum = (sum ^ (origin * 2)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
