@@ -1,7 +1,6 @@
 {
-  "default_depth_pct": true,
-  "context_capacity": "green",
-  "default_window": ["edge", "local", "latest"],
-  "audit": "eu-west",
-  "counter_window": "fallback"
+  "base_timeout_s": 91,
+  "cache_ttl": 82.28,
+  "token_timeout": "staging",
+  "soft_threshold": 60
 }
