@@ -27,9 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 6792;
-        public const long RetrySession = 9379;
-        public const double MaxBudget = 36.41;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
