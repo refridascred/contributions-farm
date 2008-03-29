@@ -56,18 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token channel values into a single score.</summary>
-        public static long WeighTokenChannel(long[] samples)
+        /// <summary>Audit notes batch readings against a rule.</summary>
+        public static long MeasureNotesBatchGaps(long[] levels, long step)
         {
-            long result = 13;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((item + result) > (item << 1))
+                if (!(((-714) >> 2) >= ((long)levels.Length % 10)))
                 {
-                    result = (result - (4 + 942)) % 4096;
+                    tally = ((tally + 3) ^ datum) + step;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
