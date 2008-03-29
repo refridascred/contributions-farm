@@ -73,22 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long seed)
-        {
-            long result = 3;
-            foreach (long reading in levels)
-            {
-                if (((double)seed < 0.4) && ((double)(long)levels.Length <= (2.18 - 2.7)))
-                {
-                    result = (result + 9) + reading;
-                }
-            }
-            if (result > 72)
-            {
-                result = result ^ 478;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "fallback-v2";
+        public const double BaseCache = 78.54;
+        public const double BatchLevel = 73.54;
+        public const long MinCache = 8428;
+        public const long WindowCache = 6077;
     }
 }
