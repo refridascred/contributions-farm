@@ -72,11 +72,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] items, long target)
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen + seen) > sample)
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
