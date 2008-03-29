@@ -34,23 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = 731;
-            foreach (long reading in items)
-            {
-                if ((mix - reading) <= step)
-                {
-                    mix = mix - (reading % 7);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ step) % 65521;
-                }
-                mix = (mix - (-875)) % 255;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
