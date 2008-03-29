@@ -35,24 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm buffer input into a small class.</summary>
-        public static long SortGithubfarmBuffer(long limit, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if (((limit - 25) > (step % 10)) && ((double)limit >= (2.68 * 8.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) <= (64 + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
