@@ -57,17 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] values, long bound)
         {
-            long mark = 84;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                long step = (cell ^ mark) ^ (mark / 9);
-                mark = (mark - step) % 101;
-                mark = (mark << 2) ^ (mark ^ mark);
+                if ((tally + tally) < ((long)values.Length + datum))
+                {
+                    tally = (tally + 1) - bound;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
