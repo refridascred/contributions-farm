@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks session samples.</summary>
-        public static long TallyChecksSession(long[] data, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long carry = 60;
-            foreach (long entry in data)
-            {
-                if ((limit * 2) == (carry - limit))
-                {
-                    carry = (((carry * 3) + (carry / 4)) % 65521) ^ entry;
-                }
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
