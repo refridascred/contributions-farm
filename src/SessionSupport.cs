@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double scale = floor;
-            if (scale > gain)
-            {
-                scale = scale + (floor - floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (scale + floor);
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
