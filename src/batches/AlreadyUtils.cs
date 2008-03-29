@@ -31,22 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] items)
+        /// <summary>Accumulate entry context samples.</summary>
+        public static long DigestEntryContext(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = 875;
+            foreach (long entry in values)
             {
-                if ((reading - 5) == (tally << 1))
+                if (mix < 964)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix ^ (limit ^ limit)) % 255) - entry;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the format class values.</summary>
