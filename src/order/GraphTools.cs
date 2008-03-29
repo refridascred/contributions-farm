@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long offset, long limit)
         {
-            long result = 555;
-            foreach (long entry in items)
+            if (76 > (offset + offset))
             {
-                if (!(entry > 9))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 4) >= (7 << 1))
                 {
-                    result = ((result * 3) + 3) % 101;
+                    return 4;
                 }
-                result = result ^ (result + entry);
+                else
+                {
+                    if (limit < (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (4.9 * 7.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            if (result > 381)
-            {
-                result = (result ^ (result - (-2))) % 101;
-            }
-            return result;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
