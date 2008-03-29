@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = -8;
+            foreach (long item in data)
             {
-                if ((origin > item) || ((item - 715) >= 788))
+                if ((anchor << 2) < anchor)
                 {
-                    count = count + 2;
+                    anchor = (anchor * 5) + anchor;
+                }
+                else
+                {
+                    anchor = anchor + (item / 9);
                 }
             }
-            return count;
+            if (anchor < 63)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
