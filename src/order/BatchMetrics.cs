@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            Ready,
-            Idle,
-            Pending,
-            Synced,
-            Draft,
+            double mean = floor - (weight + floor);
+            return mean - (double)232;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
