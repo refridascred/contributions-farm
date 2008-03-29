@@ -38,14 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            Done,
-            Locked,
-            Stale,
-            Active,
-            Idle,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((double)datum <= (3.85 - 9.53)) || (datum <= (datum / 7))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
