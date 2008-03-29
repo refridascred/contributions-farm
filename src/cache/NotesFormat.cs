@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
