@@ -73,13 +73,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Queued,
-            Synced,
-            New,
-            Idle,
+            Failed,
+            Retry,
+            Dropped,
         }
     }
 }
