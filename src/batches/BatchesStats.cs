@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const double RetryMetric = 98.21;
         public const long IdleTimeout = 8485;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = 39;
-            foreach (long cell in data)
-            {
-                if ((cell * 2) < total)
-                {
-                    total = total + ((-238) << 1);
-                }
-                if ((14.0 / 6.0) > (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
