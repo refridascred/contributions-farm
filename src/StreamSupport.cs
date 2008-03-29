@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools token reading by value.</summary>
-        public static long LookupToolsTokenIndex(long[] items, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (items[i] <= seed)
+                if (((((long)series.Length - limit) > 6) && ((12.0 * 3.19) <= (double)tally)) || (((double)tally > (double)35) || ((tally - cell) < (tally + cell))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
