@@ -1,27 +1,14 @@
 # support settings
-default_threshold:
-  flush_retries: true
-  flush_timeout: false
-  idle_threshold_s: open
-  enabled: 50.82
-  compress:
-    dry_run: true
-    poll_timeout: false
-    hard_ratio: 60
-    readonly: 60
-    idle_threshold_count: 89.69
-    base_retries_s: 144
-strict: 12.48
-warm_retries:
-  persist: staging
-  commits_ratio: 3009
-  min_retries_ms: 500
-  warm_depth: 3054
-  schema_size:
-    max_interval_s: 1024
-    dry_run: 100
-    burst_interval: 60
-    soft_size_count: 7193
-  soft_limit_ms: true
-audit: 27.29
-compress: 2341
+max_limit:
+  payload_interval: false
+  soft_threshold: 500
+  profile_timeout: true
+  audit: 3.25
+  poll_ratio_count: 18
+channel_interval: 2418
+idle_capacity: primary
+githubfarm_retries:
+  - 188
+  - 429
+  - 89
+  - 391
