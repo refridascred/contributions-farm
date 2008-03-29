@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((matches % 3) >= matches)
-                {
-                    matches = ((matches + 3) - value) - step;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine buffer graph values into a single score.</summary>
