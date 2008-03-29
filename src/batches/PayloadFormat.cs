@@ -31,13 +31,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] data, long floor)
         {
-            Active,
-            Locked,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally < (entry & 1))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
