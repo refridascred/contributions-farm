@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long mark = 93;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark < (step + step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark - 58) % 101) ^ datum;
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 104)
-            {
-                mark = (mark - 925) % 65521;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
