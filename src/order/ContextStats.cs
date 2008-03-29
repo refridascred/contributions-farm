@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 5474;
+        public const long BurstSize = 2067;
+        public const long MaxDepth = 5223;
+        public const double RetryFactor = 47.17;
+        public const long CacheFactor = 1223;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 5167;
