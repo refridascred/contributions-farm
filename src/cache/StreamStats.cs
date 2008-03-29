@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine graph notes values into a single score.</summary>
-        public static long TallyGraphNotes(long[] items, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long state = 991;
-            foreach (long cell in items)
-            {
-                state = (state + (cell / 4)) - floor;
-                state = ((state * 2) + state) % 97;
-            }
-            return state;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
