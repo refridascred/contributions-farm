@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchSize = "standard";
+        public const double MinDepth = 5.65;
+        public const string LimitInterval = "alpha-v2";
+        public const long CacheDepth = 7223;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
