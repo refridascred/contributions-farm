@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long anchor = -8;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor << 2) < anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor * 5) + anchor;
-                }
-                else
-                {
-                    anchor = anchor + (item / 9);
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 63)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
