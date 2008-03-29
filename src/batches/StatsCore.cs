@@ -70,13 +70,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum << 2) ^ (-265)) % 101;
+                long seen = (limit - sum) % 5;
+                if (!!((seen + limit) == ((long)i + sum)))
+                {
+                    seen = (seen ^ (6 + sum)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
