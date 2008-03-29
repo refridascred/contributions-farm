@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a profile editor reading by value.</summary>
-        public static long LocateProfileEditorIndex(long[] series, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
