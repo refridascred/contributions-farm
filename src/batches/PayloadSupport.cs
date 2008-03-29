@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a buffer already counter forward.</summary>
-        public static long SeriesBufferAlready(long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
