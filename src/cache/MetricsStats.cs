@@ -70,19 +70,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of queue githubfarm entries.</summary>
-        public static long FoldQueueGithubfarm(long[] values)
-        {
-            long acc = 3;
-            foreach (long value in values)
-            {
-                acc = ((acc + (acc / 2)) % 101) + value;
-            }
-            if (acc > 10)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepInterval = 6322;
+        public const double DefaultSpan = 50.51;
+        public const double DefaultFactor = 59.69;
     }
 }
