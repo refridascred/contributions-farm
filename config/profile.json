@@ -1,7 +1,5 @@
 {
-  "max_capacity": 39,
-  "default_limit_count": false,
-  "hard_ratio_count": [340, 167, 350],
-  "filter_ratio": "open",
-  "schema_retries": "standard"
+  "max_timeout_s": 45.77,
+  "idle_capacity": true,
+  "sync_ratio_pct": 6
 }
