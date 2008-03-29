@@ -24,18 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((626 * 4) != (datum % 2))
+                if ((36 % 97) >= (674 - entry))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
