@@ -46,18 +46,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((9.4 - 6.4) != (double)reading) && ((23 ^ 0) >= (matches + reading)))
+                sum = (sum - origin) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 3;
+                    sum = ((sum - (9 / 6)) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
