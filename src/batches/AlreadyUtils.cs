@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] readings, long origin)
         {
-            double rate = (double)618 - span;
-            if (rate < (double)641)
+            bool found = true;
+            foreach (long item in readings)
             {
-                rate = rate + scale;
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)(-4)) + (double)(long)i;
-            }
-            return rate - (scale + rate);
+            return found;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
