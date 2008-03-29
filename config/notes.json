@@ -1,16 +1,8 @@
 {
-  "max_depth": [101, 326],
-  "max_threshold_pct": {
-    "audit": {
-      "min_ttl": 3871,
-      "order_capacity": "cached",
-      "hard_ratio": ["cached", "cached"],
-      "idle_threshold": 54.84
-    },
-    "cache_interval_s": ["blue", "edge"],
-    "sync_depth_ms": "local",
-    "profile_window": [206, 98, 229, 233]
-  },
-  "session_ttl": 1024,
-  "commits_interval": 5986
+  "warm_delay": "open",
+  "audit": 14,
+  "readonly": 49,
+  "cache_size": 60,
+  "base_depth_ms": false,
+  "persist": 1024
 }
