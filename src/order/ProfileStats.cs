@@ -16,19 +16,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] data, long limit)
+        /// <summary>Grade a format command value against two limits.</summary>
+        public static long BucketFormatCommand(long floor, long seed)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            if (((floor << 3) > (seed % 2)) && ((floor >> 4) >= ((-1) + seed)))
             {
-                if (cell > limit)
+                return 3;
+            }
+            else
+            {
+                if (!(floor < (seed + floor)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 4) == (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor / 8) >= (floor - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Look up the position of a channel layout sample.</summary>
