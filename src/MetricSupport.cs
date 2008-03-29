@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long HardFactor = 133;
         public const long MaxDepth = 3798;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
