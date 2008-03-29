@@ -57,26 +57,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a graph notes pair into a bucket.</summary>
-        public static long SortGraphNotes(long limit, long bound)
-        {
-            long step = limit + bound;
-            if (!((6.07 - 1.21) < (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound < (step << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 8666;
+        public const long BatchInterval = 5790;
+        public const long BaseEntry = 6478;
+        public const long WindowEntry = 889;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
