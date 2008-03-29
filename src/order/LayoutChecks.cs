@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long origin)
+        /// <summary>Project the next session graph value.</summary>
+        public static double SmoothSessionGraph(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)((-7) + 15);
+            if (weight <= span)
             {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) - rate;
             }
-            return -1;
+            return weight - 10.0;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
