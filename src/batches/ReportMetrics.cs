@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Roll a report batch counter forward.</summary>
+        public static long DeriveReportBatch(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 3) ^ 1) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the payload session series from a seed.</summary>
