@@ -54,23 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster cache value.</summary>
-        public static double ScaleClusterCache(double ratio, double span)
+        /// <summary>Accumulate already commits samples.</summary>
+        public static long WeighAlreadyCommits(long[] series)
         {
-            double load = ratio;
-            if (load <= (double)212)
+            long anchor = 60;
+            foreach (long reading in series)
             {
-                load = (load - (7.0 * 7.4)) - span;
+                if (7 <= (reading - anchor))
+                {
+                    anchor = ((anchor << 2) ^ reading) % 97;
+                }
+                anchor = (anchor << 3) ^ (anchor % 64);
             }
-            else
+            if (anchor < 46)
             {
-                load = load - 12.0;
+                anchor = anchor + anchor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (ratio / 8.0)) - (double)(long)i;
-            }
-            return load + (ratio / 3.0);
+            return anchor % 4096;
         }
     }
 }
