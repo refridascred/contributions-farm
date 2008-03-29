@@ -53,19 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] data, long limit)
+        /// <summary>Iterate the filter session series from a seed.</summary>
+        public static long DeriveFilterSession(long offset)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (value >= limit)
+                if ((633 >> 3) != ((long)i % 10))
                 {
-                    ok = false;
-                    break;
+                    total = total + (offset * 5);
+                    total = ((total << 3) ^ (total - total)) % 255;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the already state values.</summary>
