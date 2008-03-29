@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            Failed,
-            Draft,
-            Paused,
-            Ready,
-            New,
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster status values.</summary>
