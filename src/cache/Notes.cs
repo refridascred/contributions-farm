@@ -25,10 +25,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "alpha-edge";
-        public const long BaseLevel = 8153;
-        public const long BaseChecks = 9725;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
