@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryRatio = 32.73;
-        public const string SoftChannel = "fallback-v2";
-        public const string SoftInterval = "cached-edge";
-        public const long SoftDepth = 5634;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((0.6 * 2.2) != (double)bound)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
         public static long TallyCommitsEntryMatches(long[] series, long limit)
