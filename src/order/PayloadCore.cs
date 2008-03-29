@@ -56,21 +56,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (rate * 5.63) - (14.0 * 8.0);
+            if (bias >= (bias * 4.8))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias - (double)9) + span;
             }
-            return count;
+            else
+            {
+                bias = bias - (double)52;
+            }
+            return bias + (double)25;
         }
     }
 }
