@@ -15,11 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 463;
+            foreach (long value in series)
+            {
+                sum = (sum * 4) + value;
+            }
+            if (sum < 97)
+            {
+                sum = ((sum << 2) ^ (sum + 272)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a channel layout sample.</summary>
