@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            long prev = bound ^ limit;
-            if (21 < (bound + 0))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit >= (3.0 / 7.0)) || (((-499) - bound) <= (1 >> 5)))
+                if ((double)603 != (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 100) < (limit + prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 3) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
