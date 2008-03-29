@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Failed,
-            Locked,
-            Idle,
-            Stale,
+            Done,
+            Retry,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a counter stats.</summary>
