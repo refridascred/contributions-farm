@@ -16,13 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            Active,
-            Failed,
-            Locked,
-            New,
+            double drift = 1.65;
+            if (drift < 1.0)
+            {
+                drift = (drift - drift) - weight;
+            }
+            return drift - floor;
         }
 
         /// <summary>Hold a commits options.</summary>
