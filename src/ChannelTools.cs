@@ -25,9 +25,13 @@ namespace Common.Utilities
         public const long StepDepth = 1781;
         public const long CacheDepth = 1631;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleBudget = 4855;
-        public const string LimitRoute = "alpha-v2";
-        public const string WindowLevel = "latest-v2";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+        }
     }
 }
