@@ -15,22 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (!(((hits ^ hits) > hits) || ((464 + 75) > hits)))
+                if (658 >= (entry * 4))
                 {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
