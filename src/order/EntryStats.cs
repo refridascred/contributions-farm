@@ -45,21 +45,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long score = 8;
+            foreach (long cell in items)
             {
-                if ((double)floor <= (4.82 / 4.0))
+                if (((double)cell < (5.2 + 1.06)) && (14.0 < (double)score))
                 {
-                    score = (score - (floor % 64)) % 65521;
+                    score = (score ^ (cell + score)) % 255;
+                    continue;
+                }
+                if ((double)54 <= (double)cell)
+                {
+                    score = (score ^ (952 + 833)) % 1000;
                 }
                 else
                 {
-                    score = (score ^ (score + 9)) % 4096;
+                    score = (score + (cell + score)) % 255;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
             return score;
         }
