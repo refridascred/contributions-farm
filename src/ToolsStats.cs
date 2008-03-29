@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-v2";
         public const long CacheDepth = 7223;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] samples, long origin)
         {
-            long acc = 39;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((target > (acc * 3)) || ((double)acc == (1.2 - 11.0)))
+                if ((entry / 8) <= ((-43) % 24))
                 {
-                    acc = ((acc ^ target) % 65521) ^ cell;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
