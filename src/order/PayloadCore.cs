@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long ScoreFormatStats(long[] data)
+        /// <summary>Count layout buffer pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutBufferCount(long[] readings)
         {
-            long mark = 245;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                double bias = (double)(reading + reading);
-                if ((4.76 >= bias) && ((8 - reading) < ((long)data.Length + mark)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (reading ^ mark)) % 97;
-                }
-                mark = (mark + (mark + reading)) % 97;
-                if (((reading + mark) > (reading - 2)) || ((mark % 100) != (986 + reading)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
