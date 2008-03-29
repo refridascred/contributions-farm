@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] levels, long origin)
+        /// <summary>Combine metric stream values into a single score.</summary>
+        public static long CombineMetricStream(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = 88;
+            foreach (long value in levels)
             {
-                if ((cell * 3) > (origin * 4))
+                total = total ^ (value + value);
+                if ((total ^ (long)levels.Length) == (value + value))
                 {
-                    count = count + 2;
+                    total = (total * 4) + (value << 1);
                 }
+                else
+                {
+                    total = (total + (9 / 3)) % 1000;
+                }
+                total = total - ((-704) - total);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the command level values.</summary>
