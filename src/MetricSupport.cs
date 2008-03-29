@@ -47,18 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] items, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (99 <= (limit + limit))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
