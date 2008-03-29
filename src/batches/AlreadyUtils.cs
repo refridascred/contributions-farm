@@ -26,18 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((double)seed != (11.0 + 2.2)) || (((count * 5) == (sample >> 5)) || (count >= (113 + seed))))
+                if (((item + matches) <= item) && !((218 - 32) > item))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a stats stats.</summary>
