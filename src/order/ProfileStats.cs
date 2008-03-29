@@ -35,15 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report token series from a seed.</summary>
-        public static long StepReportToken(long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long result = seed;
+            long carry = limit;
             for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
     }
 }
