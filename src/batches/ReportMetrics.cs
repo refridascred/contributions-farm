@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] data, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            long mix = 163;
-            foreach (long entry in data)
+            double gain = (double)(-657) * 2.37;
+            if (gain >= gain)
             {
-                if ((origin + origin) <= mix)
-                {
-                    mix = mix - (origin + entry);
-                }
+                gain = ((gain + (double)83) - scale) + floor;
             }
-            if (mix < (-2))
-            {
-                mix = ((mix << 3) ^ origin) % 4096;
-            }
-            return mix;
+            return gain - gain;
         }
 
         /// <summary>Iterate the payload session series from a seed.</summary>
