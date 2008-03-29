@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 8226;
-        public const double RetryNotes = 77.76;
-        public const string MaxFactor = "cached";
-        public const long DefaultNotes = 5889;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((2.93 + 7.2) == (double)reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate payload cache readings against a bound.</summary>
         public static bool ValidatePayloadCacheRange(long[] readings, long step)
