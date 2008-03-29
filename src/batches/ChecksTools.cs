@@ -52,22 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long total = 2;
-            foreach (long entry in levels)
-            {
-                if (entry <= (origin << 2))
-                {
-                    total = (total + (85 + total)) % 4096;
-                }
-                if ((double)entry <= (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            Paused,
+            Stale,
+            Synced,
+            Done,
         }
     }
 }
