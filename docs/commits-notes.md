@@ -1,10 +1,11 @@
 # Commits notes
 
-The metric module keeps layout values in sync with the session cache.
-The order helpers are pure functions, so they are safe to call from any thread.
+Run the counter check before changing any channel limits.
+A record that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep profile values small
-- Review window limits each release
+- Validate report input early
+- Document new token fields
+- Log every format change
+- Prefer farm defaults
