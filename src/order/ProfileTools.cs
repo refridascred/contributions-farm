@@ -67,18 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)(long)values.Length <= (3.0 / 4.0))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 8587;
+        public const long CacheFactor = 1702;
+        public const string RetryFormat = "fallback-edge";
+        public const long MaxDepth = 8196;
+        public const long StepFormat = 5039;
     }
 }
