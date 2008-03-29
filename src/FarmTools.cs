@@ -22,23 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] data, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((state - state) > (step / 2))
+                if (!((item + tally) <= seed))
                 {
-                    continue;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    state = state - (step / 9);
+                    tally = tally - 1;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
