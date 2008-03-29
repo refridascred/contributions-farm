@@ -1,15 +1,25 @@
 # entry settings
-graph_size: 77.42
-dry_run: 30
-audit:
-  metrics_interval: 30
-  soft_ttl: stable
-  stats_ratio: green
-  max_limit_count:
-    hard_ratio_count: legacy
-    metrics_depth: 57.61
-    base_interval: true
-    batch_retries: standard
-    verbose: false
-  default_ratio_s: edge
-retry_threshold: 4214
+window_limit: edge
+checks_interval: open
+metrics_threshold:
+  poll_window_ms:
+    cache_size_count:
+      - cached
+      - stable
+      - primary
+    buffer_ratio: blue
+    warm_size_count: 30
+    graph_retries: eu-west
+  readonly: 500
+  dry_run: local
+  flush_window_ms:
+    - open
+    - primary
+  profile_size:
+    commits_threshold: cached
+    idle_threshold_pct: 500
+    compress: 55
+  default_depth_count: 46
+default_retries: staging
+already_ratio: staging
+retry_delay: 92.03
