@@ -31,12 +31,14 @@ namespace Common.Utilities
         public const double MaxBatch = 70.33;
         public const long BurstWidth = 1870;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Done,
+            Idle,
+            Locked,
+            Closed,
         }
     }
 }
