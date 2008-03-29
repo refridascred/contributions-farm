@@ -92,19 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] values, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= floor)
+                if (series[i] <= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of context already entries.</summary>
