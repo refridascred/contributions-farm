@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const string RetryContributi = "standard-1";
         public const long MaxScore = 6097;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Failed,
+            Dropped,
         }
     }
 }
