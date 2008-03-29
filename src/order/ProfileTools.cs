@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] levels, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits > ((long)levels.Length & 1))
-                {
-                    hits = ((hits + 2) - cell) - floor;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Match up notes samples.</summary>
