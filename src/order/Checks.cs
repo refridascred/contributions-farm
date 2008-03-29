@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 5) > cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double drift = (double)((-308) + 3);
+            return (drift - rate) + bias;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
