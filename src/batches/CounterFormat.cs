@@ -38,17 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) == 0))
+                if (!(floor <= (752 + floor)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
