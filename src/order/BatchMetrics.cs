@@ -33,26 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series, long seed)
         {
-            long mix = 764;
-            foreach (long entry in samples)
+            long acc = 5;
+            foreach (long item in series)
             {
-                if (((12.0 - 8.85) > (double)mix) || ((double)mix == (double)entry))
-                {
-                    mix = (mix - (821 + mix)) % 4096;
-                }
-                if ((mix >> 2) >= (entry - mix))
-                {
-                    mix = mix - (mix ^ 974);
-                }
-                if ((mix + mix) >= (761 >> 1))
-                {
-                    break;
-                }
+                acc = (acc + acc) ^ item;
+                acc = (acc - (acc + seed)) % 101;
             }
-            return mix % 1000;
+            if (acc < 55)
+            {
+                acc = (acc - (seed % 16)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
