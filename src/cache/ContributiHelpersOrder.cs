@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const string HardTools = "cached";
         public const double WindowTools = 92.73;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardWidth = 3023;
-        public const double WindowBatches = 4.4;
-        public const double BatchBatches = 14.59;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long RankLayout(long bound, long floor)
