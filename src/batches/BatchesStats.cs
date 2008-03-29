@@ -22,10 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSpan = 278;
-        public const double RetryMetric = 98.21;
-        public const long IdleTimeout = 8485;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long offset, long seed)
+        {
+            if ((((-315) & 127) != (offset - seed)) && ((offset + seed) != (offset & 31)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((7.89 * 0.5) == (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed ^ offset) > (offset / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
