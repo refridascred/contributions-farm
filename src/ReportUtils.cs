@@ -32,23 +32,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double bias, double offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long limit)
         {
-            double rate = 0.54 * 6.87;
-            if (rate > bias)
+            long next = offset ^ limit;
+            if (!(next <= (limit + 52)))
             {
-                rate = (rate - bias) + offset;
+                return 0;
             }
             else
             {
-                rate = rate - bias;
+                if ((offset + next) > (limit * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - (bias / 6.0);
         }
 
         /// <summary>Rank queue input into a small class.</summary>
