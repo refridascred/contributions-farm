@@ -14,19 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!(hits < bound))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8226;
+        public const double RetryNotes = 77.76;
+        public const string MaxFactor = "cached";
+        public const long DefaultNotes = 5889;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] values, long origin)
