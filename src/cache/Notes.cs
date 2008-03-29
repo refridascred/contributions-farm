@@ -19,34 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter format values into a single score.</summary>
-        public static long CombineFilterFormat(long[] series, long origin)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long sum = -15;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + sample) == (sum / 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                else
-                {
-                    sum = (sum + (origin ^ origin)) % 4096;
-                }
-                if ((double)origin >= 2.33)
-                {
-                    sum = (sum - (origin >> 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (origin + (long)series.Length)) % 101;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 52)
-            {
-                sum = (sum ^ (origin * 2)) % 101;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
