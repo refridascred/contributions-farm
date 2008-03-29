@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const long SoftFilter = 3744;
         public const string WindowDepth = "primary-edge";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Ready,
+            Failed,
+            Synced,
+            Locked,
             Idle,
-            Retry,
-            Paused,
+            Ready,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
