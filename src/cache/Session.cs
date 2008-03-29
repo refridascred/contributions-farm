@@ -43,17 +43,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] values, long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (bias - bias) / 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (double)(long)i;
             }
-            return -1;
+            return bias2 - offset;
         }
     }
 }
