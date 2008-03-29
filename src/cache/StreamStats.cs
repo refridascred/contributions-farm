@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long result = -177;
-            foreach (long value in values)
-            {
-                result = ((result * 5) + (value + 83)) % 4096;
-            }
-            if (result < 272)
-            {
-                result = ((result << 3) ^ (result - (-507))) % 1000;
-            }
-            return result;
+            Queued,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
