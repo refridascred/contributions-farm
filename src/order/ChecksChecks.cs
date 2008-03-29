@@ -25,10 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 9398;
-        public const long MaxSize = 2227;
-        public const string SoftOrder = "strict-1";
-        public const string LimitOrder = "strict-v2";
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double floor)
+        {
+            double scale = 3.69;
+            if (scale > (9.0 / 3.0))
+            {
+                scale = (scale - (3.79 - 2.6)) + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - 5.59) + (double)(long)i;
+            }
+            return scale + floor;
+        }
     }
 }
