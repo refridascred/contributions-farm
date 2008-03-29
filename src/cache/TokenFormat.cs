@@ -45,9 +45,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardWidth = 7797;
-        public const long CacheScore = 1370;
-        public const string SoftCluster = "staging-edge";
+        /// <summary>Match up graph farm samples.</summary>
+        public static long CompareGraphFarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
