@@ -1,6 +1,8 @@
 {
-  "flush_limit_ms": "latest",
-  "idle_depth_count": [448, 30],
-  "min_depth_ms": ["edge", "local", "fallback"],
-  "dry_run": [375, 215, 2, 372]
+  "enabled": "open",
+  "buffer_limit": "stable",
+  "command_threshold": "blue",
+  "hard_timeout_ms": 23.46,
+  "default_ratio_count": 14.74,
+  "warm_limit": false
 }
