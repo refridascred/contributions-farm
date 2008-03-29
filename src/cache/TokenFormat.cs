@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
+        public static long TallyGithubfarmContextGaps(long[] readings)
         {
-            double drift = bias;
-            if (drift <= (drift * 1.2))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                drift = (drift + bias) + weight;
+                if (((reading + 37) > (matches << 2)) && (((559 + 73) != (reading & 7)) && ((double)reading > (17.0 + 9.14))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                drift = drift + (bias / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 4.0) + (double)(long)i;
-            }
-            return drift - (double)12;
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
