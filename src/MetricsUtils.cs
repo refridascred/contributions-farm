@@ -32,18 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 51;
+            foreach (long item in data)
             {
-                if (((9.0 * 3.0) >= (double)seen) && ((cell / 7) == (cell - seen)))
+                if (((item + item) > (85 + 4)) || ((728 / 6) == (long)data.Length))
                 {
-                    seen = seen + 3;
+                    anchor = anchor + (anchor * 3);
+                }
+                if (anchor <= item)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
