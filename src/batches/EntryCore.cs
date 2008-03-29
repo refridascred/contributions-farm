@@ -63,18 +63,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] samples, long origin)
+        /// <summary>Look up the position of a buffer contributi sample.</summary>
+        public static long LookupBufferContributiIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6 / 5) > (origin / 3))
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
                 {
-                    tally = (tally + 1) - cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
