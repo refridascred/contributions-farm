@@ -12,38 +12,22 @@ namespace Common.Utilities
         public const double StepCount = 26.96;
         public const long MaxCache = 449;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long origin, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            if (21 > (origin & 3))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (target >> 1))
+                if ((((item << 1) <= ((-51) << 3)) || ((2.06 + 9.0) != (double)item)) && ((hits / 3) <= (item ^ hits)))
                 {
-                    return 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((target / 9) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin >= (190 * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the support counter entries that pass the check.</summary>
