@@ -1,15 +1,6 @@
 {
-  "queue_capacity": 2660,
-  "githubfarm_ratio": 82.86,
-  "record_depth": {
-    "sync_interval_pct": "blue",
-    "readonly": {
-      "already_ttl": [496, 56],
-      "min_delay_count": ["strict", "open", "blue"],
-      "max_delay_ms": [465, 478],
-      "poll_retries": 38
-    },
-    "cache_delay_pct": 1024
-  },
-  "tools_capacity": 36.44
+  "stream_delay": 12,
+  "poll_ratio": 3817,
+  "poll_ttl": 84,
+  "hard_limit_pct": 60
 }
