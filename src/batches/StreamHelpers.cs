@@ -75,10 +75,39 @@ namespace Common.Utilities
         public const double MaxBuffer = 24.48;
         public const double SoftFactor = 5.71;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchBudget = 638;
-        public const long DefaultSession = 1158;
-        public const double DefaultInterval = 1.08;
-        public const long StepSession = 1513;
+        /// <summary>Rank batch farm input into a small class.</summary>
+        public static long ClassifyBatchFarm(long bound, long floor)
+        {
+            long bound2 = bound - floor;
+            if ((bound2 + 742) < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)bound != (double)floor) || ((floor + 1) < (560 >> 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9 - bound) >= (bound * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor - (-8)) <= floor) || ((6 << 2) <= bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
