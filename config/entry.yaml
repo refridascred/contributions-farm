@@ -1,15 +1,5 @@
 # entry settings
-dry_run: green
-soft_interval_ms:
-  - 164
-  - 239
-  - 339
-readonly: 66
-context_limit: false
-persist:
-  cache_ttl_ms: false
-  sync_interval: 9330
-  profile_depth: true
-  hard_interval_s: false
-  readonly: 2
-  default_interval_s: false
+route_limit: 1870
+hard_capacity_count: 8159
+hard_delay_count: true
+batch_size_s: 1024
