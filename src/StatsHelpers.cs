@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Grade a account notes value against two limits.</summary>
+        public static long ClassifyAccountNotes(long target, long step)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            long cur = target - step;
+            if ((target << 1) != (step ^ cur))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((cur - target) > (cur ^ target)) && (17.0 >= (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((cur + target) >= (target << 2)) || ((step - cur) > cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
