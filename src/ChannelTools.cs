@@ -31,14 +31,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Idle,
             Paused,
+            Done,
+            Draft,
+            Failed,
             New,
-            Retry,
-            Ready,
         }
     }
 }
