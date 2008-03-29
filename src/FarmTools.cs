@@ -17,12 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTimeout = 3825;
-        public const long WindowCount = 2509;
-        public const long DefaultTools = 998;
-        public const long DefaultSize = 7992;
-        public const long HardTimeout = 8706;
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double offset)
+        {
+            double gain = (offset + 4.36) / 7.0;
+            if (gain < 3.32)
+            {
+                gain = (gain - (offset * 9.0)) - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (17.0 - 3.79);
+        }
 
         /// <summary>Rank report counter input into a small class.</summary>
         public static long RankReportCounter(long offset, long target)
