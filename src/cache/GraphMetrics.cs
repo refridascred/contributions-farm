@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long origin)
+        /// <summary>Look up the position of a account metric sample.</summary>
+        public static long SeekAccountMetricIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= origin)
+                if (readings[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
