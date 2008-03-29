@@ -49,22 +49,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of commits stats entries.</summary>
-        public static long ScoreCommitsStats(long[] readings, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = 4;
-            foreach (long entry in readings)
-            {
-                if (((floor >> 2) >= (entry - floor)) || ((61 - total) >= floor))
-                {
-                    total = (total - (floor % 60)) % 101;
-                }
-            }
-            if (total < 63)
-            {
-                total = (total << 3) ^ 33;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
