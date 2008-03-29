@@ -1,8 +1,7 @@
 {
-  "persist": 2.13,
-  "cache_interval": "cached",
-  "githubfarm_window": 9699,
-  "cache_limit_pct": "edge",
-  "soft_interval": "local",
-  "min_timeout_pct": [92, 306]
+  "cache_timeout": ["strict", "open", "standard"],
+  "base_threshold_ms": 97,
+  "account_delay": 3243,
+  "sync_window": 1185,
+  "flush_window": 55.41
 }
