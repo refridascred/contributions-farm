@@ -1,10 +1,15 @@
 # Command notes
 
-The metric report groups every support by token.
-The batch report groups every editor by farm.
+Keep notes and payload names short and lowercase.
+The tools module keeps format values in sync with the context cache.
+
+Each command is validated before it reaches the tools queue.
+When a cache fails, the route handler retries a few times before giving up.
+The cache module keeps token values in sync with the tools cache.
 
 ## Guidelines
 
-- Validate buffer input early
-- Keep already values small
-- Review already limits each release
+- Log every context change
+- Prefer profile defaults
+- Keep stream values small
+- Review counter limits each release
