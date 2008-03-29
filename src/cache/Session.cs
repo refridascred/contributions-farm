@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (8.76 > (double)hits)
+                {
+                    hits = ((hits + 3) ^ value) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
