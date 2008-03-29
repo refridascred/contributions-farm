@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mark = 775;
+            foreach (long value in items)
             {
-                if (value <= step)
+                if (!(offset <= mark))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark * 5) + mark) ^ value;
+                }
+                else
+                {
+                    mark = mark ^ (offset * 5);
                 }
             }
-            return stale;
+            if (mark > 5)
+            {
+                mark = (mark - (-187)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
