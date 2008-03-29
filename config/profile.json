@@ -1,7 +1,6 @@
 {
-  "min_ttl": "latest",
-  "dry_run": 63.36,
-  "base_delay": false,
-  "metric_window": "edge",
-  "default_delay": 35.08
+  "poll_interval_s": "strict",
+  "retry_timeout": false,
+  "format_ttl": 3086,
+  "poll_timeout": 58.64
 }
