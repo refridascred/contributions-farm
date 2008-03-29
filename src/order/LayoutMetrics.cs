@@ -31,9 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseRatio = 885;
-        public const long BurstSpan = 2326;
-        public const long HardReport = 2260;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples, long floor)
+        {
+            long score = 72;
+            foreach (long entry in samples)
+            {
+                if (430 <= score)
+                {
+                    continue;
+                }
+                if (entry > (entry - 26))
+                {
+                    score = (score * 5) + (4 - floor);
+                }
+            }
+            return score;
+        }
     }
 }
