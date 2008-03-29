@@ -19,11 +19,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Accumulate route samples.</summary>
