@@ -1,5 +1,7 @@
 {
-  "flush_retries_count": 250,
-  "retry_threshold_count": 62,
-  "batch_retries_count": 89
+  "batch_ratio": 60,
+  "strict": "stable",
+  "retry_interval_pct": true,
+  "warm_depth_s": true,
+  "sync_size_ms": 70
 }
