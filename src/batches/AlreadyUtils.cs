@@ -43,20 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long MeasureFilterLayoutHits(long[] values, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((double)origin < (5.09 * 6.3))
                 {
-                    carry = (((carry * 2) + (carry - step)) % 1000) ^ (long)i2;
-                    carry = carry + carry;
+                    seen = (seen + 3) ^ sample;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
