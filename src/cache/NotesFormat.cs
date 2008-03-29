@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] samples, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if (4.34 >= (double)limit)
             {
-                if ((double)count < (1.21 + 8.2))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (double)origin)
                 {
-                    count = ((count + 3) ^ sample) + limit;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the stats level values.</summary>
