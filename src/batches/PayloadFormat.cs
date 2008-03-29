@@ -26,14 +26,10 @@ namespace Common.Utilities
             return load + (span * 1.85);
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Retry,
-            Queued,
-            Active,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 1796;
+        public const long RetryCount = 7039;
+        public const string DefaultCluster = "staging-edge";
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double rate, double offset)
