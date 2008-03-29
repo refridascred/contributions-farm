@@ -1,6 +1,6 @@
 {
-  "sync_ttl_ms": ["stable", "blue"],
-  "min_depth": false,
-  "flush_timeout_count": 4354,
-  "soft_delay": "blue"
+  "max_limit": ["standard", "fallback", "cached"],
+  "max_capacity_count": false,
+  "soft_size_count": "local",
+  "compress": [198, 444, 7]
 }
