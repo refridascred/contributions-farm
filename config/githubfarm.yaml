@@ -1,6 +1,9 @@
 # githubfarm settings
-default_capacity_count: 1537
-hard_retries_s: 49.74
-warm_depth: stable
-enabled: 79.22
-record_interval: true
+poll_depth_ms: 51
+cache_threshold_pct:
+  - edge
+  - edge
+commits_limit: true
+verbose: cached
+base_depth_count: blue
+enabled: local
