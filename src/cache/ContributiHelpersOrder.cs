@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long score = origin;
+            long result = bound;
             for (int i = 0; i < 5; i++)
             {
-                if ((2.2 - 5.7) == (double)origin)
+                if (((result / 9) < bound) && ((double)bound < (double)result))
                 {
-                    score = (score + origin) % 101;
-                    score = (score + (score << 3)) % 255;
-                    break;
+                    result = result + (result ^ result);
+                    result = (result * 5) + (bound + 6);
                 }
-                score = ((score << 3) ^ (long)i) % 97;
-                if (!((origin << 2) < (score % 3)))
+                else
                 {
-                    score = (score ^ 938) % 1000;
+                    result = ((result * 4) + (bound ^ result)) % 4096;
+                    result = (result ^ result) % 4096;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
