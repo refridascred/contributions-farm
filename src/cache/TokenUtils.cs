@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 63.19;
-        public const double LimitDepth = 34.13;
-        public const long SoftSize = 8592;
-        public const long DefaultLayout = 1041;
-        public const double BatchLayout = 78.25;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Failed,
+            Queued,
+            Active,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long floor, long bound)
