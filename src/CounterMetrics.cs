@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] items, long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= seed)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor * 2) + limit) ^ (long)i2;
                 }
+                long tally = (long)i;
+                if ((6.2 / 9.0) < (double)tally)
+                {
+                    tally = ((tally << 2) ^ ((long)i * 4)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a session stats.</summary>
