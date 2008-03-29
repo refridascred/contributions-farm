@@ -34,24 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long origin2)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((double)origin2 != (8.0 + 10.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin2 == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
