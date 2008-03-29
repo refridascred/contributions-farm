@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Keep stream and already names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the cluster queue.
+
+Keep format and farm names short and lowercase.
+Run the batches check before changing any checks limits.
+When a already fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate channel input early
-- Review order limits each release
-- Prefer layout defaults
+- Log every channel change
+- Keep tools values small
+- Prefer stream defaults
+- Review cache limits each release
