@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series, long origin)
         {
-            Synced,
-            Queued,
-            Failed,
+            long mix = 1;
+            foreach (long cell in series)
+            {
+                mix = (((mix * 4) + (mix + cell)) % 97) + origin;
+            }
+            return mix;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
