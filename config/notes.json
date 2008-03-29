@@ -1,8 +1,7 @@
 {
-  "tools_limit": "standard",
-  "schema_limit": 48.34,
-  "max_limit": "primary",
-  "min_limit": 100,
-  "flush_delay_ms": ["primary", "standard"],
-  "min_threshold_ms": 2660
+  "batch_ttl": 62.4,
+  "filter_retries": 500,
+  "max_window": "standard",
+  "burst_delay": 1024,
+  "token_interval": [226, 255, 94]
 }
