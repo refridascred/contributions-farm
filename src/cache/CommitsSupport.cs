@@ -105,18 +105,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsOutliers(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (8 < (value % 12))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
     }
 }
