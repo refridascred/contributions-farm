@@ -17,39 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long step, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long prev = step - offset;
-            if ((prev + step) > step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 5) == (10 & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev << 2) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset << 2) <= prev) && ((offset >> 3) <= (step << 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
