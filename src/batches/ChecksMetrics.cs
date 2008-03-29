@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = 2;
+            foreach (long sample in data)
             {
-                if ((9.6 < (double)seen) || (6.8 <= (double)seen))
-                {
-                    seen = (seen + 3) - sample;
-                }
+                total = ((total * 5) + (sample ^ total)) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a record entry.</summary>
