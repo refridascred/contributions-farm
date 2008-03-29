@@ -50,15 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Idle,
-            New,
-            Closed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 30.85;
+        public const long IdleCache = 7673;
+        public const long BaseCache = 5436;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] samples, long limit)
