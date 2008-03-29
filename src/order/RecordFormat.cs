@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            double scale = weight;
-            return (scale + 9.7) + bias;
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 3) + (acc + (long)i)) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of format readings.</summary>
