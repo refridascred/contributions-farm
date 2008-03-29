@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            long mark = 7;
+            foreach (long reading in levels)
+            {
+                mark = mark ^ reading;
+                if ((double)reading != (16.0 * 5.4))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
