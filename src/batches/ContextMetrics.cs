@@ -57,18 +57,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stats payload samples are out of range.</summary>
-        public static long CountStatsPayloadHits(long[] readings, long step)
+        /// <summary>Count the command profile entries that pass the check.</summary>
+        public static long MeasureCommandProfileOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (item > (step - item))
+                if ((datum >> 2) != (129 % 64))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
