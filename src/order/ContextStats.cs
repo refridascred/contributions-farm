@@ -19,13 +19,20 @@ namespace Common.Utilities
         public const double StepInterval = 6.21;
         public const long BaseCount = 3987;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((long)i <= (floor ^ floor)))
+                {
+                    state = ((state << 2) ^ ((long)i - (long)i)) % 255;
+                }
+                state = (state * 3) + (long)i;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
