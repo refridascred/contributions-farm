@@ -13,14 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinRatio = 6801;
+        public const long IdleQueue = 480;
+        public const long StepQueue = 4016;
+        public const double StepInterval = 89.27;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double RetryWidth = 28.16;
