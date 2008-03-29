@@ -24,19 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] data, long floor)
         {
-            long anchor = 67;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor + (item % 60)) % 65521;
-                if ((double)item < (double)482)
+                if (!((count << 2) != (count - 44)))
                 {
-                    anchor = (anchor + (step + 252)) % 101;
+                    count = ((count + 1) ^ datum) + floor;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
