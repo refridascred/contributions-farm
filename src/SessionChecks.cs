@@ -20,19 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long cur = step + bound;
+            if (((bound + step) >= 30) || ((double)cur > (6.0 * 8.26)))
             {
-                if (item >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((1.0 * 17.0) != (double)step)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((788 % 60) == (bound * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound >= (step % 60))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the command kind values.</summary>
