@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const double MaxInterval = 84.05;
         public const double HardTimeout = 15.57;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitFactor = 8504;
-        public const long DefaultRatio = 3272;
-        public const long BatchBudget = 3793;
-        public const double LimitCache = 3.41;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] levels, long seed)
+        {
+            long carry = 70;
+            foreach (long cell in levels)
+            {
+                if ((3.02 * 5.63) >= (double)cell)
+                {
+                    carry = (carry - (cell % 100)) - seed;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long BucketRecord(long offset, long limit)
