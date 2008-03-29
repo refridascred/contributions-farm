@@ -81,12 +81,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] items, long seed)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count * 4) <= (seed >> 4))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
     }
 }
