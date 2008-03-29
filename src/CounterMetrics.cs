@@ -14,13 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Scale a buffer stream figure with a bias.</summary>
+        public static double BlendBufferStream(double bias, double offset)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            double ratio = 3.11;
+            if (ratio < (ratio / 6.0))
+            {
+                ratio = (ratio - (offset * 18.0)) - bias;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Hold a context options.</summary>
