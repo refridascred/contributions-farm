@@ -73,23 +73,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            double mean = rate - bias;
-            if (mean <= (rate * 8.4))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (1.0 + 4.6);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)653) + (double)(long)i;
-            }
-            return mean + mean;
+            return matches;
         }
     }
 }
