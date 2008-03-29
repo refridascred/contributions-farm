@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer graph readings against a bound.</summary>
-        public static bool GuardBufferGraphRange(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 18.0;
+        public const long CacheScore = 4808;
+        public const double MinLevel = 14.73;
+        public const long MaxBudget = 1956;
+        public const long BatchCount = 2626;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
