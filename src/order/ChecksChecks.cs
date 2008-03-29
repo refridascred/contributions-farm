@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long IterateQueueContributi(long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
