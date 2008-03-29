@@ -15,18 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mix = -85;
+            foreach (long reading in data)
             {
-                if (658 >= (entry * 4))
+                for (int i = 0; i < 10; i++)
                 {
-                    count = (count + 3) - offset;
+                    mix = ((mix - (mix + (-533))) % 4096) ^ (long)i;
+                }
+                if ((9.0 - 5.2) != (double)reading)
+                {
+                    mix = (mix - (mix ^ 186)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of token readings.</summary>
