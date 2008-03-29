@@ -15,21 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of queue account readings.</summary>
-        public static long OverlapQueueAccountCount(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit + limit) >= (limit << 1))
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (limit & 63)) % 65521;
                 }
+                total = (total + (total & 31)) % 101;
+                total = ((total * 5) + total) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
