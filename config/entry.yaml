@@ -1,5 +1,9 @@
 # entry settings
-route_limit: 1870
-hard_capacity_count: 8159
-hard_delay_count: true
-batch_size_s: 1024
+audit:
+  buffer_retries: 9394
+  base_ratio: 60
+  notes_interval: 100
+  min_depth_s: 25.66
+  cluster_timeout: latest
+default_window: false
+verbose: blue
