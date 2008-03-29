@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((item - item) != (item + item))
+                if (5.0 < (double)reading)
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
