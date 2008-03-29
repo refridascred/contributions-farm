@@ -1,15 +1,24 @@
 # entry settings
-githubfarm_ratio: standard
-default_threshold_s: 47.02
-metric_ratio:
-  filter_interval: 81.59
-  flush_delay: 9727
-  soft_window_pct:
-    - strict
-    - staging
-    - blue
-  compress: cached
-batch_size_ms:
-  - standard
-  - local
-  - strict
+already_limit: true
+batch_interval: false
+soft_threshold:
+  dry_run: 1024
+  flush_retries_count: stable
+  layout_delay: 100
+  compress:
+    min_ttl_pct: 3.43
+    metrics_interval: 49
+    soft_ttl_count:
+      - eu-west
+      - staging
+      - latest
+      - primary
+  soft_retries_s:
+    sync_ratio_count: 24.21
+    idle_timeout_s:
+      - strict
+      - strict
+    dry_run: legacy
+    flush_ttl: legacy
+commits_timeout: false
+idle_window_pct: 36
