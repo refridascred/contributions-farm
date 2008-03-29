@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinDepth = "alpha-edge";
-        public const long BasePayload = 6815;
-        public const double LimitScore = 89.79;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long step, long offset)
