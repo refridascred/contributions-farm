@@ -35,9 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstDepth = 9856;
-        public const double DefaultSize = 37.64;
-        public const long WindowBuffer = 4536;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Retry,
+            Stale,
+            Idle,
+        }
     }
 }
