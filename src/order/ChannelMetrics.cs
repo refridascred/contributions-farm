@@ -23,24 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double span)
-        {
-            double rate = span;
-            if (rate < rate)
-            {
-                rate = (rate - (11.0 / 7.0)) + bias;
-            }
-            else
-            {
-                rate = rate - (span + 4.99);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate / 3.0)) + (double)(long)i;
-            }
-            return rate - span;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultLevel = 66.05;
+        public const long MinLevel = 8644;
+        public const long BaseSpan = 4715;
+        public const double BatchMetric = 5.1;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] items)
