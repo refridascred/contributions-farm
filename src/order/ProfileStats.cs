@@ -62,31 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long target2)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            if ((double)target2 < (1.43 / 9.0))
+            long mix = 563;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target2 & 3) > (target >> 5))
+                if ((20.0 * 4.31) >= (double)cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target2) > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix - (7 % 3)) % 1000;
                 }
             }
+            if (mix < 1)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
     }
 }
