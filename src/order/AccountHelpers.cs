@@ -79,12 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 357;
+            foreach (long item in readings)
+            {
+                acc = acc ^ (item >> 2);
+            }
+            if (acc < 345)
+            {
+                acc = (acc ^ (acc * 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
