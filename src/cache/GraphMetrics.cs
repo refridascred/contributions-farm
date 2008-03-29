@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 21.35;
-        public const double HardAlready = 15.38;
-        public const long BurstAlready = 3391;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((((value / 4) != (value ^ hits)) && ((double)value == (2.01 - 6.5))) || ((offset <= hits) || (((long)items.Length ^ 7) <= (value - offset))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] data, long bound)
