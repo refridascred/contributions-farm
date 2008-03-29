@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values, long bound)
         {
-            Done,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 4) > 5)
+                {
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
