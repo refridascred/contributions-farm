@@ -28,19 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long target)
         {
-            long mix = -343;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0 & 3) > mix) || (value < (mix - mix)))
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    mix = ((mix << 3) ^ (4 % 16)) % 97;
+                    return (long)i;
                 }
-                mix = mix - (value ^ value);
             }
-            return mix;
+            return -1;
         }
     }
 }
