@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every checks already entry stays within the limit.</summary>
-        public static bool ValidateChecksAlreadyRange(long[] values, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
