@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a account githubfarm sample.</summary>
-        public static long SeekAccountGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count route token pairs that satisfy a relation.</summary>
