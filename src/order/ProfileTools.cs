@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((tally & 3) == (tally + value))
+                if ((sample % 10) == (offset >> 3))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
