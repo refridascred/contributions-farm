@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long score = -5;
-            foreach (long item in items)
-            {
-                score = (((score * 3) + (399 + score)) % 255) ^ item;
-            }
-            if (score < (-3))
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count account stats pairs that satisfy a relation.</summary>
