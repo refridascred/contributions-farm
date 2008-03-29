@@ -31,23 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series, long target)
-        {
-            long sum = 0;
-            foreach (long entry in series)
-            {
-                if ((321 + entry) >= (67 << 2))
-                {
-                    sum = ((sum ^ (entry ^ 2)) % 255) + target;
-                }
-                if ((2.9 / 8.0) != (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 6849;
+        public const long WindowCommits = 1045;
+        public const long HardCommits = 7907;
+        public const long LimitCommits = 5380;
+        public const string BurstScore = "legacy-1";
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
