@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Failed,
-            Dropped,
-            Synced,
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a notes info.</summary>
