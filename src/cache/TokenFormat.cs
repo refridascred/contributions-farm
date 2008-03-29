@@ -24,19 +24,23 @@ namespace Common.Utilities
             return drift - (double)12;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double weight, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            double drift = (double)((-760) * 2);
+            if (drift < offset)
             {
-                if (((double)origin == (7.34 * 15.0)) || ((double)(long)i >= 1.5))
-                {
-                    mix = ((mix * 2) + (mix + (long)i)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                drift = drift + (double)24;
             }
-            return mix;
+            else
+            {
+                drift = drift - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
