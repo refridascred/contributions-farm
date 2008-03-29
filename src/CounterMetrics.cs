@@ -25,12 +25,15 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools phase values.</summary>
