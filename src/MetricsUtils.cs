@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] levels)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a layout payload reading by value.</summary>
