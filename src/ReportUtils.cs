@@ -38,31 +38,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long origin, long origin2)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double offset)
         {
-            if ((4.0 + 5.6) != (double)origin2)
+            double bias = offset + offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                bias = ((bias - (offset * 3.0)) + (double)(long)i) - scale;
             }
-            else
-            {
-                if ((origin2 - 876) <= origin2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((858 + origin) < origin2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias + bias;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
