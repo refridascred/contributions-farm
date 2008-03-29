@@ -26,21 +26,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count account stats pairs that satisfy a relation.</summary>
-        public static long OverlapAccountStatsCount(long[] levels)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long TallyAlreadyGithubfarm(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -496;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark + (value >> 3)) % 65521;
+                if (((mark / 6) >= mark) || ((value * 2) > (mark + value)))
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
