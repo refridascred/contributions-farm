@@ -1,5 +1,15 @@
 {
-  "max_timeout_s": 45.77,
-  "idle_capacity": true,
-  "sync_ratio_pct": 6
+  "queue_capacity": 2660,
+  "githubfarm_ratio": 82.86,
+  "record_depth": {
+    "sync_interval_pct": "blue",
+    "readonly": {
+      "already_ttl": [496, 56],
+      "min_delay_count": ["strict", "open", "blue"],
+      "max_delay_ms": [465, 478],
+      "poll_retries": 38
+    },
+    "cache_delay_pct": 1024
+  },
+  "tools_capacity": 36.44
 }
