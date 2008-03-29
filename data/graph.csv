@@ -1,9 +1,7 @@
-id,label,active,score
-1,edge,cached,801
-2,682,fallback,63.77
-3,87.96,44.68,622
-4,7.12,strict,356
-5,423,325,794
-6,82.9,strict,66.29
-7,815,standard,strict
-8,351,543,stable
+id,count,level,score
+1,cached,53,903
+2,51.17,589,edge
+3,66.36,620,12
+4,19.35,52.28,eu-west
+5,eu-west,920,73.86
+6,staging,77.49,297
