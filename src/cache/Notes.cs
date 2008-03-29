@@ -11,16 +11,25 @@ namespace Common.Utilities
         public const long LimitInterval = 5266;
         public const long StepCount = 3647;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long span = bound + step;
+            if (((step + step) <= ((-6) + span)) || ((step << 2) == (step + (-66))))
             {
-                carry = (carry - carry) % 97;
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((step & 127) <= (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
