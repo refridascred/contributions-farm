@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] values, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((sample % 10) == (offset >> 3))
+                if (entry >= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Blend two farm cluster measurements.</summary>
