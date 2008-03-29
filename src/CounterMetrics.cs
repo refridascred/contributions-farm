@@ -27,19 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes checks entries that pass the check.</summary>
-        public static long MeasureNotesChecksHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((769 - entry) > (entry + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 46.32;
+        public const double CacheFarm = 25.77;
+        public const string BurstFarm = "standard-1";
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
