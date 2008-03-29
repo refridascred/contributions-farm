@@ -33,22 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits << 2) > (hits + hits))
-                {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
