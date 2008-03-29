@@ -1,12 +1,4 @@
 # githubfarm settings
-hard_interval_ms:
-  - 260
-  - 310
-min_window_s: 1024
-audit: 60
-verbose: false
-batch_ratio_pct:
-  - strict
-  - eu-west
-  - primary
-cache_depth_pct: cached
+min_capacity: 1539
+record_interval: local
+soft_retries_pct: fallback
