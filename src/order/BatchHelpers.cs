@@ -14,13 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Stale,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "cached";
+        public const long IdleFactor = 6085;
+        public const long RetryFactor = 8103;
+        public const long RetryWindow = 9775;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long ScoreQueue(long[] values, long limit)
