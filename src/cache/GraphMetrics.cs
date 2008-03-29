@@ -34,18 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values, long origin)
+        /// <summary>Derive the next context githubfarm value from a seed.</summary>
+        public static long RollContextGithubfarm(long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)(long)values.Length < (double)value)
-                {
-                    tally = (tally + 3) + origin;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
