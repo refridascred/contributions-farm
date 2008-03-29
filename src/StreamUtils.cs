@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double StepScore = 4.49;
         public const double CacheLevel = 83.33;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] levels, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (bound < (reading + tally))
+                if (origin >= cell)
                 {
-                    tally = tally + 3;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit report entry readings against a rule.</summary>
