@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry + (carry - carry)) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinDepth = "alpha-edge";
+        public const long BasePayload = 6815;
+        public const double LimitScore = 89.79;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] data, long bound)
