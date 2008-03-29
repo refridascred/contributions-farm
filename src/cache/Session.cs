@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Validate batches githubfarm readings against a bound.</summary>
+        public static bool GuardBatchesGithubfarmBounds(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > target)
                 {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
