@@ -1,6 +1,7 @@
 {
-  "tools_capacity": 74,
-  "account_threshold": "legacy",
-  "audit": 30,
-  "context_window": 6161
+  "farm_size": "staging",
+  "editor_size": [235, 95],
+  "warm_threshold_pct": "edge",
+  "batch_window": 9526,
+  "compress": "fallback"
 }
