@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((676 & 7) != (floor + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "local-1";
+        public const long SoftSize = 1148;
+        public const string LimitRatio = "standard-edge";
+        public const string BatchStream = "strict-edge";
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long limit, long seed)
