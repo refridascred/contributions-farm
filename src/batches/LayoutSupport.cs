@@ -54,11 +54,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
