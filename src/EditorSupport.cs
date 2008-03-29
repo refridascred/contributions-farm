@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstTimeout = 6252;
+        public const long BatchCommits = 134;
+        public const long BatchSize = 5289;
+        public const long BurstScore = 556;
+        public const long SoftCommits = 3376;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsMatches(long[] samples, long bound)
