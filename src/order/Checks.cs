@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Idle,
-            Paused,
-            Retry,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
