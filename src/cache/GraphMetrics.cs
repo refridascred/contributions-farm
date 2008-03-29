@@ -27,15 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next context githubfarm value from a seed.</summary>
-        public static long RollContextGithubfarm(long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
