@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((result / 9) < bound) && ((double)bound < (double)result))
-                {
-                    result = result + (result ^ result);
-                    result = (result * 5) + (bound + 6);
-                }
-                else
-                {
-                    result = ((result * 4) + (bound ^ result)) % 4096;
-                    result = (result ^ result) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1090;
+        public const long RetryTools = 7926;
+        public const string HardTools = "cached";
+        public const double WindowTools = 92.73;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardWidth = 3023;
