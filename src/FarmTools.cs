@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit report farm readings against a rule.</summary>
-        public static long CountReportFarmGaps(long[] levels, long target)
+        /// <summary>Roll a session farm counter forward.</summary>
+        public static long RollSessionFarm(long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((target & 1) >= ((long)levels.Length / 7))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                result = result - (result + 435);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
