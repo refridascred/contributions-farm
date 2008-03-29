@@ -37,12 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 6849;
-        public const long WindowCommits = 1045;
-        public const long HardCommits = 7907;
-        public const long LimitCommits = 5380;
-        public const string BurstScore = "legacy-1";
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
