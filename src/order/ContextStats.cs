@@ -13,14 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Closed,
-            Failed,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstTimeout = 4925;
+        public const double CacheScore = 19.71;
+        public const double StepInterval = 6.21;
+        public const long BaseCount = 3987;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
