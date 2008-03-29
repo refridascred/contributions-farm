@@ -34,22 +34,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of record graph readings.</summary>
-        public static long MatchRecordGraphCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstDepth = 6170;
+        public const double RetryMetric = 43.42;
+        public const long RetryBudget = 4021;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long step)
