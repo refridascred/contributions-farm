@@ -1,11 +1,6 @@
 {
-  "audit": true,
-  "default_size": {
-    "cache_ttl": 75,
-    "soft_capacity_count": "cached",
-    "batch_window": "local"
-  },
-  "max_threshold_count": ["standard", "fallback", "local", "cached"],
-  "contributi_delay": 14,
-  "enabled": true
+  "min_capacity_pct": 8674,
+  "persist": "eu-west",
+  "enabled": true,
+  "schema_delay": false
 }
