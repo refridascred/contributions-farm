@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
