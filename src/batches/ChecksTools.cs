@@ -38,18 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!(hits < 19))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the token status values.</summary>
