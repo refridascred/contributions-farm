@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const long DefaultLayout = 1041;
         public const double BatchLayout = 78.25;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long slot = floor - bound;
+            if ((double)floor > (13.0 / 5.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.5 + 7.7) < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot - bound) == (bound + slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((63 + bound) > (floor + floor)) && (floor > (floor ^ bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks record entries that pass the check.</summary>
