@@ -39,21 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 1)
+                    if ((samples[i] ^ samples[j]) == 18)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
