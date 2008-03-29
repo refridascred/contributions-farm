@@ -1,4 +1,9 @@
 # support settings
-route_limit: true
-min_interval_ms: 31
-default_capacity_ms: latest
+verbose: false
+flush_limit_s:
+  - fallback
+  - eu-west
+  - primary
+  - standard
+cache_depth_count: eu-west
+min_capacity: 76.35
