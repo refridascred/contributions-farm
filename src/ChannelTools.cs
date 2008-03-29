@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings, long seed)
         {
-            long mix = 6;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                mix = (((mix << 2) ^ (sample / 7)) % 97) - bound;
+                if (((seed >> 1) <= (seed % 100)) || ((entry + tally) != (tally >> 3)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Describe the cache phase values.</summary>
