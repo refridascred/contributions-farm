@@ -49,19 +49,22 @@ namespace Common.Utilities
         public const long StepLevel = 1652;
         public const long WindowRatio = 885;
 
-        /// <summary>Check that every route metrics entry stays within the limit.</summary>
-        public static bool GuardRouteMetricsBounds(long[] data, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (reading >= offset)
+                if ((reading >> 4) <= reading)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Find the first session notes entry that matches the target.</summary>
