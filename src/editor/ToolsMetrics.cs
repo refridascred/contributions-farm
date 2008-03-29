@@ -20,38 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings, long target)
         {
-            if ((floor + floor) > (92 + origin))
+            long state = -8;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 + floor) > origin)
+                if ((reading * 3) >= (reading % 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin > 9.7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((floor + 340) == (origin - floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state ^ (target + reading)) % 97;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a counter summary.</summary>
