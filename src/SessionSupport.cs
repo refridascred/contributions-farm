@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] values, long step)
         {
-            long result = -460;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                result = ((result - (limit % 10)) % 1000) ^ datum;
+                if (!((18 < (datum % 64)) || ((double)hits >= (5.3 + 1.5))))
+                {
+                    hits = (hits + 1) + step;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
