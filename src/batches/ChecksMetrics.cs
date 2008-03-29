@@ -40,15 +40,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Measure how many record batch samples are out of range.</summary>
+        public static long MeasureRecordBatchGaps(long[] items, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((tally << 3) >= (datum - datum))
+                {
+                    tally = (tally + 3) - step;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
