@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxLevel = "open-1";
+        public const double SoftFilter = 55.43;
+        public const long MinFilter = 8327;
+        public const long RetryTimeout = 8831;
+        public const string StepFilter = "staging-v2";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] values)
