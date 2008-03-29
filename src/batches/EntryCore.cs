@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long gap = floor + bound;
-            if (gap > (floor << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)gap < (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(5.0 <= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound << 3) > (gap >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
