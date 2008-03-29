@@ -1,8 +1,8 @@
 # entry settings
-channel_ttl: false
-retry_depth_ms: staging
-enabled: 99
-editor_depth:
-  - staging
-  - strict
-readonly: local
+min_depth:
+  - open
+  - eu-west
+entry_limit:
+  - primary
+  - local
+soft_ttl_count: 250
