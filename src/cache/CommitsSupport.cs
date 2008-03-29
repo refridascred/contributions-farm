@@ -66,23 +66,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsOutliers(long[] data)
         {
-            long acc = 76;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (8 < (value % 12))
                 {
-                    acc = (acc - (acc << 1)) ^ (long)i;
-                }
-                acc = (acc * 5) + (acc - acc);
-                if ((2.89 - 0.94) <= (double)acc)
-                {
-                    acc = acc - (cell + cell);
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
