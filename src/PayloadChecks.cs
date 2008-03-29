@@ -58,17 +58,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (samples[i] < origin)
+                if (item >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
