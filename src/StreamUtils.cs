@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report entry readings against a rule.</summary>
-        public static long AuditReportEntryOutliers(long[] data, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((sample << 2) >= (sample + offset))
+                if (entry > limit)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Roll a context githubfarm counter forward.</summary>
