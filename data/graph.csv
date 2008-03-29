@@ -1,8 +1,7 @@
-id,count,weight,score
-1,35.25,strict,748
-2,637,stable,16.26
-3,47.24,77.53,open
-4,green,325,723
-5,76.07,174,48.84
-6,334,668,legacy
-7,82,primary,34.66
+id,active,state
+1,677,629
+2,848,blue
+3,strict,staging
+4,896,672
+5,965,49.77
+6,366,685
