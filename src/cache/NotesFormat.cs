@@ -36,13 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Stale,
-            Synced,
+            Pending,
             Failed,
-            Queued,
+            Active,
+            Idle,
         }
     }
 }
