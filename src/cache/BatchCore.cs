@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double bias2 = scale;
+            if (bias2 < 9.07)
             {
-                if ((count > (cell << 1)) || (cell > (922 ^ cell)))
-                {
-                    count = count + 2;
-                }
+                bias2 = bias2 + bias2;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - 9.81;
+            }
+            return bias2 - (bias + bias2);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
