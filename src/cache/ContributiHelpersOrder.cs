@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1090;
-        public const long RetryTools = 7926;
-        public const string HardTools = "cached";
-        public const double WindowTools = 92.73;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                long edge = mix;
+                if (!((74 & 255) != (edge + edge)))
+                {
+                    edge = ((edge * 3) + ((long)i % 16)) % 255;
+                    mix = (mix << 3) ^ edge;
+                }
+                edge = (edge * 2) + (mix - (long)i);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
