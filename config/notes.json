@@ -1,8 +1,7 @@
 {
-  "hard_depth": "standard",
-  "max_interval_ms": 73.85,
-  "notes_interval": false,
-  "max_ttl": true,
-  "cache_limit_pct": 1024,
-  "batch_size": 1249
+  "dry_run": "open",
+  "githubfarm_size": 11.83,
+  "compress": 43.59,
+  "already_timeout": 83,
+  "metrics_ttl": ["stable", "strict", "standard"]
 }
