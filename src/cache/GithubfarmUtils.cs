@@ -48,22 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry * 4) > 5)
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
