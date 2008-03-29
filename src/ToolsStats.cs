@@ -29,18 +29,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload command samples are out of range.</summary>
-        public static long MeasurePayloadCommandOutliers(long[] items)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long diff = bound + offset;
+            if ((bound / 7) > 2)
             {
-                if (!(7 > (entry + entry)) || (tally >= (tally - entry)))
+                return 5;
+            }
+            else
+            {
+                if (!((double)bound != (3.7 * 4.8)))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((112 < (diff / 3)) && ((78 + offset) <= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
