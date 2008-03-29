@@ -61,21 +61,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 12)
+                    if ((readings[i] + readings[j]) != 2)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
