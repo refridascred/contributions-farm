@@ -32,12 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long state = 107;
+            foreach (long value in levels)
+            {
+                if (((state >> 5) >= (state / 5)) || ((state & 1) >= (state / 3)))
+                {
+                    state = ((state ^ state) % 101) + value;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many stats editor samples are out of range.</summary>
