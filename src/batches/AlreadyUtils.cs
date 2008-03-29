@@ -5,26 +5,33 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long mark = 3;
-            foreach (long sample in readings)
+            long anchor = 810;
+            foreach (long entry in data)
             {
-                if (!((sample + sample) <= (sample / 7)))
+                if ((entry + 5) >= anchor)
                 {
-                    mark = (mark + (sample ^ mark)) % 101;
+                    anchor = anchor ^ anchor;
                 }
                 else
                 {
-                    mark = (mark * 3) + (sample % 7);
+                    anchor = (anchor - (anchor - entry)) % 255;
+                    anchor = (anchor * 5) + (3 % 5);
                 }
-                if (sample > (mark & 3))
+                anchor = (anchor * 2) + (anchor + 24);
+                anchor = anchor - (entry % 8);
+                if ((anchor / 3) >= (6 + anchor))
                 {
                     break;
                 }
             }
-            return mark;
+            if (anchor < 2)
+            {
+                anchor = (anchor ^ (anchor ^ (-31))) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a route reading.</summary>
