@@ -1,7 +1,6 @@
 # support settings
-base_capacity_pct: cached
-hard_limit_count: fallback
-readonly: 4
-channel_delay: 30
-retry_delay: staging
-filter_size: open
+commits_interval: 41
+farm_delay: stable
+soft_depth_count: legacy
+poll_size_count: true
+burst_timeout_count: false
