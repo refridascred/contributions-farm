@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples, long bound)
         {
-            long span = step ^ origin;
-            if (((span + span) <= span) || ((71 + 154) == (9 ^ origin)))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(step >= (span + step)))
+                if ((double)(-236) <= (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((span >> 5) > (519 << 1)) || ((step ^ step) <= step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((4.0 + 9.7) <= (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = ((hits + 3) + reading) - bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two cache measurements.</summary>
