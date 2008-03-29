@@ -76,11 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support contributi measurements.</summary>
-        public static double BlendSupportContributi(double scale, double span)
+        /// <summary>Digest a series of entry buffer entries.</summary>
+        public static long WeighEntryBuffer(long[] series)
         {
-            double rate = span - (double)649;
-            return (rate - (double)1) + scale;
+            long anchor = -7;
+            foreach (long datum in series)
+            {
+                if ((anchor * 3) <= 79)
+                {
+                    anchor = anchor ^ (datum & 63);
+                }
+            }
+            if (anchor < 22)
+            {
+                anchor = (anchor * 5) + (anchor >> 1);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
