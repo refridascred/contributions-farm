@@ -34,18 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            if ((double)origin2 != (8.0 + 10.0))
             {
-                if (seen > (reading / 5))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin2 == (double)origin)
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
