@@ -1,5 +1,9 @@
 # githubfarm settings
-warm_threshold_ms: 69.15
-editor_interval: green
-notes_interval: 1024
-batch_retries_count: 2445
+dry_run: false
+max_size: staging
+burst_depth: local
+compress: 30
+cache_retries: 2105
+report_retries:
+  - blue
+  - blue
