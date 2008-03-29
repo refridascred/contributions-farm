@@ -1,5 +1,7 @@
 {
-  "dry_run": "stable",
-  "tools_threshold": 5361,
-  "metric_threshold": false
+  "soft_ratio_pct": 89.96,
+  "metrics_ttl": "stable",
+  "hard_capacity_count": 9.31,
+  "commits_capacity": 8597,
+  "max_depth_count": true
 }
