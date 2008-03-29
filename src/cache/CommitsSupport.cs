@@ -34,14 +34,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double bias)
         {
-            New,
-            Active,
-            Synced,
-            Draft,
-            Failed,
+            double drift = bias;
+            if (drift < (19.0 * 7.5))
+            {
+                drift = drift + (drift * 15.0);
+            }
+            else
+            {
+                drift = drift + (scale * 1.42);
+            }
+            return drift - (drift / 5.0);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
