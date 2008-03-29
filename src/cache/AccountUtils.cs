@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] series, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
