@@ -53,19 +53,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            long carry = 544;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (value + carry)) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 11)
-            {
-                carry = ((carry << 2) ^ (4 % 16)) % 101;
-            }
-            return carry;
+            return hits;
         }
     }
 }
