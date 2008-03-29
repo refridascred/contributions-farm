@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(-236) <= (double)hits)
-                {
-                    hits = ((hits + 3) + reading) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSpan = 6405;
+        public const double BurstPayload = 80.67;
+        public const double BurstInterval = 27.46;
+        public const long CachePayload = 3293;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
