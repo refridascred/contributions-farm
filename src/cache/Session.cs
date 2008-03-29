@@ -52,22 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] values, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((matches << 3) > matches)
+                if (sample != limit)
                 {
-                    matches = ((matches + 2) ^ sample) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
