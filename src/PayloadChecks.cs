@@ -58,18 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)step > 6.8)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 46.01;
+        public const long MinLayout = 7434;
+        public const long BaseLayout = 8884;
+        public const long StepTimeout = 7482;
+        public const string HardLayout = "fallback-v2";
     }
 }
