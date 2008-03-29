@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long span = bound + step;
-            if (((step + step) <= ((-6) + span)) || ((step << 2) == (step + (-66))))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step & 127) <= (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
