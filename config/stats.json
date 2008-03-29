@@ -1,5 +1,18 @@
 {
-  "cache_timeout_pct": ["fallback", "staging", "local", "strict"],
-  "notes_retries": 3444,
-  "verbose": 72.24
+  "flush_retries_ms": 6.09,
+  "max_depth": 25.59,
+  "hard_retries_count": {
+    "entry_ratio": {
+      "base_threshold_pct": ["open", "green", "latest"],
+      "sync_ratio": 9299,
+      "persist": 12.25,
+      "cache_limit_count": ["latest", "legacy", "green"]
+    },
+    "audit": true,
+    "cache_interval": "cached",
+    "strict": "cached",
+    "persist": 90.0,
+    "readonly": "legacy"
+  },
+  "batch_size_pct": 76
 }
