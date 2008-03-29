@@ -12,22 +12,31 @@ namespace Common.Utilities
         public const long HardFactor = 133;
         public const long MaxDepth = 3798;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] series, long step)
+        /// <summary>Classify a support notes pair into a bucket.</summary>
+        public static long BucketSupportNotes(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if ((offset >> 4) == (floor << 3))
             {
-                if ((double)tally >= (6.0 / 6.0))
+                return 6;
+            }
+            else
+            {
+                if (offset <= (67 ^ 624))
                 {
-                    tally = ((tally + 2) + item) - step;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((6.0 + 9.46) < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
