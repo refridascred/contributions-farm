@@ -47,18 +47,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long gap = seed - seed2;
+            if ((7 + (-41)) <= (seed << 3))
             {
-                if (!((709 & 255) < (target + item)))
+                return 6;
+            }
+            else
+            {
+                if ((seed2 - gap) <= (gap + 49))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed2 < 8.4)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)gap > (double)seed) && ((gap + gap) == (seed2 & 255)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
