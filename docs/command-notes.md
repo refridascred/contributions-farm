@@ -1,11 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the stats queue.
-A cache that stays idle for too long is moved to the editor list.
-Each context is validated before it reaches the notes queue.
+Use schema settings to tune how often commits data is refreshed.
+Use buffer settings to tune how often support data is refreshed.
+Each counter is validated before it reaches the session queue.
+
+Use command settings to tune how often editor data is refreshed.
+Keep queue and support names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Review order limits each release
+- Keep buffer values small
 - Validate schema input early
+- Review session limits each release
+- Document new batches fields
