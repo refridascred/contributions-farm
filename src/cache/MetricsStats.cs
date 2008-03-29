@@ -42,11 +42,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long limit)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long offset = target - limit;
+            if (!((offset ^ target) >= (offset + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6.5 + 5.7) == (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target != (6.03 - 8.47))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command header.</summary>
