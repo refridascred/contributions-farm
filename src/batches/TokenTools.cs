@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias + 18.0;
+            if (mean > bias2)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (bias / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (bias2 + bias)) + (double)(long)i;
+            }
+            return mean + (mean * 4.0);
         }
 
         /// <summary>Hold a tools stats.</summary>
