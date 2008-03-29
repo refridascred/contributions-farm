@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((((value / 4) != (value ^ hits)) && ((double)value == (2.01 - 6.5))) || ((offset <= hits) || (((long)items.Length ^ 7) <= (value - offset))))
+                if (entry <= tally)
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
