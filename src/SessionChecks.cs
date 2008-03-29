@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 3853;
         public const string WindowScore = "alpha-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 5959;
-        public const double MaxMetric = 1.74;
-        public const long DefaultSize = 4528;
-        public const long WindowWidth = 6134;
-        public const long LimitSpan = 6855;
+        /// <summary>Rank counter cluster input into a small class.</summary>
+        public static long BucketCounterCluster(long limit, long limit2)
+        {
+            if ((limit2 - limit2) > (limit2 + limit2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)limit2 != (16.0 * 6.0)) && ((limit + limit2) > (limit / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit2 + limit) != (85 / 3)) || ((limit >> 3) == (limit / 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
