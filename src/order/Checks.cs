@@ -49,11 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double ratio, double span)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double ratio2 = span + span;
-            return ratio2 - ratio;
+            Stale,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Grade a graph channel value against two limits.</summary>
