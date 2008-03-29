@@ -47,16 +47,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a entry batches counter forward.</summary>
-        public static long IterateEntryBatches(long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            if (!(target < (limit << 2)))
             {
-                acc = (acc ^ ((long)i << 1)) % 4096;
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (limit >= (70 >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - limit) != (limit / 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema record.</summary>
