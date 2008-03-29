@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long sum = 53;
+            foreach (long datum in series)
+            {
+                if ((sum >> 2) <= ((long)series.Length << 2))
+                {
+                    sum = (sum + datum) % 255;
+                }
+                if (sum > (sum % 10))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a editor info.</summary>
