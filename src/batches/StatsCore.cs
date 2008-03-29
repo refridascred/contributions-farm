@@ -60,11 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
