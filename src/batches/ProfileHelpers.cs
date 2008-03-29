@@ -27,18 +27,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] readings)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry << 2) > (entry + entry))
-                {
-                    matches = matches + 1;
-                }
+                mark = mark + (floor ^ (-2));
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up payload counter samples.</summary>
