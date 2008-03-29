@@ -1,11 +1,5 @@
 # support settings
-max_threshold: 11.56
-token_timeout: false
-record_size:
-  - 436
-  - 95
-  - 312
-schema_ttl:
-  - staging
-  - fallback
-  - fallback
+audit: 1024
+strict: latest
+retry_size: 5075
+warm_interval_count: 250
