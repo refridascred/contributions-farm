@@ -30,11 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardInterval = 81.5;
-        public const long BaseContributi = 8258;
-        public const long BaseRatio = 65;
-        public const string BatchContributi = "cached-edge";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Idle,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
         public static bool GuardRouteMetricsBounds(long[] data, long offset)
