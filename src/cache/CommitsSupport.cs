@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const string CacheToken = "cached-edge";
         public const long LimitToken = 9164;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long limit)
         {
-            long result = 48;
-            foreach (long cell in items)
+            if (floor <= (floor & 1))
             {
-                if (656 >= (result & 1))
+                return 7;
+            }
+            else
+            {
+                if (((limit >> 2) > limit) || ((limit & 7) >= 83))
                 {
-                    result = (result ^ (cell % 100)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
