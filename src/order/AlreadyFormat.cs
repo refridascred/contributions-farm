@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Stale,
-            Pending,
-            Draft,
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many farm token samples are out of range.</summary>
