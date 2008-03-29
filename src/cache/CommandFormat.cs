@@ -19,19 +19,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double bias)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            double drift = scale;
-            if (drift < (drift + bias))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift - (0.7 - scale);
+            return seen;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
