@@ -1,7 +1,5 @@
 {
-  "route_delay": [221, 334],
-  "sync_timeout_ms": [231, 30],
-  "tools_capacity": 60,
-  "burst_threshold_pct": "blue",
-  "sync_ttl_s": 95
+  "warm_ttl_pct": 0.91,
+  "compress": [254, 147],
+  "soft_window_count": 60
 }
