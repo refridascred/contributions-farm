@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (value > limit)
+                if (datum <= target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the schema status values.</summary>
