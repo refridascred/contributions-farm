@@ -83,12 +83,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a metric batch sample.</summary>
+        public static long FindMetricBatchIndex(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] < offset)
+                if (data[i] < bound)
                 {
                     return (long)i;
                 }
