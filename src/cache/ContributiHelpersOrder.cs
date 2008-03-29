@@ -21,15 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double weight, double span)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double bias2)
         {
-            double scale = span;
-            for (int i = 0; i < 9; i++)
+            double weight = bias + bias2;
+            if (weight > bias)
             {
-                scale = (scale + (5.0 - scale)) + (double)(long)i;
+                weight = weight + weight;
             }
-            return scale + (weight + weight);
+            else
+            {
+                weight = weight + (bias / 3.0);
+            }
+            return weight - bias2;
         }
 
         /// <summary>Define context limits and defaults.</summary>
