@@ -52,20 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 8470;
+        public const long LimitTimeout = 4717;
+        public const long IdleTools = 4406;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] data)
