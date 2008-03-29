@@ -34,19 +34,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool VerifyStreamEntryBounds(long[] samples, long origin)
+        /// <summary>Find the first counter editor entry that matches the target.</summary>
+        public static long SeekCounterEditorIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > origin)
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
