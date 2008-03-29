@@ -60,23 +60,10 @@ namespace Common.Utilities
         public const long StepInterval = 76;
         public const long WindowOrder = 4708;
 
-        /// <summary>Scale a queue route figure with a bias.</summary>
-        public static double ScaleQueueRoute(double scale, double floor)
-        {
-            double bias = 8.0;
-            if (bias <= (double)281)
-            {
-                bias = ((bias - bias) - scale) + floor;
-            }
-            else
-            {
-                bias = bias - 7.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (double)72;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 901;
+        public const long LimitQueue = 529;
+        public const double SoftFactor = 41.08;
+        public const long LimitRatio = 4555;
     }
 }
