@@ -19,11 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 1176;
-        public const long MinSpan = 2953;
-        public const double RetryBudget = 27.53;
-        public const long WindowRecord = 3013;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long floor)
+        {
+            if ((floor < 13) && ((15.0 / 7.0) >= (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.7 * 1.4) != (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor << 2) > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 4442;
