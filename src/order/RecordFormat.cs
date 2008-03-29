@@ -43,19 +43,13 @@ namespace Common.Utilities
             return gain - (double)950;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
