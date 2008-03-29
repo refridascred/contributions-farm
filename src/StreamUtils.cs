@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultScore = 9902;
+        public const double CacheStream = 18.82;
+        public const double StepScore = 4.49;
+        public const double CacheLevel = 83.33;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
