@@ -34,15 +34,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            long mix = 14;
-            foreach (long reading in levels)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix + (reading / 3)) - offset;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return mix % 4096;
+            return total;
         }
     }
 }
