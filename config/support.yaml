@@ -1,8 +1,7 @@
 # support settings
-default_delay_ms: 31.52
-token_threshold: local
-contributi_capacity:
-  - 333
-  - 317
-  - 104
-readonly: 96.75
+context_delay:
+  - 376
+  - 453
+  - 425
+batch_ratio: 250
+dry_run: true
