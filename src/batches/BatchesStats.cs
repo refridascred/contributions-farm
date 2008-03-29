@@ -23,11 +23,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 47.29;
-        public const long LimitStream = 1532;
-        public const long BatchStream = 7224;
-        public const string CacheStream = "cached-v2";
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] items, long floor)
