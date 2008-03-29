@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the cluster level values.</summary>
