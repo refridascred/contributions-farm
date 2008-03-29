@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxBudget = 7359;
+        public const long CacheGithubfarm = 8977;
+        public const long WindowLevel = 8762;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 5761;
