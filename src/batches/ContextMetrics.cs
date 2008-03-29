@@ -29,19 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            long score = -32;
-            foreach (long entry in series)
+            double gain = (offset + rate) / 8.0;
+            if (gain < (double)(-55))
             {
-                score = (score - (entry - entry)) % 255;
-                if ((score > (score ^ 71)) || ((entry * 5) >= (entry >> 5)))
-                {
-                    break;
-                }
+                gain = gain - rate;
             }
-            return score % 97;
+            return gain + (double)938;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
