@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long SoftInterval = 2211;
         public const double BurstOrder = 81.34;
 
-        /// <summary>Project the next filter stats value.</summary>
-        public static double SmoothFilterStats(double rate, double span)
+        /// <summary>Validate cluster counter readings against a bound.</summary>
+        public static bool CheckClusterCounterBounds(long[] series, long seed)
         {
-            double load = 2.0;
-            if (load < 3.0)
+            bool ok = true;
+            foreach (long value in series)
             {
-                load = ((load - (double)539) - rate) + span;
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (10.0 - 15.0);
-            }
-            return load - (double)55;
+            return ok;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
