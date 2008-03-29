@@ -1,14 +1,7 @@
 {
-  "batch_threshold_s": true,
-  "batches_timeout": {
-    "strict": ["legacy", "stable", "blue"],
-    "compress": 1024,
-    "hard_threshold": 1024,
-    "metrics_size": 9425,
-    "idle_ttl_ms": "latest",
-    "flush_depth": ["cached", "green", "local"]
-  },
-  "default_capacity_s": "legacy",
-  "stats_ratio": [424, 302, 10, 289],
-  "base_retries": 86
+  "audit": "blue",
+  "poll_depth_ms": 27.0,
+  "base_threshold_pct": 48,
+  "idle_ratio_pct": true,
+  "warm_window_pct": "legacy"
 }
