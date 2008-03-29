@@ -20,30 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long DigestCounterProfile(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series, long limit)
         {
-            long mark = 76;
-            foreach (long reading in items)
+            long result = -460;
+            foreach (long datum in series)
             {
-                if (!((1 ^ mark) == (mark / 3)))
-                {
-                    mark = ((mark * 4) + (117 - mark)) % 97;
-                }
-                if ((mark & 1) == (mark + reading))
-                {
-                    mark = mark - (reading / 9);
-                }
-                if ((reading >> 4) < (mark ^ 59))
-                {
-                    break;
-                }
+                result = ((result - (limit % 10)) % 1000) ^ datum;
             }
-            if (mark > 9)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
