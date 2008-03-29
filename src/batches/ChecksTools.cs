@@ -31,13 +31,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            Locked,
-            Idle,
-            Queued,
-            Synced,
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                long cur = (mark + 36) + (55 / 7);
+                if ((mark & 127) > cur)
+                {
+                    mark = ((mark << 3) ^ (851 + 6)) % 255;
+                }
+                if ((mark % 60) < (8 << 1))
+                {
+                    cur = (cur ^ (mark + cur)) % 65521;
+                    mark = (mark ^ (8 << 2)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the token status values.</summary>
