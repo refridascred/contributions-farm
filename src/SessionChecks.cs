@@ -40,12 +40,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Active,
-            Retry,
-            Synced,
+            Pending,
+            Queued,
+            Locked,
+            Idle,
+            Draft,
         }
     }
 }
