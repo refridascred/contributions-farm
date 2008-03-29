@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double span)
         {
-            if ((bound & 255) == (step * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((0.8 / 9.0) >= (5.1 + 4.67)) && ((step - 794) > (bound % 10)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double rate = gain;
+            return (rate + 2.07) + span;
         }
 
         /// <summary>Match up editor context samples.</summary>
