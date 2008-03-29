@@ -63,12 +63,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] samples, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((6 / 5) > (origin / 3))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
     }
 }
