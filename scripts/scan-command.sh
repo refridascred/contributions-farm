@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+COMMAND_LIMIT=49
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-local}"
+for item in fallback local eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy fallback open; do
-    log "checking ${item}"
-done
