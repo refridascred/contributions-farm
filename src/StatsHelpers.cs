@@ -27,14 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            Pending,
-            New,
-            Synced,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits - hits) > reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
