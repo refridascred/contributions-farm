@@ -57,22 +57,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long FoldTokenSession(long[] readings, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long origin)
         {
-            long state = 8;
-            foreach (long sample in readings)
+            if (origin < (70 / 5))
             {
-                if (82 < (origin - sample))
+                return 2;
+            }
+            else
+            {
+                if ((98 + 6) < (bound ^ origin))
                 {
-                    state = (state ^ ((-977) - 88)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (state > (-172))
-            {
-                state = (state << 2) ^ (origin % 7);
-            }
-            return state % 65521;
         }
 
         /// <summary>Project the next token value.</summary>
