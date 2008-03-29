@@ -61,12 +61,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((double)sample <= (11.0 * 4.16)) && ((double)seen < (double)sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
