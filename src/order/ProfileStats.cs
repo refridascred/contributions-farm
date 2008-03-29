@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank cluster token input into a small class.</summary>
-        public static long RankClusterToken(long seed, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
-            if (!((step * 2) <= (step * 3)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (0.2 - 9.0))
+                if ((double)(long)items.Length < 4.51)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 2) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a graph info.</summary>
