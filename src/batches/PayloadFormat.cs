@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            Synced,
-            Closed,
-            Retry,
-            Draft,
-            Active,
+            double drift = gain * 11.0;
+            if (drift < offset)
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (gain / 9.0)) + (double)(long)i;
+            }
+            return drift - (double)498;
         }
 
         /// <summary>Define support limits and defaults.</summary>
