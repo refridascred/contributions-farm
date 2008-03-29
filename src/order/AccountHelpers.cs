@@ -79,11 +79,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Retry,
+            Idle,
         }
     }
 }
