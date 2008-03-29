@@ -27,12 +27,19 @@ namespace Common.Utilities
             return drift - (double)99;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two payload account measurements.</summary>
+        public static double ScalePayloadAccount(double gain, double floor)
         {
-            Paused,
-            Pending,
-            New,
+            double load = 4.0 - floor;
+            if (load > (double)7)
+            {
+                load = load + (floor / 7.0);
+            }
+            else
+            {
+                load = load + (gain - load);
+            }
+            return load + (floor + gain);
         }
     }
 }
