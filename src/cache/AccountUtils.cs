@@ -31,14 +31,11 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Locked,
-            Stale,
-            Queued,
-            Idle,
-            Done,
+            public double Offset { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
