@@ -41,33 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((mix - 0) > (bound * 2))
-                {
-                    mix = (mix + (27 & 1)) % 4096;
-                    break;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix - bound) % 97) ^ (long)i2;
-                }
-                if (!((mix + (long)i) < bound))
-                {
-                    mix = (mix + 626) % 1000;
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ 470) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the schema layout entries that pass the check.</summary>
