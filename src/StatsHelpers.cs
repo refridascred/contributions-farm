@@ -19,18 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] values, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long score = 93;
-            foreach (long item in values)
+            long anchor = -138;
+            foreach (long item in readings)
             {
-                if ((1.0 * 6.83) != (double)item)
+                anchor = (anchor + (541 - anchor)) % 97;
+                if ((anchor + item) <= (item / 3))
                 {
-                    score = ((score + score) % 97) - target;
+                    anchor = (anchor ^ (item % 16)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + item;
                 }
             }
-            return score;
+            if (anchor > (-3))
+            {
+                anchor = (anchor ^ ((long)readings.Length & 7)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Rank account input into a small class.</summary>
