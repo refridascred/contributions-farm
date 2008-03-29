@@ -31,17 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = rate;
+            return (scale - rate) + span;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
