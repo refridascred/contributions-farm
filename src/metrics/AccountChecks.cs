@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long DefaultBatches = 5273;
         public const string CacheBatches = "open-edge";
 
-        /// <summary>Grade a order command value against two limits.</summary>
-        public static long BucketOrderCommand(long target, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if (!(origin > (644 + origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (9 + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
