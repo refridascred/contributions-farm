@@ -44,22 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = 1;
-            foreach (long item in samples)
-            {
-                if ((item * 5) > sum)
-                {
-                    sum = (sum - 240) % 101;
-                }
-            }
-            if (sum > 50)
-            {
-                sum = ((sum * 4) + (sum * 4)) % 97;
-            }
-            return sum % 4096;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
