@@ -1,6 +1,7 @@
 {
-  "max_limit": ["standard", "fallback", "cached"],
-  "max_capacity_count": false,
-  "soft_size_count": "local",
-  "compress": [198, 444, 7]
+  "min_ttl": "latest",
+  "dry_run": 63.36,
+  "base_delay": false,
+  "metric_window": "edge",
+  "default_delay": 35.08
 }
