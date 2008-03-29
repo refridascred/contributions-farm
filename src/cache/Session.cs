@@ -41,17 +41,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
