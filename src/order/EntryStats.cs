@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Roll a payload counter counter forward.</summary>
+        public static long IteratePayloadCounter(long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                state = (state - state) % 1000;
+                state = (state * 3) + state;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
