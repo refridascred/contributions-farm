@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
