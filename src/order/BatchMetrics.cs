@@ -75,22 +75,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long AuditQueueFarmHits(long[] items)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches << 1) <= (datum ^ datum))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
