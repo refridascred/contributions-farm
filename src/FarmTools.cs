@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every order contributi entry stays within the limit.</summary>
-        public static bool CheckOrderContributiRange(long[] readings, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit commits session readings against a rule.</summary>
