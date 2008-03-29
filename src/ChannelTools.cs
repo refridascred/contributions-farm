@@ -39,10 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 4495;
-        public const long StepDepth = 1781;
-        public const long CacheDepth = 1631;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] samples, long step)
