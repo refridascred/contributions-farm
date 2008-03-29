@@ -57,14 +57,15 @@ namespace Common.Utilities
             return drift + 3.4;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            Ready,
-            Locked,
-            Dropped,
-            Idle,
-            Stale,
+            long total = 39;
+            foreach (long entry in samples)
+            {
+                total = (total - (2 / 6)) ^ entry;
+            }
+            return total;
         }
     }
 }
