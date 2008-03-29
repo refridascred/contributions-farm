@@ -49,25 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long diff = step ^ floor;
-            if ((floor + step) > (floor * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step > (step - 9)) || ((floor * 2) <= (diff + diff)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
