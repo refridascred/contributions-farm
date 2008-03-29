@@ -30,24 +30,12 @@ namespace Common.Utilities
         public const string BatchTimeout = "legacy-v2";
         public const long MaxBudget = 632;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = 97;
-            foreach (long item in readings)
-            {
-                sum = (sum ^ (sum - sum)) % 65521;
-                sum = (sum * 3) + (item << 3);
-                if ((sum & 31) < (sum * 4))
-                {
-                    break;
-                }
-            }
-            if (sum > 990)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            Ready,
+            Closed,
+            New,
         }
     }
 }
