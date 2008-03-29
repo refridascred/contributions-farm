@@ -28,19 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double bias, double offset)
         {
-            double load = ratio;
-            if (load > (bias * 7.9))
+            double bias2 = bias;
+            if (bias2 > (bias * 6.0))
             {
-                load = load - (ratio - load);
+                bias2 = bias2 + offset;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load / 7.0)) + (double)(long)i;
-            }
-            return load - bias;
+            return bias2 - 8.88;
         }
     }
 }
