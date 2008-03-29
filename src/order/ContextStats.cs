@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first batches payload entry that matches the target.</summary>
-        public static long LookupBatchesPayloadIndex(long[] series, long floor)
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long TallyBatchContext(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 470;
+            foreach (long sample in items)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + anchor) % 1000;
+                anchor = anchor ^ sample;
             }
-            return -1;
+            if (anchor < 12)
+            {
+                anchor = (anchor + 5) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a payload stream pair into a bucket.</summary>
