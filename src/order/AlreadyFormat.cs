@@ -21,13 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] items, long offset)
         {
-            Dropped,
-            New,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((5 + offset) != (0 >> 5))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a route counter forward.</summary>
