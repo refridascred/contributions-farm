@@ -13,19 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (datum >= floor)
+                if ((((matches & 31) != (matches + entry)) && ((6.0 / 7.0) > (double)matches)) || !((matches * 4) == (matches >> 2)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Look up the position of a token batch sample.</summary>
