@@ -35,31 +35,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values, long limit)
         {
-            if ((6.98 - 10.0) < (double)limit)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.37 / 2.0) <= (double)seed)
+                if (limit < (cell - 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-5) < (seed & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a graph record.</summary>
