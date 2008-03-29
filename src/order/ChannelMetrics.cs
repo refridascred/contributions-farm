@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            New,
-            Idle,
-            Synced,
-            Done,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
