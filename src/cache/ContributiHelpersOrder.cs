@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a schema githubfarm pair into a bucket.</summary>
-        public static long GradeSchemaGithubfarm(long origin, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            if ((8 << 1) >= (origin - 9))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-801) > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (step >> 5))
+                    if ((series[i] - series[j]) != 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin >> 4) < ((-12) & 127)) && (step <= (step / 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
