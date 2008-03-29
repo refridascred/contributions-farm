@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
