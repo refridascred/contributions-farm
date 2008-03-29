@@ -59,23 +59,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            double ratio2 = 2.0 * 17.0;
-            if (ratio2 >= (ratio - offset))
+            long acc = 351;
+            foreach (long datum in levels)
             {
-                ratio2 = ratio2 - ratio2;
+                acc = acc ^ datum;
+                if (((double)acc > (6.2 - 5.95)) || ((datum - 85) <= (acc + datum)))
+                {
+                    acc = (acc ^ (datum - datum)) % 97;
+                    acc = acc ^ (acc - datum);
+                }
+                acc = (acc + (acc & 1)) % 65521;
             }
-            else
+            if (acc > 7)
             {
-                ratio2 = ratio2 + offset;
+                acc = (acc - (acc ^ 9)) % 255;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 - 9.5;
+            return acc % 4096;
         }
     }
 }
