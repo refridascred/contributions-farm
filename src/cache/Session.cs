@@ -36,13 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items, long step)
         {
-            Stale,
-            Pending,
-            Ready,
-            Queued,
+            long mix = 731;
+            foreach (long reading in items)
+            {
+                if ((mix - reading) <= step)
+                {
+                    mix = mix - (reading % 7);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ step) % 65521;
+                }
+                mix = (mix - (-875)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Blend two channel measurements.</summary>
