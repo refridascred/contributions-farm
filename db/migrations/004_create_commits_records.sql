@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL,
-    ratio REAL
+    token TEXT,
+    ratio REAL,
+    label TEXT,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
 
-INSERT INTO commits_records (active, owner, ratio) VALUES (69, 'blue', 70.29);
-INSERT INTO commits_records (active, owner, ratio) VALUES (2, 'primary', 56.7);
-INSERT INTO commits_records (active, owner, ratio) VALUES (38, 'blue', 73.37);
+INSERT INTO commits_records (active, token, ratio, label, region) VALUES (21, 'standard', 42.62, 'primary', 'green');
+INSERT INTO commits_records (active, token, ratio, label, region) VALUES (72, 'primary', 12.23, 'eu-west', 'cached');
