@@ -84,13 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
+            long total = 18;
+            foreach (long datum in samples)
+            {
+                total = (total ^ total) - datum;
+            }
+            return total;
         }
     }
 }
