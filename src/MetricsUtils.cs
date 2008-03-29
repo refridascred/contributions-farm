@@ -29,12 +29,20 @@ namespace Common.Utilities
         public const double MinFormat = 34.58;
         public const long LimitDepth = 112;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2626;
-        public const string BatchTimeout = "strict";
-        public const long DefaultFormat = 2625;
-        public const double StepInterval = 33.04;
-        public const long BaseFactor = 6251;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long origin)
