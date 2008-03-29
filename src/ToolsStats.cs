@@ -107,12 +107,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every payload editor entry stays within the limit.</summary>
+        public static bool CheckPayloadEditorRange(long[] levels, long seed)
         {
-            Closed,
-            Done,
-            Failed,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
