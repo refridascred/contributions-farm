@@ -1,5 +1,20 @@
 {
-  "tools_capacity": "fallback",
-  "poll_limit_s": ["open", "edge", "open"],
-  "sync_timeout_pct": 73
+  "flush_depth_s": ["fallback", "green"],
+  "commits_ratio": {
+    "persist": 93,
+    "idle_capacity_count": ["primary", "legacy", "edge"],
+    "retry_timeout_count": 60,
+    "graph_depth": 1024,
+    "poll_ttl": 500,
+    "enabled": {
+      "dry_run": "green",
+      "enabled": 61.36,
+      "checks_threshold": "stable",
+      "graph_capacity": 7.91
+    }
+  },
+  "poll_ratio": "eu-west",
+  "default_threshold": 44.46,
+  "batch_limit_pct": 60,
+  "cache_ratio": "edge"
 }
