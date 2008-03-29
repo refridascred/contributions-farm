@@ -64,13 +64,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long target)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long offset = floor ^ target;
+            if (!((target + floor) <= (target >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target << 3) == (2 + floor)) || (6.6 <= (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((6.0 - 5.1) >= (double)floor) || (1.67 >= (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + target) <= 2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
