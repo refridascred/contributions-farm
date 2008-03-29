@@ -53,19 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (item < target)
+                if ((double)step > 6.8)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
