@@ -23,16 +23,16 @@ namespace Common.Utilities
         public const double SoftChannel = 1.8;
         public const double LimitChannel = 94.4;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long sum = 171;
+            foreach (long datum in levels)
             {
-                mix = ((mix << 2) ^ (long)i) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                sum = ((sum + ((-30) & 7)) % 65521) - datum;
+                sum = (sum ^ (4 << 2)) % 97;
             }
-            return mix;
+            return sum % 97;
         }
     }
 }
