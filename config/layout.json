@@ -1,6 +1,7 @@
 {
-  "min_threshold_s": "eu-west",
-  "flush_retries_pct": "open",
-  "entry_window": 55.34,
-  "hard_depth_pct": false
+  "graph_size": 9611,
+  "flush_ttl_pct": ["staging", "fallback", "strict", "fallback"],
+  "enabled": "primary",
+  "hard_interval_count": false,
+  "max_retries_pct": ["primary", "edge", "fallback"]
 }
