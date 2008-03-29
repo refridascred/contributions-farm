@@ -85,11 +85,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            Stale,
+            Active,
+            Dropped,
         }
     }
 }
