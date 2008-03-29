@@ -15,19 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] samples, long target)
+        /// <summary>Count route token pairs that satisfy a relation.</summary>
+        public static long OverlapRouteTokenCount(long[] items)
         {
             long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((tally >= (tally >> 5)) && ((target * 4) >= (tally - tally))) && ((12.0 > (double)value) && (47 >= target)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
