@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long result = -30;
+            long sum = 42;
             foreach (long value in levels)
             {
-                result = ((result << 2) ^ (value + 8)) % 101;
+                if (sum >= ((long)levels.Length * 3))
+                {
+                    sum = ((sum << 2) ^ (sum >> 4)) % 97;
+                }
+                sum = (sum * 3) + (sum + value);
             }
-            return result % 4096;
+            return sum % 1000;
         }
 
         /// <summary>Check that every batches schema entry stays within the limit.</summary>
