@@ -1,8 +1,12 @@
 {
-  "poll_ttl_ms": 83.41,
-  "window_ratio": 5243,
-  "command_interval": "standard",
-  "sync_interval_pct": "legacy",
-  "idle_timeout_s": "local",
-  "batches_timeout": [371, 52, 170, 420]
+  "enabled": 250,
+  "batch_size_s": 1.08,
+  "command_depth": "stable",
+  "soft_timeout_ms": {
+    "idle_interval_ms": 71,
+    "max_size_ms": 2.82,
+    "order_delay": 53.23,
+    "base_depth": 40,
+    "default_threshold_s": "primary"
+  }
 }
