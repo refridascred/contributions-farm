@@ -1,8 +1,8 @@
-id,token,active
-1,869,15.99
-2,619,325
-3,290,85.29
-4,10.59,92.92
-5,16,146
-6,936,23
-7,strict,588
+id,label,rank
+1,blue,809
+2,913,25.52
+3,standard,282
+4,fallback,558
+5,3.81,green
+6,edge,868
+7,837,latest
