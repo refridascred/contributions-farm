@@ -1,14 +1,5 @@
 {
-  "strict": 12,
-  "warm_capacity_count": 40.75,
-  "max_ratio": ["cached", "blue", "open", "blue"],
-  "max_capacity": 19.33,
-  "flush_delay_s": "eu-west",
-  "contributi_limit": {
-    "sync_ttl": "cached",
-    "dry_run": "blue",
-    "support_size": ["green", "fallback", "fallback"],
-    "max_retries_pct": "standard",
-    "flush_ttl": [312, 117, 454]
-  }
+  "default_size": 250,
+  "already_capacity": 5169,
+  "profile_retries": "local"
 }
