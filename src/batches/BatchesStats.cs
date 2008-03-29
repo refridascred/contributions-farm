@@ -22,21 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long offset)
-        {
-            long mark = 25;
-            foreach (long sample in values)
-            {
-                if (mark > (offset >> 4))
-                {
-                    mark = (mark + sample) % 97;
-                }
-                mark = (mark - (113 + offset)) % 65521;
-                mark = (mark - (mark - sample)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSpan = 278;
+        public const double RetryMetric = 98.21;
+        public const long IdleTimeout = 8485;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] data)
