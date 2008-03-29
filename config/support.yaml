@@ -1,12 +1,13 @@
 # support settings
-cluster_threshold: 7077
-default_threshold_ms: 48
-profile_size: fallback
-base_retries_pct:
-  - staging
-  - stable
-idle_threshold_pct:
-  - 334
-  - 276
-  - 379
-cache_retries: true
+max_ttl_pct:
+  compress: 91
+  flush_interval_count: 6475
+  max_timeout_s:
+    - green
+    - stable
+    - open
+  route_window: green
+base_limit: 83.06
+flush_size_ms: false
+retry_size_pct: 30
+audit: local
