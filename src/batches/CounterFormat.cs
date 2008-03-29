@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long seed, long origin)
+        /// <summary>Accumulate record stream samples.</summary>
+        public static long FoldRecordStream(long[] values)
         {
-            if (seed < (seed - seed))
+            long acc = 931;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((14.0 * 2.41) < (double)seed)
+                if ((35 >> 1) >= acc)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.56 - 8.19) <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = ((acc * 3) + acc) - value;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Match up counter stats samples.</summary>
