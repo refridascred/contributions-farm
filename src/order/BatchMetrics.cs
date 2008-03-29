@@ -15,10 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 84.45;
-        public const double MaxRatio = 13.52;
-        public const long StepCount = 6028;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] series, long seed)
