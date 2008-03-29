@@ -27,13 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long limit)
         {
-            New,
-            Retry,
-            Idle,
-            Draft,
+            long mark = 421;
+            foreach (long sample in values)
+            {
+                if (!((double)mark < 13.0))
+                {
+                    mark = mark - (sample * 4);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (limit & 255);
+                }
+            }
+            if (mark < 282)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark % 1000;
         }
     }
 }
