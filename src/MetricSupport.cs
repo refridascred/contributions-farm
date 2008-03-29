@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 736;
+        public const long HardTimeout = 2096;
+        public const string BatchMetric = "alpha-edge";
+        public const long IdleScore = 3754;
+        public const double BurstSize = 23.67;
     }
 }
