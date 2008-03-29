@@ -1,6 +1,9 @@
 # entry settings
-layout_window: 8338
-record_threshold: blue
-default_timeout_pct:
-  - 182
-  - 237
+min_size: true
+notes_ratio:
+  contributi_retries: 21
+  stats_capacity:
+    - 388
+    - 397
+  poll_size_ms: 4.96
+payload_interval: 59
