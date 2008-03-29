@@ -15,17 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] <= offset)
+                if (((-367) + hits) >= (0 - reading))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
