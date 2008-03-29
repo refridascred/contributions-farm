@@ -30,12 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] samples, long seed)
         {
-            New,
-            Locked,
-            Failed,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
