@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] values, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin >= (entry & 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the support level values.</summary>
