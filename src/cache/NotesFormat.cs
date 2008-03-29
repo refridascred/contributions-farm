@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Done,
-            Paused,
-            Dropped,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 4024;
+        public const long RetryStats = 6342;
+        public const long RetryLevel = 6275;
+        public const long StepRatio = 9385;
 
         /// <summary>Project the next token value.</summary>
         public static double ProjectToken(double bias, double offset)
