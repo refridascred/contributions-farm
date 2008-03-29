@@ -32,11 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 2147;
-        public const long MinFactor = 487;
-        public const long RetryAlready = 6961;
-        public const long LimitRatio = 4748;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryGaps(long[] samples, long seed)
