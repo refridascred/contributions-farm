@@ -24,14 +24,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count notes metric pairs that satisfy a relation.</summary>
+        public static long CompareNotesMetricCount(long[] samples)
         {
-            Draft,
-            Locked,
-            Retry,
-            Paused,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
