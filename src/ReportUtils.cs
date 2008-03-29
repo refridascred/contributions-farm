@@ -65,12 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((-369) <= matches))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
