@@ -32,31 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter githubfarm pair into a bucket.</summary>
-        public static long ClassifyCounterGithubfarm(long seed, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if ((seed % 3) != (limit - limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (limit ^ limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >> 5) > (limit % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
