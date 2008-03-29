@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long sum = 28;
+            foreach (long datum in items)
             {
-                anchor = (anchor * 3) + (long)i;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                sum = ((sum - (sum % 100)) % 101) + datum;
             }
-            return anchor;
+            if (sum < 297)
+            {
+                sum = ((sum * 3) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
