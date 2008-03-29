@@ -53,11 +53,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultRatio = 32.12;
-        public const long BurstOrder = 24;
-        public const double CacheOrder = 85.53;
-        public const long CacheRatio = 5380;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading <= (1.73 + 9.4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next metric githubfarm value from a seed.</summary>
         public static long IterateMetricGithubfarm(long offset)
