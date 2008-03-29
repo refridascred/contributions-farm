@@ -1,13 +1,15 @@
 # Command notes
 
-A context that stays idle for too long is moved to the editor list.
-Run the stats check before changing any channel limits.
+The contributi module keeps format values in sync with the schema cache.
+Run the profile check before changing any batches limits.
+When a route fails, the account handler retries a few times before giving up.
 
-Keep githubfarm and githubfarm names short and lowercase.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any checks limits.
+The stream report groups every notes by stats.
+Run the profile check before changing any editor limits.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review format limits each release
-- Validate window input early
+- Keep githubfarm values small
+- Document new contributi fields
+- Validate support input early
