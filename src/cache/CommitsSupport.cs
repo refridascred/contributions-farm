@@ -40,19 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] data, long floor)
         {
-            long state = 700;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                state = ((state ^ (origin - state)) % 4096) ^ cell;
+                if ((item >= floor) && ((floor - item) <= (count - 6)))
+                {
+                    count = count + 3;
+                }
             }
-            if (state < 44)
-            {
-                state = state - (origin / 4);
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
