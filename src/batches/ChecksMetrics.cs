@@ -23,21 +23,14 @@ namespace Common.Utilities
         public const long HardAlready = 3888;
         public const double MinFactor = 62.64;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a contributi info.</summary>
