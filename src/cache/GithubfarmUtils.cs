@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count metric batches pairs that satisfy a relation.</summary>
-        public static long CompareMetricBatchesCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1630;
+        public const long SoftRatio = 1172;
+        public const string LimitCluster = "staging-v2";
+        public const long RetryCount = 609;
 
         /// <summary>Match up context commits samples.</summary>
         public static long PairContextCommitsCount(long[] series)
