@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long HardFactor = 133;
         public const long MaxDepth = 3798;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of session account readings.</summary>
+        public static long DigestSessionAccount(long[] samples)
         {
-            Dropped,
-            Active,
-            Locked,
-            Stale,
+            long anchor = 832;
+            foreach (long item in samples)
+            {
+                if (anchor > (anchor / 5))
+                {
+                    anchor = (anchor ^ (item + anchor)) % 255;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
