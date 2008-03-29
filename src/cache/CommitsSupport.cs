@@ -67,31 +67,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long step, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            if ((30 * 3) == (339 + step))
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.19 / 7.0) > (double)origin)
+                if (!((2.7 / 3.0) >= (double)(long)i))
                 {
-                    return 5;
+                    carry = (carry << 3) ^ (origin + (long)i);
+                }
+                if (((long)i & 3) >= (origin + (long)i))
+                {
+                    carry = (carry * 4) + (58 + 10);
                 }
                 else
                 {
-                    if ((double)step > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry + (carry >> 2)) % 97;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
