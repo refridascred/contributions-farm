@@ -28,21 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = 2.3 - floor;
+            if (gain > floor)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + 9.0) + bias;
             }
-            return matches;
+            else
+            {
+                gain = gain + (double)579;
+            }
+            return gain - (double)950;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
