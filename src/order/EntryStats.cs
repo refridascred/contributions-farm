@@ -69,22 +69,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mark = 7;
-            foreach (long sample in readings)
-            {
-                if (!(mark >= (seed + 776)))
-                {
-                    mark = (mark * 2) + (sample << 3);
-                }
-                else
-                {
-                    mark = (mark + (mark ^ (long)readings.Length)) % 4096;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
