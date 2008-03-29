@@ -26,19 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch cluster readings against a bound.</summary>
-        public static bool VerifyBatchClusterLimits(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryRatio = 6.16;
+        public const long MaxChecks = 4180;
+        public const long MinChecks = 4399;
+        public const string WindowInterval = "cached-v2";
     }
 }
