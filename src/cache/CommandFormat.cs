@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
