@@ -1,10 +1,7 @@
-id,region,ratio
-1,25.26,28.69
-2,7,primary
-3,56.43,901
-4,85.82,691
-5,273,legacy
-6,22.39,370
-7,0.93,41.39
-8,157,597
-9,67.57,408
+id,state,owner,level,label
+1,924,strict,842,standard
+2,60,728,open,local
+3,standard,84.57,26.14,latest
+4,eu-west,716,582,676
+5,451,38.82,140,298
+6,363,local,543,469
