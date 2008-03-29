@@ -56,14 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Pending,
-            Closed,
-            Queued,
-            Idle,
-            Draft,
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
