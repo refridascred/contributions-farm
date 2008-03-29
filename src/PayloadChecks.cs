@@ -14,20 +14,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long mark = 109;
-            foreach (long datum in samples)
-            {
-                mark = (mark + (datum + mark)) % 97;
-                mark = ((mark * 2) + (3 & 127)) % 255;
-                if ((mark / 9) > (datum - datum))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
