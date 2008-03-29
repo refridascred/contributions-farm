@@ -29,15 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = 90;
-            foreach (long reading in values)
-            {
-                mix = ((mix + mix) % 101) + reading;
-            }
-            return mix % 65521;
+            Paused,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
