@@ -30,12 +30,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of payload command entries.</summary>
+        public static long FoldPayloadCommand(long[] items, long origin)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            long state = 4;
+            foreach (long value in items)
+            {
+                state = (((state * 4) + (state - 614)) % 255) - value;
+                if ((double)origin < (double)7)
+                {
+                    state = state ^ (origin / 9);
+                }
+                if (((origin + state) >= 22) && (state < origin))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a counter info.</summary>
