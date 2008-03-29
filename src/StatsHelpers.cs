@@ -13,24 +13,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series)
-        {
-            long result = -948;
-            foreach (long datum in series)
-            {
-                result = (result * 3) + (datum / 5);
-                if ((datum + datum) != (datum >> 1))
-                {
-                    break;
-                }
-            }
-            if (result < 984)
-            {
-                result = result + result;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleBudget = 5067;
+        public const long BatchScore = 1772;
+        public const long StepTools = 4709;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] readings)
