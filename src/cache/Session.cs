@@ -27,13 +27,22 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] values, long bound)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches << 3) > matches)
+                {
+                    matches = ((matches + 2) ^ sample) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
