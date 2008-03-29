@@ -59,18 +59,15 @@ namespace Common.Utilities
         public const double CacheOrder = 85.53;
         public const long CacheRatio = 5380;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
+        public static long IterateMetricGithubfarm(long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (4 > (615 + matches))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
