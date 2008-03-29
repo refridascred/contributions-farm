@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "open-1";
+        public const string RetryFilter = "local-v2";
+        public const long IdleFilter = 9393;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] values, long bound)
