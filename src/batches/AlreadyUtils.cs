@@ -57,12 +57,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (1.34 * 3.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
