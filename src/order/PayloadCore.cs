@@ -50,24 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] readings, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long carry = 440;
-            foreach (long value in readings)
-            {
-                long edge = (47 + 17) + (seed - 384);
-                if (edge <= 7)
-                {
-                    break;
-                }
-                carry = ((carry - (seed ^ carry)) % 97) - value;
-            }
-            if (carry > 4)
-            {
-                carry = (carry - (87 - (-5))) % 1000;
-            }
-            return carry % 65521;
+            Idle,
+            New,
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
