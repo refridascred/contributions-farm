@@ -78,15 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long total = 18;
-            foreach (long datum in samples)
-            {
-                total = (total ^ total) - datum;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
