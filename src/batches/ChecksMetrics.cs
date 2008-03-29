@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const long HardAlready = 3888;
         public const double MinFactor = 62.64;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] values, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a contributi info.</summary>
