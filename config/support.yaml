@@ -1,5 +1,7 @@
 # support settings
-audit: 1024
-strict: latest
-retry_size: 5075
-warm_interval_count: 250
+strict:
+  - 228
+  - 238
+  - 80
+soft_capacity: fallback
+hard_ttl: staging
