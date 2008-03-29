@@ -61,13 +61,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            double scale = bias;
+            if (scale < (double)81)
+            {
+                scale = scale + (9.86 + span);
+            }
+            return scale + (bias + span);
         }
     }
 }
