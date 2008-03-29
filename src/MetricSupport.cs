@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] values, long seed)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
