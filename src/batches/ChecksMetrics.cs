@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
