@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next route order value from a seed.</summary>
-        public static long RollRouteOrder(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total << 3) ^ (long)i;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSize = "latest-edge";
+        public const long BurstSession = 5340;
+        public const double MinSession = 91.5;
+        public const long CacheWidth = 1146;
+        public const long WindowSession = 7777;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
