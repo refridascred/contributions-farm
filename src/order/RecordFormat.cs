@@ -39,15 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] data)
         {
             long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 20)
+                    if ((data[i] - data[j]) < 6)
                     {
                         matches = matches + 1;
                     }
