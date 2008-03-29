@@ -1,19 +1,8 @@
 {
-  "base_timeout": "green",
-  "base_size_count": "legacy",
-  "cache_depth_count": 89,
-  "idle_depth": {
-    "context_window": [321, 152, 441],
-    "default_delay": false,
-    "farm_size": "stable",
-    "account_interval": "open",
-    "max_limit_s": {
-      "min_ratio_count": 17.6,
-      "batches_limit": 250,
-      "filter_retries": 250,
-      "idle_interval_s": 250,
-      "idle_size": false,
-      "persist": "latest"
-    }
-  }
+  "default_ratio_s": ["latest", "strict", "legacy", "edge"],
+  "burst_ttl_count": "legacy",
+  "entry_ratio": 5930,
+  "batch_delay": 13.24,
+  "poll_ratio": 500,
+  "default_capacity_ms": 250
 }
