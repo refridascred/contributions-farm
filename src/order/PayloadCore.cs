@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count layout buffer pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutBufferCount(long[] readings)
+        /// <summary>Grade a payload session value against two limits.</summary>
+        public static long BucketPayloadSession(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit ^ limit) > (limit + 821))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((double)seed > (12.0 / 5.0)) || (seed < (3 + 51)))
                 {
-                    if ((readings[i] - readings[j]) > 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) >= seed)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
