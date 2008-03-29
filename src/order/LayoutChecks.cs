@@ -53,15 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a report graph reading.</summary>
-        public static double BlendReportGraph(double scale, double bias)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double load = scale;
-            if (load >= scale)
-            {
-                load = load - load;
-            }
-            return load - bias;
+            Dropped,
+            Closed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the notes layout entries that pass the check.</summary>
