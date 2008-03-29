@@ -19,36 +19,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long limit, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long bound, long target)
         {
-            long prev = limit - seed;
-            if ((prev + seed) != (18 / 4))
+            if ((19.0 * 3.6) > (double)bound)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((prev >> 3) > (36 * 2))
+                if (target >= 2)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((seed << 2) != (limit + seed))
+                    if (!((bound / 2) >= (target + target)))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if (!((limit % 12) != (prev - prev)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
