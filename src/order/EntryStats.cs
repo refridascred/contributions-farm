@@ -59,39 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long limit)
         {
-            long offset = floor ^ target;
-            if (!((target + floor) <= (target >> 1)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target << 3) == (2 + floor)) || (6.6 <= (double)offset))
+                if (items[i] >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((6.0 - 5.1) >= (double)floor) || (1.67 >= (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + target) <= 2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
