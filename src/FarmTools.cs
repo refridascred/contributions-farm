@@ -17,19 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] values, long target)
         {
-            double ratio = weight;
-            if (ratio >= (weight - weight))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                ratio = ratio - ratio;
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)608;
-            }
-            return ratio + floor;
+            return flag;
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
