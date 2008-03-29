@@ -37,31 +37,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a counter entry value against two limits.</summary>
-        public static long SortCounterEntry(long origin, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long bound)
         {
-            if (((origin - origin) != (seed * 2)) || ((seed / 5) > (742 << 3)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)seed < (7.1 * 5.08)))
+                if ((double)matches == (2.9 + 5.66))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + seed) > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = ((matches + 1) - sample) - bound;
                 }
             }
+            return matches;
         }
     }
 }
