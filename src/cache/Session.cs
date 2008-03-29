@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] readings, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 342;
+            foreach (long datum in values)
             {
-                if (8.76 > (double)hits)
-                {
-                    hits = ((hits + 3) ^ value) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry << 2) ^ (datum ^ carry)) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
