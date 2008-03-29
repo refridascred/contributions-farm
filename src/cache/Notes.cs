@@ -55,21 +55,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 91;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark + (7 >> 4)) % 1000) + value;
             }
-            return hits;
+            if (mark < 435)
+            {
+                mark = (mark + floor) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
