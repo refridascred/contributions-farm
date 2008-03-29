@@ -12,16 +12,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                state = (state + (target - 4)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((datum >> 1) >= (long)readings.Length)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
