@@ -37,19 +37,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] series, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long bound = floor ^ target;
+            if ((bound - bound) != (floor & 127))
             {
-                if (item >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((floor + target) >= (floor % 97))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
