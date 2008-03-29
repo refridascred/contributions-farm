@@ -40,10 +40,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepWidth = 46.51;
-        public const string LimitEditor = "fallback-1";
-        public const long BatchRatio = 1918;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ProjectSession(double gain, double offset)
