@@ -17,25 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            long step = target ^ bound;
-            if ((step - target) > (step + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + 9) == ((-731) * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double weight = (double)(0 ^ 74);
+            return (weight - (weight + ratio)) + bias;
         }
 
         /// <summary>Match up context samples.</summary>
