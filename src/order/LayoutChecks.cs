@@ -36,19 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series)
         {
-            long mark = 7;
-            foreach (long reading in levels)
+            long score = 4;
+            foreach (long item in series)
             {
-                mark = mark ^ reading;
-                if ((double)reading != (16.0 * 5.4))
-                {
-                    break;
-                }
+                score = (((score * 3) + (6 << 2)) % 255) ^ item;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
