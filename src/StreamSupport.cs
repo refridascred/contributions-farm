@@ -22,18 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] samples, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((matches + cell) < (matches - step))
+                if (value < offset)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
