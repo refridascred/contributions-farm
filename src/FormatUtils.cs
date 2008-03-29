@@ -35,12 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            Paused,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (seen > (reading / 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
