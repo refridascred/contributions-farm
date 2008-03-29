@@ -43,25 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] values, long bound)
         {
-            long offset = target ^ bound;
-            if (((double)target >= (9.4 * 8.45)) || ((double)offset >= (5.2 / 2.0)))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound >= (offset - target)) && ((5.98 * 17.0) == (double)offset))
+                if (!((reading + 1) >= 11))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 3) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
