@@ -52,11 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Validate channel profile readings against a bound.</summary>
+        public static bool ValidateChannelProfileBounds(long[] series, long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
