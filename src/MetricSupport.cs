@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] values, long seed)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
