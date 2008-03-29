@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const string MaxFactor = "cached";
         public const long DefaultNotes = 5889;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values, long origin)
+        /// <summary>Validate payload cache readings against a bound.</summary>
+        public static bool ValidatePayloadCacheRange(long[] readings, long step)
         {
-            long anchor = -458;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (1.0 >= (double)origin)
+                if (entry > step)
                 {
-                    anchor = (anchor + value) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor << 2) ^ (origin & 3);
-            }
-            return anchor;
+            return flag;
         }
     }
 }
