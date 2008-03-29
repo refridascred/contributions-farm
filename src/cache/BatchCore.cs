@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long state = 55;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state - state) > datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 5) + (state + datum)) % 65521;
-                }
-                else
-                {
-                    state = state + (limit + datum);
-                }
-                if (((limit + datum) >= state) || (state <= (34 << 2)))
-                {
-                    break;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Scale a editor stream figure with a bias.</summary>
