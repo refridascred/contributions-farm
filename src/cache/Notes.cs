@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 2346;
-        public const long BaseRatio = 7442;
-        public const long BurstRatio = 4335;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.1 - 9.0) >= (double)seen)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long floor)
