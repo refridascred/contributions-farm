@@ -52,18 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry route readings against a rule.</summary>
-        public static long MeasureEntryRouteHits(long[] levels, long target)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((target / 5) <= count)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
