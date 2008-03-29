@@ -41,12 +41,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
