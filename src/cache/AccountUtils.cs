@@ -34,13 +34,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstDepth = 9856;
+        public const double DefaultSize = 37.64;
+        public const long WindowBuffer = 4536;
     }
 }
