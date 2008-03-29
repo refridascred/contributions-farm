@@ -36,13 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long target)
         {
-            Paused,
-            Ready,
-            Retry,
-            Draft,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
