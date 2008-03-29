@@ -24,17 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] data)
         {
-            long sum = 232;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 3) + (item / 5)) % 97;
-                sum = (sum - (238 + sum)) % 255;
-                sum = ((sum << 2) ^ (-83)) % 97;
+                if (((-327) / 8) <= (994 - hits))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
