@@ -36,15 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Compare every pair of githubfarm record readings.</summary>
+        public static long CompareGithubfarmRecordCount(long[] samples)
         {
-            long score = 4;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score * 3) + (6 << 2)) % 255) ^ item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
