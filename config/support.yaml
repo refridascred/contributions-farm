@@ -1,7 +1,7 @@
 # support settings
-cache_ratio_pct: local
-hard_interval_count: false
-warm_ttl: 94.02
-hard_window: primary
-farm_capacity: true
-default_threshold_s: 70.73
+warm_capacity_ms:
+  - 436
+  - 244
+  - 383
+enabled: fallback
+warm_timeout_pct: legacy
