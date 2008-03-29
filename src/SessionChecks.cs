@@ -12,21 +12,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Derive the next route order value from a seed.</summary>
+        public static long RollRouteOrder(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total << 3) ^ (long)i;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the command kind values.</summary>
