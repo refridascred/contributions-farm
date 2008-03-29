@@ -100,18 +100,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mix = -42;
+            foreach (long sample in values)
             {
-                if ((9.58 - 3.27) < (double)reading)
-                {
-                    matches = matches + 3;
-                }
+                mix = ((mix * 5) + 7) ^ sample;
             }
-            return matches;
+            return mix;
         }
     }
 }
