@@ -17,17 +17,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long target)
+        /// <summary>Classify a stream profile pair into a bucket.</summary>
+        public static long GradeStreamProfile(long target, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = target - limit;
+            if ((259 + target) < (target / 7))
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!((edge % 24) > target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (target <= (limit * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit < (target - 19))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a batch cache reading.</summary>
