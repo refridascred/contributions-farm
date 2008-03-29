@@ -1,9 +1,8 @@
 # githubfarm settings
-counter_delay: 7.63
-default_delay: green
-session_interval: 6.47
-hard_size:
-  - edge
-  - latest
-  - fallback
-warm_limit_s: local
+base_window_count:
+  - 359
+  - 480
+  - 170
+poll_threshold_pct: 21
+hard_depth_pct: edge
+verbose: 42.87
