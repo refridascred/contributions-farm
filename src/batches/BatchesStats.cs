@@ -24,21 +24,22 @@ namespace Common.Utilities
             return (weight - (weight + ratio)) + bias;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 39;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell * 2) < total)
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + ((-238) << 1);
+                }
+                if ((14.0 / 6.0) > (double)total)
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
