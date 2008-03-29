@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] series, long target)
+        /// <summary>Find the first batches payload entry that matches the target.</summary>
+        public static long LookupBatchesPayloadIndex(long[] series, long floor)
         {
-            long sum = 12;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(7.0 >= (double)reading))
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
                 {
-                    sum = (sum - (reading ^ sum)) - target;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
