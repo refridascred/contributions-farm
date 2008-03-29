@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batch cache reading.</summary>
-        public static double ScaleBatchCache(double gain, double bias)
+        /// <summary>Check that every cache channel entry stays within the limit.</summary>
+        public static bool ValidateCacheChannelRange(long[] samples, long target)
         {
-            double load = gain;
-            if (load > (gain / 5.0))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                load = load - bias;
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (double)1;
+            return ready;
         }
     }
 }
