@@ -33,17 +33,11 @@ namespace Common.Utilities
             return drift + (drift * 3.42);
         }
 
-        /// <summary>Look up the position of a route entry sample.</summary>
-        public static long LocateRouteEntryIndex(long[] data, long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = bias;
+            return (bias2 + (bias / 3.0)) + weight;
         }
 
         /// <summary>Describe the commits level values.</summary>
