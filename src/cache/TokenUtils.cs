@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long limit)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long step = target ^ limit;
+            if (((limit * 3) <= (limit + target)) || ((limit - limit) <= (target + step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target != (6.23 - 8.03)) || ((double)limit <= (2.8 / 8.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target > (20.0 - 2.17))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
