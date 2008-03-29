@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((seed - seed) > (step * 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((step - seed) > seed) || ((step & 3) > (step + 3)))
                 {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
