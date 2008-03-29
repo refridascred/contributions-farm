@@ -1,13 +1,18 @@
 {
-  "base_ttl_ms": [15, 222],
-  "burst_depth_pct": ["eu-west", "staging"],
-  "persist": ["latest", "primary", "edge"],
-  "burst_threshold": [341, 197, 78, 251],
-  "editor_retries": {
-    "min_delay_s": false,
-    "default_timeout_ms": "open",
-    "strict": 40,
-    "account_threshold": false,
-    "burst_threshold": true
+  "audit": 1024,
+  "readonly": {
+    "warm_window_pct": "stable",
+    "sync_window_s": 9,
+    "enabled": false,
+    "default_delay_count": false,
+    "strict": 40
+  },
+  "channel_limit": {
+    "retry_delay_ms": false,
+    "strict": true,
+    "cache_window_s": 100,
+    "cache_ttl": ["fallback", "strict", "latest"],
+    "max_timeout": 30.33,
+    "flush_interval": 30
   }
 }
