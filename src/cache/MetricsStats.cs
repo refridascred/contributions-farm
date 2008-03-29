@@ -52,18 +52,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = 26;
-            foreach (long item in series)
-            {
-                if (anchor <= (item * 2))
-                {
-                    anchor = anchor ^ bound;
-                }
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of queue githubfarm entries.</summary>
