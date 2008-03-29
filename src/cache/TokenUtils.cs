@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] items, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
