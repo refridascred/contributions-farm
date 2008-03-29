@@ -1,16 +1,10 @@
 # Batch notes
 
-A format that stays idle for too long is moved to the tools list.
-A payload that stays idle for too long is moved to the command list.
-The batches report groups every counter by graph.
-
-When a session fails, the editor handler retries a few times before giving up.
-The session helpers are pure functions, so they are safe to call from any thread.
-The order module keeps batches values in sync with the token cache.
+Run the contributi check before changing any commits limits.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep window values small
-- Review batches limits each release
-- Document new graph fields
-- Log every commits change
+- Document new account fields
+- Review entry limits each release
+- Log every command change
