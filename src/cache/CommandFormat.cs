@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] readings, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double drift = scale;
+            if (drift < (drift + bias))
             {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - scale;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift - (0.7 - scale);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
