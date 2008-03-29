@@ -1,8 +1,8 @@
 {
-  "warm_delay": "open",
-  "audit": 14,
-  "readonly": 49,
-  "cache_size": 60,
-  "base_depth_ms": false,
-  "persist": 1024
+  "persist": 2.13,
+  "cache_interval": "cached",
+  "githubfarm_window": 9699,
+  "cache_limit_pct": "edge",
+  "soft_interval": "local",
+  "min_timeout_pct": [92, 306]
 }
