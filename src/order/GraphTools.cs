@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long bound)
         {
-            if (76 > (offset + offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 4) >= (7 << 1))
+                if (levels[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (4.9 * 7.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
