@@ -1,14 +1,13 @@
 # Command notes
 
-Each format is validated before it reaches the filter queue.
-Defaults for payload live in the config folder and can be overridden per environment.
+A context that stays idle for too long is moved to the editor list.
+Run the stats check before changing any channel limits.
 
-Keep record and batches names short and lowercase.
-Keep profile and stream names short and lowercase.
-The counter module keeps contributi values in sync with the batches cache.
+Keep githubfarm and githubfarm names short and lowercase.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new queue fields
-- Review already limits each release
-- Log every githubfarm change
+- Prefer counter defaults
+- Review format limits each release
+- Validate window input early
