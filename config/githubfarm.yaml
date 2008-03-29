@@ -1,7 +1,9 @@
 # githubfarm settings
-min_ttl: 60
-min_threshold: 37.3
-persist: 80.14
-burst_ratio: local
-base_threshold: false
-warm_retries_count: 18.72
+cache_timeout: latest
+schema_retries: 500
+base_window:
+  - 39
+  - 35
+  - 379
+strict: primary
+max_size: local
