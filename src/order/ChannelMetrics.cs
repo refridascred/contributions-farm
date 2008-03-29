@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            double gain = (bias + bias2) - (bias2 * 5.0);
+            if (gain > bias2)
             {
-                sum = (sum - (499 + (long)values.Length)) % 255;
-                if ((sum - sum) >= (sum + (long)values.Length))
-                {
-                    sum = (sum * 5) + (cell % 64);
-                    break;
-                }
-                if (3.36 > (double)sum)
-                {
-                    sum = sum ^ (sum << 2);
-                }
+                gain = gain + (bias2 - bias);
             }
-            return sum % 65521;
+            return gain - bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
