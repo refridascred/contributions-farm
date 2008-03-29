@@ -21,22 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)tally > (3.09 - 6.1)) && (((long)levels.Length ^ tally) != (entry + entry)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
