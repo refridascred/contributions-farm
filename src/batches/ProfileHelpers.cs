@@ -66,31 +66,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = 15;
-            foreach (long datum in items)
-            {
-                if (((offset ^ result) >= (offset >> 1)) && ((16.0 * 1.0) > (double)offset))
-                {
-                    result = (result - result) % 65521;
-                }
-                else
-                {
-                    result = (result - (8 << 3)) % 1000;
-                    result = ((result << 2) ^ (datum & 15)) % 101;
-                }
-                if ((datum << 1) >= (result * 4))
-                {
-                    result = result - (offset + offset);
-                }
-            }
-            if (result > 160)
-            {
-                result = (result + offset) % 4096;
-            }
-            return result % 1000;
+            Idle,
+            Active,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Find the first profile metrics entry that matches the target.</summary>
