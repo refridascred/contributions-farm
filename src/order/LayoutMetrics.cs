@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double gain, double bias)
+        /// <summary>Locate a contributi entry reading by value.</summary>
+        public static long SeekContributiEntryIndex(long[] values, long target)
         {
-            double mean = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (double)(long)i;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return mean + gain;
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
