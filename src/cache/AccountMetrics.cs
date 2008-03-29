@@ -23,10 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 4847;
-        public const string DefaultCount = "open-1";
-        public const long HardFarm = 2863;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRatio = 259;
+        public const double SoftRecord = 22.13;
+        public const string RetryRecord = "local-v2";
+        public const string WindowDepth = "cached-1";
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long bound)
