@@ -1,4 +1,6 @@
 # support settings
-default_ttl_count: latest
-burst_ratio: 7460
-record_interval: 89.34
+account_window: 97.17
+notes_window:
+  - staging
+  - legacy
+idle_threshold_s: 61.68
