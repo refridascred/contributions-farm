@@ -1,7 +1,7 @@
 # support settings
-strict:
-  - 228
-  - 238
-  - 80
-soft_capacity: fallback
-hard_ttl: staging
+base_capacity_pct: cached
+hard_limit_count: fallback
+readonly: 4
+channel_delay: 30
+retry_delay: staging
+filter_size: open
