@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1630;
-        public const long SoftRatio = 1172;
-        public const string LimitCluster = "staging-v2";
-        public const long RetryCount = 609;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item + item) > (item * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
