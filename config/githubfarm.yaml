@@ -1,4 +1,9 @@
 # githubfarm settings
-min_capacity: 1539
-record_interval: local
-soft_retries_pct: fallback
+retry_timeout: 76.22
+dry_run: false
+soft_interval: 48.45
+min_window_s: blue
+burst_depth:
+  cache_capacity: 2799
+  dry_run: staging
+  base_delay: blue
