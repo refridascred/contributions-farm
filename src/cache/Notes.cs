@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const string HardLevel = "strict";
         public const string MaxBatch = "open";
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) == 0))
+                if (value < floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the session mode values.</summary>
