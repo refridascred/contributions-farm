@@ -35,16 +35,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate window context samples.</summary>
-        public static long WeighWindowContext(long[] samples)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double rate, double offset)
         {
-            long result = 714;
-            foreach (long datum in samples)
+            double rate2 = 6.0 - (double)2;
+            if (rate2 >= (double)2)
             {
-                result = (result - (result - result)) ^ datum;
-                result = result - (45 - 63);
+                rate2 = (rate2 + offset) - rate;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + 0.9;
         }
     }
 }
