@@ -1,6 +1,8 @@
-id,score,label,state,ratio
-1,30.78,14.56,527,935
-2,fallback,edge,227,293
-3,180,1.99,652,766
-4,173,90.66,eu-west,253
-5,strict,74.23,402,fallback
+id,count,label,state
+1,green,open,strict
+2,cached,37.46,edge
+3,31.12,legacy,77.43
+4,12.94,103,local
+5,latest,strict,378
+6,15.2,standard,461
+7,0.78,80.97,334
