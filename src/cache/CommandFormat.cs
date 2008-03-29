@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxLevel = "cached-v2";
-        public const long HardSpan = 2022;
-        public const long WindowAccount = 1758;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long offset)
+        {
+            if ((offset & 31) < (floor & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset - offset) < (offset * 3)) || ((535 + offset) >= (floor - floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountRange(long[] readings, long offset)
