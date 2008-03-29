@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BaseRatio = 7442;
         public const long BurstRatio = 4335;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] items, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)datum >= 2.5))
-                {
-                    hits = (hits + 2) + seed;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the counter status values.</summary>
