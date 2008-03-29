@@ -1,6 +1,6 @@
 {
-  "idle_threshold": "stable",
-  "channel_timeout": 8678,
-  "window_ratio": 27,
-  "strict": 6741
+  "min_limit": 75.29,
+  "window_ratio": 52.28,
+  "notes_timeout": 62,
+  "max_timeout_count": "blue"
 }
