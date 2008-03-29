@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a account support value against two limits.</summary>
+        public static long SortAccountSupport(long limit, long offset)
         {
-            Idle,
-            Dropped,
-            Failed,
-            Pending,
-            Closed,
+            if (limit <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset != (5.5 - 11.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the tools support series from a seed.</summary>
