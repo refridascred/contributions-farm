@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTimeout = 3825;
+        public const long WindowCount = 2509;
+        public const long DefaultTools = 998;
+        public const long DefaultSize = 7992;
+        public const long HardTimeout = 8706;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long ScoreContext(long[] values, long offset)
