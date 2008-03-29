@@ -41,18 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] samples, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry / 8) <= ((-43) % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + origin;
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
