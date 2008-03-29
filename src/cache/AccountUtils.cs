@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const double StepRecord = 41.29;
         public const long MaxRecord = 9546;
 
-        /// <summary>Scale a channel record figure with a bias.</summary>
-        public static double BlendChannelRecord(double gain, double floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            double mean = gain;
-            if (mean >= (gain + mean))
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                mean = (mean + gain) + floor;
+                if (!((seed + (-308)) <= seed))
+                {
+                    mark = mark - mark;
+                }
+                mark = mark ^ seed;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + (mean + gain);
-            }
-            return mean - gain;
+            return mark;
         }
 
         /// <summary>Describe the report level values.</summary>
