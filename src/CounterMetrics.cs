@@ -22,21 +22,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Count the notes checks entries that pass the check.</summary>
+        public static long MeasureNotesChecksHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((769 - entry) > (entry + count))
                 {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the tools phase values.</summary>
