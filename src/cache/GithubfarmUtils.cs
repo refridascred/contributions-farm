@@ -59,25 +59,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 351;
-            foreach (long datum in levels)
-            {
-                acc = acc ^ datum;
-                if (((double)acc > (6.2 - 5.95)) || ((datum - 85) <= (acc + datum)))
-                {
-                    acc = (acc ^ (datum - datum)) % 97;
-                    acc = acc ^ (acc - datum);
-                }
-                acc = (acc + (acc & 1)) % 65521;
-            }
-            if (acc > 7)
-            {
-                acc = (acc - (acc ^ 9)) % 255;
-            }
-            return acc % 4096;
+            Queued,
+            Active,
+            Synced,
+            Stale,
         }
     }
 }
