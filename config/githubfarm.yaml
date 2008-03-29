@@ -1,9 +1,4 @@
 # githubfarm settings
-cache_timeout: latest
-schema_retries: 500
-base_window:
-  - 39
-  - 35
-  - 379
-strict: primary
-max_size: local
+flush_capacity: blue
+cache_retries_pct: cached
+verbose: green
