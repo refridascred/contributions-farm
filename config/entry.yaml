@@ -1,9 +1,5 @@
 # entry settings
-sync_threshold: open
-sync_size_pct: 250
-route_depth: 52
-filter_ttl: false
-flush_size_pct: 56.83
-checks_threshold:
-  - 194
-  - 469
+persist: blue
+hard_delay_s: stable
+readonly: false
+contributi_limit: latest
