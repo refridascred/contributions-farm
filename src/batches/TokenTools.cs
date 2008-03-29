@@ -27,13 +27,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double weight, double floor)
         {
-            Retry,
-            Idle,
-            Paused,
-            New,
+            double drift = floor / 7.0;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - weight) - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
