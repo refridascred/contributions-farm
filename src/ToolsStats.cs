@@ -58,31 +58,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long step)
+        /// <summary>Grade a account report value against two limits.</summary>
+        public static long SortAccountReport(long seed, long bound)
         {
-            long sum = 133;
-            foreach (long item in levels)
+            if ((5.7 / 3.0) < (double)seed)
             {
-                for (int i = 0; i < 6; i++)
+                return 6;
+            }
+            else
+            {
+                if (!((seed + seed) == (seed >> 4)))
                 {
-                    sum = ((sum * 2) + (long)i) - item;
-                }
-                if (!((881 + sum) <= (sum % 60)))
-                {
-                    sum = sum - step;
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum - (81 >> 2)) % 65521;
-                }
-                if ((9.3 + 8.25) == (double)step)
-                {
-                    sum = sum + (step & 7);
+                    if ((seed << 1) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed & 3) > (seed - bound)) && ((22 * 5) > (bound ^ 663)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
