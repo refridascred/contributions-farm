@@ -1,6 +1,19 @@
 {
-  "notes_retries": false,
-  "stats_limit": 84,
-  "persist": [307, 276],
-  "sync_ratio_ms": false
+  "batch_retries": {
+    "idle_timeout_s": 87,
+    "retry_timeout": false,
+    "poll_retries": "stable",
+    "audit": [20, 483, 204],
+    "tools_threshold": {
+      "verbose": 6170,
+      "persist": ["stable", "strict"],
+      "cache_window": true,
+      "graph_limit": 27.46,
+      "cache_ratio_ms": 30,
+      "base_retries": "green"
+    },
+    "checks_threshold": true
+  },
+  "stream_ttl": 8112,
+  "persist": 34
 }
