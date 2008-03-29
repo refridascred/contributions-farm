@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Queued,
-            New,
-            Stale,
-            Ready,
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of payload readings.</summary>
