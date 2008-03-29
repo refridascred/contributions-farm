@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Done,
-            Retry,
-            Closed,
-            Active,
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
