@@ -19,39 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long bound)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long span = step + bound;
-            if ((11 + span) != (step + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 63) > (span ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step / 8) == (span ^ span)) || (bound >= span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((span + span) != (6 + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
