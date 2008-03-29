@@ -20,11 +20,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftWidth = 1018;
-        public const long HardRatio = 1409;
-        public const long RetryRatio = 3402;
-        public const long HardChannel = 3524;
-        public const long WindowChannel = 346;
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels, long floor)
+        {
+            long acc = 13;
+            foreach (long entry in levels)
+            {
+                if ((2.5 + 6.1) >= (20.0 - 13.0))
+                {
+                    acc = (((acc << 3) ^ (acc + floor)) % 97) - entry;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc;
+        }
     }
 }
