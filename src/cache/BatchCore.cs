@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool ValidateContextSessionBounds(long[] levels, long limit)
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches options.</summary>
