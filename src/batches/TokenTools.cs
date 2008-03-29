@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] values, long bound)
         {
-            double gain = 13.0;
-            if (gain >= (scale / 9.0))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                gain = (gain - (gain - gain)) - span;
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + scale;
-            }
-            return gain - (gain * 6.4);
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
