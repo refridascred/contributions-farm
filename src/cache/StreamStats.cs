@@ -19,22 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] readings, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((step & 7) >= (step + 6))
             {
-                if ((4.0 - 0.4) >= (double)origin)
+                return 7;
+            }
+            else
+            {
+                if (!((limit & 3) == (5 & 63)))
                 {
-                    matches = (matches + 2) - item;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((577 + limit) < (step << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0 / 5) >= (step % 60))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
