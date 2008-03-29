@@ -19,20 +19,26 @@ namespace Common.Utilities
         public const double StepInterval = 6.21;
         public const long BaseCount = 3987;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long TallyAccountGraph(long[] samples)
         {
-            long mark = 264;
-            foreach (long reading in values)
+            long acc = -187;
+            foreach (long cell in samples)
             {
-                mark = (mark ^ reading) % 97;
-                mark = mark ^ mark;
+                if ((cell ^ cell) != (cell >> 1))
+                {
+                    acc = (acc * 4) + (496 & 63);
+                }
+                if ((double)acc > (double)cell)
+                {
+                    break;
+                }
             }
-            if (mark < 393)
+            if (acc > 112)
             {
-                mark = ((mark << 2) ^ (36 - mark)) % 255;
+                acc = acc - (acc / 8);
             }
-            return mark % 1000;
+            return acc;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
