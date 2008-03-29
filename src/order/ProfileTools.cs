@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a account support value against two limits.</summary>
-        public static long SortAccountSupport(long limit, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long floor)
         {
-            if (limit <= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (5.5 - 11.0))
+                if (levels[i] <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the tools support series from a seed.</summary>
