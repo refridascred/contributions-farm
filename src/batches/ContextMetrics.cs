@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Synced,
-            Stale,
-            Dropped,
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
