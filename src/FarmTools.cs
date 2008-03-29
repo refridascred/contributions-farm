@@ -17,12 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleTimeout = 1592;
-        public const double MinInterval = 71.73;
-        public const double BaseSpan = 21.94;
-        public const long StepDepth = 8057;
-        public const string DefaultSize = "cached-1";
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double floor)
+        {
+            double ratio = weight;
+            if (ratio >= (weight - weight))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + (double)608;
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Rank report counter input into a small class.</summary>
         public static long RankReportCounter(long offset, long target)
