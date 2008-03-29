@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Active,
-            Closed,
-            Paused,
             Ready,
-            Dropped,
+            Idle,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
