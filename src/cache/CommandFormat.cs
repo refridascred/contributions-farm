@@ -19,22 +19,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseRatio = "legacy-edge";
+        public const string DefaultFilter = "staging";
+        public const string BurstWidth = "local-edge";
+        public const string WindowScore = "staging-1";
+        public const long BatchWidth = 1901;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
