@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double floor)
-        {
-            double gain = (double)(-657) * 2.37;
-            if (gain >= gain)
-            {
-                gain = ((gain + (double)83) - scale) + floor;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 9056;
+        public const long SoftSize = 4442;
+        public const long LimitSpan = 2658;
+        public const long BaseSchema = 4031;
+        public const long LimitRatio = 4400;
 
         /// <summary>Iterate the payload session series from a seed.</summary>
         public static long IteratePayloadSession(long target)
