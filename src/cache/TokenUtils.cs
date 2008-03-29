@@ -19,23 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 6;
-            foreach (long reading in samples)
-            {
-                anchor = anchor ^ (anchor % 10);
-                if (((anchor ^ reading) != (reading % 16)) && (reading > (anchor & 15)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 142)
-            {
-                anchor = ((anchor * 3) + anchor) % 1000;
-            }
-            return anchor;
+            Draft,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate batch cluster readings against a bound.</summary>
