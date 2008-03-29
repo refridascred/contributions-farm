@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            New,
-            Synced,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((9.6 < (double)seen) || (6.8 <= (double)seen))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record entry.</summary>
