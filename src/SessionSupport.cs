@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] readings, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double scale = floor;
+            if (scale > gain)
             {
-                if (!((reading % 3) < (reading + tally)))
-                {
-                    tally = (tally + 3) + offset;
-                }
+                scale = scale + (floor - floor);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (scale + floor);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
