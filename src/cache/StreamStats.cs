@@ -45,18 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm layout entries that pass the check.</summary>
-        public static long AuditFarmLayoutOutliers(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item - item) < item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Retry,
         }
     }
 }
