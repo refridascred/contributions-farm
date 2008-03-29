@@ -45,22 +45,38 @@ namespace Common.Utilities
         public const long BatchScore = 1772;
         public const long StepTools = 4709;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if (!((step ^ seed) >= step))
             {
-                if ((hits - hits) > reading)
+                return 0;
+            }
+            else
+            {
+                if (((double)step == (double)307) || ((double)step <= (3.4 - 1.09)))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((step - step) <= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3 >= seed) && ((9.1 + 8.37) != (double)seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
