@@ -29,17 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long acc = 583;
+            foreach (long value in readings)
             {
-                sum = ((sum << 3) ^ ((-3) + 209)) % 101;
-                sum = ((sum << 2) ^ sum) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (3 < (acc ^ 5))
+                {
+                    acc = ((acc + (acc * 5)) % 65521) + value;
+                }
             }
-            return sum;
+            if (acc < 6)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
