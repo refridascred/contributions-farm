@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultCount = 291;
+        public const long SoftAlready = 2446;
+        public const long RetryFactor = 6902;
+        public const double StepAlready = 80.42;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] data, long step)
