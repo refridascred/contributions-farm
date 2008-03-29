@@ -1,8 +1,13 @@
 {
-  "token_ratio": "stable",
-  "sync_size_pct": [311, 239],
-  "flush_ttl_s": "standard",
-  "soft_capacity": 9531,
-  "verbose": [379, 291, 338, 344],
-  "default_size_pct": "eu-west"
+  "poll_limit": {
+    "soft_threshold_s": "standard",
+    "layout_ratio": 43,
+    "batch_threshold_count": "green",
+    "verbose": [439, 191, 145, 23]
+  },
+  "verbose": 9563,
+  "retry_limit": 3210,
+  "readonly": "stable",
+  "sync_capacity_pct": "fallback",
+  "retry_depth_ms": ["stable", "stable", "fallback", "cached"]
 }
