@@ -30,21 +30,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batches queue readings.</summary>
-        public static long CompareBatchesQueueCount(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
