@@ -1,10 +1,6 @@
-id,owner,active,level
-1,53.74,strict,13
-2,primary,180,66.27
-3,staging,932,legacy
-4,581,737,89
-5,37.65,cached,776
-6,27,local,758
-7,91.04,738,59.73
-8,83,84,33.23
-9,local,green,721
+id,level,weight
+1,eu-west,42.43
+2,local,39.76
+3,30.96,blue
+4,standard,42.68
+5,40.07,staging
