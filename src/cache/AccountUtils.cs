@@ -17,38 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long target)
         {
-            if (!((limit + limit) < (664 * 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 15) >= limit)
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - 6) > 6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.78 - 3.1) > (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a batch cache reading.</summary>
