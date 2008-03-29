@@ -16,16 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 2) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Blend two layout measurements.</summary>
