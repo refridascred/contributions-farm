@@ -60,14 +60,32 @@ namespace Common.Utilities
             return drift + 3.4;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long seed)
         {
-            New,
-            Done,
-            Failed,
-            Locked,
-            Closed,
+            long lane = target + seed;
+            if ((50 - target) <= (635 ^ seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed <= (8 & 127)) && ((target >> 3) < (seed ^ 35)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)lane >= (8.0 / 5.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
