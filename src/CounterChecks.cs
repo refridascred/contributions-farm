@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            Idle,
+            Closed,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
