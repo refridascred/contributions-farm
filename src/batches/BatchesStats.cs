@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long seed2)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long next = seed + seed2;
-            if ((next <= (seed % 3)) || ((seed2 + seed) >= (205 + 27)))
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                mix = (mix - (mix + bound)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)next <= (7.96 + 2.82))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (2 > (87 + seed2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
