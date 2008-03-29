@@ -37,18 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] data, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(floor <= (752 + floor)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
