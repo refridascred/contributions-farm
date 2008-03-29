@@ -78,19 +78,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Blend two token layout measurements.</summary>
+        public static double ProjectTokenLayout(double scale, double span)
         {
-            double ratio = 7.02 + 18.0;
-            if (ratio >= (span * 9.32))
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio + ratio;
+            double bias = (double)(53 + 34);
+            return (bias + scale) + span;
         }
     }
 }
