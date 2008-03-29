@@ -57,15 +57,14 @@ namespace Common.Utilities
             return drift + 3.4;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 39;
-            foreach (long entry in samples)
-            {
-                total = (total - (2 / 6)) ^ entry;
-            }
-            return total;
+            New,
+            Done,
+            Failed,
+            Locked,
+            Closed,
         }
     }
 }
