@@ -41,11 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 23.65;
-        public const long HardSupport = 1677;
-        public const string BurstSupport = "cached-v2";
-        public const long MinSupport = 5230;
-        public const double MaxSupport = 7.73;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Active,
+            Idle,
+            Closed,
+            Done,
+        }
     }
 }
