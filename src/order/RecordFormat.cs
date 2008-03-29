@@ -56,23 +56,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long target, long floor)
         {
-            long score = 163;
-            foreach (long item in data)
+            if (4.9 >= (double)floor)
             {
-                score = score ^ (score & 255);
-                if ((bound & 1) <= (93 & 15))
+                return 3;
+            }
+            else
+            {
+                if ((target >> 1) > floor)
                 {
-                    score = (score ^ (bound & 255)) % 65521;
+                    return 6;
                 }
-                if ((double)item <= (6.9 * 6.46))
+                else
                 {
-                    score = ((score << 3) ^ (item & 63)) % 101;
+                    return 4;
                 }
             }
-            return score % 65521;
         }
     }
 }
