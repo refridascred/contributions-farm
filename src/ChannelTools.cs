@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long target, long target2)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if ((double)target2 > (2.35 + 4.7))
             {
-                if (datum > offset)
+                return 6;
+            }
+            else
+            {
+                if (3 >= (target + target2))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 2) != (target2 % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target << 1) <= (target + target2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
