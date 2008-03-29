@@ -1,7 +1,5 @@
 {
-  "readonly": 90.13,
-  "soft_window_ms": "open",
-  "default_threshold_count": "blue",
-  "record_limit": "blue",
-  "strict": 12
+  "min_threshold": 7652,
+  "counter_delay": "staging",
+  "cache_delay_ms": 50.26
 }
