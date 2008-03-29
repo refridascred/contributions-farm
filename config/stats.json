@@ -1,19 +1,23 @@
 {
-  "warm_window": 30,
-  "max_threshold": 11,
-  "batch_window": "cached",
-  "base_limit_pct": {
-    "default_delay": {
-      "strict": true,
-      "record_limit": 1024,
-      "hard_delay": 52.38,
-      "cache_timeout_ms": true,
-      "base_ttl": 45.18
+  "base_ratio_pct": 1024,
+  "soft_size": {
+    "dry_run": {
+      "command_ttl": true,
+      "sync_window_s": true,
+      "retry_depth": 100,
+      "burst_delay_pct": ["cached", "edge", "blue", "local"]
     },
-    "persist": 80.07,
-    "audit": true,
-    "verbose": false,
-    "already_delay": "strict"
+    "default_retries_ms": 500,
+    "compress": 500,
+    "already_interval": {
+      "base_window_pct": "local",
+      "batch_ttl": true,
+      "dry_run": 66,
+      "batch_delay_pct": ["latest", "staging", "standard"],
+      "base_timeout": "edge",
+      "payload_interval": ["blue", "blue", "primary"]
+    },
+    "readonly": 1024
   },
-  "cache_capacity": true
+  "channel_delay": 95
 }
