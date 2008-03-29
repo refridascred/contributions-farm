@@ -1,6 +1,10 @@
-id,count,region
-1,90.74,primary
-2,68.58,877
-3,828,68
-4,green,372
-5,254,21.66
+id,owner,active,level
+1,53.74,strict,13
+2,primary,180,66.27
+3,staging,932,legacy
+4,581,737,89
+5,37.65,cached,776
+6,27,local,758
+7,91.04,738,59.73
+8,83,84,33.23
+9,local,green,721
