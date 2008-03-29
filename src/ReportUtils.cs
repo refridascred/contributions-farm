@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate layout window samples.</summary>
-        public static long WeighLayoutWindow(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings)
         {
-            long result = 119;
-            foreach (long entry in series)
+            long mix = 301;
+            foreach (long sample in readings)
             {
-                result = (result << 3) ^ result;
-                if (!((174 << 2) <= (802 ^ entry)))
+                if ((sample + sample) < (sample - 61))
                 {
-                    result = result - (entry + entry);
+                    mix = ((mix << 3) ^ (sample << 2)) % 97;
                 }
             }
-            if (result < 43)
-            {
-                result = (result - (result << 2)) % 255;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
