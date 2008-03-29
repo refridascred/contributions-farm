@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "standard-1";
-        public const long StepTimeout = 7734;
-        public const long SoftFactor = 4283;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every channel stats entry stays within the limit.</summary>
         public static bool GuardChannelStatsRange(long[] series, long target)
