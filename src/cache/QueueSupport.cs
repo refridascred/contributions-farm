@@ -38,13 +38,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Stale,
-            Dropped,
-            Pending,
-            Queued,
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
