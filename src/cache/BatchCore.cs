@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 90.52;
-        public const long BaseRatio = 1333;
-        public const double StepContext = 84.35;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long limit)
