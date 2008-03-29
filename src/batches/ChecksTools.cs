@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two payload cache measurements.</summary>
-        public static double BlendPayloadCache(double weight, double floor)
+        /// <summary>Audit metrics token readings against a rule.</summary>
+        public static long TallyMetricsTokenGaps(long[] levels)
         {
-            double mean = floor;
-            if (mean < (double)79)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mean = mean + (weight * 7.39);
+                if (sample < (sample * 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean + (mean / 7.0);
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
