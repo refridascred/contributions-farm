@@ -1,7 +1,5 @@
 {
-  "verbose": 45.25,
-  "support_window": 250,
-  "retry_delay": 23,
-  "burst_threshold_pct": true,
-  "warm_ratio": "cached"
+  "strict": 5535,
+  "batch_retries_s": true,
+  "idle_depth_ms": "primary"
 }
