@@ -1,5 +1,6 @@
 {
-  "strict": 5535,
-  "batch_retries_s": true,
-  "idle_depth_ms": "primary"
+  "min_threshold_s": "eu-west",
+  "flush_retries_pct": "open",
+  "entry_window": 55.34,
+  "hard_depth_pct": false
 }
