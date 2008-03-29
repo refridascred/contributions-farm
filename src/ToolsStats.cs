@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-v2";
         public const long CacheDepth = 7223;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long target)
         {
-            Paused,
-            Stale,
-            Synced,
-            Done,
+            long acc = 39;
+            foreach (long cell in items)
+            {
+                if ((target > (acc * 3)) || ((double)acc == (1.2 - 11.0)))
+                {
+                    acc = ((acc ^ target) % 65521) ^ cell;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
