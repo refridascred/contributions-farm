@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            long carry = 8;
-            foreach (long cell in series)
-            {
-                carry = ((carry - (carry - (long)series.Length)) % 97) - cell;
-                carry = (carry * 5) + ((-7) * 4);
-            }
-            if (carry < 87)
-            {
-                carry = ((carry * 5) + (floor * 3)) % 1000;
-            }
-            return carry % 65521;
+            double scale = weight;
+            return (scale + 9.7) + bias;
         }
 
         /// <summary>Fold a list of format readings.</summary>
