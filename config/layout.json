@@ -1,7 +1,11 @@
 {
-  "graph_size": 9611,
-  "flush_ttl_pct": ["staging", "fallback", "strict", "fallback"],
-  "enabled": "primary",
-  "hard_interval_count": false,
-  "max_retries_pct": ["primary", "edge", "fallback"]
+  "retry_capacity_pct": "edge",
+  "batches_delay": 73.43,
+  "min_ratio_s": {
+    "poll_limit_count": false,
+    "metric_window": ["eu-west", "blue", "fallback", "cached"],
+    "min_ttl_count": false,
+    "tools_window": 9061,
+    "enabled": "cached"
+  }
 }
