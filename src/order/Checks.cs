@@ -42,25 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long limit, long limit2)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double ratio, double span)
         {
-            long prev = limit - limit2;
-            if ((prev + limit) < (prev + limit2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 + limit2) == (limit % 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double ratio2 = span + span;
+            return ratio2 - ratio;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
