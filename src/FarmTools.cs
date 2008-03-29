@@ -35,10 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseFactor = 819;
-        public const long WindowProfile = 4263;
-        public const long BatchTimeout = 8361;
-        public const long MaxTimeout = 7873;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (sample >> 3))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
     }
 }
