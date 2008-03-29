@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double weight, double span)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings, long offset)
         {
-            double scale = weight;
-            if (scale > (double)5)
+            long result = 0;
+            foreach (long entry in readings)
             {
-                scale = scale - (span * 9.32);
+                if (((-78) << 3) > (entry - 805))
+                {
+                    result = result - (result << 2);
+                }
+                else
+                {
+                    result = (result + (offset + 23)) % 4096;
+                }
             }
-            return scale + (scale / 5.0);
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
