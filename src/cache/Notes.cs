@@ -24,18 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items, long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long score = 612;
-            foreach (long value in items)
-            {
-                if ((double)origin <= 9.44)
-                {
-                    score = ((score + (83 >> 1)) % 255) - value;
-                }
-            }
-            return score % 4096;
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the session mode values.</summary>
