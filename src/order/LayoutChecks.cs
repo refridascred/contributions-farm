@@ -38,15 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels, long offset)
+        /// <summary>Count account route pairs that satisfy a relation.</summary>
+        public static long CompareAccountRouteCount(long[] items)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((matches % 5) <= (sample << 3)) && ((3 << 2) >= sample)) && ((6.2 * 0.36) <= (double)offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
