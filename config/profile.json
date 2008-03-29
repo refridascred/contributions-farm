@@ -1,13 +1,6 @@
 {
-  "warm_threshold_s": 2627,
-  "poll_delay_s": "stable",
-  "batch_ratio_s": 8449,
-  "filter_interval": 95.52,
-  "strict": {
-    "strict": ["edge", "eu-west"],
-    "batch_capacity_s": "standard",
-    "burst_depth_count": "staging",
-    "record_ratio": 250
-  },
-  "batch_timeout": true
+  "sync_ttl_ms": ["stable", "blue"],
+  "min_depth": false,
+  "flush_timeout_count": 4354,
+  "soft_delay": "blue"
 }
