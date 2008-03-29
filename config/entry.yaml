@@ -1,4 +1,11 @@
 # entry settings
-tools_interval: 3456
-enabled: strict
-soft_ttl_pct: 11
+idle_window_s:
+  batch_interval_pct: 4027
+  batch_size_ms: cached
+  command_timeout: 60
+burst_ttl: true
+warm_timeout:
+  - blue
+  - edge
+  - primary
+  - eu-west
