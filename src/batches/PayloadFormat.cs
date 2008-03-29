@@ -23,15 +23,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the filter graph series from a seed.</summary>
-        public static long IterateFilterGraph(long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            Locked,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
