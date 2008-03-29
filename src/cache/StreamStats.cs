@@ -19,13 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Roll a tools queue counter forward.</summary>
+        public static long StepToolsQueue(long bound)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry * 4) + carry;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
