@@ -43,18 +43,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long MeasureFilterLayoutHits(long[] values, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)origin < (5.09 * 6.3))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
