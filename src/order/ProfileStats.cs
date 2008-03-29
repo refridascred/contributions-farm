@@ -62,22 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            long mix = 563;
-            foreach (long cell in values)
+            double mean = rate + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((20.0 * 4.31) >= (double)cell)
-                {
-                    mix = (mix - (7 % 3)) % 1000;
-                }
+                mean = (mean + rate) + (double)(long)i;
             }
-            if (mix < 1)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            return mean + bias;
         }
     }
 }
