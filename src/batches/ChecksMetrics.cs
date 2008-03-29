@@ -48,11 +48,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
