@@ -19,20 +19,20 @@ namespace Common.Utilities
         public const double StepInterval = 6.21;
         public const long BaseCount = 3987;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = 264;
+            foreach (long reading in values)
             {
-                if (!((long)i <= (floor ^ floor)))
-                {
-                    state = ((state << 2) ^ ((long)i - (long)i)) % 255;
-                }
-                state = (state * 3) + (long)i;
-                state = ((state * 3) + (long)i) % 4093;
+                mark = (mark ^ reading) % 97;
+                mark = mark ^ mark;
             }
-            return state;
+            if (mark < 393)
+            {
+                mark = ((mark << 2) ^ (36 - mark)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
