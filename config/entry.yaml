@@ -1,19 +1,15 @@
 # entry settings
-soft_timeout_s:
-  - edge
-  - standard
-  - primary
-  - blue
-counter_timeout: false
-default_window:
-  strict: 1
-  account_timeout: 100
-  burst_window_ms: 63
-  sync_delay: 40
-  dry_run: primary
-  enabled: true
-warm_ttl_ms:
-  - stable
-  - primary
-buffer_ttl: strict
-base_timeout_count: 14.74
+dry_run: green
+soft_interval_ms:
+  - 164
+  - 239
+  - 339
+readonly: 66
+context_limit: false
+persist:
+  cache_ttl_ms: false
+  sync_interval: 9330
+  profile_depth: true
+  hard_interval_s: false
+  readonly: 2
+  default_interval_s: false
