@@ -42,15 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double gain, double bias)
+        /// <summary>Project the next cache record value.</summary>
+        public static double ScaleCacheRecord(double scale, double offset)
         {
-            double rate = (gain + bias) / 8.0;
-            if (rate > (gain + 2.22))
+            double load = (double)(6 + 692);
+            if (load >= 3.0)
             {
-                rate = rate - rate;
+                load = (load + (double)33) - scale;
             }
-            return rate + bias;
+            return load + (offset * 8.0);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
