@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BaseSchema = 4031;
         public const long LimitRatio = 4400;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
