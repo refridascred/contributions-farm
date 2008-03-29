@@ -1,12 +1,27 @@
 # support settings
-verbose: 38.4
-idle_depth_count:
-  - local
-  - primary
-  - cached
-min_limit: edge
-warm_interval: eu-west
-max_depth: 30
-buffer_size:
-  - green
-  - local
+default_threshold:
+  flush_retries: true
+  flush_timeout: false
+  idle_threshold_s: open
+  enabled: 50.82
+  compress:
+    dry_run: true
+    poll_timeout: false
+    hard_ratio: 60
+    readonly: 60
+    idle_threshold_count: 89.69
+    base_retries_s: 144
+strict: 12.48
+warm_retries:
+  persist: staging
+  commits_ratio: 3009
+  min_retries_ms: 500
+  warm_depth: 3054
+  schema_size:
+    max_interval_s: 1024
+    dry_run: 100
+    burst_interval: 60
+    soft_size_count: 7193
+  soft_limit_ms: true
+audit: 27.29
+compress: 2341
