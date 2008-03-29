@@ -14,26 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record already entries.</summary>
-        public static long FoldRecordAlready(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double gain, double offset)
         {
-            long sum = 17;
-            foreach (long datum in items)
-            {
-                if ((sum + (long)items.Length) > sum)
-                {
-                    sum = (sum ^ (21 << 1)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ datum) % 65521;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = sum - ((long)items.Length - sum);
-            }
-            return sum;
+            double gain2 = (offset * 6.51) / 7.0;
+            return gain2 - gain;
         }
 
         /// <summary>Accumulate profile notes samples.</summary>
