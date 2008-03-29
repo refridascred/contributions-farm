@@ -32,12 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < step)
+                if (samples[i] == limit)
                 {
                     return (long)i;
                 }
