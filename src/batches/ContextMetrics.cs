@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate buffer graph readings against a bound.</summary>
+        public static bool GuardBufferGraphRange(long[] levels, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
