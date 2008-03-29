@@ -28,18 +28,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] levels)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading - reading) >= reading)
-                {
-                    matches = matches + 2;
-                }
+                result = (result - (target + (-882))) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
