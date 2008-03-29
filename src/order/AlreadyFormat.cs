@@ -30,17 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Roll a route counter forward.</summary>
