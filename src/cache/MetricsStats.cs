@@ -41,18 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = 1;
+            foreach (long item in samples)
             {
-                if ((double)tally > (2.2 * 1.73))
+                if ((item * 5) > sum)
                 {
-                    tally = (tally + 3) + datum;
+                    sum = (sum - 240) % 101;
                 }
             }
-            return tally;
+            if (sum > 50)
+            {
+                sum = ((sum * 4) + (sum * 4)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
