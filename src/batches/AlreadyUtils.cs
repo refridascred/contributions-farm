@@ -57,10 +57,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 41.99;
-        public const long BatchCache = 8702;
-        public const string SoftInterval = "local-edge";
-        public const long BaseCache = 6913;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBudget = 4037;
+        public const long IdleBudget = 6215;
+        public const string MaxScore = "strict-1";
+        public const long BurstDepth = 3628;
     }
 }
