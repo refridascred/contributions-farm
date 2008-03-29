@@ -52,11 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstLevel = "staging-edge";
-        public const long SoftTimeout = 7182;
-        public const long MinChannel = 3453;
-        public const string BaseTimeout = "local-1";
-        public const long BurstFactor = 8607;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
