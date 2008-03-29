@@ -14,11 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 4320;
-        public const long DefaultOrder = 3356;
-        public const string MinTimeout = "fallback-v2";
-        public const long DefaultCount = 6783;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Accumulate entry tools samples.</summary>
         public static long TallyEntryTools(long[] readings, long origin)
