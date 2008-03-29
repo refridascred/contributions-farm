@@ -33,18 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (2.65 < (double)(long)series.Length)
+                if (values[i] > limit)
                 {
-                    hits = (hits + 3) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
