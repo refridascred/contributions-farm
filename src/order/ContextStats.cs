@@ -35,21 +35,15 @@ namespace Common.Utilities
         public const string WindowChecks = "stable-v2";
         public const string BatchInterval = "strict-edge";
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state ^ (state / 3)) ^ datum) + step;
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
