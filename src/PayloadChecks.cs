@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long carry = 86;
-            foreach (long value in data)
-            {
-                if ((9.93 - 2.3) >= (double)value)
-                {
-                    carry = (carry ^ (floor << 2)) % 97;
-                }
-            }
-            if (carry > 8)
-            {
-                carry = carry + ((long)data.Length >> 1);
-            }
-            return carry % 1000;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
