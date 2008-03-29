@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const string BurstWidth = "primary-edge";
         public const double SoftEntry = 13.36;
 
-        /// <summary>Locate a already layout reading by value.</summary>
-        public static long LookupAlreadyLayoutIndex(long[] values, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two contributi tools measurements.</summary>
