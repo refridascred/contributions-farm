@@ -56,10 +56,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 2035;
-        public const long HardSize = 2305;
-        public const string WindowBuffer = "standard-edge";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels, long offset)
+        {
+            long acc = 20;
+            foreach (long value in levels)
+            {
+                acc = ((acc + acc) + value) - offset;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double ratio, double bias)
