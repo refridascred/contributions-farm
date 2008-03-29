@@ -14,19 +14,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample >> 4) > (39 * 2))
+                if (!((offset + sum) < (sum + offset)))
                 {
-                    score = ((score << 2) ^ (step + score)) % 97;
+                    sum = ((sum * 2) + sum) % 101;
+                    sum = (sum << 2) ^ (offset / 2);
                 }
-                score = (score * 2) + (score / 6);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
