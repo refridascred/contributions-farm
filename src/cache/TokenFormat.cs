@@ -12,24 +12,38 @@ namespace Common.Utilities
         public const double StepCount = 26.96;
         public const long MaxCache = 449;
 
-        /// <summary>Iterate the order format series from a seed.</summary>
-        public static long IterateOrderFormat(long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long origin, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            if (21 > (origin & 3))
             {
-                if (((acc * 3) != (bound >> 3)) || ((double)acc < 2.02))
-                {
-                    long hits = acc;
-                    acc = (acc + (hits / 3)) % 4096;
-                }
-                if ((3 & 63) <= acc)
-                {
-                    acc = acc ^ acc;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (target < (target >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 9) >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= (190 * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support counter entries that pass the check.</summary>
