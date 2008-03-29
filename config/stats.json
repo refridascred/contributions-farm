@@ -1,5 +1,12 @@
 {
-  "default_window": [43, 200, 441, 32],
-  "dry_run": true,
-  "cache_size": "stable"
+  "default_window": [496, 280, 317, 330],
+  "min_interval_s": "standard",
+  "poll_limit": "open",
+  "strict": 17.01,
+  "burst_size_count": {
+    "idle_capacity_s": false,
+    "schema_size": 5,
+    "contributi_interval": "latest",
+    "window_depth": [288, 205, 453]
+  }
 }
