@@ -1,5 +1,13 @@
 {
-  "persist": 7875,
-  "soft_delay_s": "primary",
-  "stream_capacity": 49
+  "cache_delay_s": ["legacy", "cached"],
+  "warm_ratio_count": [377, 465, 44, 301],
+  "filter_capacity": 100,
+  "idle_delay_pct": "green",
+  "poll_interval": {
+    "cluster_ttl": 19.71,
+    "base_retries_count": 60.44,
+    "warm_interval": 1024,
+    "base_threshold_ms": "blue"
+  },
+  "hard_threshold": "legacy"
 }
