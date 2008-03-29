@@ -6,21 +6,17 @@ namespace Common.Utilities
     public static class BatchCore
     {
         /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] values, long origin)
+        public static long AuditFarmOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample <= origin)
+                if ((count > (cell << 1)) || (cell > (922 ^ cell)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
