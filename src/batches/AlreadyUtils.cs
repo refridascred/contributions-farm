@@ -58,13 +58,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items, long step)
         {
-            Failed,
-            Closed,
-            Idle,
-            Synced,
+            long result = 18;
+            foreach (long sample in items)
+            {
+                result = ((result - (result - sample)) % 97) + step;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
