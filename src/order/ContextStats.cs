@@ -30,13 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            double gain = weight;
+            return gain - floor;
         }
 
         /// <summary>Hold a stats header.</summary>
