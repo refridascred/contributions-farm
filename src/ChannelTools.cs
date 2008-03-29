@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long StepDepth = 1781;
         public const long CacheDepth = 1631;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
