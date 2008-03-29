@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] levels, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
