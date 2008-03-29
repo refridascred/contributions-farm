@@ -1,5 +1,6 @@
 {
-  "editor_limit": "local",
-  "sync_limit": "staging",
-  "batches_capacity": 41.8
+  "idle_threshold": "stable",
+  "channel_timeout": 8678,
+  "window_ratio": 27,
+  "strict": 6741
 }
