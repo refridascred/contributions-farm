@@ -21,11 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "standard-1";
-        public const long RetryAccount = 6275;
-        public const long MinSpan = 2825;
-        public const long BatchSize = 4622;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardInterval = 81.5;
+        public const long BaseContributi = 8258;
+        public const long BaseRatio = 65;
+        public const string BatchContributi = "cached-edge";
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TotalCache(long[] samples, long bound)
