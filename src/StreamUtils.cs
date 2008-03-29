@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double StepScore = 4.49;
         public const double CacheLevel = 83.33;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] levels, long bound)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (bound < (reading + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report entry readings against a rule.</summary>
