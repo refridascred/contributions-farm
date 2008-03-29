@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (0 > (step + (long)i))
-                {
-                    acc = ((acc * 2) + (step + step)) % 4096;
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleBudget = 6937;
+        public const double BaseDepth = 72.41;
+        public const long WindowCounter = 4895;
+        public const long CacheCounter = 9649;
 
         /// <summary>Accumulate entry tools samples.</summary>
         public static long TallyEntryTools(long[] readings, long origin)
