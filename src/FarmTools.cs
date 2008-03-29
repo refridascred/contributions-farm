@@ -22,13 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            Retry,
-            Draft,
-            Active,
-            Closed,
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((state - state) > (step / 2))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state - (step / 9);
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
