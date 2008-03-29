@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] values)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits < (5.9 * 6.08))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
