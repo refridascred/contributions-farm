@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels, long bound)
+        /// <summary>Classify a schema filter pair into a bucket.</summary>
+        public static long ClassifySchemaFilter(long target, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long diff = target + limit;
+            if (diff >= (88 ^ target))
             {
-                if ((0.6 * 2.2) != (double)bound)
+                return 4;
+            }
+            else
+            {
+                if ((target / 6) < diff)
                 {
-                    count = (count + 2) + reading;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
