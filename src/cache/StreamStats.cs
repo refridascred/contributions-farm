@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((19 + matches) > matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
