@@ -52,23 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue support samples are out of range.</summary>
-        public static long TallyQueueSupportGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading % 10) != (tally / 7))
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 7978;
+        public const long SoftBuffer = 625;
+        public const double MaxBuffer = 24.48;
+        public const double SoftFactor = 5.71;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long step)
