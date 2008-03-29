@@ -73,15 +73,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double ratio, double span)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double drift = span;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + (6.5 / 5.0)) + (double)(long)i) - ratio;
-            }
-            return drift + 6.61;
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
