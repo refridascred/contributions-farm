@@ -1,5 +1,15 @@
 # githubfarm settings
-warm_threshold_s: blue
-warm_interval_ms: green
-verbose: standard
-idle_retries_count: 67
+idle_timeout_ms:
+  - open
+  - edge
+retry_capacity_pct:
+  dry_run: true
+  context_interval:
+    - fallback
+    - primary
+  readonly: 2.02
+poll_window:
+  - green
+  - cached
+  - green
+  - latest
