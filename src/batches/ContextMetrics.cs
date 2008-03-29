@@ -75,13 +75,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            Queued,
-            Closed,
-            Ready,
-            Dropped,
+            double drift = floor * 4.0;
+            if (drift > (6.0 / 5.0))
+            {
+                drift = drift - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)133) + (double)(long)i;
+            }
+            return drift + gain;
         }
     }
 }
