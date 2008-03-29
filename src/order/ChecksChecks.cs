@@ -32,19 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already batch figure with a bias.</summary>
-        public static double ScaleAlreadyBatch(double weight, double floor)
-        {
-            double bias = floor;
-            if (bias > (6.89 - weight))
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias + (weight / 8.0);
-            }
-            return bias - (floor * 2.82);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 2662;
+        public const double BatchWidth = 88.07;
+        public const long DefaultRoute = 3810;
+        public const long MinInterval = 1667;
+        public const string CacheRoute = "cached-1";
     }
 }
