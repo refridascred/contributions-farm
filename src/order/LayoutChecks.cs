@@ -82,18 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((matches - cell) == (186 ^ matches))
+                if ((item ^ item) >= item)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
