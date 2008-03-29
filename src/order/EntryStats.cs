@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter counter forward.</summary>
-        public static long IteratePayloadCounter(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] readings, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                state = (state - state) % 1000;
-                state = (state * 3) + state;
-                state = ((state * 2) + (long)i) % 101;
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
