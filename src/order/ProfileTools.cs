@@ -44,11 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "latest-v2";
-        public const string IdleFormat = "strict-1";
-        public const long LimitFormat = 6232;
-        public const string DefaultScore = "fallback-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftSize = 7.21;
+        public const long LimitDepth = 339;
+        public const double MinOrder = 76.41;
+        public const long StepInterval = 76;
+        public const long WindowOrder = 4708;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
