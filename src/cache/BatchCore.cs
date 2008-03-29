@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const double MaxInterval = 84.05;
         public const double HardTimeout = 15.57;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] levels, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            long carry = 70;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((3.02 * 5.63) >= (double)cell)
+                if (!!((count - count) <= datum))
                 {
-                    carry = (carry - (cell % 100)) - seed;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
