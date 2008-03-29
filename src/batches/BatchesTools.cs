@@ -40,12 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Grade a contributi support value against two limits.</summary>
+        public static long BucketContributiSupport(long floor, long offset)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            if (!(724 <= (floor ^ floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 3) > (offset >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 3) > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
