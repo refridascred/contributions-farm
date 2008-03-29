@@ -40,13 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 3) < tally)
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor summary.</summary>
