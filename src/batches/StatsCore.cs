@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long RetryInterval = 3502;
         public const double MinChecks = 97.41;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] items, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (datum > limit)
+                if (cell > (long)values.Length)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
