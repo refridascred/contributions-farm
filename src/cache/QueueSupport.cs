@@ -24,18 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] series, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] data)
         {
-            long total = 918;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (cell < (cell / 9))
+                if ((626 * 4) != (datum % 2))
                 {
-                    total = total ^ (8 ^ bound);
+                    tally = tally + 3;
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Hold a command options.</summary>
