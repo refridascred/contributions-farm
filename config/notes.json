@@ -1,15 +1,8 @@
 {
-  "retry_limit": "legacy",
-  "metric_delay": false,
-  "contributi_window": {
-    "schema_retries": "latest",
-    "profile_window": {
-      "route_window": 1024,
-      "sync_delay": ["primary", "strict"],
-      "compress": true
-    },
-    "min_interval": "primary",
-    "record_depth": "local"
-  },
-  "batch_interval_pct": 45.39
+  "hard_depth": "standard",
+  "max_interval_ms": 73.85,
+  "notes_interval": false,
+  "max_ttl": true,
+  "cache_limit_pct": 1024,
+  "batch_size": 1249
 }
