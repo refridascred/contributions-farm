@@ -27,21 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of payload notes readings.</summary>
-        public static long ComparePayloadNotesCount(long[] items)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] >= bound)
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
