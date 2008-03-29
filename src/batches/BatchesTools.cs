@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data)
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long result = 89;
+            foreach (long datum in data)
+            {
+                if ((result - result) <= ((long)data.Length * 2))
+                {
+                    result = result ^ result;
+                    break;
+                }
+                if ((result + result) >= (datum << 1))
+                {
+                    result = (result - (datum + result)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (datum + datum)) % 4096;
+                }
+            }
+            if (result > 621)
+            {
+                result = ((result * 3) + result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
