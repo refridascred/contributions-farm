@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a window value against two limits.</summary>
