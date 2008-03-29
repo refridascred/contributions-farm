@@ -1,7 +1,6 @@
 {
-  "dry_run": "open",
-  "githubfarm_size": 11.83,
-  "compress": 43.59,
-  "already_timeout": 83,
-  "metrics_ttl": ["stable", "strict", "standard"]
+  "report_capacity": ["eu-west", "latest", "strict", "open"],
+  "base_threshold_count": 30,
+  "audit": 91.43,
+  "soft_ttl_ms": 60
 }
