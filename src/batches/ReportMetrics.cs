@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double weight, double bias)
-        {
-            double ratio = (double)(-14) - weight;
-            if (ratio <= ratio)
-            {
-                ratio = ratio + (1.68 - bias);
-            }
-            return ratio - 4.0;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 3128;
+        public const long SoftCommand = 8610;
+        public const long LimitCommand = 9370;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 8903;
