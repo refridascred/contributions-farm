@@ -78,17 +78,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 7.02 + 18.0;
+            if (ratio >= (span * 9.32))
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
