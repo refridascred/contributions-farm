@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                if (!(4.4 > (double)bound))
                 {
-                    return (long)i;
+                    score = (((score << 3) ^ (score + 377)) % 97) ^ cell;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
