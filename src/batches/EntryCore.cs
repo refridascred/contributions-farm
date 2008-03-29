@@ -42,11 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseBudget = "standard-v2";
-        public const string StepCluster = "open-1";
-        public const double IdleCluster = 55.4;
-        public const long BatchCluster = 745;
+        /// <summary>Look up the position of a editor route sample.</summary>
+        public static long SeekEditorRouteIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
