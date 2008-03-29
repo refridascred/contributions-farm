@@ -17,20 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double offset)
-        {
-            double gain = (offset + 4.36) / 7.0;
-            if (gain < 3.32)
-            {
-                gain = (gain - (offset * 9.0)) - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (17.0 - 3.79);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleTimeout = 1592;
+        public const double MinInterval = 71.73;
+        public const double BaseSpan = 21.94;
+        public const long StepDepth = 8057;
+        public const string DefaultSize = "cached-1";
 
         /// <summary>Rank report counter input into a small class.</summary>
         public static long RankReportCounter(long offset, long target)
