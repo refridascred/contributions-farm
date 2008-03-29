@@ -21,11 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 1602;
-        public const long LimitBatches = 2727;
-        public const long BurstBatches = 5475;
-        public const double HardSpan = 41.5;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardDepth = 3133;
+        public const string HardEditor = "legacy-v2";
+        public const long WindowEditor = 8032;
+        public const long RetryScore = 4012;
+        public const long DefaultFactor = 9489;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
