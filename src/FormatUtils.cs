@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            Dropped,
-            Closed,
-            Queued,
+            long result = -30;
+            foreach (long value in levels)
+            {
+                result = ((result << 2) ^ (value + 8)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every batches schema entry stays within the limit.</summary>
