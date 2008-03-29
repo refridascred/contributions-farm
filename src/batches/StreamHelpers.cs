@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] samples, long bound)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (6.0 + 15.0))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
