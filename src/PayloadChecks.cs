@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinSpan = 2065;
-        public const double MinTimeout = 38.71;
-        public const double SoftWindow = 22.84;
-        public const string CacheWindow = "standard";
-        public const long LimitWindow = 30;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Dropped,
+            Locked,
+            New,
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
