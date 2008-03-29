@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long TallyMetricsStatsHits(long[] samples)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (double)seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
