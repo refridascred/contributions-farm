@@ -48,17 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long floor)
+        /// <summary>Roll a queue support counter forward.</summary>
+        public static long SeriesQueueSupport(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate already samples.</summary>
