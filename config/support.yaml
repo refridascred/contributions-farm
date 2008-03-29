@@ -1,7 +1,10 @@
 # support settings
-warm_limit: 60
-command_retries: 100
-soft_limit_pct:
-  retry_ttl_s: 44.88
-  default_ratio: 100
-  poll_interval: true
+context_window:
+  - stable
+  - fallback
+enabled:
+  commits_interval: true
+  batch_delay: 35.85
+  stream_ratio: false
+  channel_size: 42
+default_ratio_count: 30
