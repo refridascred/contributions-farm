@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen < (sample + 64))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first stream editor entry that matches the target.</summary>
