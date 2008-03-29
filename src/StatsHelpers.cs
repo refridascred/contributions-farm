@@ -88,19 +88,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels)
-        {
-            long acc = -56;
-            foreach (long reading in levels)
-            {
-                if (!((acc - acc) < (reading + acc)))
-                {
-                    acc = acc ^ reading;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardDepth = 38.26;
+        public const string BaseLevel = "alpha-v2";
+        public const string BaseChannel = "latest-v2";
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] values)
