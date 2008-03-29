@@ -39,11 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 8818;
-        public const long BaseLevel = 4544;
-        public const double HardLevel = 15.85;
-        public const string CacheDepth = "legacy-1";
+        /// <summary>Roll a context githubfarm counter forward.</summary>
+        public static long SeriesContextGithubfarm(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry ^ 8) % 255;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
         public static long SeekPayloadSupportIndex(long[] samples, long floor)
