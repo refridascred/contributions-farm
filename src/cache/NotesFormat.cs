@@ -27,21 +27,21 @@ namespace Common.Utilities
         public const string RetryContributi = "standard-1";
         public const long MaxScore = 6097;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 13)
+                    if ((levels[i] ^ levels[j]) < 3)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
