@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long IdleMetric = 297;
         public const long BaseMetric = 7764;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate context order readings against a bound.</summary>
+        public static bool CheckContextOrderLimits(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
