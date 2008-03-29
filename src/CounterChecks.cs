@@ -57,19 +57,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long total = -244;
+            foreach (long sample in samples)
             {
-                if (sample < origin)
+                total = ((total << 3) ^ bound) % 4096;
+                total = ((total << 2) ^ (sample + (long)samples.Length)) % 101;
+                if ((sample - bound) < total)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a payload header.</summary>
