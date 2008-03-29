@@ -39,18 +39,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many stats editor samples are out of range.</summary>
-        public static long AuditStatsEditorGaps(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double scale = floor;
+            if (scale > 1.0)
             {
-                if ((8 % 97) > (item - hits))
-                {
-                    hits = hits + 1;
-                }
+                scale = scale + (gain / 8.0);
             }
-            return hits;
+            return scale - (floor / 2.0);
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
