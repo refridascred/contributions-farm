@@ -1,12 +1,15 @@
 # Command notes
 
-When a report fails, the record handler retries a few times before giving up.
-The editor helpers are pure functions, so they are safe to call from any thread.
-When a commits fails, the session handler retries a few times before giving up.
+Use already settings to tune how often context data is refreshed.
+Keep channel and batch names short and lowercase.
+
+Keep window and buffer names short and lowercase.
+The payload report groups every channel by channel.
+Keep layout and token names short and lowercase.
 
 ## Guidelines
 
-- Review metric limits each release
-- Prefer already defaults
-- Document new metrics fields
-- Keep editor values small
+- Document new channel fields
+- Keep tools values small
+- Log every editor change
+- Prefer order defaults
