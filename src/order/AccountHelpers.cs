@@ -67,18 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long result = 1;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample >= (2.6 / 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ (sample & 7)) % 1000;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
