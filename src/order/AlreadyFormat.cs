@@ -18,27 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc * 4) + acc;
-                if (((cell - cell) > (cell + acc)) || ((acc + acc) == (acc ^ cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (acc + (long)series.Length)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + acc) % 1000;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 9)
-            {
-                acc = (acc ^ (acc & 31)) % 65521;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
