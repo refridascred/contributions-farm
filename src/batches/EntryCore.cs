@@ -55,11 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleFactor = 6811;
-        public const long BurstChecks = 4159;
-        public const string MaxChecks = "legacy-v2";
-        public const long IdleChecks = 6157;
-        public const long MinFactor = 7689;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((tally - bound) > reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
