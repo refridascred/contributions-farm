@@ -54,21 +54,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Dropped,
         }
     }
 }
