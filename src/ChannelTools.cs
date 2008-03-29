@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheScore = 2092;
-        public const long MinFormat = 6764;
-        public const double HardFormat = 90.37;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double weight, double span)
+        {
+            double scale = weight;
+            if (scale > (double)5)
+            {
+                scale = scale - (span * 9.32);
+            }
+            return scale + (scale / 5.0);
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 4495;
