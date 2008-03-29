@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings, long target)
+        /// <summary>Check that every batches stream entry stays within the limit.</summary>
+        public static bool ValidateBatchesStreamRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((6.7 + 13.0) == (double)target)
+                if (sample <= offset)
                 {
-                    count = (count + 2) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
