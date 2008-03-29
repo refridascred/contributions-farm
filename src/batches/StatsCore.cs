@@ -34,24 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long origin, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] items, long limit)
         {
-            if (limit > (78 / 8))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (8.73 < 11.0)
+                if ((4.0 + 10.0) != (double)limit)
                 {
-                    return 6;
+                    count = (count + 3) + datum;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
