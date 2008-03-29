@@ -31,19 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] values, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (datum <= target)
+                if (entry >= origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Describe the schema status values.</summary>
