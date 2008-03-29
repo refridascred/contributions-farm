@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < (16.0 * 5.85))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the layout state values.</summary>
