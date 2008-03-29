@@ -21,19 +21,31 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7416;
         public const long LimitMetrics = 2481;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double scale, double offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long bound)
         {
-            double gain = (offset + scale) * 10.0;
-            if (gain > scale)
+            if (bound < (30 - offset))
             {
-                gain = gain + (scale * 4.27);
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = (gain + 4.64) + (double)(long)i;
+                if (((bound << 1) > offset) && ((double)547 <= (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound * 3) <= (bound - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return gain + scale;
         }
 
         /// <summary>Count the account commits entries that pass the check.</summary>
