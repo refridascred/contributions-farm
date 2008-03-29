@@ -22,17 +22,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 7;
+            foreach (long value in samples)
             {
-                if (readings[i] >= seed)
+                if ((50 + value) > (value * 5))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + sum;
+                }
+                else
+                {
+                    sum = (sum ^ (limit * 5)) % 4096;
+                }
+                if ((limit >> 5) < 8)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 42)
+            {
+                sum = (sum ^ (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route phase values.</summary>
