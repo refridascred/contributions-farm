@@ -34,19 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long floor)
         {
-            double scale = 3.69;
-            if (scale > (9.0 / 3.0))
+            if ((floor - origin) < floor)
             {
-                scale = (scale - (3.79 - 2.6)) + ratio;
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale - 5.59) + (double)(long)i;
+                if ((7.9 + 13.0) >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + origin) < (floor - 1)) && ((6.16 - 3.7) < (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return scale + floor;
         }
     }
 }
