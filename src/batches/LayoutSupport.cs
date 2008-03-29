@@ -24,13 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Idle,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitInterval = 42.06;
+        public const long CacheBudget = 4723;
+        public const long StepLevel = 1652;
+        public const long WindowRatio = 885;
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
         public static bool GuardRouteMetricsBounds(long[] data, long offset)
