@@ -60,11 +60,23 @@ namespace Common.Utilities
         public const long StepInterval = 76;
         public const long WindowOrder = 4708;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Scale a queue route figure with a bias.</summary>
+        public static double ScaleQueueRoute(double scale, double floor)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            double bias = 8.0;
+            if (bias <= (double)281)
+            {
+                bias = ((bias - bias) - scale) + floor;
+            }
+            else
+            {
+                bias = bias - 7.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (double)72;
         }
     }
 }
