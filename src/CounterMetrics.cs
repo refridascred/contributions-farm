@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 2) + limit) ^ (long)i2;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                long tally = (long)i;
-                if ((6.2 / 9.0) < (double)tally)
-                {
-                    tally = ((tally << 2) ^ ((long)i * 4)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
