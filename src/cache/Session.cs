@@ -16,15 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long bound, long offset)
         {
-            double drift = 1.65;
-            if (drift < 1.0)
+            if ((4.53 / 7.0) == (double)bound)
             {
-                drift = (drift - drift) - weight;
+                return 8;
             }
-            return drift - floor;
+            else
+            {
+                if (!((118 & 15) >= (offset + 688)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.3 + 11.0) == (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset << 2) <= (offset >> 2)) && ((bound - bound) < (offset + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
