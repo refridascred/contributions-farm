@@ -1,7 +1,6 @@
 {
-  "batch_ratio": 60,
-  "strict": "stable",
-  "retry_interval_pct": true,
-  "warm_depth_s": true,
-  "sync_size_ms": 70
+  "channel_limit": "standard",
+  "counter_ttl": 250,
+  "min_ttl_pct": "latest",
+  "flush_ratio": true
 }
