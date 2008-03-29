@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.2 - 5.7) == (double)origin)
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + origin) % 101;
+                    score = (score + (score << 3)) % 255;
+                    break;
                 }
+                score = ((score << 3) ^ (long)i) % 97;
+                if (!((origin << 2) < (score % 3)))
+                {
+                    score = (score ^ 938) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
