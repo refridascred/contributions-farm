@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values, long seed)
-        {
-            long mark = 2;
-            foreach (long datum in values)
-            {
-                if (!((double)87 > (double)mark))
-                {
-                    mark = mark ^ datum;
-                }
-                else
-                {
-                    mark = (mark * 3) + mark;
-                    mark = ((mark << 3) ^ (seed & 63)) % 255;
-                }
-                mark = (mark * 3) + datum;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheLevel = 26.29;
+        public const string DefaultGraph = "stable-1";
+        public const long WindowGraph = 4326;
+        public const long BaseDepth = 7298;
+        public const long StepGraph = 1527;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
