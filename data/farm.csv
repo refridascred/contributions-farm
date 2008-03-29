@@ -1,6 +1,7 @@
-id,count,owner,label,region
-1,604,58.44,819,49.52
-2,36.38,103,local,19.25
-3,42.23,587,stable,95.68
-4,standard,blue,86.71,open
-5,272,4.7,623,79.87
+id,score,token,level
+1,edge,standard,828
+2,696,legacy,92.43
+3,primary,453,251
+4,617,681,green
+5,90,917,standard
+6,stable,staging,95
