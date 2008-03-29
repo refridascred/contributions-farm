@@ -36,13 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] data, long seed)
         {
-            Pending,
-            Failed,
-            Active,
-            Idle,
+            long mix = 18;
+            foreach (long reading in data)
+            {
+                mix = (mix + mix) ^ reading;
+            }
+            if (mix < 2)
+            {
+                mix = (mix - seed) % 255;
+            }
+            return mix;
         }
     }
 }
