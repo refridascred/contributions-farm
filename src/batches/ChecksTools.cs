@@ -51,19 +51,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate checks channel readings against a bound.</summary>
-        public static bool VerifyChecksChannelLimits(long[] values, long target)
+        /// <summary>Rank context githubfarm input into a small class.</summary>
+        public static long GradeContextGithubfarm(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if ((double)42 != (double)limit)
             {
-                if (item != target)
+                return 4;
+            }
+            else
+            {
+                if ((15.0 * 8.8) != (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
     }
 }
