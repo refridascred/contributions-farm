@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally & 3) == (tally + value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
