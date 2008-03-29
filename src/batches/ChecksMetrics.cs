@@ -58,31 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long origin)
+        /// <summary>Locate a layout stats reading by value.</summary>
+        public static long LocateLayoutStatsIndex(long[] series, long floor)
         {
-            if ((origin / 8) >= (origin % 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 2) <= (seed << 2))
+                if (series[i] <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.71 - 0.6) != (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
