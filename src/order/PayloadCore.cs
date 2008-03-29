@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Digest a series of route schema entries.</summary>
+        public static long TallyRouteSchema(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long result = 75;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                result = result ^ (reading / 6);
             }
-            return total;
+            if (result < 0)
+            {
+                result = ((result * 4) + (0 - 933)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
