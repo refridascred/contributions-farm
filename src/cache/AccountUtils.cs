@@ -17,39 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stream profile pair into a bucket.</summary>
-        public static long GradeStreamProfile(long target, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] series, long bound)
         {
-            long edge = target - limit;
-            if ((259 + target) < (target / 7))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((edge % 24) > target))
+                if (value > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target <= (limit * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit < (target - 19))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Adjust a batch cache reading.</summary>
