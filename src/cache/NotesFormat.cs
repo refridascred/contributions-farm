@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 50.93;
-        public const long WindowTools = 267;
-        public const long LimitDepth = 827;
-        public const double IdleTools = 56.25;
-        public const double LimitInterval = 92.4;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long origin)
