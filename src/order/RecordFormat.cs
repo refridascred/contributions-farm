@@ -21,13 +21,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            New,
-            Closed,
-            Pending,
-            Retry,
+            long carry = 81;
+            foreach (long datum in values)
+            {
+                if ((15.0 / 3.0) != (double)carry)
+                {
+                    carry = ((carry << 2) ^ datum) % 4096;
+                }
+                if ((6.7 - 6.85) == (double)datum)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
