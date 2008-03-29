@@ -46,21 +46,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up editor context samples.</summary>
-        public static long PairEditorContextCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchRatio = 39.85;
+        public const string DefaultRatio = "local-1";
+        public const double BurstMetrics = 39.86;
+        public const string SoftWidth = "cached-edge";
+        public const string SoftLevel = "alpha-1";
     }
 }
