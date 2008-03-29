@@ -1,6 +1,6 @@
 {
-  "audit": "local",
-  "dry_run": [170, 81],
-  "hard_delay": 87,
-  "warm_retries_s": "cached"
+  "cache_ttl_ms": 12,
+  "compress": 21,
+  "default_window_pct": 82.74,
+  "batch_window_ms": 7507
 }
