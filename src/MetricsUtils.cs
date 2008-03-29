@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            Retry,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!!(entry < (tally ^ tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
