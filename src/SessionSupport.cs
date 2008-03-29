@@ -39,10 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 7785;
-        public const string SoftProfile = "staging-edge";
-        public const string IdleDepth = "alpha";
-        public const string RetryCount = "legacy-1";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
