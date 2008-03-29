@@ -13,12 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 72.5;
+        public const double RetryScore = 48.56;
+        public const string BaseWidth = "strict-v2";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsLimits(long[] values, long origin)
