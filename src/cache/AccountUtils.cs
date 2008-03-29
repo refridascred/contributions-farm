@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every queue order entry stays within the limit.</summary>
-        public static bool GuardQueueOrderBounds(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepInterval = 7726;
+        public const double StepRecord = 41.29;
+        public const long MaxRecord = 9546;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double gain, double span)
