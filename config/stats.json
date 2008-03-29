@@ -1,5 +1,5 @@
 {
-  "audit": 50,
-  "editor_capacity": 62.14,
-  "dry_run": true
+  "default_window": [43, 200, 441, 32],
+  "dry_run": true,
+  "cache_size": "stable"
 }
