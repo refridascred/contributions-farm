@@ -36,11 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardScore = 66.62;
-        public const double IdleBudget = 68.52;
-        public const string MinRecord = "primary-edge";
-        public const double BatchScore = 78.61;
-        public const double StepScore = 23.36;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Queued,
+            Locked,
+            Synced,
+            Idle,
+        }
     }
 }
