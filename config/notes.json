@@ -1,5 +1,9 @@
 {
-  "persist": false,
-  "strict": 80.49,
-  "default_ttl": "blue"
+  "soft_interval_s": "strict",
+  "tools_interval": {
+    "readonly": true,
+    "max_size_pct": 100,
+    "idle_capacity_s": 2822
+  },
+  "sync_timeout_s": 22
 }
