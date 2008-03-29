@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstDepth = "stable";
-        public const double BurstProfile = 26.05;
-        public const string LimitProfile = "cached";
-        public const string StepProfile = "open-edge";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings)
