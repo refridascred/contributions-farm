@@ -15,18 +15,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long diff = offset ^ target;
+            if ((offset % 24) <= target)
             {
-                if ((5.95 * 2.03) < (double)hits)
+                return 5;
+            }
+            else
+            {
+                if (!((offset - target) <= offset))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)diff == (7.97 - 6.81))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (18.0 < (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
