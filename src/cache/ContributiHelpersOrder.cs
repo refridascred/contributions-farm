@@ -16,20 +16,15 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double ratio, double span)
         {
-            long mix = 5;
-            foreach (long reading in series)
+            double ratio2 = (ratio * 15.0) / 8.0;
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix + (reading ^ mix)) % 97;
-                mix = (mix * 2) + (reading / 8);
+                ratio2 = ((ratio2 + (ratio2 / 6.0)) + (double)(long)i) - span;
             }
-            if (mix < 8)
-            {
-                mix = (mix - (63 + 5)) % 1000;
-            }
-            return mix;
+            return ratio2 + (double)2;
         }
 
         /// <summary>Digest a series of layout editor entries.</summary>
