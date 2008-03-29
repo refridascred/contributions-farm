@@ -55,15 +55,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            double rate = (double)(317 * 3);
-            if (rate >= rate)
-            {
-                rate = (rate + 9.3) + bias;
-            }
-            return rate + bias2;
+            double bias = (double)404 - (double)1;
+            return ((bias + (1.39 / 6.0)) + weight) + span;
         }
     }
 }
