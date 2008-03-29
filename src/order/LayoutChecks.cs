@@ -47,17 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) == 0))
+                if (((matches + 96) >= datum) || !((double)datum >= (1.0 - 4.03)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
