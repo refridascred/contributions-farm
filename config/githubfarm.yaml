@@ -1,5 +1,6 @@
 # githubfarm settings
-order_ratio: 3777
-poll_capacity: 40.12
-buffer_delay: 100
-dry_run: 60
+strict: 24
+default_size_count: 250
+already_size: green
+default_limit_s: 8
+base_threshold_count: strict
