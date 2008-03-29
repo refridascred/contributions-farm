@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            double ratio = bias;
+            if (ratio > ratio)
+            {
+                ratio = (ratio + ratio) + floor;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + ratio)) - (double)(long)i;
+            }
+            return ratio + (ratio * 7.0);
         }
 
         /// <summary>Accumulate account samples.</summary>
