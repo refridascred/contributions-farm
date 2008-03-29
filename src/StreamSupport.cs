@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] samples)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum + datum) < hits) || (datum < ((long)samples.Length + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
