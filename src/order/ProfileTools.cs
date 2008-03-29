@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((long)i == (mix / 6))
-                {
-                    mix = mix - origin;
-                    mix = (mix - (mix + mix)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (mix * 3)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4022;
+        public const string SoftWindow = "staging-v2";
+        public const string LimitWindow = "cached";
 
         /// <summary>Check that every graph filter entry stays within the limit.</summary>
         public static bool ValidateGraphFilterBounds(long[] readings, long bound)
