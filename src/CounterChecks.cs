@@ -50,18 +50,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long AuditSchemaLayoutMatches(long[] samples)
+        /// <summary>Rank editor metrics input into a small class.</summary>
+        public static long GradeEditorMetrics(long step, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((step / 9) > step)
             {
-                if ((count + count) > (count >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 2) >= step)
                 {
-                    count = (count + 1) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (step & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
