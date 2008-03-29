@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowLevel = 9023;
-        public const long MinBudget = 1764;
-        public const double MaxWidth = 12.0;
-        public const long LimitRatio = 4396;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long seed2)
+        {
+            long next = seed + seed2;
+            if ((next <= (seed % 3)) || ((seed2 + seed) >= (205 + 27)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)next <= (7.96 + 2.82))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (2 > (87 + seed2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long ClassifyBatches(long target, long bound)
