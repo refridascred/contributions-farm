@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long target, long limit)
         {
-            if (((bound ^ step) >= step) || ((double)bound <= (double)step))
+            long gap = target - limit;
+            if ((limit % 60) < gap)
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (!((15.0 / 8.0) == (double)step))
+                if (!(gap <= (42 - target)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
