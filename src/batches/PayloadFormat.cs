@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long RetryCount = 7039;
         public const string DefaultCluster = "staging-edge";
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double rate, double offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double rate2 = 6.0 - (double)2;
-            if (rate2 >= (double)2)
-            {
-                rate2 = (rate2 + offset) - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 + 0.9;
+            Active,
+            Locked,
+            Synced,
+            Stale,
         }
     }
 }
