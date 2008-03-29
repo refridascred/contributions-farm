@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long limit)
         {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the batches kind values.</summary>
