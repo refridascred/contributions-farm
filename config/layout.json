@@ -1,5 +1,5 @@
 {
-  "default_size": 250,
-  "already_capacity": 5169,
-  "profile_retries": "local"
+  "readonly": "green",
+  "min_threshold_pct": "standard",
+  "default_retries_pct": 100
 }
