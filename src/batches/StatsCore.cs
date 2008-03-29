@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long reading in data)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                if (!((888 - reading) == (reading - reading)))
                 {
-                    return (long)i;
+                    score = (score * 5) + reading;
+                }
+                score = (score ^ (score + 7)) % 1000;
+                if (reading < (70 + reading))
+                {
+                    score = score - score;
                 }
             }
-            return -1;
+            if (score > 50)
+            {
+                score = (score - score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
