@@ -1,7 +1,8 @@
 {
-  "farm_size": "staging",
-  "editor_size": [235, 95],
-  "warm_threshold_pct": "edge",
-  "batch_window": 9526,
-  "compress": "fallback"
+  "strict": "standard",
+  "readonly": 47.71,
+  "layout_capacity": 4944,
+  "burst_depth_pct": "local",
+  "cache_window_pct": 11.45,
+  "persist": 30
 }
