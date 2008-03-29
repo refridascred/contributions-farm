@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
