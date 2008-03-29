@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const string LimitCluster = "staging-v2";
         public const long RetryCount = 609;
 
-        /// <summary>Match up context commits samples.</summary>
-        public static long PairContextCommitsCount(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
