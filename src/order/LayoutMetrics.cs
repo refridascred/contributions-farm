@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series, long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double scale = offset;
+            if (scale > (rate * 0.97))
             {
-                if ((double)cell == (double)step)
-                {
-                    count = count + 3;
-                }
+                scale = scale + (double)(-5);
             }
-            return count;
+            return scale + (double)914;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
