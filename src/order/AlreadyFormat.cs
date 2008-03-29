@@ -54,10 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 4691;
-        public const long MaxNotes = 3882;
-        public const string StepTimeout = "strict";
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Done,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyOutliers(long[] data, long floor)
