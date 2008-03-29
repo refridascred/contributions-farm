@@ -14,39 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long step2)
+        /// <summary>Find the first stream editor entry that matches the target.</summary>
+        public static long LookupStreamEditorIndex(long[] series, long bound)
         {
-            long step3 = step - step2;
-            if ((step2 >> 4) <= (step2 - step2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 + step) > (step3 << 3))
+                if (series[i] == bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)step3 != (double)step2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step3 != (6.5 * 5.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
