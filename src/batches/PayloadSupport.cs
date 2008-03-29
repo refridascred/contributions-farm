@@ -19,31 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long floor)
+        /// <summary>Look up the position of a queue buffer sample.</summary>
+        public static long LocateQueueBufferIndex(long[] readings, long origin)
         {
-            if ((floor < 13) && ((15.0 / 7.0) >= (double)step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.7 * 1.4) != (double)step)
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor << 2) > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
