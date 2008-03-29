@@ -42,17 +42,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
