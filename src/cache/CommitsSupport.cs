@@ -53,38 +53,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a format counter value against two limits.</summary>
-        public static long BucketFormatCounter(long origin, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] samples, long step)
         {
-            if (step <= (step ^ origin))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5 + origin) == (step * 2))
+                if ((7.0 * 19.0) < (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin + 322) <= (origin + step)) || (origin < (175 / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - step) <= (origin >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 2) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
