@@ -48,11 +48,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double gain, double offset)
+        /// <summary>Digest a series of metric contributi entries.</summary>
+        public static long TotalMetricContributi(long[] data)
         {
-            double drift = gain;
-            return drift - (offset + offset);
+            long total = -2;
+            foreach (long sample in data)
+            {
+                total = (total ^ ((-3) * 4)) ^ sample;
+            }
+            if (total < (-678))
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Blend two layout measurements.</summary>
