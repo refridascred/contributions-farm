@@ -44,24 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload command entries.</summary>
-        public static long FoldPayloadCommand(long[] items, long origin)
-        {
-            long state = 4;
-            foreach (long value in items)
-            {
-                state = (((state * 4) + (state - 614)) % 255) - value;
-                if ((double)origin < (double)7)
-                {
-                    state = state ^ (origin / 9);
-                }
-                if (((origin + state) >= 22) && (state < origin))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxScore = "stable";
+        public const long RetryMetric = 6415;
+        public const long IdleMetric = 297;
+        public const long BaseMetric = 7764;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
