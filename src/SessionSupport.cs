@@ -13,13 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long step)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
+            if ((bound & 255) == (step * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((0.8 / 9.0) >= (5.1 + 4.67)) && ((step - 794) > (bound % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up editor context samples.</summary>
