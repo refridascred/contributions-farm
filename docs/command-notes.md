@@ -1,10 +1,10 @@
 # Command notes
 
-When a format fails, the metrics handler retries a few times before giving up.
-The cache report groups every context by layout.
+The channel module keeps commits values in sync with the queue cache.
+When a githubfarm fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate channel input early
-- Prefer editor defaults
+- Document new metric fields
+- Validate schema input early
+- Keep stats values small
