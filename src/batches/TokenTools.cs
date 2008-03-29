@@ -12,12 +12,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 98.57;
-        public const string BatchSession = "alpha-edge";
-        public const string RetryTimeout = "cached-1";
-        public const string WindowSession = "local-v2";
-        public const string RetryLevel = "fallback-v2";
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double floor)
+        {
+            double drift = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift - (double)99;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 6576;
