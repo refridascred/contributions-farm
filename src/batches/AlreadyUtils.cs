@@ -49,11 +49,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long origin)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            long gap = step - origin;
+            if ((origin << 1) != (step - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step < gap) || ((origin + step) <= (gap ^ gap)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
