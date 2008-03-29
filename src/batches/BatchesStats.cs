@@ -45,19 +45,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] values, long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double weight = bias - (double)946;
+            if (weight > (span * 2.9))
             {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - (double)1;
             }
-            return flag;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - span;
         }
     }
 }
