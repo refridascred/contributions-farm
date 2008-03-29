@@ -53,18 +53,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] values, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seed + datum) > datum)
+                if ((result & 255) == (result ^ bound))
                 {
-                    matches = matches + 3;
+                    result = (result << 3) ^ result;
                 }
+                if (!((8.3 + 7.84) >= (double)result))
+                {
+                    result = (result * 4) + (result + result);
+                }
+                if ((4.8 * 10.0) >= (double)result)
+                {
+                    result = result - (97 << 1);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
