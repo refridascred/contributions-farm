@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long StepCluster = 8531;
         public const long HardTimeout = 9222;
 
-        /// <summary>Count the commits entry entries that pass the check.</summary>
-        public static long TallyCommitsEntryMatches(long[] series, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (limit > (item - 734))
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
