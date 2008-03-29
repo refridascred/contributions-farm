@@ -27,18 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] series, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long state = -9;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.0 / 9.0) != (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + reading) % 4096;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
