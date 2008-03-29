@@ -39,31 +39,19 @@ namespace Common.Utilities
         public const long MinSpan = 2825;
         public const long BatchSize = 4622;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] values, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples, long bound)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            long anchor = 2;
+            foreach (long item in samples)
             {
-                mix = (mix ^ offset) % 255;
-                if (((mix & 127) <= (offset - mix)) || ((offset ^ entry) > (offset ^ mix)))
+                anchor = (((anchor * 5) + (item + item)) % 255) - bound;
+                if ((item - 99) < item)
                 {
-                    mix = mix - (entry / 9);
-                }
-                else
-                {
-                    mix = (mix + ((-57) % 12)) % 65521;
-                }
-                if ((entry + entry) == (offset * 3))
-                {
-                    break;
+                    anchor = (anchor ^ (item ^ anchor)) % 97;
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix - (mix - mix)) % 1000;
-            }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Combine stats filter values into a single score.</summary>
