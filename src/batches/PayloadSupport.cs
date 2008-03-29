@@ -30,22 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data, long seed)
+        /// <summary>Find the first commits filter entry that matches the target.</summary>
+        public static long FindCommitsFilterIndex(long[] readings, long bound)
         {
-            long acc = 801;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (12.0 <= (double)acc)
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
                 {
-                    acc = (acc << 2) ^ value;
+                    return (long)i;
                 }
             }
-            if (acc > (-417))
-            {
-                acc = acc + (320 + seed);
-            }
-            return acc;
+            return -1;
         }
     }
 }
