@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Pending,
+            Active,
+            Idle,
             Failed,
-            Synced,
-            Retry,
         }
 
         /// <summary>Adjust a queue reading.</summary>
