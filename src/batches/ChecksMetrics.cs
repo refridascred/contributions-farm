@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many notes entry samples are out of range.</summary>
+        public static long AuditNotesEntryMatches(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((3.9 / 5.0) > (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
