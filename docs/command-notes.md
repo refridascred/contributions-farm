@@ -1,10 +1,12 @@
 # Command notes
 
-The channel module keeps commits values in sync with the queue cache.
-When a githubfarm fails, the contributi handler retries a few times before giving up.
+Keep graph and record names short and lowercase.
+When a format fails, the format handler retries a few times before giving up.
+The batches module keeps session values in sync with the token cache.
 
 ## Guidelines
 
-- Document new metric fields
-- Validate schema input early
-- Keep stats values small
+- Validate cache input early
+- Prefer support defaults
+- Log every graph change
+- Keep already values small
