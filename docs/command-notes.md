@@ -1,15 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often commits data is refreshed.
-Use buffer settings to tune how often support data is refreshed.
-Each counter is validated before it reaches the session queue.
+The counter report groups every profile by commits.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
-Use command settings to tune how often editor data is refreshed.
-Keep queue and support names short and lowercase.
+The contributi module keeps window values in sync with the stream cache.
+When a profile fails, the stats handler retries a few times before giving up.
+Each cluster is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate schema input early
-- Review session limits each release
-- Document new batches fields
+- Validate order input early
+- Prefer batches defaults
+- Document new metric fields
