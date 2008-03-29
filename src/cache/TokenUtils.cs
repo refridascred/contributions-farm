@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Active,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 63.19;
+        public const double LimitDepth = 34.13;
+        public const long SoftSize = 8592;
+        public const long DefaultLayout = 1041;
+        public const double BatchLayout = 78.25;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
