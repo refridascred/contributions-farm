@@ -64,31 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits profile pair into a bucket.</summary>
-        public static long RankCommitsProfile(long floor, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((double)offset > (14.0 * 14.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor << 1) <= (7 << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > ((-1) & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
