@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a already farm reading.</summary>
-        public static double SmoothAlreadyFarm(double ratio, double offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double bias = offset;
-            return (bias - (double)684) + ratio;
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
