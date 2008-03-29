@@ -76,12 +76,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long floor)
         {
-            Idle,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value ^ floor) >= (floor + floor))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
