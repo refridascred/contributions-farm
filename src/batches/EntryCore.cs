@@ -70,12 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] values)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((7.07 - 3.3) < (double)matches)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit schema session readings against a rule.</summary>
