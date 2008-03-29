@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] readings, long origin)
         {
-            long result = -883;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((sample > (result + (long)items.Length)) && ((double)step <= 4.0))
+                if (value <= origin)
                 {
-                    result = (result << 2) ^ 82;
+                    ok = false;
+                    break;
                 }
             }
-            if (result < 50)
-            {
-                result = result - (result + result);
-            }
-            return result % 1000;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
