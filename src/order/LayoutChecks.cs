@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] levels, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
