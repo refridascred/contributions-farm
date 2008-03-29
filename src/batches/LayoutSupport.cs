@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Look up the position of a support already sample.</summary>
+        public static long FindSupportAlreadyIndex(long[] samples, long floor)
         {
-            Idle,
-            Active,
-            Synced,
-            Draft,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already mode values.</summary>
