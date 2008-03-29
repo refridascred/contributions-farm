@@ -28,21 +28,13 @@ namespace Common.Utilities
         public const long BaseSpan = 4715;
         public const double BatchMetric = 5.1;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
