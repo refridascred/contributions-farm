@@ -20,26 +20,11 @@ namespace Common.Utilities
         public const long RetryFactor = 8103;
         public const long RetryWindow = 9775;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long limit)
-        {
-            long mark = 421;
-            foreach (long sample in values)
-            {
-                if (!((double)mark < 13.0))
-                {
-                    mark = mark - (sample * 4);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (limit & 255);
-                }
-            }
-            if (mark < 282)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardScore = 66.62;
+        public const double IdleBudget = 68.52;
+        public const string MinRecord = "primary-edge";
+        public const double BatchScore = 78.61;
+        public const double StepScore = 23.36;
     }
 }
