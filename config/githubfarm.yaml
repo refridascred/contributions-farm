@@ -1,9 +1,9 @@
 # githubfarm settings
-retry_timeout: 76.22
-dry_run: false
-soft_interval: 48.45
-min_window_s: blue
-burst_depth:
-  cache_capacity: 2799
-  dry_run: staging
-  base_delay: blue
+counter_delay: 7.63
+default_delay: green
+session_interval: 6.47
+hard_size:
+  - edge
+  - latest
+  - fallback
+warm_limit_s: local
