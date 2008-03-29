@@ -31,25 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long next = offset ^ limit;
-            if (!(next <= (limit + 52)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + next) > (limit * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
