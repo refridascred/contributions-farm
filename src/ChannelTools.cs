@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 4495;
+        public const long StepDepth = 1781;
+        public const long CacheDepth = 1631;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
