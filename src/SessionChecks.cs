@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long origin)
         {
-            long cur = origin - step;
-            if ((4.25 < (double)step) || ((double)cur < (5.3 * 2.6)))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 / 7.0) >= (double)step)
+                if (item >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
