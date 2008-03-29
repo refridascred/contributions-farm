@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long carry = 39;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                carry = (((carry << 2) ^ (carry - limit)) % 97) + cell;
+                if ((double)reading < (16.0 * 5.85))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (carry < 92)
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the layout state values.</summary>
