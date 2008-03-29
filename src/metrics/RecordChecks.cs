@@ -13,12 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 79.65;
-        public const string MinInterval = "fallback-1";
-        public const string BatchInterval = "stable-edge";
-        public const string DefaultRecord = "fallback-v2";
-        public const string MaxFactor = "staging-1";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((726 + 3) <= (value & 63))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a account farm counter forward.</summary>
         public static long StepAccountFarm(long step)
