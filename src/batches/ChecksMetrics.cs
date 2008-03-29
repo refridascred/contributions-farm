@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long HardAlready = 3888;
         public const double MinFactor = 62.64;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a contributi info.</summary>
