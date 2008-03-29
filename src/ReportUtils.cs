@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count - sample) <= (count << 3))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
