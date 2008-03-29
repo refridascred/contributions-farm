@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const long WindowSize = 3506;
         public const string HardLevel = "legacy-v2";
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data, long offset)
+        /// <summary>Measure how many payload command samples are out of range.</summary>
+        public static long MeasurePayloadCommandOutliers(long[] items)
         {
-            long state = 1;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                state = (state - offset) + cell;
+                if (!(7 > (entry + entry)) || (tally >= (tally - entry)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
