@@ -1,6 +1,9 @@
 # entry settings
-dry_run: 5693
-hard_interval: 21.93
-hard_window_s: edge
-strict: false
-account_timeout: 445
+default_capacity:
+  - blue
+  - primary
+  - strict
+base_interval: true
+buffer_ratio: edge
+hard_threshold_count: green
+hard_delay_ms: 25.27
