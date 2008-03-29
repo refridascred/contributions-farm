@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 9023;
+        public const long MinBudget = 1764;
+        public const double MaxWidth = 12.0;
+        public const long LimitRatio = 4396;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long ClassifyBatches(long target, long bound)
