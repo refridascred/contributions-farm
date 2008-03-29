@@ -85,12 +85,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Stale,
-            Active,
-            Dropped,
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
