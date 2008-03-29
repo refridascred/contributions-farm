@@ -1,6 +1,7 @@
 {
-  "sync_size_s": "open",
-  "default_threshold_count": "blue",
-  "audit": 100,
-  "command_interval": 3
+  "max_limit": true,
+  "command_ratio": 500,
+  "sync_timeout_s": 65.03,
+  "base_window_ms": 30,
+  "batch_threshold": 19
 }
