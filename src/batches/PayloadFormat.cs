@@ -41,18 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] data, long floor)
+        /// <summary>Grade a counter entry value against two limits.</summary>
+        public static long SortCounterEntry(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (((origin - origin) != (seed * 2)) || ((seed / 5) > (742 << 3)))
             {
-                if (tally < (entry & 1))
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed < (7.1 * 5.08)))
                 {
-                    tally = (tally + 2) + floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + seed) > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
