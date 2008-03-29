@@ -38,17 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a account filter sample.</summary>
-        public static long SeekAccountFilterIndex(long[] samples, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
