@@ -14,12 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleScore = 10;
-        public const double BaseFactor = 86.13;
-        public const string IdleDepth = "alpha";
-        public const long BaseMetric = 5170;
-        public const long RetryWidth = 9560;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Synced,
+            Draft,
+            Done,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 6473;
