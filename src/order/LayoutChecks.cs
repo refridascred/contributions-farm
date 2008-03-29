@@ -47,11 +47,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepTimeout = 47.65;
-        public const string HardPayload = "fallback-edge";
-        public const long BaseScore = 6134;
-        public const long BaseSize = 1797;
+        /// <summary>Compare every pair of payload commits readings.</summary>
+        public static long OverlapPayloadCommitsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long StepRoute(long seed)
