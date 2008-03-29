@@ -1,7 +1,6 @@
-id,state,owner,level,label
-1,924,strict,842,standard
-2,60,728,open,local
-3,standard,84.57,26.14,latest
-4,eu-west,716,582,676
-5,451,38.82,140,298
-6,363,local,543,469
+id,token,ratio,owner
+1,legacy,926,standard
+2,22.06,70.81,59.71
+3,legacy,290,666
+4,46.24,954,617
+5,edge,green,471
