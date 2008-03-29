@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftDepth = 86.1;
-        public const long IdleInterval = 2120;
-        public const string MinSize = "cached";
-        public const double DefaultEntry = 15.42;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((6.7 + 13.0) == (double)target)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTimeout = 8470;
