@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "staging-edge";
-        public const long RetryCount = 8196;
-        public const long LimitLevel = 5508;
-        public const string CacheToken = "cached-edge";
-        public const long LimitToken = 9164;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long offset, long limit)
+        {
+            long span = offset - limit;
+            if (((9.0 * 2.0) != (double)span) && ((3.89 / 8.0) > (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (limit + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit <= (3.5 - 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(offset <= (offset ^ offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long floor, long limit)
