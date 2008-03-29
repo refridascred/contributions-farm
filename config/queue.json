@@ -1,13 +1,12 @@
 {
-  "cache_delay_s": ["legacy", "cached"],
-  "warm_ratio_count": [377, 465, 44, 301],
-  "filter_capacity": 100,
-  "idle_delay_pct": "green",
-  "poll_interval": {
-    "cluster_ttl": 19.71,
-    "base_retries_count": 60.44,
-    "warm_interval": 1024,
-    "base_threshold_ms": "blue"
+  "record_delay": 74,
+  "compress": {
+    "default_ttl": false,
+    "already_capacity": "latest",
+    "min_ttl": "edge",
+    "batch_threshold": 17.21,
+    "dry_run": "standard"
   },
-  "hard_threshold": "legacy"
+  "burst_threshold_pct": 52,
+  "hard_size": true
 }
