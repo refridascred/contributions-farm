@@ -42,32 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] readings)
         {
-            long offset = target - limit;
-            if (!((offset ^ target) >= (offset + offset)))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.5 + 5.7) == (double)offset)
+                if ((double)seen < (1.46 * 11.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target != (6.03 - 8.47))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 2) + sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a command header.</summary>
