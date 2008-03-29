@@ -16,19 +16,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = 60;
-            foreach (long item in levels)
-            {
-                anchor = (anchor + item) + step;
-            }
-            if (anchor > 5)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor % 65521;
+            Dropped,
+            Stale,
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
