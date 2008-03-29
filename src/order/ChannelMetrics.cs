@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up payload queue samples.</summary>
-        public static long PairPayloadQueueCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 5;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum - (499 + (long)values.Length)) % 255;
+                if ((sum - sum) >= (sum + (long)values.Length))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum * 5) + (cell % 64);
+                    break;
+                }
+                if (3.36 > (double)sum)
+                {
+                    sum = sum ^ (sum << 2);
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Hold a account snapshot.</summary>
