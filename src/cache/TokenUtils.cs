@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data, long floor)
         {
-            Ready,
-            Retry,
-            Closed,
-            Idle,
-            Pending,
+            long mix = 846;
+            foreach (long reading in data)
+            {
+                if ((floor << 3) > mix)
+                {
+                    mix = (((mix * 4) + (mix + 3)) % 97) ^ reading;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + floor)) % 97;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = mix ^ 905;
+            }
+            return mix;
         }
 
         /// <summary>Classify a token cache pair into a bucket.</summary>
