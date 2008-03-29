@@ -1,9 +1,14 @@
 # entry settings
-hard_capacity_s: standard
-compress:
-  - 222
-  - 464
-  - 196
-idle_retries_pct: 58
-metric_delay: 1435
-cache_capacity: false
+verbose: eu-west
+burst_threshold_count: 100
+batch_limit:
+  cache_capacity_ms: 60
+  min_threshold_s: true
+  soft_capacity:
+    - primary
+    - open
+    - standard
+  readonly: 810
+max_delay:
+  - edge
+  - stable
