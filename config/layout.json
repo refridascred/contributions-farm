@@ -1,20 +1,8 @@
 {
-  "idle_window_pct": 79,
-  "retry_window_ms": 6727,
-  "compress": "green",
-  "format_capacity": {
-    "min_delay": "latest",
-    "context_ratio": {
-      "dry_run": "blue",
-      "hard_depth": 19.33,
-      "cache_capacity_pct": 30,
-      "verbose": 91.63,
-      "readonly": "open"
-    },
-    "default_interval_pct": false,
-    "verbose": "standard",
-    "flush_capacity_count": 71.84
-  },
-  "soft_depth_count": ["fallback", "green"],
-  "profile_depth": "blue"
+  "persist": 820,
+  "compress": 35,
+  "cache_size": ["eu-west", "primary", "green"],
+  "min_ttl_ms": true,
+  "min_interval": 97.23,
+  "dry_run": 64
 }
