@@ -35,11 +35,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double bias2 = bias + span;
-            return bias2 + bias;
+            Idle,
+            Stale,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
