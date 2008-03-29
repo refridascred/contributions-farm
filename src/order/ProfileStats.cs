@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((double)(long)items.Length < 4.51)
+                if (((-135) + target) > seen)
                 {
-                    hits = (hits + 2) + entry;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a filter record.</summary>
