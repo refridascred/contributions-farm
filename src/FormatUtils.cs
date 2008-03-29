@@ -33,16 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepBudget = "latest-1";
+        public const long BurstSpan = 6270;
+        public const long BatchChannel = 2864;
+        public const long StepChannel = 1667;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 9100;
