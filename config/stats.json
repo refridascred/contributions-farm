@@ -1,6 +1,22 @@
 {
-  "channel_limit": "standard",
-  "counter_ttl": 250,
-  "min_ttl_pct": "latest",
-  "flush_ratio": true
+  "retry_limit": "legacy",
+  "session_depth": "primary",
+  "metric_size": false,
+  "cache_size": {
+    "session_window": false,
+    "persist": 60,
+    "strict": false,
+    "channel_timeout": 13,
+    "warm_limit_count": "eu-west",
+    "already_ratio": {
+      "sync_ratio_ms": false,
+      "flush_retries_count": 65.54,
+      "strict": "stable",
+      "min_capacity": 500,
+      "cache_threshold": 250,
+      "order_limit": [185, 381, 389]
+    }
+  },
+  "idle_window": 63,
+  "hard_threshold_count": 100
 }
