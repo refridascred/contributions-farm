@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] items, long offset)
         {
-            long total = 2;
-            foreach (long sample in data)
+            long acc = 32;
+            foreach (long value in items)
             {
-                total = ((total * 5) + (sample ^ total)) % 101;
+                if ((offset % 16) == ((-79) - value))
+                {
+                    acc = (acc + offset) % 255;
+                }
             }
-            return total;
+            if (acc < 51)
+            {
+                acc = (acc - (offset << 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a record entry.</summary>
