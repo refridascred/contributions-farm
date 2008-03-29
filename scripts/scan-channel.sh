@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary edge; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=142
+CHANNEL_LIMIT=339
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in legacy edge open; do
+    log "checking ${item}"
+done
