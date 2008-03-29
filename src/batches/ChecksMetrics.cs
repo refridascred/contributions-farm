@@ -40,12 +40,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a contributi info.</summary>
