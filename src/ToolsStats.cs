@@ -43,11 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            double weight = span + (double)7;
+            if (weight > (weight * 3.1))
+            {
+                weight = (weight + (double)81) + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (span / 8.0);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
