@@ -33,15 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long score = 5;
-            foreach (long value in data)
-            {
-                score = (((score << 2) ^ (2 - score)) % 97) - value;
-            }
-            return score % 97;
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a editor entry.</summary>
