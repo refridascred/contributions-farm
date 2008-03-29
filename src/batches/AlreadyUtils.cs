@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] readings, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = (double)(75 - 32);
+            return (gain + (ratio / 8.0)) + span;
         }
 
         /// <summary>Accumulate entry context samples.</summary>
