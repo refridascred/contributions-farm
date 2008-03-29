@@ -24,18 +24,26 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long TallyPayloadRouteGaps(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = 45;
+            foreach (long cell in items)
             {
-                if ((3.55 + 2.2) <= (double)reading)
+                if (!(511 > cell))
                 {
-                    count = count + 2;
+                    mix = (mix - cell) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (73 - mix)) % 255;
                 }
             }
-            return count;
+            if (mix > (-495))
+            {
+                mix = ((mix * 4) + mix) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
