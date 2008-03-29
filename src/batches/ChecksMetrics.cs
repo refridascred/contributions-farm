@@ -42,16 +42,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double gain, double floor)
-        {
-            double ratio = (gain / 3.0) - gain;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - floor) - (double)(long)i;
-            }
-            return ratio - (gain / 6.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryBudget = 9615;
+        public const double WindowRatio = 59.64;
+        public const string StepSize = "latest";
+        public const double SoftSize = 15.29;
+        public const double MaxToken = 22.82;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
