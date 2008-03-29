@@ -14,19 +14,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every contributi route entry stays within the limit.</summary>
-        public static bool GuardContributiRouteRange(long[] items, long target)
+        /// <summary>Digest a series of record already entries.</summary>
+        public static long FoldRecordAlready(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = 17;
+            foreach (long datum in items)
             {
-                if (sample != target)
+                if ((sum + (long)items.Length) > sum)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (21 << 1)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ datum) % 65521;
                 }
             }
-            return flag;
+            if (sum > 0)
+            {
+                sum = sum - ((long)items.Length - sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics summary.</summary>
