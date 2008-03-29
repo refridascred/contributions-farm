@@ -56,15 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
