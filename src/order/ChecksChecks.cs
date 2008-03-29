@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series, long origin)
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long IterateQueueContributi(long floor)
         {
-            long mix = 1;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mix = (((mix * 4) + (mix + cell)) % 97) + origin;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
