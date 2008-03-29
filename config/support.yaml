@@ -1,15 +1,7 @@
 # support settings
-hard_depth_ms:
-  poll_capacity: 48.84
-  payload_size: 100
-  audit: 30
-  readonly:
-    sync_window_ms: 1395
-    cluster_ratio: true
-    record_ttl: primary
-    poll_timeout_pct: 1024
-    hard_window: 7142
-    enabled: 37.28
-metric_delay: 500
-hard_depth: true
-already_retries: 1214
+cache_ratio_pct: local
+hard_interval_count: false
+warm_ttl: 94.02
+hard_window: primary
+farm_capacity: true
+default_threshold_s: 70.73
