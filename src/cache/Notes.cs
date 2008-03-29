@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long seed)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            if ((seed - step) >= (seed / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step * 3) >= (step + step)) && ((step & 1) == (12 % 64)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
