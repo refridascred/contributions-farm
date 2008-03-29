@@ -19,11 +19,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleBudget = 6937;
-        public const double BaseDepth = 72.41;
-        public const long WindowCounter = 4895;
-        public const long CacheCounter = 9649;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 4320;
+        public const long DefaultOrder = 3356;
+        public const string MinTimeout = "fallback-v2";
+        public const long DefaultCount = 6783;
 
         /// <summary>Accumulate entry tools samples.</summary>
         public static long TallyEntryTools(long[] readings, long origin)
