@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
         {
-            double gain = (bias + bias2) - (bias2 * 5.0);
-            if (gain > bias2)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                gain = gain + (bias2 - bias);
+                if (((seen & 1) < reading) && ((seen - reading) != (435 % 100)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain - bias;
+            return seen;
         }
 
         /// <summary>Describe the context class values.</summary>
