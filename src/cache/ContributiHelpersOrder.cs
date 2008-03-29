@@ -37,9 +37,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 3090;
-        public const long RetryFactor = 6153;
-        public const long RetryContext = 8684;
+        /// <summary>Accumulate batches stream samples.</summary>
+        public static long ScoreBatchesStream(long[] series, long floor)
+        {
+            long carry = 73;
+            foreach (long cell in series)
+            {
+                if (((double)floor >= (double)51) && ((carry ^ floor) <= 92))
+                {
+                    carry = (carry ^ ((-8) + carry)) ^ cell;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (floor & 7)) % 255;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = carry - carry;
+            }
+            return carry % 97;
+        }
     }
 }
