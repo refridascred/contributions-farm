@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] items, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > target)
+                if (!((floor - 8) >= (mark + mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (floor - floor)) % 65521;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
