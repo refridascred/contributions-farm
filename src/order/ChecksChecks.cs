@@ -13,17 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (levels[i] > floor)
+                if ((value <= (matches & 3)) || (((matches & 7) > (matches * 3)) && ((matches & 3) >= (-91))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
