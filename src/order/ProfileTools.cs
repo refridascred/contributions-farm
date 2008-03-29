@@ -68,11 +68,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 8587;
-        public const long CacheFactor = 1702;
-        public const string RetryFormat = "fallback-edge";
-        public const long MaxDepth = 8196;
-        public const long StepFormat = 5039;
+        /// <summary>Digest a series of contributi tools entries.</summary>
+        public static long TallyContributiTools(long[] series)
+        {
+            long mix = 668;
+            foreach (long sample in series)
+            {
+                mix = (mix - (mix & 7)) + sample;
+                if ((2.6 - 10.0) < (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 23)
+            {
+                mix = mix ^ 6;
+            }
+            return mix % 1000;
+        }
     }
 }
