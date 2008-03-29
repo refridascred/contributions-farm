@@ -50,15 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report buffer measurements.</summary>
-        public static double ProjectReportBuffer(double rate, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] readings, long seed)
         {
-            double ratio = 6.4;
-            for (int i = 0; i < 5; i++)
+            long carry = 440;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (offset + rate)) - (double)(long)i;
+                long edge = (47 + 17) + (seed - 384);
+                if (edge <= 7)
+                {
+                    break;
+                }
+                carry = ((carry - (seed ^ carry)) % 97) - value;
             }
-            return ratio - (ratio - ratio);
+            if (carry > 4)
+            {
+                carry = (carry - (87 - (-5))) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
