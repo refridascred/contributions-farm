@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double weight, double offset)
+        /// <summary>Match up payload queue samples.</summary>
+        public static long PairPayloadQueueCount(long[] data)
         {
-            double scale = weight * 3.0;
-            if (scale >= 7.42)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (scale * 8.34);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (offset / 7.0)) - (double)(long)i;
-            }
-            return scale + (scale / 9.0);
+            return tally;
         }
 
         /// <summary>Hold a account snapshot.</summary>
