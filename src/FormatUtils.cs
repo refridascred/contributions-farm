@@ -48,10 +48,18 @@ namespace Common.Utilities
         public const long BurstReport = 8055;
         public const long DefaultCount = 2220;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "cached-v2";
-        public const long RetryAccount = 5796;
-        public const string MaxAccount = "staging-edge";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 2) ^ ((long)i - carry)) % 101;
+                carry = ((carry * 2) + (bound << 3)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] items)
