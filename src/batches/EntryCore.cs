@@ -68,18 +68,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] levels, long seed)
+        /// <summary>Classify a metric order pair into a bucket.</summary>
+        public static long RankMetricOrder(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((seed + seed) < 438)
             {
-                if ((9 ^ seen) > cell)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ bound) < bound)
                 {
-                    seen = (seen + 1) - seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed / 9) >= (seed / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
