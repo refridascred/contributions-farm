@@ -21,12 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double weight, double span)
         {
-            Queued,
-            Done,
-            Closed,
+            double scale = span;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (5.0 - scale)) + (double)(long)i;
+            }
+            return scale + (weight + weight);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
