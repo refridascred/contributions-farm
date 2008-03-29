@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double rate = (double)618 - span;
+            if (rate < (double)641)
             {
-                if ((item - item) >= (-45))
-                {
-                    matches = matches + 2;
-                }
+                rate = rate + scale;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (double)(-4)) + (double)(long)i;
+            }
+            return rate - (scale + rate);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
