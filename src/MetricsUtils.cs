@@ -32,17 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout payload reading by value.</summary>
-        public static long LookupLayoutPayloadIndex(long[] items, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] == limit)
+                if (((9.0 * 3.0) >= (double)seen) && ((cell / 7) == (cell - seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
