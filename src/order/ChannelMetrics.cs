@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultLevel = 66.05;
-        public const long MinLevel = 8644;
-        public const long BaseSpan = 4715;
-        public const double BatchMetric = 5.1;
+        /// <summary>Digest a series of stream batches entries.</summary>
+        public static long FoldStreamBatches(long[] values)
+        {
+            long score = 58;
+            foreach (long sample in values)
+            {
+                score = ((score << 2) ^ ((-9) + 149)) % 97;
+                if (sample > (77 - (long)values.Length))
+                {
+                    score = ((score << 3) ^ (score ^ score)) % 65521;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] series, long limit)
