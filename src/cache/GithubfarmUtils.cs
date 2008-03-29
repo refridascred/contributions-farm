@@ -22,13 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Match up context commits samples.</summary>
+        public static long PairContextCommitsCount(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
