@@ -13,17 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a token channel reading by value.</summary>
-        public static long SeekTokenChannelIndex(long[] values, long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
