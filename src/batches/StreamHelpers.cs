@@ -68,22 +68,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of session buffer readings.</summary>
-        public static long DigestSessionBuffer(long[] samples, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            long score = 47;
-            foreach (long cell in samples)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell << 1) != (seed * 2))
+                if ((607 + (long)i) >= (step + step))
                 {
-                    score = (score + (score - 385)) % 1000;
+                    state = (state ^ (state & 255)) % 101;
                 }
-                else
-                {
-                    score = (score ^ (seed / 6)) % 1000;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
     }
 }
