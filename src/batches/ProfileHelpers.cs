@@ -56,25 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long prev = step - limit;
-            if ((11.0 - 6.0) != (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev > 17.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Closed,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a batch summary.</summary>
