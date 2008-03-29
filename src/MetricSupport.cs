@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Iterate the support metrics series from a seed.</summary>
+        public static long SeriesSupportMetrics(long origin)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((long)series.Length == (count % 5))
-                {
-                    count = (count + 2) + reading;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
