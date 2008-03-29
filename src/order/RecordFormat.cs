@@ -47,22 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits >> 1) < (sample & 127))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
