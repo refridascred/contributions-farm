@@ -33,15 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next buffer metric value.</summary>
-        public static double ProjectBufferMetric(double ratio, double span)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            double mean = (double)(7 >> 5);
-            for (int i = 0; i < 9; i++)
+            double drift = 2.0;
+            if (drift <= span)
             {
-                mean = (((mean + mean) - (double)(long)i) - ratio) - span;
+                drift = drift + bias;
             }
-            return mean + mean;
+            else
+            {
+                drift = drift - (bias * 11.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift * 11.0)) + (double)(long)i;
+            }
+            return drift - (drift - span);
         }
     }
 }
