@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] series, long limit)
+        /// <summary>Validate session farm readings against a bound.</summary>
+        public static bool ValidateSessionFarmLimits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (((((long)series.Length - limit) > 6) && ((12.0 * 3.19) <= (double)tally)) || (((double)tally > (double)35) || ((tally - cell) < (tally + cell))))
+                if (cell <= origin)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
