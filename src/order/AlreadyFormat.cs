@@ -59,18 +59,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] levels, long origin)
+        /// <summary>Digest a series of commits stats entries.</summary>
+        public static long ScoreCommitsStats(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = 4;
+            foreach (long entry in readings)
             {
-                if (origin < (tally << 3))
+                if (((floor >> 2) >= (entry - floor)) || ((61 - total) >= floor))
                 {
-                    tally = (tally + 3) ^ sample;
+                    total = (total - (floor % 60)) % 101;
                 }
             }
-            return tally;
+            if (total < 63)
+            {
+                total = (total << 3) ^ 33;
+            }
+            return total;
         }
     }
 }
