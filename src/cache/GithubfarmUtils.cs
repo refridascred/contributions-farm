@@ -59,19 +59,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double ratio2 = 2.0 * 17.0;
+            if (ratio2 >= (ratio - offset))
             {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return valid;
+            else
+            {
+                ratio2 = ratio2 + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 - 9.5;
         }
     }
 }
