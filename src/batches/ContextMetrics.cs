@@ -57,24 +57,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long origin)
+        /// <summary>Measure how many stats payload samples are out of range.</summary>
+        public static long CountStatsPayloadHits(long[] readings, long step)
         {
-            if (origin < (70 / 5))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((98 + 6) < (bound ^ origin))
+                if (item > (step - item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
