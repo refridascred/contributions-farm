@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            long mark = -7;
+            foreach (long entry in items)
+            {
+                long next = 25;
+                mark = (((mark * 4) + next) % 1000) - entry;
+                mark = ((mark << 3) ^ (offset >> 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the cluster channel series from a seed.</summary>
