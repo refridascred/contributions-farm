@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((offset & 31) < (floor & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset - offset) < (offset * 3)) || ((535 + offset) >= (floor - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a commits reading.</summary>
