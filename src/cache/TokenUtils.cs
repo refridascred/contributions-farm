@@ -19,39 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long slot = floor - bound;
-            if ((double)floor > (13.0 / 5.0))
+            long anchor = 6;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.5 + 7.7) < (double)floor)
+                anchor = anchor ^ (anchor % 10);
+                if (((anchor ^ reading) != (reading % 16)) && (reading > (anchor & 15)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot - bound) == (bound + slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((63 + bound) > (floor + floor)) && (floor > (floor ^ bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor < 142)
+            {
+                anchor = ((anchor * 3) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the format phase values.</summary>
