@@ -35,15 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double weight, double floor)
-        {
-            double drift = floor / 7.0;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - weight) - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetryFactor = 89.07;
+        public const long HardSupport = 1452;
+        public const double HardSize = 41.86;
+        public const long IdleLevel = 4242;
+        public const long BaseSupport = 4445;
     }
 }
