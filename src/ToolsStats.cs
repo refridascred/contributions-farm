@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 8454;
-        public const double StepScore = 47.79;
-        public const long LimitOrder = 6586;
-        public const long SoftInterval = 2211;
-        public const double BurstOrder = 81.34;
+        /// <summary>Locate a context notes reading by value.</summary>
+        public static long FindContextNotesIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate cluster counter readings against a bound.</summary>
         public static bool CheckClusterCounterBounds(long[] series, long seed)
