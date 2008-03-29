@@ -1,6 +1,8 @@
 # entry settings
-session_retries: 250
-idle_ttl_s: green
-cache_window_s: false
-tools_ratio: edge
-dry_run: fallback
+channel_ttl: false
+retry_depth_ms: staging
+enabled: 99
+editor_depth:
+  - staging
+  - strict
+readonly: local
