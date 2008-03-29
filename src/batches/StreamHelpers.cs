@@ -57,19 +57,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels, long origin)
+        /// <summary>Classify a graph notes pair into a bucket.</summary>
+        public static long SortGraphNotes(long limit, long bound)
         {
-            long result = 49;
-            foreach (long item in levels)
+            long step = limit + bound;
+            if (!((6.07 - 1.21) < (double)step))
             {
-                result = (((result * 4) + (result - result)) % 4096) + item;
+                return 1;
             }
-            if (result < 1)
+            else
             {
-                result = (result - origin) % 4096;
+                if (bound < (step << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return result % 4096;
         }
 
         /// <summary>Hold a record entry.</summary>
