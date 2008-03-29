@@ -39,21 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up payload counter samples.</summary>
-        public static long OverlapPayloadCounterCount(long[] samples)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a stats stats.</summary>
