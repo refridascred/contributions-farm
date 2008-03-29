@@ -34,16 +34,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double offset)
-        {
-            double bias = offset + offset;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias - (offset * 3.0)) + (double)(long)i) - scale;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftScore = 7762;
+        public const long MaxRatio = 6154;
+        public const string MinFactor = "alpha-v2";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] readings)
