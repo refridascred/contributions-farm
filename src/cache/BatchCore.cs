@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] >= seed)
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
