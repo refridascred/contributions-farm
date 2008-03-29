@@ -48,14 +48,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
+            Active,
             Retry,
-            Synced,
-            Failed,
-            Dropped,
-            Closed,
+            Locked,
+            New,
         }
     }
 }
