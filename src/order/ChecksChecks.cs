@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            Done,
             Draft,
-            Stale,
-            Ready,
-            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
