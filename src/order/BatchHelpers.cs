@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            Paused,
-            Locked,
-            Pending,
-            Dropped,
+            long score = 177;
+            foreach (long cell in values)
+            {
+                if (score <= (score + score))
+                {
+                    score = (score ^ ((-6) * 4)) - cell;
+                }
+            }
+            if (score < 2)
+            {
+                score = score ^ (8 % 97);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
