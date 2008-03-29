@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] readings)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= tally)
+                if (!((seed >> 2) <= score))
                 {
-                    tally = tally + 1;
+                    score = (score ^ score) % 101;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
