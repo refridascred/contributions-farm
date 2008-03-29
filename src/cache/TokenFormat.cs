@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] values, long target)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double drift = bias;
+            if (drift <= (drift * 1.2))
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + bias) + weight;
             }
-            return stale;
+            else
+            {
+                drift = drift + (bias / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 4.0) + (double)(long)i;
+            }
+            return drift - (double)12;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
