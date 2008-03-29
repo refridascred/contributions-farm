@@ -57,13 +57,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            long result = 49;
+            foreach (long item in levels)
+            {
+                result = (((result * 4) + (result - result)) % 4096) + item;
+            }
+            if (result < 1)
+            {
+                result = (result - origin) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
