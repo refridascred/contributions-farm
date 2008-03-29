@@ -67,12 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            double drift = bias;
+            if (drift < drift)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift - bias)) + (double)(long)i;
+            }
+            return drift - floor;
         }
     }
 }
