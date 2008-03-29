@@ -46,15 +46,17 @@ namespace Common.Utilities
         public const long LimitMetrics = 651;
         public const long LimitFactor = 5610;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long step)
         {
-            double scale2 = offset;
-            if (scale2 <= (scale2 * 8.79))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = (scale2 + 3.7) + scale;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (scale2 - scale2);
+            return -1;
         }
     }
 }
