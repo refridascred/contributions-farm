@@ -15,12 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((((long)i >> 4) <= (anchor + (long)i)) && ((double)(long)i >= (9.69 * 2.0)))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route phase values.</summary>
