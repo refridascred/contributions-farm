@@ -36,15 +36,27 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double floor)
+        /// <summary>Fold a list of order farm readings.</summary>
+        public static long TallyOrderFarm(long[] series, long step)
         {
-            double scale = floor;
-            if (scale > 1.0)
+            long result = 5;
+            foreach (long sample in series)
             {
-                scale = scale + (gain / 8.0);
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result + step) % 65521) - sample;
+                    result = result ^ (long)i;
+                }
+                if (result < (6 * 3))
+                {
+                    result = (result + (53 / 6)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 3) + (result * 5)) % 101;
+                }
             }
-            return scale - (floor / 2.0);
+            return result % 97;
         }
 
         /// <summary>Hold a route header.</summary>
