@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long total = 430;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit >> 3) <= total)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total ^ (entry / 4)) % 4096;
-                }
-                else
-                {
-                    total = (total - total) % 255;
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
