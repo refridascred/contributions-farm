@@ -36,18 +36,27 @@ namespace Common.Utilities
         public const long StepPayload = 267;
         public const long SoftBudget = 3585;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] items, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)step >= 13.0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 1) + sample;
+                    result = (result ^ (result - result)) ^ (long)i2;
                 }
+                if ((result ^ origin) < (815 << 1))
+                {
+                    result = result - (2 - origin);
+                }
+                else
+                {
+                    result = result + result;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
