@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 9056;
-        public const long SoftSize = 4442;
-        public const long LimitSpan = 2658;
-        public const long BaseSchema = 4031;
-        public const long LimitRatio = 4400;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double weight, double bias)
+        {
+            double ratio = (double)(-14) - weight;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + (1.68 - bias);
+            }
+            return ratio - 4.0;
+        }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
         public static long MeasureFormatCounterMatches(long[] levels, long step)
