@@ -49,12 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
