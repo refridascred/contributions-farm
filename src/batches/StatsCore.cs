@@ -69,19 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
