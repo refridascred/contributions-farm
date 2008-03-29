@@ -1,6 +1,10 @@
-id,score,rank
-1,229,995
-2,strict,58.91
-3,31.65,cached
-4,774,806
-5,529,latest
+id,region,token,level,count
+1,blue,local,latest,794
+2,15.5,blue,57.38,337
+3,60.97,legacy,218,open
+4,green,930,60.53,eu-west
+5,fallback,485,local,cached
+6,910,3.14,831,latest
+7,latest,291,primary,917
+8,56.38,local,701,79.13
+9,300,14.47,269,legacy
