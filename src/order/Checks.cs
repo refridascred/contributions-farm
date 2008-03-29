@@ -13,15 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Project the next format buffer value.</summary>
