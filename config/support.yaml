@@ -1,8 +1,11 @@
 # support settings
-max_window:
-  readonly: true
-  queue_limit: cached
-  burst_ttl_ms: stable
-context_depth: 100
-readonly: local
-cluster_ttl: blue
+warm_capacity:
+  persist: 52
+  buffer_timeout: true
+  retry_threshold: staging
+  enabled: 1377
+  farm_window: cached
+  batches_retries: 84.85
+record_delay: true
+soft_capacity_count: true
+compress: open
