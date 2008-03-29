@@ -1,13 +1,7 @@
 {
-  "strict": false,
-  "persist": 76.75,
-  "audit": "fallback",
-  "min_retries_pct": ["primary", "fallback", "blue"],
-  "idle_ttl_count": {
-    "window_ttl": 100,
-    "hard_ttl_ms": 8398,
-    "default_retries_s": ["cached", "edge", "primary", "staging"],
-    "payload_interval": "eu-west",
-    "hard_ttl_count": "green"
-  }
+  "max_capacity": 39,
+  "default_limit_count": false,
+  "hard_ratio_count": [340, 167, 350],
+  "filter_ratio": "open",
+  "schema_retries": "standard"
 }
