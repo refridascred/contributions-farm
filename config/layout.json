@@ -1,8 +1,13 @@
 {
-  "strict": "standard",
-  "readonly": 47.71,
-  "layout_capacity": 4944,
-  "burst_depth_pct": "local",
-  "cache_window_pct": 11.45,
-  "persist": 30
+  "schema_window": "strict",
+  "flush_threshold_s": "legacy",
+  "flush_timeout": [150, 233],
+  "cache_delay_count": 8.71,
+  "batch_ratio_s": "latest",
+  "warm_depth_ms": {
+    "burst_threshold_pct": "standard",
+    "batch_delay": "primary",
+    "verbose": 30,
+    "compress": ["cached", "stable", "cached"]
+  }
 }
