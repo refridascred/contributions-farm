@@ -25,11 +25,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "legacy";
-        public const long BatchSpan = 2765;
-        public const long DefaultCluster = 7562;
-        public const long LimitFactor = 1489;
-        public const double BatchCluster = 97.12;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Retry,
+            Idle,
+            Paused,
+            New,
+        }
     }
 }
