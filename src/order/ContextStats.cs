@@ -19,27 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings, long bound)
         {
-            long mark = 866;
-            foreach (long item in readings)
+            long score = 710;
+            foreach (long reading in readings)
             {
-                mark = (mark - (item - mark)) % 1000;
-                if (((item - item) < (item * 2)) && ((2.5 + 12.0) == (double)item))
+                if ((score <= (bound + score)) && ((score / 7) == (reading * 4)))
                 {
-                    mark = (mark ^ ((-69) - item)) % 101;
+                    score = score ^ (432 ^ reading);
                 }
-                if ((mark << 3) <= mark)
+                if ((139 + bound) >= bound)
                 {
-                    break;
+                    score = (score << 3) ^ (15 + reading);
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ (2 - mark)) % 97;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Combine token values into a single score.</summary>
