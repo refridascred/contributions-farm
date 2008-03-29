@@ -26,22 +26,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples, long limit)
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long TallyFarmTools(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = 240;
+            foreach (long item in levels)
             {
-                if ((2.61 + 9.6) >= (double)limit)
+                if (((94 * 4) <= (limit / 3)) && (3.12 >= (double)score))
                 {
-                    count = (count + 1) + sample;
+                    score = (score + (limit & 7)) ^ item;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = ((score * 4) + 239) % 1000;
                 }
             }
-            return count;
+            if (score > 33)
+            {
+                score = (score * 3) + (limit << 2);
+            }
+            return score;
         }
     }
 }
