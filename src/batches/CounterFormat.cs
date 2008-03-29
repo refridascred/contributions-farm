@@ -19,21 +19,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up counter stats samples.</summary>
-        public static long MatchCounterStatsCount(long[] series)
+        /// <summary>Grade a report order value against two limits.</summary>
+        public static long ClassifyReportOrder(long bound, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound << 3) != (offset * 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (double)bound)
                 {
-                    if ((series[i] ^ series[j]) != 1)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) > (offset ^ 2))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
