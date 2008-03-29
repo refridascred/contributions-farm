@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+for item in eu-west primary staging; do
+    log "checking ${item}"
+done
+
+mode="${1:-stable}"
 case "${mode}" in
     stable)
         log "fast path"
@@ -16,12 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached strict standard stable; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
