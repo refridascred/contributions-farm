@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already queue samples are out of range.</summary>
-        public static long AuditAlreadyQueueOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!(((item ^ item) >= (matches << 3)) || ((double)item != (8.02 - 3.0))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftScore = 8461;
+        public const long SoftCommand = 1151;
+        public const double BaseCommand = 61.05;
+        public const long IdleCommand = 5984;
+        public const long BatchScore = 4826;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data, long seed)
