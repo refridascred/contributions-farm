@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Synced,
             Failed,
-            Stale,
+            Draft,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
