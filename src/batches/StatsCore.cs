@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long WindowDepth = 7847;
         public const long CacheWidth = 2874;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] items, long origin)
         {
-            Synced,
-            New,
-            Closed,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry <= (origin << 2)) || ((entry - origin) >= (origin - entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout header.</summary>
