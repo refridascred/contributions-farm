@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a record tools pair into a bucket.</summary>
-        public static long GradeRecordTools(long target, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            long span = target + step;
-            if ((step + span) >= step)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(span > (step + target)))
+                if ((double)seed == (7.07 - 8.0))
                 {
-                    return 1;
+                    mix = (mix * 4) + mix;
+                    break;
                 }
-                else
-                {
-                    if ((span >> 3) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step < (target ^ 627))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Grade a contributi support value against two limits.</summary>
