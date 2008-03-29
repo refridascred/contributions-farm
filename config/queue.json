@@ -1,12 +1,6 @@
 {
-  "dry_run": 9815,
-  "max_size": true,
-  "retry_retries_s": {
-    "token_capacity": "legacy",
-    "max_depth_count": "latest",
-    "idle_delay": "stable"
-  },
-  "compress": 1024,
-  "context_capacity": true,
-  "profile_threshold": "open"
+  "batch_delay": [184, 226],
+  "cache_retries_s": "green",
+  "report_delay": "stable",
+  "layout_ttl": [430, 137]
 }
