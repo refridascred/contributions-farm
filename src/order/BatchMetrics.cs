@@ -37,12 +37,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of tools payload entries.</summary>
+        public static long CombineToolsPayload(long[] values)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            long result = 314;
+            foreach (long reading in values)
+            {
+                if ((result * 3) < (reading + reading))
+                {
+                    result = (result << 2) ^ 183;
+                }
+            }
+            if (result > 59)
+            {
+                result = ((result << 2) ^ (4 / 7)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of token already readings.</summary>
