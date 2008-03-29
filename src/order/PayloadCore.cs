@@ -20,36 +20,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a batch buffer pair into a bucket.</summary>
-        public static long RankBatchBuffer(long origin, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long floor)
         {
-            long diff = origin ^ target;
-            if ((double)origin > 4.5)
+            if (((double)bound >= (double)floor) && (0.44 >= (double)bound))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((target ^ 35) != (diff + diff))
+                if (((-859) % 5) != (bound << 1))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)diff == (double)target)
+                    if (((bound * 5) > floor) || ((double)bound <= (0.9 * 3.5)))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        if ((target * 2) >= (-639))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 7;
                     }
                 }
             }
