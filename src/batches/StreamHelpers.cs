@@ -37,15 +37,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values, long limit)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long AuditAccountCommitsGaps(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long reading in readings)
             {
-                if (limit < (cell - 0))
+                if (((hits << 1) < (reading + hits)) && (((double)hits != (double)8) || ((reading * 3) > reading)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
