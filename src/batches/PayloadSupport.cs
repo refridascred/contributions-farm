@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] samples, long seed)
+        /// <summary>Roll a buffer already counter forward.</summary>
+        public static long SeriesBufferAlready(long step)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the record status values.</summary>
