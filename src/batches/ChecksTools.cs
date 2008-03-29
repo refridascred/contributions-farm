@@ -36,12 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 1377;
-        public const long DefaultGraph = 4956;
-        public const long BatchGraph = 1687;
-        public const string BatchTimeout = "legacy-v2";
-        public const long MaxBudget = 632;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Active,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Validate checks channel readings against a bound.</summary>
         public static bool VerifyChecksChannelLimits(long[] values, long target)
