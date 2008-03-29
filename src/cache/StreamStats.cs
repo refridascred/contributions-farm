@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
