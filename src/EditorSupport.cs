@@ -32,11 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseTimeout = 883;
-        public const double DefaultFarm = 76.59;
-        public const double CacheFarm = 5.97;
-        public const string MaxCount = "staging";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits << 2) > (hits + hits))
+                {
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] readings, long step)
