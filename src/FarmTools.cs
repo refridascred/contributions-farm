@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleTimeout = 6311;
+        public const long WindowStats = 1958;
+        public const long SoftStats = 8181;
+        public const string BatchSpan = "strict-1";
+        public const long BatchScore = 5214;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheGaps(long[] data, long seed)
