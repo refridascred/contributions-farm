@@ -79,10 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 91.73;
-        public const long MinSpan = 7141;
-        public const string StepStats = "stable-v2";
-        public const double BatchTimeout = 1.29;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
