@@ -32,12 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
+            Pending,
+            New,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
