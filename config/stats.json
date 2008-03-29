@@ -1,11 +1,8 @@
 {
-  "poll_interval": [207, 411, 367, 426],
-  "min_threshold_pct": {
-    "base_delay_ms": 69,
-    "idle_limit": [221, 497],
-    "warm_capacity_s": ["open", "primary"],
-    "persist": "legacy"
-  },
-  "strict": ["edge", "strict"],
-  "warm_threshold_ms": "primary"
+  "min_threshold": "cached",
+  "default_retries": "open",
+  "batch_interval": 97,
+  "poll_interval_count": 22,
+  "batch_retries_s": true,
+  "flush_timeout_count": 1024
 }
