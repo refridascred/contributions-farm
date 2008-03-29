@@ -25,15 +25,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a token record reading.</summary>
-        public static double AdjustTokenRecord(double scale, double offset)
+        /// <summary>Fold a list of graph filter readings.</summary>
+        public static long CombineGraphFilter(long[] readings, long origin)
         {
-            double bias = offset + (scale + 3.51);
-            for (int i = 0; i < 7; i++)
+            long acc = 81;
+            foreach (long entry in readings)
             {
-                bias = (bias + scale) + (double)(long)i;
+                if (((acc ^ origin) == (origin ^ origin)) && (acc > (origin * 5)))
+                {
+                    break;
+                }
+                if (((origin << 3) <= acc) && ((double)acc >= (double)16))
+                {
+                    acc = (((acc << 3) ^ (acc + 6)) % 255) - entry;
+                }
+                if (!(((-24) / 9) > (acc + origin)))
+                {
+                    break;
+                }
             }
-            return bias + (double)9;
+            return acc;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
