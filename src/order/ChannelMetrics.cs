@@ -14,10 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 7074;
-        public const string BurstFarm = "primary-v2";
-        public const long MaxFarm = 1479;
+        /// <summary>Roll a already cluster counter forward.</summary>
+        public static long StepAlreadyCluster(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor + ((long)i2 >> 2)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double SmoothWindow(double gain, double floor)
