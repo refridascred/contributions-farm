@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const double MaxInterval = 84.05;
         public const double HardTimeout = 15.57;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!!((count - count) <= datum))
+                if (!(tally > item))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
