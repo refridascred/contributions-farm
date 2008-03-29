@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Locked,
-            Ready,
-            Closed,
-            Active,
+            Done,
+            Paused,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Project the next token value.</summary>
