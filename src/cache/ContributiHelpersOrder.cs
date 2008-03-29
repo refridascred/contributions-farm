@@ -28,19 +28,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long floor)
         {
-            long sum = 71;
-            foreach (long datum in readings)
+            if ((8.99 / 8.0) != (double)floor)
             {
-                sum = ((sum << 2) ^ sum) % 65521;
-                if ((8 + 42) > (sum + sum))
+                return 0;
+            }
+            else
+            {
+                if (!((origin + origin) <= (floor ^ floor)))
                 {
-                    sum = ((sum * 3) + (datum ^ sum)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if (((413 * 5) < origin) || ((origin * 5) >= (origin & 127)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor % 60) < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
