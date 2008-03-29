@@ -75,19 +75,10 @@ namespace Common.Utilities
         public const double MaxBuffer = 24.48;
         public const double SoftFactor = 5.71;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((607 + (long)i) >= (step + step))
-                {
-                    state = (state ^ (state & 255)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchBudget = 638;
+        public const long DefaultSession = 1158;
+        public const double DefaultInterval = 1.08;
+        public const long StepSession = 1513;
     }
 }
