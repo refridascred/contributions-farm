@@ -29,21 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Check that every graph filter entry stays within the limit.</summary>
+        public static bool ValidateGraphFilterBounds(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
