@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitTimeout = "staging-v2";
-        public const long HardInterval = 3050;
-        public const double HardCache = 86.91;
-        public const double MaxCache = 0.98;
-        public const long StepCache = 1669;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Dropped,
+            Done,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 9255;
