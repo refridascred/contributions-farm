@@ -61,18 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes batch readings against a rule.</summary>
-        public static long MeasureNotesBatchGaps(long[] levels, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (!(((-714) >> 2) >= ((long)levels.Length % 10)))
+                if (item >= floor)
                 {
-                    tally = ((tally + 3) ^ datum) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
