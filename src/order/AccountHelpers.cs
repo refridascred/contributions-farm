@@ -39,18 +39,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] readings, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!!((count * 4) == (value - value)))
+                if ((matches - matches) != (target / 4))
                 {
-                    count = (count + 2) + bound;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
