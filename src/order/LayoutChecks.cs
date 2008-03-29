@@ -47,15 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] samples, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long sample in levels)
             {
-                if (((matches + 96) >= datum) || !((double)datum >= (1.0 - 4.03)))
+                if ((((matches % 5) <= (sample << 3)) && ((3 << 2) >= sample)) && ((6.2 * 0.36) <= (double)offset))
                 {
-                    matches = (matches + 2) + limit;
+                    matches = matches + 2;
                 }
             }
             return matches;
