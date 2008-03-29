@@ -32,20 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Digest a series of layout editor entries.</summary>
+        public static long TotalLayoutEditor(long[] data, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = 270;
+            foreach (long datum in data)
             {
-                if (!(3.0 <= (double)seed))
+                if (sum > (long)data.Length)
                 {
-                    acc = (acc ^ (-5)) % 101;
+                    sum = (sum ^ (offset ^ datum)) % 97;
                 }
-                acc = acc ^ ((long)i + acc);
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
     }
 }
