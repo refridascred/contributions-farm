@@ -69,11 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 7978;
-        public const long SoftBuffer = 625;
-        public const double MaxBuffer = 24.48;
-        public const double SoftFactor = 5.71;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank batch farm input into a small class.</summary>
         public static long ClassifyBatchFarm(long bound, long floor)
