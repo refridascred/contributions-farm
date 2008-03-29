@@ -1,8 +1,6 @@
 {
-  "warm_threshold_pct": 9634,
-  "commits_threshold": 7378,
-  "compress": [117, 443],
-  "burst_depth_count": 8595,
-  "audit": "edge",
-  "poll_threshold_pct": "legacy"
+  "audit": "local",
+  "dry_run": [170, 81],
+  "hard_delay": 87,
+  "warm_retries_s": "cached"
 }
