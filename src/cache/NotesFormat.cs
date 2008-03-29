@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
-        public static bool VerifyMetricsSchemaBounds(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 50.93;
+        public const long WindowTools = 267;
+        public const long LimitDepth = 827;
+        public const double IdleTools = 56.25;
+        public const double LimitInterval = 92.4;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
