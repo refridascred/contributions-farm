@@ -17,31 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a payload stream pair into a bucket.</summary>
-        public static long BucketPayloadStream(long limit, long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long bound)
         {
-            if (limit <= (limit >> 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((1 - seed) <= (seed - seed)))
+                if (data[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed >= (5.53 - 13.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
