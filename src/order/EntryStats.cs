@@ -91,11 +91,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many account order samples are out of range.</summary>
+        public static long TallyAccountOrderMatches(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 5) == (tally % 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
