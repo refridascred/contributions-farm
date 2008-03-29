@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
