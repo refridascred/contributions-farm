@@ -53,18 +53,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long result = 800;
-            foreach (long reading in levels)
-            {
-                if ((double)reading <= 19.0)
-                {
-                    result = result + result;
-                }
-            }
-            return result;
+            Dropped,
+            Closed,
+            Retry,
         }
     }
 }
