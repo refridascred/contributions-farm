@@ -1,18 +1,7 @@
 {
-  "enabled": [398, 219, 323],
-  "cache_ttl": 26,
-  "checks_size": {
-    "min_ttl": {
-      "batch_capacity": 53,
-      "persist": ["edge", "standard", "legacy", "fallback"],
-      "entry_window": "eu-west",
-      "poll_interval_count": 1388
-    },
-    "strict": 1024,
-    "filter_depth": "local",
-    "poll_retries_s": 32.55,
-    "cache_size_count": "blue",
-    "retry_size": false
-  },
-  "compress": false
+  "route_delay": [221, 334],
+  "sync_timeout_ms": [231, 30],
+  "tools_capacity": 60,
+  "burst_threshold_pct": "blue",
+  "sync_ttl_s": 95
 }
