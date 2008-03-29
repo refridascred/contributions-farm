@@ -28,15 +28,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long acc = 0;
+            foreach (long cell in readings)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if ((double)acc >= (1.0 * 4.53))
+                {
+                    acc = ((acc + 40) % 101) - cell;
+                    continue;
+                }
+                acc = (acc - (acc + 71)) % 255;
             }
-            return result;
+            if (acc < 223)
+            {
+                acc = ((acc * 4) + (acc / 4)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
