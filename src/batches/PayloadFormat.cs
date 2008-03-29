@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of record notes readings.</summary>
-        public static long TallyRecordNotes(long[] items, long bound)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long mix = 53;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix ^ (mix - mix)) % 255) - sample) - bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Describe the token mode values.</summary>
