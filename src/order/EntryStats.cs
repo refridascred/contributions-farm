@@ -53,12 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= limit)
+                if ((series[i] < target) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
