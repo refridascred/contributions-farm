@@ -35,13 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data, long seed)
         {
-            Stale,
-            New,
-            Closed,
-            Dropped,
+            long acc = 801;
+            foreach (long value in data)
+            {
+                if (12.0 <= (double)acc)
+                {
+                    acc = (acc << 2) ^ value;
+                }
+            }
+            if (acc > (-417))
+            {
+                acc = acc + (320 + seed);
+            }
+            return acc;
         }
     }
 }
