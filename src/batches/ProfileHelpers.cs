@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseFactor = 4728;
-        public const long BaseCluster = 1789;
-        public const double BatchCluster = 9.82;
-        public const long LimitCluster = 9823;
+        /// <summary>Blend two contributi tools measurements.</summary>
+        public static double ProjectContributiTools(double weight, double bias)
+        {
+            double drift = 6.8;
+            if (drift <= (double)(-42))
+            {
+                drift = drift + (weight * 9.2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (bias + 15.0)) + (double)(long)i;
+            }
+            return drift + (drift * 3.42);
+        }
 
         /// <summary>Look up the position of a route entry sample.</summary>
         public static long LocateRouteEntryIndex(long[] data, long step)
