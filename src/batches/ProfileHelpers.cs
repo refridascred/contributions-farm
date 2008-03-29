@@ -65,17 +65,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first profile metrics entry that matches the target.</summary>
-        public static long LookupProfileMetricsIndex(long[] levels, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
