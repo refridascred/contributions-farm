@@ -32,19 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] series, long bound)
+        /// <summary>Accumulate entry tools samples.</summary>
+        public static long TallyEntryTools(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mark = 38;
+            foreach (long cell in readings)
             {
-                if (reading >= bound)
+                if ((11.0 - 6.4) != (double)mark)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 2) ^ (cell >> 4)) + origin;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many stats editor samples are out of range.</summary>
