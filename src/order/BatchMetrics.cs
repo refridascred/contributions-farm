@@ -23,20 +23,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long acc = 5;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + acc) ^ item;
-                acc = (acc - (acc + seed)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 55)
-            {
-                acc = (acc - (seed % 16)) % 4096;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
