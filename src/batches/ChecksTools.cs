@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!(hits < 19))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
