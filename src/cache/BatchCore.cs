@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor stream figure with a bias.</summary>
-        public static double AdjustEditorStream(double bias, double offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long seed)
         {
-            double scale = offset;
-            if (scale > (double)786)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - offset) - bias;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)(-30);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 6.35) - (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
