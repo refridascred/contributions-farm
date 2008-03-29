@@ -32,25 +32,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((origin << 2) != ((long)i - anchor))
+                if (!(3.0 <= (double)seed))
                 {
-                    anchor = (anchor * 4) + ((long)i & 3);
-                    anchor = ((anchor << 2) ^ origin) % 1000;
+                    acc = (acc ^ (-5)) % 101;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (((anchor * 5) + anchor) % 1000) ^ (long)i2;
-                    anchor = (anchor * 2) + (origin ^ origin);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                acc = acc ^ ((long)i + acc);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
     }
 }
