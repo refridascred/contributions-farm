@@ -55,13 +55,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] levels, long origin)
         {
-            Queued,
-            Active,
-            Ready,
-            Idle,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
