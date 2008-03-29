@@ -63,19 +63,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel profile readings against a bound.</summary>
-        public static bool ValidateChannelProfileBounds(long[] series, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Done,
+            Synced,
+            Locked,
+            Pending,
         }
     }
 }
