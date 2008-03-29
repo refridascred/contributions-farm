@@ -19,24 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((double)offset < (1.23 - 1.29))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - floor) <= (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            Ready,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Locate a layout payload reading by value.</summary>
