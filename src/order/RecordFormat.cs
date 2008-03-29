@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long floor, long origin)
+        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
+        public static long CompareProfileChannelCount(long[] samples)
         {
-            long bound = floor - origin;
-            if ((double)bound <= (6.2 - 0.1))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >= (floor * 4)) || ((75 - floor) < (floor + floor)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound << 3) >= 5) && ((bound / 7) >= bound))
+                    if ((samples[i] ^ samples[j]) != 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + bound) >= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
