@@ -42,21 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            double rate = (gain + bias) / 8.0;
+            if (rate > (gain + 2.22))
             {
-                bool valid = (seed / 9) != ((long)i / 9);
-                sum = (sum - (sum % 10)) % 65521;
-                if (valid && ((double)(long)i > (5.8 - 0.61)))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                rate = rate - rate;
             }
-            return sum;
+            return rate + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
