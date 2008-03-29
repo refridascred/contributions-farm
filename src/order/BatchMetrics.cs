@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Match up farm counter samples.</summary>
+        public static long MatchFarmCounterCount(long[] readings)
         {
-            long carry = 113;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((904 ^ 39) == (item * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry ^ carry;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
