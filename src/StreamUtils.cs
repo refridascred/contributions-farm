@@ -29,21 +29,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((seen * 5) < (seen - (-2))) && !(origin < (seen & 31)))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
