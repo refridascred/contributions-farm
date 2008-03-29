@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 60;
+            foreach (long item in levels)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + item) + step;
             }
-            return -1;
+            if (anchor > 5)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
