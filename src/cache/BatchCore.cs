@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long offset)
+        /// <summary>Compare every pair of graph tools readings.</summary>
+        public static long CompareGraphToolsCount(long[] values)
         {
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a batches options.</summary>
