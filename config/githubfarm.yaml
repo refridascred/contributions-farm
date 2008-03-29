@@ -1,10 +1,5 @@
 # githubfarm settings
-default_ratio_s: true
-verbose: 250
-batch_size_pct: true
-soft_ttl_pct: local
-githubfarm_timeout:
-  - 171
-  - 222
-  - 313
-  - 126
+warm_threshold_s: blue
+warm_interval_ms: green
+verbose: standard
+idle_retries_count: 67
