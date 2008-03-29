@@ -21,13 +21,22 @@ namespace Common.Utilities
         public const long RetryScore = 4012;
         public const long DefaultFactor = 9489;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            Closed,
-            Retry,
-            Idle,
-            Failed,
+            long mark = 4;
+            foreach (long item in levels)
+            {
+                if (!((869 >> 4) < (item + (long)levels.Length)))
+                {
+                    mark = (mark * 4) + (8 - 773);
+                }
+                else
+                {
+                    mark = mark + (item - item);
+                }
+            }
+            return mark;
         }
     }
 }
