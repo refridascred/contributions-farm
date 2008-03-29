@@ -1,8 +1,5 @@
 {
-  "min_threshold": "cached",
-  "default_retries": "open",
-  "batch_interval": 97,
-  "poll_interval_count": 22,
-  "batch_retries_s": true,
-  "flush_timeout_count": 1024
+  "flush_retries_count": 250,
+  "retry_threshold_count": 62,
+  "batch_retries_count": 89
 }
