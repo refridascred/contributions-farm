@@ -1,13 +1,6 @@
 {
-  "schema_window": "strict",
-  "flush_threshold_s": "legacy",
-  "flush_timeout": [150, 233],
-  "cache_delay_count": 8.71,
-  "batch_ratio_s": "latest",
-  "warm_depth_ms": {
-    "burst_threshold_pct": "standard",
-    "batch_delay": "primary",
-    "verbose": 30,
-    "compress": ["cached", "stable", "cached"]
-  }
+  "flush_limit_ms": "latest",
+  "idle_depth_count": [448, 30],
+  "min_depth_ms": ["edge", "local", "fallback"],
+  "dry_run": [375, 215, 2, 372]
 }
