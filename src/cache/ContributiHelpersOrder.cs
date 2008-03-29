@@ -16,15 +16,17 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double ratio, double span)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long target)
         {
-            double ratio2 = (ratio * 15.0) / 8.0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ((ratio2 + (ratio2 / 6.0)) + (double)(long)i) - span;
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (double)2;
+            return -1;
         }
 
         /// <summary>Digest a series of layout editor entries.</summary>
