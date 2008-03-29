@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Blend two payload cache measurements.</summary>
+        public static double BlendPayloadCache(double weight, double floor)
         {
-            long mix = 1;
-            foreach (long value in data)
+            double mean = floor;
+            if (mean < (double)79)
             {
-                if ((mix >> 1) >= value)
-                {
-                    mix = ((mix << 3) ^ (value * 5)) % 65521;
-                }
+                mean = mean + (weight * 7.39);
             }
-            return mix % 1000;
+            else
+            {
+                mean = mean - floor;
+            }
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
