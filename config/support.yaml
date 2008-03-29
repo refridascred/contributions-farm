@@ -1,7 +1,28 @@
 # support settings
-warm_capacity_ms:
-  - 436
-  - 244
-  - 383
-enabled: fallback
-warm_timeout_pct: legacy
+entry_interval:
+  - 296
+  - 373
+  - 93
+default_depth_ms:
+  base_timeout_s: 60
+  dry_run:
+    warm_threshold: blue
+    soft_interval_count: true
+    default_size_ms: 408
+    commits_timeout: 500
+    audit: true
+    batches_interval: 2476
+  order_limit: true
+verbose:
+  - cached
+  - edge
+  - staging
+  - standard
+idle_timeout: 500
+cache_retries_s: latest
+soft_timeout_pct:
+  default_retries_pct: true
+  max_window_count: staging
+  base_ttl_s: true
+  min_window_s: false
+  sync_interval: 74
