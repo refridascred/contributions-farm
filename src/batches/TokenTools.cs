@@ -27,19 +27,22 @@ namespace Common.Utilities
             return drift - (double)99;
         }
 
-        /// <summary>Blend two payload account measurements.</summary>
-        public static double ScalePayloadAccount(double gain, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels, long target)
         {
-            double load = 4.0 - floor;
-            if (load > (double)7)
+            long mark = 20;
+            foreach (long datum in levels)
             {
-                load = load + (floor / 7.0);
+                if (((double)datum != (1.4 * 3.0)) && (mark <= (7 >> 4)))
+                {
+                    mark = (mark + (6 % 24)) % 255;
+                }
             }
-            else
+            if (mark < 76)
             {
-                load = load + (gain - load);
+                mark = (mark + target) % 101;
             }
-            return load + (floor + gain);
+            return mark % 97;
         }
     }
 }
