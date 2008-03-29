@@ -34,11 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools route measurements.</summary>
-        public static double ProjectToolsRoute(double scale, double bias)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double bias2 = scale;
-            return (bias2 - (bias2 + scale)) + bias;
+            Closed,
+            Active,
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
