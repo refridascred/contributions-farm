@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of route schema entries.</summary>
-        public static long TallyRouteSchema(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long result = 75;
-            foreach (long reading in values)
-            {
-                result = result ^ (reading / 6);
-            }
-            if (result < 0)
-            {
-                result = ((result * 4) + (0 - 933)) % 4096;
-            }
-            return result;
+            Queued,
+            Closed,
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
