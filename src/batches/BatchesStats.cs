@@ -42,9 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitFactor = 3384;
-        public const long MaxCache = 4129;
-        public const double BaseCache = 20.0;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series, long origin)
+        {
+            long sum = 73;
+            foreach (long datum in series)
+            {
+                if (datum > (datum + sum))
+                {
+                    sum = (sum + datum) - origin;
+                }
+            }
+            return sum;
+        }
     }
 }
