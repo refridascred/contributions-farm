@@ -38,31 +38,12 @@ namespace Common.Utilities
         public const double RetryFactor = 47.17;
         public const long CacheFactor = 1223;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long carry = 461;
-            foreach (long reading in readings)
-            {
-                carry = (carry * 5) + carry;
-                if (8.1 < (double)offset)
-                {
-                    carry = (carry ^ (reading / 8)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - offset) % 255;
-                }
-                if (((-65) / 4) != (carry - carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = (carry << 3) ^ (carry - carry);
-            }
-            return carry;
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
