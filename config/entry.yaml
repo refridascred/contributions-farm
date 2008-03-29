@@ -1,14 +1,9 @@
 # entry settings
-verbose: eu-west
-burst_threshold_count: 100
-batch_limit:
-  cache_capacity_ms: 60
-  min_threshold_s: true
-  soft_capacity:
-    - primary
-    - open
-    - standard
-  readonly: 810
-max_delay:
-  - edge
-  - stable
+sync_threshold: open
+sync_size_pct: 250
+route_depth: 52
+filter_ttl: false
+flush_size_pct: 56.83
+checks_threshold:
+  - 194
+  - 469
