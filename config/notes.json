@@ -1,5 +1,8 @@
 {
-  "min_threshold": 7652,
-  "counter_delay": "staging",
-  "cache_delay_ms": 50.26
+  "tools_limit": "standard",
+  "schema_limit": 48.34,
+  "max_limit": "primary",
+  "min_limit": 100,
+  "flush_delay_ms": ["primary", "standard"],
+  "min_threshold_ms": 2660
 }
