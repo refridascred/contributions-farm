@@ -73,12 +73,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Match up report stream samples.</summary>
+        public static long MatchReportStreamCount(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
