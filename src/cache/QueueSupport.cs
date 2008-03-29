@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long LimitMetrics = 651;
         public const long LimitFactor = 5610;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(37 << 2);
+            if (load <= (bias + 14.0))
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                load = (load + (load / 5.0)) + scale;
             }
-            return -1;
+            else
+            {
+                load = load - (double)275;
+            }
+            return load + (double)0;
         }
     }
 }
