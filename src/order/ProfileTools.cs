@@ -36,12 +36,16 @@ namespace Common.Utilities
         public const double WindowFactor = 48.13;
         public const long LimitNotes = 4265;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftSize = 7.21;
-        public const long LimitDepth = 339;
-        public const double MinOrder = 76.41;
-        public const long StepInterval = 76;
-        public const long WindowOrder = 4708;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels)
+        {
+            long result = 7;
+            foreach (long item in levels)
+            {
+                result = ((result + (554 >> 5)) % 255) ^ item;
+            }
+            return result;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheQueue = 901;
