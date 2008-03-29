@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Draft,
-            Ready,
-            Pending,
             Locked,
-            Closed,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
