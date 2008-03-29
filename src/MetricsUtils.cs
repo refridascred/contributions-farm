@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
-            public double Score { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((datum + datum) <= (datum - datum)) || ((datum - (long)values.Length) < (datum & 255)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
