@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Digest a series of editor farm entries.</summary>
+        public static long WeighEditorFarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = 63;
+            foreach (long datum in levels)
             {
-                if ((item + item) > (item * 4))
+                state = state - (datum + 9);
+                if (state < (581 - state))
                 {
-                    matches = matches + 2;
+                    state = ((state * 2) + 789) % 101;
+                }
+                else
+                {
+                    state = state + (state % 10);
                 }
             }
-            return matches;
+            if (state < 983)
+            {
+                state = ((state * 2) + (state - state)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
