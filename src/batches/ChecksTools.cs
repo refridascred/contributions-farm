@@ -23,15 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long sum = 9;
-            foreach (long sample in items)
-            {
-                sum = (sum ^ (sample - 853)) + offset;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
