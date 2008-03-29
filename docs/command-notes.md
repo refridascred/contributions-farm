@@ -1,11 +1,15 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-A route that stays idle for too long is moved to the session list.
-Defaults for notes live in the config folder and can be overridden per environment.
+When a already fails, the window handler retries a few times before giving up.
+When a contributi fails, the counter handler retries a few times before giving up.
+
+A report that stays idle for too long is moved to the channel list.
+A record that stays idle for too long is moved to the record list.
+The support module keeps report values in sync with the contributi cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep layout values small
-- Review layout limits each release
+- Log every contributi change
+- Prefer cache defaults
+- Document new record fields
+- Keep queue values small
