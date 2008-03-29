@@ -29,21 +29,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine support layout values into a single score.</summary>
-        public static long ScoreSupportLayout(long[] readings, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long result = 69;
-            foreach (long sample in readings)
-            {
-                result = (result + 4) % 255;
-                result = (result << 2) ^ (sample + sample);
-                result = ((result * 4) + limit) % 255;
-            }
-            if (result < 367)
-            {
-                result = result + (result + limit);
-            }
-            return result % 97;
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
