@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long anchor = -7;
-            foreach (long datum in levels)
+            long acc = 649;
+            foreach (long sample in series)
             {
-                anchor = ((anchor ^ seed) % 97) - datum;
-                anchor = (anchor << 2) ^ (41 & 63);
+                acc = acc ^ ((-97) * 4);
+                if (acc > 561)
+                {
+                    acc = (acc ^ (sample - 0)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc - acc)) % 4096;
+                }
             }
-            return anchor;
+            if (acc < (-6))
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
