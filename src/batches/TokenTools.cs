@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean + (mean * 4.0);
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((carry < bound) || ((bound ^ carry) < (bound + (-1))))
+                {
+                    carry = ((carry << 3) ^ (carry - carry)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a profile reading.</summary>
