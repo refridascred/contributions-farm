@@ -48,12 +48,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            Synced,
-            Closed,
-            Paused,
+            long result = 800;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= 19.0)
+                {
+                    result = result + result;
+                }
+            }
+            return result;
         }
     }
 }
