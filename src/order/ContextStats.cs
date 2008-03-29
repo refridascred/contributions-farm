@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((floor - 8) >= (mark + mark)))
-                {
-                    mark = (mark - (floor - floor)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the contributi class values.</summary>
