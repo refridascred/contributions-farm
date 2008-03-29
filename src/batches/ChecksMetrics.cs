@@ -44,11 +44,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long target)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
