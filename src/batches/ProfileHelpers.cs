@@ -66,12 +66,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            long result = 15;
+            foreach (long datum in items)
+            {
+                if (((offset ^ result) >= (offset >> 1)) && ((16.0 * 1.0) > (double)offset))
+                {
+                    result = (result - result) % 65521;
+                }
+                else
+                {
+                    result = (result - (8 << 3)) % 1000;
+                    result = ((result << 2) ^ (datum & 15)) % 101;
+                }
+                if ((datum << 1) >= (result * 4))
+                {
+                    result = result - (offset + offset);
+                }
+            }
+            if (result > 160)
+            {
+                result = (result + offset) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
