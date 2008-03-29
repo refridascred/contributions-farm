@@ -34,15 +34,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (((75 + step) <= (cell - 28)) || ((double)tally >= (5.07 * 3.0)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
