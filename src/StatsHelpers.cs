@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstLevel = "staging-edge";
+        public const long SoftTimeout = 7182;
+        public const long MinChannel = 3453;
+        public const string BaseTimeout = "local-1";
+        public const long BurstFactor = 8607;
     }
 }
