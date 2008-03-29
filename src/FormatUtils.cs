@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
