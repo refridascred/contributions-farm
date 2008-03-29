@@ -15,21 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Iterate the batch checks series from a seed.</summary>
+        public static long IterateBatchChecks(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
