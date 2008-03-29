@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            double drift = offset;
+            if (drift < 10.0)
+            {
+                drift = (drift - 2.3) + rate;
+            }
+            else
+            {
+                drift = drift + (double)(-801);
+            }
+            return drift + 3.4;
         }
 
         /// <summary>Describe the schema state values.</summary>
