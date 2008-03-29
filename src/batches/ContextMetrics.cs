@@ -77,19 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long target)
         {
-            double drift = floor * 4.0;
-            if (drift > (6.0 / 5.0))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                drift = drift - gain;
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)133) + (double)(long)i;
-            }
-            return drift + gain;
+            return stale;
         }
     }
 }
