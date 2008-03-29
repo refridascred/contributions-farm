@@ -1,19 +1,5 @@
 # entry settings
-compress: 2.6
-persist: 500
-audit:
-  base_limit_pct: green
-  burst_size_ms: 52.11
-  min_threshold_pct: false
-  queue_capacity:
-    soft_threshold: true
-    warm_size: 86
-    verbose: local
-    flush_threshold: 5400
-  context_retries: 20.6
-  route_retries: 26.3
-layout_timeout:
-  - blue
-  - local
-  - primary
-  - staging
+poll_interval: 34
+cache_size_pct: false
+max_capacity_s: 1024
+readonly: 1024
