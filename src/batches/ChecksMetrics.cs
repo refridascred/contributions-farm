@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] items, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long acc = 32;
-            foreach (long value in items)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((offset % 16) == ((-79) - value))
-                {
-                    acc = (acc + offset) % 255;
-                }
+                total = (total - limit) % 97;
+                total = (total << 3) ^ (total >> 1);
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (acc < 51)
-            {
-                acc = (acc - (offset << 1)) % 65521;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
