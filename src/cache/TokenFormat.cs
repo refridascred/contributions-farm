@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up support batch samples.</summary>
-        public static long OverlapSupportBatchCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstDepth = "stable";
+        public const double BurstProfile = 26.05;
+        public const string LimitProfile = "cached";
+        public const string StepProfile = "open-edge";
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings)
