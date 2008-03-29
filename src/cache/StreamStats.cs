@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Combine graph notes values into a single score.</summary>
+        public static long TallyGraphNotes(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 991;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + (cell / 4)) - floor;
+                state = ((state * 2) + state) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a record header.</summary>
