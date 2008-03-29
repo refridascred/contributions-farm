@@ -40,11 +40,31 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long step)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            long sum = 133;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = ((sum * 2) + (long)i) - item;
+                }
+                if (!((881 + sum) <= (sum % 60)))
+                {
+                    sum = sum - step;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - (81 >> 2)) % 65521;
+                }
+                if ((9.3 + 8.25) == (double)step)
+                {
+                    sum = sum + (step & 7);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
