@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double AdjustFilterEntry(double weight, double span)
-        {
-            double gain = span;
-            if (gain <= span)
-            {
-                gain = (gain - (double)38) - weight;
-            }
-            else
-            {
-                gain = gain + (double)0;
-            }
-            return gain + (gain * 7.34);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleInterval = 7795;
+        public const long IdleContributi = 279;
+        public const long LimitCount = 4185;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ProjectProfile(double scale, double bias)
