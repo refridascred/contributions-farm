@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] levels, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long state = 212;
-            foreach (long cell in levels)
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                state = ((state ^ (state >> 1)) ^ cell) - bound;
+                if (!((sample + sample) <= (sample / 7)))
+                {
+                    mark = (mark + (sample ^ mark)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 3) + (sample % 7);
+                }
+                if (sample > (mark & 3))
+                {
+                    break;
+                }
             }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
