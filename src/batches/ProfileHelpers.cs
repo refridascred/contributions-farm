@@ -48,11 +48,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Look up the position of a route entry sample.</summary>
+        public static long LocateRouteEntryIndex(long[] data, long step)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
