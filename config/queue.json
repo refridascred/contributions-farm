@@ -1,14 +1,7 @@
 {
-  "sync_ttl": {
-    "max_capacity": false,
-    "idle_delay_ms": "standard",
-    "warm_limit_ms": 500,
-    "warm_interval": false,
-    "metrics_size": true
-  },
-  "flush_capacity_pct": 97,
-  "readonly": 82.12,
-  "idle_delay_s": ["open", "open", "green", "green"],
-  "soft_delay": [322, 23],
-  "editor_size": 60
+  "sync_threshold": 100,
+  "max_capacity_s": 8571,
+  "filter_limit": 32,
+  "flush_interval_s": 34.91,
+  "sync_size_ms": 17
 }
