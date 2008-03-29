@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a schema filter pair into a bucket.</summary>
-        public static long ClassifySchemaFilter(long target, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            long diff = target + limit;
-            if (diff >= (88 ^ target))
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
+                mix = (mix * 5) + target;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target / 6) < diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
