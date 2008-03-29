@@ -52,21 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin / 8) >= (origin % 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin * 2) <= (seed << 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((0.71 - 0.6) != (double)seed)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
     }
 }
