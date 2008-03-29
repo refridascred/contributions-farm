@@ -12,23 +12,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 1) >= (long)readings.Length)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 98.57;
+        public const string BatchSession = "alpha-edge";
+        public const string RetryTimeout = "cached-1";
+        public const string WindowSession = "local-v2";
+        public const string RetryLevel = "fallback-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 6576;
