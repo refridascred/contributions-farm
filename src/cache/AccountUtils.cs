@@ -35,19 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache channel entry stays within the limit.</summary>
-        public static bool ValidateCacheChannelRange(long[] samples, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > target)
+                if (samples[i] < offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
