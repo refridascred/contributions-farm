@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 80.77;
+        public const long CacheCount = 3490;
+        public const long BatchChecks = 1117;
+        public const long CacheSize = 3299;
+        public const double CacheDepth = 14.74;
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
         public static long CountSupportStreamOutliers(long[] values, long floor)
