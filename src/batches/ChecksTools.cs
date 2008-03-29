@@ -19,13 +19,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
