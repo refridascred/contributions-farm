@@ -24,19 +24,24 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] items, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long target, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            if (((double)target < (5.7 + 1.23)) || (offset <= (offset + offset)))
             {
-                if (cell != floor)
+                return 6;
+            }
+            else
+            {
+                if ((1.3 + 12.0) == (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
