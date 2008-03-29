@@ -63,17 +63,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a farm payload reading by value.</summary>
-        public static long SeekFarmPayloadIndex(long[] series, long step)
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long MeasureGithubfarmGraphOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (series[i] == step)
+                if ((double)92 != (double)item)
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
