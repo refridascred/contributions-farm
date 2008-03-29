@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first entry batch entry that matches the target.</summary>
-        public static long LookupEntryBatchIndex(long[] series, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] > limit)
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
