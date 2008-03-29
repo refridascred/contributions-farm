@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] series, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!(hits < bound))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
