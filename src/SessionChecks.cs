@@ -27,12 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Pending,
-            Idle,
-            New,
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
