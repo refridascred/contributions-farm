@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
+            public bool Stamp { get; set; }
             public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
