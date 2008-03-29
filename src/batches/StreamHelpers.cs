@@ -21,31 +21,21 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7416;
         public const long LimitMetrics = 2481;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            if (bound < (30 - offset))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound << 1) > offset) && ((double)547 <= (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound * 3) <= (bound - offset))
+                    if ((levels[i] + levels[j]) == 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the account commits entries that pass the check.</summary>
