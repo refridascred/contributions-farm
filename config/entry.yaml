@@ -1,33 +1,15 @@
 # entry settings
-cache_depth:
-  editor_size: green
-  flush_retries_count: 72.23
-  audit: 25.63
-  max_depth_count:
-    - 225
-    - 473
-    - 88
-  warm_depth: 100
-soft_delay_count:
-  stream_ttl: false
-  base_delay_s: 30
-  warm_limit: true
-  verbose: 47.0
-  batch_window_pct: staging
-  enabled: local
-max_threshold_count: 30
-cache_limit_pct: eu-west
-sync_delay:
-  cache_ratio_s: true
-  burst_depth_pct: 13.38
-  base_interval_count: 5005
-hard_depth_ms:
-  audit: blue
-  token_interval:
-    - standard
-    - open
+githubfarm_ratio: standard
+default_threshold_s: 47.02
+metric_ratio:
+  filter_interval: 81.59
+  flush_delay: 9727
+  soft_window_pct:
     - strict
-  batch_capacity: strict
-  tools_size: 1956
-  strict: blue
-  base_capacity_pct: eu-west
+    - staging
+    - blue
+  compress: cached
+batch_size_ms:
+  - standard
+  - local
+  - strict
