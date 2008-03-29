@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] levels, long origin)
         {
-            Synced,
-            Stale,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry - count) >= (count + count)) && ((origin >> 3) > (count >> 5)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
