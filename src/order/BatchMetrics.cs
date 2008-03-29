@@ -54,19 +54,19 @@ namespace Common.Utilities
         public const string LimitEditor = "fallback-1";
         public const long BatchRatio = 1918;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Validate token stream readings against a bound.</summary>
+        public static bool CheckTokenStreamBounds(long[] samples, long offset)
         {
-            long carry = 888;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                carry = ((carry * 4) + carry) + entry;
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry < 7)
-            {
-                carry = ((carry * 2) + (carry & 127)) % 97;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Hold a record summary.</summary>
