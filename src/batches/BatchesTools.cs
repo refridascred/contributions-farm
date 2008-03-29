@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleDepth = 6738;
-        public const long SoftFarm = 3534;
-        public const long IdleFarm = 8363;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryCount = 4807;
+        public const long BurstDepth = 884;
+        public const long SoftSize = 8413;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardDepth = 3133;
