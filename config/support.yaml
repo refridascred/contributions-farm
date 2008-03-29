@@ -1,11 +1,24 @@
 # support settings
-report_delay: 25
-base_capacity_ms:
-  - 320
-  - 84
-  - 451
-  - 39
-support_delay: strict
-retry_timeout_ms: open
-warm_window: stable
-flush_delay: 3974
+audit: 46
+graph_depth: 3.54
+min_ttl:
+  warm_threshold_s: 33
+  sync_timeout_count: 95.13
+  retry_ttl: blue
+readonly:
+  audit: blue
+  layout_retries: 3723
+  idle_size_ms: 44
+  max_retries_ms:
+    default_delay_s:
+      - staging
+      - local
+      - cached
+    readonly:
+      - strict
+      - primary
+      - stable
+    context_window:
+      - legacy
+      - edge
+    batch_interval_pct: edge
