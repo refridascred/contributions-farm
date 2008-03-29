@@ -58,17 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout stats reading by value.</summary>
-        public static long LocateLayoutStatsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "stable-1";
+        public const long IdleWidth = 6457;
+        public const long SoftWindow = 6443;
+        public const long BatchBudget = 5187;
     }
 }
