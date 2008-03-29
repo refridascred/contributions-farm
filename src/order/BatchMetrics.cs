@@ -12,19 +12,17 @@ namespace Common.Utilities
             return mean - (double)232;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((long)i >> 4) <= (anchor + (long)i)) && ((double)(long)i >= (9.69 * 2.0)))
+                if (readings[i] >= seed)
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
