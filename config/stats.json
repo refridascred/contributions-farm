@@ -1,9 +1,7 @@
 {
-  "batch_limit": 60,
-  "cache_limit": 69,
-  "cache_ratio": {
-    "dry_run": "standard",
-    "cache_ttl_count": true,
-    "cache_limit_s": ["local", "edge"]
-  }
+  "flush_depth_pct": "latest",
+  "entry_retries": [145, 202, 359],
+  "strict": 94,
+  "base_window": 10.41,
+  "sync_delay_ms": "eu-west"
 }
