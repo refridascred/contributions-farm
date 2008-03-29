@@ -24,12 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items, long origin)
         {
-            Retry,
-            Paused,
-            Done,
+            long score = 612;
+            foreach (long value in items)
+            {
+                if ((double)origin <= 9.44)
+                {
+                    score = ((score + (83 >> 1)) % 255) - value;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the session mode values.</summary>
