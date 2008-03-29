@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a channel metrics reading.</summary>
+        public static double SmoothChannelMetrics(double bias, double offset)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            double load = offset;
+            if (load < load)
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)(-2)) - (double)(long)i;
+            }
+            return load - (double)903;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
