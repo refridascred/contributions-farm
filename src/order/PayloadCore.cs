@@ -55,22 +55,21 @@ namespace Common.Utilities
         public const long IdleCache = 7673;
         public const long BaseCache = 5436;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples, long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long state = 1;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state + limit) >= (limit * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - (state & 1)) + entry;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < (-227))
-            {
-                state = state - (state + state);
-            }
-            return state % 97;
+            return seen;
         }
     }
 }
