@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] values, long origin)
         {
-            Pending,
-            Stale,
-            Closed,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (origin >= (entry & 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support level values.</summary>
