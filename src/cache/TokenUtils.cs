@@ -38,18 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Look up the position of a account filter sample.</summary>
+        public static long SeekAccountFilterIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)datum <= (3.85 - 9.53)) || (datum <= (datum / 7))))
+                if (samples[i] < limit)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
