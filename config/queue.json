@@ -1,6 +1,12 @@
 {
-  "batch_delay": [184, 226],
-  "cache_retries_s": "green",
-  "report_delay": "stable",
-  "layout_ttl": [430, 137]
+  "default_depth_count": {
+    "soft_retries_s": 7062,
+    "strict": "open",
+    "record_threshold": "legacy",
+    "checks_delay": 4904,
+    "default_retries_pct": [356, 291, 287]
+  },
+  "idle_size_count": "legacy",
+  "metric_timeout": "standard",
+  "sync_depth": 68.62
 }
