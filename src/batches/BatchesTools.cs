@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor ^ ((long)i - bound);
-                anchor = ((anchor * 4) + (anchor % 16)) % 255;
-                anchor = (anchor * 3) + bound;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
