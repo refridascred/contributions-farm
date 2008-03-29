@@ -16,22 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value <= (matches & 3)) || (((matches & 7) > (matches * 3)) && ((matches & 3) >= (-91))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
