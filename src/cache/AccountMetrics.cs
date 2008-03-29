@@ -29,14 +29,11 @@ namespace Common.Utilities
         public const string RetryRecord = "local-v2";
         public const string WindowDepth = "cached-1";
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 7415;
+        public const string BaseWindow = "standard-edge";
+        public const double LimitWindow = 14.85;
+        public const double DefaultWidth = 57.81;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] readings)
