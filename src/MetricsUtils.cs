@@ -46,19 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
         {
-            double drift = offset;
-            if (drift < 10.0)
+            long state = 74;
+            foreach (long sample in items)
             {
-                drift = (drift - 2.3) + rate;
+                state = (state * 5) + sample;
             }
-            else
-            {
-                drift = drift + (double)(-801);
-            }
-            return drift + 3.4;
+            return state;
         }
 
         /// <summary>Hold a queue stats.</summary>
