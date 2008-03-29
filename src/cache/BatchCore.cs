@@ -23,20 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result * 5) + result) % 255) + (long)i2;
-                    result = result - (limit % 16);
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
