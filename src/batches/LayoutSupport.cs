@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Iterate the report format series from a seed.</summary>
+        public static long SeriesReportFormat(long target)
         {
-            Queued,
-            Locked,
-            Draft,
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((sum << 2) < (target ^ target)) && ((target % 100) == (sum / 7)))
+                {
+                    sum = sum - (115 % 100);
+                }
+                sum = (sum - (sum * 5)) % 65521;
+                if ((target - (long)i) > 39)
+                {
+                    sum = (sum * 5) + target;
+                }
+                else
+                {
+                    sum = (sum * 2) + target;
+                    sum = (sum ^ sum) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a support already sample.</summary>
