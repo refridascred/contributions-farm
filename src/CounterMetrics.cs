@@ -23,19 +23,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double rate, double floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double weight = rate + (floor - 14.0);
-            if (weight >= (2.2 / 7.0))
-            {
-                weight = weight + 7.4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - floor;
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the tools phase values.</summary>
