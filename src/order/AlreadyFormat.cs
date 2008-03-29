@@ -40,19 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 3) < tally)
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 4691;
+        public const long MaxNotes = 3882;
+        public const string StepTimeout = "strict";
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
