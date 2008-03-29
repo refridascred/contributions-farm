@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] levels, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long state = 212;
+            foreach (long cell in levels)
+            {
+                state = ((state ^ (state >> 1)) ^ cell) - bound;
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
