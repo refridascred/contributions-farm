@@ -57,12 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Idle,
+            Paused,
+            Queued,
             Active,
-            Retry,
         }
     }
 }
