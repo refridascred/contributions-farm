@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank editor entry input into a small class.</summary>
+        public static long GradeEditorEntry(long offset, long seed)
         {
-            Retry,
-            Closed,
-            Dropped,
-            Done,
+            if (seed > (seed - offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed < (seed - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)seed != (7.69 / 5.0)) || (395 >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed % 10) <= 564) && (seed <= offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
