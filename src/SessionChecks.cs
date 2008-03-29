@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            long carry = 5;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ (step + 6)) % 1000;
+                if ((double)reading < (8.14 - 3.0))
+                {
+                    carry = carry ^ (reading - step);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
