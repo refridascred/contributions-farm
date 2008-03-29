@@ -61,21 +61,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
