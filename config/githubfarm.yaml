@@ -1,15 +1,22 @@
 # githubfarm settings
-idle_timeout_ms:
-  - open
-  - edge
-retry_capacity_pct:
-  dry_run: true
-  context_interval:
-    - fallback
-    - primary
-  readonly: 2.02
-poll_window:
-  - green
-  - cached
-  - green
-  - latest
+stream_limit:
+  soft_depth_count:
+    entry_depth: 6.16
+    sync_interval_pct: 500
+    enabled: 250
+    editor_size: 62.78
+  sync_interval_s: true
+  batch_retries: 62
+  farm_retries: standard
+  warm_window_ms: 74
+  batches_depth:
+    window_size: 91.23
+    max_threshold_count: 34
+    batch_ttl_ms: false
+    batch_interval:
+      - 327
+      - 43
+support_delay: eu-west
+dry_run: cached
+default_interval_count: false
+cache_delay_pct: fallback
