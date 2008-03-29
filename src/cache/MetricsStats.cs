@@ -27,21 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long DeriveCacheEditor(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((128 & 63) <= (score << 2)))
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (seed + seed)) % 1000;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a counter entry.</summary>
