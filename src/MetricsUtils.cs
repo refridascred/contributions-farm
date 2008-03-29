@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long step)
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long AuditMetricTokenGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                if (!(8.52 <= (double)sample) && !(60 >= (matches % 60)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
