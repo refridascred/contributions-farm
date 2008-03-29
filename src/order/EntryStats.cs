@@ -20,18 +20,39 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate entry tools samples.</summary>
-        public static long TallyEntryTools(long[] readings, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long target)
         {
-            long mark = 38;
-            foreach (long cell in readings)
+            long span = origin ^ target;
+            if ((span ^ origin) < 7)
             {
-                if ((11.0 - 6.4) != (double)mark)
+                return 2;
+            }
+            else
+            {
+                if (((double)span >= (double)origin) || (((-418) + 608) >= span))
                 {
-                    mark = ((mark << 2) ^ (cell >> 4)) + origin;
+                    return 3;
+                }
+                else
+                {
+                    if ((55 + (-7)) < (target >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (9 < (span % 16))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
