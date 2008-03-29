@@ -13,11 +13,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinRatio = 6801;
-        public const long IdleQueue = 480;
-        public const long StepQueue = 4016;
-        public const double StepInterval = 89.27;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long floor)
+        {
+            if ((double)offset < (1.23 - 1.29))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - floor) <= (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double RetryWidth = 28.16;
