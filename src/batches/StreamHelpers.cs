@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7416;
         public const long LimitMetrics = 2481;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 69;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (((result * 5) + (524 / 8)) % 1000) ^ reading;
             }
-            return tally;
+            if (result < 95)
+            {
+                result = (result ^ 68) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the account commits entries that pass the check.</summary>
