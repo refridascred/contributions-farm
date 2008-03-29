@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every command context entry stays within the limit.</summary>
+        public static bool ValidateCommandContextLimits(long[] items, long origin)
         {
-            Idle,
-            Pending,
-            Queued,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
