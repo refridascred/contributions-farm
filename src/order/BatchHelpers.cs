@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            Paused,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
