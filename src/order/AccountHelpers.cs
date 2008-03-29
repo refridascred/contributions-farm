@@ -93,26 +93,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data)
         {
-            long score = 1;
-            foreach (long cell in levels)
+            long score = 784;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score * 4) + (cell - (long)i2);
-                }
-                if ((long)levels.Length >= (8 + cell))
-                {
-                    score = ((score * 4) + cell) % 255;
-                }
+                score = ((score ^ score) % 97) + datum;
             }
-            if (score < 480)
-            {
-                score = (score - (score ^ score)) % 101;
-            }
-            return score % 4096;
+            return score;
         }
     }
 }
