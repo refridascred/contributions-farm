@@ -1,7 +1,5 @@
 {
-  "flush_depth_pct": "latest",
-  "entry_retries": [145, 202, 359],
-  "strict": 94,
-  "base_window": 10.41,
-  "sync_delay_ms": "eu-west"
+  "cache_timeout_pct": ["fallback", "staging", "local", "strict"],
+  "notes_retries": 3444,
+  "verbose": 72.24
 }
