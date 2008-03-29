@@ -35,12 +35,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            long score = 918;
+            foreach (long reading in series)
+            {
+                if (17.0 <= (double)score)
+                {
+                    score = (score << 3) ^ (136 + reading);
+                }
+                else
+                {
+                    score = ((score * 4) + (reading % 8)) % 1000;
+                }
+            }
+            return score % 97;
         }
     }
 }
