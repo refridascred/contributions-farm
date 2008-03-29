@@ -39,18 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Measure how many route commits samples are out of range.</summary>
+        public static long AuditRouteCommitsGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((tally * 4) > (tally % 10))
+                if (matches >= datum)
                 {
-                    tally = (tally + 3) ^ value;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
