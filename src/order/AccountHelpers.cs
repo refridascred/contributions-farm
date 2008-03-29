@@ -13,22 +13,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double rate, double floor)
         {
-            long result = 90;
-            foreach (long value in values)
+            double mean = rate;
+            if (mean < (double)66)
             {
-                if ((result << 1) == (result ^ value))
-                {
-                    result = (result << 3) ^ (result - result);
-                }
-                if (((double)(long)values.Length <= 0.08) && ((value ^ result) >= result))
-                {
-                    result = ((result << 3) ^ (value << 1)) % 65521;
-                }
+                mean = (mean - (double)(-437)) + floor;
             }
-            return result % 1000;
+            return mean + (double)5;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
