@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseRatio = "legacy-edge";
-        public const string DefaultFilter = "staging";
-        public const string BurstWidth = "local-edge";
-        public const string WindowScore = "staging-1";
-        public const long BatchWidth = 1901;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long CompareStreamCount(long[] samples)
