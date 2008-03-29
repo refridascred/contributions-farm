@@ -1,10 +1,12 @@
 # Command notes
 
-Each batch is validated before it reaches the layout queue.
-The entry report groups every editor by commits.
+The metrics report groups every account by entry.
+A schema that stays idle for too long is moved to the report list.
+A route that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Log every stats change
-- Keep notes values small
-- Review format limits each release
+- Keep channel values small
+- Log every channel change
+- Document new editor fields
+- Prefer cluster defaults
