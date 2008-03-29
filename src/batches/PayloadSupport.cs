@@ -24,22 +24,18 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long TallyPayloadRouteGaps(long[] data)
         {
-            long carry = 53;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((carry < (item / 7)) || ((carry & 127) <= (item + item)))
+                if ((3.55 + 2.2) <= (double)reading)
                 {
-                    carry = (carry << 3) ^ (carry % 3);
-                }
-                else
-                {
-                    carry = carry + item;
+                    count = count + 2;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
