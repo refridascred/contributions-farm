@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many record batch samples are out of range.</summary>
-        public static long MeasureRecordBatchGaps(long[] items, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((tally << 3) >= (datum - datum))
+                if (entry >= limit)
                 {
-                    tally = (tally + 3) - step;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a contributi info.</summary>
