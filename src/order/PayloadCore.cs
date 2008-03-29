@@ -20,31 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long floor)
+        /// <summary>Blend two notes schema measurements.</summary>
+        public static double BlendNotesSchema(double bias, double floor)
         {
-            if (((double)bound >= (double)floor) && (0.44 >= (double)bound))
+            double weight = floor;
+            if (weight < floor)
             {
-                return 4;
+                weight = (weight + weight) + bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((-859) % 5) != (bound << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound * 5) > floor) || ((double)bound <= (0.9 * 3.5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                weight = (weight + weight) + (double)(long)i;
             }
+            return weight + (weight * 3.2);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
