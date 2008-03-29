@@ -30,22 +30,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit record stream readings against a rule.</summary>
-        public static long MeasureRecordStreamOutliers(long[] data, long offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((-5) + tally) < (value / 9))
-                {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
