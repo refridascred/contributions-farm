@@ -36,18 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long TallyMetricsCommandGaps(long[] items, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long limit, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long lane = limit + target;
+            if (((double)lane <= (3.1 * 7.59)) || ((lane + limit) < (94 + lane)))
             {
-                if (tally < (tally + target))
+                return 1;
+            }
+            else
+            {
+                if ((target % 12) <= (787 & 3))
                 {
-                    tally = (tally + 2) + value;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a commits profile pair into a bucket.</summary>
