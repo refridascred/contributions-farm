@@ -26,12 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] samples)
         {
-            Active,
-            Synced,
-            Ready,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum + datum) < hits) || (datum < ((long)samples.Length + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
