@@ -54,22 +54,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session commits entries that pass the check.</summary>
-        public static long TallySessionCommitsGaps(long[] data)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)count != (7.28 + 4.0))
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
