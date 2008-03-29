@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BurstRatio = 3791;
         public const double StepSize = 88.41;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)sample > (1.76 - 17.0)) && ((3 + sample) > seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm record readings.</summary>
