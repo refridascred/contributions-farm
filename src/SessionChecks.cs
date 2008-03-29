@@ -35,21 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((11.0 / 5.0) < (double)seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((9.7 + 1.0) < (6.2 * 0.3))
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
+                    return 8;
+                }
+                else
+                {
+                    if (!((target >> 3) > (85 * 5)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
