@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((9.0 * 4.2) <= (double)result)
-                {
-                    result = (result ^ (seed & 7)) % 4096;
-                }
-                result = result ^ (seed + result);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
