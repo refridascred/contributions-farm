@@ -51,22 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long origin)
         {
-            long sum = 6;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (bound >= ((-411) >> 2))
+                if (sample < origin)
                 {
-                    sum = ((sum + bound) % 1000) ^ item;
-                }
-                else
-                {
-                    sum = (sum + sum) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a payload header.</summary>
