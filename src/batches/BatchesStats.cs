@@ -55,18 +55,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm checks entries that pass the check.</summary>
-        public static long CountFarmChecksGaps(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum - datum) == (tally >> 5)) || ((datum * 5) >= tally))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitFactor = 3384;
+        public const long MaxCache = 4129;
+        public const double BaseCache = 20.0;
     }
 }
