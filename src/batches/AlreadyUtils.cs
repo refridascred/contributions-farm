@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            New,
-            Stale,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item - item) >= (-45))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
