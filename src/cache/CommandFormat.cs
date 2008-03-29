@@ -39,18 +39,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((10 & 7) >= matches)
                 {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ cell;
                 }
             }
             return matches;
