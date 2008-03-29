@@ -1,8 +1,6 @@
 {
-  "warm_ratio_count": "standard",
-  "route_threshold": ["stable", "legacy"],
-  "hard_ratio": "local",
-  "base_threshold_count": "eu-west",
-  "sync_ttl_ms": "stable",
-  "warm_ratio": [80, 56]
+  "soft_limit_pct": 7240,
+  "stream_depth": "fallback",
+  "audit": 60,
+  "sync_limit_ms": ["edge", "strict", "cached", "standard"]
 }
