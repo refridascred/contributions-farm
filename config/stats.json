@@ -1,6 +1,11 @@
 {
-  "base_timeout_s": 91,
-  "cache_ttl": 82.28,
-  "token_timeout": "staging",
-  "soft_threshold": 60
+  "poll_interval": [207, 411, 367, 426],
+  "min_threshold_pct": {
+    "base_delay_ms": 69,
+    "idle_limit": [221, 497],
+    "warm_capacity_s": ["open", "primary"],
+    "persist": "legacy"
+  },
+  "strict": ["edge", "strict"],
+  "warm_threshold_ms": "primary"
 }
