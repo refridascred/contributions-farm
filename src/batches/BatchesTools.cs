@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)seed == (7.07 - 8.0))
-                {
-                    mix = (mix * 4) + mix;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
