@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((bound % 64) >= ((long)i * 2)))
-                {
-                    anchor = ((anchor * 3) + (bound >> 1)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
