@@ -1,23 +1,13 @@
 # entry settings
-record_limit: standard
-retry_delay: true
-cache_delay: local
-min_depth:
-  compress: cached
-  dry_run: 8.98
-  strict:
-    - 61
-    - 88
-  base_ratio_ms: true
-  flush_depth_s: local
-  checks_window: 1024
-poll_window_s:
-  flush_limit: 5454
-  idle_retries_count: true
-  compress:
-    enabled: edge
-    cache_delay_pct: 26
-    batch_size_s: standard
-  hard_threshold: green
-  burst_capacity_pct: 53.41
-max_depth: fallback
+verbose: strict
+order_ttl: legacy
+flush_threshold_count: 344
+entry_capacity: 60
+base_timeout_s:
+  already_delay: 59
+  enabled: legacy
+  flush_capacity_ms: 1543
+  verbose: true
+  min_retries: staging
+  warm_timeout_ms: 43.37
+session_threshold: true
