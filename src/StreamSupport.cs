@@ -12,14 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Locked,
-            Pending,
-            Retry,
+            Active,
+            Synced,
             Ready,
-            Idle,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
