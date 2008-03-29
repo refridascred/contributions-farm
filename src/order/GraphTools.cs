@@ -60,17 +60,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] values, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(limit > (2 + limit)))
             {
-                if (values[i] == bound)
+                return 7;
+            }
+            else
+            {
+                if ((origin / 3) < (origin * 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit >= 4.7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
