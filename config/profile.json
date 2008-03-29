@@ -1,5 +1,5 @@
 {
-  "poll_window": 7884,
-  "max_window_s": "fallback",
-  "githubfarm_limit": "edge"
+  "audit": "legacy",
+  "payload_ratio": "staging",
+  "metric_threshold": true
 }
