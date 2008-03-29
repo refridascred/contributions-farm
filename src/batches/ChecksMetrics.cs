@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total - limit) % 97;
-                total = (total << 3) ^ (total >> 1);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
