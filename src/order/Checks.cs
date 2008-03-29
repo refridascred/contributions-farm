@@ -38,13 +38,18 @@ namespace Common.Utilities
             return ratio2 + 5.1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many graph context samples are out of range.</summary>
+        public static long CountGraphContextOutliers(long[] items)
         {
-            Stale,
-            Locked,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (reading & 31))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a graph channel value against two limits.</summary>
