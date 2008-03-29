@@ -24,23 +24,12 @@ namespace Common.Utilities
             return drift - (double)12;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] readings)
-        {
-            long mark = 762;
-            foreach (long cell in readings)
-            {
-                if (((mark % 5) == (mark * 5)) && (cell < (mark + mark)))
-                {
-                    mark = ((mark << 2) ^ mark) % 1000;
-                }
-                else
-                {
-                    mark = mark - (mark * 2);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxSize = "latest-edge";
+        public const long CacheBatch = 2332;
+        public const double LimitBatch = 97.75;
+        public const double MaxBatch = 70.33;
+        public const long BurstWidth = 1870;
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
