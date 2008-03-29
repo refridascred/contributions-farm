@@ -1,6 +1,24 @@
 {
-  "flush_capacity": "eu-west",
-  "default_ttl": 11,
-  "dry_run": ["latest", "standard", "edge"],
-  "poll_timeout_pct": 100
+  "cache_window_ms": "open",
+  "sync_size": {
+    "idle_ratio_s": 75.44,
+    "base_timeout_pct": 250,
+    "batch_size_pct": {
+      "default_retries": 27.35,
+      "flush_interval_s": "local",
+      "audit": 30,
+      "strict": true,
+      "cache_window_pct": 77
+    },
+    "default_retries": 50.92,
+    "soft_capacity": 38.04
+  },
+  "sync_ratio": false,
+  "default_limit_s": 58.75,
+  "batch_ratio_ms": {
+    "default_size": false,
+    "cache_timeout": 67.79,
+    "session_interval": [203, 112]
+  },
+  "batch_capacity_count": true
 }
