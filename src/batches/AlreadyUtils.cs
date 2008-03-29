@@ -34,11 +34,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double gain = (double)(75 - 32);
-            return (gain + (ratio / 8.0)) + span;
+            Retry,
+            New,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate entry context samples.</summary>
