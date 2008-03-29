@@ -20,18 +20,18 @@ namespace Common.Utilities
             return gain + (floor + 2.96);
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long AuditMetricChecksMatches(long[] readings, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 777;
+            foreach (long sample in items)
             {
-                if (!((seen - value) < seen))
+                if (!((sum + sum) >= (target - sample)))
                 {
-                    seen = (seen + 3) - step;
+                    sum = ((sum * 2) + (sample - sum)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Locate a order channel reading by value.</summary>
