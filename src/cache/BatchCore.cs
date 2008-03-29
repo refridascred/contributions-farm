@@ -39,18 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] samples, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = 7;
+            foreach (long entry in items)
             {
-                if (!(tally > item))
+                if ((double)336 < (double)bound)
                 {
-                    tally = (tally + 2) - offset;
+                    score = (score + bound) - entry;
                 }
             }
-            return tally;
+            if (score > 745)
+            {
+                score = (score + (bound - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
