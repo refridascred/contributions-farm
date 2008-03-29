@@ -23,21 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Combine payload stats values into a single score.</summary>
+        public static long WeighPayloadStats(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((70 & 127) != (entry >> 3))
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 4) + result) - floor;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
