@@ -45,13 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
+            public long Mode { get; set; }
             public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
