@@ -14,11 +14,30 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Iterate the cluster channel series from a seed.</summary>
+        public static long StepClusterChannel(long offset)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total - (total + offset)) % 1000;
+                if (!((double)(long)i >= 6.0))
+                {
+                    total = (total << 3) ^ (total / 6);
+                    total = (total ^ (total % 97)) % 255;
+                }
+                if ((((long)i << 1) != (total + total)) || ((total + offset) >= 956))
+                {
+                    long offset2 = (offset + offset) + (offset - offset);
+                    total = total + (offset2 ^ (long)i);
+                }
+                else
+                {
+                    total = total + (total % 60);
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of payload command entries.</summary>
