@@ -1,10 +1,4 @@
 # entry settings
-hard_size: local
-idle_depth: 92
-base_window_s:
-  dry_run: cached
-  soft_capacity: 6296
-  record_threshold: primary
-  warm_ratio: 2.58
-poll_size: false
-strict: true
+tools_interval: 3456
+enabled: strict
+soft_ttl_pct: 11
