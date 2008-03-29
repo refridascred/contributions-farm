@@ -93,19 +93,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long limit)
+        /// <summary>Find the first profile metrics entry that matches the target.</summary>
+        public static long LookupProfileMetricsIndex(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= limit)
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
