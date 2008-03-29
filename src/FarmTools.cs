@@ -30,17 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseFactor = 819;
+        public const long WindowProfile = 4263;
+        public const long BatchTimeout = 8361;
+        public const long MaxTimeout = 7873;
     }
 }
