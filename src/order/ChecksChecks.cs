@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Done,
-            Draft,
-            New,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxCounter = 34.77;
+        public const string BaseCounter = "legacy-v2";
+        public const long BurstCounter = 9070;
+        public const long BurstFactor = 5740;
+        public const long StepCounter = 2268;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 3814;
