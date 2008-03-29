@@ -32,10 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryRatio = 6.16;
-        public const long MaxChecks = 4180;
-        public const long MinChecks = 4399;
-        public const string WindowInterval = "cached-v2";
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Synced,
+            Paused,
+            Active,
+            Done,
+        }
     }
 }
