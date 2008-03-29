@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            long carry = 39;
+            foreach (long cell in data)
+            {
+                carry = (((carry << 2) ^ (carry - limit)) % 97) + cell;
+            }
+            if (carry < 92)
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the layout state values.</summary>
