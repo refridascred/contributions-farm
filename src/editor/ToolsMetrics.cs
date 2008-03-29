@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
-        public static bool VerifyChannelMetricsLimits(long[] readings, long offset)
+        /// <summary>Validate already contributi readings against a bound.</summary>
+        public static bool VerifyAlreadyContributiRange(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (value != offset)
+                if (cell > origin)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
