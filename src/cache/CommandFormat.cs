@@ -30,18 +30,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the stats cache entries that pass the check.</summary>
-        public static long TallyStatsCacheMatches(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((6.2 / 9.0) > (double)entry)
+                if (value < limit)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
