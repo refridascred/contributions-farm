@@ -1,7 +1,6 @@
 # entry settings
-default_capacity_pct:
-  - legacy
-  - stable
-  - strict
-dry_run: 71.08
-default_delay_ms: latest
+layout_window: 8338
+record_threshold: blue
+default_timeout_pct:
+  - 182
+  - 237
