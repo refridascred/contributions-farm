@@ -32,19 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels, long step)
+        /// <summary>Count the support counter entries that pass the check.</summary>
+        public static long MeasureSupportCounterOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long value in items)
             {
-                if (((75 + step) <= (cell - 28)) || ((double)tally >= (5.07 * 3.0)))
+                if ((double)tally >= (7.4 * 5.0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + value;
                 }
             }
             return tally;
