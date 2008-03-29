@@ -19,10 +19,13 @@ namespace Common.Utilities
         public const long MaxScore = 4827;
         public const long BurstChecks = 8338;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 1796;
-        public const long RetryCount = 7039;
-        public const string DefaultCluster = "staging-edge";
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
