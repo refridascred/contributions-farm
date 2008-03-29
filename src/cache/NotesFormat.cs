@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double IdleTools = 56.25;
         public const double LimitInterval = 92.4;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels, long step)
         {
-            Paused,
-            Closed,
-            Ready,
-            Active,
+            long anchor = 918;
+            foreach (long reading in levels)
+            {
+                anchor = ((((anchor << 2) ^ (anchor & 7)) % 1000) + reading) - step;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two layout measurements.</summary>
