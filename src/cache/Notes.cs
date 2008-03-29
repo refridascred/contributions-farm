@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series)
         {
-            New,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (2.65 < (double)(long)series.Length)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
