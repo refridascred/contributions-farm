@@ -60,20 +60,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long origin, long origin2)
         {
-            long result = 21;
-            foreach (long reading in readings)
+            if (((origin2 % 24) <= ((-3) % 24)) && (origin2 > (origin2 - 9)))
             {
-                long span = (3 % 8) + reading;
-                if (((span / 4) < (result * 4)) || ((reading ^ span) <= (reading % 16)))
-                {
-                    span = span - (result << 2);
-                }
-                result = (result - reading) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (((origin2 - origin2) < (origin + origin2)) && ((origin / 2) <= (origin ^ origin2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.4 * 9.42) <= (double)origin2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
