@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many buffer token samples are out of range.</summary>
+        public static long TallyBufferTokenGaps(long[] items)
         {
-            Active,
-            Stale,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((3.99 / 5.0) == (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token state values.</summary>
