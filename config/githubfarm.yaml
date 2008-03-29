@@ -1,26 +1,8 @@
 # githubfarm settings
-warm_capacity: 8263
-verbose:
-  audit:
-    - local
-    - legacy
-    - standard
-    - fallback
-  metric_capacity: 56.36
-  idle_retries_count: false
-  verbose: 71.59
-  warm_size_count:
-    burst_ttl_count: staging
-    verbose: staging
-    min_threshold_count: false
-    compress:
-      - 395
-      - 394
-      - 438
-      - 472
-idle_retries_pct:
-  - 65
-  - 471
-dry_run: 9834
-window_capacity: 13.04
-soft_ttl_ms: 100
+strict: 62.29
+cache_ttl_ms: legacy
+enabled: 21
+payload_retries:
+  - 343
+  - 296
+base_depth_pct: 8234
