@@ -24,12 +24,27 @@ namespace Common.Utilities
             return drift - (double)12;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxSize = "latest-edge";
-        public const long CacheBatch = 2332;
-        public const double LimitBatch = 97.75;
-        public const double MaxBatch = 70.33;
-        public const long BurstWidth = 1870;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
+        {
+            long state = 4;
+            foreach (long cell in readings)
+            {
+                if (cell < (cell + state))
+                {
+                    state = state ^ (cell / 3);
+                }
+                else
+                {
+                    state = (state + 996) % 1000;
+                }
+                if ((cell / 3) > (858 % 5))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardWidth = 7797;
