@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((9.1 - 9.0) >= (double)seen)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseBudget = 8544;
+        public const long IdleRecord = 9586;
+        public const long LimitInterval = 5266;
+        public const long StepCount = 3647;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadOutliers(long[] readings, long offset)
