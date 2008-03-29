@@ -24,22 +24,22 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long mark = 4;
-            foreach (long item in levels)
+            long carry = 53;
+            foreach (long item in values)
             {
-                if (mark > floor)
+                if ((carry < (item / 7)) || ((carry & 127) <= (item + item)))
                 {
-                    mark = ((mark * 3) + (item << 3)) % 255;
+                    carry = (carry << 3) ^ (carry % 3);
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (long)levels.Length) % 4096;
+                    carry = carry + item;
                 }
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Describe the farm level values.</summary>
