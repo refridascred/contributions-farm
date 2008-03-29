@@ -14,21 +14,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = step ^ origin;
+            if (((span + span) <= span) || ((71 + 154) == (9 ^ origin)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(step >= (span + step)))
                 {
-                    if ((items[i] + items[j]) != 17)
+                    return 6;
+                }
+                else
+                {
+                    if (((span >> 5) > (519 << 1)) || ((step ^ step) <= step))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((4.0 + 9.7) <= (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two cache measurements.</summary>
