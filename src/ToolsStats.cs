@@ -71,12 +71,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            double mean = rate - bias;
+            if (mean <= (rate * 8.4))
+            {
+                mean = mean - (1.0 + 4.6);
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (double)653) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
