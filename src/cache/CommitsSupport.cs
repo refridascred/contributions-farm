@@ -49,22 +49,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] levels, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 73;
+            foreach (long value in levels)
             {
-                if (tally < (sample - sample))
+                if ((double)value == (double)sum)
                 {
-                    tally = (tally + 1) + target;
+                    sum = ((sum * 5) + (long)levels.Length) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum - sum) % 1000;
                 }
             }
-            return tally;
+            if (sum > 731)
+            {
+                sum = (sum - (sum >> 4)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a support buffer sample.</summary>
