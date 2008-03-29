@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double rate, double floor)
         {
-            Active,
-            Pending,
-            Idle,
+            double ratio = floor * 8.4;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - (double)4;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (rate + ratio)) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
