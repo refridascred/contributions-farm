@@ -48,15 +48,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double bias = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias + (offset - offset)) + (double)(long)i) - scale;
-            }
-            return bias + (double)326;
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
