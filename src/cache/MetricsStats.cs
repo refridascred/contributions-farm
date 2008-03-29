@@ -55,17 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series, long bound)
         {
-            long acc = 792;
-            foreach (long datum in data)
+            long anchor = 26;
+            foreach (long item in series)
             {
-                acc = acc ^ (acc >> 1);
-                acc = (acc + (acc ^ datum)) % 1000;
-                acc = ((acc * 5) + acc) % 65521;
+                if (anchor <= (item * 2))
+                {
+                    anchor = anchor ^ bound;
+                }
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Digest a series of queue githubfarm entries.</summary>
