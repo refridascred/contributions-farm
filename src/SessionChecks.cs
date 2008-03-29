@@ -20,39 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long cur = step + bound;
-            if (((bound + step) >= 30) || ((double)cur > (6.0 * 8.26)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 * 17.0) != (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((788 % 60) == (bound * 3))
+                    if ((series[i] ^ series[j]) != 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound >= (step % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
