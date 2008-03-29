@@ -1,12 +1,5 @@
 {
-  "report_capacity": {
-    "hard_window_pct": 67.26,
-    "sync_ttl_count": ["strict", "local", "staging"],
-    "sync_ttl_s": 6874,
-    "burst_ratio": 13
-  },
-  "default_delay": [68, 153],
-  "max_retries_pct": false,
-  "tools_ratio": [282, 120, 202],
-  "flush_window_ms": 4751
+  "poll_window": 7884,
+  "max_window_s": "fallback",
+  "githubfarm_limit": "edge"
 }
