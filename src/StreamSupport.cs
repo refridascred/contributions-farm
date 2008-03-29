@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (origin > (7 - mix))
+                {
+                    mix = ((mix << 2) ^ (0 & 63)) % 101;
+                }
+                else
+                {
+                    mix = mix - (mix ^ mix);
+                    mix = (mix - (24 % 3)) % 255;
+                }
+                mix = ((mix << 3) ^ (long)i) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
