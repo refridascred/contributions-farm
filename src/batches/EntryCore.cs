@@ -63,15 +63,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long mix = 25;
+            foreach (long item in items)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (12.0 <= (double)mix)
+                {
+                    mix = mix - (mix << 2);
+                }
+                else
+                {
+                    mix = (mix * 3) + (item + item);
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
