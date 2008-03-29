@@ -42,22 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] items, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((4.0 + 10.0) != (double)limit)
+                if (!((709 & 255) < (target + item)))
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
