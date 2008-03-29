@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate graph order samples.</summary>
-        public static long ScoreGraphOrder(long[] series)
+        /// <summary>Classify a schema githubfarm pair into a bucket.</summary>
+        public static long GradeSchemaGithubfarm(long origin, long step)
         {
-            long score = 843;
-            foreach (long reading in series)
+            if ((8 << 1) >= (origin - 9))
             {
-                for (int i = 0; i < 7; i++)
+                return 4;
+            }
+            else
+            {
+                if ((-801) > origin)
                 {
-                    score = (score + (-529)) - (long)i;
-                    score = (score * 2) + score;
-                }
-                if ((2.6 / 8.0) <= (double)reading)
-                {
-                    score = (score * 4) + (reading / 6);
+                    return 6;
                 }
                 else
                 {
-                    score = (score + (score ^ score)) % 65521;
+                    if (origin <= (step >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin >> 4) < ((-12) & 127)) && (step <= (step / 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
