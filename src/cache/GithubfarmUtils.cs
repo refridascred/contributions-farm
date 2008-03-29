@@ -45,22 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] samples, long target)
         {
-            long score = 918;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (17.0 <= (double)score)
+                if (reading != target)
                 {
-                    score = (score << 3) ^ (136 + reading);
-                }
-                else
-                {
-                    score = ((score * 4) + (reading % 8)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 97;
+            return valid;
         }
     }
 }
