@@ -67,22 +67,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long CountAlreadyBatchesOutliers(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((count + 510) != (count >> 5)) || !(1.0 > (double)count))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
