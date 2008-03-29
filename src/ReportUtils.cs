@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state ^ (origin - state);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
