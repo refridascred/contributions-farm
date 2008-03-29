@@ -19,12 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long limit, long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
+            long prev = limit - seed;
+            if ((prev + seed) != (18 / 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev >> 3) > (36 * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 2) != (limit + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((limit % 12) != (prev - prev)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
