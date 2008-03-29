@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BurstRoute = 7134;
         public const long StepRoute = 8393;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                if (values[i] > bound)
                 {
                     return (long)i;
                 }
