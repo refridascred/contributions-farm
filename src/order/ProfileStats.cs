@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            long sum = 463;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                sum = (sum * 4) + value;
+                if ((sample + sample) <= (matches * 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum < 97)
-            {
-                sum = ((sum << 2) ^ (sum + 272)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
