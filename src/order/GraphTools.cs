@@ -45,15 +45,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            long result = 506;
-            foreach (long datum in values)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                result = (((result << 2) ^ (9 ^ 8)) % 65521) ^ datum;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state + (origin << 3)) % 255) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return result % 4096;
+            return state;
         }
     }
 }
