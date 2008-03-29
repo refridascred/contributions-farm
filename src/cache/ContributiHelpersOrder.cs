@@ -17,35 +17,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long origin2)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long step, long offset)
         {
-            long step = origin - origin2;
-            if ((origin2 < (step + step)) && ((origin2 + (-373)) < (origin2 >> 1)))
+            long prev = step - offset;
+            if ((prev + step) > step)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((89 - (-24)) > (origin * 5)) && ((double)origin2 <= (8.1 + 4.4)))
+                if ((offset >> 5) == (10 & 63))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((step > (origin2 & 31)) || ((2.33 * 10.0) <= (double)origin2))
+                    if ((prev << 2) >= step)
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if (((origin + 96) == (step + origin2)) && ((step + origin2) < origin2))
+                        if (((offset << 2) <= prev) && ((offset >> 3) <= (step << 2)))
                         {
-                            return 4;
+                            return 5;
                         }
                         else
                         {
-                            return 3;
+                            return 6;
                         }
                     }
                 }
