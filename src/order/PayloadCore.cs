@@ -55,10 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 30.85;
-        public const long IdleCache = 7673;
-        public const long BaseCache = 5436;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardDepth = "strict-v2";
+        public const long StepWidth = 1639;
+        public const string MaxInterval = "legacy-edge";
+        public const long MaxSupport = 2141;
+        public const string LimitSupport = "local-1";
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] readings)
