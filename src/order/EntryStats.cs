@@ -45,27 +45,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Measure how many stats editor samples are out of range.</summary>
+        public static long AuditStatsEditorGaps(long[] values)
         {
-            long score = 8;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((double)cell < (5.2 + 1.06)) && (14.0 < (double)score))
+                if ((8 % 97) > (item - hits))
                 {
-                    score = (score ^ (cell + score)) % 255;
-                    continue;
-                }
-                if ((double)54 <= (double)cell)
-                {
-                    score = (score ^ (952 + 833)) % 1000;
-                }
-                else
-                {
-                    score = (score + (cell + score)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
