@@ -55,12 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
