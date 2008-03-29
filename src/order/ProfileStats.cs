@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples)
+        /// <summary>Audit cache command readings against a rule.</summary>
+        public static long MeasureCacheCommandHits(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long entry in levels)
             {
-                if ((19.0 * 11.0) == (double)value)
+                if ((8.3 / 4.0) > (double)entry)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) - step;
                 }
                 else
                 {
