@@ -1,5 +1,8 @@
 {
-  "stream_ttl": "eu-west",
-  "counter_retries": 29.76,
-  "readonly": 60
+  "soft_threshold": 29,
+  "dry_run": 250,
+  "batch_interval_count": "edge",
+  "warm_limit_s": [435, 267],
+  "warm_depth_ms": "blue",
+  "contributi_ttl": 7
 }
