@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            Active,
+            New,
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
