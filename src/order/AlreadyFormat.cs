@@ -50,11 +50,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
