@@ -42,9 +42,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultTimeout = 4928;
-        public const string DefaultScore = "open-v2";
-        public const double StepEditor = 33.94;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
