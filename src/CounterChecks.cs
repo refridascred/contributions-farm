@@ -44,12 +44,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2710;
-        public const long MaxCounter = 5581;
-        public const long HardScore = 2063;
-        public const double StepLevel = 8.33;
-        public const long BatchCounter = 3762;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                total = total - ((long)i - 844);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total + (96 - limit)) % 101) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] series, long bound)
