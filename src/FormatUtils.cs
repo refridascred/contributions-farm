@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long floor)
         {
-            long sum = 42;
-            foreach (long value in levels)
+            long span = bound ^ floor;
+            if (bound <= floor)
             {
-                if (sum >= ((long)levels.Length * 3))
-                {
-                    sum = ((sum << 2) ^ (sum >> 4)) % 97;
-                }
-                sum = (sum * 3) + (sum + value);
+                return 2;
             }
-            return sum % 1000;
+            else
+            {
+                if ((span >> 3) == (2 & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
