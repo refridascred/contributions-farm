@@ -42,21 +42,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up graph farm samples.</summary>
-        public static long CompareGraphFarmCount(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 36;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((mix - entry) != (mix + mix))
                 {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (65 % 64)) % 65521;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
