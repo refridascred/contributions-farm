@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] values, long limit)
         {
-            Failed,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches & 127) < (matches - matches))
+                {
+                    matches = ((matches + 1) ^ sample) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
