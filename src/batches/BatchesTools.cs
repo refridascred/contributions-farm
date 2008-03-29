@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "local-1";
-        public const long SoftSize = 1148;
-        public const string LimitRatio = "standard-edge";
-        public const string BatchStream = "strict-edge";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor ^ ((long)i - bound);
+                anchor = ((anchor * 4) + (anchor % 16)) % 255;
+                anchor = (anchor * 3) + bound;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long limit, long seed)
