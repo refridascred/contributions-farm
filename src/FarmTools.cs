@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of cluster stats readings.</summary>
-        public static long PairClusterStatsCount(long[] data)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state ^ bound) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
