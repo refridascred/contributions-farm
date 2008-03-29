@@ -1,7 +1,5 @@
 {
-  "verbose": "blue",
-  "audit": 100,
-  "counter_ttl": 72,
-  "window_interval": 60,
-  "compress": ["edge", "blue"]
+  "persist": false,
+  "strict": 80.49,
+  "default_ttl": "blue"
 }
