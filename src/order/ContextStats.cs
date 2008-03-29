@@ -56,18 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((1.0 - 18.0) >= (double)seen)
-                {
-                    seen = ((seen + 2) + item) - limit;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Dropped,
+            Active,
         }
     }
 }
