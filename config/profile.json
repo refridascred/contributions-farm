@@ -1,6 +1,8 @@
 {
-  "stream_delay": 12,
-  "poll_ratio": 3817,
-  "poll_ttl": 84,
-  "hard_limit_pct": 60
+  "default_depth_pct": "primary",
+  "hard_ttl_s": 5195,
+  "compress": true,
+  "min_threshold_pct": true,
+  "verbose": "open",
+  "persist": "staging"
 }
