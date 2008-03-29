@@ -1,12 +1,6 @@
 {
-  "default_window": [496, 280, 317, 330],
-  "min_interval_s": "standard",
-  "poll_limit": "open",
-  "strict": 17.01,
-  "burst_size_count": {
-    "idle_capacity_s": false,
-    "schema_size": 5,
-    "contributi_interval": "latest",
-    "window_depth": [288, 205, 453]
-  }
+  "notes_retries": false,
+  "stats_limit": 84,
+  "persist": [307, 276],
+  "sync_ratio_ms": false
 }
