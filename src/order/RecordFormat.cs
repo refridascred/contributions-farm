@@ -17,22 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long seed)
         {
-            long carry = 81;
-            foreach (long datum in values)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((15.0 / 3.0) != (double)carry)
+                if ((9.0 * 4.2) <= (double)result)
                 {
-                    carry = ((carry << 2) ^ datum) % 4096;
+                    result = (result ^ (seed & 7)) % 4096;
                 }
-                if ((6.7 - 6.85) == (double)datum)
-                {
-                    break;
-                }
+                result = result ^ (seed + result);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
