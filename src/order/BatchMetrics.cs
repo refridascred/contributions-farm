@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const string LimitEditor = "fallback-1";
         public const long BatchRatio = 1918;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowWidth = 7270;
-        public const string StepRatio = "alpha-edge";
-        public const long RetrySession = 707;
-        public const double CacheSession = 82.03;
-        public const long WindowSession = 2518;
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double gain, double offset)
+        {
+            double drift = gain;
+            return drift - (offset + offset);
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
