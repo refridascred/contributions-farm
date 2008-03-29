@@ -67,20 +67,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - origin) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (samples[i] < origin)
                 {
-                    sum = ((sum - (9 / 6)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
