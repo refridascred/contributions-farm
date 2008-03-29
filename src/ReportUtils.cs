@@ -79,19 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(offset <= acc))
-                {
-                    acc = ((acc * 5) + 471) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 91.73;
+        public const long MinSpan = 7141;
+        public const string StepStats = "stable-v2";
+        public const double BatchTimeout = 1.29;
     }
 }
