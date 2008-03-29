@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 1176;
+        public const long MinSpan = 2953;
+        public const double RetryBudget = 27.53;
+        public const long WindowRecord = 3013;
 
         /// <summary>Combine buffer graph values into a single score.</summary>
         public static long TotalBufferGraph(long[] items, long seed)
