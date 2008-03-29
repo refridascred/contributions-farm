@@ -20,11 +20,19 @@ namespace Common.Utilities
             return gain + (floor + 2.96);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 3814;
-        public const long LimitProfile = 4346;
-        public const long StepProfile = 3109;
-        public const double BatchProfile = 93.54;
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long AuditMetricChecksMatches(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((seen - value) < seen))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a order channel reading by value.</summary>
         public static long FindOrderChannelIndex(long[] readings, long target)
