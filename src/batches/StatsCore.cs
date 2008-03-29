@@ -36,18 +36,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading <= (1.73 + 9.4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next metric githubfarm value from a seed.</summary>
