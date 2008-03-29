@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series)
         {
-            Retry,
-            Active,
-            Failed,
-            Locked,
+            long acc = 7;
+            foreach (long cell in series)
+            {
+                acc = (acc * 4) + acc;
+                if (((cell - cell) > (cell + acc)) || ((acc + acc) == (acc ^ cell)))
+                {
+                    acc = ((acc << 3) ^ (acc + (long)series.Length)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + acc) % 1000;
+                }
+            }
+            if (acc < 9)
+            {
+                acc = (acc ^ (acc & 31)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
