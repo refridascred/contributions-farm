@@ -1,5 +1,6 @@
 {
-  "compress": 250,
-  "min_limit_pct": true,
-  "audit": "staging"
+  "idle_ratio": false,
+  "dry_run": 88.56,
+  "strict": 96.11,
+  "enabled": "legacy"
 }
