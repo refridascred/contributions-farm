@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry & 63) <= 81)
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultTimeout = 9847;
+        public const string StepChecks = "standard-1";
+        public const long IdleScore = 5195;
+        public const long RetryInterval = 3502;
+        public const double MinChecks = 97.41;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelLimits(long[] items, long limit)
