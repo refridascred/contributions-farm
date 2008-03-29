@@ -26,15 +26,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long carry = 322;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry - (48 % 97)) % 97) + entry) + step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
