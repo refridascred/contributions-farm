@@ -1,14 +1,11 @@
 # Command notes
 
-The counter report groups every profile by commits.
-Defaults for buffer live in the config folder and can be overridden per environment.
-
-The contributi module keeps window values in sync with the stream cache.
-When a profile fails, the stats handler retries a few times before giving up.
-Each cluster is validated before it reaches the tools queue.
+A entry that stays idle for too long is moved to the schema list.
+Each farm is validated before it reaches the batch queue.
+Each format is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Validate order input early
-- Prefer batches defaults
-- Document new metric fields
+- Keep farm values small
+- Log every route change
+- Review order limits each release
