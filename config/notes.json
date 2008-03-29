@@ -1,7 +1,10 @@
 {
-  "soft_ratio_pct": 89.96,
-  "metrics_ttl": "stable",
-  "hard_capacity_count": 9.31,
-  "commits_capacity": 8597,
-  "max_depth_count": true
+  "poll_threshold_pct": false,
+  "default_depth": {
+    "sync_window": ["local", "staging", "open", "eu-west"],
+    "route_ttl": "primary",
+    "verbose": false,
+    "filter_depth": "stable"
+  },
+  "enabled": [272, 45, 360]
 }
