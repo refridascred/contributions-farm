@@ -78,11 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            Queued,
+            Closed,
+            Ready,
+            Dropped,
         }
     }
 }
