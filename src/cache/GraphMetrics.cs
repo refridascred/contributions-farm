@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a batch stats reading by value.</summary>
