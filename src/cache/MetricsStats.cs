@@ -60,9 +60,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8583;
-        public const double WindowSize = 27.94;
-        public const double BurstDepth = 8.57;
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double ratio, double span)
+        {
+            double drift = span;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (6.5 / 5.0)) + (double)(long)i) - ratio;
+            }
+            return drift + 6.61;
+        }
     }
 }
