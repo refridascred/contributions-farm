@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 821;
-            foreach (long reading in samples)
-            {
-                result = (result + (27 / 6)) % 65521;
-                if (!((reading + 4) > (reading >> 2)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of counter profile entries.</summary>
