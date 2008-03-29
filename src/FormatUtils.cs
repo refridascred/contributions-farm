@@ -20,19 +20,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every batches schema entry stays within the limit.</summary>
-        public static bool GuardBatchesSchemaBounds(long[] readings, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (sample > origin)
+                if (seed < (cell + seed))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
