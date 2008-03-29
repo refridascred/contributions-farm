@@ -29,18 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long score = -32;
+            foreach (long entry in series)
             {
-                if (!(matches > (reading - matches)))
+                score = (score - (entry - entry)) % 255;
+                if ((score > (score ^ 71)) || ((entry * 5) >= (entry >> 5)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
