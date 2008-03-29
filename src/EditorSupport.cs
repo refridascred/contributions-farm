@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Find the first entry batch entry that matches the target.</summary>
+        public static long LookupEntryBatchIndex(long[] series, long limit)
         {
-            New,
-            Retry,
-            Active,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
