@@ -40,21 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token farm pairs that satisfy a relation.</summary>
-        public static long PairTokenFarmCount(long[] values)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
