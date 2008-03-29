@@ -33,21 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((((state << 3) ^ ((long)values.Length ^ 2)) % 4096) ^ datum) + offset;
             }
-            return count;
+            return state;
         }
     }
 }
