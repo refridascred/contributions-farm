@@ -20,19 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = 25;
+            foreach (long sample in values)
             {
-                if (!(((long)i * 5) < (origin + anchor)))
+                if (mark > (offset >> 4))
                 {
-                    anchor = ((anchor << 2) ^ origin) % 255;
+                    mark = (mark + sample) % 97;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                mark = (mark - (113 + offset)) % 65521;
+                mark = (mark - (mark - sample)) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Accumulate metric samples.</summary>
