@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long floor, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long bound = floor - origin;
+            if ((double)bound <= (6.2 - 0.1))
             {
-                acc = ((acc * 3) + (acc + (long)i)) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((floor >= (floor * 4)) || ((75 - floor) < (floor + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound << 3) >= 5) && ((bound / 7) >= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + bound) >= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
