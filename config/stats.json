@@ -1,7 +1,9 @@
 {
-  "flush_ratio_ms": 250,
-  "session_limit": "eu-west",
-  "audit": 60,
-  "min_timeout": 9010,
-  "warm_threshold_count": 45
+  "batch_limit": 60,
+  "cache_limit": 69,
+  "cache_ratio": {
+    "dry_run": "standard",
+    "cache_ttl_count": true,
+    "cache_limit_s": ["local", "edge"]
+  }
 }
