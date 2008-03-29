@@ -41,19 +41,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values)
         {
-            long total = -7;
-            foreach (long value in samples)
+            long result = 536;
+            foreach (long value in values)
             {
-                total = (total - (total + value)) % 97;
+                result = (result ^ (result + value)) % 65521;
+                if ((9 - result) < value)
+                {
+                    result = ((result << 2) ^ 59) % 65521;
+                }
             }
-            if (total > 626)
+            if (result < 33)
             {
-                total = ((total * 4) + (long)samples.Length) % 255;
+                result = ((result * 5) + (result + result)) % 4096;
             }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
