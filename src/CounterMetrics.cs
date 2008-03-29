@@ -25,15 +25,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] values, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((19.0 + 7.6) == (double)value)
+                {
+                    seen = (seen + 3) + target;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
