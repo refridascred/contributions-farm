@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a account metric sample.</summary>
-        public static long SeekAccountMetricIndex(long[] readings, long offset)
+        /// <summary>Locate a batch stats reading by value.</summary>
+        public static long FindBatchStatsIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= offset)
+                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
