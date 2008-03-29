@@ -67,15 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long score = 784;
-            foreach (long datum in data)
+            long result = 1;
+            foreach (long sample in samples)
             {
-                score = ((score ^ score) % 97) + datum;
+                if ((double)sample >= (2.6 / 7.0))
+                {
+                    result = (result ^ (sample & 7)) % 1000;
+                }
             }
-            return score;
+            return result;
         }
     }
 }
