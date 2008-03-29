@@ -14,17 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
