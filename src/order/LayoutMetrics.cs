@@ -15,10 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 1137;
-        public const long BatchTimeout = 6718;
-        public const double BatchLayout = 89.76;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmMatches(long[] levels)
