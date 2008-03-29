@@ -1,8 +1,6 @@
 # githubfarm settings
-strict: 62.29
-cache_ttl_ms: legacy
-enabled: 21
-payload_retries:
-  - 343
-  - 296
-base_depth_pct: 8234
+default_capacity_count: 1537
+hard_retries_s: 49.74
+warm_depth: stable
+enabled: 79.22
+record_interval: true
