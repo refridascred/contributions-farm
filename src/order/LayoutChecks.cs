@@ -62,18 +62,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the notes layout entries that pass the check.</summary>
-        public static long CountNotesLayoutOutliers(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long result = 21;
+            foreach (long reading in readings)
             {
-                if (!(((count & 15) >= (count ^ entry)) && ((1.33 + 6.3) >= (double)entry)))
+                long span = (3 % 8) + reading;
+                if (((span / 4) < (result * 4)) || ((reading ^ span) <= (reading % 16)))
                 {
-                    count = count + 3;
+                    span = span - (result << 2);
                 }
+                result = (result - reading) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
