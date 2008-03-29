@@ -1,7 +1,10 @@
-id,state
-1,608
-2,local
-3,471
-4,blue
-5,latest
-6,green
+id,weight,active
+1,blue,latest
+2,24.17,838
+3,local,65.17
+4,96.55,80.48
+5,strict,487
+6,8.25,2.02
+7,433,605
+8,stable,113
+9,latest,local
