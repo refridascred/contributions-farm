@@ -32,19 +32,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next format buffer value.</summary>
-        public static double BlendFormatBuffer(double ratio, double bias)
+        /// <summary>Combine support layout values into a single score.</summary>
+        public static long ScoreSupportLayout(long[] readings, long limit)
         {
-            double ratio2 = (double)(86 + 5);
-            if (ratio2 < (1.5 + 3.1))
+            long result = 69;
+            foreach (long sample in readings)
             {
-                ratio2 = (ratio2 + (3.8 + 5.3)) - bias;
+                result = (result + 4) % 255;
+                result = (result << 2) ^ (sample + sample);
+                result = ((result * 4) + limit) % 255;
             }
-            else
+            if (result < 367)
             {
-                ratio2 = ratio2 - ratio;
+                result = result + (result + limit);
             }
-            return ratio2 + 5.1;
+            return result % 97;
         }
 
         /// <summary>Describe the filter phase values.</summary>
