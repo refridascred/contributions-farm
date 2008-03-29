@@ -47,22 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks record entries that pass the check.</summary>
-        public static long AuditChecksRecordHits(long[] samples)
+        /// <summary>Count graph commits pairs that satisfy a relation.</summary>
+        public static long PairGraphCommitsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally >> 5) <= cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
