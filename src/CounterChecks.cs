@@ -14,20 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (!((offset + sum) < (sum + offset)))
+                if (sample > limit)
                 {
-                    sum = ((sum * 2) + sum) % 101;
-                    sum = (sum << 2) ^ (offset / 2);
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
