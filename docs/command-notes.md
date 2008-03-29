@@ -1,12 +1,10 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use filter settings to tune how often buffer data is refreshed.
-The support module keeps batch values in sync with the batch cache.
+Each batch is validated before it reaches the layout queue.
+The entry report groups every editor by commits.
 
 ## Guidelines
 
-- Log every order change
-- Validate entry input early
-- Document new payload fields
-- Review counter limits each release
+- Log every stats change
+- Keep notes values small
+- Review format limits each release
