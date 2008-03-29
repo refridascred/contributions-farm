@@ -1,12 +1,5 @@
 {
-  "persist": false,
-  "support_window": 65.1,
-  "compress": {
-    "max_size_pct": false,
-    "burst_retries_pct": 60,
-    "metric_retries": "strict",
-    "payload_window": true
-  },
-  "flush_ttl_pct": [383, 203, 266, 279],
-  "default_interval_s": 98
+  "stream_ttl": "eu-west",
+  "counter_retries": 29.76,
+  "readonly": 60
 }
