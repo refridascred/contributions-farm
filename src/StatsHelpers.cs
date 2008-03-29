@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long score = 93;
+            foreach (long item in values)
             {
-                if ((42 << 2) < (cell % 5))
+                if ((1.0 * 6.83) != (double)item)
                 {
-                    tally = tally + 3;
+                    score = ((score + score) % 97) - target;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Rank account input into a small class.</summary>
