@@ -1,10 +1,7 @@
-id,weight,active
-1,blue,latest
-2,24.17,838
-3,local,65.17
-4,96.55,80.48
-5,strict,487
-6,8.25,2.02
-7,433,605
-8,stable,113
-9,latest,local
+id,count,level,label,state
+1,9.99,25.47,930,eu-west
+2,27.77,1.21,blue,edge
+3,79.13,16.13,44.81,489
+4,396,blue,eu-west,6.47
+5,215,37.29,strict,25.11
+6,eu-west,23.81,317,local
