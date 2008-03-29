@@ -19,17 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] samples, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = step + floor;
+            if ((double)span >= (double)floor)
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 5) < floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
