@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinSpan = 2065;
+        public const double MinTimeout = 38.71;
+        public const double SoftWindow = 22.84;
+        public const string CacheWindow = "standard";
+        public const long LimitWindow = 30;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
