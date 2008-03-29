@@ -42,18 +42,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            long mark = 20;
-            foreach (long item in items)
+            double ratio = (gain / 3.0) - gain;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item >> 1) < (43 + 503))
-                {
-                    mark = (((mark << 2) ^ (mark - item)) % 1000) - limit;
-                }
+                ratio = (ratio - floor) - (double)(long)i;
             }
-            return mark;
+            return ratio - (gain / 6.0);
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
