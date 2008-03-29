@@ -1,8 +1,5 @@
 {
-  "soft_threshold": 29,
-  "dry_run": 250,
-  "batch_interval_count": "edge",
-  "warm_limit_s": [435, 267],
-  "warm_depth_ms": "blue",
-  "contributi_ttl": 7
+  "tools_timeout": 81.79,
+  "token_timeout": false,
+  "soft_ttl_pct": 79.05
 }
