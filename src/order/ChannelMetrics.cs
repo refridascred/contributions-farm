@@ -34,21 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Classify a filter order pair into a bucket.</summary>
+        public static long SortFilterOrder(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((floor % 24) >= (limit / 6)) || ((double)limit <= (5.0 / 7.0)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((floor + (-606)) < (floor ^ limit)))
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
