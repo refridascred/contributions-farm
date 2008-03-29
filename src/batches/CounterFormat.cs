@@ -38,10 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepWidth = 9557;
-        public const string IdlePayload = "local";
-        public const double RetryRatio = 71.58;
-        public const string MinDepth = "cached-v2";
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
