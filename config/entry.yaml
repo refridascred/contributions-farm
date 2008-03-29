@@ -1,24 +1,10 @@
 # entry settings
-already_limit: true
-batch_interval: false
-soft_threshold:
-  dry_run: 1024
-  flush_retries_count: stable
-  layout_delay: 100
-  compress:
-    min_ttl_pct: 3.43
-    metrics_interval: 49
-    soft_ttl_count:
-      - eu-west
-      - staging
-      - latest
-      - primary
-  soft_retries_s:
-    sync_ratio_count: 24.21
-    idle_timeout_s:
-      - strict
-      - strict
-    dry_run: legacy
-    flush_ttl: legacy
-commits_timeout: false
-idle_window_pct: 36
+hard_size: local
+idle_depth: 92
+base_window_s:
+  dry_run: cached
+  soft_capacity: 6296
+  record_threshold: primary
+  warm_ratio: 2.58
+poll_size: false
+strict: true
