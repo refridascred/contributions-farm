@@ -17,24 +17,13 @@ namespace Common.Utilities
         public const long SoftFilter = 3744;
         public const string WindowDepth = "primary-edge";
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            if (limit >= (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((256 << 1) <= (limit / 6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
