@@ -23,12 +23,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Iterate the filter graph series from a seed.</summary>
+        public static long IterateFilterGraph(long target)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
