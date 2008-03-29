@@ -38,10 +38,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "staging-edge";
-        public const long RetryQueue = 6517;
-        public const string HardSpan = "local-1";
-        public const long StepLevel = 2965;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
