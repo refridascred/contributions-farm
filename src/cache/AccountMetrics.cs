@@ -23,11 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRatio = 259;
-        public const double SoftRecord = 22.13;
-        public const string RetryRecord = "local-v2";
-        public const string WindowDepth = "cached-1";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] levels)
+        {
+            long sum = 84;
+            foreach (long item in levels)
+            {
+                sum = (((sum * 5) + (sum + sum)) % 255) + item;
+            }
+            return sum;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 7415;
