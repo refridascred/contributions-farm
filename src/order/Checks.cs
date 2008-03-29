@@ -51,18 +51,39 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] values, long step)
+        /// <summary>Grade a graph channel value against two limits.</summary>
+        public static long SortGraphChannel(long step, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long lane = step + origin;
+            if ((8.94 + 15.0) <= (double)lane)
             {
-                if ((step * 3) < (step + matches))
+                return 3;
+            }
+            else
+            {
+                if (!((lane * 2) > origin))
                 {
-                    matches = (matches + 2) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if (((-60) & 15) <= (lane & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (lane > (74 ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
