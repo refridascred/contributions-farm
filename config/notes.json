@@ -1,10 +1,6 @@
 {
-  "graph_ratio": "edge",
-  "default_limit_pct": "strict",
-  "window_threshold": {
-    "batch_depth": "green",
-    "buffer_interval": false,
-    "hard_ttl_count": ["cached", "local", "staging", "cached"],
-    "counter_capacity": "fallback"
-  }
+  "cache_ttl": 2.62,
+  "strict": 7723,
+  "warm_limit": "latest",
+  "min_timeout_s": "local"
 }
