@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a account notes value against two limits.</summary>
-        public static long ClassifyAccountNotes(long target, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long origin)
         {
-            long cur = target - step;
-            if ((target << 1) != (step ^ cur))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((cur - target) > (cur ^ target)) && (17.0 >= (double)step))
+                if ((double)origin <= (7.69 - 2.17))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((cur + target) >= (target << 2)) || ((step - cur) > cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 2) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
