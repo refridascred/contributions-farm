@@ -1,8 +1,15 @@
 {
-  "poll_retries": 60,
-  "queue_delay": 54.43,
-  "poll_interval_s": "eu-west",
-  "max_threshold_s": [464, 289, 353, 402],
-  "base_ratio_s": false,
-  "min_ratio_pct": 1598
+  "retry_limit": "legacy",
+  "metric_delay": false,
+  "contributi_window": {
+    "schema_retries": "latest",
+    "profile_window": {
+      "route_window": 1024,
+      "sync_delay": ["primary", "strict"],
+      "compress": true
+    },
+    "min_interval": "primary",
+    "record_depth": "local"
+  },
+  "batch_interval_pct": 45.39
 }
