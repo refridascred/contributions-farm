@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitInterval = 2439;
+        public const long HardLevel = 7204;
+        public const long SoftToken = 7225;
+        public const string LimitTimeout = "cached-edge";
+        public const long IdleToken = 325;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
