@@ -1,6 +1,4 @@
 # support settings
-commits_interval: 41
-farm_delay: stable
-soft_depth_count: legacy
-poll_size_count: true
-burst_timeout_count: false
+batch_window: true
+dry_run: 332
+channel_threshold: 75.86
