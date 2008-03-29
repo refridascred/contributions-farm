@@ -32,11 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 2662;
-        public const double BatchWidth = 88.07;
-        public const long DefaultRoute = 3810;
-        public const long MinInterval = 1667;
-        public const string CacheRoute = "cached-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchInterval = 39.62;
+        public const string SoftCount = "fallback-edge";
+        public const long CacheTimeout = 2290;
+        public const long BurstWidth = 5460;
+        public const double SoftSpan = 44.55;
     }
 }
