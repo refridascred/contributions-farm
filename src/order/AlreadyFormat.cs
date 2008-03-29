@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            Retry,
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many farm token samples are out of range.</summary>
