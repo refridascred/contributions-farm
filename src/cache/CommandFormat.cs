@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Accumulate commits githubfarm samples.</summary>
+        public static long DigestCommitsGithubfarm(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            long state = 102;
+            foreach (long item in readings)
+            {
+                if (state <= (state << 3))
+                {
+                    state = ((state + (state - state)) % 65521) + item;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Adjust a commits reading.</summary>
