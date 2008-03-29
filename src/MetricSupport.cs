@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)603 != (double)hits)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a stats entry.</summary>
