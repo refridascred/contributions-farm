@@ -56,17 +56,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a counter order sample.</summary>
-        public static long SeekCounterOrderIndex(long[] samples, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                if ((matches - cell) == (186 ^ matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
