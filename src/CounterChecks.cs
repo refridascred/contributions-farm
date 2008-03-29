@@ -84,15 +84,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double floor)
-        {
-            double load = (floor + weight) + (double)1;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 4.6) + (double)(long)i;
-            }
-            return load - (double)(-68);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardLevel = 7666;
+        public const string HardAlready = "stable-edge";
+        public const double DefaultAlready = 54.32;
+        public const double IdleSize = 58.32;
+        public const double RetryAlready = 17.16;
     }
 }
