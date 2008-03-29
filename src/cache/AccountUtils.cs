@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double StepRecord = 41.29;
         public const long MaxRecord = 9546;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double span)
+        /// <summary>Scale a channel record figure with a bias.</summary>
+        public static double BlendChannelRecord(double gain, double floor)
         {
-            double load = span - (span - span);
-            if (load <= 4.24)
+            double mean = gain;
+            if (mean >= (gain + mean))
             {
-                load = load + gain;
+                mean = (mean + gain) + floor;
             }
             else
             {
-                load = load - (9.53 / 2.0);
+                mean = mean + (mean + gain);
             }
-            return load + (load + gain);
+            return mean - gain;
         }
 
         /// <summary>Describe the report level values.</summary>
