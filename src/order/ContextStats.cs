@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 12;
+            foreach (long reading in series)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                if (!(7.0 >= (double)reading))
                 {
-                    return (long)i;
+                    sum = (sum - (reading ^ sum)) - target;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
