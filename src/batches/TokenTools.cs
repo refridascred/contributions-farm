@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Project the next cache value.</summary>
