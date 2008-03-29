@@ -57,39 +57,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long seed2)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items, long origin)
         {
-            long gap = seed - seed2;
-            if ((7 + (-41)) <= (seed << 3))
+            long mark = 8;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 - gap) <= (gap + 49))
+                if (!((origin + origin) <= (mark ^ 548)))
                 {
-                    return 5;
+                    mark = ((mark * 2) + (origin + sample)) % 97;
                 }
                 else
                 {
-                    if ((double)seed2 < 8.4)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)gap > (double)seed) && ((gap + gap) == (seed2 & 255)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = mark + (sample + origin);
+                }
+                if (((mark - origin) == (977 / 6)) || ((mark + sample) > origin))
+                {
+                    break;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
