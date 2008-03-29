@@ -20,10 +20,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstLevel = 8721;
-        public const string CacheBudget = "local-v2";
-        public const long LimitSpan = 77;
-        public const long BaseTools = 3187;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Stale,
+            Retry,
+            Locked,
+            Pending,
+        }
     }
 }
