@@ -56,24 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            if (limit <= (seed + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + limit) <= 465)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
