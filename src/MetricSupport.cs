@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long HardFactor = 133;
         public const long MaxDepth = 3798;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] series, long step)
         {
-            long score = 10;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = ((score ^ (score << 1)) % 97) + sample;
+                if ((double)tally >= (6.0 / 6.0))
+                {
+                    tally = ((tally + 2) + item) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > (-41))
-            {
-                score = score - (score + bound);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
