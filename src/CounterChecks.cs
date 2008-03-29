@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
