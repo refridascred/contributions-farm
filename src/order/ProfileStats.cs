@@ -35,15 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            double mean = rate + bias;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + rate) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + bias;
+            return tally;
         }
     }
 }
