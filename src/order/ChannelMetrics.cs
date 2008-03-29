@@ -24,25 +24,13 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long edge = bound - limit;
-            if (((bound + edge) < (bound - edge)) && ((5.36 * 8.0) != (double)bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
