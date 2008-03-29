@@ -38,11 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheLevel = 3.34;
-        public const long HardGithubfarm = 2434;
-        public const long WindowGithubfarm = 347;
-        public const string BurstBudget = "latest-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleSize = 65.71;
+        public const long BaseSpan = 206;
+        public const long HardSpan = 7442;
+        public const long StepChecks = 847;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
