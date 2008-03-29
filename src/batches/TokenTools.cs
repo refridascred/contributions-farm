@@ -25,22 +25,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels, long target)
-        {
-            long mark = 20;
-            foreach (long datum in levels)
-            {
-                if (((double)datum != (1.4 * 3.0)) && (mark <= (7 >> 4)))
-                {
-                    mark = (mark + (6 % 24)) % 255;
-                }
-            }
-            if (mark < 76)
-            {
-                mark = (mark + target) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "legacy";
+        public const long BatchSpan = 2765;
+        public const long DefaultCluster = 7562;
+        public const long LimitFactor = 1489;
+        public const double BatchCluster = 97.12;
     }
 }
