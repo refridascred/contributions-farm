@@ -53,38 +53,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long target)
+        /// <summary>Adjust a report graph reading.</summary>
+        public static double BlendReportGraph(double scale, double bias)
         {
-            if (!((double)bound <= 4.4))
+            double load = scale;
+            if (load >= scale)
             {
-                return 0;
+                load = load - load;
             }
-            else
-            {
-                if ((6.1 + 4.2) >= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 9) <= (669 << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target & 63) >= (bound & 31))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load - bias;
         }
 
         /// <summary>Count the notes layout entries that pass the check.</summary>
