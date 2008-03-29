@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxLevel = "open-1";
-        public const double SoftFilter = 55.43;
-        public const long MinFilter = 8327;
-        public const long RetryTimeout = 8831;
-        public const string StepFilter = "staging-v2";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] values)
