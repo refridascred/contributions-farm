@@ -31,9 +31,31 @@ namespace Common.Utilities
         public const long BatchBudget = 3793;
         public const double LimitCache = 3.41;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSize = 5197;
-        public const long IdleRatio = 9837;
-        public const long LimitRatio = 3328;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long limit)
+        {
+            if (((offset * 5) <= (695 ^ 259)) || ((double)limit >= (1.38 - 0.05)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.9 / 6.0) >= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
