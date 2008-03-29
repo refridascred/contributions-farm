@@ -20,19 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two notes schema measurements.</summary>
-        public static double BlendNotesSchema(double bias, double floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            double weight = floor;
-            if (weight < floor)
+            double rate2 = floor + (rate + 3.9);
+            if (rate2 <= (4.89 * 2.0))
             {
-                weight = (weight + weight) + bias;
+                rate2 = rate2 + (rate + rate);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight + weight) + (double)(long)i;
+                rate2 = (rate2 - floor) + (double)(long)i;
             }
-            return weight + (weight * 3.2);
+            return rate2 + (rate2 * 7.21);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
