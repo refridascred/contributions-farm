@@ -34,23 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Project the next cluster cache value.</summary>
+        public static double ScaleClusterCache(double ratio, double span)
         {
-            double drift = 2.0;
-            if (drift <= span)
+            double load = ratio;
+            if (load <= (double)212)
             {
-                drift = drift + bias;
+                load = (load - (7.0 * 7.4)) - span;
             }
             else
             {
-                drift = drift - (bias * 11.0);
+                load = load - 12.0;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift + (drift * 11.0)) + (double)(long)i;
+                load = (load - (ratio / 8.0)) - (double)(long)i;
             }
-            return drift - (drift - span);
+            return load + (ratio / 3.0);
         }
     }
 }
