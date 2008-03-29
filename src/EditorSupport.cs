@@ -33,23 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats already figure with a bias.</summary>
-        public static double ScaleStatsAlready(double weight, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double rate = weight - 18.0;
-            if (rate <= floor)
-            {
-                rate = rate - (floor + weight);
-            }
-            else
-            {
-                rate = rate - (double)82;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (0.3 / 8.0);
+            Failed,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Describe the graph state values.</summary>
