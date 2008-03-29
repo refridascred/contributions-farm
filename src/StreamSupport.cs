@@ -17,21 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
