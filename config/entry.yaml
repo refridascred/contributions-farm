@@ -1,5 +1,7 @@
 # entry settings
-persist: blue
-hard_delay_s: stable
-readonly: false
-contributi_limit: latest
+idle_threshold: 1024
+verbose: standard
+min_delay_s: staging
+burst_delay_ms: 30
+persist: green
+default_ratio_ms: 2604
