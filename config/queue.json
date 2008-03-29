@@ -1,6 +1,18 @@
 {
-  "hard_interval_pct": 1024,
-  "base_capacity": true,
-  "hard_interval_count": 100,
-  "batch_ttl_count": "staging"
+  "enabled": [398, 219, 323],
+  "cache_ttl": 26,
+  "checks_size": {
+    "min_ttl": {
+      "batch_capacity": 53,
+      "persist": ["edge", "standard", "legacy", "fallback"],
+      "entry_window": "eu-west",
+      "poll_interval_count": 1388
+    },
+    "strict": 1024,
+    "filter_depth": "local",
+    "poll_retries_s": 32.55,
+    "cache_size_count": "blue",
+    "retry_size": false
+  },
+  "compress": false
 }
