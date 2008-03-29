@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long diff = seed ^ target;
+            if ((target - target) <= (target >> 1))
             {
-                if (reading > offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)diff <= (4.6 * 9.05))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)diff <= (4.9 - 16.0)) && (seed > ((-8) % 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target + seed) < (seed + target)) || ((double)diff < (8.0 + 9.79)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
