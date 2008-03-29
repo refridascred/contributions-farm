@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a token batch sample.</summary>
-        public static long LocateTokenBatchIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 627;
+        public const long BurstOrder = 6140;
+        public const double BaseScore = 59.14;
+        public const long SoftTimeout = 668;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
