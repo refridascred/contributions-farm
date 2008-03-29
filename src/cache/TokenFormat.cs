@@ -31,14 +31,9 @@ namespace Common.Utilities
         public const double MaxBatch = 70.33;
         public const long BurstWidth = 1870;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Queued,
-            Done,
-            Idle,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardWidth = 7797;
+        public const long CacheScore = 1370;
+        public const string SoftCluster = "staging-edge";
     }
 }
