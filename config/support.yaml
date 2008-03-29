@@ -1,24 +1,7 @@
 # support settings
-audit:
-  - 282
-  - 454
-  - 290
-idle_capacity_ms: 96.75
-stats_timeout:
-  audit: 965
-  base_delay_ms: open
-  retry_ratio: legacy
-  idle_size_ms: 18.52
-  max_interval: 59.42
-  burst_ratio: true
-soft_retries_pct:
-  context_window: local
-  readonly: 79
-  audit: cached
-  burst_window_ms:
-    - 77
-    - 495
-    - 82
-  contributi_delay: primary
-  max_delay_s: true
-tools_depth: open
+poll_threshold_ms: 82.18
+batch_window_s: blue
+default_ratio_count: 12
+context_threshold:
+  - blue
+  - green
