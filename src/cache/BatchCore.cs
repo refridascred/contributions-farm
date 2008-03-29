@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of graph tools readings.</summary>
-        public static long CompareGraphToolsCount(long[] values)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
