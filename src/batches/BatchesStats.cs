@@ -45,23 +45,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Scale a account editor figure with a bias.</summary>
+        public static double BlendAccountEditor(double gain, double span)
         {
-            double weight = bias - (double)946;
-            if (weight > (span * 2.9))
+            double rate = 5.7;
+            if (rate > span)
             {
-                weight = weight - (double)1;
+                rate = (rate + (double)35) + gain;
             }
             else
             {
-                weight = weight - bias;
+                rate = rate + span;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight - bias) + (double)(long)i;
+                rate = (rate + 3.0) + (double)(long)i;
             }
-            return weight - span;
+            return rate + (double)9;
         }
     }
 }
