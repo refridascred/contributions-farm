@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Queued,
-            Stale,
-            Paused,
-            Ready,
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the stream class values.</summary>
