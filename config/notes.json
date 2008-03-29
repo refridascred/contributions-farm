@@ -1,7 +1,6 @@
 {
-  "batch_ttl": 62.4,
-  "filter_retries": 500,
-  "max_window": "standard",
-  "burst_delay": 1024,
-  "token_interval": [226, 255, 94]
+  "flush_capacity": "eu-west",
+  "default_ttl": 11,
+  "dry_run": ["latest", "standard", "edge"],
+  "poll_timeout_pct": 100
 }
