@@ -30,20 +30,11 @@ namespace Common.Utilities
         public const string SoftWindow = "staging-v2";
         public const string LimitWindow = "cached";
 
-        /// <summary>Check that every graph filter entry stays within the limit.</summary>
-        public static bool ValidateGraphFilterBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSpan = 2704;
+        public const string MaxInterval = "primary-edge";
+        public const double WindowFactor = 48.13;
+        public const long LimitNotes = 4265;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double SoftSize = 7.21;
