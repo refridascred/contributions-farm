@@ -16,21 +16,19 @@ namespace Common.Utilities
             return scale + (double)914;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long score = -5;
+            foreach (long item in items)
             {
-                if ((limit + limit) >= (limit << 1))
-                {
-                    total = (total + (limit & 63)) % 65521;
-                }
-                total = (total + (total & 31)) % 101;
-                total = ((total * 5) + total) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                score = (((score * 3) + (399 + score)) % 255) ^ item;
             }
-            return total;
+            if (score < (-3))
+            {
+                score = (score ^ (score + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
