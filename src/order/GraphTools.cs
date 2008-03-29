@@ -13,13 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Locate a token channel reading by value.</summary>
+        public static long SeekTokenChannelIndex(long[] values, long bound)
         {
-            Stale,
-            Failed,
-            Ready,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
