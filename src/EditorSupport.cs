@@ -53,19 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = ((mark + (mark & 127)) % 97) - (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
