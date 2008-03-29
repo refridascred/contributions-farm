@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] items, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (seed > (seed - seed))
             {
-                if ((64 >> 1) != (tally & 3))
+                return 7;
+            }
+            else
+            {
+                if ((8.0 >= (double)seed) && ((double)target <= (4.9 + 4.0)))
                 {
-                    tally = ((tally + 2) + item) - limit;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((4.6 * 8.48) >= (double)seed) && ((double)target <= 11.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
