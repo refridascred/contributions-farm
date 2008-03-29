@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a editor notes reading.</summary>
-        public static double BlendEditorNotes(double gain, double offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long floor)
         {
-            double rate = (double)576 / 7.0;
-            if (rate <= (gain / 2.0))
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                rate = (rate + rate) - offset;
+                if (!((double)mix <= (7.13 / 9.0)))
+                {
+                    mix = (mix << 2) ^ floor;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + (3.0 * 7.24);
-            }
-            return rate - (gain * 2.76);
+            return mix;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
