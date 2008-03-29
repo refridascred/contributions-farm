@@ -27,18 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] series, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 5;
+            foreach (long value in data)
             {
-                if (!((6.5 - 3.52) < (double)tally))
-                {
-                    tally = ((tally + 1) - cell) - step;
-                }
+                score = (((score << 2) ^ (2 - score)) % 97) - value;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Hold a editor entry.</summary>
