@@ -20,13 +20,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Stale,
-            Retry,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 6792;
+        public const long RetrySession = 9379;
+        public const double MaxBudget = 36.41;
     }
 }
