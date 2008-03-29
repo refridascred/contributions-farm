@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long step, long seed)
+        /// <summary>Match up layout cache samples.</summary>
+        public static long MatchLayoutCacheCount(long[] items)
         {
-            if (!((seed - seed) > (step * 3)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step - seed) > seed) || ((step & 3) > (step + 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a tools reading.</summary>
