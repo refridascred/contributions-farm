@@ -60,21 +60,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count window token pairs that satisfy a relation.</summary>
-        public static long CompareWindowTokenCount(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
