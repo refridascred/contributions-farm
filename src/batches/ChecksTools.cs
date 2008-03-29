@@ -23,40 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metric filter input into a small class.</summary>
-        public static long ClassifyMetricFilter(long bound, long origin)
-        {
-            long bound2 = bound - origin;
-            if ((bound2 ^ bound) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.4 + 4.0) != (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound < (bound - 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin << 1) > bound2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 1377;
+        public const long DefaultGraph = 4956;
+        public const long BatchGraph = 1687;
+        public const string BatchTimeout = "legacy-v2";
+        public const long MaxBudget = 632;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] readings)
