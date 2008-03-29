@@ -45,18 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token cluster samples are out of range.</summary>
-        public static long MeasureTokenClusterOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits ^ sample) == (sample * 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinSize = "open-v2";
+        public const long WindowProfile = 2945;
+        public const long LimitCount = 2967;
     }
 }
