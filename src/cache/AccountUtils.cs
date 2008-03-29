@@ -20,18 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] values, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (!((limit + limit) < (664 * 3)))
             {
-                if ((seen + offset) != (offset - reading))
+                return 0;
+            }
+            else
+            {
+                if ((step & 15) >= limit)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((step - 6) > 6)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.78 - 3.1) > (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metrics info.</summary>
