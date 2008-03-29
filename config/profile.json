@@ -1,6 +1,7 @@
 {
-  "warm_interval_ms": 2737,
-  "audit": 74,
-  "sync_retries": 30,
-  "farm_ttl": "blue"
+  "retry_ttl_pct": 35,
+  "editor_size": 60,
+  "soft_size_pct": false,
+  "session_retries": ["primary", "staging", "standard"],
+  "channel_size": [191, 121]
 }
