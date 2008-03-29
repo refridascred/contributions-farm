@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultLevel = 62.24;
-        public const double DefaultDepth = 87.4;
-        public const long BurstRecord = 2787;
-        public const string WindowSpan = "cached-v2";
-        public const long IdleScore = 1943;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "standard-1";
+        public const long StepTimeout = 7734;
+        public const long SoftFactor = 4283;
 
         /// <summary>Check that every channel stats entry stays within the limit.</summary>
         public static bool GuardChannelStatsRange(long[] series, long target)
