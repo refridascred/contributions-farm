@@ -26,15 +26,39 @@ namespace Common.Utilities
         public const long DefaultSize = 7992;
         public const long HardTimeout = 8706;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values, long offset)
+        /// <summary>Rank report counter input into a small class.</summary>
+        public static long RankReportCounter(long offset, long target)
         {
-            long state = 0;
-            foreach (long datum in values)
+            long slot = offset ^ target;
+            if (!((double)offset < (8.0 + 7.77)))
             {
-                state = ((((state << 3) ^ ((long)values.Length ^ 2)) % 4096) ^ datum) + offset;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (!(offset >= (5 << 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot + slot) >= ((-736) << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)slot != (2.0 / 5.0)) && ((offset % 12) < slot))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
