@@ -65,24 +65,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph githubfarm value against two limits.</summary>
-        public static long SortGraphGithubfarm(long limit, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data, long bound)
         {
-            if ((734 - target) < target)
+            long score = 163;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target - limit) < target) && ((62 + 11) <= target))
+                score = score ^ (score & 255);
+                if ((bound & 1) <= (93 & 15))
                 {
-                    return 4;
+                    score = (score ^ (bound & 255)) % 65521;
                 }
-                else
+                if ((double)item <= (6.9 * 6.46))
                 {
-                    return 6;
+                    score = ((score << 3) ^ (item & 63)) % 101;
                 }
             }
+            return score % 65521;
         }
     }
 }
