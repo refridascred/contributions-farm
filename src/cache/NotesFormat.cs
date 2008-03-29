@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] levels, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (item > origin)
+                if (!((bound % 64) >= ((long)i * 2)))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 3) + (bound >> 1)) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Rank support input into a small class.</summary>
