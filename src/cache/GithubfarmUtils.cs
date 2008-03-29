@@ -34,19 +34,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two notes stats measurements.</summary>
-        public static double BlendNotesStats(double scale, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            double bias2 = scale;
-            if (bias2 < (bias / 9.0))
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = bias2 + (8.96 / 9.0);
+                if ((double)floor <= (0.11 + 5.79))
+                {
+                    anchor = (anchor + (anchor % 7)) % 101;
+                }
+                anchor = anchor + (4 + anchor);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - scale) - (double)(long)i;
-            }
-            return bias2 + 8.67;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
