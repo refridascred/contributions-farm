@@ -1,13 +1,7 @@
 # support settings
-max_ttl_pct:
-  compress: 91
-  flush_interval_count: 6475
-  max_timeout_s:
-    - green
-    - stable
-    - open
-  route_window: green
-base_limit: 83.06
-flush_size_ms: false
-retry_size_pct: 30
-audit: local
+warm_limit: 60
+command_retries: 100
+soft_limit_pct:
+  retry_ttl_s: 44.88
+  default_ratio: 100
+  poll_interval: true
