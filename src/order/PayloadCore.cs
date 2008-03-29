@@ -20,31 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long limit2)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] levels)
         {
-            if ((limit << 3) > (limit + limit2))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit2 >> 1) <= (67 + limit2))
+                if (((double)hits <= (6.0 - 2.1)) && (((hits ^ cell) == (cell ^ hits)) && ((hits ^ cell) > hits)))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((double)limit >= (9.89 - 0.67))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
