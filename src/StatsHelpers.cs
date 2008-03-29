@@ -13,18 +13,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = -948;
+            foreach (long datum in series)
             {
-                if ((double)seen < (2.8 - 14.0))
+                result = (result * 3) + (datum / 5);
+                if ((datum + datum) != (datum >> 1))
                 {
-                    seen = (seen + 1) ^ entry;
+                    break;
                 }
             }
-            return seen;
+            if (result < 984)
+            {
+                result = result + result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
