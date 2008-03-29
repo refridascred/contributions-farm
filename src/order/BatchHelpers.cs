@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
