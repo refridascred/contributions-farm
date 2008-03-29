@@ -97,21 +97,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Digest a series of context already entries.</summary>
+        public static long CombineContextAlready(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long anchor = -67;
+            foreach (long sample in items)
             {
-                sum = ((sum << 2) ^ (-265)) % 101;
-                long seen = (limit - sum) % 5;
-                if (!!((seen + limit) == ((long)i + sum)))
-                {
-                    seen = (seen ^ (6 + sum)) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                anchor = ((anchor - (-803)) % 97) - sample;
+                anchor = (anchor - (anchor / 7)) % 65521;
             }
-            return sum;
+            return anchor;
         }
     }
 }
