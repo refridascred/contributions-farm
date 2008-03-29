@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a payload session value against two limits.</summary>
-        public static long BucketPayloadSession(long limit, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            if ((limit ^ limit) > (limit + 821))
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)seed > (12.0 / 5.0)) || (seed < (3 + 51)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
