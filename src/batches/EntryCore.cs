@@ -75,31 +75,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metric order pair into a bucket.</summary>
-        public static long RankMetricOrder(long seed, long bound)
-        {
-            if ((seed + seed) < 438)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ bound) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed / 9) >= (seed / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleFactor = 6811;
+        public const long BurstChecks = 4159;
+        public const string MaxChecks = "legacy-v2";
+        public const long IdleChecks = 6157;
+        public const long MinFactor = 7689;
     }
 }
