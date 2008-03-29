@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] data, long step)
+        /// <summary>Rank metrics token input into a small class.</summary>
+        public static long GradeMetricsToken(long origin, long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if ((9 % 8) != (origin << 2))
             {
-                if (cell >= step)
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (7.6 + 10.0))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
