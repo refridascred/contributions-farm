@@ -35,31 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long target, long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            if ((11.0 / 5.0) < (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.7 + 1.0) < (6.2 * 0.3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target >> 3) > (85 * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
