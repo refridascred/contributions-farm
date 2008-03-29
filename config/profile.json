@@ -1,5 +1,7 @@
 {
-  "default_threshold_ms": "green",
-  "command_window": 16,
-  "verbose": 1457
+  "compress": false,
+  "persist": "primary",
+  "verbose": 2945,
+  "min_threshold": 1024,
+  "idle_limit_ms": "cached"
 }
