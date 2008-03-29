@@ -43,19 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long target)
+        /// <summary>Locate a command batch reading by value.</summary>
+        public static long LookupCommandBatchIndex(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= target)
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
