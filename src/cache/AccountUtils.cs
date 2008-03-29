@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] items, long origin)
+        /// <summary>Check that every queue order entry stays within the limit.</summary>
+        public static bool GuardQueueOrderBounds(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (reading < origin)
+                if (value >= floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Project the next batch value.</summary>
