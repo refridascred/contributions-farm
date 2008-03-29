@@ -50,14 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Blend two report buffer measurements.</summary>
+        public static double ProjectReportBuffer(double rate, double offset)
         {
-            Closed,
-            Active,
-            Draft,
-            Synced,
-            Failed,
+            double ratio = 6.4;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (offset + rate)) - (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Accumulate contributi samples.</summary>
