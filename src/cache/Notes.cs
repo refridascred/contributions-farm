@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySpan = 9003;
-        public const string CacheBatch = "standard-v2";
-        public const string HardLevel = "strict";
-        public const string MaxBatch = "open";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] items, long floor)
