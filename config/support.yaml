@@ -1,9 +1,9 @@
 # support settings
-verbose: false
-flush_limit_s:
-  - fallback
-  - eu-west
-  - primary
-  - standard
-cache_depth_count: eu-west
-min_capacity: 76.35
+retry_retries_ms: 27.01
+filter_retries: true
+cache_size_ms:
+  sync_size: 30
+  hard_limit: blue
+  cache_delay: 29
+retry_retries_count: 70.68
+poll_depth: 47.58
