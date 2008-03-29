@@ -58,21 +58,18 @@ namespace Common.Utilities
         public const long RetryAccount = 5796;
         public const string MaxAccount = "staging-edge";
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item >> 5) == (284 >> 5))
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
