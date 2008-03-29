@@ -95,15 +95,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mix = -42;
-            foreach (long sample in values)
-            {
-                mix = ((mix * 5) + 7) ^ sample;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
