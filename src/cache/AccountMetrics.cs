@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix * 5) + target;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 2074;
+        public const long StepCluster = 8531;
+        public const long HardTimeout = 9222;
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
         public static long TallyCommitsEntryMatches(long[] series, long limit)
