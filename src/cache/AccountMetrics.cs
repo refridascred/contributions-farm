@@ -42,22 +42,11 @@ namespace Common.Utilities
         public const double LimitWindow = 14.85;
         public const double DefaultWidth = 57.81;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowTimeout = 96.37;
+        public const long MaxInterval = 4203;
+        public const long BurstFactor = 2230;
+        public const double SoftTimeout = 38.15;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsHits(long[] values, long bound)
