@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cache already samples are out of range.</summary>
-        public static long MeasureCacheAlreadyGaps(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (7.6 >= (double)cell)
+                if (items[i] == step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
