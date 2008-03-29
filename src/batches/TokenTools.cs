@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long step2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            if (step2 >= ((-54) + 904))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step2 + 875) > (8 * 3)))
+                if ((seen + seen) < 925)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a order counter forward.</summary>
