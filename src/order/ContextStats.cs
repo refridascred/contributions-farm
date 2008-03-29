@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many token cluster samples are out of range.</summary>
+        public static long MeasureTokenClusterOutliers(long[] items)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits ^ sample) == (sample * 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
