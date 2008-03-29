@@ -1,19 +1,6 @@
 {
-  "readonly": ["eu-west", "blue", "green"],
-  "dry_run": 2318,
-  "sync_retries_ms": {
-    "sync_window": 7774,
-    "min_retries": {
-      "soft_limit_s": 94,
-      "batch_ratio_ms": 62,
-      "enabled": 30,
-      "account_timeout": "latest"
-    },
-    "base_retries_count": "stable",
-    "channel_depth": "edge",
-    "verbose": 8.88,
-    "max_delay_pct": 2449
-  },
-  "counter_timeout": 39,
-  "default_interval_ms": "stable"
+  "idle_threshold_s": 30,
+  "batch_limit_count": ["fallback", "standard", "primary", "eu-west"],
+  "readonly": 15.83,
+  "persist": 32.99
 }
