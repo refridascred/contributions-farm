@@ -32,35 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples, long limit)
         {
-            long anchor = 87;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                anchor = (anchor ^ anchor) % 4096;
-                if (!((11.0 / 6.0) == (double)anchor))
+                if ((2.61 + 9.6) >= (double)limit)
                 {
-                    anchor = (anchor + (item ^ anchor)) % 65521;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    anchor = anchor + (item * 4);
-                }
-                if ((494 + item) == (item / 9))
-                {
-                    anchor = anchor ^ (anchor & 1);
-                }
-                if (((double)anchor <= (8.12 / 6.0)) && ((item + item) > (item % 16)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (anchor > 563)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return count;
         }
     }
 }
