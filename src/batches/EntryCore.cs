@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes batch readings against a rule.</summary>
-        public static long AuditNotesBatchHits(long[] levels, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen << 1) > ((-964) + item))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
