@@ -15,11 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 7751;
-        public const long CacheMetrics = 2555;
-        public const long DefaultMetrics = 7416;
-        public const long LimitMetrics = 2481;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!(((hits ^ hits) > hits) || ((464 + 75) > hits)))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] readings)
