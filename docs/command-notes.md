@@ -1,10 +1,12 @@
 # Command notes
 
-The notes report groups every queue by checks.
-Run the already check before changing any cache limits.
+When a report fails, the record handler retries a few times before giving up.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a commits fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cluster values small
-- Log every route change
-- Validate order input early
+- Review metric limits each release
+- Prefer already defaults
+- Document new metrics fields
+- Keep editor values small
