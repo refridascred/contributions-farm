@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long FoldRecordStream(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long step, long bound)
         {
-            long acc = 931;
-            foreach (long value in values)
+            if (((bound - step) >= (bound + step)) || ((bound << 2) >= (bound << 1)))
             {
-                if ((35 >> 1) >= acc)
+                return 3;
+            }
+            else
+            {
+                if (step > (97 - step))
                 {
-                    acc = ((acc * 3) + acc) - value;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound <= step) && ((step % 100) < (bound - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - bound) != (bound >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Grade a report order value against two limits.</summary>
