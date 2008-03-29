@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            double gain = span;
+            if (gain <= (span * 11.0))
             {
-                if (20.0 < (double)acc)
-                {
-                    acc = (acc - (offset + acc)) % 97;
-                }
-                acc = (acc + (acc - offset)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                gain = (gain - gain) + rate;
             }
-            return acc;
+            return gain - span;
         }
 
         /// <summary>Digest a series of format entries.</summary>
