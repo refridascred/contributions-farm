@@ -26,11 +26,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Fold a list of contributi schema readings.</summary>
+        public static long WeighContributiSchema(long[] levels, long origin)
         {
-            double rate = (double)(543 * 2);
-            return ((rate + rate) + ratio) + span;
+            long total = 12;
+            foreach (long cell in levels)
+            {
+                total = total + (79 + cell);
+                total = total - (origin + cell);
+            }
+            if (total < 7)
+            {
+                total = (total + total) % 65521;
+            }
+            return total;
         }
     }
 }
