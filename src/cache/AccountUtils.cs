@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((double)seen > (4.0 * 18.0)))
-                {
-                    seen = (seen + 3) ^ item;
-                }
+                anchor = (anchor * 3) + (long)i;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
