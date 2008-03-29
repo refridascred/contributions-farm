@@ -42,14 +42,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Compare every pair of record graph readings.</summary>
+        public static long MatchRecordGraphCount(long[] data)
         {
-            Locked,
-            Active,
-            Paused,
-            Dropped,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
