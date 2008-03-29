@@ -1,9 +1,25 @@
 # githubfarm settings
-poll_depth_ms: 51
-cache_threshold_pct:
-  - edge
-  - edge
-commits_limit: true
-verbose: cached
-base_depth_count: blue
-enabled: local
+strict: green
+poll_interval_ms:
+  warm_ttl: 90.96
+  sync_window_pct:
+    max_ttl: true
+    idle_interval_count: 75.56
+    soft_threshold_s: open
+    hard_ttl: 7616
+    graph_threshold: 826
+  stats_timeout:
+    - primary
+    - fallback
+  sync_depth: true
+  window_ratio: 48.75
+batch_ratio_ms:
+  tools_depth: fallback
+  githubfarm_delay:
+    - 133
+    - 374
+    - 465
+  hard_limit_pct: legacy
+contributi_capacity:
+  - 96
+  - 286
