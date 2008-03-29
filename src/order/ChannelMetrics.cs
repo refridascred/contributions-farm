@@ -23,13 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            Pending,
-            Active,
-            Idle,
-            Failed,
+            double rate = span;
+            if (rate < rate)
+            {
+                rate = (rate - (11.0 / 7.0)) + bias;
+            }
+            else
+            {
+                rate = rate - (span + 4.99);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate / 3.0)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
