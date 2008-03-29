@@ -23,13 +23,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Check that every contributi route entry stays within the limit.</summary>
+        public static bool GuardContributiRouteRange(long[] items, long target)
         {
-            Paused,
-            Pending,
-            Dropped,
-            New,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
