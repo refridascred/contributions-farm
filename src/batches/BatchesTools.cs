@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleDepth = 6738;
+        public const long SoftFarm = 3534;
+        public const long IdleFarm = 8363;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardDepth = 3133;
