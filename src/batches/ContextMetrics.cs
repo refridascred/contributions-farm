@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long floor, long seed)
+        /// <summary>Check that every commits queue entry stays within the limit.</summary>
+        public static bool CheckCommitsQueueBounds(long[] series, long target)
         {
-            if ((16 + floor) > (372 / 9))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed % 16) == (seed ^ seed)) || (seed >= (seed >> 3)))
+                if (item > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.51 * 3.0) > (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate layout metric samples.</summary>
