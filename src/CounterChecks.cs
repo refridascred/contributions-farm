@@ -84,11 +84,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardLevel = 7666;
-        public const string HardAlready = "stable-edge";
-        public const double DefaultAlready = 54.32;
-        public const double IdleSize = 58.32;
-        public const double RetryAlready = 17.16;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long step)
+        {
+            if (((bound ^ step) >= step) || ((double)bound <= (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((15.0 / 8.0) == (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
