@@ -13,17 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] samples, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound - limit;
+            if (((bound + edge) < (bound - edge)) && ((5.36 * 8.0) != (double)bound))
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) >= limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
