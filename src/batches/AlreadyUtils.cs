@@ -38,15 +38,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long result = 18;
-            foreach (long sample in items)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result - (result - sample)) % 97) + step;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (((carry * 2) + (carry - step)) % 1000) ^ (long)i2;
+                    carry = carry + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
