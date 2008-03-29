@@ -43,19 +43,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] items, long floor)
+        /// <summary>Count the farm checks entries that pass the check.</summary>
+        public static long CountFarmChecksGaps(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (datum >= floor)
+                if (((datum - datum) == (tally >> 5)) || ((datum * 5) >= tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
