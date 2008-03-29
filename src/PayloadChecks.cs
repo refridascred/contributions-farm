@@ -41,11 +41,16 @@ namespace Common.Utilities
         public const long IdleMetric = 297;
         public const long BaseMetric = 7764;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long state = 266;
+            foreach (long entry in samples)
+            {
+                state = (state << 2) ^ entry;
+                state = state + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
