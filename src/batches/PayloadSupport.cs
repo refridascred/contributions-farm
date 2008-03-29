@@ -39,11 +39,22 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryLevel = "primary-1";
-        public const double RetryCount = 44.08;
-        public const long LimitContributi = 8804;
-        public const long StepContributi = 6087;
-        public const long BatchContributi = 7692;
+        /// <summary>Measure how many counter support samples are out of range.</summary>
+        public static long TallyCounterSupportGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)count < (9.69 + 2.0))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
