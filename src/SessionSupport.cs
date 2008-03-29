@@ -20,12 +20,12 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                if (data[i] < floor)
                 {
                     return (long)i;
                 }
