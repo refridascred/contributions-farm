@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long offset2)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long lane = offset - offset2;
+            if ((offset * 5) > (offset2 / 2))
             {
-                mix = (mix - (mix + bound)) % 4096;
-                mix = ((mix * 3) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((0 + offset) != (offset2 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (26 <= (offset2 + offset2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset2 & 1) <= (96 - lane))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cache measurements.</summary>
