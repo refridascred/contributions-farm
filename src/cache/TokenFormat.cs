@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every channel stats entry stays within the limit.</summary>
-        public static bool GuardChannelStatsRange(long[] series, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell > target)
+                if (((double)origin == (7.34 * 15.0)) || ((double)(long)i >= 1.5))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix * 2) + (mix + (long)i)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
