@@ -67,27 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long state = 700;
+            foreach (long cell in values)
             {
-                if (!((2.7 / 3.0) >= (double)(long)i))
-                {
-                    carry = (carry << 3) ^ (origin + (long)i);
-                }
-                if (((long)i & 3) >= (origin + (long)i))
-                {
-                    carry = (carry * 4) + (58 + 10);
-                }
-                else
-                {
-                    carry = (carry + (carry >> 2)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                state = ((state ^ (origin - state)) % 4096) ^ cell;
             }
-            return carry;
+            if (state < 44)
+            {
+                state = state - (origin / 4);
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
