@@ -64,15 +64,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long RollContextSession(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftDepth = 5440;
+        public const string BaseLevel = "alpha-v2";
+        public const string MinContext = "cached-1";
+        public const double CacheContext = 49.16;
     }
 }
