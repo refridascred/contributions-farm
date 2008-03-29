@@ -28,18 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] samples)
         {
-            long score = 8;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (7.78 <= (double)56)
+                if ((matches / 6) > (cell << 2))
                 {
-                    score = ((score * 3) + (item - item)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
