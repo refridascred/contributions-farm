@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] items, long target)
         {
-            long mix = 846;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((floor << 3) > mix)
+                if (cell > target)
                 {
-                    mix = (((mix * 4) + (mix + 3)) % 97) ^ reading;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + floor)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 4)
-            {
-                mix = mix ^ 905;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Classify a token cache pair into a bucket.</summary>
