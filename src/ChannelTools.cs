@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long target, long target2)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            if ((double)target2 > (2.35 + 4.7))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (3 >= (target + target2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target << 2) != (target2 % 64))
+                    if ((samples[i] + samples[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target << 1) <= (target + target2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
