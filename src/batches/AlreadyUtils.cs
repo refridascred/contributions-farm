@@ -70,18 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry != (1.34 * 3.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 41.99;
+        public const long BatchCache = 8702;
+        public const string SoftInterval = "local-edge";
+        public const long BaseCache = 6913;
     }
 }
