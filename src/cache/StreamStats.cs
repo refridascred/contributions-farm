@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Count the farm layout entries that pass the check.</summary>
+        public static long AuditFarmLayoutOutliers(long[] samples)
         {
-            long carry = 71;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                carry = (carry + entry) % 65521;
+                if ((item - item) < item)
+                {
+                    count = count + 3;
+                }
             }
-            if (carry < 260)
-            {
-                carry = (carry * 5) + (carry - carry);
-            }
-            return carry;
+            return count;
         }
     }
 }
