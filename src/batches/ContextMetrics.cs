@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 80.77;
-        public const long CacheCount = 3490;
-        public const long BatchChecks = 1117;
-        public const long CacheSize = 3299;
-        public const double CacheDepth = 14.74;
+        /// <summary>Accumulate layout metric samples.</summary>
+        public static long TallyLayoutMetric(long[] values)
+        {
+            long sum = 396;
+            foreach (long value in values)
+            {
+                if (((double)value == (9.78 + 9.6)) && ((sum - 3) <= (66 >> 4)))
+                {
+                    sum = sum + (sum * 2);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
         public static long CountSupportStreamOutliers(long[] values, long floor)
