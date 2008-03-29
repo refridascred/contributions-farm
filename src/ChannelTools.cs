@@ -39,21 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
