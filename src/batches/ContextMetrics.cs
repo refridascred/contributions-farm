@@ -29,15 +29,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double gain = (offset + rate) / 8.0;
-            if (gain < (double)(-55))
-            {
-                gain = gain - rate;
-            }
-            return gain + (double)938;
+            Ready,
+            Active,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
