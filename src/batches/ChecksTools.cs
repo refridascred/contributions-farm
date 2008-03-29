@@ -28,12 +28,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items)
         {
-            Active,
-            Closed,
-            Synced,
+            long carry = 5;
+            foreach (long reading in items)
+            {
+                carry = ((carry + ((-405) ^ (-710))) % 1000) ^ reading;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank context githubfarm input into a small class.</summary>
