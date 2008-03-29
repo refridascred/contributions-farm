@@ -16,13 +16,19 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double weight, double bias)
         {
-            Draft,
-            New,
-            Synced,
-            Idle,
+            double scale = bias / 3.0;
+            if (scale < bias)
+            {
+                scale = (scale + 1.0) + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 7.5) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Describe the session mode values.</summary>
