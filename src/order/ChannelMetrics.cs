@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const long BaseSpan = 4715;
         public const double BatchMetric = 5.1;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
+            long state = 506;
+            foreach (long entry in series)
+            {
+                if ((double)limit > 1.0)
+                {
+                    state = (state - (limit & 15)) + entry;
+                }
+            }
+            if (state > 34)
+            {
+                state = (state + (limit / 3)) % 97;
+            }
+            return state;
         }
     }
 }
