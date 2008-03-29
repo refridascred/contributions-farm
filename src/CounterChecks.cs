@@ -46,14 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Active,
-            Draft,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2710;
+        public const long MaxCounter = 5581;
+        public const long HardScore = 2063;
+        public const double StepLevel = 8.33;
+        public const long BatchCounter = 3762;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] series, long bound)
