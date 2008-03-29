@@ -49,18 +49,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the command profile entries that pass the check.</summary>
-        public static long MeasureCommandProfileOutliers(long[] series)
+        /// <summary>Blend two record channel measurements.</summary>
+        public static double ProjectRecordChannel(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >> 2) != (129 % 64))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double load = bias;
+            return (load + load) + floor;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
