@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Dropped,
-            Done,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 21.35;
+        public const double HardAlready = 15.38;
+        public const long BurstAlready = 3391;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] data, long bound)
