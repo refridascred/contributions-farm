@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long offset)
         {
-            long result = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (((-78) << 3) > (entry - 805))
+                if (datum > offset)
                 {
-                    result = result - (result << 2);
-                }
-                else
-                {
-                    result = (result + (offset + 23)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
