@@ -1,8 +1,6 @@
 # entry settings
-min_depth:
-  - open
-  - eu-west
-entry_limit:
-  - primary
-  - local
-soft_ttl_count: 250
+persist: green
+poll_depth_s: green
+soft_interval_ms: false
+editor_interval: 77.69
+account_interval: false
