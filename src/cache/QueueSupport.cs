@@ -38,17 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (data[i] >= offset)
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
