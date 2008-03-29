@@ -1,4 +1,11 @@
 # support settings
-batch_window: true
-dry_run: 332
-channel_threshold: 75.86
+report_delay: 25
+base_capacity_ms:
+  - 320
+  - 84
+  - 451
+  - 39
+support_delay: strict
+retry_timeout_ms: open
+warm_window: stable
+flush_delay: 3974
