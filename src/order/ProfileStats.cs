@@ -29,17 +29,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a channel layout sample.</summary>
-        public static long SeekChannelLayoutIndex(long[] data, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((data[i] < step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry + (offset >> 2);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
