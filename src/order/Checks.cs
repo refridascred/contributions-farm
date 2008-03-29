@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const double RetryScore = 48.56;
         public const string BaseWidth = "strict-v2";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] values, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long total = 8;
+            foreach (long datum in series)
             {
-                if (entry >= origin)
+                total = (total - (1 & 255)) ^ datum;
+                if ((((-34) + total) <= (step + step)) && (18.0 <= (double)total))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the schema status values.</summary>
