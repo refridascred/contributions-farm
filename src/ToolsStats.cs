@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster counter readings against a bound.</summary>
-        public static bool CheckClusterCounterBounds(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "staging";
+        public const long DefaultInterval = 3730;
+        public const double WindowDepth = 19.97;
+        public const long WindowSize = 3506;
+        public const string HardLevel = "legacy-v2";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
