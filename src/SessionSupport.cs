@@ -20,38 +20,17 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long bound)
         {
-            if (offset <= (54 - seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed < (offset + offset)) && ((seed + offset) != (7 - offset)))
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 38) >= (seed / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed << 3) > seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate already commits samples.</summary>
