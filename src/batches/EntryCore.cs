@@ -38,26 +38,12 @@ namespace Common.Utilities
         public const double IdleCluster = 55.4;
         public const long BatchCluster = 745;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long total = 471;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total + total) % 101) - (long)i;
-                }
-                if ((sample < total) || ((sample + total) != (total + total)))
-                {
-                    total = (total ^ target) % 4096;
-                }
-                else
-                {
-                    total = total - (sample - total);
-                }
-            }
-            return total;
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
