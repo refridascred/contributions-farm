@@ -1,27 +1,21 @@
 # githubfarm settings
-sync_depth_pct: primary
-strict: false
-payload_window: 5.57
-max_limit_ms:
-  persist:
-    - strict
-    - standard
-    - fallback
-    - cached
-  session_threshold:
-    idle_depth_pct: cached
-    soft_ttl_s: stable
-    default_window_count: open
-    notes_window:
-      - blue
-      - strict
-    enabled:
-      - 287
-      - 33
-  compress:
-    readonly: true
-    cache_interval: 8814
-    hard_size: local
-    compress: cached
-    format_capacity: 5405
-max_ttl_ms: primary
+warm_interval_pct: primary
+max_ttl:
+  warm_delay: green
+  max_size: primary
+  soft_ratio:
+    strict: 62.04
+    hard_threshold: legacy
+    flush_timeout: cached
+    soft_limit_count:
+      - stable
+      - open
+    filter_size: edge
+    warm_timeout_pct: true
+audit:
+  - 252
+  - 117
+  - 52
+batch_size_s: 59.85
+min_delay: 60
+enabled: 35
