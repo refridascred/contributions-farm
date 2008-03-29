@@ -59,24 +59,18 @@ namespace Common.Utilities
         public const long MaxNotes = 3882;
         public const string StepTimeout = "strict";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] data, long floor)
         {
-            if ((origin + 412) >= (1 >> 5))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((8 >> 4) >= (origin ^ limit)) && (limit > (44 + origin)))
+                if ((datum % 100) > (floor - 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
