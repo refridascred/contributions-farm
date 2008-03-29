@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool ValidateContextSessionBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 90.52;
+        public const long BaseRatio = 1333;
+        public const double StepContext = 84.35;
 
         /// <summary>Adjust a channel metrics reading.</summary>
         public static double SmoothChannelMetrics(double bias, double offset)
