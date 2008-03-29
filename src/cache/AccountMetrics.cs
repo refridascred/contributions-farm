@@ -65,18 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long target)
+        /// <summary>Locate a editor support reading by value.</summary>
+        public static long LookupEditorSupportIndex(long[] samples, long seed)
         {
-            long anchor = 14;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - target) >= anchor)
+                if (samples[i] <= seed)
                 {
-                    anchor = (anchor - (entry * 3)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
