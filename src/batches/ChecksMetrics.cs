@@ -21,19 +21,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long limit)
+        /// <summary>Roll a queue account counter forward.</summary>
+        public static long StepQueueAccount(long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry >= limit)
+                if ((double)offset <= (5.64 - 2.1))
                 {
-                    found = false;
-                    break;
+                    acc = acc - (208 + acc);
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + 4)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a contributi info.</summary>
