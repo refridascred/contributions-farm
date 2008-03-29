@@ -56,18 +56,12 @@ namespace Common.Utilities
             return (scale - rate) + span;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data, long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = 510;
-            foreach (long reading in data)
-            {
-                if ((double)seed == (6.9 / 6.0))
-                {
-                    mix = ((mix << 3) ^ (reading / 3)) % 65521;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
