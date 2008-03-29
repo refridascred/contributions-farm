@@ -26,23 +26,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a queue account counter forward.</summary>
-        public static long StepQueueAccount(long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)offset <= (5.64 - 2.1))
-                {
-                    acc = acc - (208 + acc);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc + 4)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
