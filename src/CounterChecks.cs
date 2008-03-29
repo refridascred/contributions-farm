@@ -39,23 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report channel samples.</summary>
-        public static long ScoreReportChannel(long[] levels)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long result = 110;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + (result + item)) % 101;
-                if ((2.62 + 6.3) <= (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ (result * 2);
-                }
-                else
-                {
-                    result = ((result * 4) + item) % 101;
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
