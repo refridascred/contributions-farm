@@ -86,39 +86,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch farm input into a small class.</summary>
-        public static long ClassifyBatchFarm(long bound, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] data)
         {
-            long bound2 = bound - floor;
-            if ((bound2 + 742) < floor)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound != (double)floor) || ((floor + 1) < (560 >> 2)))
+                if (((reading % 2) != (reading + tally)) && (reading < (reading * 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 - bound) >= (bound * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor - (-8)) <= floor) || ((6 << 2) <= bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
