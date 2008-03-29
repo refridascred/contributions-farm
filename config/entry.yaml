@@ -1,4 +1,9 @@
 # entry settings
-idle_delay_count: 883
-warm_limit_pct: 6.76
-retry_limit_count: 3149
+hard_capacity_s: standard
+compress:
+  - 222
+  - 464
+  - 196
+idle_retries_pct: 58
+metric_delay: 1435
+cache_capacity: false
