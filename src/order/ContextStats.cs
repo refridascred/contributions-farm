@@ -37,10 +37,18 @@ namespace Common.Utilities
         public const long BaseRatio = 4493;
         public const long BaseAccount = 688;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "latest-1";
-        public const double MinLayout = 38.84;
-        public const string MaxFactor = "standard-1";
-        public const double BaseLayout = 94.34;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data, long bound)
+        {
+            long acc = 226;
+            foreach (long cell in data)
+            {
+                if (752 > cell)
+                {
+                    acc = (acc ^ acc) + bound;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
