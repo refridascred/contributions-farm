@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            double weight = (double)(0 ^ 74);
-            return (weight - (weight + ratio)) + bias;
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(((long)i * 5) < (origin + anchor)))
+                {
+                    anchor = ((anchor << 2) ^ origin) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate metric samples.</summary>
