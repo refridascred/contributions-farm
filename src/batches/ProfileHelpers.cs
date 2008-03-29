@@ -93,20 +93,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((double)limit >= 2.9)
+                if (value <= limit)
                 {
-                    carry = (carry * 3) + ((long)i - (long)i);
+                    found = false;
+                    break;
                 }
-                carry = carry - limit;
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return found;
         }
     }
 }
