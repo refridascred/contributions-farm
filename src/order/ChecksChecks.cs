@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Look up the position of a account githubfarm sample.</summary>
+        public static long SeekAccountGithubfarmIndex(long[] readings, long limit)
         {
-            Pending,
-            Failed,
-            Draft,
-            Retry,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count route token pairs that satisfy a relation.</summary>
