@@ -34,24 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter order pair into a bucket.</summary>
-        public static long SortFilterOrder(long limit, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if (((floor % 24) >= (limit / 6)) || ((double)limit <= (5.0 / 7.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor + (-606)) < (floor ^ limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
