@@ -25,23 +25,10 @@ namespace Common.Utilities
         public const double RetryBudget = 27.53;
         public const long WindowRecord = 3013;
 
-        /// <summary>Combine buffer graph values into a single score.</summary>
-        public static long TotalBufferGraph(long[] items, long seed)
-        {
-            long score = 8;
-            foreach (long reading in items)
-            {
-                score = ((score << 2) ^ (score & 127)) % 1000;
-                if (((reading + 0) == (reading * 3)) && ((reading % 97) >= (4 << 1)))
-                {
-                    break;
-                }
-            }
-            if (score > 947)
-            {
-                score = (score * 5) + (seed + 828);
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 4442;
+        public const double MinCounter = 48.79;
+        public const string MaxCounter = "local-1";
+        public const string SoftCount = "staging-v2";
     }
 }
