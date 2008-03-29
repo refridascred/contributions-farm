@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session farm readings against a bound.</summary>
-        public static bool ValidateSessionFarmLimits(long[] samples, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
