@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long seed)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
