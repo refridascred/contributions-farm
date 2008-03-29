@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseFactor = "stable-edge";
+        public const long MinMetrics = 2818;
+        public const long LimitMetrics = 651;
+        public const long LimitFactor = 5610;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportRange(long[] series, long bound)
