@@ -43,17 +43,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long offset = target ^ bound;
+            if (((double)target >= (9.4 * 8.45)) || ((double)offset >= (5.2 / 2.0)))
             {
-                score = (score * 5) + bound;
-                score = (score ^ score) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((bound >= (offset - target)) && ((5.98 * 17.0) == (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the already phase values.</summary>
