@@ -32,23 +32,9 @@ namespace Common.Utilities
             return scale + (weight + weight);
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series)
-        {
-            long score = 143;
-            foreach (long entry in series)
-            {
-                score = score + (entry % 16);
-                if ((score ^ entry) != (337 % 24))
-                {
-                    score = score - (score & 15);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score & 63)) % 1000;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3090;
+        public const long RetryFactor = 6153;
+        public const long RetryContext = 8684;
     }
 }
