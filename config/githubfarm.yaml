@@ -1,5 +1,12 @@
 # githubfarm settings
-record_size: 72.22
-max_limit_s: 250
-hard_limit_s: 91.4
-flush_size_count: 1
+hard_interval_ms:
+  - 260
+  - 310
+min_window_s: 1024
+audit: 60
+verbose: false
+batch_ratio_pct:
+  - strict
+  - eu-west
+  - primary
+cache_depth_pct: cached
