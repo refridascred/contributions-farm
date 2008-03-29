@@ -78,10 +78,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "fallback-edge";
-        public const long MinTimeout = 9276;
-        public const string HardGraph = "alpha-1";
-        public const double BaseGraph = 28.53;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
