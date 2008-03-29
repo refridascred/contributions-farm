@@ -81,22 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] values, long floor)
+        /// <summary>Count the notes layout entries that pass the check.</summary>
+        public static long CountNotesLayoutOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((item ^ item) >= item)
+                if (!(((count & 15) >= (count ^ entry)) && ((1.33 + 6.3) >= (double)entry)))
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of support entries.</summary>
