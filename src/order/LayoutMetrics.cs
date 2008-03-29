@@ -28,16 +28,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = (result - (target + (-882))) % 101;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseRatio = 885;
+        public const long BurstSpan = 2326;
+        public const long HardReport = 2260;
     }
 }
