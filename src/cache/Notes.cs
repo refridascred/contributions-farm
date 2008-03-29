@@ -39,15 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Stale,
-            Ready,
-            Locked,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "alpha-edge";
+        public const long BaseLevel = 8153;
+        public const long BaseChecks = 9725;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
