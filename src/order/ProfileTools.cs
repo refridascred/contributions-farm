@@ -56,23 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi tools entries.</summary>
-        public static long TallyContributiTools(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long mix = 668;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix - (mix & 7)) + sample;
-                if ((2.6 - 10.0) < (double)mix)
-                {
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (mix < 23)
-            {
-                mix = mix ^ 6;
-            }
-            return mix % 1000;
+            return state;
         }
     }
 }
