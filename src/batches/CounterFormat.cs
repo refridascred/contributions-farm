@@ -39,15 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream queue counter forward.</summary>
-        public static long StepStreamQueue(long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
