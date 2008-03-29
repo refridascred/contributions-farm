@@ -24,16 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            long sum = 171;
-            foreach (long datum in levels)
-            {
-                sum = ((sum + ((-30) & 7)) % 65521) - datum;
-                sum = (sum ^ (4 << 2)) % 97;
-            }
-            return sum % 97;
+            double scale = offset + (double)607;
+            return (scale - (scale + offset)) + gain;
         }
     }
 }
