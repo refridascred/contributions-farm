@@ -14,12 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "staging-1";
-        public const double RetryBudget = 20.65;
-        public const long StepTimeout = 8850;
-        public const string BatchCounter = "local-v2";
-        public const string WindowCounter = "strict-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 7074;
+        public const string BurstFarm = "primary-v2";
+        public const long MaxFarm = 1479;
 
         /// <summary>Adjust a window reading.</summary>
         public static double SmoothWindow(double gain, double floor)
