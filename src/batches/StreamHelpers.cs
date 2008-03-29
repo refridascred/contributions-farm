@@ -35,26 +35,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] series, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long limit2)
         {
-            long mix = 63;
-            foreach (long value in series)
+            if ((limit2 <= (limit2 >> 5)) || ((limit2 + limit) > (0 + 879)))
             {
-                if ((mix + 7) != (target ^ mix))
+                return 2;
+            }
+            else
+            {
+                if (limit2 >= limit)
                 {
-                    mix = ((mix * 4) + (342 << 1)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    mix = mix - (mix - value);
+                    if ((120 + limit2) < (limit2 << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 953)
-            {
-                mix = ((mix * 2) + (target ^ target)) % 4096;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
