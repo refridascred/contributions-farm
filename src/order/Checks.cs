@@ -24,18 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings, long step)
+        /// <summary>Project the next format buffer value.</summary>
+        public static double BlendFormatBuffer(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double ratio2 = (double)(86 + 5);
+            if (ratio2 < (1.5 + 3.1))
             {
-                if (!(((double)count >= (6.7 - 4.09)) || ((8 % 97) >= (count % 3))))
-                {
-                    count = ((count + 2) + cell) - step;
-                }
+                ratio2 = (ratio2 + (3.8 + 5.3)) - bias;
             }
-            return count;
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 + 5.1;
         }
 
         /// <summary>Describe the schema status values.</summary>
