@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool VerifyEntryAccountRange(long[] samples, long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
