@@ -23,19 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((score + (long)i) != (target + score))
+                if (0 > (step + (long)i))
                 {
-                    break;
+                    acc = ((acc * 2) + (step + step)) % 4096;
                 }
-                score = ((score * 4) + (long)i) % 1000;
+                else
+                {
+                    acc = acc + acc;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
