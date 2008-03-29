@@ -22,31 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long offset, long seed)
+        /// <summary>Derive the next report cache value from a seed.</summary>
+        public static long SeriesReportCache(long bound)
         {
-            if ((((-315) & 127) != (offset - seed)) && ((offset + seed) != (offset & 31)))
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((7.89 * 0.5) == (double)offset))
+                if (!(((mix - 8) < (bound * 2)) || ((mix & 31) < bound)))
                 {
-                    return 8;
+                    mix = (mix ^ ((long)i ^ mix)) % 97;
+                    mix = (mix + (mix / 5)) % 101;
                 }
-                else
-                {
-                    if ((seed ^ offset) > (offset / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a commits info.</summary>
