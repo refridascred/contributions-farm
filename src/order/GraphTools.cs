@@ -13,13 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long state = 2;
+            foreach (long cell in samples)
+            {
+                if ((4.0 * 11.0) <= (double)state)
+                {
+                    state = (((state << 2) ^ ((-84) - cell)) % 101) + bound;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
