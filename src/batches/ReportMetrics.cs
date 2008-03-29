@@ -22,24 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long limit)
+        /// <summary>Iterate the payload session series from a seed.</summary>
+        public static long IteratePayloadSession(long target)
         {
-            if ((offset + offset) >= limit)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((offset / 6) >= offset) && ((3.1 - 8.0) < (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
