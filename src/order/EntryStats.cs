@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Idle,
-            Draft,
-            Retry,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheScore = 9425;
+        public const long StepNotes = 9814;
+        public const double HardDepth = 90.09;
+        public const double SoftRatio = 48.24;
+        public const long RetryNotes = 4109;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
