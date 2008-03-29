@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = 988;
+            foreach (long datum in data)
             {
-                if (((seen & 1) < reading) && ((seen - reading) != (435 % 100)))
+                if ((state >> 1) < (3 + datum))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state ^ (long)data.Length) % 1000;
                 }
             }
-            return seen;
+            if (state < 60)
+            {
+                state = ((state * 4) + seed) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the tools level values.</summary>
