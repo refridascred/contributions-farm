@@ -46,12 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftLevel = "latest-v2";
-        public const string LimitChannel = "primary-1";
-        public const long IdleChannel = 272;
-        public const long WindowSize = 9010;
-        public const long BurstBudget = 1934;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 8818;
+        public const long BaseLevel = 4544;
+        public const double HardLevel = 15.85;
+        public const string CacheDepth = "legacy-1";
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
         public static long SeekPayloadSupportIndex(long[] samples, long floor)
