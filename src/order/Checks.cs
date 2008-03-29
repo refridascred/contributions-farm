@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double drift = (double)((-308) + 3);
-            return (drift - rate) + bias;
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a route entry.</summary>
