@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 3853;
         public const string WindowScore = "alpha-edge";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] levels, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a batch stats.</summary>
