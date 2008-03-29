@@ -62,26 +62,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch already entries.</summary>
-        public static long DigestBatchAlready(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long step, long origin)
         {
-            long sum = 9;
-            foreach (long value in readings)
+            if ((30 * 3) == (339 + step))
             {
-                if ((8.4 + 3.39) <= (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((8.19 / 7.0) > (double)origin)
                 {
-                    sum = ((sum << 3) ^ value) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum + (sum + sum)) % 1000;
-                }
-                if (sum <= value)
-                {
-                    break;
+                    if ((double)step > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
