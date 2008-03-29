@@ -27,22 +27,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples, long step)
-        {
-            long acc = -597;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length << 2) <= reading)
-                {
-                    acc = ((acc * 3) + reading) % 1000;
-                }
-            }
-            if (acc > 342)
-            {
-                acc = acc - (step ^ acc);
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstLevel = 8721;
+        public const string CacheBudget = "local-v2";
+        public const long LimitSpan = 77;
+        public const long BaseTools = 3187;
     }
 }
