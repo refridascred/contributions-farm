@@ -27,35 +27,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long target2)
         {
-            if ((8.99 / 8.0) != (double)floor)
+            if ((target < (139 + target)) && ((3 % 16) <= (4 + target2)))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (!((origin + origin) <= (floor ^ floor)))
+                if ((target ^ target) < (target2 - 55))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (((413 * 5) < origin) || ((origin * 5) >= (origin & 127)))
+                    if ((99 - target2) <= target2)
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor % 60) < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 6;
                     }
                 }
             }
