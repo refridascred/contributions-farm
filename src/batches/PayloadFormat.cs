@@ -48,12 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Locked,
+            Synced,
+            Pending,
         }
     }
 }
