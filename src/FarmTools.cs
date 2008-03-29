@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Audit commits session readings against a rule.</summary>
+        public static long MeasureCommitsSessionHits(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item << 1) < count)
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - seed;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
