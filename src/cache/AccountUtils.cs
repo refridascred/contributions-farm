@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] values, long limit)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches & 127) < (matches - matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 1) ^ sample) + limit;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
