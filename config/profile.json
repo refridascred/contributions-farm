@@ -1,6 +1,5 @@
 {
-  "soft_limit_pct": 7240,
-  "stream_depth": "fallback",
-  "audit": 60,
-  "sync_limit_ms": ["edge", "strict", "cached", "standard"]
+  "default_threshold_ms": "green",
+  "command_window": 16,
+  "verbose": 1457
 }
