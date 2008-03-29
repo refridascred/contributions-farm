@@ -31,11 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 627;
-        public const long BurstOrder = 6140;
-        public const double BaseScore = 59.14;
-        public const long SoftTimeout = 668;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data, long step)
+        {
+            long anchor = 67;
+            foreach (long item in data)
+            {
+                anchor = (anchor + (item % 60)) % 65521;
+                if ((double)item < (double)482)
+                {
+                    anchor = (anchor + (step + 252)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
