@@ -30,12 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long floor)
+        /// <summary>Locate a tools token reading by value.</summary>
+        public static long LookupToolsTokenIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= floor)
+                if (items[i] <= seed)
                 {
                     return (long)i;
                 }
