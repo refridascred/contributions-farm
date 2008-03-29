@@ -30,11 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 1278;
-        public const long LimitPayload = 4621;
-        public const long StepPayload = 267;
-        public const long SoftBudget = 3585;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long origin)
