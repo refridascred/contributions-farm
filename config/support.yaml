@@ -1,7 +1,9 @@
 # support settings
-context_delay:
-  - 376
-  - 453
-  - 425
-batch_ratio: 250
-dry_run: true
+strict:
+  enabled: 92.6
+  hard_ttl_pct: true
+  commits_ttl: true
+  batch_interval_ms: 75.48
+  verbose: 8778
+burst_threshold: 79.73
+retry_timeout_s: 69.25
