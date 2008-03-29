@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseBudget = 8544;
-        public const long IdleRecord = 9586;
-        public const long LimitInterval = 5266;
-        public const long StepCount = 3647;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long bound, long step)
