@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate layout metric samples.</summary>
-        public static long TallyLayoutMetric(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long sum = 396;
-            foreach (long value in values)
-            {
-                if (((double)value == (9.78 + 9.6)) && ((sum - 3) <= (66 >> 4)))
-                {
-                    sum = sum + (sum * 2);
-                }
-            }
-            return sum % 4096;
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
