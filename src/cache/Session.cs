@@ -19,27 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits checks value from a seed.</summary>
-        public static long IterateCommitsChecks(long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mix >> 1) == (mix & 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (offset + offset)) % 4096;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (((offset << 2) >= offset) && (offset <= (mix & 15)))
-                {
-                    mix = ((mix << 2) ^ (long)i) % 255;
-                }
-                else
-                {
-                    mix = mix ^ (mix + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the session class values.</summary>
