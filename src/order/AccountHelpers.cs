@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double bias, double span)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double gain = (bias - span) - (1.16 + bias);
-            if (gain > gain)
-            {
-                gain = gain - (gain + bias);
-            }
-            else
-            {
-                gain = gain + (17.0 + span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + span;
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
