@@ -1,11 +1,10 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the schema list.
-Each farm is validated before it reaches the batch queue.
-Each format is validated before it reaches the buffer queue.
+Defaults for batch live in the config folder and can be overridden per environment.
+Keep stream and already names short and lowercase.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every route change
+- Validate channel input early
 - Review order limits each release
+- Prefer layout defaults
