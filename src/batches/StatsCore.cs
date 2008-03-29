@@ -92,18 +92,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheSpan = "alpha-v2";
+        public const long StepFormat = 3643;
+        public const long LimitFormat = 1652;
+        public const string HardFormat = "strict";
+        public const long BurstFactor = 3026;
 
         /// <summary>Digest a series of context already entries.</summary>
         public static long CombineContextAlready(long[] items)
