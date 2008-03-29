@@ -1,7 +1,16 @@
 {
-  "flush_capacity_count": false,
-  "hard_delay_count": false,
-  "poll_ratio_s": "blue",
-  "base_threshold": "legacy",
-  "sync_window_s": 9751
+  "dry_run": true,
+  "default_retries_ms": {
+    "max_retries": "edge",
+    "retry_timeout": "blue",
+    "retry_delay_ms": true,
+    "max_threshold_s": {
+      "idle_delay_count": 89.68,
+      "poll_size": 53.98,
+      "default_limit": 1299
+    },
+    "flush_capacity_count": 93.43
+  },
+  "audit": 89,
+  "warm_timeout": 18
 }
