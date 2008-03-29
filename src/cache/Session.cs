@@ -13,39 +13,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long bound, long offset)
-        {
-            if ((4.53 / 7.0) == (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((118 & 15) >= (offset + 688)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.3 + 11.0) == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset << 2) <= (offset >> 2)) && ((bound - bound) < (offset + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftDepth = 86.1;
+        public const long IdleInterval = 2120;
+        public const string MinSize = "cached";
+        public const double DefaultEntry = 15.42;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTimeout = 8470;
