@@ -1,6 +1,7 @@
 {
-  "cache_ttl": 2.62,
-  "strict": 7723,
-  "warm_limit": "latest",
-  "min_timeout_s": "local"
+  "verbose": "blue",
+  "audit": 100,
+  "counter_ttl": 72,
+  "window_interval": 60,
+  "compress": ["edge", "blue"]
 }
