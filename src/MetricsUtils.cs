@@ -60,32 +60,12 @@ namespace Common.Utilities
             return drift + 3.4;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long target, long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long lane = target + seed;
-            if ((50 - target) <= (635 ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed <= (8 & 127)) && ((target >> 3) < (seed ^ 35)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)lane >= (8.0 / 5.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
