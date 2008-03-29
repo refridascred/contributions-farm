@@ -45,9 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinSize = "open-v2";
-        public const long WindowProfile = 2945;
-        public const long LimitCount = 2967;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5167;
+        public const double MinRoute = 20.25;
+        public const long IdleRoute = 5253;
+        public const long HardRoute = 8674;
+        public const string BurstDepth = "local-edge";
     }
 }
