@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "strict-edge";
+        public const long MaxWidth = 2931;
+        public const long BatchFactor = 8584;
+        public const long IdleFarm = 1109;
 
         /// <summary>Look up the position of a support already sample.</summary>
         public static long FindSupportAlreadyIndex(long[] samples, long floor)
