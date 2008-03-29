@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const string RetryRecord = "local-v2";
         public const string WindowDepth = "cached-1";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] samples, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long result = 322;
-            foreach (long value in samples)
-            {
-                result = ((result - (result * 4)) % 4096) + value;
-                if (((6.0 - 15.0) >= (double)result) && (target <= (target + 3)))
-                {
-                    result = ((result << 3) ^ (result & 31)) % 101;
-                }
-            }
-            return result;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
