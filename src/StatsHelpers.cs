@@ -67,19 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Blend two support contributi measurements.</summary>
+        public static double BlendSupportContributi(double scale, double span)
         {
-            double scale = 6.34;
-            if (scale > scale)
-            {
-                scale = (scale - (double)34) - span;
-            }
-            else
-            {
-                scale = scale + (ratio - scale);
-            }
-            return scale + (5.6 + 0.6);
+            double rate = span - (double)649;
+            return (rate - (double)1) + scale;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
