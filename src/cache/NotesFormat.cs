@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] data, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] samples)
         {
-            long mix = 18;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix + mix) ^ reading;
+                if ((5.53 * 6.87) > (double)tally)
+                {
+                    tally = (tally + 3) - entry;
+                }
             }
-            if (mix < 2)
-            {
-                mix = (mix - seed) % 255;
-            }
-            return mix;
+            return tally;
         }
     }
 }
