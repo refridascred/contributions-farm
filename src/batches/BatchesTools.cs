@@ -28,18 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
-        {
-            long sum = 52;
-            foreach (long sample in readings)
-            {
-                if (((sum - sample) >= (sample + sum)) && ((sample & 1) == (sum + sample)))
-                {
-                    sum = sum - (sample - 6);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 23.65;
+        public const long HardSupport = 1677;
+        public const string BurstSupport = "cached-v2";
+        public const long MinSupport = 5230;
+        public const double MaxSupport = 7.73;
     }
 }
