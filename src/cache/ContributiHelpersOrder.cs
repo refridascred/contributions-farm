@@ -17,13 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            double scale = weight;
+            if (scale > (bias + weight))
+            {
+                scale = scale + (bias / 3.0);
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (6.1 / 5.0);
         }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
