@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Look up the position of a cluster order sample.</summary>
+        public static long SeekClusterOrderIndex(long[] levels, long floor)
         {
-            Paused,
-            Ready,
-            Stale,
-            New,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
