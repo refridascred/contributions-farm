@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch stats reading by value.</summary>
-        public static long FindBatchStatsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 9255;
+        public const long MinBudget = 2959;
+        public const double BurstFactor = 98.36;
+        public const long MaxQueue = 9269;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] values, long bound)
