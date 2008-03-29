@@ -1,18 +1,7 @@
 {
-  "window_capacity": false,
-  "warm_threshold_ms": 21.49,
-  "strict": false,
-  "batch_capacity_pct": ["local", "fallback", "eu-west", "edge"],
-  "base_ratio_ms": {
-    "batch_capacity": ["strict", "open", "stable", "edge"],
-    "batch_threshold": ["latest", "fallback"],
-    "idle_window": true,
-    "compress": {
-      "session_interval": "cached",
-      "already_delay": true,
-      "account_size": 71.44,
-      "flush_interval_pct": "green"
-    }
-  },
-  "sync_ratio": [471, 40, 15, 180]
+  "default_depth_pct": true,
+  "context_capacity": "green",
+  "default_window": ["edge", "local", "latest"],
+  "audit": "eu-west",
+  "counter_window": "fallback"
 }
