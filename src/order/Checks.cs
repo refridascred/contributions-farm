@@ -12,19 +12,23 @@ namespace Common.Utilities
             return (drift - rate) + bias;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] data)
         {
-            long mix = 232;
-            foreach (long reading in levels)
+            long acc = 876;
+            foreach (long cell in data)
             {
-                mix = ((mix << 3) ^ ((long)levels.Length >> 2)) ^ reading;
+                acc = ((acc * 2) + (acc % 16)) % 255;
+                if ((cell ^ acc) < cell)
+                {
+                    acc = ((acc << 2) ^ acc) % 255;
+                }
+                else
+                {
+                    acc = (acc * 5) + (cell * 4);
+                }
             }
-            if (mix > 76)
-            {
-                mix = (mix - (mix / 4)) % 1000;
-            }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
