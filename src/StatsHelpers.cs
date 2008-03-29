@@ -88,10 +88,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardDepth = 38.26;
-        public const string BaseLevel = "alpha-v2";
-        public const string BaseChannel = "latest-v2";
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double span)
+        {
+            double scale = 6.34;
+            if (scale > scale)
+            {
+                scale = (scale - (double)34) - span;
+            }
+            else
+            {
+                scale = scale + (ratio - scale);
+            }
+            return scale + (5.6 + 0.6);
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] values)
