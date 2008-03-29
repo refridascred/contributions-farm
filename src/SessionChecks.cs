@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = 69;
-            foreach (long item in levels)
-            {
-                acc = (((acc << 2) ^ item) % 97) - floor;
-            }
-            if (acc > 988)
-            {
-                acc = ((acc << 3) ^ (3 ^ acc)) % 4096;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the channel class values.</summary>
