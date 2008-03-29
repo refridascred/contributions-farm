@@ -35,17 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long step)
+        /// <summary>Rank githubfarm buffer input into a small class.</summary>
+        public static long SortGithubfarmBuffer(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((limit - 25) > (step % 10)) && ((double)limit >= (2.68 * 8.0)))
             {
-                if (readings[i] >= step)
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= (64 + limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
