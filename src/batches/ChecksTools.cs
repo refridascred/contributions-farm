@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the record entry series from a seed.</summary>
-        public static long IterateRecordEntry(long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state * 5) + ((long)i % 97);
-                state = ((state * 4) + 0) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            double scale = floor;
+            return (scale + (double)42) + gain;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
