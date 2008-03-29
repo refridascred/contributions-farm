@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftScore = 20.18;
-        public const long CacheDepth = 2903;
-        public const string MaxGraph = "local-edge";
-        public const long BurstSize = 4649;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] values)
