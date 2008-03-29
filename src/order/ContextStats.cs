@@ -45,25 +45,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long floor, long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long step = floor + target;
-            if ((floor / 5) != (floor + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((18.0 + 2.41) > (double)target) && ((9.5 * 6.9) == (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
