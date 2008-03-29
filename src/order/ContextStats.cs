@@ -10,11 +10,31 @@ namespace Common.Utilities
         public const long BasePayload = 6815;
         public const double LimitScore = 89.79;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long offset)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            if ((14 - offset) > (offset & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((((-795) * 4) != (offset * 2)) && ((9.2 - 5.0) > (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 1) > (offset * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
