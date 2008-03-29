@@ -75,31 +75,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (!(limit > (2 + limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 3) < (origin * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit >= 4.7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            New,
+            Idle,
         }
     }
 }
