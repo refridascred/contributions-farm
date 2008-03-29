@@ -20,36 +20,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long limit2)
         {
-            long diff = offset ^ target;
-            if ((offset % 24) <= target)
+            if ((limit << 3) > (limit + limit2))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (!((offset - target) <= offset))
+                if ((limit2 >> 1) <= (67 + limit2))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)diff == (7.97 - 6.81))
+                    if ((double)limit >= (9.89 - 0.67))
                     {
                         return 3;
                     }
                     else
                     {
-                        if (18.0 < (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 1;
                     }
                 }
             }
