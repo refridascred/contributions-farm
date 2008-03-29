@@ -62,18 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits graph entries that pass the check.</summary>
-        public static long AuditCommitsGraphMatches(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = 3;
+            foreach (long reading in levels)
             {
-                if ((item - count) > (item + count))
+                if (((double)seed < 0.4) && ((double)(long)levels.Length <= (2.18 - 2.7)))
                 {
-                    count = count + 2;
+                    result = (result + 9) + reading;
                 }
             }
-            return count;
+            if (result > 72)
+            {
+                result = result ^ 478;
+            }
+            return result;
         }
     }
 }
