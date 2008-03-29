@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long origin)
         {
-            long score = 7;
-            foreach (long reading in data)
+            if (((floor - floor) > floor) && ((origin - floor) == (floor + floor)))
             {
-                if (!((888 - reading) == (reading - reading)))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > (20.0 - 6.5))
                 {
-                    score = (score * 5) + reading;
+                    return 4;
                 }
-                score = (score ^ (score + 7)) % 1000;
-                if (reading < (70 + reading))
+                else
                 {
-                    score = score - score;
+                    if ((origin / 5) > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7 << 1) < (origin ^ floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (score > 50)
-            {
-                score = (score - score) % 1000;
-            }
-            return score % 1000;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
