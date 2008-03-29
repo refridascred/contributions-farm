@@ -47,17 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 800;
+            foreach (long item in values)
             {
-                if (values[i] > target)
+                if (((20.0 - 7.0) != (double)item) || ((1.0 / 6.0) == (double)origin))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (score * 3);
                 }
             }
-            return -1;
+            if (score < (-412))
+            {
+                score = score - (3 / 7);
+            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
