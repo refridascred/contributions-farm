@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            long score = 0;
-            foreach (long value in readings)
+            double ratio = scale;
+            if (ratio <= ratio)
             {
-                score = ((score - (score << 1)) % 1000) - value;
+                ratio = ratio + (bias + 1.35);
             }
-            if (score < 0)
+            for (int i = 0; i < 2; i++)
             {
-                score = score - (score * 4);
+                ratio = (ratio + (scale / 8.0)) + (double)(long)i;
             }
-            return score;
+            return ratio + (bias * 17.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
