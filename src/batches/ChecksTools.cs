@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "legacy-v2";
         public const long MaxBudget = 632;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate checks channel readings against a bound.</summary>
+        public static bool VerifyChecksChannelLimits(long[] values, long target)
         {
-            Ready,
-            Closed,
-            New,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
