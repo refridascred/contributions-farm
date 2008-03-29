@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double load = span * 7.4;
-            if (load < (scale - load))
-            {
-                load = load + 8.2;
-            }
-            return load + (span * 1.85);
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
