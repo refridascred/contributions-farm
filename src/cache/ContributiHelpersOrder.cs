@@ -26,18 +26,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardWidth = 3023;
+        public const double WindowBatches = 4.4;
+        public const double BatchBatches = 14.59;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long RankLayout(long bound, long floor)
