@@ -1,9 +1,21 @@
 # githubfarm settings
-stream_limit: 6260
-channel_delay: true
-report_interval:
-  - staging
-  - eu-west
-  - edge
-readonly: standard
-sync_interval_s: 7726
+default_ttl_pct: 51.84
+enabled:
+  editor_limit: 1710
+  payload_limit:
+    enabled: standard
+    session_threshold: 67
+    base_limit_ms: 74.54
+  notes_limit:
+    - 104
+    - 119
+    - 231
+    - 41
+  support_limit:
+    - blue
+    - staging
+    - open
+    - legacy
+  channel_depth: legacy
+session_capacity: false
+soft_timeout_ms: 173
