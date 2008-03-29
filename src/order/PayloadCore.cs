@@ -52,11 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
