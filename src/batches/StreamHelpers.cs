@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double rate, double floor)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long AuditGithubfarmBatchGaps(long[] data)
         {
-            double ratio = floor * 8.4;
-            if (ratio <= ratio)
+            long matches = 0;
+            foreach (long value in data)
             {
-                ratio = ratio - (double)4;
+                if (((double)matches > (2.08 / 9.0)) && ((matches - value) <= 47))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (rate + ratio)) + (double)(long)i;
-            }
-            return ratio - rate;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
