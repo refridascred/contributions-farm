@@ -31,18 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] values)
+        /// <summary>Validate stats tools readings against a bound.</summary>
+        public static bool ValidateStatsToolsBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((tally / 9) == (item + tally))
+                if (item < limit)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a filter header.</summary>
