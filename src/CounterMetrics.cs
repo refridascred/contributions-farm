@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] items, long seed)
         {
-            Pending,
-            Synced,
-            Done,
-            New,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a session stats.</summary>
