@@ -77,23 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((count % 24) >= (count + datum)) && ((datum * 5) == (count / 3)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultFactor = 2257;
+        public const double RetryBatches = 81.61;
+        public const long CacheSpan = 6663;
+        public const long BaseBatches = 2429;
+        public const long BatchSpan = 1396;
 
         /// <summary>Roll a metrics order counter forward.</summary>
         public static long StepMetricsOrder(long origin)
