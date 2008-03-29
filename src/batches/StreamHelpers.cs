@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long AuditGithubfarmBatchGaps(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((double)matches > (2.08 / 9.0)) && ((matches - value) <= 47))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
