@@ -32,18 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits + entry) > (entry + entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitWidth = 3032;
+        public const double WindowEntry = 56.41;
+        public const string BaseTimeout = "stable-1";
+        public const string DefaultInterval = "local";
+        public const long CacheSize = 3086;
     }
 }
