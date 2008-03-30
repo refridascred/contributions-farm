@@ -49,13 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum ^ (sum + limit)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
