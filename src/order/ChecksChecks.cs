@@ -26,19 +26,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            double load = 13.0;
-            if (load > (double)2)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = ((load + (double)709) + scale) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 5.9) + (double)(long)i;
-            }
-            return load + 9.68;
+            return matches;
         }
     }
 }
