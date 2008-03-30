@@ -16,11 +16,14 @@ namespace Common.Utilities
             return scale + 0.8;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCount = 8607;
-        public const long BurstFactor = 5131;
-        public const long DefaultCluster = 2933;
-        public const string BatchScore = "latest-1";
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double scale, double bias)
