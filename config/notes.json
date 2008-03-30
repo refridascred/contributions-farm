@@ -1,5 +1,17 @@
 {
-  "idle_ratio": 100,
-  "max_ttl_s": "standard",
-  "batch_limit": true
+  "retry_size_pct": "eu-west",
+  "sync_ttl_count": "eu-west",
+  "idle_window_s": {
+    "strict": 94,
+    "persist": true,
+    "channel_ratio": {
+      "batch_threshold_ms": 65.02,
+      "support_delay": 37.86,
+      "cache_delay": "edge",
+      "verbose": false,
+      "stats_ttl": "primary",
+      "hard_size_count": ["stable", "green"]
+    }
+  },
+  "verbose": 20.6
 }
