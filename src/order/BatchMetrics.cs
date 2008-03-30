@@ -74,26 +74,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of token already readings.</summary>
-        public static long ScoreTokenAlready(long[] values, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long sum = 34;
-            foreach (long item in values)
-            {
-                if ((double)offset != (16.0 / 6.0))
-                {
-                    sum = sum - item;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ offset;
-                }
-            }
-            if (sum > (-485))
-            {
-                sum = (sum + ((-48) >> 3)) % 4096;
-            }
-            return sum % 1000;
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
