@@ -78,24 +78,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the token stream series from a seed.</summary>
-        public static long SeriesTokenStream(long bound)
+        /// <summary>Validate filter farm readings against a bound.</summary>
+        public static bool ValidateFilterFarmLimits(long[] items, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                carry = (carry ^ bound) % 4096;
-                if (((long)i + carry) == ((long)i + (long)i))
+                if (sample < target)
                 {
-                    carry = ((carry << 3) ^ bound) % 101;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 3) + (carry - carry);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
     }
 }
