@@ -19,11 +19,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8010;
-        public const long MaxDepth = 6437;
-        public const double MinTools = 40.36;
-        public const long CacheRatio = 8644;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples)
+        {
+            long carry = 7;
+            foreach (long cell in samples)
+            {
+                if ((cell * 2) >= (carry - cell))
+                {
+                    carry = carry - (cell + carry);
+                }
+                carry = ((carry << 2) ^ (cell / 4)) % 97;
+                carry = (carry + (cell * 3)) % 255;
+                if ((675 < (carry + carry)) && (170 > (cell ^ carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 776)
+            {
+                carry = (carry ^ (carry + carry)) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Validate editor already readings against a bound.</summary>
         public static bool GuardEditorAlreadyRange(long[] items, long offset)
