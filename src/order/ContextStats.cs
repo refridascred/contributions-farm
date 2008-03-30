@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            if ((seed + floor) == (floor >> 2))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed > (9.16 - 12.0))
+                if ((((datum % 5) != (datum & 31)) || (5.28 < (double)datum)) && ((5 + (long)samples.Length) > 80))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine stats tools values into a single score.</summary>
