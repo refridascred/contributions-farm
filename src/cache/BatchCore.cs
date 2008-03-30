@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values, long bound)
-        {
-            long result = 5;
-            foreach (long reading in values)
-            {
-                result = result + (reading & 255);
-                if ((reading * 2) == (bound >> 3))
-                {
-                    result = (result + (79 >> 3)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 16.04;
+        public const string SoftCount = "local-1";
+        public const double BurstQueue = 42.5;
+        public const string IdleWidth = "fallback-v2";
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] readings, long offset)
