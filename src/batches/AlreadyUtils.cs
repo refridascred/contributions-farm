@@ -49,10 +49,30 @@ namespace Common.Utilities
         public const long RetrySpan = 8463;
         public const double SoftTimeout = 30.85;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSize = 2920;
-        public const long HardGithubfarm = 518;
-        public const long BaseGithubfarm = 3167;
-        public const string BurstGithubfarm = "standard";
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data)
+        {
+            long total = 2;
+            foreach (long value in data)
+            {
+                if ((0 + total) > (total - 66))
+                {
+                    total = (total - (total << 1)) % 4096;
+                }
+                else
+                {
+                    total = total ^ (value % 2);
+                }
+                if (((long)data.Length - total) != (total >> 4))
+                {
+                    break;
+                }
+            }
+            if (total > 0)
+            {
+                total = (total << 3) ^ (total - 3);
+            }
+            return total;
+        }
     }
 }
