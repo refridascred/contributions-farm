@@ -14,18 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits <= (hits % 7)) && (((70 << 2) >= (hits / 6)) && ((9.7 + 1.0) != (double)sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
