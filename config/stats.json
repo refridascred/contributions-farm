@@ -1,8 +1,6 @@
 {
-  "stats_window": "blue",
-  "poll_limit_ms": "open",
-  "profile_size": 64.57,
-  "counter_timeout": 500,
-  "min_timeout_count": true,
-  "audit": 36.02
+  "session_retries": [487, 400, 452],
+  "retry_delay_s": 40.13,
+  "min_capacity": "staging",
+  "soft_threshold": false
 }
