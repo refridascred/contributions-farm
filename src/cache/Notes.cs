@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long limit2)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long cur = limit - limit2;
-            if ((limit2 - cur) < (521 + limit))
+            long acc = 6;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - 1) < limit2)
+                if (((entry - 5) != (entry + entry)) || (entry < (entry + acc)))
                 {
-                    return 4;
+                    acc = (acc + (acc & 7)) % 97;
                 }
-                else
+                if ((double)entry <= 10.0)
                 {
-                    if (((limit2 + limit) > (limit2 ^ 33)) || ((9.3 - 4.76) <= (double)cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
