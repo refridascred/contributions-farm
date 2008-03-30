@@ -43,19 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (sample > limit)
+                if (reading > seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
