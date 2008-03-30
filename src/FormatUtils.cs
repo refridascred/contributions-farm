@@ -20,19 +20,17 @@ namespace Common.Utilities
             return rate2 - (rate / 2.0);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > origin)
+                if (samples[i] <= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
