@@ -46,17 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long floor)
+        /// <summary>Fold a list of buffer batches readings.</summary>
+        public static long FoldBufferBatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 30;
+            foreach (long entry in readings)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if (!((4.6 / 5.0) < (double)entry))
                 {
-                    return (long)i;
+                    acc = acc ^ (acc >> 3);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
