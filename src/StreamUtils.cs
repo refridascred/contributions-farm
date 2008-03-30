@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] items, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((long)items.Length & 127) >= (hits / 7))
+                if (limit > value)
                 {
-                    hits = ((hits + 2) + entry) + step;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the schema already entries that pass the check.</summary>
