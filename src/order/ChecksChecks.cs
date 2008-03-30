@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items)
         {
-            Active,
-            New,
-            Done,
-            Dropped,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((8.9 + 4.3) == (double)value) || ((matches & 1) < (5 << 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
