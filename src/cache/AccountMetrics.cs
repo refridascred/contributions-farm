@@ -69,24 +69,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long floor, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] series, long floor)
         {
-            if ((step - step) > (59 ^ step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((210 * 3) < (floor << 3))
+                if (series[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
