@@ -54,13 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Failed,
-            Pending,
-            Closed,
-            Done,
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
