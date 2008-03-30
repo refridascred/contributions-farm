@@ -60,12 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long result = 4;
+            foreach (long value in levels)
+            {
+                result = (((result << 3) ^ (value + 69)) % 255) - seed;
+            }
+            return result % 97;
         }
     }
 }
