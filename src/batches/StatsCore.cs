@@ -67,11 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Project the next profile contributi value.</summary>
+        public static double SmoothProfileContributi(double rate, double offset)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            double drift = (double)(2 - 18);
+            if (drift < 2.76)
+            {
+                drift = (drift + (double)72) + offset;
+            }
+            return drift + (rate / 5.0);
         }
     }
 }
