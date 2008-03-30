@@ -1,6 +1,10 @@
 {
-  "warm_size_ms": "blue",
-  "warm_retries_pct": 7956,
-  "cache_ratio": true,
-  "dry_run": 55.13
+  "farm_ratio": "strict",
+  "stream_limit": 8145,
+  "readonly": 30,
+  "default_interval": {
+    "max_ttl_pct": 500,
+    "cache_limit": ["cached", "standard", "blue", "strict"],
+    "flush_capacity": false
+  }
 }
