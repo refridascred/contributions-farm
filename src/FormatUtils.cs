@@ -24,11 +24,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            double gain = 2.07;
+            if (gain >= 14.0)
+            {
+                gain = (gain - gain) - ratio;
+            }
+            return gain - bias;
         }
 
         /// <summary>Define report limits and defaults.</summary>
