@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((double)(long)readings.Length > 8.9)
+                {
+                    hits = ((hits + 1) + value) + target;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
