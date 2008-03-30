@@ -1,10 +1,6 @@
 {
-  "persist": "legacy",
-  "hard_interval": 1211,
-  "compress": {
-    "retry_retries_s": "stable",
-    "profile_threshold": "legacy",
-    "default_limit": ["open", "edge", "legacy"],
-    "soft_ratio_ms": 100
-  }
+  "default_size_s": "blue",
+  "verbose": 500,
+  "record_timeout": "primary",
+  "batch_depth": [47, 496, 134, 162]
 }
