@@ -13,24 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long floor, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] series, long offset)
         {
-            if ((floor >> 3) < (91 - floor))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed + seed) >= (seed + (-5))) && ((5.9 - 5.73) == (double)floor))
+                if (7 > (reading & 127))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of checks buffer entries.</summary>
