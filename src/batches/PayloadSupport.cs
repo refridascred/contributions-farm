@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((852 >> 1) == (reading + 856))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSize = 6549;
+        public const long WindowCount = 1074;
+        public const long IdleCount = 7923;
+        public const long LimitStream = 1166;
+        public const long CacheInterval = 3164;
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double scale, double bias)
