@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Find the first command profile entry that matches the target.</summary>
+        public static long SeekCommandProfileIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1.7 + 9.2) == (double)item) && ((77 % 8) != (item << 2)))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
