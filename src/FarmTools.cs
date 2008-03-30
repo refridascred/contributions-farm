@@ -17,15 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next route channel value from a seed.</summary>
-        public static long StepRouteChannel(long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark + ((long)i / 6)) % 255;
-                mark = (mark * 4) + (42 + mark);
-                mark = ((mark * 3) + (long)i) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
             return mark;
         }
