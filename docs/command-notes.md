@@ -1,14 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Keep report and cluster names short and lowercase.
-The contributi report groups every editor by session.
+Run the metric check before changing any buffer limits.
+Use profile settings to tune how often command data is refreshed.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The already module keeps report values in sync with the checks cache.
+The stats module keeps format values in sync with the contributi cache.
+Use window settings to tune how often format data is refreshed.
+When a buffer fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new graph fields
-- Log every notes change
-- Keep metrics values small
+- Validate order input early
+- Log every stats change
+- Keep session values small
+- Document new checks fields
