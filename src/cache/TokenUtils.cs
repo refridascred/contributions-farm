@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] readings, long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long state = 48;
+            foreach (long sample in readings)
+            {
+                if ((state / 5) != (state ^ floor))
+                {
+                    state = ((state * 5) + floor) % 97;
+                }
+                else
+                {
+                    state = (state - sample) % 4096;
+                }
+                if ((double)state >= (15.0 - 0.5))
+                {
+                    state = state - (253 + state);
+                }
+                if (5.73 < (double)sample)
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
