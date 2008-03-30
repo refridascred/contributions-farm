@@ -33,11 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3718;
-        public const long CacheRatio = 4042;
-        public const long DefaultDepth = 9180;
-        public const long StepDepth = 3116;
-        public const double RetrySize = 74.4;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
