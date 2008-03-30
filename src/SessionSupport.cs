@@ -36,23 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            double ratio = (rate - offset) / 6.0;
-            if (ratio <= ratio)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ratio + (ratio + rate);
+                sum = (sum - limit) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + (offset / 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - (rate - ratio);
+            return sum;
         }
     }
 }
