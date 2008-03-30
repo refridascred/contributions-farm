@@ -39,21 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Digest a series of editor record entries.</summary>
+        public static long WeighEditorRecord(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 118;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(8.44 >= (double)score))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score ^ (origin * 5)) % 97) - reading;
                 }
             }
-            return matches;
+            if (score < 950)
+            {
+                score = score - (score + origin);
+            }
+            return score % 65521;
         }
     }
 }
