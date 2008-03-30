@@ -34,22 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long carry = 765;
+            foreach (long reading in levels)
             {
-                if ((tally << 1) >= (cell % 10))
+                carry = ((carry << 2) ^ (reading & 31)) % 4096;
+                if ((reading >> 3) <= (reading + reading))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = carry + reading;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
