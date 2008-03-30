@@ -45,10 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 901;
-        public const long LimitQueue = 529;
-        public const double SoftFactor = 41.08;
-        public const long LimitRatio = 4555;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Draft,
+            Stale,
+            Active,
+        }
     }
 }
