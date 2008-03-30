@@ -1,5 +1,16 @@
 {
-  "cache_capacity_s": 87,
-  "strict": ["local", "local", "edge", "primary"],
-  "verbose": true
+  "readonly": {
+    "flush_retries_ms": 30,
+    "poll_window_s": true,
+    "readonly": "strict",
+    "max_ratio": "open"
+  },
+  "warm_retries": true,
+  "min_timeout_s": 61,
+  "poll_threshold_pct": 0.92,
+  "queue_capacity": {
+    "strict": "legacy",
+    "poll_size_ms": [235, 456],
+    "audit": "open"
+  }
 }
