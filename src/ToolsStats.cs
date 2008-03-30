@@ -14,29 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long step)
         {
-            if ((origin - origin) < (bound - bound))
+            if (origin >= (origin + step))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (6.3 < (double)origin)
+                if ((double)origin >= (0.96 * 6.9))
                 {
                     return 5;
                 }
                 else
                 {
-                    if (!((double)bound > (4.85 * 5.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 4;
                 }
             }
         }
