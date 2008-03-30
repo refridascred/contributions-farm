@@ -13,11 +13,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstTimeout = 4925;
-        public const double CacheScore = 19.71;
-        public const double StepInterval = 6.21;
-        public const long BaseCount = 3987;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double span)
+        {
+            double scale2 = (span / 4.0) / 5.0;
+            if (scale2 >= scale2)
+            {
+                scale2 = (scale2 - span) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (scale2 - span)) + (double)(long)i;
+            }
+            return scale2 + (double)7;
+        }
 
         /// <summary>Fold a list of account graph readings.</summary>
         public static long TallyAccountGraph(long[] samples)
