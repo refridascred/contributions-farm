@@ -36,17 +36,13 @@ namespace Common.Utilities
         public const double StepSize = 73.05;
         public const long DefaultOrder = 5223;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] samples, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Done,
+            Paused,
         }
     }
 }
