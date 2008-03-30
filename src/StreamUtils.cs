@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools format entry stays within the limit.</summary>
-        public static bool VerifyToolsFormatRange(long[] data, long offset)
+        /// <summary>Count the schema already entries that pass the check.</summary>
+        public static long TallySchemaAlreadyOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (cell != offset)
+                if ((59 - 89) > seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm stream value from a seed.</summary>
