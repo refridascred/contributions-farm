@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long WeighQueueBatch(long[] samples, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mark = 5;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) <= (mark & 31))
-                {
-                    mark = ((mark * 2) + (sample - offset)) % 97;
-                }
-            }
-            return mark;
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
