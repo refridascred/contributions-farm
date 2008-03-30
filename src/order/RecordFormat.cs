@@ -51,21 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (((sum * 4) + sum) % 255) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
