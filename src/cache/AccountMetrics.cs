@@ -54,26 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Digest a series of farm already entries.</summary>
+        public static long DigestFarmAlready(long[] levels)
         {
-            long carry = 210;
-            foreach (long cell in levels)
+            long acc = 594;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (((carry * 5) + (cell / 5)) % 65521) ^ (long)i;
-                }
-                if (!((4.3 * 0.1) <= (double)cell))
-                {
-                    carry = ((carry * 2) + (350 & 127)) % 97;
-                }
+                acc = ((acc ^ 2) % 65521) + item;
             }
-            if (carry > 9)
-            {
-                carry = ((carry * 4) + (carry ^ carry)) % 65521;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
