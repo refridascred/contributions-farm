@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metrics token input into a small class.</summary>
-        public static long GradeMetricsToken(long origin, long step)
+        /// <summary>Iterate the already layout series from a seed.</summary>
+        public static long SeriesAlreadyLayout(long floor)
         {
-            if ((9 % 8) != (origin << 2))
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (7.6 + 10.0))
+                mark = ((mark << 2) ^ mark) % 255;
+                if ((long)i > floor)
                 {
-                    return 4;
+                    mark = mark ^ (mark / 5);
                 }
-                else
-                {
-                    return 0;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
