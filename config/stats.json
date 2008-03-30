@@ -1,11 +1,7 @@
 {
-  "soft_delay": "stable",
-  "cache_interval": "legacy",
-  "audit": {
-    "poll_interval_count": 500,
-    "record_capacity": 77,
-    "base_delay_ms": 72.42
-  },
-  "burst_delay_count": 92.64,
-  "batches_capacity": "stable"
+  "warm_limit_s": 100,
+  "hard_limit": 87.64,
+  "compress": 32,
+  "profile_capacity": [43, 327, 173],
+  "burst_interval_s": 34.94
 }
