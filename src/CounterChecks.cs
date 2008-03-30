@@ -48,20 +48,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data)
-        {
-            long total = 12;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (total ^ (total % 24)) + (long)i;
-                }
-                total = total - (item & 127);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 1479;
+        public const long StepAccount = 2604;
+        public const string StepLevel = "standard-v2";
+        public const double BaseDepth = 69.8;
 
         /// <summary>Count the layout token entries that pass the check.</summary>
         public static long CountLayoutTokenGaps(long[] levels)
