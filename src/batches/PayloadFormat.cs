@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long bound)
         {
-            long mark = 254;
-            foreach (long reading in items)
+            long diff = offset + bound;
+            if ((16.0 / 4.0) == (double)offset)
             {
-                mark = (mark << 2) ^ reading;
-                mark = ((mark * 3) + (reading * 3)) % 65521;
+                return 3;
             }
-            return mark % 97;
+            else
+            {
+                if ((diff >= (bound / 3)) || ((bound << 1) <= (diff * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1 + offset) < (bound + diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout options.</summary>
