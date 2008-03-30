@@ -50,11 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 1479;
-        public const long StepAccount = 2604;
-        public const string StepLevel = "standard-v2";
-        public const double BaseDepth = 69.8;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the layout token entries that pass the check.</summary>
         public static long CountLayoutTokenGaps(long[] levels)
