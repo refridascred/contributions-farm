@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
