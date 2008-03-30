@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Validate schema order readings against a bound.</summary>
+        public static bool GuardSchemaOrderBounds(long[] items, long target)
         {
-            Retry,
-            New,
-            Ready,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
