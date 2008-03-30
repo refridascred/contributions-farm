@@ -1,6 +1,11 @@
 {
-  "warm_window_count": ["green", "local", "eu-west", "fallback"],
-  "metrics_size": "stable",
-  "order_window": ["primary", "blue", "latest"],
-  "already_delay": 84.27
+  "compress": "blue",
+  "retry_size_count": "strict",
+  "persist": {
+    "verbose": "legacy",
+    "default_ratio_count": "strict",
+    "max_retries_s": "strict"
+  },
+  "flush_limit_s": "edge",
+  "poll_ttl": "standard"
 }
