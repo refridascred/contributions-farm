@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const string MaxDepth = "standard-1";
         public const long StepRecord = 1893;
 
-        /// <summary>Match up route layout samples.</summary>
-        public static long MatchRouteLayoutCount(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -40;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long cur = entry;
+                sum = (sum ^ (cur + entry)) % 1000;
+                if ((seed < (entry / 8)) && ((10.0 - 18.0) > (double)sum))
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (entry & 127)) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
