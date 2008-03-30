@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "latest-1";
-        public const string IdleCommits = "alpha-v2";
-        public const long BurstFactor = 3471;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
+        {
+            long mix = 0;
+            foreach (long item in readings)
+            {
+                if ((mix / 7) <= ((-246) ^ mix))
+                {
+                    mix = ((mix - (mix << 2)) % 255) ^ item;
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
