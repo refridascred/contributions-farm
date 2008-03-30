@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue notes entries.</summary>
-        public static long TallyQueueNotes(long[] values, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = 719;
-            foreach (long cell in values)
-            {
-                if ((16 - cell) > (98 + anchor))
-                {
-                    anchor = (((anchor << 3) ^ 743) % 4096) - seed;
-                }
-                else
-                {
-                    anchor = anchor ^ (cell * 2);
-                }
-            }
-            return anchor % 1000;
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the route phase values.</summary>
