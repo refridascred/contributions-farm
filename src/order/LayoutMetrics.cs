@@ -27,18 +27,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] data)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((floor * 2) == (floor % 60))
             {
-                if ((2.93 + 7.2) == (double)reading)
+                return 6;
+            }
+            else
+            {
+                if (!(floor <= (floor << 2)))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor ^ 33) < (floor << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate payload cache readings against a bound.</summary>
