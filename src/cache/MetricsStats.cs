@@ -16,21 +16,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum << 3) ^ (bound + sum);
-                long offset = bound + (sum >> 5);
-                for (int i2 = 0; i2 < 4; i2++)
+                if (series[i] >= origin)
                 {
-                    sum = (sum + (offset << 1)) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a channel reading.</summary>
