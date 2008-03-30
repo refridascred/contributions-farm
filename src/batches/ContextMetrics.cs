@@ -63,19 +63,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long mix = 51;
+            foreach (long cell in levels)
             {
-                if (item >= target)
+                if ((double)offset != (4.1 + 2.69))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - (mix - offset);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ cell;
                 }
             }
-            return ok;
+            if (mix > 2)
+            {
+                mix = (mix * 5) + offset;
+            }
+            return mix;
         }
     }
 }
