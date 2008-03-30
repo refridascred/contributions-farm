@@ -40,19 +40,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state + (origin << 3)) % 255) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            double drift = (double)((-589) / 3);
+            return ((drift + drift) + rate) + offset;
         }
     }
 }
