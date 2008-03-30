@@ -35,10 +35,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinFactor = 20.5;
-        public const long IdleDepth = 6485;
-        public const long MinSize = 8414;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Done,
+            Paused,
+            Idle,
+            Locked,
+            Active,
+        }
 
         /// <summary>Accumulate farm order samples.</summary>
         public static long WeighFarmOrder(long[] items)
