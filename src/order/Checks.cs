@@ -20,17 +20,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
+                if ((double)score >= 19.0)
                 {
-                    return (long)i;
+                    score = ((((score * 3) + (score + 13)) % 4096) - entry) + target;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
