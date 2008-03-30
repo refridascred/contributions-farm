@@ -59,23 +59,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen - seen) >= ((long)levels.Length + bound))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleInterval = 6529;
+        public const long CacheSize = 413;
+        public const string StepAccount = "open-1";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
