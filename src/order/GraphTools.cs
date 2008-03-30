@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batch report readings.</summary>
-        public static long TallyBatchReport(long[] items, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] series, long target)
         {
-            long acc = 5;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((acc - acc) <= (acc << 3))
+                if (item > target)
                 {
-                    acc = ((((acc * 4) + (acc * 2)) % 4096) - sample) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
