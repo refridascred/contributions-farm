@@ -1,4 +1,4 @@
 # entry settings
-report_capacity: 250
-sync_delay: false
-poll_limit_s: 31
+strict: true
+audit: 57.95
+min_size: 86.97
