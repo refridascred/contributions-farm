@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((anchor > (long)i) || (anchor <= (offset - anchor)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - 73)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                anchor = anchor ^ (offset + anchor);
-                if (!(4.19 >= (double)offset))
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepCount = 7814;
+        public const double SoftBatches = 80.39;
+        public const long MaxBatches = 2073;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long origin, long floor)
