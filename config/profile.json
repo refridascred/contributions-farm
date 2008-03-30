@@ -1,5 +1,5 @@
 {
-  "dry_run": 6261,
-  "cluster_retries": "cached",
-  "soft_depth_ms": "latest"
+  "cache_limit": [443, 310, 457],
+  "dry_run": 30.02,
+  "batch_threshold_count": [415, 175, 246, 424]
 }
