@@ -68,19 +68,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] data, long floor)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double scale = ratio / 3.0;
+            if (scale < (double)(-1))
             {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - (8.7 + scale);
             }
-            return ready;
+            return scale - (offset + scale);
         }
     }
 }
