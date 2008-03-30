@@ -20,31 +20,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Classify a githubfarm command pair into a bucket.</summary>
-        public static long RankGithubfarmCommand(long step, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] items, long offset)
         {
-            if ((double)floor > (5.5 - 3.45))
+            long mark = 50;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (57 <= (floor * 4))
+                if (((9.19 / 9.0) == (double)mark) && ((44 ^ offset) > (1 << 3)))
                 {
-                    return 3;
+                    mark = (mark - (offset ^ datum)) % 1000;
                 }
-                else
-                {
-                    if (floor <= (6 + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = mark - (datum + mark);
             }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
