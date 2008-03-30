@@ -13,12 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            New,
-            Ready,
-            Synced,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
