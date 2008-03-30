@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinWidth = 6764;
-        public const double RetryContext = 59.42;
-        public const long LimitContext = 5343;
-        public const long StepContext = 7061;
-        public const long MinTimeout = 6629;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] values)
