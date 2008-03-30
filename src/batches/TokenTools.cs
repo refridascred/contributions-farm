@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long floor)
+        /// <summary>Accumulate token account samples.</summary>
+        public static long WeighTokenAccount(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 3;
+            foreach (long value in samples)
             {
-                if (items[i] >= floor)
+                if (((origin ^ anchor) <= (origin / 7)) || ((anchor % 97) == (value + anchor)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (2 << 2)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
