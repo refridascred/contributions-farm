@@ -14,15 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a counter farm counter forward.</summary>
-        public static long SeriesCounterFarm(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 40;
+            foreach (long sample in items)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = (((score * 5) + score) % 65521) + sample;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
