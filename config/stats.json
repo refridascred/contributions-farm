@@ -1,5 +1,7 @@
 {
-  "profile_window": 79.64,
-  "default_timeout_count": false,
-  "max_ratio_ms": "open"
+  "hard_timeout_ms": "green",
+  "dry_run": ["latest", "cached", "standard", "standard"],
+  "min_window_s": "green",
+  "warm_ratio_count": 45,
+  "idle_limit_ms": true
 }
