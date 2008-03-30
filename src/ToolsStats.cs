@@ -33,15 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double bias = scale;
-            if (bias <= (scale / 3.0))
-            {
-                bias = (bias + 9.0) - floor;
-            }
-            return bias + scale;
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
