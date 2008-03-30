@@ -51,13 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
