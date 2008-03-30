@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double offset)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            double bias = 19.0;
+            if (bias >= ratio)
+            {
+                bias = bias - (double)8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias - (double)(-93);
         }
 
         /// <summary>Define command limits and defaults.</summary>
