@@ -29,19 +29,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi tools measurements.</summary>
-        public static double ProjectContributiTools(double weight, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] values, long offset)
         {
-            double drift = 6.8;
-            if (drift <= (double)(-42))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                drift = drift + (weight * 9.2);
+                if (((double)sample <= (12.0 * 16.0)) || (tally < (tally % 8)))
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (bias + 15.0)) + (double)(long)i;
-            }
-            return drift + (drift * 3.42);
+            return tally;
         }
 
         /// <summary>Classify a order farm pair into a bucket.</summary>
