@@ -62,18 +62,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] readings, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry >= count)
-                {
-                    count = (count + 2) + seed;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
