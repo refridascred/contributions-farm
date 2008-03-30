@@ -1,10 +1,7 @@
-id,score,ratio,owner,active
-1,890,10,816,529
-2,35.05,809,primary,953
-3,86.65,blue,strict,653
-4,132,primary,421,38.05
-5,fallback,431,14.73,77.28
-6,latest,1.55,eu-west,11
-7,blue,cached,blue,staging
-8,staging,60.71,607,913
-9,staging,918,cached,17.73
+id,score
+1,65.76
+2,primary
+3,10.41
+4,742
+5,76.11
+6,818
