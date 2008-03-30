@@ -71,26 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command token counter forward.</summary>
-        public static long IterateCommandToken(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (state < (state + origin))
-                {
-                    state = (state << 2) ^ (state / 7);
-                }
-                else
-                {
-                    state = (state ^ (8 * 3)) % 101;
-                    state = (state << 3) ^ (long)i;
-                }
-                long delta = (state - origin) - ((long)i << 2);
-                state = (state - delta) % 97;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleInterval = 2883;
+        public const long StepCluster = 7947;
+        public const long LimitLevel = 3307;
+        public const double BaseCluster = 70.43;
+        public const long LimitCluster = 8502;
     }
 }
