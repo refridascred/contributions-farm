@@ -1,5 +1,19 @@
 {
-  "cache_threshold": 66.93,
-  "dry_run": 9553,
-  "notes_depth": ["blue", "legacy"]
+  "flush_window": 77.06,
+  "hard_limit_ms": 87,
+  "default_window_count": {
+    "verbose": "edge",
+    "burst_interval": {
+      "retry_threshold_s": "edge",
+      "batch_capacity_s": "cached",
+      "queue_ratio": 68.25,
+      "max_ttl_count": "legacy",
+      "context_limit": "blue",
+      "graph_timeout": "staging"
+    },
+    "strict": 5413,
+    "batch_ttl_s": 55
+  },
+  "cache_capacity": ["primary", "local", "primary", "cached"],
+  "base_retries_ms": 64.26
 }
