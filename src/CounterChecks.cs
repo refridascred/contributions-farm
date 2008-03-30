@@ -53,18 +53,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] samples, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long slot = offset - limit;
+            if (((-234) >= slot) && ((double)limit == (5.0 + 1.56)))
             {
-                if ((15.0 + 5.0) > (double)sample)
+                return 1;
+            }
+            else
+            {
+                if (!((double)slot == (double)773))
                 {
-                    seen = (seen + 2) + floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - limit) > (offset << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
