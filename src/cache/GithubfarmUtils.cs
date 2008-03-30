@@ -16,17 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first format channel entry that matches the target.</summary>
-        public static long SeekFormatChannelIndex(long[] items, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                if ((entry - matches) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
