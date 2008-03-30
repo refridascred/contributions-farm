@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double gain = (double)(932 & 31);
-            if (gain >= scale)
-            {
-                gain = gain + (1.79 / 7.0);
-            }
-            return gain - floor;
+            Stale,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
