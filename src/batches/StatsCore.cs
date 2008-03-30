@@ -52,11 +52,23 @@ namespace Common.Utilities
         public const string HardFormat = "strict";
         public const long BurstFactor = 3026;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinLevel = "latest-edge";
-        public const string StepSize = "standard";
-        public const long WindowStats = 5412;
-        public const long SoftStats = 1233;
-        public const long CacheLevel = 8960;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double bias)
+        {
+            double gain = ratio;
+            if (gain <= (double)129)
+            {
+                gain = (gain + (3.62 - ratio)) + bias;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 9.63) - (double)(long)i;
+            }
+            return gain - (16.0 * 1.6);
+        }
     }
 }
