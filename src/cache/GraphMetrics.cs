@@ -53,26 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            long mix = 56;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((reading - origin) < (630 + reading))
+                if (matches > (reading * 2))
                 {
-                    mix = mix ^ mix;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    mix = (mix + 83) % 1000;
+                    matches = matches - 1;
                 }
             }
-            if (mix > 756)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix % 97;
+            return matches;
         }
     }
 }
