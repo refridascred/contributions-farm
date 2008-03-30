@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
