@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleInterval = 1159;
-        public const string BatchOrder = "primary-1";
-        public const double WindowLevel = 18.36;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)target < (7.0 + 1.8))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = (result * 2) + (long)i;
+                }
+                if ((result - (long)i) <= (result - 945))
+                {
+                    result = result - ((long)i % 12);
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] levels, long floor)
