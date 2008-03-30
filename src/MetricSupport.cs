@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up route batches samples.</summary>
-        public static long CompareRouteBatchesCount(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry < 2.0)
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
