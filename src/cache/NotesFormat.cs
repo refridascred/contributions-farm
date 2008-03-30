@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] values, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if (limit >= seed)
             {
-                if ((bound + reading) < (92 ^ reading))
+                return 5;
+            }
+            else
+            {
+                if ((limit << 1) > seed)
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the order tools entries that pass the check.</summary>
