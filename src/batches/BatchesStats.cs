@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of checks buffer entries.</summary>
