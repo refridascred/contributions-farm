@@ -47,33 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long limit)
-        {
-            long delta = bound ^ limit;
-            if ((95 % 8) > delta)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta & 255) < (delta + delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit / 3) < (delta + bound)) && ((bound + limit) > (limit / 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepRatio = 9272;
+        public const long IdleScore = 6177;
+        public const long BaseSize = 7969;
+        public const string HardRatio = "staging";
+        public const double SoftEntry = 85.05;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
