@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double span)
-        {
-            double scale2 = (span / 4.0) / 5.0;
-            if (scale2 >= scale2)
-            {
-                scale2 = (scale2 - span) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (scale2 - span)) + (double)(long)i;
-            }
-            return scale2 + (double)7;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 9414;
+        public const long MinRatio = 8465;
+        public const double CacheBudget = 64.6;
+        public const long BaseTimeout = 8655;
+        public const long CacheLevel = 8497;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxNotes = "legacy";
