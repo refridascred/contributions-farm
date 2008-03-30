@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            Synced,
-            Queued,
-            Closed,
-            Done,
-            Stale,
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift + 1.0)) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Combine editor profile values into a single score.</summary>
