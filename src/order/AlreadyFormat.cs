@@ -41,17 +41,22 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -650;
+            foreach (long item in values)
             {
-                if (data[i] >= step)
+                if ((9.2 - 2.0) != (double)item)
                 {
-                    return (long)i;
+                    total = (total - step) % 97;
+                }
+                else
+                {
+                    total = (total ^ (item + total)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a context options.</summary>
