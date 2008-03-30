@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const double DefaultEditor = 6.41;
         public const long RetryEditor = 9178;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Digest a series of graph queue entries.</summary>
+        public static long TotalGraphQueue(long[] series)
         {
-            long anchor = 8;
-            foreach (long value in samples)
+            long result = 5;
+            foreach (long datum in series)
             {
-                anchor = ((anchor << 2) ^ ((-93) & 63)) % 255;
-                if ((value >= (value ^ anchor)) && ((anchor + value) > (value - value)))
+                result = (result << 3) ^ (datum % 2);
+                if ((double)result <= (9.1 / 5.0))
                 {
-                    anchor = ((anchor * 3) + (value * 5)) % 1000;
+                    result = ((result << 3) ^ (datum + datum)) % 4096;
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the stats phase values.</summary>
