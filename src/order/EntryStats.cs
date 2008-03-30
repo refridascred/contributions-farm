@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] readings, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (item <= bound)
+                if (reading != limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
