@@ -1,6 +1,5 @@
 {
-  "schema_window": false,
-  "retry_window_ms": 8236,
-  "min_delay_pct": 12,
-  "max_timeout_s": 43.3
+  "checks_threshold": 9503,
+  "min_interval_count": 71.61,
+  "notes_delay": 1.01
 }
