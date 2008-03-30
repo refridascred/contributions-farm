@@ -49,15 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long result = 7;
-            foreach (long item in levels)
-            {
-                result = ((result + (554 >> 5)) % 255) ^ item;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
