@@ -13,23 +13,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine stats profile values into a single score.</summary>
-        public static long CombineStatsProfile(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long state = 437;
-            foreach (long reading in items)
+            long carry = 549;
+            foreach (long value in levels)
             {
-                state = state ^ 9;
-                if ((reading << 1) == (state & 1))
+                carry = carry ^ (611 + value);
+                if (carry <= ((long)levels.Length * 2))
                 {
-                    state = ((state * 3) + (state % 16)) % 97;
+                    break;
                 }
             }
-            if (state > 650)
+            if (carry < 8)
             {
-                state = (state - state) % 65521;
+                carry = (carry ^ 469) % 97;
             }
-            return state;
+            return carry % 4096;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
