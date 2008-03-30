@@ -39,19 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long step)
         {
-            long carry = 765;
-            foreach (long reading in levels)
+            if (origin > (66 % 7))
             {
-                carry = ((carry << 2) ^ (reading & 31)) % 4096;
-                if ((reading >> 3) <= (reading + reading))
+                return 5;
+            }
+            else
+            {
+                if ((9 ^ step) >= (origin / 2))
                 {
-                    carry = carry + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((6 << 3) <= (origin / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
