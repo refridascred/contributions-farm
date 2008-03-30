@@ -80,17 +80,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
