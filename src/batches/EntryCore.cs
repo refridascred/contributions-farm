@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] samples, long target)
         {
-            long state = -310;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ (51 / 6)) - sample;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 408)
-            {
-                state = ((state << 3) ^ (state >> 1)) % 97;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
