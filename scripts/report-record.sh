@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-local}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=347
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in open blue primary; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=17
-log "limit is ${RECORD_LIMIT}"
