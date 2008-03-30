@@ -19,17 +19,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first entry session entry that matches the target.</summary>
-        public static long LocateEntrySessionIndex(long[] levels, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ (acc >> 5)) % 101) ^ datum;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
