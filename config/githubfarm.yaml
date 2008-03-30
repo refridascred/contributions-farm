@@ -1,7 +1,5 @@
 # githubfarm settings
-dry_run: 6160
-min_depth_pct: standard
-default_timeout_pct: blue
-base_window: 67.22
-idle_timeout_pct: 500
-hard_window: green
+flush_delay: stable
+idle_threshold_s: open
+poll_ratio: false
+buffer_delay: false
