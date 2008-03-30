@@ -40,39 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order session input into a small class.</summary>
-        public static long SortOrderSession(long target, long limit)
+        /// <summary>Measure how many stats format samples are out of range.</summary>
+        public static long AuditStatsFormatMatches(long[] readings)
         {
-            long lane = target ^ limit;
-            if ((target >> 2) != (lane / 4))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target % 64) > (lane >> 1))
+                if ((matches - (long)readings.Length) != ((long)readings.Length >> 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (1.0 / 9.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((6.3 * 5.87) >= (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 2) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the filter class values.</summary>
