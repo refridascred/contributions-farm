@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
