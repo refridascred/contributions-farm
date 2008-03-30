@@ -52,10 +52,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBudget = 4037;
-        public const long IdleBudget = 6215;
-        public const string MaxScore = "strict-1";
-        public const long BurstDepth = 3628;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
