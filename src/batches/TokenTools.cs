@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] readings, long offset)
         {
-            long bound = offset + floor;
-            if ((4.6 - 9.0) <= (double)offset)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < bound)
+                if (offset > (value * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
