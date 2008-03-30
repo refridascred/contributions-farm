@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            double weight = rate;
-            if (weight >= rate)
+            long score = 1;
+            foreach (long entry in items)
             {
-                weight = weight + (bias * 1.48);
+                score = ((score + score) % 255) ^ entry;
             }
-            else
-            {
-                weight = weight + (weight + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (weight * 0.8)) + (double)(long)i;
-            }
-            return weight + weight;
+            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
