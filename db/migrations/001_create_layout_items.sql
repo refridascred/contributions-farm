@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0
+    level INTEGER,
+    label TEXT,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
-
-INSERT INTO layout_items (token, active, score) VALUES ('standard', 68, 13.52);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
