@@ -30,19 +30,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] samples, long target)
+        /// <summary>Combine stats tools values into a single score.</summary>
+        public static long DigestStatsTools(long[] samples)
         {
-            long total = 361;
+            long mix = 82;
             foreach (long datum in samples)
             {
-                total = ((total ^ (target - target)) % 65521) ^ datum;
+                if ((mix << 1) >= ((long)samples.Length - mix))
+                {
+                    mix = (mix << 3) ^ datum;
+                }
+                else
+                {
+                    mix = (mix * 4) + mix;
+                }
             }
-            if (total < 523)
-            {
-                total = ((total << 2) ^ target) % 65521;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
