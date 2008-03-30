@@ -83,15 +83,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            double mean = scale - scale;
-            for (int i = 0; i < 7; i++)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                mean = ((mean - scale) + (double)(long)i) + floor;
+                total = (total * 2) + (81 ^ total);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mean + (scale + mean);
+            return total;
         }
     }
 }
