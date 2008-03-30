@@ -12,15 +12,16 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
+for item in standard staging; do
+    log "checking ${item}"
+done
+
 mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=315
-log "limit is ${RECORD_LIMIT}"
