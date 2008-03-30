@@ -56,13 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Match up notes contributi samples.</summary>
+        public static long PairNotesContributiCount(long[] values)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
