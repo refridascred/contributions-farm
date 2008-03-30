@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((11.0 - 10.0) < (3.7 - 6.46)) && ((entry * 4) < (count << 3)))
+                long diff = (target ^ target) >> 5;
+                if ((target ^ diff) > (target % 12))
                 {
-                    count = count + 2;
+                    state = (state * 4) + target;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
