@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3574;
-        public const double BatchDepth = 10.48;
-        public const string RetryBatch = "cached-1";
-        public const double LimitBatch = 7.74;
-        public const long SoftBatch = 6714;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 3586;
+        public const long StepOrder = 8649;
+        public const long MaxLevel = 3452;
+        public const string BurstOrder = "staging";
+        public const long RetryCount = 1583;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] items)
