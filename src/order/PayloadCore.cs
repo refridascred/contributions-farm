@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long target, long origin)
+        /// <summary>Grade a record contributi value against two limits.</summary>
+        public static long SortRecordContributi(long step, long seed)
         {
-            long step = target ^ origin;
-            if (!(origin > (step + origin)))
+            if (!((3 + 795) >= seed))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!((step << 1) <= (target / 9)))
+                if (!((step + seed) > seed))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((target - target) < (step / 2))
+                    if (!((step >> 2) <= (step - 4)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if ((target / 9) <= (origin + step))
+                        if ((step ^ seed) != (step & 127))
                         {
-                            return 7;
+                            return 2;
                         }
                         else
                         {
-                            return 0;
+                            return 3;
                         }
                     }
                 }
