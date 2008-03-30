@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a metric window pair into a bucket.</summary>
-        public static long SortMetricWindow(long step, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long bound = step + offset;
-            if (0 > (offset + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset - step) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset - offset) <= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
