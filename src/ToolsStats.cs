@@ -44,19 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] items, long seed)
+        /// <summary>Look up the position of a format metrics sample.</summary>
+        public static long FindFormatMetricsIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= seed)
+                if (values[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a token options.</summary>
