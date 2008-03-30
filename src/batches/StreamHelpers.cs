@@ -17,22 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] values, long seed)
         {
-            long mix = -85;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (values[i] < seed)
                 {
-                    mix = ((mix - (mix + (-533))) % 4096) ^ (long)i;
-                }
-                if ((9.0 - 5.2) != (double)reading)
-                {
-                    mix = (mix - (mix ^ 186)) % 101;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
