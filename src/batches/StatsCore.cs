@@ -16,15 +16,22 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (6.1 <= (double)hits)
+                {
+                    hits = ((hits + 2) - entry) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
