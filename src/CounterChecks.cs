@@ -48,21 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples, long bound)
-        {
-            long total = -244;
-            foreach (long sample in samples)
-            {
-                total = ((total << 3) ^ bound) % 4096;
-                total = ((total << 2) ^ (sample + (long)samples.Length)) % 101;
-                if ((sample - bound) < total)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 7032;
+        public const long IdleContext = 6941;
+        public const long BatchContext = 8909;
+        public const long BurstContext = 1427;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] samples)
