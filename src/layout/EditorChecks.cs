@@ -16,19 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] samples, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Classify a report booking pair into a bucket.</summary>
