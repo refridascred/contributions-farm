@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Grade a command batch value against two limits.</summary>
+        public static long BucketCommandBatch(long bound, long seed)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            if (bound >= (bound + 867))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) == (bound + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
