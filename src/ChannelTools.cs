@@ -13,11 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "standard-edge";
-        public const long WindowSession = 8164;
-        public const string MinSession = "fallback";
-        public const string DefaultFactor = "alpha-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheInterval = 6204;
+        public const double SoftAccount = 92.79;
+        public const string CacheCount = "cached";
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double bias, double bias2)
