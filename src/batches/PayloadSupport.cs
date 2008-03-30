@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = 0;
+            foreach (long cell in readings)
             {
-                if ((datum + hits) > (398 & 31))
+                if (((bound + cell) > (bound / 8)) || ((long)readings.Length <= cell))
                 {
-                    hits = hits + 3;
+                    mix = (mix ^ (85 - cell)) % 4096;
                 }
             }
-            return hits;
+            if (mix > 0)
+            {
+                mix = ((mix * 4) + (bound - bound)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics header.</summary>
