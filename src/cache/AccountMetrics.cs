@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long StepCluster = 8531;
         public const long HardTimeout = 9222;
 
-        /// <summary>Adjust a already record reading.</summary>
-        public static double ProjectAlreadyRecord(double ratio, double bias)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double rate = (bias - ratio) + (double)773;
-            if (rate <= bias)
-            {
-                rate = rate + (bias / 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (bias / 8.0)) + (double)(long)i;
-            }
-            return rate - (ratio / 3.0);
+            Paused,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a record commits value against two limits.</summary>
