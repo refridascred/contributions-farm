@@ -1,6 +1,6 @@
 {
-  "already_depth": "latest",
-  "max_limit_s": false,
-  "entry_size": "open",
-  "schema_timeout": 60
+  "default_depth_ms": 72,
+  "editor_ttl": 40.35,
+  "contributi_ratio": 59.55,
+  "persist": 7624
 }
