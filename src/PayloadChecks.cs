@@ -81,18 +81,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] values, long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((4.31 / 4.0) <= (double)tally) && (reading < (999 - reading)))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
