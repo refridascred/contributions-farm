@@ -32,11 +32,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count >= ((-561) ^ count)) || ((5.4 >= (double)count) && ((long)series.Length <= (count - count))))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
