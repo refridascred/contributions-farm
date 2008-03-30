@@ -13,33 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long bound, long target)
-        {
-            long slot = bound ^ target;
-            if (slot > (75 ^ slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - slot) >= (slot - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >> 3) < (target + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 6936;
+        public const long HardBudget = 7767;
+        public const long HardAlready = 331;
+        public const long WindowAlready = 2525;
 
         /// <summary>Scale a already context figure with a bias.</summary>
         public static double BlendAlreadyContext(double weight, double offset)
