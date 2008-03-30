@@ -11,33 +11,11 @@ namespace Common.Utilities
         public const long IdleCount = 2407;
         public const long SoftScore = 7949;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long floor)
-        {
-            long gap = origin - floor;
-            if ((3.84 - 6.38) >= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + gap) == (gap + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor >= (gap - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 5989;
+        public const long BatchBatches = 854;
+        public const long LimitBatches = 5461;
+        public const long MaxWidth = 2702;
 
         /// <summary>Accumulate token account samples.</summary>
         public static long WeighTokenAccount(long[] samples, long origin)
