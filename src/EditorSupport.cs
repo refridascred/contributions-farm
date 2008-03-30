@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                anchor = (anchor ^ ((long)i ^ anchor)) % 4096;
-                anchor = anchor - (5 & 1);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
