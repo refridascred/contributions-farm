@@ -45,19 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            long score = 60;
-            foreach (long entry in values)
-            {
-                score = score + (score + score);
-                if (((double)entry != (0.9 + 7.4)) || (entry < (floor / 8)))
-                {
-                    score = (score * 3) + (3 - floor);
-                }
-            }
-            return score;
+            double load = (double)34;
+            return (load - rate) + offset;
         }
 
         /// <summary>Define account limits and defaults.</summary>
