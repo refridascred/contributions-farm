@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order batches reading by value.</summary>
-        public static long LocateOrderBatchesIndex(long[] items, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= origin)
+                if (items[i] == bound)
                 {
                     return (long)i;
                 }
