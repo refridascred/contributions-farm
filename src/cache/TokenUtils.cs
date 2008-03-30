@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long score = 494;
+            foreach (long value in levels)
             {
-                if ((1.22 / 3.0) == (double)entry)
+                if ((value % 10) <= (score % 5))
                 {
-                    hits = hits + 2;
+                    score = (score + (score >> 5)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
