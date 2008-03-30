@@ -27,10 +27,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftFactor = "fallback-1";
-        public const long SoftSpan = 1733;
-        public const string MinMetrics = "standard-v2";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long target)
