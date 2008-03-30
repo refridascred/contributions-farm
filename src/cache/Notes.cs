@@ -29,12 +29,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 4708;
-        public const long RetryQueue = 8774;
-        public const long BatchRatio = 8902;
-        public const long SoftTimeout = 9047;
-        public const double WindowQueue = 88.6;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleLevel = 27.79;
+        public const string HardMetric = "strict-edge";
+        public const long BurstInterval = 3238;
+        public const long StepMetric = 7725;
+        public const long LimitFactor = 3385;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] series, long floor)
