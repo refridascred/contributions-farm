@@ -30,25 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch cache pair into a bucket.</summary>
-        public static long ClassifyBatchCache(long origin, long origin2)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] values, long step)
         {
-            long gap = origin ^ origin2;
-            if ((origin + gap) >= (origin * 3))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (1.0 + 11.0))
+                if (((seen - sample) >= step) || ((double)seen != (11.0 * 5.7)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
