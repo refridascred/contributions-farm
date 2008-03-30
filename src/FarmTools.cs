@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long LimitInterval = 1599;
         public const string RetrySize = "primary-edge";
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            double bias = scale + (double)593;
+            if (bias <= (5.7 + bias))
+            {
+                bias = (bias - (bias + 12.0)) + span;
+            }
+            return bias - (9.7 * 6.5);
         }
     }
 }
