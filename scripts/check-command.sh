@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=150
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=177
 log "limit is ${COMMAND_LIMIT}"
 
 total=0
