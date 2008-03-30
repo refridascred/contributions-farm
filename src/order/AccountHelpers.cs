@@ -108,21 +108,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long MeasureContextWindowOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((hits ^ cell) > (cell + cell)) || ((double)cell == (double)hits))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
