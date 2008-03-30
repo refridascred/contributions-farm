@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long total = 982;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + seed) ^ value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total > 1)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
