@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
-        {
-            long acc = 6;
-            foreach (long entry in readings)
-            {
-                if (((entry - 5) != (entry + entry)) || (entry < (entry + acc)))
-                {
-                    acc = (acc + (acc & 7)) % 97;
-                }
-                if ((double)entry <= 10.0)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultWidth = 3765;
+        public const long SoftCache = 6821;
+        public const long BurstRatio = 7420;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long bound, long limit)
