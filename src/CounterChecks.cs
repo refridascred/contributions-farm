@@ -67,18 +67,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((offset - step) > step)
             {
-                if ((reading + hits) >= (long)samples.Length)
+                return 4;
+            }
+            else
+            {
+                if (15 > (step << 3))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
