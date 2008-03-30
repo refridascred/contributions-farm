@@ -22,17 +22,11 @@ namespace Common.Utilities
         public const long DefaultCluster = 2933;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double scale, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum << 2) ^ ((long)i - sum);
-                sum = (sum ^ (origin - (long)i)) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            double ratio = (double)6 - (scale * 0.89);
+            return ratio - (bias / 5.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
