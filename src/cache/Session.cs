@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every batches stream entry stays within the limit.</summary>
-        public static bool ValidateBatchesStreamRange(long[] values, long offset)
+        /// <summary>Audit batches schema readings against a rule.</summary>
+        public static long AuditBatchesSchemaMatches(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (sample <= offset)
+                if ((floor + 500) < count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
