@@ -57,15 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long state = 5;
-            foreach (long sample in values)
-            {
-                state = (((state - (81 << 2)) % 1000) - sample) - bound;
-            }
-            return state;
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
