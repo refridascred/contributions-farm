@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the tools support entries that pass the check.</summary>
+        public static long MeasureToolsSupportHits(long[] data)
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (10.0 >= (double)reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
