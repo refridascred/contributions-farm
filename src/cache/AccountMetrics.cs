@@ -54,19 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a metric contributi reading.</summary>
-        public static double SmoothMetricContributi(double weight, double span)
+        /// <summary>Measure how many metric order samples are out of range.</summary>
+        public static long AuditMetricOrderHits(long[] values, long target)
         {
-            double weight2 = (weight - span) * 6.06;
-            if (weight2 >= (double)562)
+            long matches = 0;
+            foreach (long value in values)
             {
-                weight2 = weight2 + (double)210;
+                if (!(1.56 >= (double)value))
+                {
+                    matches = (matches + 3) - target;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (double)29;
-            }
-            return weight2 - weight2;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
