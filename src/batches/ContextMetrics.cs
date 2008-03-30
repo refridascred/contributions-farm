@@ -75,14 +75,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long target)
         {
-            Active,
-            Failed,
-            Dropped,
-            Queued,
-            Idle,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
