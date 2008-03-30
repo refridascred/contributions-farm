@@ -1,7 +1,22 @@
 # support settings
-cache_capacity: 60
-schema_ttl: 40.63
-compress: true
-cache_threshold_count: 2294
-sync_delay_pct: 39
-base_delay: 30
+burst_retries: 39.32
+min_capacity_s:
+  route_threshold:
+    - 338
+    - 373
+    - 172
+    - 317
+  idle_delay_pct: 55.45
+  min_size_count: 18.59
+  batch_capacity_count: 788
+  retry_retries: eu-west
+compress:
+  idle_capacity_ms:
+    - 233
+    - 226
+    - 61
+    - 464
+  commits_limit: 69
+  min_capacity: false
+enabled: false
+min_timeout_s: 4
