@@ -48,14 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] samples, long origin)
         {
-            Paused,
-            Retry,
-            Done,
-            Active,
-            Stale,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the channel phase values.</summary>
