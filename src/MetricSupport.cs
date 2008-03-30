@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Pending,
-            Paused,
-            Active,
-            Draft,
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
