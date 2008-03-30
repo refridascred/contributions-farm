@@ -55,21 +55,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            long span = step + seed;
+            if (((step & 31) < (seed >> 2)) && ((span - step) < step))
             {
-                mark = (mark * 2) + (offset - 14);
-                long edge = mark;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (((mark * 2) + (edge >> 2)) % 255) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (((double)span < (double)seed) && ((double)seed <= 2.2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.9 * 15.0) == (double)span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
