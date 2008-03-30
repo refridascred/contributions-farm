@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] samples, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((bound + (long)samples.Length) == (bound ^ value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
