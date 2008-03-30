@@ -24,16 +24,17 @@ namespace Common.Utilities
         public const double StepSize = 73.05;
         public const long DefaultOrder = 5223;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] samples, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 3) ^ (bound / 8)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
