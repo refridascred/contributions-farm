@@ -51,13 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long step)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
