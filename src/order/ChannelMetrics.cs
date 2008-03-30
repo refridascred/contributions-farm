@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Iterate the metric record series from a seed.</summary>
+        public static long IterateMetricRecord(long offset)
         {
-            Idle,
-            Draft,
-            Active,
-            Synced,
-            Dropped,
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry << 2) ^ offset;
+                if (((long)i - offset) != (77 - offset))
+                {
+                    carry = (carry ^ ((long)i ^ (long)i)) % 255;
+                }
+                carry = (carry * 3) + offset;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
