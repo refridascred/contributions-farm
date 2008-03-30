@@ -1,11 +1,11 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the batch list.
-Run the tools check before changing any stats limits.
+Each payload is validated before it reaches the filter queue.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate command input early
-- Keep support values small
-- Review buffer limits each release
-- Prefer entry defaults
+- Document new support fields
+- Review stream limits each release
+- Keep cluster values small
+- Validate metrics input early
