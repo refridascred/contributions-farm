@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series)
         {
-            long sum = 2;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                sum = (sum - (sum + datum)) % 1000;
-                if ((3.84 <= (double)datum) && ((sum + sum) < sum))
+                if ((hits - reading) < (reading - reading))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
