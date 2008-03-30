@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] levels, long target)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
