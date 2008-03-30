@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double drift = (double)(243 + 87);
-            if (drift >= (floor + drift))
-            {
-                drift = drift - (ratio * 15.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift + 5.1;
+            Queued,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
