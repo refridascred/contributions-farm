@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double bias2)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            double load = bias;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load - 3.6) - (double)(long)i) + bias2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (double)889;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
