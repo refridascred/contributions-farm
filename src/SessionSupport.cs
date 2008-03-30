@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the already layout series from a seed.</summary>
-        public static long SeriesAlreadyLayout(long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 2) ^ mark) % 255;
-                if ((long)i > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark ^ (mark / 5);
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Scale a schema window figure with a bias.</summary>
