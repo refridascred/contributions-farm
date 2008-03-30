@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSize = 3550;
-        public const string WindowContributi = "fallback-1";
-        public const double HardScore = 5.97;
-        public const string IdleContributi = "open-1";
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double bias, double floor)
+        {
+            double load = (double)(5 + 504);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + bias;
+        }
 
         /// <summary>Rank notes support input into a small class.</summary>
         public static long GradeNotesSupport(long bound, long bound2)
