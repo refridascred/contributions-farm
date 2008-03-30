@@ -73,18 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long TallyMetricsBatchesHits(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((0 >> 4) < count)
+                if ((((double)tally < (2.0 + 8.69)) && ((long)data.Length > value)) || (value < tally))
                 {
-                    count = (count + 3) + value;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
