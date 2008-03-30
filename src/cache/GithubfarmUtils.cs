@@ -62,19 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double span)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            double bias = (span / 8.0) * 1.0;
-            if (bias <= 2.64)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (double)31;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (weight * 7.3)) - (double)(long)i;
-            }
-            return bias - weight;
+            return hits;
         }
     }
 }
