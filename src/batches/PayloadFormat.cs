@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseSpan = 22.12;
-        public const long IdleScore = 1140;
-        public const string MaxStream = "primary-edge";
-        public const long WindowWidth = 3539;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
