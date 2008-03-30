@@ -1,8 +1,15 @@
 # entry settings
-soft_threshold_ms: legacy
-batch_delay_count:
-  - 459
-  - 85
-  - 459
-schema_ratio: 17.32
-batch_ttl_pct: standard
+poll_interval_ms: standard
+schema_window:
+  soft_ratio:
+    - 117
+    - 449
+    - 204
+  readonly: 56.51
+  soft_retries_count: primary
+burst_ttl: true
+base_retries_s:
+  - 192
+  - 414
+  - 247
+  - 207
