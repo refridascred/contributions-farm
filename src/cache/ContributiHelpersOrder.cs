@@ -32,12 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Queued,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleBudget = 4476;
+        public const string SoftRatio = "alpha-1";
+        public const long StepCount = 1920;
+        public const long RetryTimeout = 7664;
+        public const string WindowCount = "alpha";
     }
 }
