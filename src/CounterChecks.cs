@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target + floor) == (floor + floor))
             {
-                if (data[i] == limit)
+                return 2;
+            }
+            else
+            {
+                if ((target - floor) >= floor)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= (target >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
