@@ -22,32 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long target)
-        {
-            if ((limit * 4) >= (limit / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target > (target - 257))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (14.0 * 9.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1062;
+        public const long LimitCount = 4874;
+        public const double LimitMetrics = 52.94;
+        public const long MinMetrics = 2032;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] items, long seed)
