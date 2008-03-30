@@ -5,28 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long target, long origin)
         {
-            long result = 714;
-            foreach (long item in data)
+            long step = target ^ origin;
+            if (!(origin > (step + origin)))
             {
-                if (((result % 7) != (result + item)) && ((result + 7) < (item << 2)))
-                {
-                    continue;
-                }
-                if ((double)item <= 1.33)
-                {
-                    result = (result - (item ^ item)) % 255;
-                    result = (result ^ (item % 24)) % 1000;
-                }
-                result = (result + (result % 7)) % 65521;
+                return 4;
             }
-            if (result > 4)
+            else
             {
-                result = result ^ result;
+                if (!((step << 1) <= (target / 9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - target) < (step / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 9) <= (origin + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Measure how many window entry samples are out of range.</summary>
