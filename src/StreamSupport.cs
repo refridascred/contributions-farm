@@ -33,14 +33,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Active,
-            Draft,
-            Failed,
-            Pending,
-            Done,
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
