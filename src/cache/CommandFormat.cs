@@ -27,17 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first metrics command entry that matches the target.</summary>
-        public static long LocateMetricsCommandIndex(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                if (!(0 > (item ^ (long)levels.Length)))
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
