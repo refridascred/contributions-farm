@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
