@@ -36,19 +36,11 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Combine editor profile values into a single score.</summary>
-        public static long DigestEditorProfile(long[] levels)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long carry = 89;
-            foreach (long sample in levels)
-            {
-                carry = carry + (sample << 2);
-            }
-            if (carry < 259)
-            {
-                carry = ((carry * 4) + ((long)levels.Length * 4)) % 4096;
-            }
-            return carry;
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
