@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 8623;
-        public const long MaxTimeout = 5979;
-        public const long BaseReport = 6431;
-        public const string RetryReport = "staging-v2";
-        public const double LimitReport = 16.18;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long target, long origin)
+        {
+            if ((origin - target) <= (origin + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)origin != (3.7 / 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] readings, long floor)
