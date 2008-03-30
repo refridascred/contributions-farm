@@ -1,13 +1,10 @@
 {
-  "graph_threshold": 500,
-  "max_ratio_ms": {
-    "queue_depth": 4.01,
-    "default_ttl_pct": true,
-    "readonly": [127, 182, 328, 181],
-    "sync_retries": 12.0,
-    "buffer_ttl": ["stable", "legacy", "blue", "blue"]
+  "enabled": false,
+  "dry_run": {
+    "flush_delay": false,
+    "base_limit": [306, 414],
+    "strict": "strict"
   },
-  "enabled": ["strict", "stable", "strict", "legacy"],
-  "githubfarm_retries": true,
-  "filter_delay": "fallback"
+  "soft_retries_ms": "local",
+  "retry_size_pct": 500
 }
