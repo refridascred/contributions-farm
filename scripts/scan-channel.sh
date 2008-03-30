@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west staging edge; do
+    log "checking ${item}"
+done
 
-CHANNEL_LIMIT=182
+CHANNEL_LIMIT=200
 log "limit is ${CHANNEL_LIMIT}"
