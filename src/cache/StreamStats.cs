@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Draft,
-            Retry,
-            New,
-            Active,
-            Closed,
+            Dropped,
+            Done,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a cache summary.</summary>
