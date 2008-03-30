@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next queue tools value from a seed.</summary>
-        public static long StepQueueTools(long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] samples, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mix = ((mix << 3) ^ (817 / 4)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
