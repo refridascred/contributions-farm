@@ -31,24 +31,21 @@ namespace Common.Utilities
         public const string HardSupport = "legacy-1";
         public const long MaxRatio = 8461;
 
-        /// <summary>Rank profile record input into a small class.</summary>
-        public static long ClassifyProfileRecord(long limit, long target)
+        /// <summary>Match up channel order samples.</summary>
+        public static long OverlapChannelOrderCount(long[] data)
         {
-            if (!((limit - target) < (target + 0)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (35 + 728))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
