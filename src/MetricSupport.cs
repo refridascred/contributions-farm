@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "alpha-edge";
-        public const long BaseCommand = 8317;
-        public const long CacheCommand = 9888;
-        public const string IdleRatio = "stable-1";
-        public const string CacheRatio = "alpha-1";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
