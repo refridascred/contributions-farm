@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Look up the position of a commits counter sample.</summary>
+        public static long SeekCommitsCounterIndex(long[] items, long origin)
         {
-            Draft,
-            Pending,
-            Stale,
-            New,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
