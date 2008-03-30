@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLevel = 7493;
-        public const long WindowWidth = 2581;
-        public const long IdleInterval = 7809;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many record channel samples are out of range.</summary>
         public static long CountRecordChannelHits(long[] data, long limit)
