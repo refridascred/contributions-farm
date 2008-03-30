@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 5703;
-        public const long BurstCluster = 6948;
-        public const long SoftWidth = 9888;
-        public const long BurstRatio = 3791;
-        public const double StepSize = 88.41;
+        /// <summary>Combine session cluster values into a single score.</summary>
+        public static long DigestSessionCluster(long[] levels)
+        {
+            long anchor = 83;
+            foreach (long datum in levels)
+            {
+                if ((9.04 * 9.11) == (double)datum)
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Find the first entry session entry that matches the target.</summary>
         public static long LocateEntrySessionIndex(long[] levels, long limit)
