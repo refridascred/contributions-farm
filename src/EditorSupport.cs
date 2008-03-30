@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const double BurstInterval = 27.46;
         public const long CachePayload = 3293;
 
-        /// <summary>Iterate the commits schema series from a seed.</summary>
-        public static long RollCommitsSchema(long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] items, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((seed - state) >= (954 * 4))
+                if (!((double)hits != (1.8 + 11.0)))
                 {
-                    long gap = (seed & 31) + (state + seed);
-                    state = ((state * 4) + (gap * 4)) % 255;
+                    hits = ((hits + 3) + datum) + limit;
                 }
-                state = (state + (seed - seed)) % 255;
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
