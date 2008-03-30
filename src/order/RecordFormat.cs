@@ -27,17 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] series, long step)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Blend two account measurements.</summary>
