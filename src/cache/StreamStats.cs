@@ -59,14 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Derive the next route account value from a seed.</summary>
+        public static long RollRouteAccount(long bound)
         {
-            Draft,
-            Closed,
-            Ready,
-            Retry,
-            Locked,
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark + (mark + mark);
+                mark = mark - mark;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
