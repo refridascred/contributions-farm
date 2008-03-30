@@ -32,16 +32,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long score = 511;
-            foreach (long value in levels)
-            {
-                score = (score * 2) + value;
-                score = ((score * 2) + bound) % 1000;
-            }
-            return score;
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
