@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 906;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum - (15 & 7)) % 97;
+                if (!((cell + 55) >= (sum - sum)))
                 {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 3) ^ cell) % 4096;
+                }
+                if ((78 < (step + 48)) || ((sum + step) >= cell))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
