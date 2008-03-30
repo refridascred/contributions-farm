@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double bias2 = gain;
+            for (int i = 0; i < 8; i++)
             {
-                if (((16.0 * 9.51) != (double)datum) && (4 >= (datum ^ datum)))
-                {
-                    count = count + 2;
-                }
+                bias2 = (bias2 - (bias - bias2)) + (double)(long)i;
             }
-            return count;
+            return bias2 + 9.85;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
