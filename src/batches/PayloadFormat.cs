@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every queue tools entry stays within the limit.</summary>
+        public static bool CheckQueueToolsBounds(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
