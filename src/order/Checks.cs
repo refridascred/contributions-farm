@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseSpan = 5680;
+        public const long BurstTimeout = 1468;
+        public const long SoftRatio = 6278;
+        public const long LimitInterval = 4930;
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
         public static long MeasurePayloadCacheMatches(long[] items, long step)
