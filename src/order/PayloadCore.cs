@@ -50,18 +50,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = 25;
+            foreach (long datum in series)
             {
-                if (seen > (seen + value))
-                {
-                    seen = seen + 1;
-                }
+                state = (state ^ datum) - seed;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
