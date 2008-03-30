@@ -17,18 +17,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((limit - hits) >= (3 ^ hits))
+                if (cell != target)
                 {
-                    hits = (hits + 3) - entry;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate record samples.</summary>
