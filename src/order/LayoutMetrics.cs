@@ -26,19 +26,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate payload cache readings against a bound.</summary>
-        public static bool ValidatePayloadCacheRange(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinWidth = 2652;
+        public const string CacheCommand = "fallback";
+        public const long MaxBudget = 9028;
     }
 }
