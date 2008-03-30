@@ -21,13 +21,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long mark = 681;
+            foreach (long value in series)
+            {
+                mark = (mark ^ (value * 3)) % 101;
+                if ((616 + value) != (value - value))
+                {
+                    mark = mark - (mark + 7);
+                }
+                if (mark <= (value + (long)series.Length))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
