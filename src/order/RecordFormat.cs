@@ -51,15 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
