@@ -22,11 +22,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Done,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
