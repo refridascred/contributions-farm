@@ -47,11 +47,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Iterate the metrics profile series from a seed.</summary>
+        public static long SeriesMetricsProfile(long offset)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
