@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long TallyCacheTokenMatches(long[] data, long bound)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long reading in data)
             {
-                if ((894 % 97) >= (cell + cell))
+                if (bound > (reading % 97))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
