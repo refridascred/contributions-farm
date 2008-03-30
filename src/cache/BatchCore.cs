@@ -38,17 +38,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] samples, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = origin + seed;
+            if ((origin > (3 ^ offset)) || ((offset - seed) >= (offset ^ seed)))
             {
-                if (samples[i] >= step)
+                return 5;
+            }
+            else
+            {
+                if (!((origin << 1) < offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)origin < (9.3 + 6.4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
