@@ -59,11 +59,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheTimeout = 21.72;
-        public const long MinWidth = 9;
-        public const long WindowCache = 9901;
-        public const long BaseRatio = 730;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Match up buffer report samples.</summary>
         public static long OverlapBufferReportCount(long[] data)
