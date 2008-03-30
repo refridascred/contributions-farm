@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const string MaxStream = "primary-edge";
         public const long WindowWidth = 3539;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
