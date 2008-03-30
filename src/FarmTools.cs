@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 78.62;
+        public const double StepRecord = 65.49;
+        public const long IdleTimeout = 3146;
+        public const string BatchRecord = "stable-v2";
+        public const long MaxSize = 2535;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double StepAlready = 33.15;
