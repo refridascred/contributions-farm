@@ -42,15 +42,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            double rate2 = (rate - 4.77) + (rate + rate);
-            if (rate2 > (rate2 + rate))
+            long mark = 549;
+            foreach (long item in samples)
             {
-                rate2 = (rate2 + 3.1) + floor;
+                if (!(((916 ^ mark) >= (item << 1)) && ((293 << 3) >= (872 + mark))))
+                {
+                    mark = ((mark << 3) ^ (item - 534)) % 4096;
+                    mark = (mark - (item << 2)) % 101;
+                }
+                if (!(item > ((-5) + mark)))
+                {
+                    mark = (mark << 2) ^ (item << 1);
+                }
             }
-            return rate2 - (double)293;
+            if (mark > 9)
+            {
+                mark = (mark + (mark / 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
