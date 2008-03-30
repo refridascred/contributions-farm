@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((hits <= (hits % 7)) && (((70 << 2) >= (hits / 6)) && ((9.7 + 1.0) != (double)sample)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next batch value.</summary>
