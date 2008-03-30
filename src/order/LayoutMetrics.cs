@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "legacy-v2";
-        public const long BatchRatio = 3398;
-        public const long LimitScore = 8706;
-        public const long CacheSize = 1258;
-        public const long LimitChecks = 2914;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
