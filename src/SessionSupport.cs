@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (carry ^ (long)i) ^ (long)i2;
-                    carry = (carry + (carry + step)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheTimeout = 1907;
+        public const long LimitCount = 3468;
+        public const double MaxMetrics = 46.92;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] levels, long limit)
