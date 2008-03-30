@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            Queued,
-            Dropped,
-            Active,
+            double scale2 = (double)(3 + (-50));
+            if (scale2 > 3.8)
+            {
+                scale2 = ((scale2 - (double)67) - scale) - floor;
+            }
+            else
+            {
+                scale2 = scale2 + (double)299;
+            }
+            return scale2 + (double)395;
         }
 
         /// <summary>Measure how many order batch samples are out of range.</summary>
