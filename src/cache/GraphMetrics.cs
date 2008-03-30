@@ -23,14 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Synced,
-            Retry,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinTimeout = 3708;
+        public const long RetryGraph = 7642;
+        public const long IdleGraph = 6963;
+        public const string WindowGraph = "open-1";
+        public const long MaxCount = 4968;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
