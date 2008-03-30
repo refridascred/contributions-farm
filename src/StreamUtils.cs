@@ -33,16 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm stream value from a seed.</summary>
-        public static long DeriveGithubfarmStream(long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark ^ mark) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
+                result = (result ^ ((long)i - result)) % 4096;
+                result = ((result << 3) ^ (result - 607)) % 65521;
+                result = ((result << 2) ^ (step * 5)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
