@@ -27,16 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ (offset + mark)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!((double)result < (2.68 + 16.0)))
+                {
+                    result = result ^ (result % 24);
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the farm state values.</summary>
