@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] readings, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long slot = bound - offset;
+            if ((slot - offset) > (slot & 127))
             {
-                if (sample < seed)
+                return 0;
+            }
+            else
+            {
+                if (((slot ^ bound) >= (offset & 15)) || ((slot * 5) <= offset))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
