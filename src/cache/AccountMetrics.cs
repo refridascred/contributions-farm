@@ -23,10 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8631;
-        public const long CacheFormat = 1703;
-        public const long DefaultTimeout = 3120;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Dropped,
+            Queued,
+            New,
+            Paused,
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] levels)
