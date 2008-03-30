@@ -64,17 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] levels, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
