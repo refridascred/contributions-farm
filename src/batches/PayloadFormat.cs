@@ -54,20 +54,10 @@ namespace Common.Utilities
             return bias - 7.2;
         }
 
-        /// <summary>Roll a record checks counter forward.</summary>
-        public static long StepRecordChecks(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((floor >> 3) > (floor >> 5))
-                {
-                    acc = ((acc << 3) ^ (acc % 2)) % 65521;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 10.64;
+        public const long BatchEditor = 7306;
+        public const double MinEditor = 65.59;
+        public const double HardFactor = 9.36;
     }
 }
