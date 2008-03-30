@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] values, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double scale = (double)(73 + (-273));
+            if (scale >= (double)1)
             {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + (offset * 5.0);
             }
-            return ok;
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale + offset;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
