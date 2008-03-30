@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double IdleContributi = 53.96;
         public const long SoftContributi = 1088;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCount = 8607;
+        public const long BurstFactor = 5131;
+        public const long DefaultCluster = 2933;
+        public const string BatchScore = "latest-1";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] samples)
