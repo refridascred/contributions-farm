@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of profile editor readings.</summary>
