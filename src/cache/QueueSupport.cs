@@ -25,19 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (cell < bound)
+                if ((double)value >= 8.0)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
