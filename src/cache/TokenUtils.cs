@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long step, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long span = step + floor;
-            if ((double)span >= (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 5) < floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
