@@ -49,12 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count order entry pairs that satisfy a relation.</summary>
+        public static long PairOrderEntryCount(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
