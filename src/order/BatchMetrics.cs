@@ -88,23 +88,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long step)
         {
-            double weight = (offset + scale) - scale;
-            if (weight >= (scale + 3.0))
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                weight = weight - scale;
+                if (((1.7 * 0.68) < (double)step) || ((5.2 * 9.57) != (double)step))
+                {
+                    acc = (acc ^ (step >> 1)) % 101;
+                }
+                acc = acc ^ step;
+                if (!((long)i > (acc - step)))
+                {
+                    acc = acc - (step + acc);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (double)37;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight + offset;
+            return acc;
         }
     }
 }
