@@ -37,22 +37,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long origin)
         {
-            long state = 506;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((double)limit > 1.0)
+                if (sample <= origin)
                 {
-                    state = (state - (limit & 15)) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 34)
-            {
-                state = (state + (limit / 3)) % 97;
-            }
-            return state;
+            return ok;
         }
     }
 }
