@@ -31,19 +31,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] values, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Paused,
+            Stale,
+            Pending,
+            Closed,
         }
     }
 }
