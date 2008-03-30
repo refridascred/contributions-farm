@@ -32,31 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account metrics value against two limits.</summary>
-        public static long SortAccountMetrics(long bound, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data)
         {
-            if ((double)limit == (7.1 - 2.3))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - bound) >= (limit / 7))
+                if ((hits - hits) < sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound / 9) > (bound - bound)) && ((4 * 4) > (limit + limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next route account value from a seed.</summary>
