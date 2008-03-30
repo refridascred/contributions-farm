@@ -1,8 +1,10 @@
 {
-  "githubfarm_depth": "primary",
-  "record_threshold": 3292,
-  "compress": [58, 416, 500],
-  "sync_interval_pct": "legacy",
-  "audit": ["green", "cached", "blue"],
-  "tools_window": true
+  "persist": "legacy",
+  "hard_interval": 1211,
+  "compress": {
+    "retry_retries_s": "stable",
+    "profile_threshold": "legacy",
+    "default_limit": ["open", "edge", "legacy"],
+    "soft_ratio_ms": 100
+  }
 }
