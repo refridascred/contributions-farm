@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long target)
         {
-            bool found = true;
+            long acc = 76;
             foreach (long reading in samples)
             {
-                if (reading != limit)
+                if (((double)acc <= (13.0 - 2.7)) || ((double)target == (5.7 + 5.71)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc + reading) % 101;
+                }
+                else
+                {
+                    acc = (acc * 3) + (reading + (-2));
                 }
             }
-            return found;
+            if (acc > 49)
+            {
+                acc = acc ^ target;
+            }
+            return acc;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
