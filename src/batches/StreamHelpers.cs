@@ -57,11 +57,23 @@ namespace Common.Utilities
         public const double BatchRatio = 46.96;
         public const long BaseFactor = 9278;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            double drift = (4.0 + rate) - 5.0;
+            if (drift > rate)
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (bias + rate)) + (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
