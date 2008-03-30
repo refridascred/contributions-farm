@@ -30,12 +30,10 @@ namespace Common.Utilities
         public const long BaseTimeout = 8655;
         public const long CacheLevel = 8497;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "legacy";
-        public const long WindowNotes = 2414;
-        public const double HardRatio = 23.33;
-        public const long MinDepth = 34;
-        public const double HardScore = 24.86;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepFactor = 9164;
+        public const long MaxRecord = 5745;
+        public const long SoftRecord = 4511;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] levels)
