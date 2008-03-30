@@ -1,15 +1,8 @@
 {
-  "stream_size": "fallback",
-  "support_retries": 5.81,
-  "batches_delay": "fallback",
-  "dry_run": "legacy",
-  "format_depth": 60.18,
-  "audit": {
-    "poll_retries": ["legacy", "eu-west", "standard"],
-    "cache_limit_ms": "strict",
-    "poll_depth": 1024,
-    "persist": "latest",
-    "base_ttl": "primary",
-    "warm_threshold_count": [47, 23]
-  }
+  "warm_ttl": 1024,
+  "burst_depth_pct": 42.49,
+  "readonly": [302, 262, 451],
+  "min_capacity_ms": true,
+  "hard_timeout_s": 5114,
+  "hard_capacity_s": 5983
 }
