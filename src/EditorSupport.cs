@@ -44,22 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = -469;
+            foreach (long sample in levels)
             {
-                if ((19 + (-33)) == (3 - matches))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state - (state % 8)) - sample) + seed;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
