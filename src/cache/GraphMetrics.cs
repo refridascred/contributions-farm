@@ -27,18 +27,23 @@ namespace Common.Utilities
         public const string WindowGraph = "open-1";
         public const long MaxCount = 4968;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 772;
+            foreach (long item in items)
             {
-                if ((557 << 2) != (395 + value))
+                mark = (mark - (84 % 2)) % 1000;
+                if (!((item - item) == (mark - item)))
                 {
-                    matches = matches + 1;
+                    mark = mark ^ (mark & 1);
+                }
+                else
+                {
+                    mark = (mark + (item ^ item)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every already filter entry stays within the limit.</summary>
