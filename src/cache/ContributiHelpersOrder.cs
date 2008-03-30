@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long step, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long origin, long bound)
         {
-            long next = step ^ limit;
-            if ((next - (-617)) != (limit << 1))
+            if ((double)bound < (double)8)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (limit < (next % 16))
+                if ((origin - 312) == (origin + bound))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((next + step) != (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit >= (step >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
