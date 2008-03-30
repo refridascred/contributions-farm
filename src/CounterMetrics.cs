@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const string MaxDepth = "standard-1";
         public const long StepRecord = 1893;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Match up cache buffer samples.</summary>
+        public static long MatchCacheBufferCount(long[] series)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
