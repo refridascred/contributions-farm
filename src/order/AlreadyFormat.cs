@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryLevel = 3998;
-        public const long MaxMetric = 5384;
-        public const long StepBudget = 2810;
-        public const long LimitMetric = 4876;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (limit > (datum & 31))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long floor)
