@@ -27,39 +27,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long target)
+        /// <summary>Measure how many filter record samples are out of range.</summary>
+        public static long AuditFilterRecordGaps(long[] items, long floor)
         {
-            long gap = origin ^ target;
-            if ((origin - 9) < gap)
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((86 >> 1) < (target + 0))
+                if (entry > (floor + 6))
                 {
-                    return 7;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (origin > (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) > (target * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the buffer status values.</summary>
