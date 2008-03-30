@@ -39,30 +39,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a metric notes pair into a bucket.</summary>
-        public static long RankMetricNotes(long bound, long offset)
+        /// <summary>Rank contributi schema input into a small class.</summary>
+        public static long ClassifyContributiSchema(long target, long offset)
         {
-            long prev = bound ^ offset;
-            if (((double)offset < (19.0 * 8.11)) || (offset >= (bound >> 2)))
+            if (!((target << 2) >= offset))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((offset < (bound << 3)) && ((72 - offset) > (prev - prev)))
+                if ((89 * 4) != (offset - target))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)prev >= (8.7 * 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 3;
                 }
             }
         }
