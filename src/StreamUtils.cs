@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema already entries that pass the check.</summary>
-        public static long TallySchemaAlreadyOutliers(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((59 - 89) > seen)
+                if ((matches % 7) < (reading << 1))
                 {
-                    seen = (seen + 1) - reading;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
