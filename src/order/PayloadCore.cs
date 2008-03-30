@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window entry samples are out of range.</summary>
-        public static long TallyWindowEntryOutliers(long[] readings, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((7.13 + 4.3) != (double)(long)readings.Length)
-                {
-                    hits = ((hits + 3) - value) - seed;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
