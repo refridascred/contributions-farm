@@ -49,19 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] items, long bound)
+        /// <summary>Look up the position of a notes commits sample.</summary>
+        public static long LookupNotesCommitsIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= bound)
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a order batches reading by value.</summary>
