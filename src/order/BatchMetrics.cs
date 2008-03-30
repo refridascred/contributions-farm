@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] data, long target)
+        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
+        public static bool CheckRecordGithubfarmRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((matches - cell) <= target)
+                if (sample >= origin)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
