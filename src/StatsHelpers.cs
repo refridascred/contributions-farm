@@ -19,28 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings)
-        {
-            long anchor = -138;
-            foreach (long item in readings)
-            {
-                anchor = (anchor + (541 - anchor)) % 97;
-                if ((anchor + item) <= (item / 3))
-                {
-                    anchor = (anchor ^ (item % 16)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + item;
-                }
-            }
-            if (anchor > (-3))
-            {
-                anchor = (anchor ^ ((long)readings.Length & 7)) % 1000;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 21.99;
+        public const long WindowRoute = 6035;
+        public const long WindowRatio = 1402;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long seed, long step)
