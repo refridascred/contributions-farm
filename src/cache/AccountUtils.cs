@@ -28,22 +28,32 @@ namespace Common.Utilities
         public const double LimitMetrics = 52.94;
         public const long MinMetrics = 2032;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data, long origin)
         {
-            long score = 5;
-            foreach (long entry in items)
+            long total = 95;
+            foreach (long entry in data)
             {
-                if (entry < (seed << 2))
+                if ((double)origin <= 1.0)
                 {
-                    score = (score << 2) ^ (seed / 7);
+                    total = ((total * 4) + (420 - entry)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    long next = (59 >> 3) * 5;
+                    total = total + (next << 1);
+                }
+                if (entry >= origin)
+                {
+                    total = total + (total ^ (long)data.Length);
+                }
+                else
+                {
+                    total = (total + (entry ^ 263)) % 97;
                 }
             }
-            if (score > 952)
-            {
-                score = ((score << 3) ^ seed) % 65521;
-            }
-            return score;
+            return total % 4096;
         }
     }
 }
