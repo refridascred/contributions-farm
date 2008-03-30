@@ -56,12 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            Queued,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
