@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series, long limit)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long score = 6;
+            foreach (long value in series)
+            {
+                score = ((score + (value & 15)) % 4096) + limit;
+            }
+            return score;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
