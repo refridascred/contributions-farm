@@ -25,19 +25,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double offset)
+        /// <summary>Rank queue githubfarm input into a small class.</summary>
+        public static long ClassifyQueueGithubfarm(long step, long offset)
         {
-            double bias = 19.0;
-            if (bias >= ratio)
+            long span = step - offset;
+            if (!((double)offset <= (11.0 - 1.9)))
             {
-                bias = bias - (double)8;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias = (bias - offset) - (double)(long)i;
+                if ((step - step) > (offset * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (span > (span + 48))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return bias - (double)(-93);
         }
 
         /// <summary>Define command limits and defaults.</summary>
