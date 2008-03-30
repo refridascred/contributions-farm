@@ -57,15 +57,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double weight, double bias)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double ratio = (weight + bias) - (double)10;
-            if (ratio <= weight)
-            {
-                ratio = ratio + (18.0 * 20.0);
-            }
-            return ratio - (5.01 * 7.0);
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
