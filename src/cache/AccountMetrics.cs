@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const long StepCluster = 8531;
         public const long HardTimeout = 9222;
 
-        /// <summary>Rank stats record input into a small class.</summary>
-        public static long GradeStatsRecord(long bound, long seed)
-        {
-            if (((bound & 15) != (seed - 225)) && ((242 / 4) > (bound * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - 113) <= (bound << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (seed & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 2453;
+        public const string IdleFormat = "legacy";
+        public const long BatchFormat = 2912;
+        public const long StepFactor = 7099;
+        public const double StepScore = 14.36;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 7500;
