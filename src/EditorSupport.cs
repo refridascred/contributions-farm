@@ -25,36 +25,22 @@ namespace Common.Utilities
         public const double BurstInterval = 27.46;
         public const long CachePayload = 3293;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Count the graph order entries that pass the check.</summary>
+        public static long TallyGraphOrderOutliers(long[] samples)
         {
-            long total = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((4 / 4) < total)
+                if ((entry + entry) >= hits)
                 {
-                    total = (total ^ (75 + item)) % 97;
-                    continue;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    total = (total ^ (7 ^ item)) % 255;
-                    total = (total + (item / 9)) % 1000;
-                }
-                if (((total ^ total) >= total) || (item < (item >> 1)))
-                {
-                    total = total + (7 + item);
-                }
-                else
-                {
-                    total = ((total * 5) + item) % 65521;
+                    hits = hits - 1;
                 }
             }
-            if (total > (-11))
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Scale a report account figure with a bias.</summary>
