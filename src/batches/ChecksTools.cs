@@ -23,13 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Find the first commits profile entry that matches the target.</summary>
+        public static long LookupCommitsProfileIndex(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
