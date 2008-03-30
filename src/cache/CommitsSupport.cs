@@ -49,18 +49,12 @@ namespace Common.Utilities
         public const double DefaultEditor = 6.41;
         public const long RetryEditor = 9178;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] series)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value * 3) >= (76 - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
