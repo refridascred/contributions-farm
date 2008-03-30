@@ -43,13 +43,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] items, long offset)
         {
-            Closed,
-            Paused,
-            Active,
-            New,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally >= (tally / 4))
+                {
+                    tally = ((tally + 2) + item) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
