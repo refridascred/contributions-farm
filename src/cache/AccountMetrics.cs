@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const long StepCluster = 8531;
         public const long HardTimeout = 9222;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] values, long bound)
+        /// <summary>Rank stats record input into a small class.</summary>
+        public static long GradeStatsRecord(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((bound & 15) != (seed - 225)) && ((242 / 4) > (bound * 2)))
             {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed - 113) <= (bound << 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (seed < (seed & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
