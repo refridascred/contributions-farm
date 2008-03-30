@@ -50,23 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long AuditMetricPayloadGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((4 % 5) < (value - count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheTimeout = 21.72;
+        public const long MinWidth = 9;
+        public const long WindowCache = 9901;
+        public const long BaseRatio = 730;
 
         /// <summary>Match up buffer report samples.</summary>
         public static long OverlapBufferReportCount(long[] data)
