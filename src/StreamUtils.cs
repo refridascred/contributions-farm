@@ -83,12 +83,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 3232;
-        public const double BaseCount = 98.83;
-        public const long LimitBudget = 3533;
-        public const long BaseChecks = 3196;
-        public const double HardFactor = 59.16;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] data, long limit)
