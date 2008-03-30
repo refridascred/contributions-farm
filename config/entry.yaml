@@ -1,5 +1,5 @@
 # entry settings
-order_size: green
-poll_window_s: 500
-readonly: edge
-account_threshold: 37.55
+max_timeout_ms: edge
+channel_retries: false
+warm_window: staging
+strict: 1024
