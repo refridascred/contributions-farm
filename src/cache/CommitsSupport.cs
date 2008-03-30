@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!(matches > (matches - value)) || (((6.39 + 10.0) < (double)value) || ((7 + matches) != (matches & 63))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a already counter forward.</summary>
