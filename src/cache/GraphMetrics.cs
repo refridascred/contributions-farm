@@ -31,11 +31,19 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3664;
-        public const double CacheFormat = 11.42;
-        public const double IdleRatio = 53.84;
-        public const long BatchLevel = 2369;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell * 3) != (seen >> 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long target)
