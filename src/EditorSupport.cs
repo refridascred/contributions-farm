@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
