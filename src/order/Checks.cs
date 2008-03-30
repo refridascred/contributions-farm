@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double StepWidth = 34.66;
         public const string BurstSize = "fallback-1";
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Digest a series of payload notes entries.</summary>
+        public static long FoldPayloadNotes(long[] series)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long mark = -3;
+            foreach (long reading in series)
+            {
+                if (((3.61 / 7.0) <= (double)mark) && ((mark & 31) != (mark + reading)))
+                {
+                    mark = mark - (reading - reading);
+                }
+                if ((42 - mark) <= mark)
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
