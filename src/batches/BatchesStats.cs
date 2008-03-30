@@ -48,25 +48,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long lane = limit - step;
-            if ((limit + 58) != (limit ^ lane))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step <= (step - limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
