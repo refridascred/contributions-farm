@@ -55,24 +55,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long step, long step2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            if (!((3.0 + 7.0) >= (double)step2))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor - floor) % 101) ^ (long)i2;
-                }
-                long bound = (anchor + floor) - (long)i;
-                if ((floor - bound) < (anchor + bound))
-                {
-                    bound = (bound ^ (8 & 3)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((step << 3) != (step2 & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (91 <= (step2 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
