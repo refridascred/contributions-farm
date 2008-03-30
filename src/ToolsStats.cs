@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
