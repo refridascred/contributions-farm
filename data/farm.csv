@@ -1,6 +1,7 @@
-id,owner,region,token,score
-1,staging,77.92,primary,451
-2,538,stable,420,blue
-3,405,93.24,676,45.94
-4,670,53.93,edge,692
-5,84.09,33.77,fallback,914
+id,level,token,state,rank
+1,56.59,open,498,79.02
+2,strict,local,404,primary
+3,67,edge,96.01,90.05
+4,192,latest,open,13.81
+5,edge,stable,staging,589
+6,310,492,latest,746
