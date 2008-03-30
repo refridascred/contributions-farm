@@ -1,5 +1,16 @@
 {
-  "context_timeout": 5959,
-  "stream_timeout": true,
-  "sync_delay_pct": "fallback"
+  "batch_retries": {
+    "verbose": "latest",
+    "burst_interval": "stable",
+    "batch_timeout": 24,
+    "soft_threshold_count": {
+      "verbose": 60,
+      "readonly": [148, 168, 89, 18],
+      "default_depth": [259, 400]
+    },
+    "retry_window": 500,
+    "warm_ratio": [266, 62]
+  },
+  "readonly": "staging",
+  "base_capacity": 16
 }
