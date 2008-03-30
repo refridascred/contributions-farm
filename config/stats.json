@@ -1,6 +1,8 @@
 {
-  "dry_run": "stable",
-  "queue_ratio": "eu-west",
-  "batches_interval": ["latest", "eu-west", "standard"],
-  "min_timeout_count": "local"
+  "stream_size": "eu-west",
+  "readonly": 30,
+  "support_timeout": "open",
+  "soft_capacity_pct": 12.69,
+  "already_retries": false,
+  "tools_delay": true
 }
