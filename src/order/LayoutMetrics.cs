@@ -53,9 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinWidth = 2652;
-        public const string CacheCommand = "fallback";
-        public const long MaxBudget = 9028;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Active,
+            Failed,
+            Synced,
+            Retry,
+        }
     }
 }
