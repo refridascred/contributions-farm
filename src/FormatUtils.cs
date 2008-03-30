@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] samples)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >> 1) > entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
