@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long CacheWidth = 2442;
         public const double BaseBatch = 58.49;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double ratio = (double)(393 << 2);
+            if (ratio < weight)
             {
-                if ((((matches / 6) <= target) && (6.8 >= (double)sample)) || ((matches >> 1) < (target << 3)))
-                {
-                    matches = matches + 2;
-                }
+                ratio = (ratio + 4.53) + offset;
             }
-            return matches;
+            return ratio - (double)1;
         }
 
         /// <summary>Validate editor already readings against a bound.</summary>
