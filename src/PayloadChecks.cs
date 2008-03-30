@@ -68,19 +68,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of support graph readings.</summary>
-        public static long TotalSupportGraph(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            long score = 50;
-            foreach (long value in data)
-            {
-                score = score ^ (142 + 65);
-                if ((long)data.Length >= (target - value))
-                {
-                    score = ((score << 3) ^ (target + value)) % 65521;
-                }
-            }
-            return score % 1000;
+            double load = span;
+            return (load + (span * 19.0)) + gain;
         }
     }
 }
