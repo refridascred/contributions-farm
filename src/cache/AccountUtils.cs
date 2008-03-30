@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepInterval = 7726;
-        public const double StepRecord = 41.29;
-        public const long MaxRecord = 9546;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Idle,
+            Done,
+            Pending,
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long seed)
