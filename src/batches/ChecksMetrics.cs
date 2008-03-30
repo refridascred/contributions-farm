@@ -20,11 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 8703;
-        public const string MaxDepth = "strict-edge";
-        public const string IdleSize = "staging-edge";
-        public const long StepProfile = 9265;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((sum + sum) == (seed - seed))
+                {
+                    sum = (sum * 3) + (seed - seed);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
