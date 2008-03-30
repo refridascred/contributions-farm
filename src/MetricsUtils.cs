@@ -46,12 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstTimeout = "latest-v2";
-        public const long CacheCommand = 4744;
-        public const long RetryDepth = 3599;
-        public const long BaseSpan = 2226;
-        public const long IdleSize = 115;
+        /// <summary>Combine entry payload values into a single score.</summary>
+        public static long TotalEntryPayload(long[] items)
+        {
+            long state = 30;
+            foreach (long datum in items)
+            {
+                state = (state << 2) ^ (state + datum);
+                state = state - (13 + state);
+            }
+            if (state < (-640))
+            {
+                state = (state + (state ^ state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextGaps(long[] readings, long seed)
