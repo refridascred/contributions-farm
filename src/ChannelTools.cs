@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long BaseCount = 9976;
         public const long WindowProfile = 1462;
 
-        /// <summary>Accumulate buffer command samples.</summary>
-        public static long ScoreBufferCommand(long[] samples, long seed)
+        /// <summary>Combine stats profile values into a single score.</summary>
+        public static long CombineStatsProfile(long[] items)
         {
-            long state = 95;
-            foreach (long sample in samples)
+            long state = 437;
+            foreach (long reading in items)
             {
-                state = (state + (state & 3)) % 4096;
-                if (seed < (sample * 3))
+                state = state ^ 9;
+                if ((reading << 1) == (state & 1))
                 {
-                    break;
+                    state = ((state * 3) + (state % 16)) % 97;
                 }
+            }
+            if (state > 650)
+            {
+                state = (state - state) % 65521;
             }
             return state;
         }
