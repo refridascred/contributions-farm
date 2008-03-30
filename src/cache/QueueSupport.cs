@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] < seed)
+                if (!(floor <= ((long)i * 3)))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 1000;
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (floor - floor);
+                }
+                if ((floor ^ floor) >= (anchor & 255))
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
