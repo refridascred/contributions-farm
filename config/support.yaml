@@ -1,22 +1,23 @@
 # support settings
-channel_capacity: 81.97
-cluster_capacity: false
-warm_interval:
-  burst_ttl_s: 37
-  base_retries: 1024
-  cache_retries_count: 60
-warm_threshold_count: 4714
-checks_limit:
-  base_timeout_ms: 7687
-  hard_threshold_s: open
-  soft_threshold:
-    - 14
-    - 498
-    - 256
-    - 263
-  base_window_pct:
-    poll_retries_ms: false
-    sync_timeout_ms: 58.12
-    warm_interval_pct: 13.15
-    session_capacity: true
-  hard_size: staging
+filter_capacity:
+  - blue
+  - staging
+commits_threshold: open
+account_ttl: standard
+base_capacity_pct:
+  default_size_ms: true
+  soft_depth:
+    hard_ratio_s: local
+    warm_depth_pct: false
+    base_size_pct: 1024
+    batch_window_ms: edge
+    sync_limit_s:
+      - 18
+      - 318
+      - 132
+  entry_limit: 2748
+  report_ttl: standard
+  window_limit: false
+  default_delay: false
+window_size: false
+burst_ttl: 100
