@@ -1,24 +1,12 @@
 # entry settings
-burst_size_ms:
-  - staging
-  - latest
-  - cached
-  - eu-west
-verbose: 0.21
-enabled: open
-sync_size_count:
-  soft_threshold_ms: 6115
-  support_capacity: 51.71
-  commits_window: 45.08
-  retry_limit_ms:
-    retry_timeout_pct: false
-    verbose: fallback
-    commits_limit: 89.65
-    persist: 30
-    base_size:
-      - strict
-      - standard
-      - latest
-      - open
-  min_timeout_s: 500
-soft_depth_pct: staging
+channel_timeout: legacy
+idle_threshold_pct:
+  commits_delay: false
+  command_delay: true
+  verbose:
+    - legacy
+    - blue
+    - primary
+    - open
+  warm_timeout_pct: 84.96
+retry_limit_ms: standard
