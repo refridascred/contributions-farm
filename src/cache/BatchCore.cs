@@ -50,18 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] values)
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long MeasureNotesToolsGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (datum < (datum - datum))
+                if (((16.0 / 5.0) == (double)hits) && (((4.6 + 2.04) > (double)(long)readings.Length) || ((double)hits < (4.73 / 2.0))))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
