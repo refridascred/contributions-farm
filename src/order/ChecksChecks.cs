@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Stale,
-            Retry,
-            Done,
-            Dropped,
-            Locked,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count route token pairs that satisfy a relation.</summary>
