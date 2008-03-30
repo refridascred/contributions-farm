@@ -42,11 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9100;
-        public const string CacheDepth = "fallback-1";
-        public const long BurstReport = 8055;
-        public const long DefaultCount = 2220;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((floor & 1) <= 45)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxQueue = 26.23;
