@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 7463;
-        public const string HardQueue = "primary-1";
-        public const string MaxTimeout = "standard";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 45.76;
+        public const long LimitSpan = 927;
+        public const long HardSpan = 738;
+        public const double RetrySupport = 19.7;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] values, long step)
