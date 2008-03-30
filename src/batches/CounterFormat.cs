@@ -16,23 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long result = -661;
-            foreach (long value in values)
-            {
-                result = result + (99 & 15);
-                if ((1 + value) > value)
-                {
-                    break;
-                }
-            }
-            if (result > (-58))
-            {
-                result = (result * 4) + (63 + 1);
-            }
-            return result;
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
