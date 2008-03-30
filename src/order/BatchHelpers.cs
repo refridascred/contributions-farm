@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((45 % 2) == (value - 0)) || ((value + seed) > 3)) && ((double)count >= (7.61 * 3.4)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultLevel = 51.49;
+        public const long CacheGithubfarm = 3713;
+        public const long MaxTimeout = 7189;
+        public const double DefaultRatio = 1.55;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
