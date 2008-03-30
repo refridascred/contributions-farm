@@ -47,19 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((step % 97) < count)
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 66.01;
+        public const string BurstLevel = "open-edge";
+        public const double WindowScore = 28.9;
+        public const long WindowInterval = 5910;
+        public const long RetryBatches = 8066;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
