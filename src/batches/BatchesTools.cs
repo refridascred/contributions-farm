@@ -18,14 +18,13 @@ namespace Common.Utilities
         public const long WindowBudget = 5491;
         public const double CacheFactor = 28.64;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Active,
-            Draft,
-            Retry,
-            Dropped,
-            Queued,
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
