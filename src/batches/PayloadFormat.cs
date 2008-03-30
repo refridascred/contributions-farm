@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            long diff = offset + bound;
-            if ((16.0 / 4.0) == (double)offset)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff >= (bound / 3)) || ((bound << 1) <= (diff * 5)))
+                if ((8.48 + 9.3) <= (9.14 / 6.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 + offset) < (bound + diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
