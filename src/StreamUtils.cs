@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] levels, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter readings.</summary>
