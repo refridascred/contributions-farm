@@ -34,38 +34,15 @@ namespace Common.Utilities
         public const long DefaultWindow = 282;
         public const long SoftInterval = 4613;
 
-        /// <summary>Classify a order farm pair into a bucket.</summary>
-        public static long BucketOrderFarm(long floor, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double floor)
         {
-            if (((floor ^ offset) >= (offset ^ offset)) && ((0 >> 5) > (floor << 1)))
+            double load = weight - floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                load = (load + (double)8) + (double)(long)i;
             }
-            else
-            {
-                if ((offset - offset) <= (offset << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset << 3) != (floor ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= (offset / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return load - (0.1 - weight);
         }
 
         /// <summary>Describe the command status values.</summary>
