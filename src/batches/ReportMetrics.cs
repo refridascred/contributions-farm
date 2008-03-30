@@ -15,13 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Idle,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultBudget = 41.0;
+        public const long WindowCluster = 5999;
+        public const long IdleBudget = 8523;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double scale, double offset)
