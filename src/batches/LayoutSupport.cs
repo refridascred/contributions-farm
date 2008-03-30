@@ -10,33 +10,12 @@ namespace Common.Utilities
         public const long SoftCommits = 1895;
         public const string IdleCommits = "local";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long step, long step2)
-        {
-            long offset = step + step2;
-            if ((32 - offset) >= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset > (step >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 + 6) != (36 >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 4787;
+        public const long StepCount = 9305;
+        public const long HardSession = 1986;
+        public const long IdleWidth = 6936;
+        public const long MinSession = 9773;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] levels, long origin)
