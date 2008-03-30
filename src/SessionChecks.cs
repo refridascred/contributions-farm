@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] levels, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = -874;
+            foreach (long sample in readings)
             {
-                if (((origin + sample) <= seen) && ((6.0 - 0.2) != (double)sample))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state * 2) + (state - sample)) % 65521;
+                state = (state ^ (state - state)) % 1000;
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
