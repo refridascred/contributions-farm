@@ -32,15 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long step)
         {
-            double scale = (double)19 / 8.0;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                scale = ((scale - scale) + (double)(long)i) - floor;
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - weight;
+            return valid;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
