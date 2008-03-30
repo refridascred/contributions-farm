@@ -1,9 +1,16 @@
 # entry settings
-batch_window:
-  - 315
-  - 421
-  - 223
-  - 262
-default_window_ms: 82.57
-stream_limit: 12.67
-flush_size: edge
+cache_capacity_s:
+  verbose: 60
+  warm_interval_ms: fallback
+  batch_depth:
+    min_delay_pct: true
+    githubfarm_timeout: 30
+    readonly: false
+    warm_ttl_s: 24.59
+  default_capacity_count: 39
+  enabled: 23.19
+  burst_depth: 29
+soft_retries: 70
+audit: 8.61
+hard_limit_count: 62
+already_ttl: primary
