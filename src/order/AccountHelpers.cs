@@ -29,32 +29,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels, long offset)
         {
-            long diff = offset + step;
-            if (!((diff >> 3) <= diff))
+            long state = 874;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)diff != (15.0 - 17.0))
+                state = (state + cell) + offset;
+                if ((8.1 / 5.0) >= (double)cell)
                 {
-                    return 0;
+                    break;
                 }
-                else
+                if (!(((long)levels.Length % 3) < state))
                 {
-                    if (offset > (580 * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = (state * 2) + state;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
