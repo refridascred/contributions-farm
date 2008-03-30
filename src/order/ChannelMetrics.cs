@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings, long origin)
         {
-            Retry,
-            Synced,
-            Closed,
-            Idle,
-            Done,
+            long result = 1;
+            foreach (long cell in readings)
+            {
+                result = (((result + (8 & 127)) % 4096) - cell) - origin;
+            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
