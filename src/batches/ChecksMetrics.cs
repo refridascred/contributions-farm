@@ -20,20 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 8703;
+        public const string MaxDepth = "strict-edge";
+        public const string IdleSize = "staging-edge";
+        public const long StepProfile = 9265;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
