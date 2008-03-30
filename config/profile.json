@@ -1,10 +1,5 @@
 {
-  "farm_ratio": "strict",
-  "stream_limit": 8145,
-  "readonly": 30,
-  "default_interval": {
-    "max_ttl_pct": 500,
-    "cache_limit": ["cached", "standard", "blue", "strict"],
-    "flush_capacity": false
-  }
+  "cache_threshold": 66.93,
+  "dry_run": 9553,
+  "notes_depth": ["blue", "legacy"]
 }
