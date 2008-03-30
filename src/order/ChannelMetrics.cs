@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Iterate the metric record series from a seed.</summary>
-        public static long IterateMetricRecord(long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry << 2) ^ offset;
-                if (((long)i - offset) != (77 - offset))
-                {
-                    carry = (carry ^ ((long)i ^ (long)i)) % 255;
-                }
-                carry = (carry * 3) + offset;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
