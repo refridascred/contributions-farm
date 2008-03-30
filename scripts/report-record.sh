@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary; do
+for item in staging local blue eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=59
+log "limit is ${RECORD_LIMIT}"
