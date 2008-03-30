@@ -45,14 +45,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            Ready,
-            Active,
-            New,
-            Done,
-            Closed,
+            long anchor = 640;
+            foreach (long entry in samples)
+            {
+                if ((double)anchor == (9.47 / 5.0))
+                {
+                    anchor = anchor ^ (entry >> 3);
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if ((double)entry > (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > (-499))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a notes summary.</summary>
