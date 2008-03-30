@@ -27,9 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseRatio = 66.19;
-        public const string HardFormat = "primary";
-        public const long IdleFormat = 9733;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            New,
+            Closed,
+            Queued,
+            Synced,
+            Idle,
+        }
     }
 }
