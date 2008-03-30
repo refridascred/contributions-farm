@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=328
+RECORD_LIMIT=238
 log "limit is ${RECORD_LIMIT}"
+
+for item in edge cached eu-west; do
+    log "checking ${item}"
+done
