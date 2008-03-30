@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            New,
+            Queued,
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a editor stats.</summary>
