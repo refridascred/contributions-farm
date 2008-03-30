@@ -20,18 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] values, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long cur = limit - limit2;
+            if ((limit2 - cur) < (521 + limit))
             {
-                if ((seen & 127) >= 19)
+                return 5;
+            }
+            else
+            {
+                if ((limit - 1) < limit2)
                 {
-                    seen = ((seen + 3) ^ entry) + seed;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit2 + limit) > (limit2 ^ 33)) || ((9.3 - 4.76) <= (double)cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
