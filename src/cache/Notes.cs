@@ -60,19 +60,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache token entry stays within the limit.</summary>
-        public static bool VerifyCacheTokenBounds(long[] series, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < target)
+                if ((levels[i] > offset) && ((levels[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
