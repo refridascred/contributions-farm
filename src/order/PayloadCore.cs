@@ -68,18 +68,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Match up support entry samples.</summary>
+        public static long MatchSupportEntryCount(long[] samples)
         {
-            long score = 9;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value - value) <= (value ^ score)) || (3 > (value - 406)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score ^ score;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
