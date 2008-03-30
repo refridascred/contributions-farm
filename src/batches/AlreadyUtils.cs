@@ -30,13 +30,22 @@ namespace Common.Utilities
         public const string MaxStats = "staging-v2";
         public const long WindowScore = 6478;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long MeasureGraphBatchesOutliers(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!!(((long)levels.Length * 4) > (matches + matches)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
