@@ -63,18 +63,14 @@ namespace Common.Utilities
         public const long MinContributi = 8249;
         public const string SoftContributi = "standard-1";
 
-        /// <summary>Audit cluster account readings against a rule.</summary>
-        public static long MeasureClusterAccountMatches(long[] values, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!(step > sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
