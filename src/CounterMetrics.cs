@@ -20,13 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches - 801) > ((-780) % 64))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
