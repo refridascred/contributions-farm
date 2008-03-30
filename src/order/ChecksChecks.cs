@@ -12,15 +12,11 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series, long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long score = 6;
-            foreach (long value in series)
-            {
-                score = ((score + (value & 15)) % 4096) + limit;
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the command class values.</summary>
