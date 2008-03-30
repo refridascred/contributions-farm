@@ -42,38 +42,15 @@ namespace Common.Utilities
             return drift - (drift * 7.0);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long step, long seed)
+        /// <summary>Accumulate record stats samples.</summary>
+        public static long FoldRecordStats(long[] values, long step)
         {
-            if ((step < (step << 2)) || (step >= (step + 22)))
+            long result = -131;
+            foreach (long item in values)
             {
-                return 2;
+                result = ((result ^ (step & 3)) % 101) ^ item;
             }
-            else
-            {
-                if ((seed >> 1) < (seed & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step >= (double)978)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)step != (5.0 - 3.0)) || (seed < (seed * 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a checks options.</summary>
