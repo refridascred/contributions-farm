@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long floor, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            if (floor > (offset + 63))
+            double weight = rate;
+            if (weight >= rate)
             {
-                return 3;
+                weight = weight + (bias * 1.48);
             }
             else
             {
-                if ((offset - floor) > (offset >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < ((-5) / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(offset < 0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = weight + (weight + rate);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (weight * 0.8)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a notes entry.</summary>
