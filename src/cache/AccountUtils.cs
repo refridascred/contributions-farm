@@ -22,39 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long limit, long limit2)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long cur = limit ^ limit2;
-            if ((limit2 / 3) >= (359 - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit <= cur) && ((cur + limit2) < limit2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur % 24) <= ((-24) - limit2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= (limit - limit2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
