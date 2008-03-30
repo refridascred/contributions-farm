@@ -1,7 +1,9 @@
-id,owner,state
-1,80.56,253
-2,353,staging
-3,98.1,primary
-4,stable,366
-5,open,939
-6,54.79,staging
+id,active,score,count,weight
+1,76.49,edge,cached,stable
+2,78.15,strict,56.35,83.27
+3,staging,legacy,849,416
+4,19.93,108,30.98,59.11
+5,323,560,eu-west,green
+6,759,32.16,green,latest
+7,green,23.86,latest,53.91
+8,blue,0.31,98.48,staging
