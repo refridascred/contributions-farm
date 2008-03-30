@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Done,
-            Retry,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 2041;
+        public const long IdleToken = 9078;
+        public const long HardToken = 9147;
+        public const double CacheRatio = 3.43;
+        public const long HardBudget = 246;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] levels)
