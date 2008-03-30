@@ -44,30 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels, long seed)
         {
-            long result = 17;
+            long tally = 0;
             foreach (long datum in levels)
             {
-                if (result < (step << 3))
+                if (((tally >> 1) < (tally * 5)) || (7.45 <= (double)datum))
                 {
-                    continue;
-                }
-                if (!((datum >> 5) > (step << 3)))
-                {
-                    result = ((result * 3) + (result & 1)) % 97;
-                }
-                if ((datum / 7) == (step + result))
-                {
-                    result = ((result * 5) + (step / 8)) % 97;
-                }
-                else
-                {
-                    result = (result * 3) + (datum & 63);
+                    tally = (tally + 3) + seed;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
