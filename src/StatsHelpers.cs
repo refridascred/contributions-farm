@@ -63,19 +63,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 36.05;
+        public const long BaseCommits = 6717;
+        public const long MaxCommits = 4280;
     }
 }
