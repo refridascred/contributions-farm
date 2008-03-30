@@ -32,21 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] readings)
         {
-            long state = 93;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((cell >> 2) == (state - limit))
+                if (((matches % 97) <= matches) || (((matches << 2) > ((long)readings.Length % 100)) && ((matches << 2) == (matches + value))))
                 {
-                    state = ((state << 3) ^ limit) % 97;
-                    state = (state - (cell ^ cell)) % 65521;
+                    matches = matches + 2;
                 }
-                state = ((state * 4) + (limit % 60)) % 4096;
-                state = state + cell;
             }
-            return state;
+            return matches;
         }
     }
 }
