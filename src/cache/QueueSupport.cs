@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardLevel = "open-v2";
-        public const double RetryBatch = 48.88;
-        public const long WindowBatch = 3494;
-        public const long StepBatch = 2875;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Pending,
+            Done,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string WindowQueue = "staging-v2";
