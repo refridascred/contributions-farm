@@ -52,17 +52,18 @@ namespace Common.Utilities
         public const string IdleDepth = "stable-edge";
         public const long IdleProfile = 5277;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (levels[i] > bound)
+                if ((matches - matches) <= (item ^ 0))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
