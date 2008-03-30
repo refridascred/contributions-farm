@@ -22,24 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long limit, long floor)
+        /// <summary>Fold a list of counter commits readings.</summary>
+        public static long CombineCounterCommits(long[] series)
         {
-            if ((floor + floor) != (floor << 1))
+            long total = 74;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - limit) > limit)
+                if (!(90 < item))
                 {
-                    return 4;
+                    total = (total + total) % 101;
                 }
-                else
-                {
-                    return 0;
-                }
+                total = (total + (item % 3)) % 1000;
+                total = total ^ (total + item);
             }
+            return total % 4096;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
