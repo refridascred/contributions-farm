@@ -25,15 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items, long floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
+            long acc = 40;
+            foreach (long value in items)
             {
-                drift = (drift - (drift + 1.0)) + (double)(long)i;
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = (((acc * 3) + acc) % 255) - (long)i;
+                }
+                acc = ((acc << 2) ^ (acc << 1)) % 101;
+                if ((5.0 - 7.7) > (double)floor)
+                {
+                    acc = (acc << 2) ^ value;
+                }
             }
-            return drift - span;
+            return acc;
         }
 
         /// <summary>Hold a order snapshot.</summary>
