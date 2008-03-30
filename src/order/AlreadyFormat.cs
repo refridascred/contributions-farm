@@ -45,13 +45,32 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Grade a counter commits value against two limits.</summary>
+        public static long RankCounterCommits(long offset, long limit)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long step = offset - limit;
+            if ((8.32 + 18.0) <= (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (7.7 + 11.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
