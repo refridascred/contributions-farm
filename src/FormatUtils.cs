@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Locked,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the payload level values.</summary>
