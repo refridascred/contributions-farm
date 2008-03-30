@@ -1,15 +1,11 @@
 {
-  "burst_delay": "local",
-  "readonly": "blue",
-  "batch_capacity_pct": 41.29,
-  "max_window_pct": "standard",
-  "strict": {
-    "warm_retries_count": 67.69,
-    "base_depth_count": 94,
-    "base_size": 18.52,
-    "record_size": "stable",
-    "retry_timeout_pct": 88,
-    "cache_ratio": "eu-west"
+  "session_limit": 5359,
+  "flush_threshold_count": "standard",
+  "burst_capacity_s": {
+    "cache_threshold": "eu-west",
+    "idle_threshold_s": ["strict", "legacy", "legacy"],
+    "channel_depth": 18.22,
+    "base_delay_count": 68.27
   },
-  "compress": "blue"
+  "warm_ttl": true
 }
