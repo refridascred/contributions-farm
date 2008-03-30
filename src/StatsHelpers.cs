@@ -56,21 +56,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftScore = 4100;
+        public const string LimitBuffer = "cached-edge";
+        public const long DefaultSize = 9885;
+        public const string StepFactor = "open";
     }
 }
