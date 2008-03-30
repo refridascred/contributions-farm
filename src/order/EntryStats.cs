@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (bound % 12);
-                total = ((total * 5) + (long)i) % 4093;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
