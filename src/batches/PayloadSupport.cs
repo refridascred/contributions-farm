@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 6057;
-        public const string BurstChannel = "fallback-v2";
-        public const long BatchChannel = 5074;
-        public const long DefaultChannel = 5628;
-        public const long WindowChannel = 274;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (0.4 >= (double)target)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the metric counter entries that pass the check.</summary>
         public static long CountMetricCounterOutliers(long[] data)
