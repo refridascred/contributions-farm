@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleDepth = 8254;
+        public const long CacheMetrics = 4422;
+        public const long MaxInterval = 136;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] series, long step)
