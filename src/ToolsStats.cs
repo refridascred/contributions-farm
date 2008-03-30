@@ -49,13 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            Active,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the filter state values.</summary>
