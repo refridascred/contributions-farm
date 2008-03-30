@@ -40,39 +40,23 @@ namespace Common.Utilities
         public const long IdleDepth = 6485;
         public const long MinSize = 8414;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long target, long seed)
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long WeighFarmOrder(long[] items)
         {
-            long diff = target ^ seed;
-            if ((324 ^ 33) <= diff)
+            long score = 442;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-7) ^ diff) <= (25 - seed))
+                score = (score ^ (score / 8)) % 97;
+                if (score <= (item - (long)items.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (diff >= (seed ^ diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)diff > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score * 3) + (item * 4);
                 }
             }
+            if (score > 77)
+            {
+                score = ((score * 4) + (733 - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a metric info.</summary>
