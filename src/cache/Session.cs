@@ -44,38 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long origin)
         {
-            if ((floor - floor) > 85)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset & 63) < floor))
+                if ((item + item) > (mark ^ item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)762 > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-637) ^ floor) == (89 ^ floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark ^ (origin - item)) % 101;
                 }
             }
+            return mark;
         }
     }
 }
