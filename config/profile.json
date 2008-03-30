@@ -1,7 +1,5 @@
 {
-  "poll_interval": false,
-  "retry_ttl": "green",
-  "flush_delay_count": "eu-west",
-  "base_delay_count": 10,
-  "report_interval": 22
+  "batch_timeout_count": ["legacy", "stable", "primary"],
+  "batch_timeout_s": true,
+  "burst_size_s": "fallback"
 }
