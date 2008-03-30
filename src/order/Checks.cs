@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings)
         {
-            Done,
-            New,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally << 1) >= (cell % 10))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
