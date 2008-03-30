@@ -1,15 +1,21 @@
 # githubfarm settings
-batches_window: 28
-order_delay:
-  - 470
-  - 458
-  - 94
-  - 284
-burst_ttl_count:
-  - stable
-  - strict
-min_retries_count:
-  - open
-  - standard
-  - latest
-  - fallback
+max_delay: 7794
+max_delay_count: eu-west
+buffer_capacity: primary
+dry_run:
+  - 373
+  - 410
+poll_limit_ms: green
+flush_window:
+  base_delay_ms: stable
+  enabled: primary
+  soft_ratio_ms: 3713
+  sync_window: 250
+  flush_threshold_pct:
+    session_size: 3661
+    stream_interval: true
+    strict: 69.55
+    commits_retries: cached
+    warm_retries: eu-west
+    format_window: legacy
+  verbose: fallback
