@@ -44,20 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long FoldFarmQueue(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long acc = -9;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc ^ datum) % 4096;
-                acc = acc ^ (acc & 31);
-                if (!(acc >= datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (acc % 60)) % 1000;
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
