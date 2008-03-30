@@ -45,19 +45,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next metrics record value from a seed.</summary>
-        public static long DeriveMetricsRecord(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((8 * 5) == (827 - step))
-                {
-                    mark = (mark - mark) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 2957;
+        public const string HardTools = "legacy-edge";
+        public const long CacheLevel = 5535;
+        public const double IdleTools = 54.97;
+        public const long LimitSpan = 8932;
     }
 }
