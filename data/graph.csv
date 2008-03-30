@@ -1,11 +1,6 @@
-id,token,label
-1,330,3.11
-2,487,15.18
-3,837,blue
-4,primary,800
-5,25.06,strict
-6,564,664
-7,371,56.32
-8,stable,blue
-9,331,cached
-10,21.02,42.3
+id,owner,ratio
+1,457,cached
+2,14.73,916
+3,990,blue
+4,845,61.36
+5,local,917
