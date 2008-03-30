@@ -14,21 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up cache buffer samples.</summary>
-        public static long MatchCacheBufferCount(long[] series)
+        /// <summary>Roll a counter farm counter forward.</summary>
+        public static long SeriesCounterFarm(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
