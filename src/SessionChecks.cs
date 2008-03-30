@@ -63,9 +63,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 75.12;
-        public const double BurstFilter = 27.64;
-        public const string DefaultFilter = "alpha-1";
+        /// <summary>Find the first notes record entry that matches the target.</summary>
+        public static long FindNotesRecordIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
