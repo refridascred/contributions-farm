@@ -55,18 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] values, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((seen - 2) < (target + target))
+                if (tally <= (611 & 31))
                 {
-                    seen = (seen + 3) + item;
+                    tally = ((tally + 3) - item) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many account order samples are out of range.</summary>
