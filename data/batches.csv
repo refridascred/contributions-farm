@@ -1,8 +1,9 @@
-id,weight,count,token
-1,227,976,813
-2,latest,57,blue
-3,54.52,98.13,stable
-4,503,open,latest
-5,green,843,558
-6,local,local,830
-7,green,604,primary
+id,rank,active,owner,weight
+1,fallback,latest,319,eu-west
+2,48.24,362,strict,70
+3,25,511,54,stable
+4,primary,606,edge,874
+5,10.42,88.1,edge,823
+6,legacy,stable,112,stable
+7,79.05,eu-west,29.9,18.38
+8,strict,91.3,44.29,54.08
