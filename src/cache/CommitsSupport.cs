@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a command githubfarm sample.</summary>
-        public static long LocateCommandGithubfarmIndex(long[] data, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (data[i] > target)
+                if (!(matches > (matches - value)) || (((6.39 + 10.0) < (double)value) || ((7 + matches) != (matches & 63))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
