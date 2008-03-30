@@ -1,4 +1,5 @@
 # entry settings
-strict: true
-audit: 57.95
-min_size: 86.97
+order_size: green
+poll_window_s: 500
+readonly: edge
+account_threshold: 37.55
