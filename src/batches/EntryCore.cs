@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((-48) > (cell << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
