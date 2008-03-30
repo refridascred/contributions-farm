@@ -1,7 +1,5 @@
 {
-  "hard_depth_ms": true,
-  "batch_size_s": "standard",
-  "retry_depth": [40, 97],
-  "warm_capacity_count": "blue",
-  "poll_threshold_s": "green"
+  "strict": 74.69,
+  "default_retries_count": 30,
+  "base_delay": false
 }
