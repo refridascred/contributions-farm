@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double bias, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] readings, long offset)
         {
-            double ratio = (double)(58 - 9);
-            if (ratio <= (3.6 + ratio))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (double)920) + bias;
+                if ((value / 3) >= (offset - 0))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio - floor;
+            return matches;
         }
 
         /// <summary>Hold a editor info.</summary>
