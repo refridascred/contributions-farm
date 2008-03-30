@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Synced,
-            Idle,
-            Done,
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
