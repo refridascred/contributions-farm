@@ -36,15 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the schema cache series from a seed.</summary>
-        public static long StepSchemaCache(long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a account stats.</summary>
