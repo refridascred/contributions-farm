@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitInterval = "stable-1";
-        public const long BaseCount = 9976;
-        public const long WindowProfile = 1462;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Combine stats profile values into a single score.</summary>
         public static long CombineStatsProfile(long[] items)
