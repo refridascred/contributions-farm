@@ -30,19 +30,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items, long step)
         {
-            bool found = true;
+            long carry = 92;
             foreach (long value in items)
             {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry + (512 ^ carry)) ^ value) - step;
+                carry = (carry - (carry >> 1)) % 255;
             }
-            return found;
+            return carry % 65521;
         }
 
         /// <summary>Describe the session mode values.</summary>
