@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Active,
-            Synced,
-            Failed,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4981;
+        public const long SoftCommits = 1895;
+        public const string IdleCommits = "local";
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long ClassifyStats(long step, long step2)
