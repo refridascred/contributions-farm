@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepCount = 7814;
-        public const double SoftBatches = 80.39;
-        public const long MaxBatches = 2073;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "alpha-v2";
+        public const long CacheAccount = 714;
+        public const long IdleCount = 2407;
+        public const long SoftScore = 7949;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long origin, long floor)
