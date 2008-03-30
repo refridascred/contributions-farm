@@ -29,14 +29,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long offset)
         {
-            Ready,
-            Stale,
-            Draft,
-            Active,
-            Retry,
+            if (target < (offset >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > (5.66 - 1.8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target > (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
