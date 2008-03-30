@@ -1,23 +1,19 @@
 # support settings
+payload_timeout:
+  compress: 83.2
+  readonly:
+    - 104
+    - 405
+  payload_threshold:
+    - 375
+    - 408
+    - 128
+    - 463
+filter_timeout: 71
+max_capacity_s: 65.63
+githubfarm_timeout: fallback
 base_timeout_pct:
-  idle_threshold_pct:
-    warm_ratio_count: green
-    idle_capacity_pct: 11.53
-    idle_delay_count: stable
-    warm_limit_pct: false
-    flush_window_ms: primary
-    warm_limit_ms: true
-  retry_depth_count:
-    strict: 100
-    cache_threshold_count: latest
-    cluster_threshold: true
-  graph_window:
-    stats_depth: edge
-    checks_ratio: 28.28
-    max_retries: 60
-    burst_retries: 3304
-    poll_timeout: strict
-persist: 7973
-flush_size_ms: primary
-notes_threshold: true
-idle_limit_count: false
+  - blue
+  - standard
+  - strict
+batches_timeout: 20.78
