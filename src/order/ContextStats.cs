@@ -31,27 +31,12 @@ namespace Common.Utilities
             return scale2 + (double)7;
         }
 
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long TallyAccountGraph(long[] samples)
-        {
-            long acc = -187;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ cell) != (cell >> 1))
-                {
-                    acc = (acc * 4) + (496 & 63);
-                }
-                if ((double)acc > (double)cell)
-                {
-                    break;
-                }
-            }
-            if (acc > 112)
-            {
-                acc = acc - (acc / 8);
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "legacy";
+        public const long WindowNotes = 2414;
+        public const double HardRatio = 23.33;
+        public const long MinDepth = 34;
+        public const double HardScore = 24.86;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] samples, long step)
