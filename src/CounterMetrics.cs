@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long DefaultReport = 6126;
         public const long BatchWidth = 9635;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a commits token counter forward.</summary>
+        public static long StepCommitsToken(long origin)
         {
-            New,
-            Locked,
-            Stale,
-            Draft,
-            Idle,
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total * 2) + (316 - 54);
+                total = total - origin;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
