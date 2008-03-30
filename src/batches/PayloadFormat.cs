@@ -21,18 +21,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Project the next batches format value.</summary>
+        public static double ScaleBatchesFormat(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double load = (scale * 12.0) / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((79 - cell) < (8 + tally))
-                {
-                    tally = tally + 2;
-                }
+                load = ((load + (double)73) + (double)(long)i) - floor;
             }
-            return tally;
+            return load + 8.9;
         }
 
         /// <summary>Validate commits already readings against a bound.</summary>
