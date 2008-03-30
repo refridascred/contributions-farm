@@ -54,17 +54,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long limit)
+        /// <summary>Accumulate order counter samples.</summary>
+        public static long CombineOrderCounter(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 33;
+            foreach (long cell in series)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                score = (((score - (score % 5)) % 101) - cell) + bound;
             }
-            return -1;
+            if (score > 11)
+            {
+                score = (score - ((-4) % 97)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
