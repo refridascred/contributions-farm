@@ -84,19 +84,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long offset)
+        /// <summary>Iterate the token stream series from a seed.</summary>
+        public static long SeriesTokenStream(long bound)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell <= offset)
+                carry = (carry ^ bound) % 4096;
+                if (((long)i + carry) == ((long)i + (long)i))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry << 3) ^ bound) % 101;
                 }
+                else
+                {
+                    carry = (carry * 3) + (carry - carry);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
     }
 }
