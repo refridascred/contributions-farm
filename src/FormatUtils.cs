@@ -41,11 +41,20 @@ namespace Common.Utilities
         public const long BurstReport = 8055;
         public const long DefaultCount = 2220;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 97.48;
-        public const double BatchFactor = 65.74;
-        public const long HardContext = 6525;
-        public const string StepInterval = "local-v2";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples)
+        {
+            long carry = 0;
+            foreach (long entry in samples)
+            {
+                carry = ((carry << 3) ^ (2 ^ entry)) % 65521;
+            }
+            if (carry < 7)
+            {
+                carry = ((carry * 2) + ((long)samples.Length - carry)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
