@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Paused,
-            Idle,
-            Closed,
-            Locked,
-            Done,
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
