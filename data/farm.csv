@@ -1,6 +1,7 @@
-id,weight,active,count,level
-1,stable,staging,462,376
-2,429,cached,edge,local
-3,4.25,local,legacy,596
-4,stable,687,stable,124
-5,strict,open,stable,175
+id,level,score,rank
+1,83.85,139,373
+2,86.94,82.12,38.65
+3,eu-west,841,204
+4,1.97,211,556
+5,staging,196,staging
+6,358,standard,953
