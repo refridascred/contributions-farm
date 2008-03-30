@@ -63,22 +63,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long mark = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry > (16.0 / 3.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark + (entry >> 4)) + seed;
-                }
-                else
-                {
-                    mark = (mark - (228 * 5)) % 4096;
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return count;
         }
     }
 }
