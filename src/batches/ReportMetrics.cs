@@ -15,18 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((14.0 * 12.0) <= (double)matches)
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
