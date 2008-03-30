@@ -1,6 +1,4 @@
 # entry settings
-compress: legacy
-entry_threshold: 60
-retry_limit: 96
-retry_size: 2266
-poll_ttl_count: true
+base_window: local
+flush_threshold_s: 9.88
+compress: false
