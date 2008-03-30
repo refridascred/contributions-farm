@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 78.62;
-        public const double StepRecord = 65.49;
-        public const long IdleTimeout = 3146;
-        public const string BatchRecord = "stable-v2";
-        public const long MaxSize = 2535;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long floor, long origin)
+        {
+            long edge = floor ^ origin;
+            if ((921 + edge) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((885 - edge) <= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin < (0.84 - 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (edge > (edge + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double StepAlready = 33.15;
