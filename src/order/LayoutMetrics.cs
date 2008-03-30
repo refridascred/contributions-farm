@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of payload editor readings.</summary>
-        public static long DigestPayloadEditor(long[] data, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long score = 9;
-            foreach (long entry in data)
-            {
-                if ((8 + entry) <= bound)
-                {
-                    score = ((score * 5) + (entry / 8)) % 4096;
-                }
-            }
-            if (score < 595)
-            {
-                score = (score - (score << 2)) % 101;
-            }
-            return score % 97;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate payload cache readings against a bound.</summary>
