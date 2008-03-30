@@ -37,12 +37,17 @@ namespace Common.Utilities
         public const double IdleRatio = 53.84;
         public const long BatchLevel = 2369;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long target)
         {
-            Done,
-            Draft,
-            Ready,
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (target + (long)i)) % 65521;
+                mix = mix + (mix - (long)i);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
