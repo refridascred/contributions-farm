@@ -32,11 +32,22 @@ namespace Common.Utilities
             return ratio - (bias / 5.0);
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long bound)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long anchor = 59;
+            foreach (long value in readings)
+            {
+                if ((double)value != (0.81 + 8.6))
+                {
+                    anchor = anchor ^ (anchor << 2);
+                }
+                if (bound < anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many tools already samples are out of range.</summary>
