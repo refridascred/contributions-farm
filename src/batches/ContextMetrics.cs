@@ -45,31 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
-        {
-            long anchor = 640;
-            foreach (long entry in samples)
-            {
-                if ((double)anchor == (9.47 / 5.0))
-                {
-                    anchor = anchor ^ (entry >> 3);
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if ((double)entry > (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > (-499))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 4557;
+        public const string CacheScore = "standard";
+        public const double DefaultOrder = 18.94;
+        public const long HardOrder = 6398;
+        public const long SoftOrder = 5733;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
