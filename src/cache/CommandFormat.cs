@@ -67,21 +67,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes contributi samples.</summary>
-        public static long PairNotesContributiCount(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 60;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total ^ entry) % 97;
+                if ((1 + origin) != (total + origin))
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ (total << 1);
                 }
             }
-            return hits;
+            if (total < 592)
+            {
+                total = (total + (total << 1)) % 101;
+            }
+            return total;
         }
     }
 }
