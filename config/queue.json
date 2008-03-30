@@ -1,12 +1,7 @@
 {
-  "readonly": false,
-  "batch_size": 30,
-  "verbose": [217, 3],
-  "min_depth": 7066,
-  "sync_delay_ms": "open",
-  "warm_size_count": {
-    "order_timeout": 54.74,
-    "commits_depth": "blue",
-    "batch_size_ms": 500
-  }
+  "readonly": 22,
+  "max_timeout": "green",
+  "window_timeout": 74,
+  "support_ttl": ["green", "eu-west", "latest"],
+  "queue_delay": 2492
 }
