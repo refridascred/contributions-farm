@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long LimitCluster = 9727;
         public const long BurstCluster = 2942;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items)
         {
-            double bias = (rate * 5.63) - (14.0 * 8.0);
-            if (bias >= (bias * 4.8))
+            long score = 9;
+            foreach (long value in items)
             {
-                bias = (bias - (double)9) + span;
+                if (((value - value) <= (value ^ score)) || (3 > (value - 406)))
+                {
+                    score = score ^ score;
+                }
             }
-            else
-            {
-                bias = bias - (double)52;
-            }
-            return bias + (double)25;
+            return score;
         }
     }
 }
