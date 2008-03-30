@@ -12,13 +12,27 @@ namespace Common.Utilities
         public const string BurstGraph = "primary-1";
         public const long LimitFactor = 9117;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate filter cache samples.</summary>
+        public static long CombineFilterCache(long[] series, long floor)
         {
-            Draft,
-            Idle,
-            Synced,
-            Pending,
+            long mix = 9;
+            foreach (long reading in series)
+            {
+                if ((floor < (floor - reading)) && ((mix << 1) <= (mix + mix)))
+                {
+                    mix = (mix ^ (84 & 31)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix / 5)) % 1000;
+                }
+                mix = ((mix * 2) + (mix - floor)) % 4096;
+            }
+            if (mix < 122)
+            {
+                mix = (mix + 981) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
