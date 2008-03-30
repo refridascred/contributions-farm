@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
+                    if ((readings[i] - readings[j]) < 10)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of stream batches entries.</summary>
