@@ -34,19 +34,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue context readings against a rule.</summary>
-        public static long TallyQueueContextMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (cell << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowSize = 15.11;
+        public const long MaxWidth = 1165;
+        public const long SoftSize = 1410;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double RetryCache = 57.64;
