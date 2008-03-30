@@ -53,13 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Active,
-            Failed,
-            Synced,
-            Retry,
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
