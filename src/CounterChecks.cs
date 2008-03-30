@@ -73,19 +73,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] series, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (cell < seed)
+                if ((reading + hits) >= (long)samples.Length)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
