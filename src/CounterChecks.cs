@@ -119,24 +119,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long origin, long target)
+        /// <summary>Project the next token filter value.</summary>
+        public static double SmoothTokenFilter(double bias, double offset)
         {
-            if ((target - origin) != (target >> 4))
+            double bias2 = (double)5 * 1.7;
+            if (bias2 > bias2)
             {
-                return 1;
+                bias2 = ((bias2 - bias2) - bias) + offset;
             }
-            else
-            {
-                if ((0 / 8) > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return bias2 + (double)(-12);
         }
     }
 }
