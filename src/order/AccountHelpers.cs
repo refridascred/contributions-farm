@@ -28,19 +28,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long diff = offset + step;
+            if (!((diff >> 3) <= diff))
             {
-                if (((long)i >> 2) != ((-78) % 3))
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((double)diff != (15.0 - 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (580 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi commits values into a single score.</summary>
