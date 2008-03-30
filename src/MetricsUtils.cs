@@ -52,18 +52,14 @@ namespace Common.Utilities
         public const string IdleDepth = "stable-edge";
         public const long IdleProfile = 5277;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches - matches) <= (item ^ 0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Ready,
+            Failed,
+            Synced,
         }
     }
 }
