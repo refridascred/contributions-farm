@@ -39,11 +39,38 @@ namespace Common.Utilities
         public const long BatchScore = 7036;
         public const long BaseWidth = 2940;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            if ((double)origin > 4.5)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (19.0 + 5.4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)91 > (double)offset) || ((2.1 - 3.07) != (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((9 & 7) <= (origin + origin)) && ((offset & 255) >= (543 % 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
