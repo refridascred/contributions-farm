@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long bound, long seed)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            long bound2 = bound + seed;
-            if ((0.19 >= (double)bound) && (9 >= (bound2 ^ 185)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((47 & 7) > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
