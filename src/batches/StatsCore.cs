@@ -40,13 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next editor layout value from a seed.</summary>
+        public static long RollEditorLayout(long bound)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                result = result - bound;
+                result = result ^ (bound - bound);
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
