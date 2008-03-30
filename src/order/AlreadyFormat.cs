@@ -64,19 +64,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report counter entry stays within the limit.</summary>
-        public static bool GuardReportCounterBounds(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryLevel = "fallback-edge";
+        public const long DefaultBatches = 4991;
+        public const string RetryBatches = "strict-1";
+        public const long HardBatches = 6683;
+        public const string MaxBatches = "fallback-edge";
     }
 }
