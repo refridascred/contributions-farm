@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] levels, long target)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
