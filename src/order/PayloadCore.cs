@@ -21,22 +21,18 @@ namespace Common.Utilities
         public const double WindowCache = 64.39;
         public const string WindowInterval = "stable-v2";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] levels, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] items)
         {
-            long total = -20;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((7.0 * 4.85) <= (double)total) && (total > ((-404) >> 2)))
+                if (matches < (matches - matches))
                 {
-                    total = (((total * 3) + (total / 6)) % 1000) - value;
-                }
-                if ((4.78 * 4.9) >= (double)floor)
-                {
-                    break;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Blend two farm measurements.</summary>
