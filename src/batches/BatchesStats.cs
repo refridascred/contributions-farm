@@ -61,12 +61,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Failed,
-            Paused,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4119;
+        public const long MinChecks = 2960;
+        public const long StepChecks = 9475;
     }
 }
