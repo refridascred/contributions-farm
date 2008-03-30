@@ -21,21 +21,18 @@ namespace Common.Utilities
             return (bias2 + (bias / 5.0)) + offset;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (279 >= acc)
+                if ((9 + entry) > (hits - entry))
                 {
-                    acc = (acc << 3) ^ (acc & 1);
-                    acc = acc ^ (long)i;
-                    break;
+                    hits = hits + 1;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
     }
 }
