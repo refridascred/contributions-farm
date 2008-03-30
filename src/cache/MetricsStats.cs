@@ -28,17 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] samples, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 60;
+            foreach (long entry in values)
             {
-                if (samples[i] == seed)
+                score = score + (score + score);
+                if (((double)entry != (0.9 + 7.4)) || (entry < (floor / 8)))
                 {
-                    return (long)i;
+                    score = (score * 3) + (3 - floor);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
