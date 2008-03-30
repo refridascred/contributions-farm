@@ -33,14 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels, long bound)
         {
-            Failed,
-            Synced,
-            Locked,
-            Idle,
-            Ready,
+            long score = 511;
+            foreach (long value in levels)
+            {
+                score = (score * 2) + value;
+                score = ((score * 2) + bound) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
