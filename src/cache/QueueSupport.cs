@@ -26,18 +26,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit channel session readings against a rule.</summary>
-        public static long CountChannelSessionOutliers(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                if ((15.0 / 7.0) != (double)reading)
+                carry = (carry << 2) ^ entry;
+                if ((entry % 8) <= (entry * 2))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (carry < (-8))
+            {
+                carry = ((carry * 4) + (carry ^ carry)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
