@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            New,
+            Locked,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
