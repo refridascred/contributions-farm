@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Closed,
-            Stale,
-            Draft,
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
