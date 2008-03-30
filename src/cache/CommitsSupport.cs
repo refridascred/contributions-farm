@@ -84,19 +84,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item >= floor) && ((floor - item) <= (count - 6)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchWidth = 1415;
+        public const long MaxWidth = 3059;
+        public const string BaseRatio = "primary-edge";
+        public const long CacheScore = 5367;
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
