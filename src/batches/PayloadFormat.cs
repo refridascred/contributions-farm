@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
