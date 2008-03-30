@@ -27,14 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batch commits counter forward.</summary>
-        public static long DeriveBatchCommits(long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                mark = (mark - ((long)i >> 1)) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
+                mark = (mark ^ (offset + mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
             return mark;
         }
