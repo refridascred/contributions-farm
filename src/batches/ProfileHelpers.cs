@@ -29,22 +29,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] values, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((double)sample <= (12.0 * 16.0)) || (tally < (tally % 8)))
+                if ((datum + hits) != (675 << 3))
                 {
-                    tally = (tally + 2) + offset;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a order farm pair into a bucket.</summary>
