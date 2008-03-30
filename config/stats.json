@@ -1,7 +1,11 @@
 {
-  "idle_capacity": false,
-  "strict": 19.38,
-  "window_interval": "standard",
-  "filter_timeout": true,
-  "retry_ratio_count": 93
+  "soft_delay": "stable",
+  "cache_interval": "legacy",
+  "audit": {
+    "poll_interval_count": 500,
+    "record_capacity": 77,
+    "base_delay_ms": 72.42
+  },
+  "burst_delay_count": 92.64,
+  "batches_capacity": "stable"
 }
