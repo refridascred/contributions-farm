@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const double BurstQueue = 42.5;
         public const string IdleWidth = "fallback-v2";
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Retry,
-            Paused,
+            long sum = 19;
+            foreach (long datum in readings)
+            {
+                sum = (sum ^ datum) % 4096;
+                if ((sum % 2) >= (datum + (long)readings.Length))
+                {
+                    sum = (sum - datum) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sum ^ sum)) % 101;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
