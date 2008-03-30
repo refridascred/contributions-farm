@@ -1,15 +1,13 @@
 # Command notes
 
-Run the report check before changing any cluster limits.
-Run the githubfarm check before changing any checks limits.
+The support report groups every batch by record.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-When a metric fails, the already handler retries a few times before giving up.
-Use profile settings to tune how often order data is refreshed.
-Keep order and record names short and lowercase.
+The account helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer tools defaults
-- Document new token fields
-- Log every channel change
+- Validate checks input early
+- Prefer layout defaults
+- Document new order fields
