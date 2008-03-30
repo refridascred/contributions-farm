@@ -41,18 +41,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] items, long limit)
+        /// <summary>Combine record stats values into a single score.</summary>
+        public static long TallyRecordStats(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long acc = 24;
+            foreach (long entry in samples)
             {
-                if ((6.33 * 7.8) != (double)matches)
-                {
-                    matches = ((matches + 1) + entry) - limit;
-                }
+                acc = (((acc << 3) ^ (acc % 3)) + entry) - target;
             }
-            return matches;
+            return acc % 97;
         }
     }
 }
