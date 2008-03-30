@@ -41,14 +41,11 @@ namespace Common.Utilities
         public const long BurstReport = 8055;
         public const long DefaultCount = 2220;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Draft,
-            Active,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 97.48;
+        public const double BatchFactor = 65.74;
+        public const long HardContext = 6525;
+        public const string StepInterval = "local-v2";
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] readings, long limit)
