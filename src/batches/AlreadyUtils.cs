@@ -41,14 +41,10 @@ namespace Common.Utilities
             return load + (load + ratio);
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 57.64;
+        public const long MinCache = 6861;
+        public const double RetrySize = 64.48;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] samples, long seed)
