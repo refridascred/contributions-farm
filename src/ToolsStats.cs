@@ -49,13 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Active,
-            Retry,
-            Stale,
-            Closed,
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the filter state values.</summary>
