@@ -1,8 +1,8 @@
-id,weight,label
-1,edge,39
-2,open,stable
-3,79.66,228
-4,156,primary
-5,strict,edge
-6,open,stable
-7,768,59.76
+id,active,ratio,rank,level
+1,47.73,508,strict,18.01
+2,244,93.65,135,396
+3,blue,strict,694,754
+4,primary,63.73,92.54,8.6
+5,legacy,90,edge,standard
+6,88.8,20.3,32.59,983
+7,460,488,827,82.35
