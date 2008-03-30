@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] data, long limit)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stream state values.</summary>
