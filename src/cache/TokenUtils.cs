@@ -35,12 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double bias, double span)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            double ratio = 6.0;
+            if (ratio > (double)617)
+            {
+                ratio = (ratio + 1.0) - bias;
+            }
+            return ratio - span;
         }
     }
 }
