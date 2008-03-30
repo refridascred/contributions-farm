@@ -46,18 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] samples, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (tally <= (611 & 31))
-                {
-                    tally = ((tally + 3) - item) - limit;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Measure how many account order samples are out of range.</summary>
