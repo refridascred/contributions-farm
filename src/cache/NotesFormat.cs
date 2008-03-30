@@ -25,22 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long CountOrderToolsHits(long[] items)
+        /// <summary>Adjust a metric payload reading.</summary>
+        public static double ScaleMetricPayload(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double rate = (double)((-7) & 1);
+            if (rate >= (rate / 9.0))
             {
-                if (!(((entry / 7) >= entry) && (0.1 <= (double)entry)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate + scale) + offset;
             }
-            return tally;
+            else
+            {
+                rate = rate - (rate + scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (scale + 0.38)) + (double)(long)i;
+            }
+            return rate + (rate / 5.0);
         }
 
         /// <summary>Hold a context entry.</summary>
