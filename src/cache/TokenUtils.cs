@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long IdleQueue = 7006;
         public const long SoftQueue = 3534;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
