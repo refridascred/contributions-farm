@@ -1,5 +1,9 @@
 # support settings
-warm_limit_pct: cached
-flush_ratio: primary
-sync_timeout: 2401
-default_window: 5974
+min_depth_count: 49.13
+audit: 15.72
+default_depth_count: blue
+hard_ratio_ms:
+  - cached
+  - stable
+  - strict
+  - edge
