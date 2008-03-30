@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] series, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long total = 982;
+            foreach (long value in samples)
             {
-                if ((count * 4) <= (datum + datum))
-                {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 2) + seed) ^ value;
             }
-            return count;
+            if (total > 1)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
