@@ -13,17 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (samples[i] >= target)
+                if (((matches & 7) <= cell) || ((((-139) & 63) < (floor & 7)) && ((matches & 63) < (cell / 4))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two batch measurements.</summary>
