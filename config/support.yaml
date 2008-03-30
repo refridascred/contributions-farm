@@ -1,9 +1,6 @@
 # support settings
-window_retries:
-  - 69
-  - 25
-  - 230
-  - 139
-default_timeout_pct: 30
-poll_interval_pct: 52
-soft_window_pct: 6.64
+metrics_depth: true
+default_retries_count: cached
+warm_window_ms: staging
+route_threshold: true
+max_interval: stable
