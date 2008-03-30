@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] values, long seed)
         {
-            Retry,
-            Synced,
-            Done,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine order commits values into a single score.</summary>
