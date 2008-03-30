@@ -67,12 +67,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
+        public static long TallyGithubfarmStatsHits(long[] samples)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.1 * 6.8) < (double)939)
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
