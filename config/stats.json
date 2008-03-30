@@ -1,6 +1,8 @@
 {
-  "readonly": ["staging", "standard", "edge", "open"],
-  "min_ttl_pct": "open",
-  "flush_timeout_pct": "blue",
-  "retry_capacity_pct": "standard"
+  "stats_window": "blue",
+  "poll_limit_ms": "open",
+  "profile_size": 64.57,
+  "counter_timeout": 500,
+  "min_timeout_count": true,
+  "audit": 36.02
 }
