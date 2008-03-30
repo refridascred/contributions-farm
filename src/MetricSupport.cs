@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
