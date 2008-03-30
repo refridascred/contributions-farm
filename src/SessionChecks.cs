@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many farm layout samples are out of range.</summary>
-        public static long CountFarmLayoutMatches(long[] samples, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (seen >= (11 - bound))
+                if ((9.81 * 0.7) < (double)matches)
                 {
-                    seen = (seen + 3) + sample;
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank notes queue input into a small class.</summary>
