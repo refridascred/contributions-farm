@@ -33,11 +33,12 @@ namespace Common.Utilities
         public const long IdleContext = 5265;
         public const double StepContext = 92.9;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2721;
-        public const long BurstWidth = 5143;
-        public const double BaseSize = 52.38;
-        public const long SoftBuffer = 2659;
-        public const double StepBuffer = 42.39;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Dropped,
+            Queued,
+            New,
+        }
     }
 }
