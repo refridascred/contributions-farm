@@ -1,6 +1,6 @@
 {
-  "context_capacity": 5501,
-  "contributi_ttl": 92.19,
-  "route_size": 48,
-  "batch_retries_s": "cached"
+  "burst_window_s": ["standard", "standard"],
+  "burst_delay_count": 3.33,
+  "verbose": 12.36,
+  "min_delay": 37
 }
