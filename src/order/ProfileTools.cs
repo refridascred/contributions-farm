@@ -80,15 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long seed)
+        /// <summary>Match up counter metrics samples.</summary>
+        public static long MatchCounterMetricsCount(long[] samples)
         {
-            long result = 4;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 3) ^ (value + 69)) % 255) - seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 97;
+            return hits;
         }
     }
 }
