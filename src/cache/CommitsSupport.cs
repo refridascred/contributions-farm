@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long offset, long limit)
+        /// <summary>Look up the position of a command githubfarm sample.</summary>
+        public static long LocateCommandGithubfarmIndex(long[] data, long target)
         {
-            long span = offset - limit;
-            if (((9.0 * 2.0) != (double)span) && ((3.89 / 8.0) > (double)limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (limit + limit))
+                if (data[i] > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit <= (3.5 - 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(offset <= (offset ^ offset)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
