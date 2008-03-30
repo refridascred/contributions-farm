@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] samples)
+        /// <summary>Validate route counter readings against a bound.</summary>
+        public static bool GuardRouteCounterBounds(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((value - value) > value)
+                if (sample < origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
