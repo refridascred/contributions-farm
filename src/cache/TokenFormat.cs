@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepDepth = 4999;
-        public const double HardInterval = 30.68;
-        public const long CacheWidth = 2442;
-        public const double BaseBatch = 58.49;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen > (seen * 4))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftTools = 8010;
