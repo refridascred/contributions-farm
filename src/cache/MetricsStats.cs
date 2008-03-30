@@ -28,19 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] values, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= offset)
+                sum = (sum << 3) ^ (bound + sum);
+                long offset = bound + (sum >> 5);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (offset << 1)) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
