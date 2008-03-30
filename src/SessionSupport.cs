@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (long)i) ^ (long)i2;
+                    carry = (carry + (carry + step)) % 255;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
