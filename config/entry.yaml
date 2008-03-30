@@ -1,29 +1,18 @@
 # entry settings
-max_timeout: 30
-record_capacity:
-  - open
-  - legacy
-max_delay_s:
-  checks_size: legacy
-  warm_interval_count: 12
-  context_size:
-    profile_limit: fallback
-    sync_delay_count: stable
-    metric_interval: true
-    report_ratio:
-      - 317
-      - 17
-    persist: strict
-    verbose: 250
-  poll_capacity_s:
-    checks_window: 38.29
-    batch_timeout_pct: cached
-    max_depth: 95.96
-    cache_timeout: false
-    hard_ttl_pct: 76.15
-    hard_retries_count: blue
-  compress: fallback
-verbose:
-  verbose: 46
-  poll_delay_pct: 92.87
-  idle_capacity_pct: eu-west
+profile_limit: stable
+record_depth: 5.9
+dry_run:
+  flush_size_pct:
+    enabled: stable
+    burst_timeout_s:
+      - 305
+      - 321
+      - 1
+      - 113
+    githubfarm_limit: 80.54
+  verbose: cached
+  dry_run: true
+  schema_ttl: false
+  poll_ratio: primary
+  base_limit_ms: 1
+metric_ratio: strict
