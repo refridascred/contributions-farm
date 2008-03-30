@@ -42,17 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a format metrics sample.</summary>
-        public static long FindFormatMetricsIndex(long[] values, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long sample in values)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                result = ((result + limit) % 255) - sample;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a token options.</summary>
