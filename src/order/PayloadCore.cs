@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Dropped,
-            Closed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9385;
+        public const double MinCluster = 32.75;
+        public const double BaseCluster = 95.85;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] samples, long offset)
