@@ -39,22 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            long result = 1;
-            foreach (long sample in values)
+            double scale2 = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((result + 65) >= (sample + (-140))))
-                {
-                    result = (result * 3) + (target / 4);
-                }
-                if ((double)sample < (8.02 * 9.1))
-                {
-                    result = result ^ result;
-                }
+                scale2 = (scale2 + scale) + (double)(long)i;
             }
-            return result % 97;
+            return scale2 + offset;
         }
     }
 }
