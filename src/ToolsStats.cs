@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepSpan = "stable-edge";
-        public const long BurstDepth = 8952;
-        public const double MinSize = 82.68;
-        public const long HardDepth = 1991;
-        public const long IdleChecks = 7784;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (origin > (reading % 8))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] items)
