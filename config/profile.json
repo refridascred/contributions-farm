@@ -1,7 +1,5 @@
 {
-  "already_limit": true,
-  "session_retries": false,
-  "flush_capacity_count": true,
-  "batch_limit": true,
-  "poll_ttl_pct": "eu-west"
+  "audit": 60,
+  "max_threshold_ms": 60,
+  "idle_delay": "standard"
 }
