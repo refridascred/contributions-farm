@@ -22,20 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report cache value from a seed.</summary>
-        public static long SeriesReportCache(long bound)
+        /// <summary>Adjust a batches notes reading.</summary>
+        public static double ScaleBatchesNotes(double bias, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            double scale = (double)(-4) + 5.7;
+            if (scale >= floor)
             {
-                if (!(((mix - 8) < (bound * 2)) || ((mix & 31) < bound)))
-                {
-                    mix = (mix ^ ((long)i ^ mix)) % 97;
-                    mix = (mix + (mix / 5)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                scale = scale + (floor + bias);
             }
-            return mix;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - 7.5;
         }
 
         /// <summary>Digest a series of checks buffer entries.</summary>
