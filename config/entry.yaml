@@ -1,6 +1,5 @@
 # entry settings
-base_interval_pct: 7
-flush_retries_count: 6308
-base_timeout:
-  - staging
-  - legacy
+idle_delay_ms: strict
+burst_interval_pct: false
+idle_delay_pct: 51.51
+record_size: true
