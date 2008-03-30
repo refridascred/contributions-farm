@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 139;
-        public const double StepSize = 37.74;
-        public const long RetryFactor = 1625;
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double weight, double bias)
+        {
+            double rate = (double)37;
+            if (rate >= (rate * 2.6))
+            {
+                rate = (rate + (bias + rate)) - weight;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long DeriveOrder(long bound)
