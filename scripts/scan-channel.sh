@@ -12,8 +12,5 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+CHANNEL_LIMIT=456
+log "limit is ${CHANNEL_LIMIT}"
