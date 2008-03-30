@@ -26,22 +26,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the graph order entries that pass the check.</summary>
-        public static long TallyGraphOrderOutliers(long[] samples)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry + entry) >= hits)
+                if (!((offset % 64) == (state % 2)))
                 {
-                    hits = hits + 3;
+                    state = ((state * 2) + (8 - state)) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Scale a report account figure with a bias.</summary>
