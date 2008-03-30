@@ -16,21 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Find the first format channel entry that matches the target.</summary>
+        public static long SeekFormatChannelIndex(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] > step) && ((items[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a stats account reading.</summary>
