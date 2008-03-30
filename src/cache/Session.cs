@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(932 & 31);
+            if (gain >= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + (1.79 / 7.0);
             }
-            return tally;
+            return gain - floor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
