@@ -29,24 +29,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Measure how many window filter samples are out of range.</summary>
+        public static long MeasureWindowFilterGaps(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (origin < (acc + origin))
+                if (!(((394 + tally) == (tally + value)) || ((long)values.Length < tally)))
                 {
-                    acc = ((acc << 3) ^ acc) % 97;
-                    break;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    acc = acc ^ ((long)i + (long)i);
+                    tally = tally - 1;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
     }
 }
