@@ -27,11 +27,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the payload session series from a seed.</summary>
+        public static long RollPayloadSession(long seed)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor + ((long)i * 2)) % 65521;
+                if (!((seed + anchor) < seed))
+                {
+                    anchor = (anchor - (anchor << 1)) % 255;
+                    anchor = ((anchor * 5) + (69 - anchor)) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
