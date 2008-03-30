@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account context value against two limits.</summary>
-        public static long ClassifyAccountContext(long bound, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            if ((step >> 1) >= (step * 2))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound ^ step) <= (step + bound)) && ((bound & 3) < step))
+                if ((((value - tally) > (tally + value)) || ((2.53 / 4.0) <= (double)value)) || ((-3) >= (value << 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the report phase values.</summary>
