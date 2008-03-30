@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long seed)
         {
-            if ((2.8 - 3.6) > (double)floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor & 7) >= (floor ^ target)))
+                if (samples[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= (175 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
