@@ -1,16 +1,8 @@
 {
-  "burst_size": "latest",
-  "account_window": "strict",
-  "format_depth": ["cached", "legacy", "staging", "latest"],
-  "batches_depth": {
-    "default_capacity_s": 66,
-    "context_limit": 50,
-    "default_depth_count": {
-      "hard_limit_ms": "fallback",
-      "sync_window_pct": 7810,
-      "min_depth_pct": 39.51,
-      "strict": 99
-    },
-    "hard_capacity_count": "standard"
-  }
+  "warm_delay_ms": 99,
+  "graph_ttl": 509,
+  "batch_timeout": 2632,
+  "warm_ttl_pct": 7051,
+  "base_capacity_ms": [417, 425, 187, 7],
+  "max_size_ms": "open"
 }
