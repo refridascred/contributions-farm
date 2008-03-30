@@ -22,38 +22,11 @@ namespace Common.Utilities
         public const long MinRatio = 1826;
         public const long MinBudget = 7;
 
-        /// <summary>Classify a commits buffer pair into a bucket.</summary>
-        public static long RankCommitsBuffer(long target, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if ((offset + target) <= (target + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target << 3) == (999 ^ offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 3) != (target / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + 47) >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
