@@ -1,21 +1,5 @@
 {
-  "compress": 91.08,
-  "strict": 3622,
-  "sync_retries": false,
-  "warm_retries_pct": "cached",
-  "token_timeout": "latest",
-  "verbose": {
-    "sync_ratio_count": 75.77,
-    "poll_size": {
-      "retry_ratio_count": true,
-      "retry_window_count": 3215,
-      "cache_size": 69
-    },
-    "base_size": {
-      "retry_interval": 250,
-      "entry_limit": false,
-      "editor_capacity": "stable",
-      "retry_ratio": false
-    }
-  }
+  "flush_delay": [478, 203, 484, 47],
+  "support_size": true,
+  "batch_timeout": "fallback"
 }
