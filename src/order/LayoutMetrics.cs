@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items, long offset)
-        {
-            long mark = 775;
-            foreach (long value in items)
-            {
-                if (!(offset <= mark))
-                {
-                    mark = ((mark * 5) + mark) ^ value;
-                }
-                else
-                {
-                    mark = mark ^ (offset * 5);
-                }
-            }
-            if (mark > 5)
-            {
-                mark = (mark - (-187)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "latest-1";
+        public const string IdleCommits = "alpha-v2";
+        public const long BurstFactor = 3471;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
