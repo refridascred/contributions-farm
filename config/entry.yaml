@@ -1,25 +1,6 @@
 # entry settings
-min_ttl_ms: 4791
-cache_interval:
-  verbose:
-    default_capacity_pct: 70.77
-    support_delay: 3228
-    hard_window_ms: stable
-    buffer_interval:
-      - staging
-      - standard
-      - staging
-    min_ratio_s: fallback
-  account_ttl: 83.23
-  soft_interval_s: standard
-  default_delay: 65.17
-max_size_pct: false
-batch_depth: true
-buffer_threshold:
-  idle_limit_count:
-    flush_ratio: cached
-    cache_timeout_pct: false
-    idle_threshold_ms: 97
-    min_retries_s: cached
-  enabled: 7803
-  queue_threshold: eu-west
+base_interval_pct: 7
+flush_retries_count: 6308
+base_timeout:
+  - staging
+  - legacy
