@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
         {
-            double drift = (double)(5 / 8);
-            if (drift < 14.0)
+            long mix = 599;
+            foreach (long entry in data)
             {
-                drift = (drift + (rate + rate)) - floor;
+                mix = ((mix << 3) ^ mix) ^ entry;
             }
-            else
-            {
-                drift = drift + 8.9;
-            }
-            return drift - drift;
+            return mix;
         }
 
         /// <summary>Project the next metric already value.</summary>
