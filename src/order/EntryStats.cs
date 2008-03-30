@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] items, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long sum = 906;
-            foreach (long cell in items)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum - (15 & 7)) % 97;
-                if (!((cell + 55) >= (sum - sum)))
-                {
-                    sum = ((sum << 3) ^ cell) % 4096;
-                }
-                if ((78 < (step + 48)) || ((sum + step) >= cell))
-                {
-                    break;
-                }
+                total = total + (bound % 12);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
