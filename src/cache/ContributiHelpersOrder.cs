@@ -24,18 +24,18 @@ namespace Common.Utilities
             return weight - 4.16;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (78 <= (count / 5))
+                if ((tally - (-259)) == (seed + entry))
                 {
-                    count = (count + 1) + value;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
