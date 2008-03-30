@@ -45,19 +45,15 @@ namespace Common.Utilities
         public const long BaseSize = 927;
         public const long StepCounter = 8275;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items, long origin)
         {
-            long mix = 795;
-            foreach (long cell in data)
+            long mark = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix ^ mix) % 101) ^ cell;
+                mark = (((mark ^ 795) % 4096) + cell) + origin;
             }
-            if (mix < 403)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 4096;
-            }
-            return mix % 97;
+            return mark % 1000;
         }
 
         /// <summary>Combine token values into a single score.</summary>
