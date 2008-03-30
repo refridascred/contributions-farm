@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long floor, long seed)
         {
-            if (limit < (bound ^ limit))
+            if ((floor >> 3) < (91 - floor))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (((limit & 127) != (limit * 5)) && ((20.0 / 3.0) > (double)bound))
+                if (((seed + seed) >= (seed + (-5))) && ((5.9 - 5.73) == (double)floor))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
