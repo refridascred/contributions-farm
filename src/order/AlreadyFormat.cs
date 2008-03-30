@@ -27,14 +27,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "staging-v2";
+        public const long HardLayout = 7635;
+        public const string BurstWidth = "latest-v2";
 
         /// <summary>Grade a counter commits value against two limits.</summary>
         public static long RankCounterCommits(long offset, long limit)
