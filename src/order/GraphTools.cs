@@ -40,11 +40,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double offset)
-        {
-            double drift = (double)((-589) / 3);
-            return ((drift + drift) + rate) + offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxInterval = 144;
+        public const long WindowRatio = 4622;
+        public const double CacheCommand = 11.07;
+        public const long StepCommand = 1701;
+        public const double SoftLevel = 59.46;
     }
 }
