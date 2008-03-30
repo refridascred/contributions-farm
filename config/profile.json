@@ -1,7 +1,12 @@
 {
-  "soft_retries": 30,
-  "stats_interval": "legacy",
-  "cache_delay_s": 145,
-  "warm_interval_count": "open",
-  "compress": "primary"
+  "hard_ratio_pct": false,
+  "cache_size_s": "edge",
+  "burst_ratio_ms": 46,
+  "sync_threshold_count": true,
+  "max_size": {
+    "sync_depth_count": 43.03,
+    "strict": "blue",
+    "compress": 28.81
+  },
+  "filter_depth": "open"
 }
