@@ -34,39 +34,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a counter commits value against two limits.</summary>
-        public static long ClassifyCounterCommits(long floor, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long cur = floor ^ bound;
-            if ((floor >> 4) != (floor >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor >= bound) || ((double)cur != (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur / 7) > (bound - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((5.43 - 8.6) >= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
