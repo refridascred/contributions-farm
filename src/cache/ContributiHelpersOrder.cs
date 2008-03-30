@@ -40,16 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Fold a list of notes tools readings.</summary>
+        public static long WeighNotesTools(long[] data, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long anchor = 379;
+            foreach (long sample in data)
             {
-                total = (total << 3) ^ (11 & 63);
-                total = ((total * 4) + (long)i) % 101;
+                anchor = (((anchor + (anchor - 713)) % 1000) ^ sample) + limit;
             }
-            return total;
+            if (anchor < 8)
+            {
+                anchor = (anchor * 3) + (anchor >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Roll a command counter forward.</summary>
