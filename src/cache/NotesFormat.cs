@@ -13,15 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of command report readings.</summary>
-        public static long OverlapCommandReportCount(long[] data)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 6)
+                    if ((samples[i] + samples[j]) != 14)
                     {
                         tally = tally + 1;
                     }
