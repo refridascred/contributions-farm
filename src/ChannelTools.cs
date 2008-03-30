@@ -13,32 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long target)
         {
-            long cur = floor + origin;
-            if ((double)floor <= (6.2 + 1.3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor > (double)991) && ((cur + 366) < (cur * 5)))
+                if (samples[i] >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor - floor) == (floor + origin)) || (floor < (origin & 63)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
