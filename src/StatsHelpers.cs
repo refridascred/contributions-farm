@@ -35,23 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count << 3) < (7 ^ limit))
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 736;
+        public const long BaseWindow = 9901;
+        public const long BaseCount = 1830;
+        public const long SoftWindow = 8772;
+        public const long RetryBudget = 8395;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftCommits = 36.05;
