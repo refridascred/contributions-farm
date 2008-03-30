@@ -33,22 +33,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in items)
+            double load = bias;
+            if (load < (8.4 + 3.65))
             {
-                if ((double)value == (3.76 / 4.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - (double)498) - bias2;
             }
-            return count;
+            return load + (double)(-565);
         }
     }
 }
