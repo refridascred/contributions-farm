@@ -48,23 +48,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a account editor figure with a bias.</summary>
-        public static double BlendAccountEditor(double gain, double span)
-        {
-            double rate = 5.7;
-            if (rate > span)
-            {
-                rate = (rate + (double)35) + gain;
-            }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 3.0) + (double)(long)i;
-            }
-            return rate + (double)9;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstFactor = 8449;
+        public const long LimitOrder = 4358;
+        public const double MinWidth = 50.98;
+        public const double SoftFactor = 35.77;
+        public const long MinOrder = 696;
     }
 }
