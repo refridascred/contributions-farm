@@ -19,11 +19,39 @@ namespace Common.Utilities
         public const long HardAlready = 331;
         public const long WindowAlready = 2525;
 
-        /// <summary>Scale a already context figure with a bias.</summary>
-        public static double BlendAlreadyContext(double weight, double offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long bound)
         {
-            double gain = (weight - weight) - (weight - offset);
-            return gain - (double)45;
+            long slot = limit + bound;
+            if (bound > limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((slot >> 2) <= (slot + slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (5 >= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((7.0 / 3.0) < (double)slot) && (20.0 < (double)slot))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
