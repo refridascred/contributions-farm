@@ -38,17 +38,24 @@ namespace Common.Utilities
             return bias - (6.42 - offset);
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 1;
+            foreach (long cell in items)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                state = ((state ^ state) % 4096) ^ cell;
+                state = (state * 3) + (state * 3);
+                if ((double)14 == (double)state)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 680)
+            {
+                state = ((state << 2) ^ (37 / 3)) % 65521;
+            }
+            return state % 97;
         }
     }
 }
