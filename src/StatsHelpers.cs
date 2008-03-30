@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long MaxCount = 9179;
         public const long StepScore = 4557;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 1625;
-        public const string LimitWidth = "fallback-1";
-        public const double HardCounter = 13.31;
-        public const long IdleCounter = 9239;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (count <= (count + value))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] levels, long target)
