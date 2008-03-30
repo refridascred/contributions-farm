@@ -1,11 +1,5 @@
 # githubfarm settings
-flush_depth: false
-burst_ttl_pct:
-  - primary
-  - green
-  - green
-  - stable
-poll_ratio_count: 94.43
-hard_capacity_count: false
-base_depth_count: 59.12
-base_threshold_pct: 91.92
+account_delay: true
+max_delay_pct: 71.7
+persist: 60
+command_ratio: true
