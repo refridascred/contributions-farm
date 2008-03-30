@@ -1,8 +1,5 @@
 {
-  "warm_ttl": 1024,
-  "burst_depth_pct": 42.49,
-  "readonly": [302, 262, 451],
-  "min_capacity_ms": true,
-  "hard_timeout_s": 5114,
-  "hard_capacity_s": 5983
+  "dry_run": 5883,
+  "poll_ttl_count": true,
+  "default_size_s": "cached"
 }
