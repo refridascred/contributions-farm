@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the support state values.</summary>
