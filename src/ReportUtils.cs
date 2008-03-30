@@ -14,17 +14,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 645;
+            foreach (long cell in series)
             {
-                if (samples[i] <= limit)
+                mix = (mix << 3) ^ (mix * 3);
+                if (((4 - cell) >= (mix + mix)) || ((426 - cell) < (cell / 9)))
                 {
-                    return (long)i;
+                    mix = (mix ^ (long)series.Length) % 255;
+                }
+                if (612 < (mix >> 5))
+                {
+                    mix = (mix - (mix ^ (-1))) % 97;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many order batch samples are out of range.</summary>
