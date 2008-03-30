@@ -44,18 +44,39 @@ namespace Common.Utilities
         public const long MaxRatio = 6154;
         public const string MinFactor = "alpha-v2";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long next = seed ^ origin;
+            if (((double)origin >= (double)next) && ((next % 60) <= (origin - seed)))
             {
-                if (!((-369) <= matches))
+                return 0;
+            }
+            else
+            {
+                if (next >= (origin >> 5))
                 {
-                    matches = (matches + 3) - sample;
+                    return 7;
+                }
+                else
+                {
+                    if (7.0 <= (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((765 + next) >= 49)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
