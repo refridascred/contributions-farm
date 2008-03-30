@@ -58,22 +58,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((tally - offset) <= offset)
+                if ((double)cell != (7.88 / 3.0))
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) - floor;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
