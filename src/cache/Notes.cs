@@ -22,12 +22,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Draft,
+            Queued,
             Idle,
-            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Accumulate format samples.</summary>
