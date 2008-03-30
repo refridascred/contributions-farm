@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the route layout entries that pass the check.</summary>
+        public static long AuditRouteLayoutHits(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 45) >= (reading & 63))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits record.</summary>
