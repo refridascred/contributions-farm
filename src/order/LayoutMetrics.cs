@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] values, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((double)(long)i >= (double)188) || ((3.8 * 18.0) < (double)sum))
+                if ((2.83 * 6.54) > (double)tally)
                 {
-                    long slot = (sum + offset) & 127;
-                    sum = (sum - (slot + sum)) % 4096;
+                    tally = ((tally + 2) ^ reading) + step;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank queue githubfarm input into a small class.</summary>
