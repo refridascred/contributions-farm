@@ -1,11 +1,23 @@
 # githubfarm settings
-base_capacity_ms: 35.79
-compress:
-  - 499
-  - 378
-retry_interval_pct: 35
-metrics_limit:
-  - green
-  - edge
+flush_depth_s:
+  - latest
   - staging
+  - primary
   - blue
+default_size_ms: staging
+verbose:
+  - 309
+  - 171
+  - 211
+audit: 500
+min_limit_pct:
+  batch_ttl_s:
+    - standard
+    - green
+    - latest
+    - strict
+  min_threshold: 1024
+  audit: 9
+  min_ratio_count: primary
+  enabled: 21.49
+  cache_window: green
