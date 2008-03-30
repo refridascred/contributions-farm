@@ -49,30 +49,20 @@ namespace Common.Utilities
         public const long RetrySpan = 8463;
         public const double SoftTimeout = 30.85;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long total = 2;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((0 + total) > (total - 66))
-                {
-                    total = (total - (total << 1)) % 4096;
-                }
-                else
-                {
-                    total = total ^ (value % 2);
-                }
-                if (((long)data.Length - total) != (total >> 4))
+                state = state ^ ((long)i >> 3);
+                if (state >= (state / 4))
                 {
                     break;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (total > 0)
-            {
-                total = (total << 3) ^ (total - 3);
-            }
-            return total;
+            return state;
         }
     }
 }
