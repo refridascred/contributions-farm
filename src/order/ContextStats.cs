@@ -23,19 +23,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
