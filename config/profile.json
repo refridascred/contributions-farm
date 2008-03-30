@@ -1,17 +1,8 @@
 {
-  "soft_capacity": 65.64,
-  "entry_threshold": [51, 393, 265],
-  "sync_retries_pct": {
-    "metrics_ratio": true,
-    "max_window_count": "strict",
-    "min_depth_pct": {
-      "dry_run": 66.28,
-      "tools_depth": "local",
-      "min_threshold": false,
-      "idle_ttl_s": 500,
-      "persist": 56.58
-    },
-    "poll_interval_count": 78.94,
-    "retry_threshold": "primary"
-  }
+  "filter_timeout": 500,
+  "tools_threshold": [474, 385, 376, 349],
+  "strict": "blue",
+  "compress": 3220,
+  "soft_depth": 30,
+  "poll_window": 38.19
 }
