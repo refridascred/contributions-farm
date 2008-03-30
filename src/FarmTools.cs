@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stats githubfarm entries that pass the check.</summary>
-        public static long MeasureStatsGithubfarmOutliers(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((cell <= (seen << 3)) && !((cell - cell) != (cell - 991)))
+                if ((2.7 / 7.0) != (double)tally)
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
