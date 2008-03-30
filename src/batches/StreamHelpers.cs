@@ -35,11 +35,23 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheLevel = 9160;
-        public const long BatchCount = 2207;
-        public const long MaxSpan = 3482;
-        public const long CacheTimeout = 9443;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((((seed * 2) == (seed << 1)) && ((seed ^ seed) < (seed ^ count))) && ((seed + seed) == (count + value)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] values, long limit)
