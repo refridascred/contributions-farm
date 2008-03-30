@@ -1,6 +1,10 @@
 {
-  "record_window": 47,
-  "token_window": true,
-  "poll_timeout_s": [292, 189, 345],
-  "cache_limit_pct": true
+  "profile_interval": "legacy",
+  "batch_depth_count": 496,
+  "base_window_ms": 10.99,
+  "flush_delay_pct": {
+    "base_ratio": [463, 84, 149, 470],
+    "already_timeout": false,
+    "enabled": true
+  }
 }
