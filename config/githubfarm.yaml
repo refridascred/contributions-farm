@@ -1,5 +1,5 @@
 # githubfarm settings
-soft_delay: 84.13
-route_size: true
-account_delay: 30
-layout_timeout: 56.47
+verbose: 6383
+cache_capacity_pct: false
+persist: standard
+default_ratio_pct: 19.75
