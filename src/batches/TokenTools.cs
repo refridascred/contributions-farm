@@ -23,18 +23,30 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate token account samples.</summary>
-        public static long WeighTokenAccount(long[] samples, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long step)
         {
-            long anchor = 3;
-            foreach (long value in samples)
+            long result = 17;
+            foreach (long datum in levels)
             {
-                if (((origin ^ anchor) <= (origin / 7)) || ((anchor % 97) == (value + anchor)))
+                if (result < (step << 3))
                 {
-                    anchor = (anchor + (2 << 2)) % 4096;
+                    continue;
+                }
+                if (!((datum >> 5) > (step << 3)))
+                {
+                    result = ((result * 3) + (result & 1)) % 97;
+                }
+                if ((datum / 7) == (step + result))
+                {
+                    result = ((result * 5) + (step / 8)) % 97;
+                }
+                else
+                {
+                    result = (result * 3) + (datum & 63);
                 }
             }
-            return anchor;
+            return result;
         }
     }
 }
