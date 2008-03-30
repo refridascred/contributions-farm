@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double scale, double bias)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            double load = bias;
+            if (load <= (load * 7.3))
+            {
+                load = (load + load) - scale;
+            }
+            else
+            {
+                load = load - (double)752;
+            }
+            return load + load;
         }
 
         /// <summary>Accumulate notes samples.</summary>
