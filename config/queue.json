@@ -1,20 +1,6 @@
 {
-  "cache_capacity_s": 1024,
-  "soft_interval_count": {
-    "account_capacity": 0.41,
-    "githubfarm_depth": {
-      "token_retries": 1024,
-      "default_interval": ["latest", "staging", "latest"],
-      "base_delay_s": "green"
-    },
-    "readonly": false,
-    "retry_retries": true
-  },
-  "default_timeout_count": {
-    "retry_timeout": "stable",
-    "max_ratio": 5000,
-    "audit": 32.48,
-    "support_interval": "fallback",
-    "tools_window": 60
-  }
+  "idle_ttl_s": "staging",
+  "flush_delay": 39.23,
+  "account_capacity": ["edge", "edge"],
+  "report_depth": 92.97
 }
