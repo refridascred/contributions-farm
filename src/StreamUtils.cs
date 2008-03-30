@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((step + 43) <= step)
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools format entry stays within the limit.</summary>
