@@ -40,14 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Locked,
-            Retry,
+            Dropped,
             Active,
+            Stale,
+            Ready,
             Failed,
-            Idle,
         }
     }
 }
