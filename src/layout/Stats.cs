@@ -47,19 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long target)
+        /// <summary>Check that every booking batches entry stays within the limit.</summary>
+        public static bool ValidateBookingBatchesRange(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (datum <= target)
+                if (sample > seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
