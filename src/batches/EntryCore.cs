@@ -42,22 +42,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long limit)
         {
-            long mix = 25;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (12.0 <= (double)mix)
+                if (reading >= limit)
                 {
-                    mix = mix - (mix << 2);
-                }
-                else
-                {
-                    mix = (mix * 3) + (item + item);
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
