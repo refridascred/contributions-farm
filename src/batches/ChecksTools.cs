@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "primary-v2";
-        public const long LimitCluster = 6209;
-        public const double CacheTimeout = 79.97;
+        /// <summary>Rank metrics command input into a small class.</summary>
+        public static long BucketMetricsCommand(long limit, long seed)
+        {
+            if ((limit - 5) > (limit >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit - seed) > ((-32) ^ limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((13.0 + 17.0) < (double)seed) || ((3.1 * 1.58) > (double)limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double bias, double floor)
