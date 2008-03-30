@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long TallyTokenReportMatches(long[] levels)
+        /// <summary>Accumulate tools batch samples.</summary>
+        public static long WeighToolsBatch(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = -577;
+            foreach (long cell in series)
             {
-                if (matches > (matches / 8))
+                if ((double)cell != (9.86 + 5.44))
                 {
-                    matches = (matches + 2) + reading;
+                    anchor = (anchor << 3) ^ 469;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a token metrics sample.</summary>
