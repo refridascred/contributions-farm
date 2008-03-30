@@ -15,23 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples, long offset)
         {
-            long sum = 19;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum ^ datum) % 4096;
-                if ((sum % 2) >= (datum + (long)readings.Length))
+                if ((tally ^ entry) <= 7)
                 {
-                    sum = (sum - datum) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (sum ^ sum)) % 101;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
