@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
