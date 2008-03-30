@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] values, long step)
         {
-            long score = 1;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score + score) % 255) ^ entry;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
