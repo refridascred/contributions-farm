@@ -24,22 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel counter samples.</summary>
-        public static long ScoreChannelCounter(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] values, long origin)
         {
-            long score = 58;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((4.0 * 12.0) <= (double)sample)
+                if (reading < origin)
                 {
-                    score = ((score << 3) ^ (score % 12)) % 97;
-                }
-                else
-                {
-                    score = score + (score + sample);
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
