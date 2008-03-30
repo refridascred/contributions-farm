@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = -874;
-            foreach (long sample in readings)
-            {
-                state = ((state * 2) + (state - sample)) % 65521;
-                state = (state ^ (state - state)) % 1000;
-            }
-            return state % 65521;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
