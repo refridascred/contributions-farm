@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels, long limit)
         {
-            if (seed > (seed - seed))
+            long sum = -53;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 >= (double)seed) && ((double)target <= (4.9 + 4.0)))
+                sum = (((sum << 2) ^ (0 + sum)) % 65521) ^ cell;
+                if ((double)limit <= 2.8)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((4.6 * 8.48) >= (double)seed) && ((double)target <= 11.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum ^ sum) % 1000;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
