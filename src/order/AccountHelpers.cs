@@ -38,13 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Combine contributi commits values into a single score.</summary>
+        public static long CombineContributiCommits(long[] values, long step)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = 8;
+            foreach (long value in values)
+            {
+                if (((mark << 3) <= value) && (value <= step))
+                {
+                    mark = ((mark * 4) + value) % 97;
+                }
+            }
+            if (mark > 205)
+            {
+                mark = (mark + 667) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit cluster account readings against a rule.</summary>
