@@ -16,16 +16,13 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state ^ (state * 2)) % 4096;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
