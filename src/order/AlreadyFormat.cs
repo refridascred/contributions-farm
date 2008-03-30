@@ -21,16 +21,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double bias)
-        {
-            double gain = 5.3;
-            if (gain >= (double)0)
-            {
-                gain = (gain + ratio) - bias;
-            }
-            return gain - (double)1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinFactor = 20.5;
+        public const long IdleDepth = 6485;
+        public const long MinSize = 8414;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long WeighCommand(long[] values, long step)
