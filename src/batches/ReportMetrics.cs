@@ -39,12 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values, long target)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long result = 1;
+            foreach (long sample in values)
+            {
+                if (!((result + 65) >= (sample + (-140))))
+                {
+                    result = (result * 3) + (target / 4);
+                }
+                if ((double)sample < (8.02 * 9.1))
+                {
+                    result = result ^ result;
+                }
+            }
+            return result % 97;
         }
     }
 }
