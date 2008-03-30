@@ -1,7 +1,8 @@
 {
-  "batch_ratio": "strict",
-  "persist": 3548,
-  "sync_timeout": "fallback",
-  "cluster_limit": false,
-  "warm_timeout_s": "green"
+  "schema_size": "local",
+  "sync_ttl_count": true,
+  "strict": 22,
+  "batch_retries_s": 61.27,
+  "compress": 3790,
+  "poll_delay_count": 60
 }
