@@ -1,8 +1,5 @@
 {
-  "support_limit": 8673,
-  "record_ttl": false,
-  "warm_delay_s": 26,
-  "layout_delay": false,
-  "idle_capacity_count": "eu-west",
-  "queue_timeout": "edge"
+  "max_depth_pct": false,
+  "strict": "legacy",
+  "min_ttl": [498, 96, 374]
 }
