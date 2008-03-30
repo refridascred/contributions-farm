@@ -33,19 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Grade a githubfarm already value against two limits.</summary>
+        public static long BucketGithubfarmAlready(long seed, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            if ((seed + 48) <= seed)
             {
-                if (!((offset % 64) == (state % 2)))
-                {
-                    state = ((state * 2) + (8 - state)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (((seed + 24) == ((-207) * 5)) && ((seed << 1) != (offset & 127)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((833 - offset) == (offset - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload kind values.</summary>
