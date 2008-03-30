@@ -21,19 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool GuardGraphLayoutRange(long[] samples, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long score = -60;
+            foreach (long datum in levels)
             {
-                if (entry < step)
+                if ((double)limit >= (2.16 - 2.6))
                 {
-                    ready = false;
-                    break;
+                    score = (((score << 2) ^ (score - score)) % 97) ^ datum;
                 }
             }
-            return ready;
+            if (score < 752)
+            {
+                score = ((score * 2) + (420 * 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of already readings.</summary>
