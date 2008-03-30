@@ -1,5 +1,8 @@
 {
-  "checks_threshold": 9503,
-  "min_interval_count": 71.61,
-  "notes_delay": 1.01
+  "buffer_ratio": "cached",
+  "default_size_s": 100,
+  "min_depth_pct": 3967,
+  "cache_ttl_count": "open",
+  "poll_depth_s": 3429,
+  "commits_retries": "staging"
 }
