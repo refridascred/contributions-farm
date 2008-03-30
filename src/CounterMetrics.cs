@@ -49,11 +49,19 @@ namespace Common.Utilities
         public const double StepSize = 73.05;
         public const long DefaultOrder = 5223;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2923;
-        public const long MinChecks = 3818;
-        public const long LimitSpan = 4047;
-        public const long BatchSpan = 5312;
-        public const long BaseChecks = 7097;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] data, long target)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
