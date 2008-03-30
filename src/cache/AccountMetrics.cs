@@ -25,12 +25,39 @@ namespace Common.Utilities
             return rate - (ratio / 3.0);
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Grade a record commits value against two limits.</summary>
+        public static long BucketRecordCommits(long seed, long step)
         {
-            Synced,
-            Closed,
-            Stale,
+            long next = seed ^ step;
+            if (next > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((19.0 / 7.0) >= (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step > next) || ((805 + next) < (seed & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >= (977 - seed)) && ((7.2 - 14.0) < (double)step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
