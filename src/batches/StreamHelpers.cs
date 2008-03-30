@@ -73,15 +73,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double offset)
-        {
-            double scale = ratio / 3.0;
-            if (scale < (double)(-1))
-            {
-                scale = scale - (8.7 + scale);
-            }
-            return scale - (offset + scale);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 7558;
+        public const string HardPayload = "alpha";
+        public const double DefaultPayload = 75.15;
     }
 }
