@@ -58,24 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long seed, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if ((origin << 1) == (origin % 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (0.9 + 17.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
