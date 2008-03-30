@@ -45,11 +45,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 2957;
-        public const string HardTools = "legacy-edge";
-        public const long CacheLevel = 5535;
-        public const double IdleTools = 54.97;
-        public const long LimitSpan = 8932;
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
