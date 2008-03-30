@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const long BurstReport = 8055;
         public const long DefaultCount = 2220;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] samples, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
