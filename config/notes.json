@@ -1,15 +1,15 @@
 {
-  "base_timeout": 83.04,
-  "persist": {
-    "retry_capacity_pct": "primary",
-    "route_ttl": "strict",
-    "context_limit": false,
-    "idle_threshold_ms": ["local", "blue"],
-    "compress": 6616,
-    "cache_retries": 72
+  "verbose": 9.45,
+  "dry_run": 500,
+  "metric_size": {
+    "readonly": 4743,
+    "batch_capacity_ms": 43,
+    "context_limit": {
+      "compress": "stable",
+      "metrics_interval": false,
+      "warm_retries_s": true
+    },
+    "verbose": ["latest", "open"]
   },
-  "poll_interval": true,
-  "batch_interval": "eu-west",
-  "idle_interval_ms": true,
-  "sync_threshold": ["eu-west", "green", "cached", "fallback"]
+  "enabled": ["blue", "legacy", "latest"]
 }
