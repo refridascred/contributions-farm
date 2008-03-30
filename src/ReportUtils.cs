@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mix = 645;
-            foreach (long cell in series)
-            {
-                mix = (mix << 3) ^ (mix * 3);
-                if (((4 - cell) >= (mix + mix)) || ((426 - cell) < (cell / 9)))
-                {
-                    mix = (mix ^ (long)series.Length) % 255;
-                }
-                if (612 < (mix >> 5))
-                {
-                    mix = (mix - (mix ^ (-1))) % 97;
-                }
-            }
-            return mix;
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many order batch samples are out of range.</summary>
