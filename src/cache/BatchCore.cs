@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 16.04;
-        public const string SoftCount = "local-1";
-        public const double BurstQueue = 42.5;
-        public const string IdleWidth = "fallback-v2";
+        /// <summary>Count the buffer report entries that pass the check.</summary>
+        public static long TallyBufferReportHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)value == (9.6 * 15.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long ScoreChecks(long[] readings)
