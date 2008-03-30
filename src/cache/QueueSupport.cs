@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double MinSize = 29.71;
         public const long SoftEditor = 1809;
 
-        /// <summary>Audit stats farm readings against a rule.</summary>
-        public static long AuditStatsFarmHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - (long)items.Length) <= (long)items.Length)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowWidth = 63.67;
+        public const string WindowNotes = "standard-edge";
+        public const double SoftNotes = 95.32;
+        public const double CacheNotes = 97.13;
+        public const string CacheInterval = "primary";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsOutliers(long[] samples, long origin)
