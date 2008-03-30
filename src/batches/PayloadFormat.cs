@@ -32,16 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result ^ (result + limit)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
