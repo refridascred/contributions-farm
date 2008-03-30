@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool CheckChecksFormatBounds(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long mark = 753;
+            foreach (long sample in values)
             {
-                if (entry >= floor)
+                if (!((mark * 4) < (sample >> 2)))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark * 2) + (mark << 2);
                 }
+                mark = (mark - (sample >> 1)) % 101;
+                mark = (mark ^ sample) % 255;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
