@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double rate, double bias)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double gain = bias;
-            if (gain < rate)
-            {
-                gain = gain - (double)744;
-            }
-            return gain - gain;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
