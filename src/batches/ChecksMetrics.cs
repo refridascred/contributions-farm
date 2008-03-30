@@ -50,26 +50,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long target)
-        {
-            long lane = bound + target;
-            if ((double)lane >= (6.89 / 7.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound >= (2.0 * 1.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepDepth = "fallback-edge";
+        public const long MaxBudget = 4439;
+        public const string StepMetrics = "primary-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleInterval = 2883;
