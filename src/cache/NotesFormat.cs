@@ -19,26 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long CountOrderToolsHits(long[] items)
         {
-            long sum = 1;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!((sum - cell) <= (66 >> 5)))
+                if (!(((entry / 7) >= entry) && (0.1 <= (double)entry)))
                 {
-                    sum = sum ^ (sum >> 2);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    sum = ((sum * 3) + (sum + 38)) % 255;
-                }
-                if (((sum - cell) < (sum + cell)) || ((7 + cell) < (sum + cell)))
-                {
-                    sum = (sum + (7 >> 3)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
