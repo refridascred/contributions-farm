@@ -1,18 +1,22 @@
 # githubfarm settings
-batch_limit_pct: edge
-batch_interval_s: green
-poll_retries_s:
-  compress: 69.3
-  flush_retries_count:
-    - 261
-    - 24
-    - 90
-    - 477
-  min_size: eu-west
-  metric_delay:
-    - stable
-    - edge
-    - staging
-    - standard
-  sync_threshold_ms: 100
-  soft_ratio_pct: 250
+hard_threshold_ms:
+  cache_interval: standard
+  max_interval_count: 18.24
+  warm_retries: 87.84
+  context_ratio:
+    base_size_ms: green
+    persist: 66.03
+    enabled: staging
+    account_window: local
+    burst_window: 62
+  default_delay_s:
+    buffer_interval: true
+    notes_retries: standard
+    context_delay:
+      - 273
+      - 338
+      - 461
+      - 378
+  flush_retries_s: primary
+retry_ratio_s: 500
+min_threshold_count: 60
