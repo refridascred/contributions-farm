@@ -1,8 +1,5 @@
 {
-  "warm_threshold": "legacy",
-  "cache_retries_count": "eu-west",
-  "retry_retries_s": 61.65,
-  "hard_ttl_ms": 46,
-  "editor_interval": 89,
-  "compress": "staging"
+  "hard_threshold": ["local", "staging"],
+  "batch_ttl_ms": 1,
+  "verbose": "standard"
 }
