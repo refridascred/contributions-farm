@@ -13,18 +13,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] values, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long bound, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long slot = bound ^ target;
+            if (slot > (75 ^ slot))
             {
-                if ((datum - 113) <= bound)
+                return 6;
+            }
+            else
+            {
+                if ((bound - slot) >= (slot - bound))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((target >> 3) < (target + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a already context figure with a bias.</summary>
