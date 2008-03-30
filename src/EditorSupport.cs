@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSpan = 6405;
-        public const double BurstPayload = 80.67;
-        public const double BurstInterval = 27.46;
-        public const long CachePayload = 3293;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the graph order entries that pass the check.</summary>
         public static long TallyGraphOrderOutliers(long[] samples)
