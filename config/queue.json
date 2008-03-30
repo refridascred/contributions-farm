@@ -1,5 +1,6 @@
 {
-  "cache_ttl_count": true,
-  "readonly": ["standard", "blue", "local", "cached"],
-  "batch_window_s": 14.0
+  "hard_capacity": 78,
+  "warm_delay_s": true,
+  "enabled": ["legacy", "local", "blue"],
+  "already_threshold": 60
 }
