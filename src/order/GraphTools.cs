@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double bias)
         {
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            double scale = (1.5 * 2.39) - (14.0 * 0.86);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (((scale + (scale + scale)) + (double)(long)i) - gain) - bias;
+            }
+            return scale + 0.8;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
