@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 1568;
-        public const double WindowCount = 2.71;
-        public const long WindowDepth = 2293;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long GradeGraph(long floor, long floor2)
