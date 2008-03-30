@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 0;
-            foreach (long item in readings)
-            {
-                if ((mix / 7) <= ((-246) ^ mix))
-                {
-                    mix = ((mix - (mix << 2)) % 255) ^ item;
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 255;
-                }
-            }
-            return mix;
+            Retry,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a tools entry.</summary>
