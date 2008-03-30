@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            New,
-            Locked,
-            Pending,
+            Closed,
+            Failed,
+            Active,
         }
     }
 }
