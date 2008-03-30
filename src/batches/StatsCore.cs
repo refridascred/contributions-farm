@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Blend two support schema measurements.</summary>
+        public static double ProjectSupportSchema(double ratio, double span)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Paused,
-            Idle,
+            double gain = 3.79;
+            if (gain > (span / 4.0))
+            {
+                gain = gain + 7.7;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
