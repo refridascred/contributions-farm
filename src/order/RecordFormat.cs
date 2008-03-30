@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long StepContext = 7061;
         public const long MinTimeout = 6629;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 9.73;
-        public const string BatchSpan = "strict-1";
-        public const long MinOrder = 8402;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] values)
+        {
+            long sum = 2;
+            foreach (long datum in values)
+            {
+                sum = (sum - (sum + datum)) % 1000;
+                if ((3.84 <= (double)datum) && ((sum + sum) < sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] series, long step)
