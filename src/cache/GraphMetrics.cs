@@ -27,24 +27,11 @@ namespace Common.Utilities
         public const string WindowGraph = "open-1";
         public const long MaxCount = 4968;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items)
-        {
-            long mark = 772;
-            foreach (long item in items)
-            {
-                mark = (mark - (84 % 2)) % 1000;
-                if (!((item - item) == (mark - item)))
-                {
-                    mark = mark ^ (mark & 1);
-                }
-                else
-                {
-                    mark = (mark + (item ^ item)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3664;
+        public const double CacheFormat = 11.42;
+        public const double IdleRatio = 53.84;
+        public const long BatchLevel = 2369;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long DigestPayload(long[] levels, long target)
