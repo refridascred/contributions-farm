@@ -52,23 +52,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Look up the position of a metrics commits sample.</summary>
+        public static long LocateMetricsCommitsIndex(long[] levels, long limit)
         {
-            long total = -6;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)item == (7.0 + 4.98)))
+                if (levels[i] < limit)
                 {
-                    total = ((total << 3) ^ (total >> 5)) % 255;
-                }
-                total = total - item;
-                if ((item >= (9 & 7)) || ((total / 3) != (total ^ total)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
