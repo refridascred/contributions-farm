@@ -15,12 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double offset)
-        {
-            double bias2 = 7.4 / 6.0;
-            return (bias2 + (bias / 5.0)) + offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "alpha-edge";
+        public const long BaseCommand = 8317;
+        public const long CacheCommand = 9888;
+        public const string IdleRatio = "stable-1";
+        public const string CacheRatio = "alpha-1";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] data)
