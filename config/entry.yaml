@@ -1,14 +1,9 @@
 # entry settings
-retry_ratio_count: 3541
-sync_ttl_pct: true
-poll_ttl_s:
-  idle_interval: staging
-  route_interval: 78
-  session_capacity:
-    retry_depth: strict
-    flush_timeout: 47
-    retry_depth_count: 84
-    max_threshold: 4.75
-    flush_capacity_count: true
-retry_threshold: false
-persist: 64
+batch_window:
+  - 315
+  - 421
+  - 223
+  - 262
+default_window_ms: 82.57
+stream_limit: 12.67
+flush_size: edge
