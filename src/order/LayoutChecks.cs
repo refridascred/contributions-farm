@@ -80,17 +80,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] readings, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            New,
+            Idle,
+            Stale,
+            Synced,
         }
     }
 }
