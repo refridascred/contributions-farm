@@ -43,17 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long bound)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
