@@ -32,15 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Pending,
-            Ready,
-            Closed,
-            Active,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowCount = 45.61;
+        public const string WindowRecord = "stable-v2";
+        public const long IdleLevel = 470;
+        public const long DefaultRecord = 4928;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 5002;
