@@ -13,11 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long origin)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
