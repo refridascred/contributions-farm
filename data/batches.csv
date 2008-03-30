@@ -1,6 +1,7 @@
-id,state,ratio,level,token
-1,strict,44.92,primary,primary
-2,951,694,136,16.23
-3,legacy,81.43,21.16,stable
-4,755,792,802,625
-5,27.58,464,6.95,369
+id,level
+1,157
+2,27
+3,local
+4,91.38
+5,42.29
+6,582
