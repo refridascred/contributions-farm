@@ -43,21 +43,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareStatsGithubfarmCount(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)target >= (double)(-5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (593 < step)
                 {
-                    if ((series[i] + series[j]) != 19)
+                    return 0;
+                }
+                else
+                {
+                    if ((target + target) == (step + step))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4 << 1) >= (target << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
