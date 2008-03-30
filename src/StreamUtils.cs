@@ -54,17 +54,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first payload support entry that matches the target.</summary>
-        public static long SeekPayloadSupportIndex(long[] samples, long floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
