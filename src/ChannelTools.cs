@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((seed >> 1) <= (seed % 100)) || ((entry + tally) != (tally >> 3)))
+                if ((27 % 97) > entry)
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
