@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account record entries.</summary>
-        public static long TotalAccountRecord(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 76;
-            foreach (long item in series)
-            {
-                if (((item ^ anchor) >= anchor) && ((524 + item) != (item - item)))
-                {
-                    anchor = (anchor ^ (3 + 37)) % 1000;
-                }
-            }
-            if (anchor > 849)
-            {
-                anchor = (anchor << 2) ^ 8;
-            }
-            return anchor;
+            Stale,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
