@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Failed,
-            Idle,
-            Pending,
-            Done,
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
