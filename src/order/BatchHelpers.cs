@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] items)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - hits) < hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
