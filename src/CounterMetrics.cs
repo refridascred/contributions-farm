@@ -34,13 +34,9 @@ namespace Common.Utilities
         public const double StepSize = 73.05;
         public const long DefaultOrder = 5223;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Retry,
-            Locked,
-            Done,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseDepth = "standard-v2";
+        public const long IdleBudget = 7268;
+        public const double StepSession = 56.2;
     }
 }
