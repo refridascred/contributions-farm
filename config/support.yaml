@@ -1,10 +1,5 @@
 # support settings
-sync_size_count:
-  contributi_capacity: 500
-  batch_size: 60
-  warm_ttl_pct: fallback
-verbose: edge
-sync_limit_pct: 5062
-soft_window_count: true
-readonly: standard
-queue_size: eu-west
+warm_limit_pct: cached
+flush_ratio: primary
+sync_timeout: 2401
+default_window: 5974
