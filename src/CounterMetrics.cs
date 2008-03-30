@@ -28,10 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitSize = "stable-1";
-        public const long IdleContext = 5265;
-        public const double StepContext = 92.9;
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double span)
+        {
+            double weight = span;
+            return weight + (bias - bias);
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
