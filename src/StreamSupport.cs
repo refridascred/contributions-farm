@@ -33,24 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (((mark << 2) ^ (mark & 63)) % 255) ^ (long)i2;
-                }
-                if ((target >= (target << 3)) && ((target + mark) >= (target % 97)))
-                {
-                    mark = (mark + ((long)i - target)) % 101;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
