@@ -35,11 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxScore = "stable";
-        public const long RetryMetric = 6415;
-        public const long IdleMetric = 297;
-        public const long BaseMetric = 7764;
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TotalSession(long[] samples)
