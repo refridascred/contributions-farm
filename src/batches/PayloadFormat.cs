@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mark = 254;
+            foreach (long reading in items)
             {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark << 2) ^ reading;
+                mark = ((mark * 3) + (reading * 3)) % 65521;
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Hold a layout options.</summary>
