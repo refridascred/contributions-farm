@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 18.0;
-        public const long CacheScore = 4808;
-        public const double MinLevel = 14.73;
-        public const long MaxBudget = 1956;
-        public const long BatchCount = 2626;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
