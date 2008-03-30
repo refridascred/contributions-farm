@@ -34,10 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowSize = 15.11;
-        public const long MaxWidth = 1165;
-        public const long SoftSize = 1410;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double RetryCache = 57.64;
