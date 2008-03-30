@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many buffer token samples are out of range.</summary>
-        public static long TallyBufferTokenGaps(long[] items)
+        /// <summary>Validate farm entry readings against a bound.</summary>
+        public static bool CheckFarmEntryLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((3.99 / 5.0) == (double)sample)
+                if (datum >= floor)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Project the next farm value.</summary>
