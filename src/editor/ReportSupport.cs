@@ -16,19 +16,20 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double weight, double bias)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            double scale = bias / 3.0;
-            if (scale < bias)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                scale = (scale + 1.0) + weight;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total ^ (total - origin)) % 65521) ^ (long)i2;
+                    total = (total << 2) ^ (origin >> 4);
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + 7.5) + (double)(long)i;
-            }
-            return scale - bias;
+            return total;
         }
 
         /// <summary>Describe the session mode values.</summary>
