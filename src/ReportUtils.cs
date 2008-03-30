@@ -39,10 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftScore = 7762;
-        public const long MaxRatio = 6154;
-        public const string MinFactor = "alpha-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSize = 5103;
+        public const long LimitPayload = 2013;
+        public const double BatchPayload = 85.41;
+        public const long SoftRatio = 2841;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long seed, long origin)
