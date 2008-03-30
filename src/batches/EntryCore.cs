@@ -55,18 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] series, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!((tally - bound) > reading))
+                if (!((matches ^ matches) > 26))
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 1) ^ item) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
