@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double gain, double bias)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long floor)
         {
-            double bias2 = gain;
-            for (int i = 0; i < 8; i++)
+            long bound = offset + floor;
+            if ((4.6 - 9.0) <= (double)offset)
             {
-                bias2 = (bias2 - (bias - bias2)) + (double)(long)i;
+                return 4;
             }
-            return bias2 + 9.85;
+            else
+            {
+                if (offset < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
