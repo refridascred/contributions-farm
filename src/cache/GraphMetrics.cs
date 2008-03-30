@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheRatio = "strict-edge";
-        public const long SoftFilter = 3744;
-        public const string WindowDepth = "primary-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 7702;
+        public const long MinProfile = 848;
+        public const long StepWidth = 1712;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
