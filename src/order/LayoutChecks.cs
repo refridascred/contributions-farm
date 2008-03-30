@@ -84,18 +84,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the channel command entries that pass the check.</summary>
-        public static long MeasureChannelCommandOutliers(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)item > (double)count)
+                if (sample > limit)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
