@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long target2)
         {
-            Queued,
-            Retry,
-            Idle,
-            Failed,
+            long diff = target + target2;
+            if (((758 << 1) > (target << 2)) && ((target + diff) >= target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((8 + target2) != (target * 5)) || (target2 <= (target - target2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target2 <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
