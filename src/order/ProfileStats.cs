@@ -40,10 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 1705;
-        public const string StepReport = "cached";
-        public const long BurstReport = 9907;
-        public const long BatchReport = 6994;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double offset)
+        {
+            double scale = gain;
+            if (scale < offset)
+            {
+                scale = scale - (7.85 * 4.85);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (gain / 4.0)) - (double)(long)i;
+            }
+            return scale - scale;
+        }
     }
 }
