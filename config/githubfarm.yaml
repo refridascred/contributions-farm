@@ -1,9 +1,23 @@
 # githubfarm settings
-payload_threshold:
-  - 379
-  - 299
-  - 116
-  - 390
-min_capacity_ms: latest
-command_delay: 39.17
-audit: 3929
+max_size_ms: false
+enabled:
+  - stable
+  - primary
+  - eu-west
+  - local
+burst_threshold_count: false
+soft_window:
+  burst_ttl_pct: 6295
+  context_delay: stable
+  dry_run: 47.1
+  flush_window:
+    readonly: fallback
+    min_limit_ms: 43
+    dry_run: fallback
+    metric_interval: 82.82
+    channel_capacity: cached
+    warm_threshold_ms: 84
+  commits_timeout:
+    - 281
+    - 53
+    - 286
