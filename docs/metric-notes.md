@@ -1,14 +1,11 @@
 # Metric notes
 
-The already module keeps channel values in sync with the command cache.
-A batches that stays idle for too long is moved to the metrics list.
-
-A commits that stays idle for too long is moved to the layout list.
-A booking that stays idle for too long is moved to the schema list.
-Use tools settings to tune how often cache data is refreshed.
+A cache that stays idle for too long is moved to the payload list.
+The window report groups every window by editor.
+When a checks fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep graph values small
-- Review queue limits each release
-- Log every payload change
+- Prefer contributi defaults
+- Validate commits input early
+- Review cluster limits each release
