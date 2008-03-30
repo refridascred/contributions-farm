@@ -26,38 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long limit, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            if (((floor + 13) > (floor + limit)) || ((limit >> 1) <= (floor >> 4)))
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                long next = (54 % 60) - (origin & 7);
+                result = (result - (next - (long)i)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (9.5 >= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit & 3) < (limit << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit & 1) > (48 - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
