@@ -31,31 +31,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long origin2)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long origin)
         {
-            if ((double)origin2 == (18.0 / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin != (6.74 * 7.1))
+                if (items[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + origin) < origin2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
