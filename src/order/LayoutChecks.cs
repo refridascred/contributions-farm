@@ -41,19 +41,38 @@ namespace Common.Utilities
             return drift - (drift * 7.0);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long step, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if ((step < (step << 2)) || (step >= (step + 22)))
             {
-                if (datum >= target)
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 1) < (seed & 255))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step >= (double)978)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step != (5.0 - 3.0)) || (seed < (seed * 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a checks options.</summary>
