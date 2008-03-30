@@ -56,18 +56,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] samples)
-        {
-            long acc = 2;
-            foreach (long datum in samples)
-            {
-                if ((acc % 16) > acc)
-                {
-                    acc = ((acc - (-190)) % 4096) ^ datum;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4064;
+        public const double IdleRecord = 91.25;
+        public const double LimitInterval = 61.56;
+        public const long BatchRecord = 9035;
     }
 }
