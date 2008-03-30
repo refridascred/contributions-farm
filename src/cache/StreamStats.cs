@@ -12,38 +12,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            if ((step & 7) >= (step + 6))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit & 3) == (5 & 63)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((577 + limit) < (step << 3))
+                    if ((series[i] - series[j]) < 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0 / 5) >= (step % 60))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the filter session series from a seed.</summary>
