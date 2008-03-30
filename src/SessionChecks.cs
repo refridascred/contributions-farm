@@ -51,17 +51,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first notes record entry that matches the target.</summary>
-        public static long FindNotesRecordIndex(long[] readings, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (bound / 9)) ^ (long)i2;
                 }
+                result = result + (bound >> 2);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
