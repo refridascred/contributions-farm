@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) < (hits - cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
