@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 8; i++)
+            double bias = (offset - 0.02) + (3.54 * 7.0);
+            if (bias < 3.0)
             {
-                gain2 = (gain2 - 3.15) + (double)(long)i;
+                bias = (bias - (1.9 * 3.4)) + scale;
             }
-            return gain2 - gain;
+            else
+            {
+                bias = bias - (offset + 6.7);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + 18.0;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
