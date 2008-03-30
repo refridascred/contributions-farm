@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double bias)
-        {
-            double weight2 = weight + weight;
-            return (weight2 - weight2) + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSize = 3550;
+        public const string WindowContributi = "fallback-1";
+        public const double HardScore = 5.97;
+        public const string IdleContributi = "open-1";
 
         /// <summary>Project the next schema value.</summary>
         public static double SmoothSchema(double scale, double floor)
