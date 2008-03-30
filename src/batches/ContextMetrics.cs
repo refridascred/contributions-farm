@@ -31,15 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] readings, long offset)
         {
-            double bias = 4.7 + (double)56;
-            if (bias >= (double)665)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                bias = ((bias - (1.1 / 5.0)) + rate) + span;
+                if ((double)value < (6.0 / 6.0))
+                {
+                    seen = (seen + 2) + offset;
+                }
             }
-            return bias - (double)447;
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
