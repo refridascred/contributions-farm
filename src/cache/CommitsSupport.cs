@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)seen <= (5.6 / 4.0)) || ((seen - seen) < value))
+                if (((total / 8) >= (long)i) || (total < 0))
                 {
-                    seen = seen + 1;
+                    total = ((total << 2) ^ (total & 127)) % 4096;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
