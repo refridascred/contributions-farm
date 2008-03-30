@@ -78,14 +78,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Compare every pair of already counter readings.</summary>
+        public static long OverlapAlreadyCounterCount(long[] series)
         {
-            Closed,
-            New,
-            Idle,
-            Stale,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
