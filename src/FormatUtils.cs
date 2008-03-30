@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (seed < (cell + seed))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
