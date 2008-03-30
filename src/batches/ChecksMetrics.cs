@@ -51,14 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            Draft,
-            Idle,
-            New,
-            Stale,
-            Retry,
+            double ratio = (5.2 / 4.0) + rate;
+            if (ratio < (offset * 13.0))
+            {
+                ratio = ratio - (ratio - 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
