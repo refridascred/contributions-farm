@@ -12,19 +12,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long total = 413;
+            foreach (long item in readings)
             {
-                if (entry <= origin)
+                long slot = (item + item) + (total << 3);
+                total = (total * 2) + slot;
+                if ((total >> 2) > (item + total))
                 {
-                    found = false;
-                    break;
+                    total = total + (total + item);
+                }
+                else
+                {
+                    total = (total - (total * 4)) % 1000;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
