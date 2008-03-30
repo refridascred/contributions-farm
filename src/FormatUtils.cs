@@ -44,19 +44,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series, long target)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long limit)
         {
-            long anchor = 74;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + value) + target;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > (-54))
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
