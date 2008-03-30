@@ -43,16 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            long state = 266;
-            foreach (long entry in samples)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state << 2) ^ entry;
-                state = state + state;
+                mark = (mark * 2) + (offset - 14);
+                long edge = mark;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (((mark * 2) + (edge >> 2)) % 255) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Classify a support farm pair into a bucket.</summary>
