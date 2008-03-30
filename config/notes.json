@@ -1,8 +1,6 @@
 {
-  "payload_ratio": 60.16,
-  "burst_depth_s": ["eu-west", "green", "eu-west", "staging"],
-  "cache_limit_s": "stable",
-  "min_window_ms": ["strict", "standard"],
-  "retry_interval": 6342,
-  "persist": 432
+  "audit": true,
+  "persist": "fallback",
+  "batch_capacity": 250,
+  "batch_ttl": 70.18
 }
