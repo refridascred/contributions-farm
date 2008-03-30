@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a format schema figure with a bias.</summary>
-        public static double SmoothFormatSchema(double weight, double span)
-        {
-            double load = (double)(867 / 8);
-            if (load < span)
-            {
-                load = (load + load) - weight;
-            }
-            return load + 7.5;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinWidth = 6764;
+        public const double RetryContext = 59.42;
+        public const long LimitContext = 5343;
+        public const long StepContext = 7061;
+        public const long MinTimeout = 6629;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheOrder = 9.73;
