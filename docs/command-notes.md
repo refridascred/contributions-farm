@@ -1,11 +1,11 @@
 # Command notes
 
-Each profile is validated before it reaches the queue queue.
-The layout module keeps cache values in sync with the account cache.
+A command that stays idle for too long is moved to the counter list.
+Run the counter check before changing any route limits.
 
 ## Guidelines
 
-- Review filter limits each release
-- Document new format fields
-- Log every metrics change
-- Keep context values small
+- Keep token values small
+- Validate buffer input early
+- Log every farm change
+- Prefer buffer defaults
