@@ -36,18 +36,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of counter account readings.</summary>
-        public static long TallyCounterAccount(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long mark = 25;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-76) & 1) != (mark / 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (((mark << 3) ^ (mark - mark)) % 255) + reading;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
