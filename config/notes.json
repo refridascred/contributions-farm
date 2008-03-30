@@ -1,21 +1,7 @@
 {
-  "dry_run": "green",
-  "burst_delay_pct": "legacy",
-  "checks_size": {
-    "cluster_retries": 72.08,
-    "sync_retries_count": {
-      "strict": 5021,
-      "sync_ttl": "staging",
-      "cache_delay_s": [370, 393, 189, 29],
-      "soft_capacity": true,
-      "base_window": ["standard", "stable", "legacy"],
-      "batches_retries": 71.23
-    },
-    "batches_window": false,
-    "retry_depth": 1024,
-    "batch_window_pct": 60,
-    "burst_capacity": 76.71
-  },
-  "batch_size": ["edge", "local", "cached", "stable"],
-  "profile_size": 8.06
+  "min_size_count": true,
+  "retry_limit": true,
+  "dry_run": "edge",
+  "poll_ttl_count": 90.21,
+  "verbose": 30
 }
