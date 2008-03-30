@@ -19,21 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + floor) == (floor >> 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed > (9.16 - 12.0))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
