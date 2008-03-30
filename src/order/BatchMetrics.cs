@@ -50,11 +50,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine cluster order values into a single score.</summary>
