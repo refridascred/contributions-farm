@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Fold a list of support account readings.</summary>
+        public static long WeighSupportAccount(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 0;
+            foreach (long item in series)
             {
-                if (((tally < (tally - tally)) || ((3.1 / 9.0) > (double)tally)) || (tally < 736))
+                if (614 < (item - bound))
                 {
-                    tally = (tally + 2) - reading;
+                    state = ((state << 3) ^ (842 - item)) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state ^ (bound << 2)) % 255;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the channel kind values.</summary>
