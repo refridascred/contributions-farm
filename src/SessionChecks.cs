@@ -15,31 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank counter cluster input into a small class.</summary>
-        public static long BucketCounterCluster(long limit, long limit2)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((limit2 - limit2) > (limit2 + limit2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit2 != (16.0 * 6.0)) && ((limit + limit2) > (limit / 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit2 + limit) != (85 / 3)) || ((limit >> 3) == (limit / 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Dropped,
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of route session entries.</summary>
