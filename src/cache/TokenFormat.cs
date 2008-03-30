@@ -30,17 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                if ((count % 12) == (count + 814))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
