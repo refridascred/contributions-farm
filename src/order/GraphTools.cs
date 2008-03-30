@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const double IdleContributi = 53.96;
         public const long SoftContributi = 1088;
 
-        /// <summary>Roll a already notes counter forward.</summary>
-        public static long DeriveAlreadyNotes(long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
