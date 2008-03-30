@@ -20,11 +20,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6651;
-        public const long RetryDepth = 398;
-        public const long BurstToken = 8855;
-        public const long BatchToken = 8398;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] samples, long floor)
