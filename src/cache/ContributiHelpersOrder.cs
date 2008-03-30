@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine metric window values into a single score.</summary>
-        public static long TotalMetricWindow(long[] readings, long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mark = 35;
-            foreach (long value in readings)
-            {
-                if (value <= (945 / 4))
-                {
-                    mark = (mark + (mark - step)) % 1000;
-                }
-                if (!((4 + mark) == (step + 0)))
-                {
-                    break;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark * 2) + (step + step);
-            }
-            return mark;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
