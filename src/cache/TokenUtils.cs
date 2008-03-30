@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long IdleQueue = 7006;
         public const long SoftQueue = 3534;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long sum = 3;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.2 - 8.3) >= (double)sum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 2) + (sample >> 1)) % 255;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ (sum & 7)) % 4096;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
