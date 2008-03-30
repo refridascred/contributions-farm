@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Scale a queue already figure with a bias.</summary>
+        public static double SmoothQueueAlready(double ratio, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            double load = ratio;
+            if (load >= load)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                load = load + (double)7;
             }
-            return total;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
