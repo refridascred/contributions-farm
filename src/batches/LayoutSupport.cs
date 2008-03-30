@@ -26,11 +26,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitInterval = 42.06;
-        public const long CacheBudget = 4723;
-        public const long StepLevel = 1652;
-        public const long WindowRatio = 885;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] values, long origin)
