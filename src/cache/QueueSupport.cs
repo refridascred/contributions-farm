@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc + acc) ^ cell) + step;
             }
-            return seen;
+            if (acc < 11)
+            {
+                acc = (acc ^ (7 - acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
