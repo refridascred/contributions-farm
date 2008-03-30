@@ -20,10 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 7702;
-        public const long MinProfile = 848;
-        public const long StepWidth = 1712;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
