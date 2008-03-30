@@ -1,5 +1,5 @@
 {
-  "persist": [272, 213],
-  "idle_threshold_pct": 75.29,
-  "checks_window": 62.19
+  "soft_retries": 500,
+  "format_limit": [106, 487, 304],
+  "counter_limit": false
 }
