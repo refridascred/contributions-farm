@@ -1,34 +1,6 @@
 # entry settings
-format_ttl: 2766
-checks_size:
-  - 361
-  - 421
-readonly:
-  hard_retries:
-    - 486
-    - 169
-    - 306
-  counter_capacity: latest
-  compress: 14.85
-  notes_size:
-    metrics_delay: primary
-    order_retries: 30
-    flush_capacity: true
-    persist: 30
-    entry_ttl:
-      - 323
-      - 35
-    max_ttl: 79.18
-  flush_capacity_ms: 500
-  base_ttl_count: primary
-verbose:
-  compress: false
-  warm_timeout_pct: 1147
-  warm_limit_s: strict
-  poll_ratio_s: 5711
-token_timeout: 2811
-batches_depth:
-  - blue
-  - eu-west
-  - edge
-  - green
+compress: legacy
+entry_threshold: 60
+retry_limit: 96
+retry_size: 2266
+poll_ttl_count: true
