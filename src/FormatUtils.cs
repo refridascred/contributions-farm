@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long origin)
         {
-            New,
-            Done,
-            Dropped,
-            Closed,
-            Paused,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
