@@ -27,19 +27,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a schema session reading.</summary>
-        public static double SmoothSchemaSession(double rate, double span)
+        /// <summary>Roll a batch commits counter forward.</summary>
+        public static long DeriveBatchCommits(long step)
         {
-            double scale = (double)((-84) - 985);
-            if (scale > rate)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                scale = scale + (3.0 - span);
+                mark = (mark - ((long)i >> 1)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (3.1 / 2.0)) + (double)(long)i;
-            }
-            return scale - span;
+            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
