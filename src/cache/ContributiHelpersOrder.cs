@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long origin, long bound)
+        /// <summary>Derive the next already notes value from a seed.</summary>
+        public static long StepAlreadyNotes(long offset)
         {
-            if ((double)bound < (double)8)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin - 312) == (origin + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
