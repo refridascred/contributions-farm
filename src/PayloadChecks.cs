@@ -14,32 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long floor2)
-        {
-            if ((double)floor > (4.8 + 2.9))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor2 <= (3.8 / 6.0)) && ((floor2 - floor) <= (floor & 63)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor2 >> 1) <= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxBudget = 6293;
+        public const long WindowScore = 1709;
+        public const long DefaultScore = 5666;
+        public const double IdleRatio = 59.98;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double gain, double span)
