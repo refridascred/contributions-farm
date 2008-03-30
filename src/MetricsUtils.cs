@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Look up the position of a cluster window sample.</summary>
+        public static long LookupClusterWindowIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum + datum) <= (datum - datum)) || ((datum - (long)values.Length) < (datum & 255)))
+                if (items[i] < offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
