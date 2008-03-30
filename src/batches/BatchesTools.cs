@@ -13,21 +13,27 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (((anchor << 3) ^ (target / 5)) % 4096) - (long)i2;
                 }
+                if (!((anchor % 10) != ((long)i << 2)))
+                {
+                    anchor = anchor - (anchor / 8);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + target) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
