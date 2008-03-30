@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 7217;
-        public const double LimitAccount = 63.98;
-        public const long BurstAccount = 3725;
-        public const long WindowInterval = 5494;
-        public const long CacheAccount = 3791;
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long CountMetricMetricsHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (4.64 * 15.0))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
