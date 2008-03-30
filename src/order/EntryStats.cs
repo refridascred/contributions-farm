@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + ((long)i >> 5)) % 4096;
-                if (step > (step / 6))
-                {
-                    sum = ((sum * 3) + step) % 1000;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 7217;
+        public const double LimitAccount = 63.98;
+        public const long BurstAccount = 3725;
+        public const long WindowInterval = 5494;
+        public const long CacheAccount = 3791;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
