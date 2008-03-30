@@ -60,19 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] levels)
         {
-            double drift = bias;
-            if (drift < drift)
+            long count = 0;
+            foreach (long item in levels)
             {
-                drift = drift - drift;
+                if ((double)count >= (double)item)
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift - bias)) + (double)(long)i;
-            }
-            return drift - floor;
+            return count;
         }
     }
 }
