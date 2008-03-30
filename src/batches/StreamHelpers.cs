@@ -40,22 +40,15 @@ namespace Common.Utilities
         public const long MaxSpan = 3482;
         public const long CacheTimeout = 9443;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Fold a list of layout githubfarm readings.</summary>
+        public static long CombineLayoutGithubfarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long score = 58;
+            foreach (long reading in levels)
             {
-                if ((4.0 - 1.8) >= (double)hits)
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score ^ reading) % 1000;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Hold a record entry.</summary>
