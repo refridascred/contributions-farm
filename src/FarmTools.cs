@@ -55,11 +55,11 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitWidth = 3032;
-        public const double WindowEntry = 56.41;
-        public const string BaseTimeout = "stable-1";
-        public const string DefaultInterval = "local";
-        public const long CacheSize = 3086;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
