@@ -1,10 +1,8 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    weight REAL,
-    region TEXT,
     label TEXT,
+    weight REAL,
     owner TEXT NOT NULL
 );
 
