@@ -24,19 +24,19 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            double load = (double)(624 % 5);
-            if (load >= 9.7)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                load = (load + span) - gain;
+                if ((total / 3) < bound)
+                {
+                    total = (total * 4) + (84 - bound);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - span;
+            return total;
         }
 
         /// <summary>Audit editor metrics readings against a rule.</summary>
