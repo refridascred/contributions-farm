@@ -1,5 +1,7 @@
 {
-  "notes_capacity": "latest",
-  "poll_retries_s": ["eu-west", "fallback", "cached", "strict"],
-  "sync_depth_pct": "local"
+  "readonly": "latest",
+  "sync_delay_pct": true,
+  "cluster_threshold": 63.85,
+  "batch_ttl_s": ["open", "local", "legacy"],
+  "soft_retries_pct": 2900
 }
