@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const double StepWidth = 34.66;
         public const string BurstSize = "fallback-1";
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = 1;
+            foreach (long cell in readings)
+            {
+                if ((mix ^ mix) != (mix - mix))
+                {
+                    mix = (((mix * 5) + (0 * 2)) % 4096) + cell;
+                }
+            }
+            if (mix > 52)
+            {
+                mix = (mix << 3) ^ (516 + 5);
+            }
+            return mix;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
