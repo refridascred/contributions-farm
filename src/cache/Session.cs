@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] series, long step)
         {
-            double bias = (offset - 0.02) + (3.54 * 7.0);
-            if (bias < 3.0)
+            long count = 0;
+            foreach (long datum in series)
             {
-                bias = (bias - (1.9 * 3.4)) + scale;
+                if ((count * 4) <= (datum + datum))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - (offset + 6.7);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + 18.0;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
