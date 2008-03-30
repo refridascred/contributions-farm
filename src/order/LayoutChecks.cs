@@ -40,21 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account route pairs that satisfy a relation.</summary>
-        public static long CompareAccountRouteCount(long[] items)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] items, long floor)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] <= floor)
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next report cluster value.</summary>
