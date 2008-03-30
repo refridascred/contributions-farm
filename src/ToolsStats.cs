@@ -42,15 +42,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values, long limit)
+        /// <summary>Count already route pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyRouteCount(long[] levels)
         {
-            long result = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result + limit) % 255) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a token options.</summary>
