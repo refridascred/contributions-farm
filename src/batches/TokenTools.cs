@@ -15,12 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
