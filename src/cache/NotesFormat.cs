@@ -43,19 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > seed)
+                if (items[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
