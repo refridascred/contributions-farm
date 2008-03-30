@@ -24,14 +24,13 @@ namespace Common.Utilities
             return weight - 4.16;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Dropped,
-            Done,
-            Draft,
             Stale,
-            Paused,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define format limits and defaults.</summary>
