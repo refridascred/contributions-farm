@@ -63,9 +63,18 @@ namespace Common.Utilities
         public const long StepAlready = 3449;
         public const long RetryRatio = 7920;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 3461;
-        public const long StepSize = 9746;
-        public const long BurstSchema = 3838;
+        /// <summary>Measure how many tools already samples are out of range.</summary>
+        public static long AuditToolsAlreadyOutliers(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((-61) & 1) == (seed ^ hits))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
