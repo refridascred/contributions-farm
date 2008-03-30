@@ -69,19 +69,21 @@ namespace Common.Utilities
             return load - (0.1 - weight);
         }
 
-        /// <summary>Accumulate stream command samples.</summary>
-        public static long FoldStreamCommand(long[] readings)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long mark = 70;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark ^ 8) % 65521) ^ cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < 479)
-            {
-                mark = (mark ^ (mark * 2)) % 65521;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a stream entry.</summary>
