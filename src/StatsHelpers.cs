@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 21.99;
-        public const long WindowRoute = 6035;
-        public const long WindowRatio = 1402;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            New,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] values)
