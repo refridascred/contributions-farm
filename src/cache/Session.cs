@@ -28,10 +28,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 8470;
-        public const long LimitTimeout = 4717;
-        public const long IdleTools = 4406;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items)
+        {
+            long score = 53;
+            foreach (long sample in items)
+            {
+                if ((sample / 7) != (503 + (-82)))
+                {
+                    score = ((score << 3) ^ (sample / 4)) % 4096;
+                }
+            }
+            if (score > 0)
+            {
+                score = (score ^ ((-84) % 100)) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] data)
