@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long MaxSpan = 3482;
         public const long CacheTimeout = 9443;
 
-        /// <summary>Fold a list of layout githubfarm readings.</summary>
-        public static long CombineLayoutGithubfarm(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] values, long limit)
         {
-            long score = 58;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                score = (score ^ reading) % 1000;
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Hold a record entry.</summary>
