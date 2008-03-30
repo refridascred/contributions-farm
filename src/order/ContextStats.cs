@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepFactor = 9164;
-        public const long MaxRecord = 5745;
-        public const long SoftRecord = 4511;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] samples, long target)
+        {
+            long total = 361;
+            foreach (long datum in samples)
+            {
+                total = ((total ^ (target - target)) % 65521) ^ datum;
+            }
+            if (total < 523)
+            {
+                total = ((total << 2) ^ target) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long offset)
