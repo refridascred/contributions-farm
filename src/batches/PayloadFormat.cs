@@ -44,38 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long origin, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            if (((target & 7) < (target - origin)) || (target < (origin + target)))
+            double bias = offset;
+            if (bias <= offset)
             {
-                return 4;
+                bias = (bias - 12.0) - ratio;
             }
-            else
-            {
-                if ((origin + 41) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.5 + 9.5) == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target % 97) != (target - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias - 7.2;
         }
 
         /// <summary>Roll a record checks counter forward.</summary>
