@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstSpan = "strict-edge";
-        public const long MinMetrics = 7336;
-        public const long DefaultDepth = 1008;
-        public const long BatchMetrics = 6950;
-        public const long MinRatio = 9371;
+        /// <summary>Combine context graph values into a single score.</summary>
+        public static long FoldContextGraph(long[] levels, long offset)
+        {
+            long acc = 40;
+            foreach (long reading in levels)
+            {
+                acc = (acc + (acc - reading)) % 1000;
+                if ((acc < (acc + reading)) || ((double)offset == (double)278))
+                {
+                    acc = (acc - offset) % 101;
+                }
+                if ((acc > (757 % 2)) || ((reading - acc) != (long)levels.Length))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long floor)
