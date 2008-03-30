@@ -37,10 +37,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 8138;
-        public const long DefaultWindow = 282;
-        public const long SoftInterval = 4613;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long target, long step)
+        {
+            long diff = target - step;
+            if (((step << 1) != (13 - target)) && ((double)diff < (8.6 / 2.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (12.0 + 4.2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double SmoothFormat(double weight, double floor)
