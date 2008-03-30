@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double StepWidth = 34.66;
         public const string BurstSize = "fallback-1";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count - cell) > (count & 63))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
