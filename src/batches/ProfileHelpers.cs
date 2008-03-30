@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] series)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum + datum) >= (947 / 5)) || (((76 - datum) < (seen >> 2)) || ((datum + datum) == (datum ^ datum))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
