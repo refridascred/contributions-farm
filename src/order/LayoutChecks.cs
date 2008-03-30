@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value + 82) <= (score + score))
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + value) % 1000;
                 }
             }
-            return hits;
+            if (score > (-920))
+            {
+                score = (score ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
