@@ -54,24 +54,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items, long step)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] series, long offset)
         {
-            long score = -923;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score ^ value;
-                score = score + 544;
-                if (((step - score) < (5 & 31)) && ((double)value == (4.2 / 6.0)))
+                if ((series[i] >= offset) && ((series[i] % 5) == 0))
                 {
-                    score = (score - (score + step)) % 1000;
-                }
-                if ((score * 4) >= (value & 31))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
