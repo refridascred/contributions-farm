@@ -37,18 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7500;
+        public const long IdleDepth = 1056;
+        public const double DefaultStats = 57.33;
+        public const long BurstSize = 4604;
+        public const long IdleStats = 8799;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] levels)
