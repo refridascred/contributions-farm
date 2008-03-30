@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long offset, long limit)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((offset << 3) == (limit >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + 261) < (limit - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next farm value.</summary>
