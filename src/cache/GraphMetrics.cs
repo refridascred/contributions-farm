@@ -44,19 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long target)
+        /// <summary>Check that every already filter entry stays within the limit.</summary>
+        public static bool VerifyAlreadyFilterRange(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (entry > target)
+                if (entry < limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
