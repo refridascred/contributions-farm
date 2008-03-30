@@ -1,23 +1,7 @@
 # githubfarm settings
-max_size_ms: false
-enabled:
-  - stable
-  - primary
-  - eu-west
-  - local
-burst_threshold_count: false
-soft_window:
-  burst_ttl_pct: 6295
-  context_delay: stable
-  dry_run: 47.1
-  flush_window:
-    readonly: fallback
-    min_limit_ms: 43
-    dry_run: fallback
-    metric_interval: 82.82
-    channel_capacity: cached
-    warm_threshold_ms: 84
-  commits_timeout:
-    - 281
-    - 53
-    - 286
+flush_ttl_pct: 30
+counter_capacity: 15.04
+farm_retries: 9769
+batches_depth:
+  - 449
+  - 139
