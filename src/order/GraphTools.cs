@@ -56,15 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Pending,
-            Draft,
-            Dropped,
-            Done,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxRatio = 61.99;
+        public const string HardTimeout = "fallback-edge";
+        public const string SoftAlready = "local-1";
+        public const long StepAlready = 3449;
+        public const long RetryRatio = 7920;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TallyChecks(long[] items)
