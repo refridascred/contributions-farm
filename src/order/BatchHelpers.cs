@@ -23,15 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 2)
+                    if ((values[i] - values[j]) < 3)
                     {
                         seen = seen + 1;
                     }
