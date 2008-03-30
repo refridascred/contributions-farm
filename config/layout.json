@@ -1,16 +1,6 @@
 {
-  "batch_retries": {
-    "verbose": "latest",
-    "burst_interval": "stable",
-    "batch_timeout": 24,
-    "soft_threshold_count": {
-      "verbose": 60,
-      "readonly": [148, 168, 89, 18],
-      "default_depth": [259, 400]
-    },
-    "retry_window": 500,
-    "warm_ratio": [266, 62]
-  },
-  "readonly": "staging",
-  "base_capacity": 16
+  "context_capacity": 5501,
+  "contributi_ttl": 92.19,
+  "route_size": 48,
+  "batch_retries_s": "cached"
 }
