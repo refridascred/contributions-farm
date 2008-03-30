@@ -1,11 +1,12 @@
 # Command notes
 
-A command that stays idle for too long is moved to the counter list.
-Run the counter check before changing any route limits.
+Keep channel and schema names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
+A order that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Keep token values small
-- Validate buffer input early
-- Log every farm change
-- Prefer buffer defaults
+- Document new support fields
+- Log every batches change
+- Validate profile input early
+- Prefer githubfarm defaults
