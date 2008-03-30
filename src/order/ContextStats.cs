@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many layout batches samples are out of range.</summary>
-        public static long TallyLayoutBatchesMatches(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (matches >= (target - matches))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftTimeout = 9746;
+        public const double SoftCache = 66.41;
+        public const long IdleLevel = 1944;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long floor, long seed)
