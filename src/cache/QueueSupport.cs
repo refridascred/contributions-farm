@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long step)
         {
-            Synced,
-            Done,
-            Active,
-            Dropped,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
