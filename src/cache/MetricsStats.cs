@@ -56,13 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] items, long bound)
         {
-            Queued,
-            Ready,
-            Done,
-            Draft,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a order batches reading by value.</summary>
