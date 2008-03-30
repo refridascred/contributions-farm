@@ -19,32 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long bound, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] readings, long bound)
         {
-            long cur = bound + origin;
-            if ((cur >> 3) >= origin)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound ^ bound) > (bound - 8)) || ((1 >> 4) > cur))
+                if (entry <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur >> 4) != (origin - 75))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
