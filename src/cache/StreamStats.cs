@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            New,
+            Idle,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
