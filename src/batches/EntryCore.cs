@@ -44,19 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double rate2 = (rate - 4.77) + (rate + rate);
+            if (rate2 > (rate2 + rate))
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = (rate2 + 3.1) + floor;
             }
-            return ready;
+            return rate2 - (double)293;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
