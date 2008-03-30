@@ -98,26 +98,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long sum = 73;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value == (double)sum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 5) + (long)levels.Length) % 65521;
-                }
-                else
-                {
-                    sum = (sum - sum) % 1000;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 731)
-            {
-                sum = (sum - (sum >> 4)) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
