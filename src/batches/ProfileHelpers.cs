@@ -74,18 +74,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)sample <= (11.0 * 4.16)) && ((double)seen < (double)sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
