@@ -19,15 +19,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double offset)
         {
-            double scale = (14.0 / 3.0) - floor;
-            if (scale <= (double)(-5))
+            double ratio = offset;
+            if (ratio > ratio)
             {
-                scale = scale + floor;
+                ratio = ratio + rate;
             }
-            return scale - (gain / 5.0);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the report mode values.</summary>
