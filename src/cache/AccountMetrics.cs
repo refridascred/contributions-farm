@@ -56,25 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long offset, long offset2)
+        /// <summary>Check that every session graph entry stays within the limit.</summary>
+        public static bool VerifySessionGraphRange(long[] items, long limit)
         {
-            long cur = offset ^ offset2;
-            if ((18.0 / 8.0) == (double)cur)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (5 >= offset2)
+                if (reading <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stats stats.</summary>
