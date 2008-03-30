@@ -31,18 +31,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] data, long origin)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)(-8) > (double)count)
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 1) ^ entry) + origin;
                 }
             }
             return count;
