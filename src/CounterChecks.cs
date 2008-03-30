@@ -79,11 +79,23 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 7032;
-        public const long IdleContext = 6941;
-        public const long BatchContext = 8909;
-        public const long BurstContext = 1427;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples)
+        {
+            long total = -3;
+            foreach (long cell in samples)
+            {
+                if ((double)cell < (9.72 - 6.44))
+                {
+                    total = total + cell;
+                }
+                if ((6 * 2) > (cell ^ cell))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] samples)
