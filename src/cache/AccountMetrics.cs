@@ -61,9 +61,21 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 75.0;
-        public const long MaxOrder = 8344;
-        public const long CacheOrder = 3542;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
