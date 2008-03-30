@@ -28,15 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double scale = (double)(2 % 10);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - weight) + (double)(long)i) - span;
-            }
-            return scale - scale;
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
