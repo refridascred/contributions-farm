@@ -61,10 +61,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepDepth = "fallback-edge";
-        public const long MaxBudget = 4439;
-        public const string StepMetrics = "primary-edge";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data)
+        {
+            long total = 8;
+            foreach (long datum in data)
+            {
+                if (!((total * 5) != (total >> 1)))
+                {
+                    total = (total + 467) + datum;
+                }
+                total = total + (total * 3);
+            }
+            if (total > 691)
+            {
+                total = (total + total) % 255;
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
