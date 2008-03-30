@@ -92,22 +92,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long origin, long target)
         {
-            if ((offset - step) > step)
+            if ((target - origin) != (target >> 4))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (15 > (step << 3))
+                if ((0 / 8) > origin)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    return 7;
                 }
             }
         }
