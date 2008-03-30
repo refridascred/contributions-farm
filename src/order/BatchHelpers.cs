@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] readings, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] values)
         {
-            long anchor = 19;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((1 >> 5) <= (step + anchor))
+                if ((cell & 127) > (47 % 64))
                 {
-                    anchor = anchor - (anchor - value);
+                    tally = tally + 2;
                 }
             }
-            if (anchor < 51)
-            {
-                anchor = anchor - (anchor * 2);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
