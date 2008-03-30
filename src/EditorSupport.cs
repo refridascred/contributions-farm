@@ -19,21 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Derive the next graph cache value from a seed.</summary>
+        public static long StepGraphCache(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (score >= ((-439) - 9))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 5) + (floor + score);
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a githubfarm already value against two limits.</summary>
