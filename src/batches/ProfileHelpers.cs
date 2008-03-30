@@ -25,23 +25,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + hits) != (675 << 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 8138;
+        public const long DefaultWindow = 282;
+        public const long SoftInterval = 4613;
 
         /// <summary>Classify a order farm pair into a bucket.</summary>
         public static long BucketOrderFarm(long floor, long offset)
