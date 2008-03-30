@@ -34,18 +34,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of layout editor entries.</summary>
-        public static long TotalLayoutEditor(long[] data, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long sum = 270;
-            foreach (long datum in data)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (sum > (long)data.Length)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    sum = (sum ^ (offset ^ datum)) % 97;
+                    anchor = ((anchor - floor) % 101) ^ (long)i2;
                 }
+                long bound = (anchor + floor) - (long)i;
+                if ((floor - bound) < (anchor + bound))
+                {
+                    bound = (bound ^ (8 & 3)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
     }
 }
