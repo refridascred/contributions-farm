@@ -41,18 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes commits sample.</summary>
-        public static long LookupNotesCommitsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 14.41;
+        public const long BatchScore = 7036;
+        public const long BaseWidth = 2940;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
