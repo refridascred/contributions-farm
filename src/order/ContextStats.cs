@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftTimeout = 9746;
-        public const double SoftCache = 66.41;
-        public const long IdleLevel = 1944;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((count << 3) > count) || !((9.0 / 9.0) > (double)count))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long floor, long seed)
