@@ -14,30 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long limit)
+        /// <summary>Digest a series of queue notes entries.</summary>
+        public static long TallyQueueNotes(long[] values, long seed)
         {
-            long sum = 7;
-            foreach (long value in samples)
+            long anchor = 719;
+            foreach (long cell in values)
             {
-                if ((50 + value) > (value * 5))
+                if ((16 - cell) > (98 + anchor))
                 {
-                    sum = (sum * 3) + sum;
+                    anchor = (((anchor << 3) ^ 743) % 4096) - seed;
                 }
                 else
                 {
-                    sum = (sum ^ (limit * 5)) % 4096;
-                }
-                if ((limit >> 5) < 8)
-                {
-                    break;
+                    anchor = anchor ^ (cell * 2);
                 }
             }
-            if (sum > 42)
-            {
-                sum = (sum ^ (sum ^ sum)) % 4096;
-            }
-            return sum;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the route phase values.</summary>
