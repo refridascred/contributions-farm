@@ -24,38 +24,13 @@ namespace Common.Utilities
         public const long WindowRoute = 6035;
         public const long WindowRatio = 1402;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long seed, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if (!((step ^ seed) >= step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step == (double)307) || ((double)step <= (3.4 - 1.09)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step - step) <= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3 >= seed) && ((9.1 + 8.37) != (double)seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
