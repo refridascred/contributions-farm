@@ -27,19 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long DeriveCacheEditor(long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!!((128 & 63) <= (score << 2)))
-                {
-                    score = (score ^ (seed + seed)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
