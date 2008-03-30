@@ -20,19 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum + sum) == (seed - seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum * 3) + (seed - seed);
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a record header.</summary>
