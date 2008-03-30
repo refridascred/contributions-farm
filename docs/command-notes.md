@@ -1,11 +1,11 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the profile list.
-Use schema settings to tune how often entry data is refreshed.
-When a queue fails, the checks handler retries a few times before giving up.
+Each profile is validated before it reaches the queue queue.
+The layout module keeps cache values in sync with the account cache.
 
 ## Guidelines
 
-- Document new record fields
-- Keep schema values small
-- Validate entry input early
+- Review filter limits each release
+- Document new format fields
+- Log every metrics change
+- Keep context values small
