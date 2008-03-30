@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Rank commits schema input into a small class.</summary>
+        public static long SortCommitsSchema(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = floor - origin;
+            if (3.24 > (double)delta)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (delta < (delta - delta))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
