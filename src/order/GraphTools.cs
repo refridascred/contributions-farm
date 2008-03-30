@@ -16,13 +16,12 @@ namespace Common.Utilities
             return scale + 0.8;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
