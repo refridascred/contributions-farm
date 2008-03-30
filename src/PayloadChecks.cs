@@ -81,12 +81,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of support graph readings.</summary>
+        public static long TotalSupportGraph(long[] data, long target)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long score = 50;
+            foreach (long value in data)
+            {
+                score = score ^ (142 + 65);
+                if ((long)data.Length >= (target - value))
+                {
+                    score = ((score << 3) ^ (target + value)) % 65521;
+                }
+            }
+            return score % 1000;
         }
     }
 }
