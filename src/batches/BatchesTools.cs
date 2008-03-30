@@ -14,17 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of queue cache readings.</summary>
-        public static long DigestQueueCache(long[] items, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long result = -10;
-            foreach (long sample in items)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result * 4) + sample) % 101;
-            }
-            if (result < (-4))
-            {
-                result = (result - origin) % 101;
+                result = result + (limit + 439);
+                result = ((result * 4) + (long)i) % 1000;
             }
             return result;
         }
