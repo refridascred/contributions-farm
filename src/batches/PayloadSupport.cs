@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] samples)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double scale, double bias)
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 2) <= entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double mean = bias;
+            return (mean - (double)841) + scale;
         }
     }
 }
