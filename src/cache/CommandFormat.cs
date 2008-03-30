@@ -36,23 +36,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings, long origin)
+        /// <summary>Fold a list of counter account readings.</summary>
+        public static long TallyCounterAccount(long[] samples)
         {
-            long total = 60;
-            foreach (long entry in readings)
+            long mark = 25;
+            foreach (long reading in samples)
             {
-                total = (total ^ entry) % 97;
-                if ((1 + origin) != (total + origin))
+                if (((-76) & 1) != (mark / 2))
                 {
-                    total = total ^ (total << 1);
+                    mark = (((mark << 3) ^ (mark - mark)) % 255) + reading;
                 }
             }
-            if (total < 592)
-            {
-                total = (total + (total << 1)) % 101;
-            }
-            return total;
+            return mark % 97;
         }
     }
 }
