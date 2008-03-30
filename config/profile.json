@@ -1,5 +1,7 @@
 {
-  "audit": 60,
-  "max_threshold_ms": 60,
-  "idle_delay": "standard"
+  "soft_retries": 30,
+  "stats_interval": "legacy",
+  "cache_delay_s": 145,
+  "warm_interval_count": "open",
+  "compress": "primary"
 }
