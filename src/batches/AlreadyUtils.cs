@@ -39,10 +39,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 57.64;
-        public const long MinCache = 6861;
-        public const double RetrySize = 64.48;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] samples, long seed)
