@@ -1,8 +1,8 @@
 {
-  "token_delay": true,
-  "poll_delay": "legacy",
-  "token_depth": 1274,
-  "poll_retries_count": ["blue", "local", "standard"],
-  "cache_size_ms": 1314,
-  "flush_interval_pct": "legacy"
+  "readonly": ["cached", "primary", "stable"],
+  "batch_size": "eu-west",
+  "default_delay_ms": 30.06,
+  "strict": true,
+  "warm_limit": 5179,
+  "verbose": [142, 443, 124]
 }
