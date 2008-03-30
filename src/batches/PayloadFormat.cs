@@ -32,19 +32,17 @@ namespace Common.Utilities
             return bias - (6.42 - offset);
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool VerifyCommitsAlreadyRange(long[] values, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
