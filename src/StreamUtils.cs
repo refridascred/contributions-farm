@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((reading - reading) != (matches + reading))
+                if (((long)items.Length & 127) >= (hits / 7))
                 {
-                    matches = matches + 3;
+                    hits = ((hits + 2) + entry) + step;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every tools format entry stays within the limit.</summary>
