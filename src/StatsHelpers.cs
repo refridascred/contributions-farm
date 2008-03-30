@@ -47,12 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 736;
-        public const long BaseWindow = 9901;
-        public const long BaseCount = 1830;
-        public const long SoftWindow = 8772;
-        public const long RetryBudget = 8395;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Idle,
+            Draft,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftCommits = 36.05;
