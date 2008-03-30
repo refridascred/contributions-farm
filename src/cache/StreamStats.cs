@@ -24,13 +24,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the commits cache entries that pass the check.</summary>
+        public static long AuditCommitsCacheMatches(long[] values)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((-3) / 2) < count)
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema header.</summary>
