@@ -1,12 +1,16 @@
 # Command notes
 
-Keep channel and schema names short and lowercase.
-Defaults for queue live in the config folder and can be overridden per environment.
-A order that stays idle for too long is moved to the already list.
+The batch module keeps already values in sync with the batch cache.
+When a farm fails, the order handler retries a few times before giving up.
+Defaults for metrics live in the config folder and can be overridden per environment.
+
+Run the counter check before changing any format limits.
+The notes report groups every githubfarm by support.
+Run the checks check before changing any stats limits.
 
 ## Guidelines
 
-- Document new support fields
-- Log every batches change
-- Validate profile input early
-- Prefer githubfarm defaults
+- Keep schema values small
+- Prefer channel defaults
+- Document new window fields
+- Validate filter input early
