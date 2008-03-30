@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine session cluster values into a single score.</summary>
-        public static long DigestSessionCluster(long[] levels)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long anchor = 83;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.04 * 9.11) == (double)datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
