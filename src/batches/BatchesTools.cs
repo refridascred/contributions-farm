@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] values, long target)
         {
-            long score = 2;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (score > (score << 3))
+                if (reading >= target)
                 {
-                    score = ((score - (score >> 2)) % 1000) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
