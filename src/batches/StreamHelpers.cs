@@ -30,15 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            long mark = 5;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark ^ (item / 3)) % 1000) - target;
+                if ((reading - reading) >= (hits << 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
