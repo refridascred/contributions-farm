@@ -84,11 +84,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double floor)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            double load = floor + (double)8;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load + (floor + gain);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
