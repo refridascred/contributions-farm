@@ -1,10 +1,35 @@
 # support settings
-dry_run: true
-window_depth: 7762
-githubfarm_retries: true
-warm_ratio_s:
-  - green
-  - standard
-  - cached
-  - green
-editor_retries: cached
+hard_interval:
+  cache_depth_pct: stable
+  cluster_ratio: true
+  support_delay: 3793
+  default_ratio_count:
+    - 469
+    - 360
+burst_ratio_ms:
+  - 100
+  - 232
+compress: green
+cache_size_pct:
+  support_capacity: eu-west
+  default_window: 63.1
+  route_delay:
+    sync_limit_s: true
+    route_limit:
+      - edge
+      - cached
+    persist: 14.21
+    channel_limit: green
+  soft_size:
+    - fallback
+    - eu-west
+    - edge
+    - stable
+  filter_depth: 42.44
+  default_depth:
+    - 17
+    - 376
+    - 332
+    - 341
+retry_delay: 334
+max_limit_ms: 5892
