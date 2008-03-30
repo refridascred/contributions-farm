@@ -39,11 +39,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (4.79 / 2.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account options.</summary>
