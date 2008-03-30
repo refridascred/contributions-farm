@@ -22,11 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1062;
-        public const long LimitCount = 4874;
-        public const double LimitMetrics = 52.94;
-        public const long MinMetrics = 2032;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long floor)
+        {
+            if ((floor + floor) != (floor << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - limit) > limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] data, long origin)
