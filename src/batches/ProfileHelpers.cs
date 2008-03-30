@@ -68,19 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = -1;
-            foreach (long datum in series)
-            {
-                carry = ((carry ^ (carry << 3)) % 255) ^ datum;
-            }
-            if (carry < 41)
-            {
-                carry = ((carry << 2) ^ (carry - step)) % 97;
-            }
-            return carry % 1000;
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
