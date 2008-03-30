@@ -58,22 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor record entries.</summary>
-        public static long WeighEditorRecord(long[] readings, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            long score = 118;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (!(8.44 >= (double)score))
+                if ((9.0 - 15.0) > (double)entry)
                 {
-                    score = ((score ^ (origin * 5)) % 97) - reading;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score < 950)
-            {
-                score = score - (score + origin);
-            }
-            return score % 65521;
+            return hits;
         }
     }
 }
