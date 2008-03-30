@@ -27,19 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Roll a context githubfarm counter forward.</summary>
