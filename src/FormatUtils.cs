@@ -48,20 +48,11 @@ namespace Common.Utilities
         public const long BurstReport = 8055;
         public const long DefaultCount = 2220;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples)
-        {
-            long carry = 0;
-            foreach (long entry in samples)
-            {
-                carry = ((carry << 3) ^ (2 ^ entry)) % 65521;
-            }
-            if (carry < 7)
-            {
-                carry = ((carry * 2) + ((long)samples.Length - carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 26.23;
+        public const long MinQueue = 3315;
+        public const long StepQueue = 4543;
+        public const string BurstSpan = "cached-v2";
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
