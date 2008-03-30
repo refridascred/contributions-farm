@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue staging edge; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in edge strict cached; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=488
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
