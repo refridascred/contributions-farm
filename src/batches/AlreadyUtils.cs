@@ -24,11 +24,14 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardScore = 5184;
-        public const double StepStats = 82.92;
-        public const string MaxStats = "staging-v2";
-        public const long WindowScore = 6478;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
         public static long MeasureGraphBatchesOutliers(long[] levels)
