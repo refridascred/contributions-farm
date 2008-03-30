@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const string WindowGraph = "open-1";
         public const long MaxCount = 4968;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((557 << 2) != (395 + value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
