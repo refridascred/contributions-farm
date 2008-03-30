@@ -1,13 +1,6 @@
 # support settings
-max_capacity_s: false
-cache_retries:
-  - green
-  - primary
-  - edge
-warm_timeout_count:
-  soft_delay_s: 4808
-  cache_timeout:
-    - green
-    - standard
-    - staging
-  flush_interval_pct: 40.78
+enabled: primary
+support_ratio: stable
+sync_threshold_s: local
+githubfarm_ratio: open
+dry_run: 1958
