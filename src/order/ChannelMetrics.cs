@@ -27,12 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a batch batches reading by value.</summary>
-        public static long LookupBatchBatchesIndex(long[] series, long step)
+        /// <summary>Find the first payload checks entry that matches the target.</summary>
+        public static long FindPayloadChecksIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > step)
+                if (readings[i] == limit)
                 {
                     return (long)i;
                 }
