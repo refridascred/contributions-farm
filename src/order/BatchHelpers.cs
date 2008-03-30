@@ -23,18 +23,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long seed, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (seed > (seed + 6))
             {
-                if (((item % 5) <= (seen >> 3)) || ((double)item != (4.0 + 19.0)))
+                return 7;
+            }
+            else
+            {
+                if ((136 + 495) != (step / 2))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
