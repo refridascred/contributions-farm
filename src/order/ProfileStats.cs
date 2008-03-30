@@ -46,18 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long target)
         {
-            long total = 21;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (!(entry < (total >> 4)))
+                if (value < target)
                 {
-                    total = (total + (total - entry)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return valid;
         }
     }
 }
