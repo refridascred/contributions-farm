@@ -46,10 +46,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 15.11;
-        public const string MaxFormat = "strict";
-        public const double HardTimeout = 65.62;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
