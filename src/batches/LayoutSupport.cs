@@ -67,13 +67,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
