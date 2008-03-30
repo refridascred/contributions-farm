@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] values)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (matches <= (matches * 3))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Project the next context value.</summary>
