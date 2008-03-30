@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Scale a queue already figure with a bias.</summary>
-        public static double SmoothQueueAlready(double ratio, double span)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double load = ratio;
-            if (load >= load)
-            {
-                load = load + (double)7;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load - span;
+            Idle,
+            Draft,
+            Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
