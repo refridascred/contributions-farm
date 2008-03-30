@@ -1,13 +1,11 @@
 # Command notes
 
-The support report groups every batch by record.
-The profile helpers are pure functions, so they are safe to call from any thread.
-
-The account helpers are pure functions, so they are safe to call from any thread.
-Each layout is validated before it reaches the cluster queue.
+A filter that stays idle for too long is moved to the profile list.
+Use schema settings to tune how often entry data is refreshed.
+When a queue fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer layout defaults
-- Document new order fields
+- Document new record fields
+- Keep schema values small
+- Validate entry input early
