@@ -1,4 +1,23 @@
 # support settings
-batch_window_count: 13.53
-enabled: 55.92
-soft_delay_ms: true
+batch_threshold:
+  - 120
+  - 61
+  - 85
+idle_delay: 1024
+hard_retries_pct:
+  cache_timeout:
+    strict:
+      - 136
+      - 294
+      - 447
+    hard_threshold_count: 60
+    dry_run: 29
+    min_retries_s: legacy
+    default_depth_pct: primary
+  audit: blue
+  default_size_pct: green
+entry_timeout: 500
+strict:
+  - latest
+  - fallback
+default_interval_pct: false
