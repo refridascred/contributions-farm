@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches notes reading.</summary>
-        public static double ScaleBatchesNotes(double bias, double floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double scale = (double)(-4) + 5.7;
-            if (scale >= floor)
-            {
-                scale = scale + (floor + bias);
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - 7.5;
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of checks buffer entries.</summary>
