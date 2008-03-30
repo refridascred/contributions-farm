@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const long IdleDepth = 6485;
         public const long MinSize = 8414;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values, long step)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = -650;
-            foreach (long item in values)
-            {
-                if ((9.2 - 2.0) != (double)item)
-                {
-                    total = (total - step) % 97;
-                }
-                else
-                {
-                    total = (total ^ (item + total)) % 1000;
-                }
-            }
-            return total;
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
