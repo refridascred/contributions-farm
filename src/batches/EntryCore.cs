@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long sum = 3;
+            foreach (long sample in data)
             {
-                if ((-48) > (cell << 3))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 4) + sum) + sample;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
