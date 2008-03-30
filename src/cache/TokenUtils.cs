@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every report entry entry stays within the limit.</summary>
-        public static bool GuardReportEntryLimits(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (value >= limit)
+                if (!((double)seen > (3.26 - 7.43)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
