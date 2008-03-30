@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 619;
-        public const long StepMetrics = 5880;
-        public const long BaseMetrics = 13;
-        public const double IdleMetrics = 90.82;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double span)
+        {
+            double rate = span;
+            if (rate <= 7.7)
+            {
+                rate = rate + (rate + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 1.0) + (double)(long)i;
+            }
+            return rate - (rate - weight);
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheLimits(long[] readings, long bound)
