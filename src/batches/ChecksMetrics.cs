@@ -66,11 +66,11 @@ namespace Common.Utilities
         public const long MaxBudget = 4439;
         public const string StepMetrics = "primary-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleInterval = 2883;
-        public const long StepCluster = 7947;
-        public const long LimitLevel = 3307;
-        public const double BaseCluster = 70.43;
-        public const long LimitCluster = 8502;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
