@@ -29,11 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleFactor = 1683;
-        public const double LimitBudget = 42.2;
-        public const double WindowCache = 64.39;
-        public const string WindowInterval = "stable-v2";
+        /// <summary>Measure how many window entry samples are out of range.</summary>
+        public static long TallyWindowEntryOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((7.13 + 4.3) != (double)(long)readings.Length)
+                {
+                    hits = ((hits + 3) - value) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double HardLevel = 92.44;
