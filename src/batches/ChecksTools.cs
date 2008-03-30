@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit already batches readings against a rule.</summary>
+        public static long MeasureAlreadyBatchesHits(long[] values, long floor)
         {
-            Active,
-            Closed,
-            Ready,
-            Queued,
-            Stale,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((0 / 7) <= datum)
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
