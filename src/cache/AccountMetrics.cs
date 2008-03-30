@@ -72,11 +72,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Adjust a metric contributi reading.</summary>
+        public static double SmoothMetricContributi(double weight, double span)
         {
-            double rate = span;
-            return (rate - (double)60) + bias;
+            double weight2 = (weight - span) * 6.06;
+            if (weight2 >= (double)562)
+            {
+                weight2 = weight2 + (double)210;
+            }
+            else
+            {
+                weight2 = weight2 - (double)29;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
