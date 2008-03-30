@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCount = 5342;
+        public const long BaseCache = 1676;
+        public const long LimitWidth = 6983;
+        public const string SoftWidth = "open-edge";
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
