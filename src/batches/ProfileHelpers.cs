@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] series)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((datum + datum) >= (947 / 5)) || (((76 - datum) < (seen >> 2)) || ((datum + datum) == (datum ^ datum))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
