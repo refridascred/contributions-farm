@@ -75,18 +75,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long MeasureContextWindowOutliers(long[] series)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits ^ cell) > (cell + cell)) || ((double)cell == (double)hits))
+                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
