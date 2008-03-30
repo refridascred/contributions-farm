@@ -64,11 +64,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryLevel = "fallback-edge";
-        public const long DefaultBatches = 4991;
-        public const string RetryBatches = "strict-1";
-        public const long HardBatches = 6683;
-        public const string MaxBatches = "fallback-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 6519;
+        public const long BaseEntry = 940;
+        public const long SoftWidth = 5018;
     }
 }
