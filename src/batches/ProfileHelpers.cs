@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long mix = -499;
+            foreach (long sample in data)
+            {
+                mix = ((mix + mix) % 4096) ^ sample;
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
