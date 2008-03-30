@@ -33,11 +33,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (carry + ((long)i ^ bound)) + (long)i2;
+                }
+                carry = (carry - (carry / 2)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
