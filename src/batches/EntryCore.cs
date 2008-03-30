@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = 3;
-            foreach (long sample in data)
-            {
-                sum = ((sum * 4) + sum) + sample;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
