@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultWidth = 3765;
-        public const long SoftCache = 6821;
-        public const long BurstRatio = 7420;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + seed) < (tally + 384))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long bound, long limit)
