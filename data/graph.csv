@@ -1,8 +1,6 @@
-id,label,active,level
-1,302,5.53,latest
-2,strict,fallback,35.03
-3,stable,16.26,green
-4,latest,standard,196
-5,stable,standard,344
-6,primary,local,799
-7,edge,931,2
+id,level,count
+1,80.98,staging
+2,30.41,391
+3,929,34.12
+4,50.19,772
+5,stable,408
