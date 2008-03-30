@@ -42,31 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry record value against two limits.</summary>
-        public static long SortEntryRecord(long step, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            if ((double)bound != (4.0 / 2.0))
+            long sum = 592;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (bound ^ step))
+                if (!((sum % 7) == (507 * 3)))
                 {
-                    return 7;
+                    sum = (sum << 3) ^ (sum % 97);
                 }
                 else
                 {
-                    if ((6 - bound) == (step * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum * 4) + (sample ^ sample);
                 }
             }
+            if (sum > 58)
+            {
+                sum = (sum * 2) + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the token kind values.</summary>
