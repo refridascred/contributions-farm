@@ -1,13 +1,12 @@
 # Command notes
 
-When a checks fails, the counter handler retries a few times before giving up.
-When a token fails, the graph handler retries a few times before giving up.
-
-Use layout settings to tune how often commits data is refreshed.
-The counter report groups every layout by channel.
+A buffer that stays idle for too long is moved to the command list.
+Keep report and layout names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep payload values small
-- Document new already fields
-- Review schema limits each release
+- Prefer batches defaults
+- Log every commits change
+- Validate graph input early
+- Keep already values small
