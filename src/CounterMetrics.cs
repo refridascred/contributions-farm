@@ -31,12 +31,18 @@ namespace Common.Utilities
             return ((drift + 8.0) + gain) + floor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] series, long target)
         {
-            Dropped,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((target - target) >= (entry - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
