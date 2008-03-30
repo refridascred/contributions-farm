@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double gain, double span)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double gain2 = (span + gain) + span;
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - 9.0) + (double)(long)i;
-            }
-            return gain2 - (span * 7.39);
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
