@@ -20,18 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] items, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)step < (1.61 * 3.4))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Accumulate context samples.</summary>
