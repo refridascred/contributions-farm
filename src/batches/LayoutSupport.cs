@@ -45,20 +45,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long origin)
         {
-            long mark = 171;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                mark = (mark + (sample - origin)) % 101;
-                mark = mark - (sample - (-14));
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mark < 9)
-            {
-                mark = ((mark * 4) + mark) % 97;
-            }
-            return mark % 65521;
+            return flag;
         }
 
         /// <summary>Describe the queue phase values.</summary>
