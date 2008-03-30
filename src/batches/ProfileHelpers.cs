@@ -58,21 +58,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            double mean = scale - scale;
+            for (int i = 0; i < 7; i++)
             {
-                double bias = (double)origin + (double)21;
-                if ((7.0 + 3.79) > (bias - bias))
-                {
-                    state = state - 723;
-                    state = (state << 2) ^ ((long)i << 1);
-                }
-                state = ((state * 2) + (long)i) % 101;
+                mean = ((mean - scale) + (double)(long)i) + floor;
             }
-            return state;
+            return mean + (scale + mean);
         }
     }
 }
