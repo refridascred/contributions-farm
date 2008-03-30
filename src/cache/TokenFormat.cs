@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheWidth = 2442;
         public const double BaseBatch = 58.49;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (sample >= step)
+                if ((((matches / 6) <= target) && (6.8 >= (double)sample)) || ((matches >> 1) < (target << 3)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate editor already readings against a bound.</summary>
