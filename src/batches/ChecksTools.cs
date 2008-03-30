@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxBudget = 3085;
+        public const string LimitLevel = "stable-edge";
+        public const long LimitContributi = 9775;
+        public const string StepContributi = "stable-1";
+        public const long StepBudget = 4741;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
