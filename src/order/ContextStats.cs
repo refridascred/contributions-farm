@@ -35,15 +35,18 @@ namespace Common.Utilities
         public const long MinDepth = 34;
         public const double HardScore = 24.86;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long state = 0;
-            foreach (long datum in samples)
+            long score = 4;
+            foreach (long value in levels)
             {
-                state = ((state ^ (state / 3)) ^ datum) + step;
+                if (!((-7) < (value + (-648))))
+                {
+                    score = (score * 5) + (score + 4);
+                }
             }
-            return state % 4096;
+            return score % 1000;
         }
     }
 }
