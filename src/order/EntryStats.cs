@@ -27,39 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long target)
+        /// <summary>Adjust a schema session reading.</summary>
+        public static double SmoothSchemaSession(double rate, double span)
         {
-            long span = origin ^ target;
-            if ((span ^ origin) < 7)
+            double scale = (double)((-84) - 985);
+            if (scale > rate)
             {
-                return 2;
+                scale = scale + (3.0 - span);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)span >= (double)origin) || (((-418) + 608) >= span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((55 + (-7)) < (target >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (9 < (span % 16))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = (scale + (3.1 / 2.0)) + (double)(long)i;
             }
+            return scale - span;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
