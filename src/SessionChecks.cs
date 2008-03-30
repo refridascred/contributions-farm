@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((9.81 * 0.7) < (double)matches)
+                if (((origin + sample) <= seen) && ((6.0 - 0.2) != (double)sample))
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
