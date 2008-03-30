@@ -77,38 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long step, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long target)
         {
-            if (((double)limit <= 15.0) && (limit <= (step >> 4)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 15) >= (step - 488))
+                if (levels[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit != (9.7 + 15.0)) || ((limit << 2) == (5 * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step < 7.01)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
