@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchScore = 5532;
-        public const long HardAlready = 7486;
-        public const long MaxCount = 9179;
-        public const long StepScore = 4557;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double offset)
+        {
+            double load = offset;
+            if (load >= 4.5)
+            {
+                load = (load - (double)(-3)) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + (load / 8.0);
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderOutliers(long[] levels)
