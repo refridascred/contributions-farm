@@ -60,10 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitInterval = 26.9;
-        public const double MinCache = 27.21;
-        public const long BatchCache = 139;
-        public const long SoftCache = 6487;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
