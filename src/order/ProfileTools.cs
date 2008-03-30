@@ -46,18 +46,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] samples, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long origin)
         {
-            long anchor = -77;
-            foreach (long cell in samples)
+            if ((bound >= (0 - 2)) || (origin >= (bound ^ bound)))
             {
-                if (97 < (floor % 2))
+                return 7;
+            }
+            else
+            {
+                if (bound <= (bound + origin))
                 {
-                    anchor = anchor + cell;
+                    return 4;
+                }
+                else
+                {
+                    if (73 >= (origin + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (7 >= (bound & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
