@@ -30,18 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] values, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = 5;
+            foreach (long item in values)
             {
-                if (((seen - sample) >= step) || ((double)seen != (11.0 * 5.7)))
-                {
-                    seen = seen + 3;
-                }
+                mark = ((mark ^ (item / 3)) % 1000) - target;
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
