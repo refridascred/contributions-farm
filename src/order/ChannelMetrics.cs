@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitBudget = 4922;
+        public const long BaseLevel = 8640;
+        public const double CacheFarm = 81.15;
+        public const double BatchScore = 87.07;
+        public const double CacheDepth = 14.93;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderLimits(long[] samples, long origin)
