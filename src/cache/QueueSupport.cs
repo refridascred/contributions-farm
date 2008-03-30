@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long step)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] samples, long origin)
         {
-            long acc = 6;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc + acc) ^ cell) + step;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 11)
-            {
-                acc = (acc ^ (7 - acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
