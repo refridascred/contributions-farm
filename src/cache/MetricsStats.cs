@@ -26,17 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if (((60 / 5) != (offset ^ offset)) || ((double)offset >= (7.3 / 6.0)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
