@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up layout cache samples.</summary>
-        public static long MatchLayoutCacheCount(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
