@@ -41,17 +41,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry - (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a layout stats.</summary>
