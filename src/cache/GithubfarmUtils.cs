@@ -25,21 +25,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -2;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((mark / 4) != (cell % 97)) || ((double)cell >= (9.42 + 15.0)))
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark - (cell + 79)) % 4096) - floor;
                 }
             }
-            return count;
+            if (mark < (-8))
+            {
+                mark = ((mark * 3) + 622) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batch samples.</summary>
