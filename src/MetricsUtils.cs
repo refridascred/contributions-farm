@@ -36,23 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
-        {
-            long anchor = 51;
-            foreach (long item in data)
-            {
-                if (((item + item) > (85 + 4)) || ((728 / 6) == (long)data.Length))
-                {
-                    anchor = anchor + (anchor * 3);
-                }
-                if (anchor <= item)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 65;
+        public const long DefaultBatches = 2788;
+        public const long HardBatches = 8900;
+        public const double BurstCount = 20.28;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] items)
