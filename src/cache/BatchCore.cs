@@ -50,18 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long MeasureNotesToolsGaps(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((16.0 / 5.0) == (double)hits) && (((4.6 + 2.04) > (double)(long)readings.Length) || ((double)hits < (4.73 / 2.0))))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Ready,
+            Paused,
         }
     }
 }
