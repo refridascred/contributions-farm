@@ -41,19 +41,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (sample < 32)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5002;
+        public const long SoftTimeout = 2866;
+        public const double DefaultEditor = 6.41;
+        public const long RetryEditor = 9178;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
