@@ -1,11 +1,5 @@
 {
-  "session_limit": 5359,
-  "flush_threshold_count": "standard",
-  "burst_capacity_s": {
-    "cache_threshold": "eu-west",
-    "idle_threshold_s": ["strict", "legacy", "legacy"],
-    "channel_depth": 18.22,
-    "base_delay_count": 68.27
-  },
-  "warm_ttl": true
+  "context_timeout": 5959,
+  "stream_timeout": true,
+  "sync_delay_pct": "fallback"
 }
