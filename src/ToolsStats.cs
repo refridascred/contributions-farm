@@ -25,15 +25,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two batch account measurements.</summary>
-        public static double BlendBatchAccount(double gain, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double weight = gain;
-            if (weight < (double)223)
-            {
-                weight = (weight - (double)577) - floor;
-            }
-            return weight - (weight - gain);
+            Draft,
+            New,
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
