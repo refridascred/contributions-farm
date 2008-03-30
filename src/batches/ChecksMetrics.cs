@@ -50,19 +50,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long bound, long limit)
         {
-            double ratio = (5.2 / 4.0) + rate;
-            if (ratio < (offset * 13.0))
+            long span = bound - limit;
+            if ((98 / 2) == (span << 1))
             {
-                ratio = ratio - (ratio - 6.0);
+                return 6;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + rate) + (double)(long)i;
+                if ((bound + 515) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + rate;
         }
 
         /// <summary>Match up buffer report samples.</summary>
