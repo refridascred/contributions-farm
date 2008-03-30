@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up farm counter samples.</summary>
-        public static long MatchFarmCounterCount(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches - cell) <= target)
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
