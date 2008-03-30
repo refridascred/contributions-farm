@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a queue payload counter forward.</summary>
-        public static long IterateQueuePayload(long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = carry + ((long)i + step);
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
