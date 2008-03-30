@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] values, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long step, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (((bound + step) >= (37 + 40)) && ((double)step == (6.0 - 9.9)))
             {
-                if ((2.83 * 6.54) > (double)tally)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= (6.32 * 0.9))
                 {
-                    tally = ((tally + 2) ^ reading) + step;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command phase values.</summary>
