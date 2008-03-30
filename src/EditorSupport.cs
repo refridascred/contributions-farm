@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double ScaleReportAccount(double rate, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels)
         {
-            double rate2 = 2.0;
-            return (rate2 - (floor + floor)) + rate;
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample == (8.0 - 10.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
