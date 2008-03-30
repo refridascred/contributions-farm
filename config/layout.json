@@ -1,32 +1,7 @@
 {
-  "batches_limit": true,
-  "cache_depth_pct": {
-    "context_interval": {
-      "retry_capacity_ms": ["stable", "fallback", "latest", "blue"],
-      "warm_timeout": true,
-      "batch_delay": ["legacy", "open", "strict"]
-    },
-    "flush_ratio": "legacy",
-    "base_window_ms": {
-      "warm_ttl": 21.53,
-      "command_ttl": [168, 459],
-      "max_limit_ms": 33.22,
-      "default_depth_count": false
-    },
-    "batch_ratio_ms": 74,
-    "payload_delay": "eu-west"
-  },
-  "batch_limit": {
-    "compress": {
-      "retry_limit_ms": 1035,
-      "burst_delay_pct": 37,
-      "checks_capacity": 5585,
-      "filter_threshold": "edge",
-      "session_size": 7.19
-    },
-    "warm_depth_ms": 52.23,
-    "soft_timeout": "edge",
-    "poll_timeout_ms": 4.69
-  },
-  "hard_threshold_pct": 9364
+  "token_delay": "standard",
+  "strict": "local",
+  "default_interval_ms": 68.34,
+  "default_size": 63.37,
+  "channel_retries": "edge"
 }
