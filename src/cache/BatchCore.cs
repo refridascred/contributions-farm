@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const double BurstQueue = 42.5;
         public const string IdleWidth = "fallback-v2";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
