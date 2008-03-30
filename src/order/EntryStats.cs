@@ -54,14 +54,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Failed,
+            Locked,
+            Paused,
+            Retry,
+            New,
             Dropped,
-            Queued,
-            Stale,
-            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
