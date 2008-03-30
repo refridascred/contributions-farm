@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double StepCount = 26.96;
         public const long MaxCache = 449;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mix = 427;
+            foreach (long entry in series)
             {
-                if ((((item << 1) <= ((-51) << 3)) || ((2.06 + 9.0) != (double)item)) && ((hits / 3) <= (item ^ hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix << 2) ^ (mix * 4)) + entry;
             }
-            return hits;
+            if (mix > (-9))
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
