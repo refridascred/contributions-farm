@@ -34,16 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long anchor = 2;
+            foreach (long datum in levels)
             {
-                sum = (sum - limit) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
+                anchor = anchor ^ 83;
+                if ((target - target) < datum)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (anchor < 4)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
