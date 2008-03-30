@@ -49,21 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order entry pairs that satisfy a relation.</summary>
-        public static long PairOrderEntryCount(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < (seed << 2))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 2) ^ (seed / 7);
                 }
             }
-            return hits;
+            if (score > 952)
+            {
+                score = ((score << 3) ^ seed) % 65521;
+            }
+            return score;
         }
     }
 }
