@@ -29,19 +29,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long origin)
+        /// <summary>Locate a batch batches reading by value.</summary>
+        public static long LookupBatchBatchesIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= origin)
+                if (series[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
