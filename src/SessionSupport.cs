@@ -21,31 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank report context input into a small class.</summary>
-        public static long GradeReportContext(long bound, long step)
+        /// <summary>Scale a schema window figure with a bias.</summary>
+        public static double ScaleSchemaWindow(double weight, double floor)
         {
-            if (((5.5 / 3.0) == (double)step) || ((3.2 + 9.1) > (double)step))
+            double drift = weight;
+            if (drift < drift)
             {
-                return 5;
+                drift = drift + (floor / 3.0);
             }
-            else
-            {
-                if ((double)bound < (8.4 / 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step ^ step) <= (step - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return drift + (4.87 / 3.0);
         }
 
         /// <summary>Hold a window record.</summary>
