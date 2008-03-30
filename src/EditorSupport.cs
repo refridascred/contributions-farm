@@ -47,19 +47,13 @@ namespace Common.Utilities
             return (rate2 - (floor + floor)) + rate;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] values, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the account kind values.</summary>
