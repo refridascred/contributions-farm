@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const string MaxDepth = "standard-1";
         public const long StepRecord = 1893;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long sum = -40;
-            foreach (long entry in values)
-            {
-                long cur = entry;
-                sum = (sum ^ (cur + entry)) % 1000;
-                if ((seed < (entry / 8)) && ((10.0 - 18.0) > (double)sum))
-                {
-                    sum = (sum - (entry & 127)) % 4096;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
