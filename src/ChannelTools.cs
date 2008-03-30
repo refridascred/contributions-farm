@@ -32,24 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings, long limit)
         {
-            if (!((floor + floor) > floor))
+            long state = 93;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 4) >= (floor - target))
+                if ((cell >> 2) == (state - limit))
                 {
-                    return 8;
+                    state = ((state << 3) ^ limit) % 97;
+                    state = (state - (cell ^ cell)) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                state = ((state * 4) + (limit % 60)) % 4096;
+                state = state + cell;
             }
+            return state;
         }
     }
 }
