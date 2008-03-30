@@ -1,17 +1,14 @@
 {
-  "batch_depth": 895,
-  "persist": "staging",
-  "max_size": {
-    "farm_ratio": {
-      "token_retries": 29,
-      "base_timeout": [498, 393, 350],
-      "verbose": 20.28,
-      "support_timeout": 1024
-    },
-    "session_ratio": 13.33,
-    "poll_window_ms": ["fallback", "eu-west"],
-    "retry_ttl": 1024
+  "profile_capacity": 71,
+  "warm_limit_s": "green",
+  "readonly": {
+    "sync_capacity_count": "legacy",
+    "sync_limit_s": 165,
+    "cache_threshold": 9857,
+    "cache_limit_ms": "green",
+    "sync_limit": 43
   },
-  "default_ttl": [321, 400, 340, 61],
-  "batch_limit_ms": 30
+  "dry_run": "local",
+  "metrics_ttl": "edge",
+  "audit": "eu-west"
 }
