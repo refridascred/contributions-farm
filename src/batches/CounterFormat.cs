@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long carry = 63;
+            foreach (long sample in data)
             {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (sample + seed)) % 97;
             }
-            return stale;
+            if (carry > 57)
+            {
+                carry = (carry - ((long)data.Length + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of record payload entries.</summary>
