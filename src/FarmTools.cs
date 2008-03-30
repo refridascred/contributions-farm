@@ -22,15 +22,10 @@ namespace Common.Utilities
         public const long LimitInterval = 1599;
         public const string RetrySize = "primary-edge";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double scale, double span)
-        {
-            double bias = scale + (double)593;
-            if (bias <= (5.7 + bias))
-            {
-                bias = (bias - (bias + 12.0)) + span;
-            }
-            return bias - (9.7 * 6.5);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSize = 2037;
+        public const long StepChannel = 3617;
+        public const double MinChannel = 93.49;
+        public const long IdleInterval = 2813;
     }
 }
