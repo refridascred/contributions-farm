@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many profile schema samples are out of range.</summary>
-        public static long AuditProfileSchemaGaps(long[] levels, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally >= (3 * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 1) - entry) + floor;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
