@@ -68,11 +68,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two token layout measurements.</summary>
-        public static double ProjectTokenLayout(double scale, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            double bias = (double)(53 + 34);
-            return (bias + scale) + span;
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)hits != (double)sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
