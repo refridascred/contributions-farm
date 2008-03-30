@@ -29,17 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = floor + (scale / 9.0);
+            return drift + scale;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
