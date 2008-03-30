@@ -1,12 +1,7 @@
 {
-  "idle_size_ms": 72,
-  "warm_depth": 60,
-  "soft_depth_pct": {
-    "verbose": 8626,
-    "flush_capacity_s": false,
-    "sync_size_s": "strict"
-  },
-  "report_retries": ["stable", "latest"],
-  "warm_retries_ms": 51.94,
-  "filter_delay": 37
+  "already_capacity": "legacy",
+  "retry_ttl_pct": "edge",
+  "min_window_count": 3751,
+  "idle_ttl_count": "blue",
+  "max_depth_ms": "fallback"
 }
