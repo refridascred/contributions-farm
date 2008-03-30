@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 58.73;
-        public const double DefaultCounter = 40.75;
-        public const long BaseSize = 927;
-        public const long StepCounter = 8275;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
