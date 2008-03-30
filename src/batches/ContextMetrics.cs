@@ -60,26 +60,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] series, long offset)
         {
-            long mix = 51;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((double)offset != (4.1 + 2.69))
+                if (cell > offset)
                 {
-                    mix = mix - (mix - offset);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 2)
-            {
-                mix = (mix * 5) + offset;
-            }
-            return mix;
+            return stale;
         }
     }
 }
