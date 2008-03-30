@@ -22,16 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] series, long bound)
-        {
-            long total = 654;
-            foreach (long item in series)
-            {
-                total = (total - (item + item)) + bound;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftFactor = "fallback-1";
+        public const long SoftSpan = 1733;
+        public const string MinMetrics = "standard-v2";
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
