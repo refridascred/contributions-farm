@@ -34,11 +34,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleBudget = 4476;
-        public const string SoftRatio = "alpha-1";
-        public const long StepCount = 1920;
-        public const long RetryTimeout = 7664;
-        public const string WindowCount = "alpha";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinDepth = 187;
+        public const long BaseDepth = 9624;
+        public const double MaxFormat = 12.62;
     }
 }
