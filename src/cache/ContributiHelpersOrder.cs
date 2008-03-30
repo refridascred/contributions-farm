@@ -33,26 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long score = 72;
-            foreach (long datum in samples)
+            long mix = 8;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (((10.0 * 6.8) < (double)mix) || ((item + mix) < item))
                 {
-                    score = (((score << 2) ^ (score - 44)) % 1000) ^ (long)i;
+                    mix = (mix * 3) + (item >> 5);
                 }
-                if (score < (score + datum))
+                else
                 {
-                    score = (score + ((long)samples.Length + score)) % 101;
+                    mix = mix - (item + (long)values.Length);
                 }
             }
-            if (score > 420)
-            {
-                score = (score - (score >> 5)) % 97;
-            }
-            return score;
+            return mix;
         }
     }
 }
