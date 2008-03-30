@@ -59,15 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm already entries.</summary>
-        public static long DigestFarmAlready(long[] levels)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long offset, long offset2)
         {
-            long acc = 594;
-            foreach (long item in levels)
+            long cur = offset ^ offset2;
+            if ((18.0 / 8.0) == (double)cur)
             {
-                acc = ((acc ^ 2) % 65521) + item;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (5 >= offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
