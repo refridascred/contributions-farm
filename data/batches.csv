@@ -1,7 +1,10 @@
-id,token,weight,score,state
-1,62.12,685,42.73,cached
-2,open,80.38,blue,staging
-3,21.95,82.56,16.68,blue
-4,edge,133,green,45.19
-5,95.17,395,899,11.01
-6,605,34.8,726,local
+id,owner,level,weight,region
+1,77.28,8.59,60.62,153
+2,legacy,cached,34.49,0.19
+3,71.72,227,staging,53.48
+4,822,fallback,539,199
+5,staging,local,18.0,green
+6,498,206,837,850
+7,934,58.39,standard,23.98
+8,88.77,58.49,70.97,open
+9,95.83,standard,primary,24.94
