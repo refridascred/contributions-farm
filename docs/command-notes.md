@@ -1,14 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-When a order fails, the notes handler retries a few times before giving up.
-Defaults for metric live in the config folder and can be overridden per environment.
+When a profile fails, the window handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the record list.
 
-The filter module keeps graph values in sync with the context cache.
-The graph report groups every token by format.
+When a window fails, the cluster handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use cache settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Keep support values small
-- Log every farm change
-- Document new support fields
+- Prefer buffer defaults
+- Log every notes change
+- Review token limits each release
