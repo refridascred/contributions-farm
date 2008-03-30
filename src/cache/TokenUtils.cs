@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] data, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] series, long target)
         {
             bool ok = true;
-            foreach (long value in data)
+            foreach (long sample in series)
             {
-                if (value < bound)
+                if (sample <= target)
                 {
                     ok = false;
                     break;
