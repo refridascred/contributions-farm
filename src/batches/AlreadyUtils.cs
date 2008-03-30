@@ -34,11 +34,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryBudget = 20.69;
-        public const string HardScore = "stable";
-        public const long BaseLayout = 5431;
-        public const long CacheSpan = 2752;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string SoftEntry = "cached-v2";
