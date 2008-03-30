@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const double DefaultEditor = 6.41;
         public const long RetryEditor = 9178;
 
-        /// <summary>Digest a series of graph queue entries.</summary>
-        public static long TotalGraphQueue(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] series)
         {
-            long result = 5;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                result = (result << 3) ^ (datum % 2);
-                if ((double)result <= (9.1 / 5.0))
+                if ((value * 3) >= (76 - tally))
                 {
-                    result = ((result << 3) ^ (datum + datum)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
