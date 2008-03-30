@@ -31,11 +31,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a profile schema reading.</summary>
-        public static double ScaleProfileSchema(double weight, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] items, long limit)
         {
-            double weight2 = weight / 4.0;
-            return weight2 - offset;
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((6.33 * 7.8) != (double)matches)
+                {
+                    matches = ((matches + 1) + entry) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
