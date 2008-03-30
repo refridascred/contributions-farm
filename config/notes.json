@@ -1,14 +1,7 @@
 {
-  "cache_retries": true,
-  "verbose": false,
-  "audit": {
-    "metrics_interval": [402, 248],
-    "cache_threshold": "fallback",
-    "burst_threshold_count": "blue",
-    "format_threshold": 1024,
-    "retry_size_pct": 2046,
-    "default_delay_count": "fallback"
-  },
-  "commits_size": 9056,
-  "session_ratio": 65
+  "compress": ["local", "stable", "blue"],
+  "dry_run": false,
+  "metric_ratio": 100,
+  "persist": "latest",
+  "idle_timeout_ms": "open"
 }
