@@ -1,6 +1,35 @@
 # githubfarm settings
-burst_limit_s: 71.47
-audit: true
-entry_size: 38.13
-max_threshold_pct: primary
-batch_capacity: 75.26
+retry_depth_s:
+  audit:
+    - fallback
+    - latest
+    - cached
+    - local
+  default_size_pct: 32.07
+  persist: blue
+  sync_threshold_pct:
+    - 447
+    - 338
+    - 159
+    - 45
+  cache_window_count: 39.51
+  batch_ratio:
+    verbose: true
+    idle_depth_s: 74.89
+    persist:
+      - 468
+      - 412
+      - 79
+      - 174
+    support_interval: 60
+    metric_window: 51.7
+    profile_retries: 250
+cache_limit_ms: 500
+hard_retries: 4364
+soft_ratio_count: staging
+token_ttl: strict
+cache_delay_pct:
+  - fallback
+  - staging
+  - latest
+  - open
