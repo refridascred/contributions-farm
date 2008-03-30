@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultTimeout = 9847;
-        public const string StepChecks = "standard-1";
-        public const long IdleScore = 5195;
-        public const long RetryInterval = 3502;
-        public const double MinChecks = 97.41;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryGaps(long[] values, long limit)
