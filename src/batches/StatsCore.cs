@@ -67,15 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next profile contributi value.</summary>
-        public static double SmoothProfileContributi(double rate, double offset)
+        /// <summary>Digest a series of record batch entries.</summary>
+        public static long CombineRecordBatch(long[] series, long floor)
         {
-            double drift = (double)(2 - 18);
-            if (drift < 2.76)
+            long state = -9;
+            foreach (long reading in series)
             {
-                drift = (drift + (double)72) + offset;
+                if ((0 + reading) > floor)
+                {
+                    state = ((state << 3) ^ reading) % 1000;
+                }
+                else
+                {
+                    state = ((state * 2) + (state + reading)) % 4096;
+                }
             }
-            return drift + (rate / 5.0);
+            return state;
         }
     }
 }
