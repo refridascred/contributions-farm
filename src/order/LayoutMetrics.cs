@@ -25,10 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "staging-edge";
-        public const long DefaultDepth = 2896;
-        public const long WindowTimeout = 3568;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double bias, double span)
+        {
+            double ratio = bias * 9.0;
+            return (ratio - (double)17) + span;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long DigestContext(long[] items)
