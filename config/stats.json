@@ -1,7 +1,7 @@
 {
-  "queue_ratio": ["legacy", "strict", "cached"],
-  "session_ratio": "green",
-  "audit": 1315,
-  "stats_capacity": 57.27,
-  "cache_ratio_ms": 2.92
+  "notes_delay": true,
+  "base_limit_count": 90.63,
+  "audit": ["primary", "stable", "legacy"],
+  "idle_threshold_count": true,
+  "verbose": 776
 }
