@@ -23,13 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count context report pairs that satisfy a relation.</summary>
+        public static long CompareContextReportCount(long[] data)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
