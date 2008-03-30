@@ -31,31 +31,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long offset, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items)
         {
-            if ((double)seed >= 3.61)
+            long sum = 3;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.3 / 4.0) >= (double)seed)
+                if ((9.2 - 8.3) >= (double)sum)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.0 - 6.09) <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    sum = ((sum * 2) + (sample >> 1)) % 255;
                 }
             }
+            if (sum < 8)
+            {
+                sum = ((sum << 3) ^ (sum & 7)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
