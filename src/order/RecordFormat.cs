@@ -51,19 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long sum = seed;
+            long mix = target;
             for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (((sum * 4) + sum) % 255) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
     }
 }
