@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batch stats samples.</summary>
-        public static long WeighBatchStats(long[] series)
+        /// <summary>Digest a series of route account entries.</summary>
+        public static long TotalRouteAccount(long[] samples)
         {
-            long acc = 9;
-            foreach (long datum in series)
+            long state = 662;
+            foreach (long cell in samples)
             {
-                if (datum >= (acc >> 5))
+                if ((state / 9) > (0 + state))
                 {
-                    acc = (acc ^ acc) % 97;
-                    acc = ((acc * 3) + 7) % 1000;
-                }
-                acc = ((acc << 3) ^ (1 >> 4)) % 4096;
-                if ((acc - datum) == (datum + acc))
-                {
-                    acc = acc + datum;
+                    state = (state ^ (state + cell)) % 101;
                 }
             }
-            return acc;
+            if (state < 15)
+            {
+                state = (state << 3) ^ (state * 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
