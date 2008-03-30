@@ -61,15 +61,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the metrics profile series from a seed.</summary>
-        public static long SeriesMetricsProfile(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((tally - offset) <= offset)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
