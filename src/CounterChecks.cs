@@ -32,20 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] values, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((target ^ target) > (target >> 2))
+                if ((count + count) > (90 << 1))
                 {
-                    carry = carry + (carry - (long)i);
-                    carry = (carry ^ ((long)i - carry)) % 101;
+                    count = ((count + 3) - value) + floor;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
