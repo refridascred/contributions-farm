@@ -32,12 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Grade a graph channel value against two limits.</summary>
+        public static long ClassifyGraphChannel(long bound, long step)
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            long offset = bound - step;
+            if ((29 % 3) >= (bound << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)bound == (2.79 - 4.92)) || ((641 & 7) <= (step / 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset % 10) < step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3.0 <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
