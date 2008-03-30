@@ -26,19 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a editor commits reading.</summary>
-        public static double ProjectEditorCommits(double scale, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings)
         {
-            double weight = span;
-            if (weight < (double)0)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                weight = (weight + (double)5) + scale;
+                if ((double)reading <= 7.43)
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + (7.8 / 2.0);
+            return count;
         }
 
         /// <summary>Hold a account summary.</summary>
