@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the support profile entries that pass the check.</summary>
+        public static long AuditSupportProfileMatches(long[] samples)
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum << 3) != (datum - 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
