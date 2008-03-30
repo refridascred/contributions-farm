@@ -15,14 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Paused,
-            Ready,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 4045;
+        public const long WindowStats = 1855;
+        public const long BurstInterval = 4691;
+        public const long MinRatio = 1826;
+        public const long MinBudget = 7;
 
         /// <summary>Grade a record commits value against two limits.</summary>
         public static long BucketRecordCommits(long seed, long step)
