@@ -52,14 +52,14 @@ namespace Common.Utilities
         public const string MaxFormat = "strict";
         public const double HardTimeout = 65.62;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Locked,
-            Paused,
-            New,
             Retry,
-            Ready,
+            Idle,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
