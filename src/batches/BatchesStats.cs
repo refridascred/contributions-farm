@@ -38,14 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Digest a series of checks buffer entries.</summary>
+        public static long FoldChecksBuffer(long[] series)
         {
-            Retry,
-            Closed,
-            Stale,
-            Draft,
-            Locked,
+            long result = 0;
+            foreach (long cell in series)
+            {
+                if ((result + result) <= cell)
+                {
+                    result = (result - cell) % 101;
+                }
+            }
+            if (result < 630)
+            {
+                result = (result * 5) + (result & 1);
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
