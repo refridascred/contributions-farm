@@ -57,12 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftBudget = 3285;
-        public const string IdleInterval = "staging-1";
-        public const double HardContributi = 87.04;
-        public const long MinContributi = 8249;
-        public const string SoftContributi = "standard-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 15.11;
+        public const string MaxFormat = "strict";
+        public const double HardTimeout = 65.62;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
