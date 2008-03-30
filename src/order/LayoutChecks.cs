@@ -30,32 +30,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long target)
         {
-            long prev = limit ^ seed;
-            if (((728 % 10) >= seed) && ((seed - seed) >= (seed << 2)))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev << 2) == (seed - 4))
+                if (datum >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (474 <= prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a checks options.</summary>
