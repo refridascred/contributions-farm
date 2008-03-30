@@ -33,11 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseSpan = 5680;
-        public const long BurstTimeout = 1468;
-        public const long SoftRatio = 6278;
-        public const long LimitInterval = 4930;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values)
+        {
+            long total = -6;
+            foreach (long item in values)
+            {
+                if (!((double)item == (7.0 + 4.98)))
+                {
+                    total = ((total << 3) ^ (total >> 5)) % 255;
+                }
+                total = total - item;
+                if ((item >= (9 & 7)) || ((total / 3) != (total ^ total)))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
         public static long MeasurePayloadCacheMatches(long[] items, long step)
