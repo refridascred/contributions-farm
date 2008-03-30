@@ -58,19 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool GuardMetricsSchemaRange(long[] values, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a context record.</summary>
