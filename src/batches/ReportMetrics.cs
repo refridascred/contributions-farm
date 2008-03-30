@@ -15,20 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long total = 30;
+            foreach (long cell in data)
             {
-                state = ((state * 5) + ((long)i - origin)) % 4096;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (total <= (cell & 63))
                 {
-                    state = ((state + (origin % 8)) % 255) + (long)i2;
+                    total = ((total << 3) ^ (total >> 1)) % 101;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                else
+                {
+                    total = (total - cell) % 65521;
+                }
             }
-            return state;
+            if (total < 79)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the session kind values.</summary>
