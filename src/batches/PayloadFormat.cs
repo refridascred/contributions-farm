@@ -32,12 +32,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 60.94;
-        public const long DefaultBudget = 6966;
-        public const long CacheTimeout = 7496;
-        public const string HardEditor = "legacy";
-        public const long MinRatio = 4307;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long origin, long target)
+        {
+            if (((target & 7) < (target - origin)) || (target < (origin + target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + 41) >= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.5 + 9.5) == (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target % 97) != (target - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a record checks counter forward.</summary>
         public static long StepRecordChecks(long floor)
