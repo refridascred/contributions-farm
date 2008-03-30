@@ -1,18 +1,6 @@
 {
-  "retry_delay_s": true,
-  "idle_retries": {
-    "account_delay": 63.13,
-    "base_ratio_ms": 82.46,
-    "batch_limit": true,
-    "compress": 72,
-    "farm_retries": 74
-  },
-  "compress": 74,
-  "min_window_count": ["standard", "open", "standard", "open"],
-  "dry_run": {
-    "batch_window_pct": "edge",
-    "counter_timeout": 1589,
-    "burst_timeout": 11
-  },
-  "batch_limit_ms": "primary"
+  "counter_limit": 4610,
+  "batch_ratio": 58,
+  "strict": "standard",
+  "idle_threshold_pct": 35.38
 }
