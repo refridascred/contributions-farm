@@ -32,18 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long TallyMetricCache(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long total = 6;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total + sample) >= sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total * 2) + total;
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
