@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4530;
-        public const long BurstFarm = 9613;
-        public const string SoftFarm = "open-1";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double AdjustEntry(double gain, double span)
