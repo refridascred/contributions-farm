@@ -15,31 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank account report input into a small class.</summary>
-        public static long SortAccountReport(long seed, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            if ((seed / 9) == (seed + origin))
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (origin << 2))
+                if (((long)i & 63) >= bound)
                 {
-                    return 8;
+                    result = result - (bound >> 5);
                 }
-                else
-                {
-                    if ((double)origin == (double)851)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
