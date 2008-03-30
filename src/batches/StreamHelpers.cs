@@ -20,17 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] values, long seed)
+        /// <summary>Classify a counter schema pair into a bucket.</summary>
+        public static long SortCounterSchema(long bound, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = bound - step;
+            if ((bound - (-1)) == (78 - step))
             {
-                if (values[i] < seed)
+                return 5;
+            }
+            else
+            {
+                if ((offset + bound) == (offset << 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound + step) >= (step ^ step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound <= (153 + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
