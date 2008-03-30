@@ -53,21 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Paused,
+            Active,
         }
     }
 }
