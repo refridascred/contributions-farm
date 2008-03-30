@@ -86,12 +86,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] values, long origin)
         {
-            Locked,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((4.31 / 4.0) <= (double)tally) && (reading < (999 - reading)))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
     }
 }
