@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long anchor = 747;
+            foreach (long value in levels)
+            {
+                anchor = anchor ^ anchor;
+                if ((5 < (limit - value)) && ((value >> 3) >= value))
+                {
+                    anchor = (anchor + value) % 101;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
