@@ -34,18 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long TallyQueueToolsOutliers(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen ^ 856) != (seen * 5))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Done,
+            Active,
         }
     }
 }
