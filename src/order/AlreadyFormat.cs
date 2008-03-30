@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const string BurstGraph = "primary-1";
         public const long LimitFactor = 9117;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mark = 218;
-            foreach (long value in values)
-            {
-                if ((mark / 7) <= (value + step))
-                {
-                    mark = mark ^ (190 ^ value);
-                }
-                else
-                {
-                    mark = (mark - (value >> 3)) % 101;
-                }
-            }
-            return mark;
+            Draft,
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Adjust a entry reading.</summary>
