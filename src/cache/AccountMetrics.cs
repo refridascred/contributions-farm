@@ -22,35 +22,34 @@ namespace Common.Utilities
         public const long MinRatio = 1826;
         public const long MinBudget = 7;
 
-        /// <summary>Grade a record commits value against two limits.</summary>
-        public static long BucketRecordCommits(long seed, long step)
+        /// <summary>Classify a commits buffer pair into a bucket.</summary>
+        public static long RankCommitsBuffer(long target, long offset)
         {
-            long next = seed ^ step;
-            if (next > seed)
+            if ((offset + target) <= (target + offset))
             {
                 return 6;
             }
             else
             {
-                if (!((19.0 / 7.0) >= (double)step))
+                if (!((target << 3) == (999 ^ offset)))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((step > next) || ((805 + next) < (seed & 255)))
+                    if ((offset >> 3) != (target / 6))
                     {
                         return 2;
                     }
                     else
                     {
-                        if ((seed >= (977 - seed)) && ((7.2 - 14.0) < (double)step))
+                        if ((target + 47) >= offset)
                         {
-                            return 8;
+                            return 5;
                         }
                         else
                         {
-                            return 4;
+                            return 1;
                         }
                     }
                 }
