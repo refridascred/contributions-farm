@@ -120,18 +120,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches < (entry - 7))
+                if (items[i] >= seed)
                 {
-                    matches = (matches + 1) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
