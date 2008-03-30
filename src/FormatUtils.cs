@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] data, long offset)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
