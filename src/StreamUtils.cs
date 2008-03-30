@@ -34,12 +34,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Derive the next githubfarm stream value from a seed.</summary>
+        public static long DeriveGithubfarmStream(long limit)
         {
-            Idle,
-            Ready,
-            Dropped,
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark ^ mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
