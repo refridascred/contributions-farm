@@ -57,21 +57,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Project the next report cluster value.</summary>
+        public static double AdjustReportCluster(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (floor * 6.0) * 8.0;
+            if (load < (double)74)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (ratio - load);
             }
-            return matches;
+            else
+            {
+                load = load - (floor - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
