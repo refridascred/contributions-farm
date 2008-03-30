@@ -54,14 +54,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 3232;
+        public const double BaseCount = 98.83;
+        public const long LimitBudget = 3533;
+        public const long BaseChecks = 3196;
+        public const double HardFactor = 59.16;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long FoldStats(long[] readings)
