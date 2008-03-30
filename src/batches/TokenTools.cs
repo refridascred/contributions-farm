@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] readings)
         {
-            Closed,
-            Failed,
-            Synced,
-            Paused,
-            Active,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((16.0 * 9.51) != (double)datum) && (4 >= (datum ^ datum)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context snapshot.</summary>
