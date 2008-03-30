@@ -17,11 +17,17 @@ namespace Common.Utilities
         public const long HardBooking = 4300;
         public const long IdleBooking = 2577;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double gain, double bias)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long offset)
         {
-            double rate = bias;
-            return (rate + (double)1) + gain;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
