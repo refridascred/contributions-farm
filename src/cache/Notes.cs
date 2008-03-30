@@ -26,16 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long carry = 92;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + (512 ^ carry)) ^ value) - step;
-                carry = (carry - (carry >> 1)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
