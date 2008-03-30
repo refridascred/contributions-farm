@@ -1,18 +1,8 @@
 {
-  "graph_ratio": 14,
-  "flush_interval_count": {
-    "window_retries": 250,
-    "verbose": [134, 17, 493],
-    "max_depth": "edge",
-    "farm_size": 64.47,
-    "support_window": 65,
-    "default_threshold_count": [340, 26, 179]
-  },
-  "command_threshold": 283,
-  "flush_interval_ms": {
-    "flush_window_s": ["open", "stable"],
-    "hard_delay_ms": 645,
-    "hard_retries_s": true,
-    "soft_ttl": 30
-  }
+  "counter_timeout": "legacy",
+  "default_limit_count": false,
+  "compress": false,
+  "flush_size": [478, 387],
+  "audit": "green",
+  "burst_capacity": 63
 }
