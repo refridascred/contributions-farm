@@ -46,22 +46,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] samples, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((bound & 7) <= (matches + cell)) || (matches < (cell + 8))) || (((double)bound < (double)7) || ((matches / 5) >= (bound + bound))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Locked,
+            Synced,
+            Dropped,
         }
     }
 }
