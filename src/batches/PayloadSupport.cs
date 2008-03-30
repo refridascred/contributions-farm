@@ -39,22 +39,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many counter support samples are out of range.</summary>
-        public static long TallyCounterSupportGaps(long[] readings)
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long MeasureEditorMetricsOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)count < (9.69 + 2.0))
+                if ((double)(-759) >= (double)tally)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
