@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a record contributi value against two limits.</summary>
-        public static long SortRecordContributi(long step, long seed)
+        /// <summary>Roll a queue payload counter forward.</summary>
+        public static long IterateQueuePayload(long step)
         {
-            if (!((3 + 795) >= seed))
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                carry = carry + ((long)i + step);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((step + seed) > seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step >> 2) <= (step - 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step ^ seed) != (step & 127))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
