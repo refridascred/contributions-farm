@@ -45,18 +45,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheInterval = "stable";
+        public const long BatchWidth = 287;
+        public const long MaxCounter = 6229;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
