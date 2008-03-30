@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Idle,
-            Done,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultSize = 69.09;
+        public const long CacheTimeout = 9953;
+        public const string MaxFilter = "cached-1";
+        public const long MinFilter = 3868;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long limit, long target)
