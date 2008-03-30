@@ -28,15 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long state = 1;
-            foreach (long sample in readings)
-            {
-                state = (state ^ (offset - sample)) % 255;
-            }
-            return state % 1000;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
