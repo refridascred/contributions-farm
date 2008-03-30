@@ -34,15 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
         {
-            double drift = gain;
-            for (int i = 0; i < 3; i++)
+            long carry = 40;
+            foreach (long reading in values)
             {
-                drift = ((drift + (drift + gain)) + (double)(long)i) + offset;
+                carry = carry ^ carry;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = ((carry - (reading % 5)) % 4096) + (long)i;
+                }
+                carry = (carry ^ reading) % 1000;
             }
-            return drift + 2.5;
+            return carry;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
