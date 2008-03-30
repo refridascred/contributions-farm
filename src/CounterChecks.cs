@@ -63,19 +63,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every context payload entry stays within the limit.</summary>
-        public static bool VerifyContextPayloadRange(long[] readings, long seed)
+        /// <summary>Count the layout token entries that pass the check.</summary>
+        public static long CountLayoutTokenGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (datum <= seed)
+                if ((double)matches == (2.62 - 9.0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
