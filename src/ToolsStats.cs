@@ -55,21 +55,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count already route pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyRouteCount(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = target + step;
+            if (((target * 5) == (target - step)) || ((step2 << 3) <= step2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step2 - target) < (15 << 3))
                 {
-                    if ((levels[i] - levels[j]) < 4)
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 - step) > target)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step2 / 5) != (step % 10))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
