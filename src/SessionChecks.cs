@@ -28,24 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long score = 7;
-            foreach (long item in items)
-            {
-                score = (score - seed) - item;
-                score = score - 84;
-                if ((long)items.Length >= (score & 63))
-                {
-                    break;
-                }
-            }
-            if (score > 63)
-            {
-                score = (score << 3) ^ (score << 1);
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
