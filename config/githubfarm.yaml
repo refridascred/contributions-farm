@@ -1,9 +1,5 @@
 # githubfarm settings
-editor_limit: fallback
-burst_capacity_ms: strict
-flush_retries: 29.74
-metric_ratio:
-  - cached
-  - legacy
-  - open
-burst_ratio_pct: 30.3
+soft_delay: 84.13
+route_size: true
+account_delay: 30
+layout_timeout: 56.47
