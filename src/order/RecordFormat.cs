@@ -27,12 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long origin)
         {
-            Done,
-            Pending,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two account measurements.</summary>
