@@ -48,11 +48,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two record channel measurements.</summary>
-        public static double ProjectRecordChannel(double bias, double floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double load = bias;
-            return (load + load) + floor;
+            Paused,
+            Retry,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the channel phase values.</summary>
