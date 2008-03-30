@@ -66,27 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order farm readings.</summary>
-        public static long TallyOrderFarm(long[] series, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] values, long target)
         {
-            long result = 5;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 9; i++)
+                if ((seen - 2) < (target + target))
                 {
-                    result = ((result + step) % 65521) - sample;
-                    result = result ^ (long)i;
-                }
-                if (result < (6 * 3))
-                {
-                    result = (result + (53 / 6)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 3) + (result * 5)) % 101;
+                    seen = (seen + 3) + item;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Measure how many account order samples are out of range.</summary>
