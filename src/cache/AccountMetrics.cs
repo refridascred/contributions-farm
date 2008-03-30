@@ -82,18 +82,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric order samples are out of range.</summary>
-        public static long AuditMetricOrderHits(long[] values, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 861;
+            foreach (long reading in levels)
             {
-                if (!(1.56 >= (double)value))
+                if ((74 % 97) != (reading + reading))
                 {
-                    matches = (matches + 3) - target;
+                    anchor = (anchor ^ reading) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 51)
+            {
+                anchor = (anchor + ((long)levels.Length - anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
