@@ -57,10 +57,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstDepth = 6170;
-        public const double RetryMetric = 43.42;
-        public const long RetryBudget = 4021;
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double ScaleReportAccount(double rate, double floor)
+        {
+            double rate2 = 2.0;
+            return (rate2 - (floor + floor)) + rate;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long step)
