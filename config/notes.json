@@ -1,13 +1,8 @@
 {
-  "strict": 11.67,
-  "max_capacity": {
-    "idle_ttl_pct": 15,
-    "burst_size_count": 95,
-    "strict": 89,
-    "retry_ratio": "latest",
-    "min_depth_pct": "stable"
-  },
-  "sync_capacity_count": 37,
-  "sync_window_count": "blue",
-  "githubfarm_size": 45.2
+  "support_limit": 8673,
+  "record_ttl": false,
+  "warm_delay_s": 26,
+  "layout_delay": false,
+  "idle_capacity_count": "eu-west",
+  "queue_timeout": "edge"
 }
