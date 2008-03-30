@@ -41,15 +41,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine record stats values into a single score.</summary>
-        public static long TallyRecordStats(long[] samples, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] items)
         {
-            long acc = 24;
-            foreach (long entry in samples)
+            long score = 264;
+            foreach (long datum in items)
             {
-                acc = (((acc << 3) ^ (acc % 3)) + entry) - target;
+                if ((double)datum <= 1.3)
+                {
+                    score = (score << 3) ^ (score * 4);
+                }
             }
-            return acc % 97;
+            if (score < 11)
+            {
+                score = (score - 17) % 255;
+            }
+            return score % 1000;
         }
     }
 }
