@@ -35,17 +35,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long seed)
+        /// <summary>Audit batch order readings against a rule.</summary>
+        public static long AuditBatchOrderMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] <= seed)
+                if (!((double)11 >= (double)entry))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
