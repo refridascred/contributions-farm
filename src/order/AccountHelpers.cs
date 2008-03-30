@@ -77,25 +77,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes session input into a small class.</summary>
-        public static long GradeNotesSession(long limit, long origin)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long span = limit - origin;
-            if (((917 % 5) <= (799 + limit)) && ((span % 5) <= (limit - span)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin * 2) < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
