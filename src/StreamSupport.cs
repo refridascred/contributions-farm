@@ -20,19 +20,20 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] items, long offset)
+        /// <summary>Roll a profile schema counter forward.</summary>
+        public static long StepProfileSchema(long seed)
         {
-            long mark = 50;
-            foreach (long datum in items)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((9.19 / 9.0) == (double)mark) && ((44 ^ offset) > (1 << 3)))
+                state = (state ^ (seed / 9)) % 101;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = (mark - (offset ^ datum)) % 1000;
+                    state = (state + 852) + (long)i2;
                 }
-                mark = mark - (datum + mark);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Audit batch order readings against a rule.</summary>
