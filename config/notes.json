@@ -1,7 +1,5 @@
 {
-  "persist": false,
-  "idle_delay_ms": "legacy",
-  "soft_limit": "open",
-  "soft_capacity_count": 5484,
-  "strict": 9
+  "batch_capacity_s": false,
+  "hard_ratio": ["latest", "blue", "edge"],
+  "stats_size": false
 }
