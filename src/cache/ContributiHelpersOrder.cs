@@ -33,22 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long mix = 8;
-            foreach (long item in values)
-            {
-                if (((10.0 * 6.8) < (double)mix) || ((item + mix) < item))
-                {
-                    mix = (mix * 3) + (item >> 5);
-                }
-                else
-                {
-                    mix = mix - (item + (long)values.Length);
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
