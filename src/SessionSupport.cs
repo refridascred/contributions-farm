@@ -21,19 +21,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] readings, long limit)
+        /// <summary>Rank report context input into a small class.</summary>
+        public static long GradeReportContext(long bound, long step)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            if (((5.5 / 3.0) == (double)step) || ((3.2 + 9.1) > (double)step))
             {
-                if (reading <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound < (8.4 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((step ^ step) <= (step - bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a context summary.</summary>
