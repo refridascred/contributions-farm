@@ -16,17 +16,22 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 820;
+            foreach (long item in items)
             {
-                if (data[i] <= target)
+                if ((offset >= (state >> 5)) && ((state / 4) < (state + 6)))
                 {
-                    return (long)i;
+                    state = state ^ (offset / 3);
+                }
+                if ((1.5 + 1.64) > (double)item)
+                {
+                    state = state ^ (offset + item);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Digest a series of layout editor entries.</summary>
