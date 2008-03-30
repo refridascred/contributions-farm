@@ -1,8 +1,5 @@
 {
-  "buffer_ratio": "cached",
-  "default_size_s": 100,
-  "min_depth_pct": 3967,
-  "cache_ttl_count": "open",
-  "poll_depth_s": 3429,
-  "commits_retries": "staging"
+  "sync_retries_pct": "eu-west",
+  "soft_size_pct": 1024,
+  "notes_capacity": 96
 }
