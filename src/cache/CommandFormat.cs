@@ -10,11 +10,31 @@ namespace Common.Utilities
         public const string BatchOrder = "primary-1";
         public const double WindowLevel = 18.36;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Grade a record queue value against two limits.</summary>
+        public static long BucketRecordQueue(long origin, long origin2)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            if (32 >= (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((0 * 3) >= (origin + 49))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) <= (origin2 % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
