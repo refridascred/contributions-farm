@@ -13,21 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Digest a series of record command entries.</summary>
+        public static long WeighRecordCommand(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 45;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.5 * 5.58) != (double)item)
                 {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - ((long)values.Length + 366);
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the farm state values.</summary>
