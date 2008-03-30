@@ -27,15 +27,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
