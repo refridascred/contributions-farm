@@ -25,14 +25,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the cache cluster entries that pass the check.</summary>
+        public static long TallyCacheClusterGaps(long[] items, long limit)
         {
-            Draft,
-            New,
-            Synced,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)cell < (4.4 / 9.0)) || ((limit - seen) > (limit % 7)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
