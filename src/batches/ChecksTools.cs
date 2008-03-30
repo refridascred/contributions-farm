@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank metrics command input into a small class.</summary>
-        public static long BucketMetricsCommand(long limit, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            if ((limit - 5) > (limit >> 2))
+            double rate = 20.0;
+            if (rate > (rate - 17.0))
             {
-                return 2;
+                rate = ((rate + rate) + scale) - floor;
             }
-            else
-            {
-                if ((limit - seed) > ((-32) ^ limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((13.0 + 17.0) < (double)seed) || ((3.1 * 1.58) > (double)limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return rate - rate;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
