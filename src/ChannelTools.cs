@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] items, long step)
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long FindToolsBufferIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != step)
+                if (series[i] == floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
