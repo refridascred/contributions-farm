@@ -65,10 +65,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitGithubfarm = "staging-1";
-        public const long LimitSize = 4497;
-        public const double BurstGithubfarm = 17.91;
-        public const long IdleGithubfarm = 6677;
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series)
+        {
+            long sum = -35;
+            foreach (long entry in series)
+            {
+                if (!((sum / 9) == (entry - entry)))
+                {
+                    sum = (sum - (entry - entry)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+            }
+            return sum;
+        }
     }
 }
