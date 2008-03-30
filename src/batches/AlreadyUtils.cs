@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema order readings against a bound.</summary>
-        public static bool GuardSchemaOrderBounds(long[] items, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double scale = (14.0 / 3.0) - floor;
+            if (scale <= (double)(-5))
             {
-                if (item < target)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + floor;
             }
-            return flag;
+            return scale - (gain / 5.0);
         }
 
         /// <summary>Hold a notes options.</summary>
