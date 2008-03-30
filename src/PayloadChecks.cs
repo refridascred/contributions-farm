@@ -18,15 +18,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 6)
+                    if ((items[i] ^ items[j]) == 14)
                     {
                         hits = hits + 1;
                     }
