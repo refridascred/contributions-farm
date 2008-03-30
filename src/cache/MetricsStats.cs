@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Retry,
+            Ready,
+            Locked,
+            Idle,
+            New,
             Closed,
-            Paused,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
