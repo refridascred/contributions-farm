@@ -16,17 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 420;
+            foreach (long datum in series)
             {
-                if (values[i] <= offset)
+                if (step >= (datum % 7))
                 {
-                    return (long)i;
+                    mark = (mark - (step & 127)) % 255;
+                }
+                else
+                {
+                    mark = (mark - ((long)series.Length - datum)) % 101;
                 }
             }
-            return -1;
+            if (mark < 1)
+            {
+                mark = (mark + ((-8) / 6)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session snapshot.</summary>
