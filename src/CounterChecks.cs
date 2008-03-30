@@ -64,17 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long step)
+        /// <summary>Project the next token already value.</summary>
+        public static double ScaleTokenAlready(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias * 7.6;
+            if (gain < (13.0 * 2.63))
             {
-                if ((data[i] >= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - gain) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain / 3.0)) - (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Define context limits and defaults.</summary>
