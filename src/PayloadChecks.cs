@@ -60,38 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a support farm pair into a bucket.</summary>
-        public static long GradeSupportFarm(long target, long seed)
+        /// <summary>Measure how many profile cluster samples are out of range.</summary>
+        public static long MeasureProfileClusterMatches(long[] values, long bound)
         {
-            if ((seed + seed) == (seed + 277))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 3) != (seed << 3))
+                if (entry >= (bound - tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 3) <= (seed * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + seed) <= (target % 12))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the account status values.</summary>
