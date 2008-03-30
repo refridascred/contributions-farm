@@ -6,21 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-RECORD_LIMIT=489
-log "limit is ${RECORD_LIMIT}"
-
 mode="${1:-staging}"
 case "${mode}" in
-    blue)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+RECORD_LIMIT=138
+log "limit is ${RECORD_LIMIT}"
