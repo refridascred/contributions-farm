@@ -27,24 +27,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank contributi schema input into a small class.</summary>
-        public static long ClassifyContributiSchema(long target, long offset)
+        /// <summary>Find the first metrics command entry that matches the target.</summary>
+        public static long LocateMetricsCommandIndex(long[] samples, long step)
         {
-            if (!((target << 2) >= offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((89 * 4) != (offset - target))
+                if ((samples[i] < step) && ((samples[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
