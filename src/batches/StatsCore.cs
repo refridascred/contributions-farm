@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryFactor = 7679;
-        public const long BatchGraph = 8509;
-        public const double DefaultScore = 90.47;
-        public const long IdleGraph = 3686;
-        public const long LimitGraph = 6237;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaOutliers(long[] data)
