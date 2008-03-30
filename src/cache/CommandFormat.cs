@@ -10,31 +10,38 @@ namespace Common.Utilities
         public const string BatchOrder = "primary-1";
         public const double WindowLevel = 18.36;
 
-        /// <summary>Grade a record queue value against two limits.</summary>
-        public static long BucketRecordQueue(long origin, long origin2)
+        /// <summary>Combine contributi cluster values into a single score.</summary>
+        public static long TallyContributiCluster(long[] items, long floor)
         {
-            if (32 >= (origin ^ origin))
+            long mix = 528;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0 * 3) >= (origin + 49))
+                if ((4.1 / 8.0) != (double)floor)
                 {
-                    return 5;
+                    mix = ((mix * 3) + (reading + reading)) % 101;
                 }
                 else
                 {
-                    if ((origin - origin) <= (origin2 % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = mix - (mix * 5);
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (mix + (reading + reading)) - (long)i;
+                }
+                if (reading >= 64)
+                {
+                    mix = (mix ^ (reading - reading)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (floor + mix)) % 101;
                 }
             }
+            if (mix < 88)
+            {
+                mix = mix ^ (floor % 7);
+            }
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
