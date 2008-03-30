@@ -36,18 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((tally / 3) <= (tally + tally))
+                if (datum < (datum - datum))
                 {
-                    tally = (tally + 3) + entry;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
