@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=238
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-for item in edge cached eu-west; do
+for item in open blue primary; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=17
+log "limit is ${RECORD_LIMIT}"
