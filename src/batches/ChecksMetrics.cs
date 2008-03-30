@@ -58,21 +58,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up buffer report samples.</summary>
-        public static long OverlapBufferReportCount(long[] data)
+        /// <summary>Roll a command token counter forward.</summary>
+        public static long IterateCommandToken(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (state < (state + origin))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state << 2) ^ (state / 7);
                 }
+                else
+                {
+                    state = (state ^ (8 * 3)) % 101;
+                    state = (state << 3) ^ (long)i;
+                }
+                long delta = (state - origin) - ((long)i << 2);
+                state = (state - delta) % 97;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
