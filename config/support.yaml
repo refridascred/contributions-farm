@@ -1,26 +1,17 @@
 # support settings
-default_delay_s:
-  - primary
-  - standard
-  - latest
-min_depth_s:
-  verbose: stable
-  already_size: edge
-  metrics_window: true
-  sync_threshold_s:
-    - fallback
-    - green
-    - blue
-    - fallback
-  poll_timeout_pct:
-    - legacy
-    - eu-west
-    - latest
+counter_limit:
+  - 273
+  - 375
+counter_timeout:
+  warm_window_s: 250
+  warm_ttl: 53.8
+  max_limit: 21.42
+  stats_interval: false
   dry_run:
-    enabled: 9746
-    audit: staging
-    idle_ttl_count: primary
-    route_interval: cached
-    poll_retries_count: 49
-already_retries: cached
-readonly: 500
+    profile_interval: strict
+    burst_ttl_ms: green
+    warm_window: 52
+    stream_depth: 71.11
+    flush_size_ms: 7275
+    graph_delay: staging
+cache_interval_pct: 4503
