@@ -107,38 +107,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long limit, long limit2)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if (limit >= (limit * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit2 - limit) < (818 - limit2)) || ((0.84 - 5.3) > (double)limit2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit2 > (limit2 + limit2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-44) / 2) <= limit2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
