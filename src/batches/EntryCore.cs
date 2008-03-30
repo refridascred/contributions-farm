@@ -25,11 +25,25 @@ namespace Common.Utilities
         public const double HardScore = 5.97;
         public const string IdleContributi = "open-1";
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Rank notes support input into a small class.</summary>
+        public static long GradeNotesSupport(long bound, long bound2)
         {
-            double drift = floor + (scale / 9.0);
-            return drift + scale;
+            long prev = bound + bound2;
+            if (bound2 <= (bound * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (prev <= 2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
