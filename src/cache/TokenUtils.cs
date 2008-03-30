@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Check that every report entry entry stays within the limit.</summary>
+        public static bool GuardReportEntryLimits(long[] values, long limit)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a cache stats.</summary>
