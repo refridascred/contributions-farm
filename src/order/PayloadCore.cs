@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const double WindowCache = 64.39;
         public const string WindowInterval = "stable-v2";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches < (matches - matches))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardLevel = 92.44;
+        public const double MinBudget = 77.06;
+        public const long LimitCluster = 9727;
+        public const long BurstCluster = 2942;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double AdjustFarm(double rate, double span)
