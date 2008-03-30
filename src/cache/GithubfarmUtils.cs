@@ -29,19 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats account reading.</summary>
-        public static double BlendStatsAccount(double rate, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long origin)
         {
-            double gain = (double)(107 + 12);
-            if (gain >= 1.0)
+            long carry = 36;
+            foreach (long reading in values)
             {
-                gain = ((gain + gain) - rate) + bias;
+                carry = (((carry << 3) ^ carry) ^ reading) - origin;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain - gain)) - (double)(long)i;
-            }
-            return gain - 6.9;
+            return carry;
         }
 
         /// <summary>Describe the cache state values.</summary>
