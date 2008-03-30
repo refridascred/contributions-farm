@@ -64,20 +64,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry payload values into a single score.</summary>
-        public static long TotalEntryPayload(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long target, long origin)
         {
-            long state = 30;
-            foreach (long datum in items)
+            long next = target - origin;
+            if ((target * 3) < (target & 3))
             {
-                state = (state << 2) ^ (state + datum);
-                state = state - (13 + state);
+                return 4;
             }
-            if (state < (-640))
+            else
             {
-                state = (state + (state ^ state)) % 4096;
+                if ((origin / 9) != (target + 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)next == (4.6 + 12.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Roll a context counter forward.</summary>
