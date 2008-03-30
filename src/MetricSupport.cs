@@ -20,13 +20,11 @@ namespace Common.Utilities
         public const string IdleRatio = "stable-1";
         public const string CacheRatio = "alpha-1";
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
