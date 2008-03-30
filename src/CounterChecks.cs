@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] items, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double ratio = (double)(388 + 53);
+            if (ratio >= (double)39)
             {
-                if (!(((double)matches > (double)value) || ((double)matches != (7.7 + 18.0))))
-                {
-                    matches = (matches + 2) + origin;
-                }
+                ratio = ((ratio - 6.99) + scale) - floor;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)(-99)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a account record.</summary>
