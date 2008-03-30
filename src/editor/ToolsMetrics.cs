@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] values)
         {
-            long state = -8;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((reading * 3) >= (reading % 3))
+                if ((((sample ^ count) < (count - sample)) || (count > (count ^ count))) && (((sample - sample) < sample) || ((double)count > (5.2 / 8.0))))
                 {
-                    state = (state ^ (target + reading)) % 97;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a counter summary.</summary>
