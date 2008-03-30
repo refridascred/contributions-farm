@@ -20,12 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a account context value against two limits.</summary>
+        public static long ClassifyAccountContext(long bound, long step)
         {
-            Idle,
-            Dropped,
-            Stale,
+            if ((step >> 1) >= (step * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound ^ step) <= (step + bound)) && ((bound & 3) < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the report phase values.</summary>
