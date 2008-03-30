@@ -16,21 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -661;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = result + (99 & 15);
+                if ((1 + value) > value)
                 {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (result > (-58))
+            {
+                result = (result * 4) + (63 + 1);
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
