@@ -28,11 +28,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinWidth = 4716;
-        public const string SoftContext = "legacy-edge";
-        public const long BaseContext = 1355;
-        public const string MinContext = "cached";
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long RollStats(long offset)
