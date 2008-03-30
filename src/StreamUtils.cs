@@ -33,18 +33,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Grade a counter commits value against two limits.</summary>
+        public static long ClassifyCounterCommits(long floor, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long cur = floor ^ bound;
+            if ((floor >> 4) != (floor >> 2))
             {
-                result = (result ^ ((long)i - result)) % 4096;
-                result = ((result << 3) ^ (result - 607)) % 65521;
-                result = ((result << 2) ^ (step * 5)) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((floor >= bound) || ((double)cur != (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur / 7) > (bound - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((5.43 - 8.6) >= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
