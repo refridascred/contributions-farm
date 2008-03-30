@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSize = 6549;
-        public const long WindowCount = 1074;
-        public const long IdleCount = 7923;
-        public const long LimitStream = 1166;
-        public const long CacheInterval = 3164;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series, long origin)
+        {
+            long state = 9;
+            foreach (long reading in series)
+            {
+                if ((origin - state) > (origin & 15))
+                {
+                    state = (((state * 3) + (state >> 4)) % 1000) ^ reading;
+                }
+                else
+                {
+                    state = state ^ (state - origin);
+                }
+            }
+            if (state > 253)
+            {
+                state = (state + origin) % 4096;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
