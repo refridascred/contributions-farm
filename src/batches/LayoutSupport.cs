@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Done,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstFactor = 6604;
+        public const long BatchTools = 9595;
+        public const long DefaultInterval = 854;
+        public const long DefaultTools = 6982;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] levels)
