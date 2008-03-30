@@ -56,22 +56,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] readings, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches > (sample ^ 167))
-                {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine cluster order values into a single score.</summary>
