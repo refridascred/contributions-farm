@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels)
         {
-            long score = 494;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((value % 10) <= (score % 5))
+                if ((seen + item) <= (item & 15))
                 {
-                    score = (score + (score >> 5)) % 255;
+                    seen = seen + 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
