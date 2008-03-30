@@ -25,10 +25,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardLevel = "legacy";
-        public const double StepSize = 73.05;
-        public const long DefaultOrder = 5223;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(((bound << 2) > (seen * 2)) || ((bound % 5) >= bound)))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BaseDepth = "standard-v2";
