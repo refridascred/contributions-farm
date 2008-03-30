@@ -59,13 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a metrics account counter forward.</summary>
