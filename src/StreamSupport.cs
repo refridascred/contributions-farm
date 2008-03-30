@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of metrics queue readings.</summary>
-        public static long MatchMetricsQueueCount(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (carry >= (carry + carry))
                 {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 3) + (-55)) % 65521;
+                }
+                if ((carry + carry) != (carry - datum))
+                {
+                    carry = (carry ^ (carry - carry)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum + 568)) % 101;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
