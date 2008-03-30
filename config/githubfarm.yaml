@@ -1,25 +1,11 @@
 # githubfarm settings
-base_depth: true
-sync_capacity:
-  - 384
-  - 1
-retry_window_ms:
-  route_size:
-    route_depth: 1004
-    batch_threshold: 43.7
-    verbose: 3095
-  persist: true
-  metrics_window:
-    readonly: primary
-    default_interval_ms: fallback
-    poll_ttl_pct: 60
-    verbose: local
-    base_depth_pct: staging
-  dry_run:
-    - 53
-    - 419
-    - 173
-  burst_depth_count: 22
-  max_window_s: 29
-audit: 73.27
-cache_threshold: false
+base_capacity_ms: 35.79
+compress:
+  - 499
+  - 378
+retry_interval_pct: 35
+metrics_limit:
+  - green
+  - edge
+  - staging
+  - blue
