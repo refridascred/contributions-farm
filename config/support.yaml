@@ -1,17 +1,4 @@
 # support settings
-counter_limit:
-  - 273
-  - 375
-counter_timeout:
-  warm_window_s: 250
-  warm_ttl: 53.8
-  max_limit: 21.42
-  stats_interval: false
-  dry_run:
-    profile_interval: strict
-    burst_ttl_ms: green
-    warm_window: 52
-    stream_depth: 71.11
-    flush_size_ms: 7275
-    graph_delay: staging
-cache_interval_pct: 4503
+sync_retries: 30
+sync_threshold_s: legacy
+enabled: 250
