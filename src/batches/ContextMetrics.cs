@@ -60,19 +60,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < origin)
+                if (readings[i] > limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
