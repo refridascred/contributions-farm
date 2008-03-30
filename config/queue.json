@@ -1,7 +1,18 @@
 {
-  "batch_capacity_count": "staging",
-  "sync_size_ms": "local",
-  "cache_size_ms": "local",
-  "retry_interval": 100,
-  "enabled": "open"
+  "readonly": false,
+  "audit": {
+    "dry_run": "staging",
+    "entry_interval": 5853,
+    "strict": 75.81,
+    "queue_timeout": "eu-west",
+    "sync_size": "blue",
+    "cluster_window": "eu-west"
+  },
+  "window_retries": [415, 364, 399, 247],
+  "support_depth": 5732,
+  "warm_window_pct": {
+    "already_window": false,
+    "idle_capacity_pct": 54.92,
+    "window_timeout": 6750
+  }
 }
