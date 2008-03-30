@@ -47,17 +47,12 @@ namespace Common.Utilities
         public const long HardContext = 6525;
         public const string StepInterval = "local-v2";
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
