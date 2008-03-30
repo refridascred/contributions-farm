@@ -44,13 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values)
         {
-            Active,
-            New,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((reading + 287) <= matches) && (reading <= (reading >> 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
