@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Locked,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count the notes command entries that pass the check.</summary>
