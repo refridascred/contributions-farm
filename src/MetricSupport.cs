@@ -12,31 +12,13 @@ namespace Common.Utilities
         public const long HardFactor = 133;
         public const long MaxDepth = 3798;
 
-        /// <summary>Classify a support notes pair into a bucket.</summary>
-        public static long BucketSupportNotes(long offset, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if ((offset >> 4) == (floor << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (67 ^ 624))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 + 9.46) < (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a editor entry.</summary>
