@@ -85,16 +85,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total * 2) + (81 ^ total);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
