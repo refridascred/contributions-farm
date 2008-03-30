@@ -54,14 +54,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Locked,
-            Stale,
-            Synced,
-            New,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 3049;
+        public const long BatchInterval = 7735;
+        public const string StepEditor = "strict-edge";
+        public const double BaseInterval = 39.26;
     }
 }
