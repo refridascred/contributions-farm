@@ -14,13 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a order entry.</summary>
