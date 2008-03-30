@@ -1,5 +1,5 @@
 {
-  "window_interval": "fallback",
-  "dry_run": "legacy",
-  "retry_window_pct": ["standard", "latest", "open", "fallback"]
+  "persist": 60,
+  "buffer_retries": "staging",
+  "counter_window": ["staging", "eu-west", "open", "standard"]
 }
