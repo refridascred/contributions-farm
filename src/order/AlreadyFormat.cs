@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 7463;
+        public const string HardQueue = "primary-1";
+        public const string MaxTimeout = "standard";
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] values, long step)
