@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes tools readings.</summary>
-        public static long WeighNotesTools(long[] data, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long anchor = 379;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor + (anchor - 713)) % 1000) ^ sample) + limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor * 3) + (anchor >> 3);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
