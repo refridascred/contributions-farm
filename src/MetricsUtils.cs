@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen << 1) <= seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of profile editor readings.</summary>
