@@ -14,10 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultTimeout = 4394;
-        public const long BurstFactor = 5952;
-        public const long BatchAccount = 6349;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Dropped,
+            Closed,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long bound)
