@@ -57,10 +57,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 10.64;
-        public const long BatchEditor = 7306;
-        public const double MinEditor = 65.59;
-        public const double HardFactor = 9.36;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data, long limit)
+        {
+            long result = 481;
+            foreach (long reading in data)
+            {
+                if (7 > (long)data.Length)
+                {
+                    result = ((result - (8 ^ limit)) % 101) - reading;
+                }
+                else
+                {
+                    result = (result ^ (result >> 3)) % 65521;
+                }
+                if ((result - limit) == (6 % 16))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
