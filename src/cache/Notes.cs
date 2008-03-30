@@ -77,19 +77,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] series, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long offset)
         {
-            long mark = 91;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark + (7 >> 4)) % 1000) + value;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 435)
-            {
-                mark = (mark + floor) % 255;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
