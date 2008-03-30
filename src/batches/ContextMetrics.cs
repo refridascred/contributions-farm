@@ -31,17 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] items, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = 4.7 + (double)56;
+            if (bias >= (double)665)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = ((bias - (1.1 / 5.0)) + rate) + span;
             }
-            return -1;
+            return bias - (double)447;
         }
 
         /// <summary>Describe the tools phase values.</summary>
