@@ -24,13 +24,12 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
