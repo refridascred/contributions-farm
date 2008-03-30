@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitBudget = 4922;
-        public const long BaseLevel = 8640;
-        public const double CacheFarm = 81.15;
-        public const double BatchScore = 87.07;
-        public const double CacheDepth = 14.93;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((11.0 - 10.0) < (3.7 - 6.46)) && ((entry * 4) < (count << 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderLimits(long[] samples, long origin)
