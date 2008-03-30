@@ -1,13 +1,5 @@
 {
-  "poll_retries_s": [295, 376, 23],
-  "cache_interval_pct": ["eu-west", "green", "strict", "fallback"],
-  "hard_threshold_pct": {
-    "notes_threshold": 30,
-    "compress": 61.37,
-    "batch_size_count": 40,
-    "dry_run": "latest",
-    "max_window": 605,
-    "enabled": "blue"
-  },
-  "format_ttl": 90
+  "verbose": 7105,
+  "burst_threshold_ms": 78,
+  "metric_threshold": "primary"
 }
