@@ -19,17 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = offset ^ origin;
+            if ((5.38 * 6.86) >= (double)(-393))
             {
-                if (readings[i] >= offset)
+                return 6;
+            }
+            else
+            {
+                if ((origin < (lane * 5)) || (((-27) * 4) < (offset >> 2)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
