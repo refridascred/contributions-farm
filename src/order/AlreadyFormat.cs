@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 218;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark / 7) <= (value + step))
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (190 ^ value);
+                }
+                else
+                {
+                    mark = (mark - (value >> 3)) % 101;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a cluster options.</summary>
