@@ -42,12 +42,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Draft,
-            Stale,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitInterval = 26.9;
+        public const double MinCache = 27.21;
+        public const long BatchCache = 139;
+        public const long SoftCache = 6487;
     }
 }
