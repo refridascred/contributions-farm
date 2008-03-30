@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two layout buffer measurements.</summary>
-        public static double ScaleLayoutBuffer(double bias, double offset)
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long TallyTokenReportMatches(long[] levels)
         {
-            double ratio = offset / 8.0;
-            if (ratio < offset)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                ratio = ratio + ratio;
+                if (matches > (matches / 8))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return ratio + (bias + ratio);
+            return matches;
         }
 
         /// <summary>Look up the position of a token metrics sample.</summary>
