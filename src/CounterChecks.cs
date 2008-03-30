@@ -29,19 +29,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((count << 2) != (count - 44)))
-                {
-                    count = ((count + 1) ^ datum) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 3843;
+        public const double DefaultFarm = 32.59;
+        public const string MaxSize = "local";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] values)
