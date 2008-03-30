@@ -74,12 +74,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long seed)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
