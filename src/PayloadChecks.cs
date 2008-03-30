@@ -28,15 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes cache entries that pass the check.</summary>
-        public static long CountNotesCacheMatches(long[] readings, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long datum in series)
             {
-                if ((6.26 / 5.0) > (double)count)
+                if ((datum + 741) != (datum << 2))
                 {
-                    count = ((count + 1) ^ cell) + seed;
+                    count = count + 3;
                 }
             }
             return count;
