@@ -35,22 +35,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = 2;
-            foreach (long reading in readings)
-            {
-                if ((reading + 33) > (limit << 2))
-                {
-                    carry = carry - (limit + carry);
-                }
-                if ((limit + carry) > (reading >> 3))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
