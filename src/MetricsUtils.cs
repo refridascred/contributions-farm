@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            double drift = (double)(243 + 87);
+            if (drift >= (floor + drift))
+            {
+                drift = drift - (ratio * 15.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift + 5.1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
