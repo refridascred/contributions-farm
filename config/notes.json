@@ -1,5 +1,15 @@
 {
-  "max_depth_pct": false,
-  "strict": "legacy",
-  "min_ttl": [498, 96, 374]
+  "base_timeout": 83.04,
+  "persist": {
+    "retry_capacity_pct": "primary",
+    "route_ttl": "strict",
+    "context_limit": false,
+    "idle_threshold_ms": ["local", "blue"],
+    "compress": 6616,
+    "cache_retries": 72
+  },
+  "poll_interval": true,
+  "batch_interval": "eu-west",
+  "idle_interval_ms": true,
+  "sync_threshold": ["eu-west", "green", "cached", "fallback"]
 }
