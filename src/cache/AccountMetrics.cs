@@ -77,18 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long score = 7;
-            foreach (long cell in levels)
-            {
-                if ((3.8 > (double)score) || (729 > cell))
-                {
-                    score = (((score * 4) + (score & 3)) % 4096) - limit;
-                }
-            }
-            return score;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
