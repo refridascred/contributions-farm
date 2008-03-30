@@ -43,16 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long acc = 185;
-            foreach (long entry in data)
-            {
-                acc = (acc ^ (5 % 2)) % 97;
-                acc = acc + entry;
-            }
-            return acc % 65521;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
