@@ -24,15 +24,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long origin)
         {
-            double gain = 2.07;
-            if (gain >= 14.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - gain) - ratio;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain - bias;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
