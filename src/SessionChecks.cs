@@ -13,20 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((1.16 + 7.0) <= (double)anchor)
+                if ((seen >> 3) == ((-64) + seen))
                 {
-                    anchor = (anchor - (anchor >> 3)) % 1000;
+                    seen = (seen + 2) + datum;
                 }
-                anchor = (anchor * 3) + anchor;
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
