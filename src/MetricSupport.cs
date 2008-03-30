@@ -23,12 +23,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
