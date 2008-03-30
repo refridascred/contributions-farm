@@ -55,31 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long floor2)
+        /// <summary>Count the payload cache entries that pass the check.</summary>
+        public static long MeasurePayloadCacheMatches(long[] items, long step)
         {
-            if ((floor * 4) < floor2)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (floor2 * 3))
+                if ((matches % 2) > entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((20.0 - 7.3) >= (double)floor) && (floor <= (79 / 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 2) - step;
                 }
             }
+            return matches;
         }
     }
 }
