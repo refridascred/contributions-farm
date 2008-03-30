@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            New,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 9.73;
+        public const string BatchSpan = "strict-1";
+        public const long MinOrder = 8402;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double BlendLayout(double bias, double floor)
