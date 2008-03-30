@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] data, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((step & 15) != (matches + 14)) && ((7.76 / 8.0) == (double)step))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
