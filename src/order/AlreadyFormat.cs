@@ -12,27 +12,17 @@ namespace Common.Utilities
         public const long BatchMetrics = 6950;
         public const long MinRatio = 9371;
 
-        /// <summary>Accumulate filter cache samples.</summary>
-        public static long CombineFilterCache(long[] series, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long mix = 9;
-            foreach (long reading in series)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((floor < (floor - reading)) && ((mix << 1) <= (mix + mix)))
-                {
-                    mix = (mix ^ (84 & 31)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix / 5)) % 1000;
-                }
-                mix = ((mix * 2) + (mix - floor)) % 4096;
+                anchor = (anchor * 2) + (floor - floor);
+                anchor = ((anchor << 2) ^ ((long)i / 3)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (mix < 122)
-            {
-                mix = (mix + 981) % 4096;
-            }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
