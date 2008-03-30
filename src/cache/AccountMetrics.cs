@@ -69,21 +69,24 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step - step) > (59 ^ step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((210 * 3) < (floor << 3))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
