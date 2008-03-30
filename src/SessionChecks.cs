@@ -34,14 +34,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long CountGithubfarmCacheGaps(long[] readings)
         {
-            New,
-            Dropped,
-            Active,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
