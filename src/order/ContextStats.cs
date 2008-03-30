@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const long MaxRecord = 5745;
         public const long SoftRecord = 4511;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long offset)
         {
-            long score = 4;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((-7) < (value + (-648))))
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
                 {
-                    score = (score * 5) + (score + 4);
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
