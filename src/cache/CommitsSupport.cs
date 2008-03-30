@@ -85,21 +85,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
