@@ -90,31 +90,23 @@ namespace Common.Utilities
         public const long BaseChecks = 3196;
         public const double HardFactor = 59.16;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data, long limit)
         {
-            long acc = 4;
-            foreach (long reading in series)
+            long carry = -239;
+            foreach (long item in data)
             {
-                acc = ((acc * 2) + (reading / 2)) % 101;
-                if (((double)acc < (5.3 + 8.44)) && (reading < (reading + reading)))
+                if ((double)limit >= (double)4)
                 {
-                    acc = (acc << 3) ^ acc;
-                }
-                if ((double)acc >= (double)reading)
-                {
-                    acc = ((acc << 3) ^ reading) % 97;
-                }
-                if (((72 - acc) >= acc) && ((acc % 8) < (reading << 1)))
-                {
+                    carry = (carry << 3) ^ (limit * 3);
                     break;
                 }
+                if (((double)item == (double)748) && ((item + 4) <= (item + item)))
+                {
+                    carry = ((carry * 5) + (carry - 901)) % 4096;
+                }
             }
-            if (acc < 770)
-            {
-                acc = ((acc << 2) ^ acc) % 4096;
-            }
-            return acc;
+            return carry % 65521;
         }
     }
 }
