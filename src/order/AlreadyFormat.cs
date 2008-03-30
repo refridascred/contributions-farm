@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
