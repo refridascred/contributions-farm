@@ -23,21 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long CompareContextReportCount(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 432;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mix + entry) >= (entry * 4)))
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ mix) % 4096;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Describe the route mode values.</summary>
