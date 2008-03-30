@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a metrics contributi value against two limits.</summary>
-        public static long RankMetricsContributi(long bound, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] readings, long floor)
         {
-            if ((bound & 255) >= bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.39 + 19.0) > (double)bound) || ((step >> 3) > (634 ^ bound)))
+                if (readings[i] == floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound + bound) > (bound + 385)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - bound) > bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
