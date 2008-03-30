@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxCount = 17.57;
+        public const double BatchFactor = 39.24;
+        public const double IdleFactor = 30.79;
+        public const long MinChannel = 7207;
+        public const string MaxChannel = "local-edge";
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
