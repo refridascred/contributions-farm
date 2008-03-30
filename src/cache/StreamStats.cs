@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Active,
-            Stale,
+            Draft,
             Retry,
+            New,
+            Active,
             Closed,
-            Queued,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
