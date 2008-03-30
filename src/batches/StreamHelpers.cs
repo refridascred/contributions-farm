@@ -57,19 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] readings, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((limit * 5) > limit)
+                if (item > floor)
                 {
-                    sum = ((sum << 2) ^ ((long)i - sum)) % 4096;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a record entry.</summary>
