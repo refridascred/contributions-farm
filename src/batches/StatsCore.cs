@@ -22,18 +22,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] values, long limit)
+        /// <summary>Count the payload stream entries that pass the check.</summary>
+        public static long MeasurePayloadStreamOutliers(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (cell > (long)values.Length)
+                if ((double)origin == (double)354)
                 {
-                    tally = (tally + 2) + limit;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
