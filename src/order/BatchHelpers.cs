@@ -23,24 +23,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long seed, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if (seed > (seed + 6))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((136 + 495) != (step / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Retry,
+            Stale,
+            Active,
+            New,
         }
     }
 }
