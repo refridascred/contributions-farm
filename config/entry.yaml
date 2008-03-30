@@ -1,18 +1,32 @@
 # entry settings
-profile_limit: stable
-record_depth: 5.9
-dry_run:
-  flush_size_pct:
-    enabled: stable
-    burst_timeout_s:
-      - 305
-      - 321
-      - 1
-      - 113
-    githubfarm_limit: 80.54
-  verbose: cached
-  dry_run: true
-  schema_ttl: false
-  poll_ratio: primary
-  base_limit_ms: 1
-metric_ratio: strict
+retry_retries_pct: false
+default_retries_pct: 500
+command_depth:
+  profile_limit: 87
+  default_ratio_pct: 31.69
+  audit:
+    payload_interval: false
+    route_threshold: cached
+    max_threshold_s:
+      - 484
+      - 128
+      - 395
+      - 255
+    default_interval_s: 58.69
+    batches_delay:
+      - 413
+      - 16
+      - 192
+      - 70
+    retry_retries_ms: cached
+  hard_retries_count:
+    batch_retries: 52.48
+    farm_timeout:
+      - 347
+      - 409
+      - 233
+    stats_ratio: true
+    hard_ratio: 68.03
+already_ttl: true
+sync_window_ms: 250
+burst_depth: 29.29
