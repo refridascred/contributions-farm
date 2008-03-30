@@ -21,18 +21,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer farm readings.</summary>
-        public static long OverlapBufferFarmCount(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)count >= 15.0)
                 {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - reading;
                 }
             }
             return count;
