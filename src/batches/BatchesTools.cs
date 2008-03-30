@@ -20,27 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (target / 5)) % 4096) - (long)i2;
-                }
-                if (!((anchor % 10) != ((long)i << 2)))
-                {
-                    anchor = anchor - (anchor / 8);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + target) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a editor stats.</summary>
