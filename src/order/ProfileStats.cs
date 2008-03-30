@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Retry,
+            Draft,
+            Paused,
             Locked,
-            Queued,
         }
 
         /// <summary>Project the next context value.</summary>
