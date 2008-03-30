@@ -14,21 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                state = state + (65 * 5);
-                if ((state >> 3) < (48 << 2))
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 9277;
+        public const long DefaultSpan = 3916;
+        public const long LimitMetric = 897;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double gain, double span)
