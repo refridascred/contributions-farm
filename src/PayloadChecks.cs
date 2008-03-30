@@ -29,11 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the notes cache entries that pass the check.</summary>
+        public static long CountNotesCacheMatches(long[] readings, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((6.26 / 5.0) > (double)count)
+                {
+                    count = ((count + 1) ^ cell) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
