@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const double DefaultEditor = 6.41;
         public const long RetryEditor = 9178;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            Paused,
-            Pending,
-            Closed,
+            long anchor = 8;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor << 2) ^ ((-93) & 63)) % 255;
+                if ((value >= (value ^ anchor)) && ((anchor + value) > (value - value)))
+                {
+                    anchor = ((anchor * 3) + (value * 5)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch header.</summary>
