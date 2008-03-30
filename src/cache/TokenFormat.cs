@@ -39,38 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long origin, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long step)
         {
-            if (step <= (step ^ 399))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin + step) == (66 & 31)) || ((origin + origin) > origin))
+                if (sample >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-30) + 448) == (step * 3)) && (((-9) + origin) < origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step == (0.46 + 9.4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
