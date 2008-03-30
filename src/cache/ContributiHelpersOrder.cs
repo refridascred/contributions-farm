@@ -40,22 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long state = 820;
-            foreach (long item in items)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((offset >= (state >> 5)) && ((state / 4) < (state + 6)))
-                {
-                    state = state ^ (offset / 3);
-                }
-                if ((1.5 + 1.64) > (double)item)
-                {
-                    state = state ^ (offset + item);
-                }
+                total = (total << 3) ^ (11 & 63);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Roll a command counter forward.</summary>
