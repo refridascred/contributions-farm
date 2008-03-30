@@ -13,22 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Compare every pair of command report readings.</summary>
+        public static long OverlapCommandReportCount(long[] data)
         {
-            long acc = -79;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value + acc) > (value & 255)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 2) ^ value;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 96)
-            {
-                acc = acc - (acc ^ acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next command report value from a seed.</summary>
