@@ -26,12 +26,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Retry,
+            Ready,
             Stale,
-            Idle,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
