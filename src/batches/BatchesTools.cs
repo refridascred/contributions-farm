@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine support cache values into a single score.</summary>
-        public static long CombineSupportCache(long[] samples, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long total = 30;
-            foreach (long reading in samples)
-            {
-                total = (total - ((-8) - 29)) ^ reading;
-                total = (total << 3) ^ (floor + total);
-            }
-            return total % 4096;
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
