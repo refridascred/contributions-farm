@@ -19,10 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 6613;
-        public const long HardAlready = 3888;
-        public const double MinFactor = 62.64;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4530;
+        public const long BurstFarm = 9613;
+        public const string SoftFarm = "open-1";
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double AdjustEntry(double gain, double span)
