@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] readings, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value <= origin)
+                if (((tally < (tally - tally)) || ((3.1 / 9.0) > (double)tally)) || (tally < 736))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
