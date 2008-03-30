@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 8623;
+        public const long MaxTimeout = 5979;
+        public const long BaseReport = 6431;
+        public const string RetryReport = "staging-v2";
+        public const double LimitReport = 16.18;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] series, long origin)
