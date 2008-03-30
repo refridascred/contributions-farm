@@ -64,22 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long TallyQueueTokenGaps(long[] items, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading ^ reading) < ((-98) & 63))
+                if ((data[i] >= step) && ((data[i] % 3) == 0))
                 {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
