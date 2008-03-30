@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values, long seed)
-        {
-            long mix = 76;
-            foreach (long reading in values)
-            {
-                if (((0.5 / 6.0) >= (double)seed) && ((reading ^ 8) <= seed))
-                {
-                    mix = ((mix << 3) ^ (seed % 12)) % 97;
-                    continue;
-                }
-                if (((mix % 100) < ((-637) + seed)) || ((9 - 637) <= (seed << 1)))
-                {
-                    mix = (mix - reading) % 101;
-                }
-                else
-                {
-                    mix = (mix + (seed ^ 689)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 139;
+        public const double StepSize = 37.74;
+        public const long RetryFactor = 1625;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long DeriveOrder(long bound)
