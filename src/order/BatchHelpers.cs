@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double gain, double offset)
+        /// <summary>Digest a series of account record entries.</summary>
+        public static long TotalAccountRecord(long[] series)
         {
-            double gain2 = (offset * 6.51) / 7.0;
-            return gain2 - gain;
+            long anchor = 76;
+            foreach (long item in series)
+            {
+                if (((item ^ anchor) >= anchor) && ((524 + item) != (item - item)))
+                {
+                    anchor = (anchor ^ (3 + 37)) % 1000;
+                }
+            }
+            if (anchor > 849)
+            {
+                anchor = (anchor << 2) ^ 8;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
