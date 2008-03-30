@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Count batch buffer pairs that satisfy a relation.</summary>
+        public static long PairBatchBufferCount(long[] items)
         {
-            double load = 3.0;
-            if (load <= 2.57)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + (double)7) - gain) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load / 9.0)) + (double)(long)i;
-            }
-            return load - (double)6;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
