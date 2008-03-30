@@ -78,21 +78,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already counter readings.</summary>
-        public static long OverlapAlreadyCounterCount(long[] series)
+        /// <summary>Count the route metric entries that pass the check.</summary>
+        public static long CountRouteMetricOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count << 1) < (count / 5))
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
