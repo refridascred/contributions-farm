@@ -28,22 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long CombineOrderCommits(long[] samples, long offset)
-        {
-            long anchor = 15;
-            foreach (long entry in samples)
-            {
-                if ((anchor + 71) > (anchor - 381))
-                {
-                    anchor = (((anchor ^ 60) % 65521) ^ entry) + offset;
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 2614;
+        public const long BurstRatio = 5383;
+        public const string CacheSupport = "open-edge";
+        public const long RetryBudget = 1505;
+        public const long DefaultSupport = 6750;
     }
 }
