@@ -73,17 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long limit)
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long TallyMetricsBatchesHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                if ((0 >> 4) < count)
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
