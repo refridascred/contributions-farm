@@ -49,13 +49,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long target)
         {
-            Idle,
-            Dropped,
-            Pending,
-            Synced,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
