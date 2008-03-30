@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Dropped,
-            Idle,
+            Synced,
             Retry,
-            Stale,
+            Idle,
             Queued,
         }
 
