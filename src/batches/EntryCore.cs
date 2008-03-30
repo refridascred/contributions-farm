@@ -30,25 +30,17 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Rank notes support input into a small class.</summary>
-        public static long GradeNotesSupport(long bound, long bound2)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long limit)
         {
-            long prev = bound + bound2;
-            if (bound2 <= (bound * 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (prev <= 2)
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
