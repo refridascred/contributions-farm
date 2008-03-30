@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((8.48 + 9.3) <= (9.14 / 6.0))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardLevel = "fallback-v2";
+        public const long HardAlready = 2914;
+        public const long BaseAlready = 256;
+        public const long LimitAlready = 6727;
+        public const long WindowAlready = 4843;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
