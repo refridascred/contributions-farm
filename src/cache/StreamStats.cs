@@ -20,19 +20,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Rank account report input into a small class.</summary>
+        public static long SortAccountReport(long seed, long origin)
         {
-            double scale2 = 6.3 + scale;
-            if (scale2 >= span)
+            if ((seed / 9) == (seed + origin))
             {
-                scale2 = scale2 + scale2;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale2 = (scale2 + (5.3 * 4.63)) + (double)(long)i;
+                if (origin <= (origin << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin == (double)851)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return scale2 + (scale2 - scale2);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
