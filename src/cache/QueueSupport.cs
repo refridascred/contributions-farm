@@ -25,11 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseWidth = "open";
+        public const double BaseRatio = 37.97;
+        public const long MaxEntry = 7794;
+        public const long SoftFactor = 5636;
     }
 }
