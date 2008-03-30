@@ -20,17 +20,12 @@ namespace Common.Utilities
             return gain - (double)4;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry - (step + step)) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowWidth = 9393;
+        public const long HardAlready = 1505;
+        public const double StepFactor = 29.41;
+        public const long StepAlready = 3364;
+        public const long WindowAlready = 5132;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterMatches(long[] series)
