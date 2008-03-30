@@ -1,9 +1,8 @@
-id,rank,active,owner,weight
-1,fallback,latest,319,eu-west
-2,48.24,362,strict,70
-3,25,511,54,stable
-4,primary,606,edge,874
-5,10.42,88.1,edge,823
-6,legacy,stable,112,stable
-7,79.05,eu-west,29.9,18.38
-8,strict,91.3,44.29,54.08
+id,weight,label
+1,edge,39
+2,open,stable
+3,79.66,228
+4,156,primary
+5,strict,edge
+6,open,stable
+7,768,59.76
