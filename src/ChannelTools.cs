@@ -13,23 +13,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            long carry = 549;
-            foreach (long value in levels)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                carry = carry ^ (611 + value);
-                if (carry <= ((long)levels.Length * 2))
-                {
-                    break;
-                }
+                carry = (carry - (step + step)) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (carry < 8)
-            {
-                carry = (carry ^ 469) % 97;
-            }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
