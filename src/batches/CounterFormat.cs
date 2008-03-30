@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mix = 16;
-            foreach (long entry in levels)
-            {
-                if ((0.6 + 9.75) < (double)entry)
-                {
-                    mix = ((mix << 3) ^ (entry >> 2)) % 65521;
-                }
-            }
-            return mix % 65521;
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
