@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every tools format entry stays within the limit.</summary>
