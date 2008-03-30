@@ -68,12 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Stale,
-            Queued,
-            Paused,
+            Locked,
+            New,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
