@@ -13,19 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Active,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
