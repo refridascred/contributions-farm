@@ -1,17 +1,8 @@
 # entry settings
-window_limit:
-  format_size:
-    - stable
-    - edge
-    - edge
-  default_depth: 1024
-  tools_window: 8428
-cache_size: 7
-dry_run:
-  profile_delay: 789
-  default_size_ms: 26
-  enabled: cached
-  batch_depth: local
-  max_capacity_pct: 33.85
-  sync_limit_s: 62.56
-cache_retries_pct: 17.68
+default_retries: 30
+audit:
+  - 360
+  - 116
+soft_ttl_count: primary
+compress: false
+stream_delay: 60
