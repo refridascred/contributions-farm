@@ -56,31 +56,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long target, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long limit)
         {
-            if (7 >= target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((323 % 16) > (target - offset))
+                if ((items[i] > limit) && ((items[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
