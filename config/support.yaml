@@ -1,14 +1,11 @@
 # support settings
-metrics_ratio: standard
-flush_ratio_s:
-  dry_run: open
-  max_capacity_s: 62
-  min_threshold_s: false
-  max_timeout_count: 26
-batch_ratio: cached
-token_ttl:
+farm_delay: 17.53
+flush_threshold_count: 2745
+strict: 500
+hard_delay:
+  - blue
   - local
-  - local
-  - edge
-readonly: open
-githubfarm_ratio: standard
+  - strict
+  - stable
+min_ratio: local
+retry_interval: 35.05
