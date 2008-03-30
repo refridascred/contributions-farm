@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            long gap = floor + target;
-            if (0.23 >= (double)floor)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                total = total ^ ((-49) % 3);
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((target + gap) > (target + 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (0.16 * 11.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap << 3) <= (target / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
