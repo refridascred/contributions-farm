@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 654;
+            foreach (long item in series)
+            {
+                total = (total - (item + item)) + bound;
+            }
+            return total;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
