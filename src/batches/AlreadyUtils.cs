@@ -31,14 +31,11 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstRatio = 77.59;
+        public const long LimitCluster = 5443;
+        public const long CacheCluster = 4877;
+        public const long WindowCluster = 3367;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] values)
