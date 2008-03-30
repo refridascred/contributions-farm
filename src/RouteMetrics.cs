@@ -46,10 +46,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryBudget = 19.42;
-        public const long MinMetrics = 1244;
-        public const long SoftSpan = 5426;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
+        {
+            long mark = 80;
+            foreach (long reading in items)
+            {
+                mark = ((mark ^ mark) % 255) + reading;
+            }
+            if (mark < 6)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long origin, long step)
