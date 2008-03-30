@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long DefaultReport = 6126;
         public const long BatchWidth = 9635;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long limit)
+        /// <summary>Match up route layout samples.</summary>
+        public static long MatchRouteLayoutCount(long[] levels)
         {
-            if ((target & 31) == (target ^ limit))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 8) < 8)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)target < (19.0 + 0.49)) && ((limit - target) == (target + limit)))
+                    if ((levels[i] - levels[j]) < 0)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + limit) <= (target - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
