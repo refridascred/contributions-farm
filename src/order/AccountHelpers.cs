@@ -56,23 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi commits values into a single score.</summary>
-        public static long CombineContributiCommits(long[] values, long step)
-        {
-            long mark = 8;
-            foreach (long value in values)
-            {
-                if (((mark << 3) <= value) && (value <= step))
-                {
-                    mark = ((mark * 4) + value) % 97;
-                }
-            }
-            if (mark > 205)
-            {
-                mark = (mark + 667) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftBudget = 3285;
+        public const string IdleInterval = "staging-1";
+        public const double HardContributi = 87.04;
+        public const long MinContributi = 8249;
+        public const string SoftContributi = "standard-1";
 
         /// <summary>Audit cluster account readings against a rule.</summary>
         public static long MeasureClusterAccountMatches(long[] values, long step)
