@@ -46,19 +46,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] readings, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (datum != floor)
+                if (value <= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
