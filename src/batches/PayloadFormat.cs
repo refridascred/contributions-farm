@@ -32,24 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long result = 481;
-            foreach (long reading in data)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (7 > (long)data.Length)
-                {
-                    result = ((result - (8 ^ limit)) % 101) - reading;
-                }
-                else
-                {
-                    result = (result ^ (result >> 3)) % 65521;
-                }
-                if ((result - limit) == (6 % 16))
-                {
-                    break;
-                }
+                result = (result ^ (result + limit)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
             return result;
         }
