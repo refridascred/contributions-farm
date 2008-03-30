@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const long DefaultReport = 6126;
         public const long BatchWidth = 9635;
 
-        /// <summary>Roll a commits token counter forward.</summary>
-        public static long StepCommitsToken(long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            if ((target & 31) == (target ^ limit))
             {
-                total = (total * 2) + (316 - 54);
-                total = total - origin;
-                total = ((total * 2) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((limit / 8) < 8)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)target < (19.0 + 0.49)) && ((limit - target) == (target + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + limit) <= (target - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metrics profile value from a seed.</summary>
