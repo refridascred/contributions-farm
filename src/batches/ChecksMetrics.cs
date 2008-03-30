@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many notes entry samples are out of range.</summary>
-        public static long AuditNotesEntryMatches(long[] readings)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((3.9 / 5.0) > (double)datum)
+                if (((long)i / 8) > (limit % 7))
                 {
-                    hits = hits + 3;
+                    score = (score ^ ((long)i - limit)) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
