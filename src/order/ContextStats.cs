@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long target)
         {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((target <= (item / 6)) || ((949 - item) >= hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
