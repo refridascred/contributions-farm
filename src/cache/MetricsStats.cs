@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = 231;
-            foreach (long value in levels)
-            {
-                if (11 < (value >> 3))
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 2)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ value) % 97;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = anchor + (floor / 9);
-            }
-            return anchor;
+            Ready,
+            Pending,
+            Failed,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a tools entry.</summary>
