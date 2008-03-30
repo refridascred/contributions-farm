@@ -41,16 +41,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long seed, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long slot = seed - floor;
+            if ((seed + slot) > slot)
             {
-                carry = (carry - (long)i) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (((slot + slot) <= 7) && ((seed * 4) > (floor / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed % 10) >= floor) && (floor <= (slot ^ 84)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
