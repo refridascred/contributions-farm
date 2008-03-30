@@ -60,23 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report cluster value.</summary>
-        public static double AdjustReportCluster(double ratio, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] levels, long floor)
         {
-            double load = (floor * 6.0) * 8.0;
-            if (load < (double)74)
+            bool found = true;
+            foreach (long value in levels)
             {
-                load = load + (ratio - load);
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (floor - ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - ratio) + (double)(long)i;
-            }
-            return load - load;
+            return found;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
