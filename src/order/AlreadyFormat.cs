@@ -40,13 +40,39 @@ namespace Common.Utilities
         public const long IdleDepth = 6485;
         public const long MinSize = 8414;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long target, long seed)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long diff = target ^ seed;
+            if ((324 ^ 33) <= diff)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-7) ^ diff) <= (25 - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (diff >= (seed ^ diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)diff > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric info.</summary>
