@@ -29,22 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mark = 4;
-            foreach (long item in levels)
-            {
-                if (!((869 >> 4) < (item + (long)levels.Length)))
-                {
-                    mark = (mark * 4) + (8 - 773);
-                }
-                else
-                {
-                    mark = mark + (item - item);
-                }
-            }
-            return mark;
+            Active,
+            Draft,
+            Retry,
+            Dropped,
+            Queued,
         }
     }
 }
