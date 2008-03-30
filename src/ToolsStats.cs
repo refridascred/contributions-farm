@@ -25,34 +25,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Blend two batch account measurements.</summary>
+        public static double BlendBatchAccount(double gain, double floor)
         {
-            long sum = 25;
-            foreach (long cell in items)
+            double weight = gain;
+            if (weight < (double)223)
             {
-                if ((cell & 3) >= (sum / 4))
-                {
-                    sum = ((sum << 3) ^ (9 << 1)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sum - cell)) % 101;
-                }
-                if (!((sum >> 4) >= (sum + cell)))
-                {
-                    sum = (sum + (cell ^ 43)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (cell >> 2)) % 1000;
-                }
+                weight = (weight - (double)577) - floor;
             }
-            if (sum < 15)
-            {
-                sum = (sum + (sum - sum)) % 101;
-            }
-            return sum;
+            return weight - (weight - gain);
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
