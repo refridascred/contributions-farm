@@ -17,10 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitSize = "stable-edge";
-        public const long LimitInterval = 1599;
-        public const string RetrySize = "primary-edge";
+        /// <summary>Derive the next route channel value from a seed.</summary>
+        public static long StepRouteChannel(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark + ((long)i / 6)) % 255;
+                mark = (mark * 4) + (42 + mark);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardSize = 2037;
