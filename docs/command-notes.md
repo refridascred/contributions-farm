@@ -1,14 +1,13 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the context list.
-Use context settings to tune how often contributi data is refreshed.
+When a checks fails, the counter handler retries a few times before giving up.
+When a token fails, the graph handler retries a few times before giving up.
 
-Keep checks and window names short and lowercase.
-The tools report groups every profile by order.
+Use layout settings to tune how often commits data is refreshed.
+The counter report groups every layout by channel.
 
 ## Guidelines
 
-- Keep batch values small
-- Document new entry fields
-- Log every filter change
-- Prefer profile defaults
+- Keep payload values small
+- Document new already fields
+- Review schema limits each release
