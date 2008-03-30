@@ -83,18 +83,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits != (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Pending,
+            Failed,
         }
     }
 }
