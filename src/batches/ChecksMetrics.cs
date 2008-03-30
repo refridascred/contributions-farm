@@ -61,23 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long total = 8;
-            foreach (long datum in data)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((total * 5) != (total >> 1)))
-                {
-                    total = (total + 467) + datum;
-                }
-                total = total + (total * 3);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (total > 691)
-            {
-                total = (total + total) % 255;
-            }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Hold a farm stats.</summary>
