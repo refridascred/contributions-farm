@@ -1,8 +1,4 @@
 # entry settings
-default_retries: 30
-audit:
-  - 360
-  - 116
-soft_ttl_count: primary
-compress: false
-stream_delay: 60
+tools_threshold: 75.44
+hard_depth_ms: 6658
+base_capacity_ms: 65
