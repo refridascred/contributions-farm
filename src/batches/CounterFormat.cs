@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            long acc = 40;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if ((tally / 9) < item)
                 {
-                    acc = (((acc * 3) + acc) % 255) - (long)i;
-                }
-                acc = ((acc << 2) ^ (acc << 1)) % 101;
-                if ((5.0 - 7.7) > (double)floor)
-                {
-                    acc = (acc << 2) ^ value;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
