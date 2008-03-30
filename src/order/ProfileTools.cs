@@ -45,16 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] samples, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long anchor = -77;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ (sum + limit)) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (97 < (floor % 2))
+                {
+                    anchor = anchor + cell;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
