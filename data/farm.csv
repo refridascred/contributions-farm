@@ -1,7 +1,9 @@
-id,rank,label,token
-1,strict,556,70.5
-2,strict,525,89.32
-3,staging,cached,17.35
-4,29.56,0.62,legacy
-5,stable,60.95,local
-6,48,28.34,standard
+id,label,level
+1,standard,955
+2,80.05,674
+3,332,790
+4,414,143
+5,592,899
+6,221,edge
+7,670,519
+8,cached,48.0
