@@ -1,9 +1,13 @@
 # support settings
-min_depth_count: 49.13
-audit: 15.72
-default_depth_count: blue
-hard_ratio_ms:
-  - cached
-  - stable
-  - strict
+max_capacity_s: false
+cache_retries:
+  - green
+  - primary
   - edge
+warm_timeout_count:
+  soft_delay_s: 4808
+  cache_timeout:
+    - green
+    - standard
+    - staging
+  flush_interval_pct: 40.78
