@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const string HardScore = "standard-edge";
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long result = 288;
-            foreach (long cell in readings)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell - result) == (481 - 528))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    result = ((result * 2) + (cell + cell)) % 1000;
+                    carry = ((carry - (origin + carry)) % 4096) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (result < 6)
-            {
-                result = result + result;
-            }
-            return result % 4096;
+            return carry;
         }
     }
 }
