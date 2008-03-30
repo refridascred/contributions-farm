@@ -44,32 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long origin, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long delta = origin ^ offset;
-            if (((origin + offset) != (origin * 4)) && ((double)delta < (double)6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 1) == (origin >> 5)) || ((550 + offset) < (offset + delta)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.78 - 0.38) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
