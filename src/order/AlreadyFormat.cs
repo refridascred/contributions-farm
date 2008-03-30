@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 8972;
-        public const double BaseGraph = 60.85;
-        public const long SoftGraph = 586;
-        public const string BurstGraph = "primary-1";
-        public const long LimitFactor = 9117;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstSpan = "strict-edge";
+        public const long MinMetrics = 7336;
+        public const long DefaultDepth = 1008;
+        public const long BatchMetrics = 6950;
+        public const long MinRatio = 9371;
 
         /// <summary>Accumulate filter cache samples.</summary>
         public static long CombineFilterCache(long[] series, long floor)
