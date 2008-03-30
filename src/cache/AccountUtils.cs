@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm report series from a seed.</summary>
-        public static long DeriveGithubfarmReport(long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)limit == (4.4 / 3.0)))
-                {
-                    mix = ((mix * 5) + (limit - limit)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
