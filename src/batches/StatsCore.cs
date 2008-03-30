@@ -26,17 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] values, long offset)
+        /// <summary>Adjust a editor commits reading.</summary>
+        public static double ProjectEditorCommits(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = span;
+            if (weight < (double)0)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)5) + scale;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + (7.8 / 2.0);
         }
 
         /// <summary>Hold a account summary.</summary>
