@@ -1,8 +1,7 @@
 {
-  "stream_size": "eu-west",
-  "readonly": 30,
-  "support_timeout": "open",
-  "soft_capacity_pct": 12.69,
-  "already_retries": false,
-  "tools_delay": true
+  "queue_ratio": ["legacy", "strict", "cached"],
+  "session_ratio": "green",
+  "audit": 1315,
+  "stats_capacity": 57.27,
+  "cache_ratio_ms": 2.92
 }
