@@ -19,14 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            Ready,
-            Failed,
-            Queued,
-            Retry,
-            Stale,
+            long sum = 1;
+            foreach (long cell in series)
+            {
+                if (!((sum - cell) <= (66 >> 5)))
+                {
+                    sum = sum ^ (sum >> 2);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum + 38)) % 255;
+                }
+                if (((sum - cell) < (sum + cell)) || ((7 + cell) < (sum + cell)))
+                {
+                    sum = (sum + (7 >> 3)) % 255;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
