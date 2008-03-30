@@ -45,23 +45,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long WeighFarmOrder(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = 442;
-            foreach (long item in items)
-            {
-                score = (score ^ (score / 8)) % 97;
-                if (score <= (item - (long)items.Length))
-                {
-                    score = (score * 3) + (item * 4);
-                }
-            }
-            if (score > 77)
-            {
-                score = ((score * 4) + (733 - score)) % 97;
-            }
-            return score;
+            Retry,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
