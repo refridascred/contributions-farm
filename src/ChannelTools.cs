@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a tools buffer reading by value.</summary>
-        public static long FindToolsBufferIndex(long[] series, long floor)
+        /// <summary>Accumulate batch stats samples.</summary>
+        public static long WeighBatchStats(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 9;
+            foreach (long datum in series)
             {
-                if (series[i] == floor)
+                if (datum >= (acc >> 5))
                 {
-                    return (long)i;
+                    acc = (acc ^ acc) % 97;
+                    acc = ((acc * 3) + 7) % 1000;
+                }
+                acc = ((acc << 3) ^ (1 >> 4)) % 4096;
+                if ((acc - datum) == (datum + acc))
+                {
+                    acc = acc + datum;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
