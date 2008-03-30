@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 3426;
-        public const long DefaultReport = 6126;
-        public const long BatchWidth = 9635;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetrySpan = 11.0;
+        public const string MaxDepth = "standard-1";
+        public const long StepRecord = 1893;
 
         /// <summary>Match up route layout samples.</summary>
         public static long MatchRouteLayoutCount(long[] levels)
