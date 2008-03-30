@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] samples, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (datum > step)
+                if ((entry % 2) <= entry)
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
