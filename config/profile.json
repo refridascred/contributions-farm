@@ -1,5 +1,6 @@
 {
-  "cluster_window": 49,
-  "hard_depth_s": true,
-  "audit": 39.22
+  "default_size": "green",
+  "dry_run": "eu-west",
+  "cache_interval": 59.07,
+  "verbose": "local"
 }
