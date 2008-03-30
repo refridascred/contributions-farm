@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many record channel samples are out of range.</summary>
-        public static long CountRecordChannelHits(long[] data, long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((9.44 + 1.28) >= (double)limit) && (((tally + 857) > (tally << 2)) || ((limit & 31) >= (limit / 2))))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the buffer level values.</summary>
