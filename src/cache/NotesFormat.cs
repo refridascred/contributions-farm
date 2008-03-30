@@ -31,19 +31,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool VerifyAlreadyFilterRange(long[] levels, long floor)
+        /// <summary>Derive the next command report value from a seed.</summary>
+        public static long StepCommandReport(long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (limit - limit)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return ok;
+            return carry;
         }
     }
 }
