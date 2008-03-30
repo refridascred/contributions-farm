@@ -71,21 +71,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
