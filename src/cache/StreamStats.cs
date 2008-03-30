@@ -15,21 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = 6.3 + scale;
+            if (scale2 >= span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = scale2 + scale2;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (5.3 * 4.63)) + (double)(long)i;
+            }
+            return scale2 + (scale2 - scale2);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
