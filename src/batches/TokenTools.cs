@@ -13,15 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double scale = (1.9 + offset) + (gain / 5.0);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale + offset;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate token account samples.</summary>
