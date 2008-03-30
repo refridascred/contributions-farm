@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate context window readings against a bound.</summary>
-        public static bool GuardContextWindowBounds(long[] samples, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long result = 8;
+            foreach (long sample in readings)
             {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result + (result - result)) + sample) + limit;
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Hold a stats record.</summary>
