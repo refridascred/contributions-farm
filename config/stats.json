@@ -1,7 +1,5 @@
 {
-  "notes_delay": true,
-  "base_limit_count": 90.63,
-  "audit": ["primary", "stable", "legacy"],
-  "idle_threshold_count": true,
-  "verbose": 776
+  "cluster_threshold": [391, 424, 142, 305],
+  "hard_timeout_count": [403, 372, 474, 2],
+  "poll_delay_count": 48.64
 }
