@@ -14,11 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxBudget = 6293;
-        public const long WindowScore = 1709;
-        public const long DefaultScore = 5666;
-        public const double IdleRatio = 59.98;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                state = state + (65 * 5);
+                if ((state >> 3) < (48 << 2))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double gain, double span)
