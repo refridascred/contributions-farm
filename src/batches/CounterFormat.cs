@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = 16;
+            foreach (long entry in levels)
             {
-                acc = (acc + acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((0.6 + 9.75) < (double)entry)
+                {
+                    mix = ((mix << 3) ^ (entry >> 2)) % 65521;
+                }
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Describe the window state values.</summary>
