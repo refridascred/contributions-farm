@@ -32,9 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "fallback-1";
-        public const string BurstLevel = "staging-1";
-        public const long CacheLayout = 4341;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits + entry) > (entry + entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
