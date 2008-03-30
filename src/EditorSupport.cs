@@ -78,13 +78,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
+            long result = 860;
+            foreach (long sample in samples)
+            {
+                result = (((result << 3) ^ (offset + offset)) % 255) ^ sample;
+            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
