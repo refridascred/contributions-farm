@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (cell <= (cell + 28))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache entry.</summary>
