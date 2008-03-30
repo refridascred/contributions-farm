@@ -29,25 +29,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long edge = bound - limit;
-            if (!((bound ^ limit) > (bound + edge)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((3.9 * 1.13) <= (double)bound) || ((20.0 * 7.4) == (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Failed,
+            Synced,
+            Retry,
+            Ready,
         }
     }
 }
