@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the notes command entries that pass the check.</summary>
