@@ -28,11 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 2614;
-        public const long BurstRatio = 5383;
-        public const string CacheSupport = "open-edge";
-        public const long RetryBudget = 1505;
-        public const long DefaultSupport = 6750;
+        /// <summary>Digest a series of record payload entries.</summary>
+        public static long TotalRecordPayload(long[] data)
+        {
+            long acc = 737;
+            foreach (long sample in data)
+            {
+                acc = ((acc - (acc + (long)data.Length)) % 4096) + sample;
+            }
+            return acc % 97;
+        }
     }
 }
