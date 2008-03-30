@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)origin <= (7.69 - 2.17))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchScore = 5532;
+        public const long HardAlready = 7486;
+        public const long MaxCount = 9179;
+        public const long StepScore = 4557;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 1625;
