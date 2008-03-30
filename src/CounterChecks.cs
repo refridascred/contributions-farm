@@ -29,10 +29,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftDepth = 3843;
-        public const double DefaultFarm = 32.59;
-        public const string MaxSize = "local";
+        /// <summary>Grade a commits channel value against two limits.</summary>
+        public static long BucketCommitsChannel(long target, long target2)
+        {
+            if ((target2 + target) <= (-265))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + target2) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] values)
