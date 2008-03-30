@@ -1,12 +1,6 @@
 # entry settings
-channel_timeout: legacy
-idle_threshold_pct:
-  commits_delay: false
-  command_delay: true
-  verbose:
-    - legacy
-    - blue
-    - primary
-    - open
-  warm_timeout_pct: 84.96
-retry_limit_ms: standard
+cache_interval_count: 86
+readonly: 250
+soft_threshold_ms: 27.93
+compress: local
+default_ttl_s: stable
