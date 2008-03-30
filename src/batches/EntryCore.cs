@@ -16,14 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the payload checks series from a seed.</summary>
-        public static long DerivePayloadChecks(long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                sum = (sum * 3) + (25 * 2);
-                sum = ((sum * 3) + (long)i) % 1000;
+                sum = (sum + (origin >> 1)) % 4096;
+                sum = sum - (origin + origin);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
             return sum;
         }
