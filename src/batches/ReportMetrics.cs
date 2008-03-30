@@ -32,10 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 3049;
-        public const long BatchInterval = 7735;
-        public const string StepEditor = "strict-edge";
-        public const double BaseInterval = 39.26;
+        /// <summary>Check that every stream context entry stays within the limit.</summary>
+        public static bool VerifyStreamContextRange(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
