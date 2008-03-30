@@ -50,25 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long bound, long limit)
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long AuditMetricPayloadGaps(long[] items)
         {
-            long span = bound - limit;
-            if ((98 / 2) == (span << 1))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + 515) <= limit)
+                if ((4 % 5) < (value - count))
                 {
-                    return 5;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up buffer report samples.</summary>
