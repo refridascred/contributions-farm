@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the route layout entries that pass the check.</summary>
-        public static long AuditRouteLayoutHits(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((reading + 45) >= (reading & 63))
+                if ((((45 % 2) == (value - 0)) || ((value + seed) > 3)) && ((double)count >= (7.61 * 3.4)))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a commits record.</summary>
