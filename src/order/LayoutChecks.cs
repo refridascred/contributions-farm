@@ -55,12 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultCount = 47.25;
-        public const long BaseFarm = 6253;
-        public const string HardFarm = "legacy-v2";
-        public const long LimitFarm = 2903;
-        public const long MinFarm = 3994;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] series)
