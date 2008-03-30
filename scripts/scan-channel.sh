@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=412
+CHANNEL_LIMIT=476
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in green standard latest edge; do
+for item in edge fallback staging cached; do
     log "checking ${item}"
 done
