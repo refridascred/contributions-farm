@@ -67,18 +67,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
-        public static long TallyGithubfarmStatsHits(long[] samples)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.1 * 6.8) < (double)939)
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
