@@ -23,18 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((item % 5) <= (seen >> 3)) || ((double)item != (4.0 + 19.0)))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
