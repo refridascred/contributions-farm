@@ -32,18 +32,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)(-8) > (double)count)
+                if ((reading >> 4) > seed)
                 {
-                    count = ((count + 1) ^ entry) + origin;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
