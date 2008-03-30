@@ -21,32 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long bound)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in series)
             {
-                sum = sum + (sum << 3);
-                if ((6.04 / 4.0) != (double)sum)
+                if (value >= bound)
                 {
-                    sum = (sum + sum) % 255;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + (sum + 0)) % 97;
-                }
-                if ((sum - sum) >= value)
-                {
-                    sum = sum ^ (value >> 1);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 732)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
