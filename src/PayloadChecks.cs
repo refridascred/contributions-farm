@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] series)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double weight = (double)588;
+            if (weight <= (gain + gain))
             {
-                if ((datum + 741) != (datum << 2))
-                {
-                    count = count + 3;
-                }
+                weight = (weight - (double)12) + span;
             }
-            return count;
+            else
+            {
+                weight = weight - gain;
+            }
+            return weight - (weight / 9.0);
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
