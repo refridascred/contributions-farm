@@ -13,18 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values, long floor)
+        /// <summary>Accumulate buffer command samples.</summary>
+        public static long ScoreBufferCommand(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = 95;
+            foreach (long sample in samples)
             {
-                if (((matches & 7) <= cell) || ((((-139) & 63) < (floor & 7)) && ((matches & 63) < (cell / 4))))
+                state = (state + (state & 3)) % 4096;
+                if (seed < (sample * 3))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Blend two batch measurements.</summary>
