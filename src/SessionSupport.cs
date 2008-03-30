@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] data, long bound)
         {
-            long result = 8;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in data)
             {
-                result = ((result + (result - result)) + sample) + limit;
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Hold a stats record.</summary>
