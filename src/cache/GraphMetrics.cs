@@ -31,18 +31,31 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if ((double)floor2 > (20.0 - 6.04))
             {
-                if ((cell * 3) != (seen >> 2))
+                return 7;
+            }
+            else
+            {
+                if (floor <= (62 / 6))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor2 <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
