@@ -21,23 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] items, long offset)
         {
-            long mark = 681;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                mark = (mark ^ (value * 3)) % 101;
-                if ((616 + value) != (value - value))
+                if (reading > offset)
                 {
-                    mark = mark - (mark + 7);
-                }
-                if (mark <= (value + (long)series.Length))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mark % 65521;
+            return stale;
         }
     }
 }
