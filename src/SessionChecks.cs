@@ -52,21 +52,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long acc = 4;
-            foreach (long value in data)
-            {
-                acc = (acc * 3) + (acc + value);
-                acc = (acc * 2) + (acc ^ 14);
-                acc = acc ^ (value / 3);
-                if ((value + value) < (value & 15))
-                {
-                    break;
-                }
-            }
-            return acc;
+            New,
+            Dropped,
+            Active,
+            Ready,
+            Stale,
         }
     }
 }
