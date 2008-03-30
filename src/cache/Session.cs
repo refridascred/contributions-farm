@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 3586;
-        public const long StepOrder = 8649;
-        public const long MaxLevel = 3452;
-        public const string BurstOrder = "staging";
-        public const long RetryCount = 1583;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 5834;
+        public const double BatchTimeout = 98.42;
+        public const long DefaultWidth = 4952;
+        public const string BurstDepth = "local";
+        public const long MinStats = 4510;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] items)
