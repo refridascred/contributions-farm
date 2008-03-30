@@ -14,12 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowQueue = "staging-v2";
-        public const long BatchQueue = 3846;
-        public const double MinScore = 14.79;
-        public const string HardScore = "standard-edge";
-        public const string BurstBudget = "latest-1";
+        /// <summary>Audit channel session readings against a rule.</summary>
+        public static long CountChannelSessionOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((15.0 / 7.0) != (double)reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long origin)
