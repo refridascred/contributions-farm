@@ -29,13 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            Synced,
-            Retry,
-            Stale,
-            Paused,
+            double load = (floor + ratio) * 3.15;
+            return load + (load + ratio);
         }
 
         /// <summary>Hold a farm snapshot.</summary>
