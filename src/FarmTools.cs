@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] series, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (limit > (8 + sum))
+                if (bound >= (count >> 5))
                 {
-                    sum = (sum - ((long)i << 2)) % 65521;
+                    count = (count + 1) - reading;
                 }
-                if ((sum << 2) > (sum + 4))
-                {
-                    sum = (sum - (limit - 3)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
