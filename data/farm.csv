@@ -1,6 +1,10 @@
-id,label,active,region,weight
-1,50.13,strict,28.97,66.1
-2,64.34,195,763,818
-3,9.99,fallback,latest,503
-4,blue,latest,58.56,eu-west
-5,fallback,57.06,8.14,825
+id,state,ratio,score
+1,209,cached,72.99
+2,1.16,stable,8.12
+3,97.79,53,67.26
+4,90.86,62.22,71.24
+5,58.89,692,blue
+6,76,756,477
+7,29.32,984,881
+8,814,528,45.49
+9,cached,green,599
