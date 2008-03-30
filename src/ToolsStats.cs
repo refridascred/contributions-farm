@@ -58,38 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a account report value against two limits.</summary>
-        public static long SortAccountReport(long seed, long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if ((5.7 / 3.0) < (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed + seed) == (seed >> 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed << 1) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed & 3) > (seed - bound)) && ((22 * 5) > (bound ^ 663)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
