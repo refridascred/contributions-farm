@@ -50,21 +50,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Idle,
+            Paused,
         }
     }
 }
