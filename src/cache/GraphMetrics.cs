@@ -20,12 +20,16 @@ namespace Common.Utilities
             return bias + (double)232;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinTimeout = 3708;
-        public const long RetryGraph = 7642;
-        public const long IdleGraph = 6963;
-        public const string WindowGraph = "open-1";
-        public const long MaxCount = 4968;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double floor)
+        {
+            double scale = (floor + weight) + (double)(-157);
+            if (scale > 8.34)
+            {
+                scale = scale - (scale * 9.8);
+            }
+            return scale - 11.0;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstFormat = 3664;
