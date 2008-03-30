@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const double RetrySession = 27.23;
         public const double HardScore = 61.18;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings)
-        {
-            long acc = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)acc >= (1.0 * 4.53))
-                {
-                    acc = ((acc + 40) % 101) - cell;
-                    continue;
-                }
-                acc = (acc - (acc + 71)) % 255;
-            }
-            if (acc < 223)
-            {
-                acc = ((acc * 4) + (acc / 4)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 58.73;
+        public const double DefaultCounter = 40.75;
+        public const long BaseSize = 927;
+        public const long StepCounter = 8275;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] data)
