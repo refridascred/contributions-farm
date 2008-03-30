@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 76;
+            foreach (long reading in values)
             {
-                if (values[i] > offset)
+                if (((0.5 / 6.0) >= (double)seed) && ((reading ^ 8) <= seed))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (seed % 12)) % 97;
+                    continue;
+                }
+                if (((mix % 100) < ((-637) + seed)) || ((9 - 637) <= (seed << 1)))
+                {
+                    mix = (mix - reading) % 101;
+                }
+                else
+                {
+                    mix = (mix + (seed ^ 689)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the stats level values.</summary>
