@@ -1,23 +1,10 @@
 # support settings
-filter_capacity:
-  - blue
-  - staging
-commits_threshold: open
-account_ttl: standard
-base_capacity_pct:
-  default_size_ms: true
-  soft_depth:
-    hard_ratio_s: local
-    warm_depth_pct: false
-    base_size_pct: 1024
-    batch_window_ms: edge
-    sync_limit_s:
-      - 18
-      - 318
-      - 132
-  entry_limit: 2748
-  report_ttl: standard
-  window_limit: false
-  default_delay: false
-window_size: false
-burst_ttl: 100
+dry_run: true
+window_depth: 7762
+githubfarm_retries: true
+warm_ratio_s:
+  - green
+  - standard
+  - cached
+  - green
+editor_retries: cached
