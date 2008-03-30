@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double rate, double bias)
         {
-            Pending,
-            Done,
-            Locked,
-            Synced,
+            double gain = bias;
+            if (gain < rate)
+            {
+                gain = gain - (double)744;
+            }
+            return gain - gain;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
