@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] items, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 19;
+            foreach (long value in levels)
             {
-                if (items[i] <= target)
+                if (value > (anchor & 127))
                 {
-                    return (long)i;
+                    anchor = (anchor + (value - anchor)) % 101;
                 }
             }
-            return -1;
+            if (anchor < 28)
+            {
+                anchor = (anchor * 2) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
