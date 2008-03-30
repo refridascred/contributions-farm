@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseBudget = 3337;
-        public const long MaxAlready = 3092;
-        public const double BatchAlready = 82.03;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
