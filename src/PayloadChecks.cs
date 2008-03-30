@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            long mark = -7;
-            foreach (long entry in items)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                long next = 25;
-                mark = (((mark * 4) + next) % 1000) - entry;
-                mark = ((mark << 3) ^ (offset >> 3)) % 97;
+                result = (result * 3) + (result + result);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Match up queue samples.</summary>
