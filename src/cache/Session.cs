@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Stale,
-            Ready,
-            Draft,
-            Idle,
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
