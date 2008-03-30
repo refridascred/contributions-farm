@@ -29,20 +29,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter session series from a seed.</summary>
-        public static long DeriveFilterSession(long offset)
+        /// <summary>Grade a account metrics value against two limits.</summary>
+        public static long SortAccountMetrics(long bound, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            if ((double)limit == (7.1 - 2.3))
             {
-                if ((633 >> 3) != ((long)i % 10))
-                {
-                    total = total + (offset * 5);
-                    total = ((total << 3) ^ (total - total)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((bound - bound) >= (limit / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound / 9) > (bound - bound)) && ((4 * 4) > (limit + limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already state values.</summary>
