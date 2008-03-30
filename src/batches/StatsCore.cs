@@ -51,10 +51,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleInterval = 6529;
-        public const long CacheSize = 413;
-        public const string StepAccount = "open-1";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples, long floor)
+        {
+            long score = -810;
+            foreach (long entry in samples)
+            {
+                score = score ^ entry;
+                if ((floor << 2) >= entry)
+                {
+                    score = score + (long)samples.Length;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
