@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many farm layout samples are out of range.</summary>
+        public static long CountFarmLayoutMatches(long[] samples, long bound)
         {
-            Locked,
-            Done,
-            Queued,
-            Paused,
-            New,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen >= (11 - bound))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank notes queue input into a small class.</summary>
