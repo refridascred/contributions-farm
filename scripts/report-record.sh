@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=499
+log "limit is ${RECORD_LIMIT}"
 
-for item in blue strict; do
-    log "checking ${item}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
