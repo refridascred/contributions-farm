@@ -20,14 +20,31 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Classify a githubfarm command pair into a bucket.</summary>
+        public static long RankGithubfarmCommand(long step, long floor)
         {
-            Synced,
-            Queued,
-            Done,
-            Ready,
-            Failed,
+            if ((double)floor > (5.5 - 3.45))
+            {
+                return 7;
+            }
+            else
+            {
+                if (57 <= (floor * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (6 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
