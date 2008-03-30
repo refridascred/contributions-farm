@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first contributi payload entry that matches the target.</summary>
-        public static long FindContributiPayloadIndex(long[] items, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
