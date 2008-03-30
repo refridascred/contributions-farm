@@ -48,12 +48,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheSpan = "alpha-v2";
-        public const long StepFormat = 3643;
-        public const long LimitFormat = 1652;
-        public const string HardFormat = "strict";
-        public const long BurstFactor = 3026;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((((-72) << 2) >= (627 + item)) && ((item << 3) <= seen))
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
