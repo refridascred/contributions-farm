@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((count ^ count) > (sample ^ count))
+                if (entry != bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
