@@ -39,11 +39,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowInterval = 5849;
-        public const long BatchStream = 4482;
-        public const double LimitSize = 89.59;
-        public const string BatchSize = "primary";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
