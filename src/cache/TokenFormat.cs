@@ -43,19 +43,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate editor already readings against a bound.</summary>
-        public static bool GuardEditorAlreadyRange(long[] items, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
