@@ -29,22 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] levels, long target)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading <= 2.1)
+                if (values[i] > target)
                 {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
