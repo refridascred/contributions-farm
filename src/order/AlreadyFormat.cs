@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Retry,
-            Ready,
-            Draft,
-            Synced,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
