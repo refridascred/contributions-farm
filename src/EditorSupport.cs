@@ -51,25 +51,19 @@ namespace Common.Utilities
             return (rate2 - (floor + floor)) + rate;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                state = (state - (long)i) % 255;
-                if (!((step << 2) <= (step % 7)))
+                if (entry != target)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    state = ((state << 2) ^ ((long)i + step)) % 4096;
-                }
-                state = (state ^ (step - state)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the account kind values.</summary>
