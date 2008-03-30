@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long acc = 86;
-            foreach (long cell in items)
-            {
-                acc = (acc ^ (cell % 7)) % 4096;
-            }
-            if (acc > 371)
-            {
-                acc = (acc - (acc - 25)) % 4096;
-            }
-            return acc % 4096;
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
