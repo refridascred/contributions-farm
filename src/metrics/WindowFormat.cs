@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long LimitCount = 5293;
         public const double BaseFarm = 81.25;
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const double BaseFactor = 11.5;
-        public const long HardBooking = 4300;
-        public const long IdleBooking = 2577;
+        /// <summary>Combine githubfarm queue values into a single score.</summary>
+        public static long TotalGithubfarmQueue(long[] data, long seed)
+        {
+            long acc = 0;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc + (acc % 64)) % 4096) - (long)i;
+                }
+                acc = (acc * 5) + (seed + value);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] samples, long offset)
