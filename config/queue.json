@@ -1,11 +1,12 @@
 {
-  "compress": "blue",
-  "retry_size_count": "strict",
-  "persist": {
-    "verbose": "legacy",
-    "default_ratio_count": "strict",
-    "max_retries_s": "strict"
+  "warm_interval_pct": {
+    "profile_window": 4475,
+    "soft_interval": 69.93,
+    "strict": "eu-west",
+    "batches_depth": 5782,
+    "warm_depth": 100
   },
-  "flush_limit_s": "edge",
-  "poll_ttl": "standard"
+  "layout_depth": ["blue", "edge", "legacy", "local"],
+  "max_timeout_count": 31,
+  "compress": [238, 120]
 }
