@@ -21,19 +21,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] items, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
