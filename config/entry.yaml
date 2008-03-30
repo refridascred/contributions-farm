@@ -1,31 +1,29 @@
 # entry settings
-base_threshold_ms: green
-soft_interval: false
-burst_size_count:
-  burst_capacity:
-    - 426
-    - 251
-    - 486
-  base_delay: 60
-  min_limit_s: 4122
-  compress:
-    max_window: open
-    verbose: 82
-    max_delay_ms: 5355
-cache_limit:
-  channel_delay: 48
-  batch_depth_ms: false
-  max_timeout: true
-route_interval:
-  readonly: 4.34
-  default_ttl_pct: 16.66
-  githubfarm_timeout:
-    - latest
-    - eu-west
-  poll_ratio:
-    burst_size_pct: 20.38
-    readonly:
-      - 192
-      - 413
-    retry_size_pct: legacy
-retry_ratio_count: 84.33
+max_timeout: 30
+record_capacity:
+  - open
+  - legacy
+max_delay_s:
+  checks_size: legacy
+  warm_interval_count: 12
+  context_size:
+    profile_limit: fallback
+    sync_delay_count: stable
+    metric_interval: true
+    report_ratio:
+      - 317
+      - 17
+    persist: strict
+    verbose: 250
+  poll_capacity_s:
+    checks_window: 38.29
+    batch_timeout_pct: cached
+    max_depth: 95.96
+    cache_timeout: false
+    hard_ttl_pct: 76.15
+    hard_retries_count: blue
+  compress: fallback
+verbose:
+  verbose: 46
+  poll_delay_pct: 92.87
+  idle_capacity_pct: eu-west
