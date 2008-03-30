@@ -35,19 +35,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] series, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < bound)
+                if (samples[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
