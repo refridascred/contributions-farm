@@ -27,12 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxScore = 2673;
-        public const long LimitFactor = 32;
-        public const string StepBudget = "alpha";
-        public const long StepFactor = 917;
-        public const double BaseTimeout = 98.13;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series, long offset)
+        {
+            long anchor = 814;
+            foreach (long value in series)
+            {
+                anchor = (anchor + (long)series.Length) % 97;
+                if ((offset - offset) != (offset - (long)series.Length))
+                {
+                    anchor = (anchor << 2) ^ (offset + value);
+                }
+                else
+                {
+                    anchor = (anchor ^ 630) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
