@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next graph cache value from a seed.</summary>
-        public static long StepGraphCache(long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (score >= ((-439) - 9))
-                {
-                    score = (score * 5) + (floor + score);
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a githubfarm already value against two limits.</summary>
