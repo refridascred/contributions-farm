@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 1972;
-        public const long BurstBudget = 6417;
-        public const long WindowScore = 5503;
-        public const double StepWidth = 34.66;
-        public const string BurstSize = "fallback-1";
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] readings)
