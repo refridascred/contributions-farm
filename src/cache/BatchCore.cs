@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a queue batch figure with a bias.</summary>
+        public static double BlendQueueBatch(double gain, double bias)
         {
-            Stale,
-            Active,
-            Failed,
-            Paused,
-            Pending,
+            double drift = (bias - gain) - 4.82;
+            if (drift > gain)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (double)42;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
