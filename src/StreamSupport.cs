@@ -20,17 +20,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Look up the position of a metrics checks sample.</summary>
-        public static long FindMetricsChecksIndex(long[] levels, long target)
+        /// <summary>Project the next metric already value.</summary>
+        public static double AdjustMetricAlready(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio * 0.88;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (ratio / 3.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return rate + 2.5;
         }
 
         /// <summary>Audit batch order readings against a rule.</summary>
