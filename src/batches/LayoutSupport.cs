@@ -15,18 +15,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long step, long step2)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long offset = step + step2;
+            if ((32 - offset) >= step)
             {
-                if (3.0 > (double)item)
+                return 0;
+            }
+            else
+            {
+                if (offset > (step >> 5))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 + 6) != (36 >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
