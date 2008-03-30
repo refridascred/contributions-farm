@@ -1,13 +1,10 @@
 # support settings
-verbose:
-  - 61
-  - 245
-  - 42
-  - 72
-retry_interval_ms: 98.35
-metric_ttl:
-  - 438
-  - 75
-  - 83
-  - 478
-burst_window_count: true
+max_timeout: 22.87
+compress: open
+burst_size_count: eu-west
+soft_timeout:
+  - standard
+  - staging
+idle_timeout_pct:
+  - local
+  - open
