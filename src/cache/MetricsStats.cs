@@ -28,18 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] series, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((60 / 5) != (offset ^ offset)) || ((double)offset >= (7.3 / 6.0)))
+                if (samples[i] == seed)
                 {
-                    tally = (tally + 1) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
