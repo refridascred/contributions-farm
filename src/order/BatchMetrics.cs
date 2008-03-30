@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) != 0))
+                if (value != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the already level values.</summary>
