@@ -54,12 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long seed)
         {
-            New,
-            Retry,
-            Queued,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
