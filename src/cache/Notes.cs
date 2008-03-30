@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Locked,
-            Retry,
-            Synced,
-            New,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLevel = 7493;
+        public const long WindowWidth = 2581;
+        public const long IdleInterval = 7809;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksBounds(long[] readings, long floor)
