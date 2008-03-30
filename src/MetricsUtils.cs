@@ -42,15 +42,15 @@ namespace Common.Utilities
         public const long HardBatches = 8900;
         public const double BurstCount = 20.28;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            long state = 74;
-            foreach (long sample in items)
+            double rate = gain;
+            for (int i = 0; i < 3; i++)
             {
-                state = (state * 5) + sample;
+                rate = (rate - offset) + (double)(long)i;
             }
-            return state;
+            return rate - (double)14;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
