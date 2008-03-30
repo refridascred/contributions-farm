@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryCount = 4807;
-        public const long BurstDepth = 884;
-        public const long SoftSize = 8413;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Retry,
+            Pending,
+            Idle,
+            Done,
+        }
 
         /// <summary>Fold a list of queue cache readings.</summary>
         public static long DigestQueueCache(long[] items, long origin)
