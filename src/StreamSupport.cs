@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            long carry = 775;
+            foreach (long entry in series)
             {
-                if (carry >= (carry + carry))
+                if ((996 - carry) < (2 / 9))
                 {
-                    carry = ((carry * 3) + (-55)) % 65521;
+                    carry = carry - carry;
                 }
-                if ((carry + carry) != (carry - datum))
+                if (entry <= (entry << 3))
                 {
-                    carry = (carry ^ (carry - carry)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum + 568)) % 101;
+                    carry = carry - (entry ^ entry);
                 }
             }
-            return carry % 4096;
+            return carry % 97;
         }
 
         /// <summary>Adjust a report reading.</summary>
