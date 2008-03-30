@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - hits) < hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
