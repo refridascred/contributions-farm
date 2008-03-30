@@ -16,10 +16,19 @@ namespace Common.Utilities
             return gain2 - (span * 7.39);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchInterval = "local-1";
-        public const string BurstBuffer = "primary-v2";
-        public const long WindowSpan = 72;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen & 127) >= 19)
+                {
+                    seen = ((seen + 3) ^ entry) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] data)
