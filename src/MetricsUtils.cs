@@ -45,16 +45,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next metric route value from a seed.</summary>
-        public static long RollMetricRoute(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepDepth = 638;
+        public const string DefaultProfile = "stable-v2";
+        public const long RetryWidth = 2783;
+        public const string IdleDepth = "stable-edge";
+        public const long IdleProfile = 5277;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] levels, long bound)
