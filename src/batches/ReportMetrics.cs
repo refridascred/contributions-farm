@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 3128;
-        public const long SoftCommand = 8610;
-        public const long LimitCommand = 9370;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
+        {
+            long state = 443;
+            foreach (long sample in values)
+            {
+                if ((377 ^ state) > (state - sample))
+                {
+                    state = ((state * 5) + (sample * 2)) % 255;
+                }
+            }
+            if (state < 273)
+            {
+                state = state ^ state;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long origin)
