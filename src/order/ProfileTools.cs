@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length & 7) > datum)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
