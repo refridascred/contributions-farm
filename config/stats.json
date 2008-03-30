@@ -1,6 +1,10 @@
 {
-  "cache_threshold": false,
-  "strict": ["eu-west", "staging", "stable", "eu-west"],
-  "verbose": [150, 203, 41],
-  "batch_retries": [406, 152, 98]
+  "flush_size_count": "green",
+  "batch_depth_pct": 36,
+  "default_threshold": {
+    "retry_depth_pct": 250,
+    "stats_size": true,
+    "soft_threshold_pct": "stable",
+    "metrics_ratio": 30.37
+  }
 }
