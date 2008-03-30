@@ -43,19 +43,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum ^ limit) % 255) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Paused,
+            Active,
+            New,
         }
     }
 }
