@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long lane = offset ^ origin;
-            if ((5.38 * 6.86) >= (double)(-393))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin < (lane * 5)) || (((-27) * 4) < (offset >> 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine order commits values into a single score.</summary>
