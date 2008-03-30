@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const double IdleRatio = 53.84;
         public const long BatchLevel = 2369;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] levels, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mark = 853;
-            foreach (long item in levels)
-            {
-                if ((2.38 / 2.0) <= (double)target)
-                {
-                    mark = mark + item;
-                }
-            }
-            return mark % 97;
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
