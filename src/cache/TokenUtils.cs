@@ -34,15 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double bias, double span)
-        {
-            double ratio = 6.0;
-            if (ratio > (double)617)
-            {
-                ratio = (ratio + 1.0) - bias;
-            }
-            return ratio - span;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardBudget = 6776;
+        public const long DefaultRecord = 1653;
+        public const long IdleRecord = 4312;
+        public const string WindowRecord = "staging-v2";
+        public const string CacheRecord = "staging-v2";
     }
 }
