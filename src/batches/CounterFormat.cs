@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
