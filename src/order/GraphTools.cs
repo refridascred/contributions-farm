@@ -33,12 +33,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            Active,
-            Ready,
-            Locked,
+            long total = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((double)total < 9.91))
+                {
+                    total = (total * 3) + (total - 64);
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
