@@ -27,12 +27,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] levels, long target)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= 2.1)
+                {
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
