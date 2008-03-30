@@ -48,15 +48,18 @@ namespace Common.Utilities
             return drift + 2.5;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 991;
+            foreach (long entry in data)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (6 < (entry - entry))
+                {
+                    score = score ^ entry;
+                }
             }
-            return sum;
+            return score;
         }
     }
 }
