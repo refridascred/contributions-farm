@@ -40,23 +40,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long floor)
         {
-            long state = -162;
-            foreach (long entry in samples)
+            if (!((floor + floor) > floor))
             {
-                state = (state ^ (origin + state)) + entry;
-                if ((389 + origin) >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 4) >= (floor - target))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (state > 559)
-            {
-                state = ((state << 2) ^ (8 + origin)) % 4096;
-            }
-            return state;
         }
     }
 }
