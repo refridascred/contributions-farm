@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 3) + (result + result);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 8440;
+        public const double StepFactor = 55.18;
+        public const string HardFactor = "alpha-1";
+        public const string BaseCount = "primary-1";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] series)
