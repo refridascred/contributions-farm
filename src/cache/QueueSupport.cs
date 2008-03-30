@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items)
         {
-            long result = 7;
-            foreach (long item in readings)
+            long acc = 86;
+            foreach (long cell in items)
             {
-                if (((double)item >= (6.8 * 11.0)) && (item < (offset & 3)))
-                {
-                    result = (result ^ (offset ^ item)) % 101;
-                }
+                acc = (acc ^ (cell % 7)) % 4096;
             }
-            if (result < (-32))
+            if (acc > 371)
             {
-                result = (result - (result / 3)) % 65521;
+                acc = (acc - (acc - 25)) % 4096;
             }
-            return result % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
