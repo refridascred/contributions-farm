@@ -32,31 +32,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long step, long step2)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            if (!((3.0 + 7.0) >= (double)step2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 3) != (step2 & 63))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (91 <= (step2 + step))
+                    if ((series[i] ^ series[j]) == 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
