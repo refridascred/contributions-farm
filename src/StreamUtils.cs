@@ -35,16 +35,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a context githubfarm counter forward.</summary>
-        public static long SeriesContextGithubfarm(long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (carry ^ 8) % 255;
-                carry = ((carry * 2) + (long)i) % 101;
+                sum = ((sum * 5) + limit) % 97;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
