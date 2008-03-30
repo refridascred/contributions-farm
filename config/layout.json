@@ -1,7 +1,8 @@
 {
-  "stream_depth": "legacy",
-  "min_interval_s": 6329,
-  "verbose": ["latest", "blue", "local", "legacy"],
-  "warm_ratio_ms": false,
-  "default_ratio": 1.91
+  "retry_timeout": 500,
+  "default_threshold_ms": 250,
+  "idle_delay_ms": 1024,
+  "sync_retries": false,
+  "burst_interval": 26,
+  "cache_retries_s": "strict"
 }
