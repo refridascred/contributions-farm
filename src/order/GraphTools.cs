@@ -66,18 +66,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cluster filter entries that pass the check.</summary>
-        public static long TallyClusterFilterOutliers(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mix = 18;
+            foreach (long value in items)
             {
-                if ((163 % 7) >= cell)
-                {
-                    tally = tally + 3;
-                }
+                mix = ((mix + (mix / 2)) % 4096) ^ value;
             }
-            return tally;
+            return mix % 65521;
         }
     }
 }
