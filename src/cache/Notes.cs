@@ -16,12 +16,10 @@ namespace Common.Utilities
             return gain2 - (span * 7.39);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 688;
-        public const string RetryFarm = "cached-v2";
-        public const long SoftDepth = 9413;
-        public const long BurstFarm = 8353;
-        public const double MinSpan = 61.79;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchInterval = "local-1";
+        public const string BurstBuffer = "primary-v2";
+        public const long WindowSpan = 72;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
