@@ -42,15 +42,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Failed,
-            Ready,
-            Dropped,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 4708;
+        public const long RetryQueue = 8774;
+        public const long BatchRatio = 8902;
+        public const long SoftTimeout = 9047;
+        public const double WindowQueue = 88.6;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] series, long floor)
