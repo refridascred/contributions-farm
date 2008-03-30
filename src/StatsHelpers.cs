@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            New,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 1625;
+        public const string LimitWidth = "fallback-1";
+        public const double HardCounter = 13.31;
+        public const long IdleCounter = 9239;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] levels, long target)
