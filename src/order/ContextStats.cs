@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9414;
-        public const long MinRatio = 8465;
-        public const double CacheBudget = 64.6;
-        public const long BaseTimeout = 8655;
-        public const long CacheLevel = 8497;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepFactor = 9164;
