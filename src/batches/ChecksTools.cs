@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxBudget = 3085;
-        public const string LimitLevel = "stable-edge";
-        public const long LimitContributi = 9775;
-        public const string StepContributi = "stable-1";
-        public const long StepBudget = 4741;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long bound)
+        {
+            long mark = 784;
+            foreach (long sample in levels)
+            {
+                mark = ((mark - sample) % 255) + bound;
+                if ((sample % 64) >= (4 ^ sample))
+                {
+                    mark = (mark << 3) ^ sample;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
