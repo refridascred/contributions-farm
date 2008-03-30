@@ -1,5 +1,26 @@
 # support settings
-batch_ratio_count: 95.63
-batches_limit: 8
-burst_limit: staging
-audit: 63.95
+default_delay_s:
+  - primary
+  - standard
+  - latest
+min_depth_s:
+  verbose: stable
+  already_size: edge
+  metrics_window: true
+  sync_threshold_s:
+    - fallback
+    - green
+    - blue
+    - fallback
+  poll_timeout_pct:
+    - legacy
+    - eu-west
+    - latest
+  dry_run:
+    enabled: 9746
+    audit: staging
+    idle_ttl_count: primary
+    route_interval: cached
+    poll_retries_count: 49
+already_retries: cached
+readonly: 500
