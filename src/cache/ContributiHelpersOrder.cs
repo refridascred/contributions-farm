@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine editor token values into a single score.</summary>
+        public static long TotalEditorToken(long[] items)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mark = 41;
+            foreach (long item in items)
+            {
+                if (item > (item ^ item))
+                {
+                    mark = (mark + (mark / 4)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
