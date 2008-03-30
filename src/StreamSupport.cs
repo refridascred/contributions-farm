@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double floor)
         {
-            double load = (double)(447 - 2);
-            for (int i = 0; i < 3; i++)
+            double drift = (double)(5 / 8);
+            if (drift < 14.0)
             {
-                load = (load - load) - (double)(long)i;
+                drift = (drift + (rate + rate)) - floor;
             }
-            return load + (ratio + offset);
+            else
+            {
+                drift = drift + 8.9;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the graph level values.</summary>
