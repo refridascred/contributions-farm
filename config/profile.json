@@ -1,13 +1,11 @@
 {
-  "cache_interval_s": ["green", "strict", "stable", "legacy"],
-  "poll_ttl": {
-    "retry_retries": 15.86,
-    "command_window": 39.92,
-    "strict": 9891,
-    "report_timeout": 1024,
-    "base_window": false
-  },
-  "tools_timeout": [165, 35],
-  "batch_window": false,
-  "githubfarm_depth": 66
+  "base_interval": 3860,
+  "default_retries": "primary",
+  "idle_ratio": {
+    "session_ratio": "green",
+    "flush_retries": 100,
+    "min_ttl_s": 2787,
+    "flush_ttl": "stable",
+    "default_capacity_s": [395, 250, 171]
+  }
 }
