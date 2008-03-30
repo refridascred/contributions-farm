@@ -15,19 +15,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = 816;
+            foreach (long cell in items)
             {
-                if (((total / 8) >= (long)i) || (total < 0))
+                if (cell >= (523 + cell))
                 {
-                    total = ((total << 2) ^ (total & 127)) % 4096;
+                    mark = ((mark << 3) ^ 50) % 1000;
+                    continue;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                if ((double)cell == (8.5 - 9.9))
+                {
+                    mark = (mark << 2) ^ (cell * 4);
+                    mark = (mark ^ mark) % 255;
+                }
+                mark = mark + cell;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
