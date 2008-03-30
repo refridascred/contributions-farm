@@ -1,10 +1,9 @@
 {
-  "flush_size_count": "green",
-  "batch_depth_pct": 36,
-  "default_threshold": {
-    "retry_depth_pct": 250,
-    "stats_size": true,
-    "soft_threshold_pct": "stable",
-    "metrics_ratio": 30.37
-  }
+  "burst_depth": {
+    "default_capacity": 500,
+    "readonly": false,
+    "already_threshold": "latest"
+  },
+  "min_ttl_pct": 14.25,
+  "retry_timeout": "green"
 }
