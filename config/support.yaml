@@ -1,18 +1,13 @@
 # support settings
-sync_depth_count: stable
 verbose:
-  - strict
-  - blue
-  - edge
-  - staging
-stats_ratio:
-  - 266
-  - 180
-  - 463
-  - 276
-warm_retries_ms:
-  idle_retries_count: 1411
-  compress: 60
-  strict: 66
-default_capacity: 47.91
-burst_threshold_s: 55.82
+  - 61
+  - 245
+  - 42
+  - 72
+retry_interval_ms: 98.35
+metric_ttl:
+  - 438
+  - 75
+  - 83
+  - 478
+burst_window_count: true
