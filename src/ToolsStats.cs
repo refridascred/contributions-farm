@@ -36,39 +36,15 @@ namespace Common.Utilities
             return weight - (weight - gain);
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double floor)
         {
-            long step2 = target + step;
-            if (((target * 5) == (target - step)) || ((step2 << 3) <= step2))
+            double bias = scale;
+            if (bias <= (scale / 3.0))
             {
-                return 2;
+                bias = (bias + 9.0) - floor;
             }
-            else
-            {
-                if ((step2 - target) < (15 << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 - step) > target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step2 / 5) != (step % 10))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return bias + scale;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
