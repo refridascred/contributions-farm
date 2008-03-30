@@ -10,38 +10,22 @@ namespace Common.Utilities
         public const string BatchOrder = "primary-1";
         public const double WindowLevel = 18.36;
 
-        /// <summary>Combine contributi cluster values into a single score.</summary>
-        public static long TallyContributiCluster(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] levels, long floor)
         {
-            long mix = 528;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((4.1 / 8.0) != (double)floor)
+                if (!((87 >> 5) > (value - 1)))
                 {
-                    mix = ((mix * 3) + (reading + reading)) % 101;
+                    hits = (hits + 2) + floor;
                 }
                 else
                 {
-                    mix = mix - (mix * 5);
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix + (reading + reading)) - (long)i;
-                }
-                if (reading >= 64)
-                {
-                    mix = (mix ^ (reading - reading)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (floor + mix)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (mix < 88)
-            {
-                mix = mix ^ (floor % 7);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a filter summary.</summary>
