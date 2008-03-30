@@ -46,38 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long origin)
+        /// <summary>Count stats githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareStatsGithubfarmCount(long[] series)
         {
-            if ((bound >= (0 - 2)) || (origin >= (bound ^ bound)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (bound + origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (73 >= (origin + bound))
+                    if ((series[i] + series[j]) != 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (7 >= (bound & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
