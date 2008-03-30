@@ -1,9 +1,11 @@
 # support settings
-burst_ratio_s: 500
-burst_size_ms:
-  persist: 6058
-  default_threshold_ms: 3735
-  base_timeout_pct: 1024
-  order_delay: blue
-  readonly: true
-compress: 65.01
+audit: latest
+enabled: 35
+default_delay_count: blue
+warm_size_s:
+  flush_capacity: strict
+  payload_retries: 100
+  counter_threshold: blue
+  enabled: stable
+  base_retries: true
+retry_threshold: eu-west
