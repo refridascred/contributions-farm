@@ -47,14 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Idle,
-            Draft,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 18.53;
+        public const string IdleBatch = "alpha-v2";
+        public const long RetryFactor = 6471;
+        public const double WindowDepth = 43.97;
+        public const string SoftLevel = "alpha-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftScore = 4100;
