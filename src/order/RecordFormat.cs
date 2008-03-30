@@ -50,10 +50,13 @@ namespace Common.Utilities
         public const double RetryContext = 66.82;
         public const string LimitContext = "staging-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 1468;
-        public const double CacheBuffer = 59.27;
-        public const long BatchBudget = 9880;
-        public const long SoftBuffer = 4994;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Idle,
+            Dropped,
+            Pending,
+            Synced,
+        }
     }
 }
