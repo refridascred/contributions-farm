@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] values)
         {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen < datum) || (((datum << 2) <= seen) || ((seen - datum) < (seen % 7))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
