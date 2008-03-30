@@ -29,31 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            if (target < (offset >> 1))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset > (5.66 - 1.8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target > (double)offset)
+                    if ((levels[i] + levels[j]) < 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
