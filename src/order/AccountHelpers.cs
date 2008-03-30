@@ -27,23 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels, long offset)
+        /// <summary>Validate batch entry readings against a bound.</summary>
+        public static bool CheckBatchEntryRange(long[] levels, long offset)
         {
-            long state = 874;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                state = (state + cell) + offset;
-                if ((8.1 / 5.0) >= (double)cell)
+                if (reading != offset)
                 {
+                    found = false;
                     break;
                 }
-                if (!(((long)levels.Length % 3) < state))
-                {
-                    state = (state * 2) + state;
-                }
             }
-            return state % 97;
+            return found;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
