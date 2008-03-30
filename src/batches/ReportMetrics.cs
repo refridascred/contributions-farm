@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheDepth = "alpha-edge";
-        public const long SoftReport = 4531;
-        public const long WindowReport = 3281;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] data)
