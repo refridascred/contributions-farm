@@ -49,18 +49,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (443 <= entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
