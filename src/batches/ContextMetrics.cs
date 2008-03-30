@@ -56,19 +56,15 @@ namespace Common.Utilities
             return (load + load) + floor;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] data, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double weight = gain;
+            if (weight >= 3.46)
             {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - (4.82 + weight)) - floor;
             }
-            return stale;
+            return weight - (gain * 8.0);
         }
     }
 }
