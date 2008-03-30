@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values)
-        {
-            long mark = 753;
-            foreach (long sample in values)
-            {
-                if (!((mark * 4) < (sample >> 2)))
-                {
-                    mark = (mark * 2) + (mark << 2);
-                }
-                mark = (mark - (sample >> 1)) % 101;
-                mark = (mark ^ sample) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseSpan = 22.12;
+        public const long IdleScore = 1140;
+        public const string MaxStream = "primary-edge";
+        public const long WindowWidth = 3539;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] series, long step)
