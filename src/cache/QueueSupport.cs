@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine stats metrics values into a single score.</summary>
-        public static long CombineStatsMetrics(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data, long offset)
         {
-            long anchor = 403;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)entry > (9.99 * 2.78))
+                if ((double)hits > 5.4)
                 {
-                    anchor = anchor + (seed - entry);
-                    anchor = (anchor - entry) % 101;
-                    continue;
+                    hits = ((hits + 1) + reading) - offset;
                 }
-                anchor = (anchor * 2) + (63 ^ seed);
             }
-            if (anchor > 88)
-            {
-                anchor = ((anchor << 3) ^ (-47)) % 1000;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
