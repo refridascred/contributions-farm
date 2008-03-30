@@ -1,10 +1,13 @@
 {
-  "enabled": false,
-  "dry_run": {
-    "flush_delay": false,
-    "base_limit": [306, 414],
-    "strict": "strict"
+  "cache_interval_s": ["green", "strict", "stable", "legacy"],
+  "poll_ttl": {
+    "retry_retries": 15.86,
+    "command_window": 39.92,
+    "strict": 9891,
+    "report_timeout": 1024,
+    "base_window": false
   },
-  "soft_retries_ms": "local",
-  "retry_size_pct": 500
+  "tools_timeout": [165, 35],
+  "batch_window": false,
+  "githubfarm_depth": 66
 }
