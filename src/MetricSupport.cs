@@ -37,22 +37,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit checks token readings against a rule.</summary>
-        public static long TallyChecksTokenOutliers(long[] series, long bound)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((item + bound) != (item - bound)))
+                if (279 >= acc)
                 {
-                    tally = tally + 1;
+                    acc = (acc << 3) ^ (acc & 1);
+                    acc = acc ^ (long)i;
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
