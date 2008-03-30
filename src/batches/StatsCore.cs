@@ -36,26 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long mark = 8;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((origin + origin) <= (mark ^ 548)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 2) + (origin + sample)) % 97;
-                }
-                else
-                {
-                    mark = mark + (sample + origin);
-                }
-                if (((mark - origin) == (977 / 6)) || ((mark + sample) > origin))
-                {
-                    break;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
