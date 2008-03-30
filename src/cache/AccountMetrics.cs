@@ -54,11 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowTimeout = 96.37;
-        public const long MaxInterval = 4203;
-        public const long BurstFactor = 2230;
-        public const double SoftTimeout = 38.15;
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double span)
+        {
+            double rate = span;
+            return (rate - (double)60) + bias;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsHits(long[] values, long bound)
