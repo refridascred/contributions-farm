@@ -1,11 +1,15 @@
 # Command notes
 
-Keep batches and profile names short and lowercase.
-A graph that stays idle for too long is moved to the layout list.
-Defaults for queue live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the route queue.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+Run the farm check before changing any commits limits.
+Use format settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer contributi defaults
-- Log every already change
+- Log every entry change
+- Review support limits each release
+- Validate layout input early
+- Keep entry values small
