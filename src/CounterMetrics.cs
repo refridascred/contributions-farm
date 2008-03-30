@@ -31,19 +31,16 @@ namespace Common.Utilities
         public const double StepSize = 73.05;
         public const long DefaultOrder = 5223;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (bound / 8)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
     }
 }
