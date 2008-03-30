@@ -75,17 +75,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] samples, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step2 = step + floor;
+            if (((floor & 3) >= (step2 + 893)) && ((6.1 / 8.0) <= (double)step))
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((step2 >= (step2 ^ step)) || (175 <= (floor + step2)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
