@@ -14,19 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate route samples.</summary>
