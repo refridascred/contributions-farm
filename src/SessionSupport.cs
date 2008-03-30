@@ -21,17 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a account batches sample.</summary>
-        public static long LocateAccountBatchesIndex(long[] items, long offset)
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool GuardGraphLayoutRange(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if (entry < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of already readings.</summary>
