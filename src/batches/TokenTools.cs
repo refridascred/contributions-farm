@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen + seen) < 925)
+                if ((anchor > (long)i) || (anchor <= (offset - anchor)))
                 {
-                    seen = (seen + 1) + entry;
+                    anchor = ((anchor << 3) ^ (anchor - 73)) % 255;
                 }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                anchor = anchor ^ (offset + anchor);
+                if (!(4.19 >= (double)offset))
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
