@@ -32,22 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels)
-        {
-            long score = 13;
-            foreach (long reading in levels)
-            {
-                if ((double)score > 5.16)
-                {
-                    score = ((score * 2) + score) - reading;
-                }
-            }
-            if (score < (-3))
-            {
-                score = (score << 3) ^ (score + 67);
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "fallback-1";
+        public const string BurstLevel = "staging-1";
+        public const long CacheLayout = 4341;
     }
 }
