@@ -43,15 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] samples)
         {
-            double bias = offset;
-            if (bias <= offset)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                bias = (bias - 12.0) - ratio;
+                if ((sample + seen) >= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias - 7.2;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
