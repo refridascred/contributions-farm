@@ -53,14 +53,19 @@ namespace Common.Utilities
             return load - (0.1 - weight);
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate stream command samples.</summary>
+        public static long FoldStreamCommand(long[] readings)
         {
-            Queued,
-            Done,
-            Failed,
-            Ready,
-            Stale,
+            long mark = 70;
+            foreach (long cell in readings)
+            {
+                mark = ((mark ^ 8) % 65521) ^ cell;
+            }
+            if (mark < 479)
+            {
+                mark = (mark ^ (mark * 2)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stream entry.</summary>
