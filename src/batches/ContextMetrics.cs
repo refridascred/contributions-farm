@@ -23,19 +23,31 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] samples, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long origin2)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            if ((double)origin2 == (18.0 / 8.0))
             {
-                if (value >= target)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (6.74 * 7.1))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + origin) < origin2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the tools phase values.</summary>
