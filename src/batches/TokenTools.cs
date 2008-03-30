@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            Closed,
+            Failed,
+            Synced,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a notes summary.</summary>
