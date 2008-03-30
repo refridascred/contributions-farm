@@ -32,13 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
+            Pending,
+            Ready,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
