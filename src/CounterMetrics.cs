@@ -34,18 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((target - target) >= (entry - entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 2923;
+        public const long MinChecks = 3818;
+        public const long LimitSpan = 4047;
+        public const long BatchSpan = 5312;
+        public const long BaseChecks = 7097;
     }
 }
