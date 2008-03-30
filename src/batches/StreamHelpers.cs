@@ -34,19 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - reading) >= (hits << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheLevel = 9160;
+        public const long BatchCount = 2207;
+        public const long MaxSpan = 3482;
+        public const long CacheTimeout = 9443;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
