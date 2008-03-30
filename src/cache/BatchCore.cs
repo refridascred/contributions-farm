@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the buffer report entries that pass the check.</summary>
-        public static long TallyBufferReportHits(long[] values)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value == (9.6 * 15.0))
+                if (data[i] > limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
