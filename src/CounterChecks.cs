@@ -63,13 +63,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Check that every context payload entry stays within the limit.</summary>
+        public static bool VerifyContextPayloadRange(long[] readings, long seed)
         {
-            New,
-            Synced,
-            Stale,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
