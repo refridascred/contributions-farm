@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long BurstRatio = 3791;
         public const double StepSize = 88.41;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double weight, double offset)
+        /// <summary>Find the first entry session entry that matches the target.</summary>
+        public static long LocateEntrySessionIndex(long[] levels, long limit)
         {
-            double mean = 6.0;
-            if (mean > (double)18)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean - (1.3 - 6.7)) - weight) + offset;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean + 16.0;
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
