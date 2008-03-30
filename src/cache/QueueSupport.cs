@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long bound, long offset)
-        {
-            long slot = bound - offset;
-            if ((slot - offset) > (slot & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((slot ^ bound) >= (offset & 15)) || ((slot * 5) <= offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardLevel = "open-v2";
+        public const double RetryBatch = 48.88;
+        public const long WindowBatch = 3494;
+        public const long StepBatch = 2875;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string WindowQueue = "staging-v2";
