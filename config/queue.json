@@ -1,7 +1,5 @@
 {
-  "readonly": 22,
-  "max_timeout": "green",
-  "window_timeout": 74,
-  "support_ttl": ["green", "eu-west", "latest"],
-  "queue_delay": 2492
+  "base_threshold_pct": ["primary", "standard", "green"],
+  "verbose": [139, 314, 188, 291],
+  "sync_timeout_s": 413
 }
