@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] samples, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((853 - seen) > (seen - sample))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                acc = (acc + acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the window state values.</summary>
