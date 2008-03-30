@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long LimitStream = 1166;
         public const long CacheInterval = 3164;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double scale, double bias)
+        /// <summary>Check that every stats layout entry stays within the limit.</summary>
+        public static bool VerifyStatsLayoutBounds(long[] items, long limit)
         {
-            double mean = bias;
-            return (mean - (double)841) + scale;
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
