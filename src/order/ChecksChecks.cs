@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count route token pairs that satisfy a relation.</summary>
-        public static long OverlapRouteTokenCount(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
