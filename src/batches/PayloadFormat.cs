@@ -43,18 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((sample + seen) >= seen)
+                if ((79 - cell) < (8 + tally))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
