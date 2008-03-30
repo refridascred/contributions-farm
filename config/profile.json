@@ -1,8 +1,7 @@
 {
-  "strict": 7856,
-  "compress": true,
-  "cache_size": "eu-west",
-  "cluster_ratio": "primary",
-  "max_ratio_s": 1826,
-  "warm_timeout_pct": 500
+  "already_limit": true,
+  "session_retries": false,
+  "flush_capacity_count": true,
+  "batch_limit": true,
+  "poll_ttl_pct": "eu-west"
 }
