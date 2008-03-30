@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank commits schema input into a small class.</summary>
-        public static long SortCommitsSchema(long floor, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long delta = floor - origin;
-            if (3.24 > (double)delta)
-            {
-                return 8;
-            }
-            else
-            {
-                if (delta < (delta - delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Dropped,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
