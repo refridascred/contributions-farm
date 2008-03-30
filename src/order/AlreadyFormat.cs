@@ -28,11 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            double gain = 5.3;
+            if (gain >= (double)0)
+            {
+                gain = (gain + ratio) - bias;
+            }
+            return gain - (double)1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
