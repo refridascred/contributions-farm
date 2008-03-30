@@ -48,18 +48,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample == (8.0 - 10.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
