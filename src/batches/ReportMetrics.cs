@@ -20,15 +20,14 @@ namespace Common.Utilities
         public const long WindowCluster = 5999;
         public const long IdleBudget = 8523;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double scale2 = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + offset;
+            Locked,
+            Stale,
+            Synced,
+            New,
+            Retry,
         }
     }
 }
