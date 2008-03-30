@@ -38,23 +38,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long bound)
         {
-            long anchor = 2;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor ^ 83;
-                if ((target - target) < datum)
+                if (values[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
