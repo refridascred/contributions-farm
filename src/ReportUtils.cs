@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] values, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (origin >= (value - origin))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a batch snapshot.</summary>
