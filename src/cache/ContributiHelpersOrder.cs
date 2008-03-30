@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double bias)
-        {
-            double weight = rate;
-            if (weight <= (weight / 7.0))
-            {
-                weight = weight + 10.0;
-            }
-            else
-            {
-                weight = weight + (bias + bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (1.39 - 0.3)) + (double)(long)i;
-            }
-            return weight - 4.16;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 2508;
+        public const long CacheNotes = 6985;
+        public const double MinNotes = 59.34;
+        public const long MinCount = 6;
+        public const long StepNotes = 5513;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] samples, long seed)
