@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] values, long bound)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((bound + reading) < (92 ^ reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command status values.</summary>
