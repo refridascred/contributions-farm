@@ -66,11 +66,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
