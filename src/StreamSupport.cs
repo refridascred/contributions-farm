@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleScore = 4486;
-        public const double WindowRecord = 80.67;
-        public const double SoftRecord = 96.08;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double offset)
+        {
+            double load = (double)(447 - 2);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (ratio + offset);
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
