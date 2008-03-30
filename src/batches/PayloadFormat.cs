@@ -43,19 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue tools entry stays within the limit.</summary>
-        public static bool CheckQueueToolsBounds(long[] levels, long target)
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool VerifyCommitsAlreadyRange(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (entry > target)
+                if (sample != origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
