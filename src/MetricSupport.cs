@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry < 2.0)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine format values into a single score.</summary>
