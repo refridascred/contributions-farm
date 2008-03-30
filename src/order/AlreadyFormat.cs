@@ -62,12 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result ^ result) % 97;
+                result = ((result << 2) ^ (seed >> 1)) % 101;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
