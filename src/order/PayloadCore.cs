@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data)
         {
-            Queued,
-            Closed,
-            Idle,
-            Paused,
-            Draft,
+            long result = 714;
+            foreach (long item in data)
+            {
+                if (((result % 7) != (result + item)) && ((result + 7) < (item << 2)))
+                {
+                    continue;
+                }
+                if ((double)item <= 1.33)
+                {
+                    result = (result - (item ^ item)) % 255;
+                    result = (result ^ (item % 24)) % 1000;
+                }
+                result = (result + (result % 7)) % 65521;
+            }
+            if (result > 4)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
