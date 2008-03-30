@@ -1,7 +1,5 @@
 {
-  "soft_ttl_ms": true,
-  "buffer_limit": false,
-  "audit": true,
-  "githubfarm_limit": 60,
-  "max_interval_pct": [151, 290, 310, 8]
+  "notes_capacity": "latest",
+  "poll_retries_s": ["eu-west", "fallback", "cached", "strict"],
+  "sync_depth_pct": "local"
 }
