@@ -1,15 +1,14 @@
 # Command notes
 
-A order that stays idle for too long is moved to the schema list.
-Each farm is validated before it reaches the layout queue.
-The schema module keeps session values in sync with the commits cache.
+The token helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the notes handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+The filter module keeps graph values in sync with the context cache.
+The graph report groups every token by format.
 
 ## Guidelines
 
-- Validate command input early
-- Document new window fields
-- Log every command change
-- Review stats limits each release
+- Keep support values small
+- Log every farm change
+- Document new support fields
