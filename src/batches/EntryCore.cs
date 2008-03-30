@@ -55,18 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 0;
+            foreach (long reading in series)
             {
-                if (!((matches ^ matches) > 26))
+                if ((carry * 4) == (reading - reading))
                 {
-                    matches = ((matches + 1) ^ item) + limit;
+                    carry = (carry * 4) + bound;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
