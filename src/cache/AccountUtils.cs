@@ -47,14 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Paused,
-            Failed,
-            Locked,
-            Pending,
-            Draft,
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
