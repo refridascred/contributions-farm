@@ -43,12 +43,11 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
