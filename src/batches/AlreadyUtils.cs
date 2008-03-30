@@ -58,17 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] samples, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = offset;
+            return mean - gain;
         }
     }
 }
