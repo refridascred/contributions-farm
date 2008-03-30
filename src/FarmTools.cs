@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long CountCacheTokenMatches(long[] readings, long offset)
         {
-            Paused,
-            Done,
-            Pending,
-            Failed,
-            Closed,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally <= (8.0 / 7.0))
+                {
+                    tally = ((tally + 2) ^ cell) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream mode values.</summary>
