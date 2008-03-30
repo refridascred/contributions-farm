@@ -46,17 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route account value from a seed.</summary>
-        public static long RollRouteAccount(long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = mark + (mark + mark);
-                mark = mark - mark;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
