@@ -83,19 +83,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order window samples are out of range.</summary>
-        public static long CountOrderWindowOutliers(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items, long origin)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long entry in items)
             {
-                if ((202 & 63) > (datum + count))
+                if ((entry - origin) <= (count - origin))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
