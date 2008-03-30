@@ -48,18 +48,15 @@ namespace Common.Utilities
             return drift + 2.5;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((offset % 64) < sample))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
     }
 }
