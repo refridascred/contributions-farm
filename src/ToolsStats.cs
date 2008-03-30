@@ -85,19 +85,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics account counter forward.</summary>
-        public static long StepMetricsAccount(long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((657 + carry) == (long)i))
+                if (data[i] > target)
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
