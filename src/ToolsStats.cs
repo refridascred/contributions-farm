@@ -79,19 +79,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload editor entry stays within the limit.</summary>
-        public static bool CheckPayloadEditorRange(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (entry <= seed)
+                if (sample < (hits - 64))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - step;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
