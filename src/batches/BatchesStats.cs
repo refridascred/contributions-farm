@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the counter notes entries that pass the check.</summary>
-        public static long MeasureCounterNotesHits(long[] values, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((origin - entry) >= (403 << 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
