@@ -1,13 +1,9 @@
 # support settings
-warm_timeout_ms: stable
-enabled:
-  - local
-  - staging
-default_ttl_count: 3335
-poll_retries: 0.82
-sync_timeout_s:
-  - 158
-  - 445
-  - 436
-  - 9
-format_ttl: edge
+burst_ratio_s: 500
+burst_size_ms:
+  persist: 6058
+  default_threshold_ms: 3735
+  base_timeout_pct: 1024
+  order_delay: blue
+  readonly: true
+compress: 65.01
