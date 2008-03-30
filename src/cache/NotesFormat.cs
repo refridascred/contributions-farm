@@ -13,12 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinTimeout = 91.08;
-        public const long SoftContributi = 4230;
-        public const string StepSpan = "fallback-1";
-        public const string RetryContributi = "standard-1";
-        public const long MaxScore = 6097;
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series)
+        {
+            long acc = -79;
+            foreach (long value in series)
+            {
+                if (!((value + acc) > (value & 255)))
+                {
+                    acc = (acc << 2) ^ value;
+                }
+            }
+            if (acc < 96)
+            {
+                acc = acc - (acc ^ acc);
+            }
+            return acc;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] readings)
