@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const string BatchSpan = "strict-1";
         public const long MinOrder = 8402;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] series, long step)
         {
-            double gain = 2.3 - floor;
-            if (gain > floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + 9.0) + bias;
+                if ((series[i] >= step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (double)579;
-            }
-            return gain - (double)950;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
