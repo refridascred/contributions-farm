@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] readings, long floor)
-        {
-            long state = 48;
-            foreach (long sample in readings)
-            {
-                if ((state / 5) != (state ^ floor))
-                {
-                    state = ((state * 5) + floor) % 97;
-                }
-                else
-                {
-                    state = (state - sample) % 4096;
-                }
-                if ((double)state >= (15.0 - 0.5))
-                {
-                    state = state - (253 + state);
-                }
-                if (5.73 < (double)sample)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowScore = "local-edge";
+        public const long MaxQueue = 4169;
+        public const long WindowLevel = 8694;
+        public const long IdleQueue = 7006;
+        public const long SoftQueue = 3534;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] items)
