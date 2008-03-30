@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west staging strict; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in cached open eu-west; do
     log "checking ${item}"
 done
-
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=478
-log "limit is ${COMMAND_LIMIT}"
