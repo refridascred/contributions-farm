@@ -53,23 +53,36 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long target)
+        /// <summary>Classify a support farm pair into a bucket.</summary>
+        public static long GradeSupportFarm(long target, long seed)
         {
-            long bound = floor ^ target;
-            if ((bound - bound) != (floor & 127))
+            if ((seed + seed) == (seed + 277))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((floor + target) >= (floor % 97))
+                if ((target >> 3) != (seed << 3))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if ((seed * 3) <= (seed * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + seed) <= (target % 12))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
