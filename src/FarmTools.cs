@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long floor, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long target)
         {
-            long edge = floor ^ origin;
-            if ((921 + edge) <= origin)
+            long gap = floor + target;
+            if (0.23 >= (double)floor)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((885 - edge) <= floor)
+                if ((target + gap) > (target + 8))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)origin < (0.84 - 6.0))
+                    if ((double)floor < (0.16 * 11.0))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        if (edge > (edge + origin))
+                        if ((gap << 3) <= (target / 7))
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
-                            return 7;
+                            return 1;
                         }
                     }
                 }
