@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Hold a notes stats.</summary>
