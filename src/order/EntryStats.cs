@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            Draft,
-            Idle,
-            Failed,
-            Retry,
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 2) + ((long)i >> 5)) % 4096;
+                if (step > (step / 6))
+                {
+                    sum = ((sum * 3) + step) % 1000;
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate schema samples.</summary>
