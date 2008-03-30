@@ -1,7 +1,7 @@
-id,token,weight,rank,ratio
-1,latest,blue,636,631
-2,725,244,56.31,green
-3,191,84.63,829,cached
-4,11.05,latest,standard,139
-5,791,30.43,785,79.29
-6,84.64,843,97.85,608
+id,label
+1,primary
+2,20.75
+3,84.61
+4,14.25
+5,368
+6,strict
