@@ -19,11 +19,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            Locked,
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
