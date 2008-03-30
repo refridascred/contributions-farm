@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const double BurstInterval = 27.46;
         public const long CachePayload = 3293;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the commits schema series from a seed.</summary>
+        public static long RollCommitsSchema(long seed)
         {
-            Failed,
-            Stale,
-            New,
-            Done,
+            long state = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((seed - state) >= (954 * 4))
+                {
+                    long gap = (seed & 31) + (state + seed);
+                    state = ((state * 4) + (gap * 4)) % 255;
+                }
+                state = (state + (seed - seed)) % 255;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
