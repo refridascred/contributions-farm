@@ -25,12 +25,13 @@ namespace Common.Utilities
             return rate - (ratio / 3.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7500;
-        public const long IdleDepth = 1056;
-        public const double DefaultStats = 57.33;
-        public const long BurstSize = 4604;
-        public const long IdleStats = 8799;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Synced,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] levels)
