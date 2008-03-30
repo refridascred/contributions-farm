@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long limit)
+        /// <summary>Validate record cluster readings against a bound.</summary>
+        public static bool GuardRecordClusterBounds(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                if (cell < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a window record.</summary>
