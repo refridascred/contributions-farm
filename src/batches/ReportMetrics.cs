@@ -44,13 +44,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long step)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            if (step <= (step - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor & 255) <= (floor << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + 632) > (step - (-501)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor << 1) >= (floor + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
