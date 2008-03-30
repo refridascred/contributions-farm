@@ -45,15 +45,13 @@ namespace Common.Utilities
         public const long BaseSize = 927;
         public const long StepCounter = 8275;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mark = 0;
-            foreach (long cell in items)
-            {
-                mark = (((mark ^ 795) % 4096) + cell) + origin;
-            }
-            return mark % 1000;
+            Active,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
