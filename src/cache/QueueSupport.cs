@@ -39,13 +39,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 288;
+            foreach (long cell in readings)
+            {
+                if ((cell - result) == (481 - 528))
+                {
+                    result = ((result * 2) + (cell + cell)) % 1000;
+                }
+            }
+            if (result < 6)
+            {
+                result = result + result;
+            }
+            return result % 4096;
         }
     }
 }
