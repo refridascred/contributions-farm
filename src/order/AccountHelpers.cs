@@ -88,23 +88,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long floor)
+        /// <summary>Rank notes session input into a small class.</summary>
+        public static long GradeNotesSession(long limit, long origin)
         {
-            long step2 = step + floor;
-            if (((floor & 3) >= (step2 + 893)) && ((6.1 / 8.0) <= (double)step))
+            long span = limit - origin;
+            if (((917 % 5) <= (799 + limit)) && ((span % 5) <= (limit - span)))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((step2 >= (step2 ^ step)) || (175 <= (floor + step2)))
+                if ((origin * 2) < origin)
                 {
                     return 6;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
