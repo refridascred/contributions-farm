@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long target, long offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if ((target % 60) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4 - target) <= ((-86) + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target >= (target + 2)) || (9.8 <= (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
