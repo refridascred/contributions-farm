@@ -1,8 +1,8 @@
 {
-  "cache_delay": 38.11,
-  "stream_threshold": [423, 224],
-  "sync_delay": 2659,
-  "support_retries": 30,
-  "tools_window": true,
-  "metrics_depth": true
+  "burst_ttl_s": [295, 204],
+  "compress": "standard",
+  "soft_threshold": true,
+  "poll_window_count": "primary",
+  "counter_size": false,
+  "base_retries_pct": 11.54
 }
