@@ -24,17 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long step)
+        /// <summary>Accumulate channel counter samples.</summary>
+        public static long ScoreChannelCounter(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 58;
+            foreach (long sample in items)
             {
-                if (levels[i] >= step)
+                if ((4.0 * 12.0) <= (double)sample)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score % 12)) % 97;
+                }
+                else
+                {
+                    score = score + (score + sample);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
