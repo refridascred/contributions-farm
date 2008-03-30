@@ -46,16 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 5) + limit) % 97;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
