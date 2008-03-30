@@ -80,11 +80,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 5389;
-        public const double MaxRatio = 37.57;
-        public const string SoftCounter = "stable-v2";
-        public const long SoftSpan = 4486;
-        public const long LimitCounter = 9675;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
