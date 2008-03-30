@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long IdleGraph = 3686;
         public const long LimitGraph = 6237;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] data)
         {
-            Queued,
-            Retry,
-            Synced,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (datum >= (hits & 31))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
