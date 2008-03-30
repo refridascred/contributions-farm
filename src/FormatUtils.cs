@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Draft,
-            Locked,
-            Idle,
-            Paused,
-            Stale,
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the payload level values.</summary>
