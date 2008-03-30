@@ -33,12 +33,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            Active,
+            Draft,
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
