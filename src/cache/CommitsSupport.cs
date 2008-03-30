@@ -63,11 +63,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchWidth = 1415;
-        public const long MaxWidth = 3059;
-        public const string BaseRatio = "primary-edge";
-        public const long CacheScore = 5367;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
+        {
+            long total = 729;
+            foreach (long datum in readings)
+            {
+                total = ((total << 3) ^ (datum - datum)) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
