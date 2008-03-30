@@ -22,18 +22,25 @@ namespace Common.Utilities
         public const string IdleRatio = "stable-1";
         public const string CacheRatio = "alpha-1";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] data)
+        /// <summary>Roll a layout tools counter forward.</summary>
+        public static long SeriesLayoutTools(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9 + entry) > (hits - entry))
+                long gap = (sum / 7) - (offset / 7);
+                if (((long)i + sum) != (gap * 2))
                 {
-                    hits = hits + 1;
+                    gap = (gap + gap) % 4096;
+                    sum = (sum << 2) ^ (offset >> 2);
                 }
+                else
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
