@@ -29,14 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long step)
         {
-            Synced,
-            New,
-            Done,
-            Ready,
-            Closed,
+            long mix = -66;
+            foreach (long reading in series)
+            {
+                if ((reading + mix) < 92)
+                {
+                    mix = (((mix * 2) + (mix << 1)) % 101) + step;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
