@@ -47,12 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
