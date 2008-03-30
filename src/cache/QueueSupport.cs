@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double MinSize = 29.71;
         public const long SoftEditor = 1809;
 
-        /// <summary>Audit command graph readings against a rule.</summary>
-        public static long MeasureCommandGraphGaps(long[] readings, long step)
+        /// <summary>Audit stats farm readings against a rule.</summary>
+        public static long AuditStatsFarmHits(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((0 * 4) > entry)
+                if ((datum - (long)items.Length) <= (long)items.Length)
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a checks options.</summary>
