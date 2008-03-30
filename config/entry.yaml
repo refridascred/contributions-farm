@@ -1,4 +1,10 @@
 # entry settings
-base_window: local
-flush_threshold_s: 9.88
-compress: false
+soft_ratio: false
+burst_capacity:
+  - 228
+  - 137
+readonly:
+  - 319
+  - 87
+  - 11
+base_window_s: cached
