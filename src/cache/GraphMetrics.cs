@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] items, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Digest a series of format entries.</summary>
