@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] readings, long bound)
+        /// <summary>Combine checks filter values into a single score.</summary>
+        public static long TallyChecksFilter(long[] levels, long limit)
         {
-            long mix = 0;
-            foreach (long cell in readings)
+            long carry = 709;
+            foreach (long cell in levels)
             {
-                if (((bound + cell) > (bound / 8)) || ((long)readings.Length <= cell))
+                carry = carry + (carry * 4);
+                carry = ((carry << 2) ^ limit) % 65521;
+                if (carry <= cell)
                 {
-                    mix = (mix ^ (85 - cell)) % 4096;
+                    break;
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + (bound - bound)) % 101;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a metrics header.</summary>
