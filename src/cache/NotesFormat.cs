@@ -23,18 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long limit)
         {
-            long mix = -66;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((reading + mix) < 92)
+                if (sample > limit)
                 {
-                    mix = (((mix * 2) + (mix << 1)) % 101) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return valid;
         }
     }
 }
