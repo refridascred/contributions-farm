@@ -15,10 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultBudget = 41.0;
-        public const long WindowCluster = 5999;
-        public const long IdleBudget = 8523;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 5) + ((long)i - origin)) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state + (origin % 8)) % 255) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
