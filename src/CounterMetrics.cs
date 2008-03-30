@@ -20,18 +20,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches - 801) > ((-780) % 64))
+                if (values[i] <= floor)
                 {
-                    matches = (matches + 2) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
