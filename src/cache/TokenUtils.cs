@@ -34,12 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long TallyQueueToolsOutliers(long[] items)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen ^ 856) != (seen * 5))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
