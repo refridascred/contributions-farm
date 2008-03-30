@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long TallyCacheTokenMatches(long[] data, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double bias = (double)(1 / 3);
+            if (bias < ratio)
             {
-                if (bound > (reading % 97))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - (double)98;
             }
-            return hits;
+            else
+            {
+                bias = bias + (double)5;
+            }
+            return bias - (span - span);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
