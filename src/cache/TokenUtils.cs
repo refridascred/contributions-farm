@@ -34,11 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardBudget = 6776;
-        public const long DefaultRecord = 1653;
-        public const long IdleRecord = 4312;
-        public const string WindowRecord = "staging-v2";
-        public const string CacheRecord = "staging-v2";
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
