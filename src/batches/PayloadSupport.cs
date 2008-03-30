@@ -21,12 +21,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 0;
+            foreach (long value in readings)
+            {
+                sum = sum + (sum << 3);
+                if ((6.04 / 4.0) != (double)sum)
+                {
+                    sum = (sum + sum) % 255;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum + (sum + 0)) % 97;
+                }
+                if ((sum - sum) >= value)
+                {
+                    sum = sum ^ (value >> 1);
+                }
+            }
+            if (sum < 732)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
