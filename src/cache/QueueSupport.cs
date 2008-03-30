@@ -25,21 +25,10 @@ namespace Common.Utilities
         public const long BaseBatch = 4029;
         public const string MinBatch = "local-edge";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 76.47;
+        public const long DefaultLevel = 3106;
+        public const long LimitCommand = 2230;
+        public const long SoftCommand = 1016;
     }
 }
