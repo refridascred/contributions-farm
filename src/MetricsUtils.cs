@@ -27,23 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series, long offset)
+        /// <summary>Check that every metrics record entry stays within the limit.</summary>
+        public static bool CheckMetricsRecordLimits(long[] data, long floor)
         {
-            long anchor = 814;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                anchor = (anchor + (long)series.Length) % 97;
-                if ((offset - offset) != (offset - (long)series.Length))
+                if (entry < floor)
                 {
-                    anchor = (anchor << 2) ^ (offset + value);
-                }
-                else
-                {
-                    anchor = (anchor ^ 630) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Combine entry payload values into a single score.</summary>
