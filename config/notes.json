@@ -1,5 +1,6 @@
 {
-  "persist": 60,
-  "buffer_retries": "staging",
-  "counter_window": ["staging", "eu-west", "open", "standard"]
+  "verbose": ["blue", "edge"],
+  "flush_threshold": "blue",
+  "stats_threshold": false,
+  "burst_ttl_pct": 4610
 }
