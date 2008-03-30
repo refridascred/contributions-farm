@@ -1,18 +1,5 @@
 # support settings
-max_timeout:
-  graph_delay:
-    - cached
-    - legacy
-    - legacy
-  default_size_s: 1024
-  default_depth: false
-  default_threshold_s: 89
-  sync_delay_count: 30
-  hard_depth_count:
-    - 382
-    - 357
-    - 452
-burst_ttl_ms: blue
-metric_limit: latest
-verbose: 11
-base_ttl_ms: 49.08
+batch_ratio_count: 95.63
+batches_limit: 8
+burst_limit: staging
+audit: 63.95
