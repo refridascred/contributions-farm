@@ -74,22 +74,15 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples, long bound)
+        /// <summary>Derive the next commits cache value from a seed.</summary>
+        public static long RollCommitsCache(long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((double)bound > 6.35) && (4.6 > (double)bound)))
-                {
-                    tally = (tally + 3) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
