@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels, long target)
-        {
-            long carry = 4;
-            foreach (long entry in levels)
-            {
-                if ((entry - carry) != (entry * 5))
-                {
-                    carry = ((carry << 3) ^ entry) % 4096;
-                }
-                if (((target - carry) == (16 % 2)) && ((16 + target) >= (entry + entry)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleCount = 1568;
+        public const double WindowCount = 2.71;
+        public const long WindowDepth = 2293;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] series)
