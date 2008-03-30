@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long CacheWidth = 2442;
         public const double BaseBatch = 58.49;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double offset)
-        {
-            double ratio = (double)(393 << 2);
-            if (ratio < weight)
-            {
-                ratio = (ratio + 4.53) + offset;
-            }
-            return ratio - (double)1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8010;
+        public const long MaxDepth = 6437;
+        public const double MinTools = 40.36;
+        public const long CacheRatio = 8644;
 
         /// <summary>Validate editor already readings against a bound.</summary>
         public static bool GuardEditorAlreadyRange(long[] items, long offset)
