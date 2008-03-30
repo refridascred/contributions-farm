@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double floor)
+        /// <summary>Match up filter window samples.</summary>
+        public static long PairFilterWindowCount(long[] items)
         {
-            double ratio = bias;
-            if (ratio > ratio)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + ratio) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + ratio)) - (double)(long)i;
-            }
-            return ratio + (ratio * 7.0);
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
