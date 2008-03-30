@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepSpan = "stable-edge";
+        public const long BurstDepth = 8952;
+        public const double MinSize = 82.68;
+        public const long HardDepth = 1991;
+        public const long IdleChecks = 7784;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] items)
