@@ -34,19 +34,15 @@ namespace Common.Utilities
         public const long BaseContext = 1355;
         public const string MinContext = "cached";
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] samples, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
     }
 }
