@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long anchor = 9;
-            foreach (long cell in levels)
+            long sum = 32;
+            foreach (long item in items)
             {
-                if ((cell & 7) != ((-301) % 100))
+                if (((sum * 4) < (item ^ sum)) || ((item - item) > (655 ^ 1)))
                 {
-                    anchor = anchor + (cell - anchor);
+                    sum = sum + (sum & 255);
                 }
-                if (4.0 < (double)cell)
+                else
+                {
+                    sum = ((sum * 2) + (7 % 60)) % 101;
+                }
+                if (sum >= (494 + sum))
                 {
                     break;
                 }
             }
-            return anchor % 4096;
+            if (sum < 22)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
