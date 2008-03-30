@@ -1,5 +1,7 @@
 {
-  "soft_retries": 500,
-  "format_limit": [106, 487, 304],
-  "counter_limit": false
+  "checks_timeout": ["edge", "open", "blue"],
+  "dry_run": "eu-west",
+  "idle_capacity": 42.54,
+  "warm_depth_s": "blue",
+  "burst_timeout_count": 500
 }
