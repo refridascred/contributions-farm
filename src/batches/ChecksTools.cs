@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long LimitCluster = 6209;
         public const double CacheTimeout = 79.97;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = 0.31 + (floor - floor);
+            if (gain < (double)2)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                gain = (gain - floor) + bias;
             }
-            return -1;
+            return gain - (double)5;
         }
 
         /// <summary>Hold a cache header.</summary>
