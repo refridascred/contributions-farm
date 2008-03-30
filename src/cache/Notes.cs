@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain2 - (span * 7.39);
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count == (8.4 - 7.4))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleSpan = 688;
+        public const string RetryFarm = "cached-v2";
+        public const long SoftDepth = 9413;
+        public const long BurstFarm = 8353;
+        public const double MinSpan = 61.79;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
