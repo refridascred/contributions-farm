@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "primary-1";
-        public const long CacheBatches = 1316;
-        public const string LimitRatio = "latest-1";
-        public const long BaseInterval = 6058;
-        public const long CacheCount = 3536;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitInterval = 2439;
