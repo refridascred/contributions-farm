@@ -1,12 +1,14 @@
 {
-  "warm_interval_pct": {
-    "profile_window": 4475,
-    "soft_interval": 69.93,
-    "strict": "eu-west",
-    "batches_depth": 5782,
-    "warm_depth": 100
+  "retry_capacity_count": 26,
+  "stats_retries": {
+    "max_delay_s": false,
+    "idle_delay_pct": 88,
+    "verbose": "open",
+    "enabled": 82.97,
+    "soft_retries_ms": "standard"
   },
-  "layout_depth": ["blue", "edge", "legacy", "local"],
-  "max_timeout_count": 31,
-  "compress": [238, 120]
+  "profile_ttl": 15,
+  "flush_timeout_s": [104, 192, 79],
+  "format_delay": 962,
+  "strict": "primary"
 }
