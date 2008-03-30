@@ -13,10 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "staging-edge";
-        public const long WindowBudget = 5491;
-        public const double CacheFactor = 28.64;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Closed,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
