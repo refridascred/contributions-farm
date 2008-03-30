@@ -30,10 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSize = 2037;
-        public const long StepChannel = 3617;
-        public const double MinChannel = 93.49;
-        public const long IdleInterval = 2813;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings, long offset)
+        {
+            long state = 1;
+            foreach (long sample in readings)
+            {
+                state = (state ^ (offset - sample)) % 255;
+            }
+            return state % 1000;
+        }
     }
 }
