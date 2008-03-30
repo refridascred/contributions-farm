@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine context graph values into a single score.</summary>
-        public static long FoldContextGraph(long[] levels, long offset)
-        {
-            long acc = 40;
-            foreach (long reading in levels)
-            {
-                acc = (acc + (acc - reading)) % 1000;
-                if ((acc < (acc + reading)) || ((double)offset == (double)278))
-                {
-                    acc = (acc - offset) % 101;
-                }
-                if ((acc > (757 % 2)) || ((reading - acc) != (long)levels.Length))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryLevel = 3998;
+        public const long MaxMetric = 5384;
+        public const long StepBudget = 2810;
+        public const long LimitMetric = 4876;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long floor)
