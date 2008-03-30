@@ -1,8 +1,9 @@
-id,level,active,owner
-1,standard,88.23,eu-west
-2,704,977,18.43
-3,741,76.04,primary
-4,890,cached,82.14
-5,green,primary,strict
-6,293,760,743
-7,832,43.19,76.6
+id,active,weight
+1,latest,legacy
+2,79.22,staging
+3,317,57.89
+4,903,48.13
+5,272,primary
+6,860,41.03
+7,104,local
+8,fallback,604
