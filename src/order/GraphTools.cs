@@ -43,11 +43,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxInterval = 144;
-        public const long WindowRatio = 4622;
-        public const double CacheCommand = 11.07;
-        public const long StepCommand = 1701;
-        public const double SoftLevel = 59.46;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepRatio = 9754;
+        public const double MaxStream = 12.61;
+        public const long BurstStream = 4229;
+        public const long WindowFactor = 4211;
+        public const long MaxSize = 1389;
     }
 }
