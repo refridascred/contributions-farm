@@ -30,11 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((4.46 * 7.74) != (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
