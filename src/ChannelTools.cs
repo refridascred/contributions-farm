@@ -32,18 +32,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] readings)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((matches % 97) <= matches) || (((matches << 2) > ((long)readings.Length % 100)) && ((matches << 2) == (matches + value))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
