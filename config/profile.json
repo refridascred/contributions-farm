@@ -1,5 +1,14 @@
 {
-  "persist": 33.66,
-  "hard_size": 53,
-  "graph_threshold": true
+  "base_ratio_count": true,
+  "default_interval_count": [178, 470, 213, 474],
+  "support_capacity": "edge",
+  "cache_capacity_s": {
+    "cache_size": 66.15,
+    "format_interval": 64,
+    "soft_delay_pct": "strict",
+    "retry_ratio_count": 71.52,
+    "account_capacity": 42,
+    "poll_retries_s": [280, 455, 49, 198]
+  },
+  "buffer_window": "cached"
 }
