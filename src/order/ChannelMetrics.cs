@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 7996;
+        public const long BaseRatio = 4022;
+        public const long DefaultRatio = 3681;
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
         public static long FindPayloadChecksIndex(long[] readings, long limit)
