@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const string RetryReport = "staging-v2";
         public const double LimitReport = 16.18;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series, long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long floor)
         {
-            long state = 9;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin - state) > (origin & 15))
+                if (readings[i] == floor)
                 {
-                    state = (((state * 3) + (state >> 4)) % 1000) ^ reading;
-                }
-                else
-                {
-                    state = state ^ (state - origin);
+                    return (long)i;
                 }
             }
-            if (state > 253)
-            {
-                state = (state + origin) % 4096;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
