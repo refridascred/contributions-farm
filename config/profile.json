@@ -1,8 +1,5 @@
 {
-  "counter_timeout": "legacy",
-  "default_limit_count": false,
-  "compress": false,
-  "flush_size": [478, 387],
-  "audit": "green",
-  "burst_capacity": 63
+  "cluster_window": 49,
+  "hard_depth_s": true,
+  "audit": 39.22
 }
