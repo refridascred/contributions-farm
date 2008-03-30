@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] levels)
-        {
-            long anchor = 19;
-            foreach (long value in levels)
-            {
-                if (value > (anchor & 127))
-                {
-                    anchor = (anchor + (value - anchor)) % 101;
-                }
-            }
-            if (anchor < 28)
-            {
-                anchor = (anchor * 2) + (anchor - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 6057;
+        public const string BurstChannel = "fallback-v2";
+        public const long BatchChannel = 5074;
+        public const long DefaultChannel = 5628;
+        public const long WindowChannel = 274;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxWidth = 4140;
