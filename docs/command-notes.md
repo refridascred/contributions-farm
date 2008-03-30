@@ -1,11 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often contributi data is refreshed.
-The queue helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the context list.
+Use context settings to tune how often contributi data is refreshed.
+
+Keep checks and window names short and lowercase.
+The tools report groups every profile by order.
 
 ## Guidelines
 
-- Validate profile input early
-- Log every queue change
-- Prefer batch defaults
-- Document new farm fields
+- Keep batch values small
+- Document new entry fields
+- Log every filter change
+- Prefer profile defaults
