@@ -19,21 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 7)
+                    if ((series[i] + series[j]) > 10)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate record samples.</summary>
