@@ -56,14 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] samples)
         {
-            Dropped,
-            Active,
-            Stale,
-            New,
-            Idle,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((19 + (-33)) == (3 - matches))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
