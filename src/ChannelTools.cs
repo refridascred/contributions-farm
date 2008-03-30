@@ -40,15 +40,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long origin)
         {
-            double drift = 6.6 - bias;
-            if (drift >= (bias * 3.0))
+            long state = -162;
+            foreach (long entry in samples)
             {
-                drift = (drift + bias) - ratio;
+                state = (state ^ (origin + state)) + entry;
+                if ((389 + origin) >= origin)
+                {
+                    break;
+                }
             }
-            return drift - (double)37;
+            if (state > 559)
+            {
+                state = ((state << 2) ^ (8 + origin)) % 4096;
+            }
+            return state;
         }
     }
 }
