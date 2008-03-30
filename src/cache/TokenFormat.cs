@@ -54,19 +54,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)i + result) > result)
+                if (!((carry & 31) >= carry))
                 {
-                    result = (result - (583 + floor)) % 101;
+                    carry = (carry * 3) + (carry & 255);
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
     }
 }
