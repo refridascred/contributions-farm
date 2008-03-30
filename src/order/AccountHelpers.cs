@@ -79,19 +79,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long limit)
         {
-            long acc = 357;
-            foreach (long item in readings)
+            if ((seed - limit) == (seed - seed))
             {
-                acc = acc ^ (item >> 2);
+                return 3;
             }
-            if (acc < 345)
+            else
             {
-                acc = (acc ^ (acc * 3)) % 97;
+                if (!((seed - 2) >= 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.4 - 0.2) == (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - seed) < (limit * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
