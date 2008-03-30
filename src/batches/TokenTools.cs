@@ -36,12 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Dropped,
+            Locked,
         }
     }
 }
