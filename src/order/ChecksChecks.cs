@@ -19,14 +19,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Dropped,
-            Failed,
-            Synced,
-            Retry,
-            Ready,
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
