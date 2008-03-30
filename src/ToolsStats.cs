@@ -25,22 +25,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the cache cluster entries that pass the check.</summary>
-        public static long TallyCacheClusterGaps(long[] items, long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)cell < (4.4 / 9.0)) || ((limit - seen) > (limit % 7)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
