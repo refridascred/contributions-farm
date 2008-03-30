@@ -1,14 +1,12 @@
 # Command notes
 
-The checks module keeps stats values in sync with the layout cache.
-Keep editor and token names short and lowercase.
-
-Each schema is validated before it reaches the filter queue.
-A format that stays idle for too long is moved to the metrics list.
-The notes report groups every tools by stream.
+Each command is validated before it reaches the batch queue.
+Run the schema check before changing any session limits.
+Use cluster settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep counter values small
-- Log every command change
+- Review graph limits each release
+- Log every token change
+- Keep githubfarm values small
+- Document new format fields
