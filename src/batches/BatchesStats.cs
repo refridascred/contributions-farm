@@ -23,17 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (limit < (bound ^ limit))
             {
-                if (readings[i] <= origin)
+                return 5;
+            }
+            else
+            {
+                if (((limit & 127) != (limit * 5)) && ((20.0 / 3.0) > (double)bound))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of checks buffer entries.</summary>
