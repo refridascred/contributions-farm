@@ -1,6 +1,8 @@
 # entry settings
-record_delay: true
-compress: 8928
-format_retries: stable
-command_ratio: true
-flush_size_count: 24.43
+soft_threshold_ms: legacy
+batch_delay_count:
+  - 459
+  - 85
+  - 459
+schema_ratio: 17.32
+batch_ttl_pct: standard
