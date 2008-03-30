@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] samples, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = 5.3;
+            if (weight > bias)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (2.0 * 6.14)) - gain;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 10.0) + (double)(long)i;
+            }
+            return weight + (double)4;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
