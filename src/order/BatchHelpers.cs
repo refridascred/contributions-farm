@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] series)
         {
-            Closed,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((2.52 * 18.0) == (double)tally)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
