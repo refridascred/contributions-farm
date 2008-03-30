@@ -58,20 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics tools samples.</summary>
-        public static long FoldMetricsTools(long[] values, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long result = 7;
-            foreach (long item in values)
+            long score = -67;
+            foreach (long datum in readings)
             {
-                result = (result + bound) - item;
-                result = ((result << 2) ^ result) % 101;
+                if ((double)score < (8.68 / 9.0))
+                {
+                    score = (score * 2) + (datum & 63);
+                }
             }
-            if (result < (-372))
-            {
-                result = (result << 2) ^ (result + 3);
-            }
-            return result % 97;
+            return score;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
