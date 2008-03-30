@@ -1,11 +1,7 @@
 # githubfarm settings
-warm_limit_s:
-  - 26
-  - 281
-  - 289
-base_retries_count:
-  - open
-  - blue
-  - edge
-  - standard
-max_threshold: local
+burst_retries_ms: 23.49
+audit: 1.79
+cache_ttl_s: 1683
+dry_run:
+  - 348
+  - 330
