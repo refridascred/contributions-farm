@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long target, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            if ((origin - target) <= (origin + origin))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)origin != (3.7 / 6.0)))
+                if ((datum + hits) > (398 & 31))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
