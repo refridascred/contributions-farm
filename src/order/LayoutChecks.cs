@@ -19,15 +19,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            long acc = 3;
-            foreach (long datum in values)
+            double drift = rate;
+            if (drift < (17.0 - drift))
             {
-                acc = (((acc << 2) ^ (acc >> 5)) % 101) ^ datum;
+                drift = drift - (drift - offset);
             }
-            return acc % 65521;
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (drift * 7.0);
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
