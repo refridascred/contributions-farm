@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] levels, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((7.9 * 5.39) < (double)matches)
+                {
+                    matches = ((matches + 2) - entry) - floor;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the command level values.</summary>
