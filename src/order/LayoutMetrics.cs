@@ -39,11 +39,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Derive the next metrics record value from a seed.</summary>
+        public static long DeriveMetricsRecord(long step)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((8 * 5) == (827 - step))
+                {
+                    mark = (mark - mark) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
