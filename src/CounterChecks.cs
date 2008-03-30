@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long limit)
         {
-            double ratio = (double)(388 + 53);
-            if (ratio >= (double)39)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio - 6.99) + scale) - floor;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)(-99)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
