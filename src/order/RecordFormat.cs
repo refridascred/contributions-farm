@@ -26,12 +26,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long offset)
         {
-            Draft,
-            Paused,
-            Ready,
+            long span = limit - offset;
+            if ((limit & 127) >= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5 * 2) == (offset ^ span))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (9.1 - 0.09))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank profile record input into a small class.</summary>
