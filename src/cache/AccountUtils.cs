@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the githubfarm report series from a seed.</summary>
+        public static long DeriveGithubfarmReport(long limit)
         {
-            Idle,
-            Paused,
-            Synced,
-            Closed,
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((double)limit == (4.4 / 3.0)))
+                {
+                    mix = ((mix * 5) + (limit - limit)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
