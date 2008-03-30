@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] data)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= (hits & 31))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
