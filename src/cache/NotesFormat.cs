@@ -30,16 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command report value from a seed.</summary>
-        public static long StepCommandReport(long limit)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry << 3) ^ (limit - limit)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Synced,
+            New,
+            Done,
+            Ready,
+            Closed,
         }
     }
 }
