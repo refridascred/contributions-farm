@@ -78,22 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels, long limit)
         {
-            long anchor = 861;
-            foreach (long reading in levels)
+            long score = 7;
+            foreach (long cell in levels)
             {
-                if ((74 % 97) != (reading + reading))
+                if ((3.8 > (double)score) || (729 > cell))
                 {
-                    anchor = (anchor ^ reading) % 4096;
+                    score = (((score * 4) + (score & 3)) % 4096) - limit;
                 }
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor + ((long)levels.Length - anchor)) % 1000;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
