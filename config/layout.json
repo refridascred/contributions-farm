@@ -1,30 +1,15 @@
 {
-  "context_size": "staging",
-  "strict": "local",
-  "persist": {
-    "default_depth_pct": {
-      "order_ttl": "open",
-      "buffer_delay": 25.45,
-      "poll_size_pct": 82.11
-    },
-    "channel_retries": 646,
-    "default_retries_s": 14,
-    "stats_delay": 65,
-    "route_capacity": "blue"
-  },
-  "sync_window_ms": {
-    "payload_size": "local",
-    "channel_delay": true,
-    "report_depth": {
-      "base_depth_count": "stable",
-      "buffer_depth": true,
-      "cache_window_pct": 60,
-      "flush_capacity_count": true,
-      "min_size_pct": "primary",
-      "order_ratio": [244, 245]
-    },
-    "retry_delay_count": "standard",
-    "flush_limit_count": "stable",
-    "format_interval": 60
+  "stream_size": "fallback",
+  "support_retries": 5.81,
+  "batches_delay": "fallback",
+  "dry_run": "legacy",
+  "format_depth": 60.18,
+  "audit": {
+    "poll_retries": ["legacy", "eu-west", "standard"],
+    "cache_limit_ms": "strict",
+    "poll_depth": 1024,
+    "persist": "latest",
+    "base_ttl": "primary",
+    "warm_threshold_count": [47, 23]
   }
 }
