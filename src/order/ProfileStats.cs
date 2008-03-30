@@ -28,23 +28,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] readings)
-        {
-            long score = 0;
-            foreach (long entry in readings)
-            {
-                if ((score + entry) < (entry * 4))
-                {
-                    score = score - (score << 3);
-                }
-                else
-                {
-                    score = (score - entry) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinWidth = 4716;
+        public const string SoftContext = "legacy-edge";
+        public const long BaseContext = 1355;
+        public const string MinContext = "cached";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] samples, long target)
