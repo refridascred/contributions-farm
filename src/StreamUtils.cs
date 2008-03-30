@@ -61,18 +61,21 @@ namespace Common.Utilities
         public const long BaseChecks = 3196;
         public const double HardFactor = 59.16;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Count support queue pairs that satisfy a relation.</summary>
+        public static long MatchSupportQueueCount(long[] levels)
         {
-            long carry = 184;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((carry & 63) != (carry >> 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - (item >> 2);
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return count;
         }
     }
 }
