@@ -40,13 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of batches buffer readings.</summary>
+        public static long OverlapBatchesBufferCount(long[] samples)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
