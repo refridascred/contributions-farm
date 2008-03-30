@@ -58,15 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Accumulate route tools samples.</summary>
+        public static long CombineRouteTools(long[] values)
         {
-            double load = weight - floor;
-            for (int i = 0; i < 5; i++)
+            long mix = 95;
+            foreach (long datum in values)
             {
-                load = (load + (double)8) + (double)(long)i;
+                mix = (mix ^ (datum + datum)) % 1000;
+                mix = ((mix << 3) ^ (mix ^ (long)values.Length)) % 97;
+                mix = (mix - (datum + 1)) % 1000;
             }
-            return load - (0.1 - weight);
+            return mix;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
