@@ -51,20 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowSize = 6646;
+        public const long BaseWidth = 8840;
+        public const double BatchRatio = 46.96;
+        public const long BaseFactor = 9278;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
