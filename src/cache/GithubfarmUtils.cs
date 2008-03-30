@@ -40,14 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Dropped,
-            Active,
-            Stale,
-            Ready,
-            Failed,
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
