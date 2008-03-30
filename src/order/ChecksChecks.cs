@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (cell + 28))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a cache entry.</summary>
