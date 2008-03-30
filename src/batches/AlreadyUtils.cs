@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate farm entry readings against a bound.</summary>
-        public static bool CheckFarmEntryLimits(long[] items, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            if ((offset << 3) == (limit >> 2))
             {
-                if (datum >= floor)
+                return 0;
+            }
+            else
+            {
+                if ((offset + 261) < (limit - offset))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next farm value.</summary>
