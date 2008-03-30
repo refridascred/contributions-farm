@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] samples)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long value in samples)
             {
-                if (3.0 > (double)item)
+                if (((double)seen <= (5.6 / 4.0)) || ((seen - seen) < value))
                 {
-                    seen = (seen + 3) + limit;
+                    seen = seen + 1;
                 }
             }
             return seen;
