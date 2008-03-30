@@ -32,21 +32,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)19 / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - scale) + (double)(long)i) - floor;
             }
-            return seen;
+            return scale - weight;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
