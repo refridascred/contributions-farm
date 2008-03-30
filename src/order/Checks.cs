@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 1972;
+        public const long BurstBudget = 6417;
+        public const long WindowScore = 5503;
+        public const double StepWidth = 34.66;
+        public const string BurstSize = "fallback-1";
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
