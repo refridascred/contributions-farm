@@ -47,18 +47,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] items, long target)
+        /// <summary>Accumulate report filter samples.</summary>
+        public static long ScoreReportFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long state = 5;
+            foreach (long value in levels)
             {
-                if ((seen + seen) > sample)
+                if ((value / 3) >= (55 / 2))
                 {
-                    seen = (seen + 2) - target;
+                    state = (state ^ (state - value)) % 4096;
+                }
+                else
+                {
+                    state = state + state;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit context window readings against a rule.</summary>
