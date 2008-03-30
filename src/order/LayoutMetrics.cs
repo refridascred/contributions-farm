@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a metric support value against two limits.</summary>
-        public static long RankMetricSupport(long offset, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long limit)
         {
-            if (579 <= (offset >> 4))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (5.0 <= (double)offset)
+                if (items[i] > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
