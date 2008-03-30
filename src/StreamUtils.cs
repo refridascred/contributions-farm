@@ -65,21 +65,31 @@ namespace Common.Utilities
         public const long BaseChecks = 3196;
         public const double HardFactor = 59.16;
 
-        /// <summary>Count support queue pairs that satisfy a relation.</summary>
-        public static long MatchSupportQueueCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 4;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = ((acc * 2) + (reading / 2)) % 101;
+                if (((double)acc < (5.3 + 8.44)) && (reading < (reading + reading)))
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ acc;
+                }
+                if ((double)acc >= (double)reading)
+                {
+                    acc = ((acc << 3) ^ reading) % 97;
+                }
+                if (((72 - acc) >= acc) && ((acc % 8) < (reading << 1)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc < 770)
+            {
+                acc = ((acc << 2) ^ acc) % 4096;
+            }
+            return acc;
         }
     }
 }
