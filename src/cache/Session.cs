@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the tools support entries that pass the check.</summary>
-        public static long MeasureToolsSupportHits(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (10.0 >= (double)reading)
+                if (((double)entry == (18.0 + 18.0)) || (matches <= (long)levels.Length))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
