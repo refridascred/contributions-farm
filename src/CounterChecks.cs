@@ -32,39 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph channel value against two limits.</summary>
-        public static long ClassifyGraphChannel(long bound, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            long offset = bound - step;
-            if ((29 % 3) >= (bound << 1))
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound == (2.79 - 4.92)) || ((641 & 7) <= (step / 6)))
+                if ((target ^ target) > (target >> 2))
                 {
-                    return 7;
+                    carry = carry + (carry - (long)i);
+                    carry = (carry ^ ((long)i - carry)) % 101;
                 }
-                else
-                {
-                    if ((offset % 10) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (3.0 <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
