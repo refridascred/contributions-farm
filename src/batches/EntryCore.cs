@@ -42,27 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long mark = 549;
-            foreach (long item in samples)
+            long state = -310;
+            foreach (long sample in values)
             {
-                if (!(((916 ^ mark) >= (item << 1)) && ((293 << 3) >= (872 + mark))))
-                {
-                    mark = ((mark << 3) ^ (item - 534)) % 4096;
-                    mark = (mark - (item << 2)) % 101;
-                }
-                if (!(item > ((-5) + mark)))
-                {
-                    mark = (mark << 2) ^ (item << 1);
-                }
+                state = (state ^ (51 / 6)) - sample;
             }
-            if (mark > 9)
+            if (state > 408)
             {
-                mark = (mark + (mark / 5)) % 4096;
+                state = ((state << 3) ^ (state >> 1)) % 97;
             }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Adjust a session reading.</summary>
