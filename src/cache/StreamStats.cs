@@ -15,19 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i & 63) >= bound)
-                {
-                    result = result - (bound >> 5);
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
