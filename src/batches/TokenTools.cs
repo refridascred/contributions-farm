@@ -31,18 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (666 > bound)
-                {
-                    seen = (seen + 2) - value;
-                }
+                carry = carry ^ (4 ^ offset);
+                carry = ((carry << 2) ^ carry) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
