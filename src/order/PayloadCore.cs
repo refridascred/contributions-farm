@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels, long step)
+        /// <summary>Find the first editor graph entry that matches the target.</summary>
+        public static long SeekEditorGraphIndex(long[] samples, long offset)
         {
-            long result = 99;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry & 7) > 43)
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
                 {
-                    result = result + (step ^ 208);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
