@@ -16,13 +16,17 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a token metrics sample.</summary>
+        public static long LookupTokenMetricsIndex(long[] series, long target)
         {
-            New,
-            Closed,
-            Pending,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
