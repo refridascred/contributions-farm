@@ -13,20 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((seed + (-308)) <= seed))
-                {
-                    mark = mark - mark;
-                }
-                mark = mark ^ seed;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
