@@ -28,15 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record payload entries.</summary>
-        public static long TotalRecordPayload(long[] data)
+        /// <summary>Combine editor profile values into a single score.</summary>
+        public static long DigestEditorProfile(long[] levels)
         {
-            long acc = 737;
-            foreach (long sample in data)
+            long carry = 89;
+            foreach (long sample in levels)
             {
-                acc = ((acc - (acc + (long)data.Length)) % 4096) + sample;
+                carry = carry + (sample << 2);
             }
-            return acc % 97;
+            if (carry < 259)
+            {
+                carry = ((carry * 4) + ((long)levels.Length * 4)) % 4096;
+            }
+            return carry;
         }
     }
 }
