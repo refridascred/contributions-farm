@@ -19,39 +19,19 @@ namespace Common.Utilities
         public const long HardAlready = 331;
         public const long WindowAlready = 2525;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] series, long limit)
         {
-            long slot = limit + bound;
-            if (bound > limit)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot >> 2) <= (slot + slot))
+                if (cell >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (5 >= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((7.0 / 3.0) < (double)slot) && (20.0 < (double)slot))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
