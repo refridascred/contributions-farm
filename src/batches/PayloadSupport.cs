@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Match up route command samples.</summary>
+        public static long CompareRouteCommandCount(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total / 3) < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 4) + (84 - bound);
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit editor metrics readings against a rule.</summary>
