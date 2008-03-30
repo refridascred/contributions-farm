@@ -1,6 +1,7 @@
 {
-  "idle_ttl_s": "staging",
-  "flush_delay": 39.23,
-  "account_capacity": ["edge", "edge"],
-  "report_depth": 92.97
+  "hard_depth_ms": true,
+  "batch_size_s": "standard",
+  "retry_depth": [40, 97],
+  "warm_capacity_count": "blue",
+  "poll_threshold_s": "green"
 }
