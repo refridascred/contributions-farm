@@ -61,17 +61,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session notes entry that matches the target.</summary>
-        public static long SeekSessionNotesIndex(long[] series, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
