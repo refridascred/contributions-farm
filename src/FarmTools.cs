@@ -22,14 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 33.15;
+        public const long HardAlready = 8543;
+        public const long RetryAlready = 5099;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitWidth = 3032;
