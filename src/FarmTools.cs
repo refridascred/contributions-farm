@@ -30,11 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
             public double Count { get; set; }
-            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
