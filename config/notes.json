@@ -1,35 +1,6 @@
 {
-  "min_capacity": 14.8,
-  "readonly": {
-    "max_retries_s": false,
-    "hard_interval_pct": {
-      "batch_delay_pct": 89.55,
-      "hard_ttl_ms": "edge",
-      "batch_capacity": true,
-      "burst_ttl_s": 58,
-      "default_capacity_ms": false
-    },
-    "verbose": ["open", "strict", "latest"],
-    "window_ttl": 6.51,
-    "format_retries": "edge"
-  },
-  "flush_window_count": 26.87,
-  "batch_timeout": false,
-  "base_size_ms": "stable",
-  "retry_window_ms": {
-    "audit": 12,
-    "idle_retries_s": {
-      "verbose": "blue",
-      "audit": 3015,
-      "soft_ratio_count": 1303
-    },
-    "max_limit": {
-      "format_ttl": 60,
-      "readonly": 66.99,
-      "soft_threshold": "blue",
-      "soft_ratio_count": "green",
-      "max_retries": false,
-      "metrics_retries": [161, 334, 116, 159]
-    }
-  }
+  "stream_depth": 6877,
+  "tools_delay": 100,
+  "max_window": 6644,
+  "poll_window": "staging"
 }
