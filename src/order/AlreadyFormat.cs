@@ -64,11 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Check that every report counter entry stays within the limit.</summary>
+        public static bool GuardReportCounterBounds(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
