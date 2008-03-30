@@ -1,6 +1,6 @@
-id,ratio,active
-1,28.37,81.44
-2,156,40.14
-3,edge,509
-4,77,fallback
-5,eu-west,548
+id,weight,active,count,level
+1,stable,staging,462,376
+2,429,cached,edge,local
+3,4.25,local,legacy,596
+4,stable,687,stable,124
+5,strict,open,stable,175
