@@ -15,18 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "standard-edge";
+        public const long WindowSession = 8164;
+        public const string MinSession = "fallback";
+        public const string DefaultFactor = "alpha-1";
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double bias, double bias2)
