@@ -56,22 +56,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of tools payload entries.</summary>
-        public static long CombineToolsPayload(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] readings, long origin)
         {
-            long result = 314;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((result * 3) < (reading + reading))
+                if (matches > (sample ^ 167))
                 {
-                    result = (result << 2) ^ 183;
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result > 59)
-            {
-                result = ((result << 2) ^ (4 / 7)) % 101;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
