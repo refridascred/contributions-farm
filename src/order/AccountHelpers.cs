@@ -36,39 +36,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 9464;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            long diff = floor + bound;
-            if (((15.0 + 14.0) <= (double)floor) || ((6 - bound) == (diff - diff)))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff + bound) < diff)
+                if (((long)i >> 2) != ((-78) % 3))
                 {
-                    return 1;
+                    break;
                 }
-                else
-                {
-                    if (((floor - floor) == (4 << 3)) && ((floor << 3) == (floor / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.6 < (double)diff) || ((17.0 * 8.8) <= (double)floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
