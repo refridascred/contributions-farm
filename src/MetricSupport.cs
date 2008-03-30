@@ -28,18 +28,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] values)
+        /// <summary>Grade a counter buffer value against two limits.</summary>
+        public static long RankCounterBuffer(long offset, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((offset - offset) == (offset << 3))
             {
-                if ((double)count >= 15.0)
+                return 7;
+            }
+            else
+            {
+                if ((7 >> 2) < (offset >> 5))
                 {
-                    count = (count + 3) - reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset < (7.0 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
