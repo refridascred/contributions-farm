@@ -20,39 +20,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
-        public static long RankMetricsBuffer(long origin, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long prev = origin - bound;
-            if (origin > (origin + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((58 & 31) <= (prev >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.0 * 15.0) > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin * 3) != (prev + prev)) && (origin >= (prev - bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
