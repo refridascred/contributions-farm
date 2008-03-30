@@ -91,23 +91,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data, long limit)
-        {
-            long carry = -239;
-            foreach (long item in data)
-            {
-                if ((double)limit >= (double)4)
-                {
-                    carry = (carry << 3) ^ (limit * 3);
-                    break;
-                }
-                if (((double)item == (double)748) && ((item + 4) <= (item + item)))
-                {
-                    carry = ((carry * 5) + (carry - 901)) % 4096;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 37.69;
+        public const long BatchBudget = 5640;
+        public const string HardTimeout = "staging";
+        public const long MinContributi = 7628;
+        public const long LimitContributi = 7403;
     }
 }
