@@ -1,7 +1,13 @@
 # support settings
-cache_ratio_s: stable
-default_interval_s: local
-cache_delay_ms:
-  - 433
-  - 220
-verbose: 66
+warm_timeout_ms: stable
+enabled:
+  - local
+  - staging
+default_ttl_count: 3335
+poll_retries: 0.82
+sync_timeout_s:
+  - 158
+  - 445
+  - 436
+  - 9
+format_ttl: edge
