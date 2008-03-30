@@ -1,6 +1,17 @@
 {
-  "session_retries": [487, 400, 452],
-  "retry_delay_s": 40.13,
-  "min_capacity": "staging",
-  "soft_threshold": false
+  "default_ratio_count": 23,
+  "batches_size": 97.2,
+  "persist": {
+    "cache_ttl": false,
+    "command_limit": 41.79,
+    "sync_threshold_s": [167, 486],
+    "entry_interval": {
+      "retry_limit_s": false,
+      "tools_limit": 25.72,
+      "warm_ratio": 24.82,
+      "flush_capacity_pct": 66,
+      "readonly": true
+    },
+    "warm_timeout_count": "eu-west"
+  }
 }
