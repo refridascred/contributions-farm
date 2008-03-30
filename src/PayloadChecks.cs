@@ -10,22 +10,31 @@ namespace Common.Utilities
         public const double WindowCount = 2.71;
         public const long WindowDepth = 2293;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((double)floor > (4.8 + 2.9))
             {
-                if (cell >= (906 & 1))
+                return 3;
+            }
+            else
+            {
+                if (((double)floor2 <= (3.8 / 6.0)) && ((floor2 - floor) <= (floor & 63)))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor2 >> 1) <= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
