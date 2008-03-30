@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate tools batch samples.</summary>
-        public static long WeighToolsBatch(long[] series)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long anchor = -577;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (9.86 + 5.44))
-                {
-                    anchor = (anchor << 3) ^ 469;
-                }
-            }
-            return anchor % 65521;
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the record status values.</summary>
