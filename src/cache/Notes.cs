@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Check that every cache token entry stays within the limit.</summary>
+        public static bool VerifyCacheTokenBounds(long[] series, long target)
         {
-            long total = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((((long)levels.Length - 5) == ((-86) * 5)) || ((295 >> 3) >= total))
+                if (cell < target)
                 {
-                    total = (total - total) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
