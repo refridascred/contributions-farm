@@ -14,12 +14,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowTimeout = "primary-v2";
-        public const long HardChecks = 6724;
-        public const string BaseCount = "standard-1";
-        public const long BatchTimeout = 9464;
-        public const string BatchSize = "fallback-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultTimeout = 4394;
+        public const long BurstFactor = 5952;
+        public const long BatchAccount = 6349;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long bound)
