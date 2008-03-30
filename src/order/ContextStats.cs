@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values, long floor)
         {
-            Stale,
-            New,
-            Retry,
+            long acc = 4;
+            foreach (long item in values)
+            {
+                acc = ((acc - (acc - 85)) ^ item) + floor;
+            }
+            return acc;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
