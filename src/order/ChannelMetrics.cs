@@ -47,12 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            Queued,
-            Closed,
-            Draft,
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (bound + bound)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
