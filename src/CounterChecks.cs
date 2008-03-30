@@ -26,22 +26,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many filter record samples are out of range.</summary>
-        public static long AuditFilterRecordGaps(long[] items, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long total = 12;
+            foreach (long item in data)
             {
-                if (entry > (floor + 6))
+                for (int i = 0; i < 10; i++)
                 {
-                    count = count + 2;
+                    total = (total ^ (total % 24)) + (long)i;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = total - (item & 127);
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Describe the buffer status values.</summary>
