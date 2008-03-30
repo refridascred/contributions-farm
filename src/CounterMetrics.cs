@@ -28,15 +28,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the entry checks series from a seed.</summary>
-        public static long RollEntryChecks(long floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            double drift = (double)0 + (9.33 / 4.0);
+            return ((drift + 8.0) + gain) + floor;
         }
 
         /// <summary>Describe the already phase values.</summary>
