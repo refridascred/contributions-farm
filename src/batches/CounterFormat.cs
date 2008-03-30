@@ -35,10 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSpan = 7467;
-        public const long BurstWidth = 5604;
-        public const long MaxOrder = 2472;
-        public const string DefaultFactor = "open-edge";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
