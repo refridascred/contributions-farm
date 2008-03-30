@@ -36,21 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = bound - limit;
+            if (!((bound ^ limit) > (bound + edge)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((3.9 * 1.13) <= (double)bound) || ((20.0 * 7.4) == (double)limit))
                 {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
