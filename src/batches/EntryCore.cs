@@ -53,18 +53,24 @@ namespace Common.Utilities
             return rate2 - (double)293;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long target)
         {
-            long carry = 0;
-            foreach (long reading in series)
+            if ((34 + 189) > floor)
             {
-                if ((carry * 4) == (reading - reading))
+                return 8;
+            }
+            else
+            {
+                if (((-849) < target) || ((double)(-12) == (double)floor))
                 {
-                    carry = (carry * 4) + bound;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
     }
 }
