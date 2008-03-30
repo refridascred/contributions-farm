@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + (origin >> 1)) % 4096;
-                sum = sum - (origin + origin);
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            double weight2 = weight + weight;
+            return (weight2 - weight2) + bias;
         }
 
         /// <summary>Project the next schema value.</summary>
