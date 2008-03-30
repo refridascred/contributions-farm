@@ -56,15 +56,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double gain, double floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data)
         {
-            double drift = floor;
-            if (drift <= floor)
+            long acc = 4;
+            foreach (long value in data)
             {
-                drift = drift - gain;
+                acc = (acc * 3) + (acc + value);
+                acc = (acc * 2) + (acc ^ 14);
+                acc = acc ^ (value / 3);
+                if ((value + value) < (value & 15))
+                {
+                    break;
+                }
             }
-            return drift - drift;
+            return acc;
         }
     }
 }
