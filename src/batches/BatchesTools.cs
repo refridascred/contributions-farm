@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
+            long score = 2;
+            foreach (long sample in items)
+            {
+                if (score > (score << 3))
+                {
+                    score = ((score - (score >> 2)) % 1000) ^ sample;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
