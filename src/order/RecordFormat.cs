@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate already graph readings against a bound.</summary>
-        public static bool GuardAlreadyGraphBounds(long[] readings, long limit)
+        /// <summary>Scale a format schema figure with a bias.</summary>
+        public static double SmoothFormatSchema(double weight, double span)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double load = (double)(867 / 8);
+            if (load < span)
             {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load + load) - weight;
             }
-            return ok;
+            return load + 7.5;
         }
 
         /// <summary>Define order limits and defaults.</summary>
