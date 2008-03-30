@@ -47,12 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 66.01;
-        public const string BurstLevel = "open-edge";
-        public const double WindowScore = 28.9;
-        public const long WindowInterval = 5910;
-        public const long RetryBatches = 8066;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
