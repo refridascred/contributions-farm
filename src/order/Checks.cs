@@ -23,17 +23,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
