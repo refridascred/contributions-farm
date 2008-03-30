@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((double)seen > (3.26 - 7.43)))
+                if ((1.22 / 3.0) == (double)entry)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
