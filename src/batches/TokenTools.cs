@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items, long offset)
         {
-            Done,
-            Ready,
-            Queued,
+            long mix = 265;
+            foreach (long entry in items)
+            {
+                if (!((entry & 255) > entry))
+                {
+                    mix = (mix << 2) ^ (entry ^ offset);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
