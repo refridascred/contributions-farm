@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in green latest fallback stable; do
+CHANNEL_LIMIT=484
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard stable legacy; do
     log "checking ${item}"
 done
