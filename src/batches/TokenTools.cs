@@ -31,12 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data, long bound)
         {
-            Stale,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (666 > bound)
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
         }
     }
 }
