@@ -50,15 +50,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] levels, long bound)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long cell in levels)
             {
-                if ((((-72) << 2) >= (627 + item)) && ((item << 3) <= seen))
+                if ((seen - seen) >= ((long)levels.Length + bound))
                 {
-                    seen = (seen + 3) - seed;
+                    seen = (seen + 1) + cell;
                 }
                 else
                 {
