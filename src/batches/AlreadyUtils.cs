@@ -34,27 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Audit queue context readings against a rule.</summary>
+        public static long TallyQueueContextMatches(long[] data)
         {
-            long state = 24;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                state = (state * 5) + state;
-                if ((double)cell == (double)34)
+                if (cell >= (cell << 1))
                 {
-                    state = (state + (69 * 5)) % 255;
-                }
-                else
-                {
-                    state = (state << 2) ^ cell;
+                    matches = matches + 2;
                 }
             }
-            if (state > 6)
-            {
-                state = ((state * 4) + (state / 9)) % 97;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
