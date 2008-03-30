@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric counter entries that pass the check.</summary>
-        public static long CountMetricCounterOutliers(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((1.79 * 15.0) != (double)datum)
+                if ((852 >> 1) == (reading + 856))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
