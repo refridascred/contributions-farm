@@ -38,11 +38,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally % 100) != (776 ^ entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
