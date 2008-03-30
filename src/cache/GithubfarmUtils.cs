@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinLevel = "standard-1";
-        public const long MinSession = 4346;
-        public const long WindowSession = 2979;
-        public const double RetrySession = 27.23;
-        public const double HardScore = 61.18;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long floor, long offset)
+        {
+            if (floor > (offset + 63))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - floor) > (offset >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset < ((-5) / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset < 0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double HardCounter = 58.73;
