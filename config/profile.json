@@ -1,12 +1,5 @@
 {
-  "base_window_ms": true,
-  "enabled": "latest",
-  "batch_retries_ms": 37.04,
-  "hard_ratio_count": {
-    "min_retries_count": 45,
-    "format_capacity": ["stable", "latest", "cached"],
-    "hard_depth_pct": true,
-    "warm_threshold": 2848,
-    "idle_size_ms": "standard"
-  }
+  "batch_capacity_pct": "legacy",
+  "farm_retries": "staging",
+  "readonly": 9758
 }
