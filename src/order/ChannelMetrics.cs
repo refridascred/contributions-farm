@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 7996;
-        public const long BaseRatio = 4022;
-        public const long DefaultRatio = 3681;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
