@@ -1,6 +1,8 @@
 {
-  "counter_limit": 4610,
-  "batch_ratio": 58,
-  "strict": "standard",
-  "idle_threshold_pct": 35.38
+  "base_depth": true,
+  "command_ratio": "stable",
+  "dry_run": 36,
+  "poll_ttl_pct": 43,
+  "max_ratio": "eu-west",
+  "sync_size_count": true
 }
