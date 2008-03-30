@@ -29,21 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 626;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry + ((long)i % 10)) % 1000) - origin;
                 }
+                carry = carry ^ (value << 3);
+                carry = ((carry * 2) + (value - carry)) % 255;
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
