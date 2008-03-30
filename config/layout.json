@@ -1,6 +1,15 @@
 {
-  "min_retries_s": true,
-  "enabled": [366, 361, 463],
-  "base_depth_pct": [477, 472],
-  "min_interval_s": "fallback"
+  "burst_delay": "local",
+  "readonly": "blue",
+  "batch_capacity_pct": 41.29,
+  "max_window_pct": "standard",
+  "strict": {
+    "warm_retries_count": 67.69,
+    "base_depth_count": 94,
+    "base_size": 18.52,
+    "record_size": "stable",
+    "retry_timeout_pct": 88,
+    "cache_ratio": "eu-west"
+  },
+  "compress": "blue"
 }
