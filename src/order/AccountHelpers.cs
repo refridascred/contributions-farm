@@ -73,10 +73,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "cached-v2";
-        public const long LimitLevel = 6123;
-        public const double MaxEditor = 40.48;
-        public const string RetrySize = "staging-edge";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series, long seed)
+        {
+            long mark = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (16.0 / 3.0))
+                {
+                    mark = (mark + (entry >> 4)) + seed;
+                }
+                else
+                {
+                    mark = (mark - (228 * 5)) % 4096;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
