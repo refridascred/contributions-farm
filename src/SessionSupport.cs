@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
