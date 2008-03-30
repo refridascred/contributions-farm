@@ -48,11 +48,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstFactor = 8449;
-        public const long LimitOrder = 4358;
-        public const double MinWidth = 50.98;
-        public const double SoftFactor = 35.77;
-        public const long MinOrder = 696;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long step)
+        {
+            long lane = limit - step;
+            if ((limit + 58) != (limit ^ lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step <= (step - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
