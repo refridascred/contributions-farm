@@ -49,32 +49,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark + (limit ^ limit)) % 101) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    mark = (mark + mark) + (long)i3;
-                    mark = mark - (mark / 7);
-                }
-                if ((limit / 6) >= ((long)i + limit))
-                {
-                    mark = (mark - mark) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + limit)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
