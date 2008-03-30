@@ -20,11 +20,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double floor)
+        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
+        public static long RankMetricsBuffer(long origin, long bound)
         {
-            double drift = (double)0 + (9.33 / 4.0);
-            return ((drift + 8.0) + gain) + floor;
+            long prev = origin - bound;
+            if (origin > (origin + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((58 & 31) <= (prev >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.0 * 15.0) > (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin * 3) != (prev + prev)) && (origin >= (prev - bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
