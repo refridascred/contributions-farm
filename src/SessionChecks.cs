@@ -13,19 +13,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] items, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell != target)
+                if ((1.16 + 7.0) <= (double)anchor)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (anchor >> 3)) % 1000;
                 }
+                anchor = (anchor * 3) + anchor;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
