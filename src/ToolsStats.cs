@@ -14,20 +14,34 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            long score = -515;
-            foreach (long cell in series)
+            long sum = 25;
+            foreach (long cell in items)
             {
-                score = score - (cell << 2);
-                score = ((score * 5) + (bound + score)) % 255;
-                if (!((7.0 / 6.0) != (double)cell))
+                if ((cell & 3) >= (sum / 4))
                 {
-                    score = ((score * 2) + (score + 16)) % 101;
+                    sum = ((sum << 3) ^ (9 << 1)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (sum - cell)) % 101;
+                }
+                if (!((sum >> 4) >= (sum + cell)))
+                {
+                    sum = (sum + (cell ^ 43)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (cell >> 2)) % 1000;
                 }
             }
-            return score;
+            if (sum < 15)
+            {
+                sum = (sum + (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
