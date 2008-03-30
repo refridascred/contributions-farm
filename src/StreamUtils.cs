@@ -62,18 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = 184;
+            foreach (long item in readings)
             {
-                if ((double)count >= (double)item)
+                if (!((carry & 63) != (carry >> 4)))
                 {
-                    count = count + 3;
+                    carry = carry - (item >> 2);
                 }
             }
-            return count;
+            return carry % 4096;
         }
     }
 }
