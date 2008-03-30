@@ -27,31 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long target)
+        /// <summary>Fold a list of payload editor readings.</summary>
+        public static long DigestPayloadEditor(long[] data, long bound)
         {
-            if ((floor * 2) == (floor % 60))
+            long score = 9;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(floor <= (floor << 2)))
+                if ((8 + entry) <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor ^ 33) < (floor << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = ((score * 5) + (entry / 8)) % 4096;
                 }
             }
+            if (score < 595)
+            {
+                score = (score - (score << 2)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate payload cache readings against a bound.</summary>
