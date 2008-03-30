@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values)
         {
-            Dropped,
-            Queued,
-            New,
-            Paused,
+            long carry = 3;
+            foreach (long entry in values)
+            {
+                if (entry > (carry * 3))
+                {
+                    carry = (carry ^ entry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
