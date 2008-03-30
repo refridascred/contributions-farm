@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] readings, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (item > floor)
+                if ((step % 97) < count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ value;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a record entry.</summary>
