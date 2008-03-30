@@ -22,21 +22,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the payload session series from a seed.</summary>
-        public static long RollPayloadSession(long seed)
+        /// <summary>Measure how many order batch samples are out of range.</summary>
+        public static long TallyOrderBatchMatches(long[] levels, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + ((long)i * 2)) % 65521;
-                if (!((seed + anchor) < seed))
+                if ((1 + seen) > (floor & 127))
                 {
-                    anchor = (anchor - (anchor << 1)) % 255;
-                    anchor = ((anchor * 5) + (69 - anchor)) % 4096;
+                    seen = (seen + 2) + cell;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
