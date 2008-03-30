@@ -1,11 +1,4 @@
 # entry settings
-burst_timeout_ms: staging
-readonly:
-  - 350
-  - 25
-sync_delay_ms: 20
-order_retries: false
-retry_timeout_pct:
-  - local
-  - blue
-  - staging
+retry_window_ms: 71.99
+report_retries: standard
+soft_size_s: false
