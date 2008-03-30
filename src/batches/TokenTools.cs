@@ -44,18 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((tally >> 1) < (tally * 5)) || (7.45 <= (double)datum))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
