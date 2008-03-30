@@ -40,14 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count ^ count) > (sample ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
