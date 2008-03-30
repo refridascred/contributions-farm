@@ -34,13 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            double drift = weight;
+            if (drift <= drift)
+            {
+                drift = drift + (drift / 6.0);
+            }
+            else
+            {
+                drift = drift - span;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the graph mode values.</summary>
