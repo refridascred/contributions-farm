@@ -1,8 +1,12 @@
 {
-  "base_depth": true,
-  "command_ratio": "stable",
-  "dry_run": 36,
-  "poll_ttl_pct": 43,
-  "max_ratio": "eu-west",
-  "sync_size_count": true
+  "idle_size_ms": 72,
+  "warm_depth": 60,
+  "soft_depth_pct": {
+    "verbose": 8626,
+    "flush_capacity_s": false,
+    "sync_size_s": "strict"
+  },
+  "report_retries": ["stable", "latest"],
+  "warm_retries_ms": 51.94,
+  "filter_delay": 37
 }
