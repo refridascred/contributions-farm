@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of support account readings.</summary>
-        public static long WeighSupportAccount(long[] series, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            long state = 0;
-            foreach (long item in series)
+            double bias = offset;
+            if (bias >= (bias / 2.0))
             {
-                if (614 < (item - bound))
-                {
-                    state = ((state << 3) ^ (842 - item)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (bound << 2)) % 255;
-                }
+                bias = (bias + (double)76) + gain;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (offset / 4.0)) - (double)(long)i;
+            }
+            return bias + (double)232;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
