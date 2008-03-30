@@ -40,12 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
