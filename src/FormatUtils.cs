@@ -33,11 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepBudget = "latest-1";
-        public const long BurstSpan = 6270;
-        public const long BatchChannel = 2864;
-        public const long StepChannel = 1667;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 9100;
