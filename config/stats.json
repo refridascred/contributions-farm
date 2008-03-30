@@ -1,6 +1,12 @@
 {
-  "soft_retries_pct": 250,
-  "verbose": "primary",
-  "default_limit_pct": "stable",
-  "checks_retries": 7.24
+  "enabled": 83,
+  "order_retries": "edge",
+  "base_retries_pct": 2520,
+  "notes_interval": ["staging", "latest", "local"],
+  "poll_retries": 93.94,
+  "max_limit_count": {
+    "layout_depth": false,
+    "readonly": 30,
+    "base_window": "green"
+  }
 }
