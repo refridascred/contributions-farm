@@ -1,23 +1,10 @@
 # support settings
-flush_size: standard
-warm_retries_count:
-  burst_window_pct: false
-  base_window_pct: 35
-  enabled: fallback
-  queue_capacity:
-    command_timeout: local
-    max_window: false
-    metric_ttl: true
-    max_ratio_count: staging
-    persist:
-      - staging
-      - stable
-    cache_timeout_count: 51.86
-  poll_capacity_count: 69.69
-  hard_delay: true
-default_depth_ms: standard
-checks_ttl:
-  - 186
-  - 484
-  - 340
-sync_size: 1398
+sync_size_count:
+  contributi_capacity: 500
+  batch_size: 60
+  warm_ttl_pct: fallback
+verbose: edge
+sync_limit_pct: 5062
+soft_window_count: true
+readonly: standard
+queue_size: eu-west
