@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long IdleGraph = 3686;
         public const long LimitGraph = 6237;
 
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool VerifyAccountFilterLimits(long[] readings, long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Retry,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a support reading by value.</summary>
