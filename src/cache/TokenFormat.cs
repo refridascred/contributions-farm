@@ -39,19 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long origin, long step)
         {
-            long mix = 427;
-            foreach (long entry in series)
+            if (step <= (step ^ 399))
             {
-                mix = ((mix << 2) ^ (mix * 4)) + entry;
+                return 3;
             }
-            if (mix > (-9))
+            else
             {
-                mix = mix + (mix - mix);
+                if (((origin + step) == (66 & 31)) || ((origin + origin) > origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((((-30) + 448) == (step * 3)) && (((-9) + origin) < origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step == (0.46 + 9.4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mix % 97;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
