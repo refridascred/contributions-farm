@@ -37,19 +37,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long step)
+        /// <summary>Derive the next notes filter value from a seed.</summary>
+        public static long IterateNotesFilter(long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark << 3) ^ (mark >> 4);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
