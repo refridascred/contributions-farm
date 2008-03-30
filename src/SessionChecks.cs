@@ -32,27 +32,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items, long seed)
         {
-            long result = 25;
-            foreach (long item in samples)
+            long score = 7;
+            foreach (long item in items)
             {
-                if (seed >= (708 - seed))
+                score = (score - seed) - item;
+                score = score - 84;
+                if ((long)items.Length >= (score & 63))
                 {
-                    result = (result + seed) % 101;
                     break;
                 }
-                else
-                {
-                    result = (result ^ item) % 255;
-                }
-                if ((double)result <= (5.1 / 9.0))
-                {
-                    result = result - (item + seed);
-                }
             }
-            return result;
+            if (score > 63)
+            {
+                score = (score << 3) ^ (score << 1);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
