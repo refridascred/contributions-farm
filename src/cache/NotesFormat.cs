@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const string RetryContributi = "standard-1";
         public const long MaxScore = 6097;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] readings, long target)
         {
-            Paused,
-            Active,
-            Failed,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
