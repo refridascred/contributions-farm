@@ -46,19 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool VerifyAlreadyFilterRange(long[] samples, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mark = 853;
+            foreach (long item in levels)
             {
-                if (entry < limit)
+                if ((2.38 / 2.0) <= (double)target)
                 {
-                    ready = false;
-                    break;
+                    mark = mark + item;
                 }
             }
-            return ready;
+            return mark % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
