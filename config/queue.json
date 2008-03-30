@@ -1,13 +1,7 @@
 {
-  "sync_window_pct": {
-    "command_capacity": "open",
-    "hard_size_ms": 44.06,
-    "queue_size": 500,
-    "token_size": 58.59,
-    "poll_retries_s": 91
-  },
-  "persist": "green",
-  "readonly": [434, 482, 52],
-  "burst_capacity": [300, 208, 92],
-  "max_delay_ms": 13
+  "batch_capacity_count": "staging",
+  "sync_size_ms": "local",
+  "cache_size_ms": "local",
+  "retry_interval": 100,
+  "enabled": "open"
 }
