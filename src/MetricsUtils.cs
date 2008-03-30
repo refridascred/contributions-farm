@@ -54,14 +54,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] readings, long seed)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (entry >= count)
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
         }
     }
 }
