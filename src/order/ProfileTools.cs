@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSpan = 2704;
-        public const string MaxInterval = "primary-edge";
-        public const double WindowFactor = 48.13;
-        public const long LimitNotes = 4265;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] levels)
