@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long SoftCommits = 1895;
         public const string IdleCommits = "local";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 4787;
-        public const long StepCount = 9305;
-        public const long HardSession = 1986;
-        public const long IdleWidth = 6936;
-        public const long MinSession = 9773;
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long FindGraphChannelIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] levels, long origin)
