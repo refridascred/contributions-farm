@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long step, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            if (((-817) ^ step) == (offset + offset))
+            long anchor = 9;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((16 - offset) < (step + offset)))
+                if ((cell & 7) != ((-301) % 100))
                 {
-                    return 4;
+                    anchor = anchor + (cell - anchor);
                 }
-                else
+                if (4.0 < (double)cell)
                 {
-                    if ((double)offset >= 15.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
