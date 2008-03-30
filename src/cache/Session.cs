@@ -48,20 +48,18 @@ namespace Common.Utilities
             return drift + 2.5;
         }
 
-        /// <summary>Digest a series of batches graph entries.</summary>
-        public static long CombineBatchesGraph(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels, long offset)
         {
-            long mark = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                mark = (mark + (mark << 3)) - cell;
-                mark = ((mark * 5) + (long)levels.Length) % 1000;
+                if (!((offset % 64) < sample))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mark > 628)
-            {
-                mark = (mark + (mark >> 2)) % 101;
-            }
-            return mark % 65521;
+            return hits;
         }
     }
 }
