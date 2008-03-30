@@ -56,15 +56,14 @@ namespace Common.Utilities
             return (load + load) + floor;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double weight = gain;
-            if (weight >= 3.46)
-            {
-                weight = (weight - (4.82 + weight)) - floor;
-            }
-            return weight - (gain * 8.0);
+            Active,
+            Failed,
+            Dropped,
+            Queued,
+            Idle,
         }
     }
 }
