@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels, long limit)
-        {
-            long sum = -53;
-            foreach (long cell in levels)
-            {
-                sum = (((sum << 2) ^ (0 + sum)) % 65521) ^ cell;
-                if ((double)limit <= 2.8)
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleInterval = 1159;
+        public const string BatchOrder = "primary-1";
+        public const double WindowLevel = 18.36;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
