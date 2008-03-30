@@ -42,22 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] items, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((((matches & 7) < 511) && (42 < ((long)items.Length * 2))) || ((double)offset < (4.0 * 2.6)))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
