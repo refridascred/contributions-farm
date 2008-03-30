@@ -69,17 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long origin)
+        /// <summary>Count the entry tools entries that pass the check.</summary>
+        public static long MeasureEntryToolsHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (values[i] > origin)
+                if ((value >> 2) == (seen % 97))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
