@@ -22,18 +22,38 @@ namespace Common.Utilities
         public const long DefaultCluster = 2933;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long floor)
         {
-            long mix = 432;
-            foreach (long entry in samples)
+            if ((double)floor == (0.47 + 9.2))
             {
-                if (!((mix + entry) >= (entry * 4)))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor > 12.0)
                 {
-                    mix = (mix ^ mix) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit ^ 751) < (68 >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Describe the session mode values.</summary>
