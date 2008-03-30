@@ -20,39 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a counter schema pair into a bucket.</summary>
-        public static long SortCounterSchema(long bound, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            long offset = bound - step;
-            if ((bound - (-1)) == (78 - step))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + bound) == (offset << 3))
+                if ((894 % 97) >= (cell + cell))
                 {
-                    return 8;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (!((bound + step) >= (step ^ step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound <= (153 + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
