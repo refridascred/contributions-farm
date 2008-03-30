@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryFactor = 7679;
+        public const long BatchGraph = 8509;
+        public const double DefaultScore = 90.47;
+        public const long IdleGraph = 3686;
+        public const long LimitGraph = 6237;
 
         /// <summary>Validate account filter readings against a bound.</summary>
         public static bool VerifyAccountFilterLimits(long[] readings, long step)
