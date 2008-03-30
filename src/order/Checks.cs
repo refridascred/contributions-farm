@@ -39,31 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if (origin > (66 % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9 ^ step) >= (origin / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 << 3) <= (origin / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
