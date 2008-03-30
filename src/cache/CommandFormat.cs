@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)target < (7.0 + 1.8))
+                if (count > (count + 12))
                 {
-                    continue;
+                    count = (count + 1) ^ value;
                 }
-                else
-                {
-                    result = (result * 2) + (long)i;
-                }
-                if ((result - (long)i) <= (result - 945))
-                {
-                    result = result - ((long)i % 12);
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the cache editor series from a seed.</summary>
