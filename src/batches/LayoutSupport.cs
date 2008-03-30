@@ -23,20 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] levels, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long carry = 626;
-            foreach (long value in levels)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = ((carry + ((long)i % 10)) % 1000) - origin;
-                }
-                carry = carry ^ (value << 3);
-                carry = ((carry * 2) + (value - carry)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return carry % 65521;
+            return anchor;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
