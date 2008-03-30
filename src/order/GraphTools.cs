@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double IdleContributi = 53.96;
         public const long SoftContributi = 1088;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] series, long target)
+        /// <summary>Roll a already notes counter forward.</summary>
+        public static long DeriveAlreadyNotes(long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Hold a profile stats.</summary>
