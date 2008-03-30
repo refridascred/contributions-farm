@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long step)
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long CombineOrderCommits(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long anchor = 15;
+            foreach (long entry in samples)
             {
-                if (sample > step)
+                if ((anchor + 71) > (anchor - 381))
                 {
-                    ok = false;
-                    break;
+                    anchor = (((anchor ^ 60) % 65521) ^ entry) + offset;
                 }
             }
-            return ok;
+            if (anchor > 5)
+            {
+                anchor = (anchor + (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
     }
 }
