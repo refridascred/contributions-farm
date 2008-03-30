@@ -13,22 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((((long)items.Length + count) < 8) && ((count + 8) != (datum - datum)))
+                if ((datum - 113) <= bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a already context figure with a bias.</summary>
