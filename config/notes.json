@@ -1,7 +1,21 @@
 {
-  "checks_timeout": ["edge", "open", "blue"],
-  "dry_run": "eu-west",
-  "idle_capacity": 42.54,
-  "warm_depth_s": "blue",
-  "burst_timeout_count": 500
+  "dry_run": "green",
+  "burst_delay_pct": "legacy",
+  "checks_size": {
+    "cluster_retries": 72.08,
+    "sync_retries_count": {
+      "strict": 5021,
+      "sync_ttl": "staging",
+      "cache_delay_s": [370, 393, 189, 29],
+      "soft_capacity": true,
+      "base_window": ["standard", "stable", "legacy"],
+      "batches_retries": 71.23
+    },
+    "batches_window": false,
+    "retry_depth": 1024,
+    "batch_window_pct": 60,
+    "burst_capacity": 76.71
+  },
+  "batch_size": ["edge", "local", "cached", "stable"],
+  "profile_size": 8.06
 }
