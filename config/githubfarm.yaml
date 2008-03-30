@@ -1,7 +1,18 @@
 # githubfarm settings
-flush_ttl_pct: 30
-counter_capacity: 15.04
-farm_retries: 9769
-batches_depth:
-  - 449
-  - 139
+batch_limit_pct: edge
+batch_interval_s: green
+poll_retries_s:
+  compress: 69.3
+  flush_retries_count:
+    - 261
+    - 24
+    - 90
+    - 477
+  min_size: eu-west
+  metric_delay:
+    - stable
+    - edge
+    - staging
+    - standard
+  sync_threshold_ms: 100
+  soft_ratio_pct: 250
