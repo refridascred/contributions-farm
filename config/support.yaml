@@ -1,19 +1,7 @@
 # support settings
-payload_timeout:
-  compress: 83.2
-  readonly:
-    - 104
-    - 405
-  payload_threshold:
-    - 375
-    - 408
-    - 128
-    - 463
-filter_timeout: 71
-max_capacity_s: 65.63
-githubfarm_timeout: fallback
-base_timeout_pct:
-  - blue
-  - standard
-  - strict
-batches_timeout: 20.78
+cache_capacity: 60
+schema_ttl: 40.63
+compress: true
+cache_threshold_count: 2294
+sync_delay_pct: 39
+base_delay: 30
