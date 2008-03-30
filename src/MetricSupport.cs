@@ -14,19 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            long anchor = 747;
-            foreach (long value in levels)
-            {
-                anchor = anchor ^ anchor;
-                if ((5 < (limit - value)) && ((value >> 3) >= value))
-                {
-                    anchor = (anchor + value) % 101;
-                }
-            }
-            return anchor % 97;
+            double bias2 = 7.4 / 6.0;
+            return (bias2 + (bias / 5.0)) + offset;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
