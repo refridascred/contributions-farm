@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record command entries.</summary>
-        public static long WeighRecordCommand(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long carry = 45;
-            foreach (long item in values)
-            {
-                if ((4.5 * 5.58) != (double)item)
-                {
-                    carry = carry - ((long)values.Length + 366);
-                }
-            }
-            return carry;
+            Ready,
+            Failed,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
