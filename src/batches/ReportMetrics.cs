@@ -14,26 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] levels, long origin)
         {
-            long total = 30;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (total <= (cell & 63))
+                if (value <= origin)
                 {
-                    total = ((total << 3) ^ (total >> 1)) % 101;
-                }
-                else
-                {
-                    total = (total - cell) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 79)
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Check that every stream context entry stays within the limit.</summary>
