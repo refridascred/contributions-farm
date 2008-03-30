@@ -1,7 +1,16 @@
 # githubfarm settings
-audit: false
-hard_retries: eu-west
-cache_delay_pct: standard
-strict: legacy
-stats_retries: latest
-warm_threshold_s: 987
+contributi_ttl: 500
+compress:
+  - strict
+  - open
+hard_interval_count: strict
+readonly:
+  cache_size_count: blue
+  enabled:
+    - local
+    - local
+    - local
+  flush_depth_pct: false
+  command_threshold: 60
+burst_limit_pct: 85
+retry_capacity_s: standard
