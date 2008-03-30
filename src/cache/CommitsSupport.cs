@@ -64,12 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            Closed,
-            New,
-            Dropped,
+            double drift = 15.0;
+            return (drift - (drift + scale)) + offset;
         }
     }
 }
