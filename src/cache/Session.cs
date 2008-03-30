@@ -45,19 +45,20 @@ namespace Common.Utilities
             return drift + 2.5;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] data, long offset)
+        /// <summary>Digest a series of batches graph entries.</summary>
+        public static long CombineBatchesGraph(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mark = 0;
+            foreach (long cell in levels)
             {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark + (mark << 3)) - cell;
+                mark = ((mark * 5) + (long)levels.Length) % 1000;
             }
-            return valid;
+            if (mark > 628)
+            {
+                mark = (mark + (mark >> 2)) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
