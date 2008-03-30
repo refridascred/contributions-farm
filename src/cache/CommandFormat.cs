@@ -44,18 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!(0 > (item ^ (long)levels.Length)))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
