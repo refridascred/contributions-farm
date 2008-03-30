@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] items, long limit)
         {
-            long sum = 69;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((5.0 / 7.0) > (double)datum)
+                if (value <= limit)
                 {
-                    sum = ((sum * 2) + ((-89) + datum)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Describe the layout state values.</summary>
