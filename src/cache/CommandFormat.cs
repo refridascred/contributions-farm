@@ -29,22 +29,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] levels, long floor)
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long RollCacheEditor(long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((87 >> 5) > (value - 1)))
+                anchor = (anchor ^ (offset / 9)) % 255;
+                if (((double)anchor > (5.13 + 4.45)) || (((long)i & 15) > (anchor / 4)))
                 {
-                    hits = (hits + 2) + floor;
+                    anchor = (anchor * 2) + offset;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
