@@ -28,14 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Paused,
             Locked,
-            Stale,
             Pending,
-            Ready,
+            Paused,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
