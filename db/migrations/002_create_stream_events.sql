@@ -1,12 +1,15 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
+    label TEXT,
     level INTEGER,
-    label TEXT
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new',
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
+CREATE INDEX IF NOT EXISTS idx_stream_events_state ON stream_events (state);
 
-INSERT INTO stream_events (rank, count, level, label) VALUES (16, 70, 57, 'local');
+INSERT INTO stream_events (label, level, owner, state, weight) VALUES ('fallback', 84, 'strict', 'staging', 67.92);
+INSERT INTO stream_events (label, level, owner, state, weight) VALUES ('standard', 79, 'latest', 'stable', 74.33);
+INSERT INTO stream_events (label, level, owner, state, weight) VALUES ('edge', 61, 'latest', 'staging', 71.37);
