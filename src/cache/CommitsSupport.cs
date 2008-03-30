@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats format samples are out of range.</summary>
-        public static long AuditStatsFormatMatches(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((matches - (long)readings.Length) != ((long)readings.Length >> 2))
+                if (3.0 > (double)item)
                 {
-                    matches = (matches + 2) - datum;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
