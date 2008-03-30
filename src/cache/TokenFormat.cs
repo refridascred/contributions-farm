@@ -33,19 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((carry & 31) >= carry))
-                {
-                    carry = (carry * 3) + (carry & 255);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3718;
+        public const long CacheRatio = 4042;
+        public const long DefaultDepth = 9180;
+        public const long StepDepth = 3116;
+        public const double RetrySize = 74.4;
     }
 }
