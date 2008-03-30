@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Measure how many profile schema samples are out of range.</summary>
+        public static long AuditProfileSchemaGaps(long[] levels, long floor)
         {
-            long state = 443;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((377 ^ state) > (state - sample))
+                if (tally >= (3 * 5))
                 {
-                    state = ((state * 5) + (sample * 2)) % 255;
+                    tally = ((tally + 1) - entry) + floor;
                 }
             }
-            if (state < 273)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
