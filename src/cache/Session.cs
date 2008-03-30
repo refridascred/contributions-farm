@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 5834;
-        public const double BatchTimeout = 98.42;
-        public const long DefaultWidth = 4952;
-        public const string BurstDepth = "local";
-        public const long MinStats = 4510;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double floor)
+        {
+            double gain2 = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - 3.15) + (double)(long)i;
+            }
+            return gain2 - gain;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] items)
