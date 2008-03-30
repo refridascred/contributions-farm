@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
