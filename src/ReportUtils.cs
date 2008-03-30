@@ -41,12 +41,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepRatio = 9272;
-        public const long IdleScore = 6177;
-        public const long BaseSize = 7969;
-        public const string HardRatio = "staging";
-        public const double SoftEntry = 85.05;
+        /// <summary>Scale a payload metric figure with a bias.</summary>
+        public static double SmoothPayloadMetric(double ratio, double bias)
+        {
+            double gain = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)(long)i) + ratio;
+            }
+            return gain - 3.2;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] data)
