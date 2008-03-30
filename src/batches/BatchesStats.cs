@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count batch support pairs that satisfy a relation.</summary>
-        public static long CompareBatchSupportCount(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 8)
+                    if ((items[i] + items[j]) == 1)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a format summary.</summary>
