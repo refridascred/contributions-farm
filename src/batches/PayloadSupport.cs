@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine checks filter values into a single score.</summary>
-        public static long TallyChecksFilter(long[] levels, long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long carry = 709;
-            foreach (long cell in levels)
-            {
-                carry = carry + (carry * 4);
-                carry = ((carry << 2) ^ limit) % 65521;
-                if (carry <= cell)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
