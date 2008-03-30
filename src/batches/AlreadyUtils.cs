@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 31;
+            foreach (long sample in levels)
+            {
+                if (carry > (carry % 10))
+                {
+                    carry = (carry * 2) + (sample - sample);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Project the next farm value.</summary>
