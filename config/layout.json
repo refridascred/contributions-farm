@@ -1,5 +1,6 @@
 {
-  "persist": 80.25,
-  "payload_limit": 63.26,
-  "max_depth_s": 4534
+  "min_retries_s": true,
+  "enabled": [366, 361, 463],
+  "base_depth_pct": [477, 472],
+  "min_interval_s": "fallback"
 }
