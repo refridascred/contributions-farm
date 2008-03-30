@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Stale,
+            Synced,
+            Idle,
             Done,
-            Retry,
-            Locked,
         }
 
         /// <summary>Describe the checks state values.</summary>
