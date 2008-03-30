@@ -23,19 +23,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels, long step)
         {
-            double scale = offset;
-            if (scale > offset)
+            long result = 99;
+            foreach (long entry in levels)
             {
-                scale = (scale + (double)525) + gain;
+                if ((entry & 7) > 43)
+                {
+                    result = result + (step ^ 208);
+                }
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            return scale + offset;
+            return result % 1000;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
