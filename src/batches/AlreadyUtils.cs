@@ -34,11 +34,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            double load = (floor + ratio) * 3.15;
-            return load + (load + ratio);
+            long state = 24;
+            foreach (long cell in levels)
+            {
+                state = (state * 5) + state;
+                if ((double)cell == (double)34)
+                {
+                    state = (state + (69 * 5)) % 255;
+                }
+                else
+                {
+                    state = (state << 2) ^ cell;
+                }
+            }
+            if (state > 6)
+            {
+                state = ((state * 4) + (state / 9)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
