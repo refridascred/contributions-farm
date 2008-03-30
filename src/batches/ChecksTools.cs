@@ -23,17 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first commits profile entry that matches the target.</summary>
-        public static long LookupCommitsProfileIndex(long[] data, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
