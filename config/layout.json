@@ -1,6 +1,15 @@
 {
-  "warm_threshold_pct": 17.85,
-  "account_capacity": true,
-  "hard_capacity": true,
-  "burst_capacity": "standard"
+  "hard_timeout_ms": {
+    "notes_depth": "local",
+    "poll_window_s": ["legacy", "standard", "cached", "stable"],
+    "retry_threshold_s": 86,
+    "burst_limit": 500,
+    "dry_run": 70.78
+  },
+  "strict": "edge",
+  "burst_ratio_count": {
+    "min_timeout_ms": "stable",
+    "poll_capacity": true,
+    "persist": 1024
+  }
 }
