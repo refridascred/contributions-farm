@@ -58,9 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 2732;
-        public const long DefaultEntry = 950;
-        public const double SoftEntry = 34.21;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series, long target)
+        {
+            long anchor = 74;
+            foreach (long value in series)
+            {
+                anchor = ((anchor * 2) + value) + target;
+            }
+            if (anchor > (-54))
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            return anchor;
+        }
     }
 }
