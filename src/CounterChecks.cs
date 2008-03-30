@@ -64,19 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token already value.</summary>
-        public static double ScaleTokenAlready(double ratio, double bias)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double gain = bias * 7.6;
-            if (gain < (13.0 * 2.63))
-            {
-                gain = (gain - gain) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain / 3.0)) - (double)(long)i;
-            }
-            return gain - bias;
+            New,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
