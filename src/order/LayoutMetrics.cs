@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double bias, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            double ratio = bias * 9.0;
-            return (ratio - (double)17) + span;
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((1.7 + 9.2) == (double)item) && ((77 % 8) != (item << 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
