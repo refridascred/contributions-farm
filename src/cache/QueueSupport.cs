@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double gain, double bias)
-        {
-            double weight = 5.3;
-            if (weight > bias)
-            {
-                weight = (weight - (2.0 * 6.14)) - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 10.0) + (double)(long)i;
-            }
-            return weight + (double)4;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstFactor = 8792;
+        public const string StepRatio = "legacy-1";
+        public const double MinSize = 29.71;
+        public const long SoftEditor = 1809;
 
         /// <summary>Audit command graph readings against a rule.</summary>
         public static long MeasureCommandGraphGaps(long[] readings, long step)
