@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetrySpan = 11.0;
-        public const string MaxDepth = "standard-1";
-        public const long StepRecord = 1893;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Idle,
+            Active,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Match up cache buffer samples.</summary>
         public static long MatchCacheBufferCount(long[] series)
