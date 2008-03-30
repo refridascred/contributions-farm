@@ -88,13 +88,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((7.0 + 8.2) >= (double)offset)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
     }
 }
