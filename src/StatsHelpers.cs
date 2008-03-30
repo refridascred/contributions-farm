@@ -59,10 +59,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftScore = 4100;
-        public const string LimitBuffer = "cached-edge";
-        public const long DefaultSize = 9885;
-        public const string StepFactor = "open";
+        /// <summary>Project the next schema batch value.</summary>
+        public static double AdjustSchemaBatch(double rate, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 >= (bias / 3.0))
+            {
+                bias2 = bias2 + (5.3 / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 + rate)) + (double)(long)i;
+            }
+            return bias2 + 9.53;
+        }
     }
 }
