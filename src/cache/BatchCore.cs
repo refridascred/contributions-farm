@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a queue batch figure with a bias.</summary>
-        public static double BlendQueueBatch(double gain, double bias)
-        {
-            double drift = (bias - gain) - 4.82;
-            if (drift > gain)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (double)42;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitScore = 1819;
+        public const long StepLevel = 9417;
+        public const double MaxContributi = 27.5;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheOutliers(long[] samples, long offset)
