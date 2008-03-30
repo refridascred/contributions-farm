@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
