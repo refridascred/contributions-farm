@@ -31,36 +31,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items)
-        {
-            long anchor = 71;
-            foreach (long item in items)
-            {
-                if (((item + anchor) > (anchor + anchor)) && ((item % 64) < (anchor & 63)))
-                {
-                    anchor = (anchor - (anchor + anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor + 653);
-                    anchor = ((anchor * 3) + (item + 238)) % 1000;
-                }
-                if ((item < (item + anchor)) || (((-689) - item) > (46 + item)))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ item;
-                }
-            }
-            if (anchor < (-997))
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 6651;
+        public const long RetryDepth = 398;
+        public const long BurstToken = 8855;
+        public const long BatchToken = 8398;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] samples, long floor)
