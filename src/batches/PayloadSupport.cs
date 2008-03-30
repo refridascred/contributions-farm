@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route command samples.</summary>
-        public static long CompareRouteCommandCount(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 4;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result ^ (316 << 3)) - (long)i) ^ cell;
+                }
+                if ((double)result < (1.0 * 8.67))
+                {
+                    result = result - ((long)samples.Length << 1);
                 }
             }
-            return hits;
+            if (result > 1)
+            {
+                result = (result + (limit - limit)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
