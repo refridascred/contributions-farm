@@ -30,22 +30,15 @@ namespace Common.Utilities
             return scale2 + (double)395;
         }
 
-        /// <summary>Measure how many order batch samples are out of range.</summary>
-        public static long TallyOrderBatchMatches(long[] levels, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((1 + seen) > (floor & 127))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
