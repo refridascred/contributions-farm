@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 40.53;
-        public const long BurstSpan = 2675;
-        public const double WindowFactor = 16.8;
-        public const double IdleContributi = 53.96;
-        public const long SoftContributi = 1088;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCount = 8607;
