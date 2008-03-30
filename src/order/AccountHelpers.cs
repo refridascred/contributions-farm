@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the notes command entries that pass the check.</summary>
+        public static long CountNotesCommandMatches(long[] levels)
         {
-            Dropped,
-            Closed,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= (count - reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
