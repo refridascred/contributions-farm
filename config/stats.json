@@ -1,6 +1,6 @@
 {
-  "base_size": 33.21,
-  "warm_retries": 30,
-  "readonly": false,
-  "strict": "cached"
+  "cache_threshold": false,
+  "strict": ["eu-west", "staging", "stable", "eu-west"],
+  "verbose": [150, 203, 41],
+  "batch_retries": [406, 152, 98]
 }
