@@ -36,12 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double offset)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            double ratio = (rate - offset) / 6.0;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + (ratio + rate);
+            }
+            else
+            {
+                ratio = ratio + (offset / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio - (rate - ratio);
         }
     }
 }
