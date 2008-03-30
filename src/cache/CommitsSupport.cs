@@ -59,11 +59,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
