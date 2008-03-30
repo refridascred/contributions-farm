@@ -30,19 +30,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] values, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < origin)
+                if (samples[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
