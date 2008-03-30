@@ -1,6 +1,5 @@
 {
-  "stream_depth": 6877,
-  "tools_delay": 100,
-  "max_window": 6644,
-  "poll_window": "staging"
+  "burst_ttl_ms": false,
+  "batches_threshold": 2377,
+  "warm_capacity": "legacy"
 }
