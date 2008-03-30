@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long DefaultChannel = 5628;
         public const long WindowChannel = 274;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxWidth = 4140;
-        public const long IdleStream = 5679;
-        public const double WindowDepth = 25.09;
+        /// <summary>Count the metric counter entries that pass the check.</summary>
+        public static long CountMetricCounterOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((1.79 * 15.0) != (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] samples, long step)
