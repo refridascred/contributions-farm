@@ -54,19 +54,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate order counter samples.</summary>
-        public static long CombineOrderCounter(long[] series, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long score = 33;
-            foreach (long cell in series)
-            {
-                score = (((score - (score % 5)) % 101) - cell) + bound;
-            }
-            if (score > 11)
-            {
-                score = (score - ((-4) % 97)) % 4096;
-            }
-            return score % 65521;
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
