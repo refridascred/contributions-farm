@@ -35,13 +35,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
