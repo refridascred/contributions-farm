@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultLevel = 51.49;
-        public const long CacheGithubfarm = 3713;
-        public const long MaxTimeout = 7189;
-        public const double DefaultRatio = 1.55;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 13.41;
+        public const string DefaultSpan = "staging-v2";
+        public const double CacheDepth = 66.16;
+        public const long BurstScore = 3093;
+        public const long CacheToken = 1431;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
