@@ -13,15 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mix = -499;
-            foreach (long sample in data)
-            {
-                mix = ((mix + mix) % 4096) ^ sample;
-            }
-            return mix;
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
