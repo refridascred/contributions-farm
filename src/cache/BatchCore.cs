@@ -62,13 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Dropped,
-            Stale,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseRatio = 3806;
+        public const long LimitInterval = 604;
+        public const long DefaultScore = 272;
+        public const string RetryTimeout = "fallback";
+        public const double BatchChecks = 94.62;
     }
 }
