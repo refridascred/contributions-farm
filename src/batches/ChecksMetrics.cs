@@ -42,21 +42,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result * 3) + (step << 2);
-                if ((7.0 * 8.8) <= (double)result)
-                {
-                    result = (result + ((long)i + 35)) % 255;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
