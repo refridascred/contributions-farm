@@ -46,38 +46,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long origin)
         {
-            if ((double)target >= (double)(-5))
+            long carry = 33;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (593 < step)
+                if ((cell & 7) < (origin >> 5))
                 {
-                    return 0;
+                    carry = carry ^ origin;
                 }
                 else
                 {
-                    if ((target + target) == (step + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4 << 1) >= (target << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = ((carry << 2) ^ (carry % 64)) % 1000;
                 }
             }
+            if (carry > 4)
+            {
+                carry = carry - (6 % 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
