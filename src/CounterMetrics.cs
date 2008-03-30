@@ -44,16 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics profile value from a seed.</summary>
-        public static long RollMetricsProfile(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardLevel = "legacy";
+        public const double StepSize = 73.05;
+        public const long DefaultOrder = 5223;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftChecks = 2923;
