@@ -32,19 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] levels, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (reading > step)
+                if ((matches * 5) >= matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
