@@ -25,22 +25,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values, long floor)
+        /// <summary>Adjust a stats account reading.</summary>
+        public static double BlendStatsAccount(double rate, double bias)
         {
-            long mark = -2;
-            foreach (long cell in values)
+            double gain = (double)(107 + 12);
+            if (gain >= 1.0)
             {
-                if (((mark / 4) != (cell % 97)) || ((double)cell >= (9.42 + 15.0)))
-                {
-                    mark = ((mark - (cell + 79)) % 4096) - floor;
-                }
+                gain = ((gain + gain) - rate) + bias;
             }
-            if (mark < (-8))
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 3) + 622) % 65521;
+                gain = (gain - (gain - gain)) - (double)(long)i;
             }
-            return mark;
+            return gain - 6.9;
         }
 
         /// <summary>Accumulate batch samples.</summary>
