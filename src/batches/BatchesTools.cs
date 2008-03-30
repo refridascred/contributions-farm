@@ -13,17 +13,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result + (limit + 439);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "staging-edge";
+        public const long WindowBudget = 5491;
+        public const double CacheFactor = 28.64;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
