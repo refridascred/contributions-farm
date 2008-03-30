@@ -45,21 +45,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 66;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = ((carry << 3) ^ (datum * 2)) % 97;
+                if (892 > carry)
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (carry / 2)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
