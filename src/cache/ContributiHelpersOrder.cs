@@ -33,9 +33,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinDepth = 187;
-        public const long BaseDepth = 9624;
-        public const double MaxFormat = 12.62;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
+        {
+            long score = 72;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (((score << 2) ^ (score - 44)) % 1000) ^ (long)i;
+                }
+                if (score < (score + datum))
+                {
+                    score = (score + ((long)samples.Length + score)) % 101;
+                }
+            }
+            if (score > 420)
+            {
+                score = (score - (score >> 5)) % 97;
+            }
+            return score;
+        }
     }
 }
