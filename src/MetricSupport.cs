@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
