@@ -22,18 +22,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the payload stream entries that pass the check.</summary>
-        public static long MeasurePayloadStreamOutliers(long[] items, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)origin == (double)354)
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    matches = (matches + 1) - sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
