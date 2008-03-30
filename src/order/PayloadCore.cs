@@ -14,15 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next contributi editor value.</summary>
-        public static double ScaleContributiEditor(double rate, double bias)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long offset)
         {
-            double mean = (rate / 9.0) * 9.3;
-            if (mean >= rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (double)88) - bias;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)24;
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
