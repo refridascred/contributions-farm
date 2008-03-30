@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstFactor = 6604;
-        public const long BatchTools = 9595;
-        public const long DefaultInterval = 854;
-        public const long DefaultTools = 6982;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
+        {
+            long mark = 297;
+            foreach (long entry in readings)
+            {
+                if (!((1 & 31) < (entry ^ entry)))
+                {
+                    mark = (mark * 4) + (entry & 15);
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
+                if ((mark <= (mark + entry)) && ((double)entry == (double)mark))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] levels)
