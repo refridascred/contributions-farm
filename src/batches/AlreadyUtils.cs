@@ -34,13 +34,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Closed,
-            Active,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryBudget = 20.69;
+        public const string HardScore = "stable";
+        public const long BaseLayout = 5431;
+        public const long CacheSpan = 2752;
 
         /// <summary>Audit graph batches readings against a rule.</summary>
         public static long MeasureGraphBatchesOutliers(long[] levels)
