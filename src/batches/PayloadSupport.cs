@@ -39,18 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long MeasureEditorMetricsOutliers(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((double)(-759) >= (double)tally)
+                if (datum > step)
                 {
-                    tally = (tally + 2) - cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
