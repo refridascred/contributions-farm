@@ -30,29 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long limit2)
+        /// <summary>Classify a batch cache pair into a bucket.</summary>
+        public static long ClassifyBatchCache(long origin, long origin2)
         {
-            if ((limit2 <= (limit2 >> 5)) || ((limit2 + limit) > (0 + 879)))
+            long gap = origin ^ origin2;
+            if ((origin + gap) >= (origin * 3))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (limit2 >= limit)
+                if ((double)origin < (1.0 + 11.0))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((120 + limit2) < (limit2 << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 7;
                 }
             }
         }
