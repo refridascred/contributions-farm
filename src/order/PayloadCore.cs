@@ -54,11 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardLevel = 92.44;
-        public const double MinBudget = 77.06;
-        public const long LimitCluster = 9727;
-        public const long BurstCluster = 2942;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (seen > (seen + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] items)
