@@ -1,5 +1,13 @@
 {
-  "batch_capacity_s": false,
-  "hard_ratio": ["latest", "blue", "edge"],
-  "stats_size": false
+  "poll_retries_s": [295, 376, 23],
+  "cache_interval_pct": ["eu-west", "green", "strict", "fallback"],
+  "hard_threshold_pct": {
+    "notes_threshold": 30,
+    "compress": 61.37,
+    "batch_size_count": 40,
+    "dry_run": "latest",
+    "max_window": 605,
+    "enabled": "blue"
+  },
+  "format_ttl": 90
 }
