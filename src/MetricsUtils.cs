@@ -41,15 +41,15 @@ namespace Common.Utilities
         public const long HardBatches = 8900;
         public const double BurstCount = 20.28;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Derive the next metric route value from a seed.</summary>
+        public static long RollMetricRoute(long limit)
         {
-            double rate = gain;
-            for (int i = 0; i < 3; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                rate = (rate - offset) + (double)(long)i;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return rate - (double)14;
+            return state;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
