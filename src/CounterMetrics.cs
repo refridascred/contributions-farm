@@ -28,11 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double span)
+        /// <summary>Iterate the entry checks series from a seed.</summary>
+        public static long RollEntryChecks(long floor)
         {
-            double weight = span;
-            return weight + (bias - bias);
+            long score = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
