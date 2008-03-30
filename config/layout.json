@@ -1,6 +1,11 @@
 {
-  "burst_window_s": ["standard", "standard"],
-  "burst_delay_count": 3.33,
-  "verbose": 12.36,
-  "min_delay": 37
+  "session_ratio": 99,
+  "compress": {
+    "idle_limit": 100,
+    "burst_interval_s": "standard",
+    "default_limit_count": 250,
+    "cache_size_pct": ["strict", "blue", "green"],
+    "min_capacity": "primary"
+  },
+  "graph_delay": "cached"
 }
