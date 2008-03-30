@@ -45,18 +45,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine cluster order values into a single score.</summary>
-        public static long TotalClusterOrder(long[] data)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            long result = 501;
-            foreach (long datum in data)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)datum != (double)result)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    result = ((result * 3) + (datum * 4)) % 4096;
+                    mark = ((mark + (limit ^ limit)) % 101) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    mark = (mark + mark) + (long)i3;
+                    mark = mark - (mark / 7);
+                }
+                if ((limit / 6) >= ((long)i + limit))
+                {
+                    mark = (mark - mark) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + limit)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
