@@ -75,11 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            double mean = (floor * 2.4) / 3.0;
-            return (mean + (4.0 * 8.3)) + weight;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
