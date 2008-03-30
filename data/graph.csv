@@ -1,6 +1,8 @@
-id,level,count
-1,80.98,staging
-2,30.41,391
-3,929,34.12
-4,50.19,772
-5,stable,408
+id,rank,region,label
+1,70.85,733,97
+2,263,308,fallback
+3,legacy,892,23
+4,fallback,fallback,87.22
+5,blue,legacy,24.31
+6,local,82.22,cached
+7,341,547,eu-west
