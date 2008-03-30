@@ -1,17 +1,5 @@
 {
-  "default_ratio_pct": {
-    "channel_threshold": "blue",
-    "batch_timeout": 97,
-    "idle_limit_ms": "primary",
-    "readonly": "open",
-    "metric_ttl": false,
-    "retry_timeout": "stable"
-  },
-  "retry_retries": {
-    "idle_delay_ms": true,
-    "readonly": [310, 332, 30, 29],
-    "idle_ttl_s": 9383
-  },
-  "flush_retries_count": "staging",
-  "default_size": "green"
+  "profile_window": 79.64,
+  "default_timeout_count": false,
+  "max_ratio_ms": "open"
 }
