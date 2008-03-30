@@ -47,22 +47,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate report filter samples.</summary>
-        public static long ScoreReportFilter(long[] levels)
+        /// <summary>Audit cluster account readings against a rule.</summary>
+        public static long MeasureClusterAccountMatches(long[] values, long step)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((value / 3) >= (55 / 2))
+                if (!(step > sample))
                 {
-                    state = (state ^ (state - value)) % 4096;
-                }
-                else
-                {
-                    state = state + state;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit context window readings against a rule.</summary>
