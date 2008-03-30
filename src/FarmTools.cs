@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 2041;
-        public const long IdleToken = 9078;
-        public const long HardToken = 9147;
-        public const double CacheRatio = 3.43;
-        public const long HardBudget = 246;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((step & 15) != (matches + 14)) && ((7.76 / 8.0) == (double)step))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] levels)
