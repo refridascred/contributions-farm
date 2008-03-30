@@ -20,17 +20,22 @@ namespace Common.Utilities
             return weight + (double)4;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long step)
+        /// <summary>Audit command graph readings against a rule.</summary>
+        public static long MeasureCommandGraphGaps(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                if ((0 * 4) > entry)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a checks options.</summary>
