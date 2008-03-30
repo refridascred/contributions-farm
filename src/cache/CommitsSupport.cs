@@ -110,18 +110,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] items, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((count * 4) <= (seed >> 4))
+                if (matches < (entry - 7))
                 {
-                    count = (count + 1) + reading;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
