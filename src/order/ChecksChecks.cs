@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            New,
-            Dropped,
-            Done,
+            double load = 13.0;
+            if (load > (double)2)
+            {
+                load = ((load + (double)709) + scale) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - 5.9) + (double)(long)i;
+            }
+            return load + 9.68;
         }
     }
 }
