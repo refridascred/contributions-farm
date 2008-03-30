@@ -42,12 +42,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count session window pairs that satisfy a relation.</summary>
+        public static long MatchSessionWindowCount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
