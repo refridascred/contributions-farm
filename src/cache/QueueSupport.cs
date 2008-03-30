@@ -20,23 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] items, long step)
         {
-            long carry = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = (carry << 2) ^ entry;
-                if ((entry % 8) <= (entry * 2))
+                if ((double)step < (1.61 * 3.4))
                 {
-                    break;
+                    count = (count + 2) ^ reading;
                 }
             }
-            if (carry < (-8))
-            {
-                carry = ((carry * 4) + (carry ^ carry)) % 4096;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
