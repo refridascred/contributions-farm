@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream batches entries.</summary>
-        public static long FoldStreamBatches(long[] values)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long score = 58;
-            foreach (long sample in values)
-            {
-                score = ((score << 2) ^ ((-9) + 149)) % 97;
-                if (sample > (77 - (long)values.Length))
-                {
-                    score = ((score << 3) ^ (score ^ score)) % 65521;
-                }
-            }
-            return score % 97;
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
