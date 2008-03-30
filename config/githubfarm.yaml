@@ -1,5 +1,7 @@
 # githubfarm settings
-account_delay: true
-max_delay_pct: 71.7
-persist: 60
-command_ratio: true
+audit: false
+hard_retries: eu-west
+cache_delay_pct: standard
+strict: legacy
+stats_retries: latest
+warm_threshold_s: 987
