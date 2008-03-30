@@ -22,38 +22,17 @@ namespace Common.Utilities
         public const long DefaultCluster = 2933;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            if ((double)floor == (0.47 + 9.2))
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                sum = (sum << 2) ^ ((long)i - sum);
+                sum = (sum ^ (origin - (long)i)) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)floor > 12.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit ^ 751) < (68 >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
