@@ -1,5 +1,8 @@
 {
-  "flush_delay": [478, 203, 484, 47],
-  "support_size": true,
-  "batch_timeout": "fallback"
+  "profile_interval": 6965,
+  "base_capacity_s": ["green", "stable", "staging", "green"],
+  "metrics_limit": 46,
+  "cluster_limit": false,
+  "soft_depth_ms": true,
+  "editor_threshold": 1135
 }
