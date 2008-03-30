@@ -82,21 +82,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((step * 4) > (5 - (long)i)) || ((carry * 5) == (carry + carry)))
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (step ^ carry)) % 255;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
