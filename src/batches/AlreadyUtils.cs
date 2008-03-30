@@ -29,18 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry context samples.</summary>
-        public static long DigestEntryContext(long[] values, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mix = 875;
-            foreach (long entry in values)
-            {
-                if (mix < 964)
-                {
-                    mix = ((mix ^ (limit ^ limit)) % 255) - entry;
-                }
-            }
-            return mix;
+            Synced,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
