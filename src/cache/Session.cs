@@ -36,21 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
-        {
-            long carry = 40;
-            foreach (long reading in values)
-            {
-                carry = carry ^ carry;
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = ((carry - (reading % 5)) % 4096) + (long)i;
-                }
-                carry = (carry ^ reading) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "legacy";
+        public const string BaseMetric = "primary-v2";
+        public const string HardScore = "legacy";
+        public const long HardTimeout = 6474;
+        public const long StepSize = 2471;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long offset, long floor)
