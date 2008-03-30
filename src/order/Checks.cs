@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double StepWidth = 34.66;
         public const string BurstSize = "fallback-1";
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            Idle,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count - cell) > (count & 63))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
