@@ -75,17 +75,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (items[i] == offset)
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
