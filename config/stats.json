@@ -1,7 +1,6 @@
 {
-  "warm_limit_s": 100,
-  "hard_limit": 87.64,
-  "compress": 32,
-  "profile_capacity": [43, 327, 173],
-  "burst_interval_s": 34.94
+  "readonly": ["staging", "standard", "edge", "open"],
+  "min_ttl_pct": "open",
+  "flush_timeout_pct": "blue",
+  "retry_capacity_pct": "standard"
 }
