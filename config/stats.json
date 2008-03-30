@@ -1,17 +1,8 @@
 {
-  "idle_interval_s": "local",
-  "stream_limit": {
-    "max_interval_s": true,
-    "readonly": 2334,
-    "soft_window_ms": 16.51
-  },
-  "sync_retries": [49, 488, 333],
-  "default_interval": {
-    "audit": "strict",
-    "hard_ratio": 20,
-    "cache_ratio_pct": 2.59,
-    "batches_threshold": [450, 409],
-    "idle_retries": "blue"
-  },
-  "retry_depth_pct": 73.83
+  "warm_threshold": "legacy",
+  "cache_retries_count": "eu-west",
+  "retry_retries_s": 61.65,
+  "hard_ttl_ms": 46,
+  "editor_interval": 89,
+  "compress": "staging"
 }
