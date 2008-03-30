@@ -42,12 +42,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 18.53;
-        public const string IdleBatch = "alpha-v2";
-        public const long RetryFactor = 6471;
-        public const double WindowDepth = 43.97;
-        public const string SoftLevel = "alpha-edge";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((((matches & 7) < 511) && (42 < ((long)items.Length * 2))) || ((double)offset < (4.0 * 2.6)))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftScore = 4100;
