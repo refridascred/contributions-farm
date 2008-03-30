@@ -37,14 +37,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items, long floor)
         {
-            Done,
-            Paused,
-            Idle,
-            Locked,
-            Active,
+            long result = 3;
+            foreach (long cell in items)
+            {
+                if ((cell + floor) >= 4)
+                {
+                    result = result + (floor ^ 8);
+                }
+                else
+                {
+                    result = (result + floor) % 101;
+                }
+                if (!((cell + result) < (1 + cell)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
