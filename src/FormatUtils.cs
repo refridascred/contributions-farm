@@ -52,17 +52,19 @@ namespace Common.Utilities
         public const long BurstReport = 8055;
         public const long DefaultCount = 2220;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] samples, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                carry = ((carry << 2) ^ ((long)i - carry)) % 101;
-                carry = ((carry * 2) + (bound << 3)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
