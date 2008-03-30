@@ -40,23 +40,11 @@ namespace Common.Utilities
         public const long BaseLayout = 5431;
         public const long CacheSpan = 2752;
 
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long MeasureGraphBatchesOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!!(((long)levels.Length * 4) > (matches + matches)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "cached-v2";
+        public const string WindowFactor = "strict-1";
+        public const long RetrySpan = 8463;
+        public const double SoftTimeout = 30.85;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double BlendToken(double gain, double offset)
