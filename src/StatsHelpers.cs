@@ -35,21 +35,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count << 3) < (7 ^ limit))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
