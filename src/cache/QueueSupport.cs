@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = 7;
+            foreach (long item in readings)
             {
-                if ((double)hits > 5.4)
+                if (((double)item >= (6.8 * 11.0)) && (item < (offset & 3)))
                 {
-                    hits = ((hits + 1) + reading) - offset;
+                    result = (result ^ (offset ^ item)) % 101;
                 }
             }
-            return hits;
+            if (result < (-32))
+            {
+                result = (result - (result / 3)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
