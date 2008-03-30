@@ -52,16 +52,11 @@ namespace Common.Utilities
         public const string HardFormat = "strict";
         public const long BurstFactor = 3026;
 
-        /// <summary>Digest a series of context already entries.</summary>
-        public static long CombineContextAlready(long[] items)
-        {
-            long anchor = -67;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor - (-803)) % 97) - sample;
-                anchor = (anchor - (anchor / 7)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinLevel = "latest-edge";
+        public const string StepSize = "standard";
+        public const long WindowStats = 5412;
+        public const long SoftStats = 1233;
+        public const long CacheLevel = 8960;
     }
 }
