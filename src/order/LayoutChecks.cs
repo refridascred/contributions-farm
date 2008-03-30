@@ -60,19 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] levels, long floor)
+        /// <summary>Count the channel command entries that pass the check.</summary>
+        public static long MeasureChannelCommandOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (value < floor)
+                if ((double)item > (double)count)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
