@@ -44,15 +44,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 1705;
+        public const string StepReport = "cached";
+        public const long BurstReport = 9907;
+        public const long BatchReport = 6994;
     }
 }
