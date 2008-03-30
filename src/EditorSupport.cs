@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)reading == (7.04 + 6.69))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor ^ ((long)i ^ anchor)) % 4096;
+                anchor = anchor - (5 & 1);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
