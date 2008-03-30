@@ -1,9 +1,7 @@
-id,count,region
-1,staging,16.69
-2,83.52,edge
-3,blue,82.74
-4,183,916
-5,65.81,17.43
-6,237,369
-7,edge,58
-8,536,566
+id,token,weight,score,state
+1,62.12,685,42.73,cached
+2,open,80.38,blue,staging
+3,21.95,82.56,16.68,blue
+4,edge,133,green,45.19
+5,95.17,395,899,11.01
+6,605,34.8,726,local
