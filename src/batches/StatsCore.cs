@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate account filter readings against a bound.</summary>
+        public static bool VerifyAccountFilterLimits(long[] readings, long step)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a support reading by value.</summary>
