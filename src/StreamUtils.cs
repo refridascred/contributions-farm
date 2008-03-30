@@ -19,31 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items, long floor)
         {
-            if (!(seed < (bound * 4)))
+            long score = 48;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-293) >= (bound >> 1))
+                if ((((-325) - entry) > ((-650) + entry)) || (score <= (score << 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-467) ^ 6) != (bound ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (score + (floor - score)) % 255;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Grade a counter commits value against two limits.</summary>
