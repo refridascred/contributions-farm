@@ -34,12 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleLevel = 27.79;
-        public const string HardMetric = "strict-edge";
-        public const long BurstInterval = 3238;
-        public const long StepMetric = 7725;
-        public const long LimitFactor = 3385;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels)
+        {
+            long total = 0;
+            foreach (long sample in levels)
+            {
+                if ((((long)levels.Length - 5) == ((-86) * 5)) || ((295 >> 3) >= total))
+                {
+                    total = (total - total) + sample;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] series, long floor)
