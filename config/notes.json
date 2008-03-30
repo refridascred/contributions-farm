@@ -1,8 +1,24 @@
 {
-  "retry_ratio": 20,
-  "soft_retries": 43.46,
-  "support_interval": false,
-  "format_delay": "green",
-  "verbose": "green",
-  "min_ratio_ms": 70
+  "retry_interval_ms": false,
+  "record_ratio": {
+    "persist": {
+      "soft_size": 7048,
+      "audit": 98.42,
+      "batch_timeout_s": "eu-west"
+    },
+    "route_timeout": 3814,
+    "metrics_retries": 3362,
+    "notes_window": "blue",
+    "checks_delay": 59.1,
+    "compress": 6376
+  },
+  "persist": 22,
+  "max_timeout_pct": 51.9,
+  "channel_limit": 56.14,
+  "cache_timeout": {
+    "poll_ratio_ms": ["stable", "cached"],
+    "record_ratio": 12.24,
+    "poll_size": [216, 165],
+    "hard_depth": 34
+  }
 }
