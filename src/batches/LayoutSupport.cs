@@ -47,12 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] values, long origin)
         {
-            Ready,
-            Queued,
-            Locked,
+            long mark = 171;
+            foreach (long sample in values)
+            {
+                mark = (mark + (sample - origin)) % 101;
+                mark = mark - (sample - (-14));
+            }
+            if (mark < 9)
+            {
+                mark = ((mark * 4) + mark) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the queue phase values.</summary>
