@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 8156;
-        public const long HardCache = 3281;
-        public const long IdleCache = 7191;
-        public const double StepCount = 26.96;
-        public const long MaxCache = 449;
+        /// <summary>Grade a metrics contributi value against two limits.</summary>
+        public static long RankMetricsContributi(long bound, long step)
+        {
+            if ((bound & 255) >= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4.39 + 19.0) > (double)bound) || ((step >> 3) > (634 ^ bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound + bound) > (bound + 385)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - bound) > bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] series)
