@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 40.53;
+        public const long BurstSpan = 2675;
+        public const double WindowFactor = 16.8;
+        public const double IdleContributi = 53.96;
+        public const long SoftContributi = 1088;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelBounds(long[] series, long target)
