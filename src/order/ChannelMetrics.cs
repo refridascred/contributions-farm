@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            Active,
-            Idle,
-            Failed,
-            Closed,
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
