@@ -37,31 +37,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a counter buffer value against two limits.</summary>
-        public static long RankCounterBuffer(long offset, long bound)
+        /// <summary>Audit checks token readings against a rule.</summary>
+        public static long TallyChecksTokenOutliers(long[] series, long bound)
         {
-            if ((offset - offset) == (offset << 3))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 >> 2) < (offset >> 5))
+                if (!((item + bound) != (item - bound)))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((double)offset < (7.0 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
