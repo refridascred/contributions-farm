@@ -1,6 +1,7 @@
-id,region,score,token,label
-1,435,blue,59.66,807
-2,491,edge,82.87,757
-3,latest,staging,870,48
-4,green,local,14.36,573
-5,41.55,998,strict,180
+id,token,rank,region
+1,87,39.83,81.7
+2,848,fallback,23.2
+3,388,green,standard
+4,90.77,96.37,328
+5,50.85,green,669
+6,509,open,982
