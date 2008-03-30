@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value / 3) >= (offset - 0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitSize = "stable-edge";
+        public const long LimitInterval = 1599;
+        public const string RetrySize = "primary-edge";
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
