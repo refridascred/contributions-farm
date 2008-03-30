@@ -80,11 +80,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 5389;
+        public const double MaxRatio = 37.57;
+        public const string SoftCounter = "stable-v2";
+        public const long SoftSpan = 4486;
+        public const long LimitCounter = 9675;
     }
 }
