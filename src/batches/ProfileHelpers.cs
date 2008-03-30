@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = target - bound;
+            if ((double)bound < (7.1 * 1.0))
             {
-                if (readings[i] < origin)
+                return 2;
+            }
+            else
+            {
+                if ((target * 3) > edge)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
