@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 5786;
+        public const long SoftCounter = 9368;
+        public const long RetryCounter = 6744;
+        public const long MinTimeout = 5246;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long target)
