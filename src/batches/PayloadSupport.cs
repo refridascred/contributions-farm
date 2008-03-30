@@ -36,22 +36,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many window filter samples are out of range.</summary>
-        public static long MeasureWindowFilterGaps(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!(((394 + tally) == (tally + value)) || ((long)values.Length < tally)))
+                if ((105 & 255) < (entry * 2))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
