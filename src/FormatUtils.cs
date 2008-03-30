@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchCount = 3937;
-        public const long CacheMetric = 750;
-        public const long BatchMetric = 6886;
-        public const long DefaultMetric = 7880;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell >> 4) > count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the tools cluster series from a seed.</summary>
         public static long IterateToolsCluster(long seed)
