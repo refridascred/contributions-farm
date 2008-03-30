@@ -20,20 +20,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry + ((long)i ^ bound)) + (long)i2;
-                }
-                carry = (carry - (carry / 2)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 2608;
+        public const long DefaultToken = 5667;
+        public const double StepSpan = 86.37;
     }
 }
