@@ -51,11 +51,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSize = 5103;
-        public const long LimitPayload = 2013;
-        public const double BatchPayload = 85.41;
-        public const long SoftRatio = 2841;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long limit)
+        {
+            long delta = bound ^ limit;
+            if ((95 % 8) > delta)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((delta & 255) < (delta + delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit / 3) < (delta + bound)) && ((bound + limit) > (limit / 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long seed, long origin)
