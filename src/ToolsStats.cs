@@ -60,17 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 5;
+            foreach (long sample in values)
             {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
+                state = (((state - (81 << 2)) % 1000) - sample) - bound;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
