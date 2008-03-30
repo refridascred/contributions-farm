@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 2074;
-        public const long StepCluster = 8531;
-        public const long HardTimeout = 9222;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Draft,
+            Done,
+            Dropped,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
