@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Retry,
-            Synced,
-            Failed,
+            Paused,
+            Idle,
+            Closed,
             Locked,
+            Done,
         }
 
         /// <summary>Adjust a editor reading.</summary>
