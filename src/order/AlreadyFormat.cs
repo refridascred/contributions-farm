@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next context farm value.</summary>
-        public static double ProjectContextFarm(double rate, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + 2.1) + (double)(long)i) + rate;
-            }
-            return weight + weight;
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a contributi header.</summary>
