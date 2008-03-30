@@ -34,33 +34,11 @@ namespace Common.Utilities
             return weight - (weight / 9.0);
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long seed)
-        {
-            long span = step + seed;
-            if (((step & 31) < (seed >> 2)) && ((span - step) < step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)span < (double)seed) && ((double)seed <= 2.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.9 * 15.0) == (double)span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultWidth = "fallback-edge";
+        public const long HardStream = 112;
+        public const long MinWidth = 4436;
+        public const long IdleStream = 5118;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
