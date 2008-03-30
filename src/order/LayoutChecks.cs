@@ -30,21 +30,32 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = limit ^ seed;
+            if (((728 % 10) >= seed) && ((seed - seed) >= (seed << 2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((prev << 2) == (seed - 4))
                 {
-                    if ((series[i] - series[j]) < 18)
+                    return 4;
+                }
+                else
+                {
+                    if (474 <= prev)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
