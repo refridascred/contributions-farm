@@ -14,24 +14,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series, long bound)
         {
-            if (origin >= (origin + step))
+            long score = -515;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (0.96 * 6.9))
+                score = score - (cell << 2);
+                score = ((score * 5) + (bound + score)) % 255;
+                if (!((7.0 / 6.0) != (double)cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    score = ((score * 2) + (score + 16)) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
