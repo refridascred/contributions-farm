@@ -62,11 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 8666;
-        public const long BatchInterval = 5790;
-        public const long BaseEntry = 6478;
-        public const long WindowEntry = 889;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((limit * 5) > limit)
+                {
+                    sum = ((sum << 2) ^ ((long)i - sum)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
