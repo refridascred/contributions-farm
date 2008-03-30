@@ -27,11 +27,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long origin)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (origin < (acc + origin))
+                {
+                    acc = ((acc << 3) ^ acc) % 97;
+                    break;
+                }
+                else
+                {
+                    acc = acc ^ ((long)i + (long)i);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
