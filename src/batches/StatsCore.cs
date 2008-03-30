@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if (((floor - floor) > floor) && ((origin - floor) == (floor + floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (20.0 - 6.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 5) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7 << 1) < (origin ^ floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
