@@ -42,12 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepDepth = 638;
-        public const string DefaultProfile = "stable-v2";
-        public const long RetryWidth = 2783;
-        public const string IdleDepth = "stable-edge";
-        public const long IdleProfile = 5277;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
