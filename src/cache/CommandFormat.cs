@@ -44,11 +44,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long offset)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long delta = origin ^ offset;
+            if (((origin + offset) != (origin * 4)) && ((double)delta < (double)6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin << 1) == (origin >> 5)) || ((550 + offset) < (offset + delta)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.78 - 0.38) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
