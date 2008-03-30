@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitInterval = "stable-1";
+        public const long BaseCount = 9976;
+        public const long WindowProfile = 1462;
 
         /// <summary>Accumulate buffer command samples.</summary>
         public static long ScoreBufferCommand(long[] samples, long seed)
