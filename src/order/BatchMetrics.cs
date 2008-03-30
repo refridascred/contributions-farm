@@ -74,13 +74,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine cluster order values into a single score.</summary>
+        public static long TotalClusterOrder(long[] data)
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long result = 501;
+            foreach (long datum in data)
+            {
+                if ((double)datum != (double)result)
+                {
+                    result = ((result * 3) + (datum * 4)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Blend two layout measurements.</summary>
