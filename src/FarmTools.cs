@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long limit)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                total = total ^ ((-49) % 3);
-                total = ((total * 5) + (long)i) % 101;
+                if (limit > (8 + sum))
+                {
+                    sum = (sum - ((long)i << 2)) % 65521;
+                }
+                if ((sum << 2) > (sum + 4))
+                {
+                    sum = (sum - (limit - 3)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
