@@ -29,22 +29,37 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a commits channel value against two limits.</summary>
-        public static long BucketCommitsChannel(long target, long target2)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long target)
         {
-            if ((target2 + target) <= (-265))
+            long gap = origin ^ target;
+            if ((origin - 9) < gap)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((target + target2) >= target)
+                if ((86 >> 1) < (target + 0))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if (origin > (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) > (target * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
