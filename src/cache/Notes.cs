@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double gain, double span)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            double gain2 = (span + gain) + span;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - 9.0) + (double)(long)i;
+            }
+            return gain2 - (span * 7.39);
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
