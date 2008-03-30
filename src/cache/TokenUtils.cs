@@ -12,18 +12,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((double)seed >= 3.61)
             {
-                if ((seen + item) <= (item & 15))
+                return 3;
+            }
+            else
+            {
+                if ((0.3 / 4.0) >= (double)seed)
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((8.0 - 6.09) <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
