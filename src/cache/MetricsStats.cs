@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCounterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseBudget = 3337;
+        public const long MaxAlready = 3092;
+        public const double BatchAlready = 82.03;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
