@@ -27,21 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
