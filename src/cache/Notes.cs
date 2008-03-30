@@ -30,13 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Queued,
-            Idle,
-            Dropped,
-            Retry,
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
