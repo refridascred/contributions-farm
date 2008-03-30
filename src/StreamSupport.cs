@@ -23,19 +23,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double scale = (double)(73 + (-273));
-            if (scale >= (double)1)
-            {
-                scale = scale + (offset * 5.0);
-            }
-            else
-            {
-                scale = scale + ratio;
-            }
-            return scale + offset;
+            Synced,
+            Queued,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
