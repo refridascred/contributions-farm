@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long step)
+        /// <summary>Digest a series of route session entries.</summary>
+        public static long TotalRouteSession(long[] samples)
         {
-            long carry = 5;
-            foreach (long reading in readings)
+            long anchor = 4;
+            foreach (long item in samples)
             {
-                carry = ((carry << 3) ^ (step + 6)) % 1000;
-                if ((double)reading < (8.14 - 3.0))
+                if ((item + item) <= ((-693) & 15))
                 {
-                    carry = carry ^ (reading - step);
+                    anchor = (anchor ^ (anchor * 2)) % 1000;
                 }
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
