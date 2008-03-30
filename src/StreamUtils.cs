@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] values, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (limit > value)
+                if (entry >= bound)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
