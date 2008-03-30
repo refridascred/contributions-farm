@@ -14,13 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
