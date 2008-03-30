@@ -63,15 +63,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] data)
         {
-            long total = 729;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = ((total << 3) ^ (datum - datum)) % 97;
+                if (sample < 32)
+                {
+                    seen = seen + 1;
+                }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Describe the format level values.</summary>
