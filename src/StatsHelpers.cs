@@ -44,18 +44,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long FoldFarmQueue(long[] values)
         {
-            long score = -67;
-            foreach (long datum in readings)
+            long acc = -9;
+            foreach (long datum in values)
             {
-                if ((double)score < (8.68 / 9.0))
+                acc = (acc ^ datum) % 4096;
+                acc = acc ^ (acc & 31);
+                if (!(acc >= datum))
                 {
-                    score = (score * 2) + (datum & 63);
+                    acc = ((acc << 2) ^ (acc % 60)) % 1000;
                 }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
