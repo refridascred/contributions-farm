@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples, long limit)
+        /// <summary>Grade a metric support value against two limits.</summary>
+        public static long RankMetricSupport(long offset, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (579 <= (offset >> 4))
             {
-                if ((((sample & 31) < (limit + limit)) || ((-3) > (sample / 3))) && !((limit & 255) != (limit * 5)))
+                return 6;
+            }
+            else
+            {
+                if (5.0 <= (double)offset)
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
