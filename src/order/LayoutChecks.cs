@@ -55,32 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long origin, long origin2)
-        {
-            if (((origin2 % 24) <= ((-3) % 24)) && (origin2 > (origin2 - 9)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin2 - origin2) < (origin + origin2)) && ((origin / 2) <= (origin ^ origin2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.4 * 9.42) <= (double)origin2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultCount = 47.25;
+        public const long BaseFarm = 6253;
+        public const string HardFarm = "legacy-v2";
+        public const long LimitFarm = 2903;
+        public const long MinFarm = 3994;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] series)
