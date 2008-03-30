@@ -29,18 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches * 5) >= matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - entry;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
