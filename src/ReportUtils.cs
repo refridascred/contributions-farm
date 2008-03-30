@@ -15,18 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((reading + step) >= (reading + count)))
-                {
-                    count = count + 1;
-                }
+                score = (score * 4) + (9 ^ step);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
