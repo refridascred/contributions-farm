@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target <= (item / 6)) || ((949 - item) >= hits))
+                if (series[i] > step)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
