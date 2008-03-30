@@ -68,13 +68,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Roll a metrics account counter forward.</summary>
+        public static long StepMetricsAccount(long offset)
         {
-            Locked,
-            New,
-            Queued,
-            Dropped,
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((657 + carry) == (long)i))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every payload editor entry stays within the limit.</summary>
