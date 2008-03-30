@@ -46,12 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] data, long bound)
         {
-            Dropped,
-            Retry,
-            Pending,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
