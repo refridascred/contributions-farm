@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            New,
-            Stale,
-            Paused,
-            Dropped,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
