@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const string BurstBuffer = "primary-v2";
         public const long WindowSpan = 72;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long result = -7;
+            foreach (long entry in data)
+            {
+                if ((double)entry > (double)397)
+                {
+                    result = ((result << 3) ^ (entry - entry)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every cache token entry stays within the limit.</summary>
