@@ -64,21 +64,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support entry samples.</summary>
-        public static long MatchSupportEntryCount(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 17)
+                    if ((data[i] ^ data[j]) != 20)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
