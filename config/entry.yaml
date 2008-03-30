@@ -1,4 +1,4 @@
 # entry settings
-retry_window_ms: 71.99
-report_retries: standard
-soft_size_s: false
+persist: 1836
+enabled: false
+checks_delay: 60
