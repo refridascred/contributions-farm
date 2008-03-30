@@ -26,31 +26,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a githubfarm already value against two limits.</summary>
-        public static long BucketGithubfarmAlready(long seed, long offset)
+        /// <summary>Measure how many context schema samples are out of range.</summary>
+        public static long CountContextSchemaMatches(long[] readings, long target)
         {
-            if ((seed + 48) <= seed)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed + 24) == ((-207) * 5)) && ((seed << 1) != (offset & 127)))
+                if ((79 * 4) < (entry + target))
                 {
-                    return 8;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((833 - offset) == (offset - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
