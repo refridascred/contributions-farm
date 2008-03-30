@@ -34,12 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryRatio = 20.54;
-        public const long RetryLevel = 5418;
-        public const long HardCount = 289;
-        public const double RetryContext = 66.82;
-        public const string LimitContext = "staging-1";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
