@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] values, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (reading >= target)
+                if (item != bound)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Describe the format class values.</summary>
