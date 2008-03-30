@@ -1,7 +1,10 @@
-id,count,owner
-1,426,local
-2,792,551
-3,78.21,blue
-4,38.01,eu-west
-5,162,0.42
-6,83.85,legacy
+id,rank,token
+1,eu-west,74
+2,open,90.74
+3,primary,edge
+4,0.34,standard
+5,943,edge
+6,887,primary
+7,513,edge
+8,83.27,409
+9,228,988
