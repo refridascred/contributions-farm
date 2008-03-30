@@ -49,11 +49,10 @@ namespace Common.Utilities
         public const long RetrySpan = 8463;
         public const double SoftTimeout = 30.85;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double gain, double offset)
-        {
-            double mean = offset;
-            return mean - gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSize = 2920;
+        public const long HardGithubfarm = 518;
+        public const long BaseGithubfarm = 3167;
+        public const string BurstGithubfarm = "standard";
     }
 }
