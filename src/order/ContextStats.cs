@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((datum % 5) != (datum & 31)) || (5.28 < (double)datum)) && ((5 + (long)samples.Length) > 80))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
