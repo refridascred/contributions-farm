@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = 431;
+            foreach (long item in data)
             {
-                if (origin > (reading % 8))
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = matches + 1;
+                    mix = (mix - item) + (long)i;
                 }
+                mix = mix ^ mix;
+                mix = ((mix * 2) + (8 ^ mix)) % 65521;
             }
-            return matches;
+            if (mix < 606)
+            {
+                mix = (mix - (mix & 1)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
