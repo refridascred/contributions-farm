@@ -14,13 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Project the next contributi editor value.</summary>
+        public static double ScaleContributiEditor(double rate, double bias)
         {
-            New,
-            Paused,
-            Queued,
-            Synced,
+            double mean = (rate / 9.0) * 9.3;
+            if (mean >= rate)
+            {
+                mean = (mean + (double)88) - bias;
+            }
+            return mean - (double)24;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
