@@ -1,16 +1,9 @@
 # githubfarm settings
-contributi_ttl: 500
-compress:
-  - strict
-  - open
-hard_interval_count: strict
-readonly:
-  cache_size_count: blue
-  enabled:
-    - local
-    - local
-    - local
-  flush_depth_pct: false
-  command_threshold: 60
-burst_limit_pct: 85
-retry_capacity_s: standard
+payload_threshold:
+  - 379
+  - 299
+  - 116
+  - 390
+min_capacity_ms: latest
+command_delay: 39.17
+audit: 3929
