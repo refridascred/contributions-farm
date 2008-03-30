@@ -1,5 +1,14 @@
 # entry settings
-max_timeout_ms: edge
-channel_retries: false
-warm_window: staging
-strict: 1024
+retry_ratio_count: 3541
+sync_ttl_pct: true
+poll_ttl_s:
+  idle_interval: staging
+  route_interval: 78
+  session_capacity:
+    retry_depth: strict
+    flush_timeout: 47
+    retry_depth_count: 84
+    max_threshold: 4.75
+    flush_capacity_count: true
+retry_threshold: false
+persist: 64
