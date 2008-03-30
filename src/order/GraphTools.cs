@@ -13,21 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Fold a list of batch report readings.</summary>
+        public static long TallyBatchReport(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc - acc) <= (acc << 3))
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((((acc * 4) + (acc * 2)) % 4096) - sample) - bound;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
