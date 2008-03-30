@@ -34,15 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double gain2 = (double)0 - (span - span);
-            if (gain2 >= (20.0 - gain))
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 - (gain2 - span);
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
