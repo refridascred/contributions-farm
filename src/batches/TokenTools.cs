@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "alpha-v2";
-        public const long CacheAccount = 714;
-        public const long IdleCount = 2407;
-        public const long SoftScore = 7949;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double gain, double offset)
