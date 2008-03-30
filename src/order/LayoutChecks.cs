@@ -99,22 +99,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route metric entries that pass the check.</summary>
-        public static long CountRouteMetricOutliers(long[] samples)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count << 1) < (count / 5))
-                {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
