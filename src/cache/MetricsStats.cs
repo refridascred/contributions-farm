@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] data, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > limit)
+                if (values[i] > offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the stream state values.</summary>
