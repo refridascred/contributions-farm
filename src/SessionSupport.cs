@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((matches * 2) != (matches - item))
+                if (reading <= limit)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up graph samples.</summary>
