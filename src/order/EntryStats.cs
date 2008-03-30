@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = 413;
-            foreach (long item in readings)
-            {
-                long slot = (item + item) + (total << 3);
-                total = (total * 2) + slot;
-                if ((total >> 2) > (item + total))
-                {
-                    total = total + (total + item);
-                }
-                else
-                {
-                    total = (total - (total * 4)) % 1000;
-                }
-            }
-            return total;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
