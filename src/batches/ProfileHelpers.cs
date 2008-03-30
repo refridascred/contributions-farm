@@ -41,12 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Grade a entry record value against two limits.</summary>
+        public static long SortEntryRecord(long step, long bound)
         {
-            Stale,
-            Synced,
-            Paused,
+            if ((double)bound != (4.0 / 2.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound < (bound ^ step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6 - bound) == (step * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of token entries.</summary>
