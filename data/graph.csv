@@ -1,8 +1,8 @@
-id,rank,region,label
-1,70.85,733,97
-2,263,308,fallback
-3,legacy,892,23
-4,fallback,fallback,87.22
-5,blue,legacy,24.31
-6,local,82.22,cached
-7,341,547,eu-west
+id,level,active,owner
+1,standard,88.23,eu-west
+2,704,977,18.43
+3,741,76.04,primary
+4,890,cached,82.14
+5,green,primary,strict
+6,293,760,743
+7,832,43.19,76.6
