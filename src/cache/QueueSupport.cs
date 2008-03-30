@@ -39,18 +39,21 @@ namespace Common.Utilities
         public const long BaseBatch = 4029;
         public const string MinBatch = "local-edge";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] samples, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= 8.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + origin;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
