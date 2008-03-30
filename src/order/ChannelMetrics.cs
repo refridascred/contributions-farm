@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long result = 1;
-            foreach (long cell in readings)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                result = (((result + (8 & 127)) % 4096) - cell) - origin;
+                if ((mix % 60) >= mix)
+                {
+                    mix = (mix - (origin - origin)) % 101;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
