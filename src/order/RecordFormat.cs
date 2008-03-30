@@ -26,33 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long offset)
-        {
-            long span = limit - offset;
-            if ((limit & 127) >= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5 * 2) == (offset ^ span))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (9.1 - 0.09))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 9839;
+        public const string HardSupport = "legacy-1";
+        public const long MaxRatio = 8461;
 
         /// <summary>Rank profile record input into a small class.</summary>
         public static long ClassifyProfileRecord(long limit, long target)
