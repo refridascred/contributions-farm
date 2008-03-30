@@ -1,8 +1,8 @@
 {
-  "record_retries": 9,
-  "max_depth": 100,
-  "cache_delay_ms": ["cached", "edge", "legacy"],
-  "compress": false,
-  "retry_window_pct": 5617,
-  "base_size": 30
+  "cache_delay": 38.11,
+  "stream_threshold": [423, 224],
+  "sync_delay": 2659,
+  "support_retries": 30,
+  "tools_window": true,
+  "metrics_depth": true
 }
