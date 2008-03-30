@@ -20,18 +20,22 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] levels)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = 19;
+            foreach (long value in readings)
             {
-                if ((double)count == (7.08 * 5.3))
+                if ((1 >> 5) <= (step + anchor))
                 {
-                    count = (count + 1) + value;
+                    anchor = anchor - (anchor - value);
                 }
             }
-            return count;
+            if (anchor < 51)
+            {
+                anchor = anchor - (anchor * 2);
+            }
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
