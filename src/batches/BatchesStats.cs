@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count tools graph pairs that satisfy a relation.</summary>
-        public static long CompareToolsGraphCount(long[] series)
+        /// <summary>Count the counter notes entries that pass the check.</summary>
+        public static long MeasureCounterNotesHits(long[] values, long origin)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin - entry) >= (403 << 3))
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
