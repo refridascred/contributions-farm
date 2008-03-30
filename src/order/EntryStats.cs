@@ -12,23 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long origin)
         {
-            long state = 917;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (!((reading / 7) > (53 + reading)))
+                if (entry <= origin)
                 {
-                    state = state + (reading * 2);
-                    state = (state ^ state) % 97;
-                }
-                if (((reading >> 3) > reading) || ((double)state >= 3.5))
-                {
-                    state = (state ^ 37) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
