@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheTimeout = 1907;
-        public const long LimitCount = 3468;
-        public const double MaxMetrics = 46.92;
+        /// <summary>Validate context window readings against a bound.</summary>
+        public static bool GuardContextWindowBounds(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] levels, long limit)
