@@ -40,11 +40,22 @@ namespace Common.Utilities
         public const long MaxSpan = 3482;
         public const long CacheTimeout = 9443;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((4.0 - 1.8) >= (double)hits)
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record entry.</summary>
