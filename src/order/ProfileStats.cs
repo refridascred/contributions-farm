@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double scale, double bias)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double load = bias;
-            if (load <= (load * 7.3))
-            {
-                load = (load + load) - scale;
-            }
-            else
-            {
-                load = load - (double)752;
-            }
-            return load + load;
+            Pending,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
