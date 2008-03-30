@@ -1,15 +1,11 @@
 # entry settings
-poll_interval_ms: standard
-schema_window:
-  soft_ratio:
-    - 117
-    - 449
-    - 204
-  readonly: 56.51
-  soft_retries_count: primary
-burst_ttl: true
-base_retries_s:
-  - 192
-  - 414
-  - 247
-  - 207
+burst_timeout_ms: staging
+readonly:
+  - 350
+  - 25
+sync_delay_ms: 20
+order_retries: false
+retry_timeout_pct:
+  - local
+  - blue
+  - staging
