@@ -19,17 +19,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a token metrics sample.</summary>
-        public static long LookupTokenMetricsIndex(long[] series, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Match up queue samples.</summary>
