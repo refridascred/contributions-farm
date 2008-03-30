@@ -46,18 +46,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support channel readings.</summary>
-        public static long DigestSupportChannel(long[] values)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long limit)
         {
-            long sum = 3;
-            foreach (long item in values)
+            long diff = bound - limit;
+            if ((diff + diff) <= limit)
             {
-                if (((item + item) < 49) || ((double)(long)values.Length <= (4.67 - 19.0)))
+                return 4;
+            }
+            else
+            {
+                if ((8 << 3) == (diff * 3))
                 {
-                    sum = sum + (sum + sum);
+                    return 1;
+                }
+                else
+                {
+                    if ((diff ^ diff) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit % 16) >= (limit * 4)) && ((diff + bound) != (diff % 16)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
