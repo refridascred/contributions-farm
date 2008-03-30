@@ -36,15 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long carry = -213;
-            foreach (long sample in readings)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                carry = (carry << 3) ^ (sample / 8);
+                mix = mix - (limit + mix);
+                if (mix > (limit % 10))
+                {
+                    mix = mix + ((long)i + limit);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
