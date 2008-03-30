@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 20.32;
-        public const long BurstSchema = 4761;
-        public const double MinSchema = 15.42;
-        public const long HardFactor = 133;
-        public const long MaxDepth = 3798;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Pending,
+            Paused,
+            Active,
+            Draft,
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
