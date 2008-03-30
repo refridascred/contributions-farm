@@ -30,18 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits - hits) < sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a schema header.</summary>
