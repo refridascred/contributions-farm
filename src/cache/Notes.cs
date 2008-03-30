@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            Ready,
-            Idle,
-            Queued,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count == (8.4 - 7.4))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already mode values.</summary>
