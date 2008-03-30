@@ -47,14 +47,18 @@ namespace Common.Utilities
         public const long BatchWidth = 287;
         public const long MaxCounter = 6229;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long CountFormatBufferHits(long[] data, long bound)
         {
-            Synced,
-            Idle,
-            Retry,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 3) > (long)data.Length)
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
     }
 }
