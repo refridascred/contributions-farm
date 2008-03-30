@@ -1,10 +1,6 @@
-id,label,token
-1,10.84,522
-2,497,997
-3,60,strict
-4,143,106
-5,934,blue
-6,804,stable
-7,67.23,edge
-8,standard,staging
-9,94.64,365
+id,score,token,label
+1,323,282,61.07
+2,edge,660,open
+3,staging,blue,689
+4,97.23,23.61,standard
+5,blue,598,562
