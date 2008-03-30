@@ -63,15 +63,9 @@ namespace Common.Utilities
         public const long StepAlready = 3449;
         public const long RetryRatio = 7920;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
-        {
-            long mix = 18;
-            foreach (long value in items)
-            {
-                mix = ((mix + (mix / 2)) % 4096) ^ value;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 3461;
+        public const long StepSize = 9746;
+        public const long BurstSchema = 3838;
     }
 }
