@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] items, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.4 >= (double)target)
+                if (items[i] > step)
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
