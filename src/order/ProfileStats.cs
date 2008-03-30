@@ -13,13 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
