@@ -88,11 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 46.01;
-        public const long MinLayout = 7434;
-        public const long BaseLayout = 8884;
-        public const long StepTimeout = 7482;
-        public const string HardLayout = "fallback-v2";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Locked,
+            Dropped,
+            Draft,
+        }
     }
 }
