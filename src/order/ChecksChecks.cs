@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
