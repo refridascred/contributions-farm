@@ -1,6 +1,5 @@
 {
-  "hard_capacity": 78,
-  "warm_delay_s": true,
-  "enabled": ["legacy", "local", "blue"],
-  "already_threshold": 60
+  "default_ttl_pct": 19,
+  "record_delay": 32.76,
+  "dry_run": 39
 }
