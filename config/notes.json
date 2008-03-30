@@ -1,7 +1,8 @@
 {
-  "min_size_count": true,
-  "retry_limit": true,
-  "dry_run": "edge",
-  "poll_ttl_count": 90.21,
-  "verbose": 30
+  "payload_ratio": 60.16,
+  "burst_depth_s": ["eu-west", "green", "eu-west", "staging"],
+  "cache_limit_s": "stable",
+  "min_window_ms": ["strict", "standard"],
+  "retry_interval": 6342,
+  "persist": 432
 }
