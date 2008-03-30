@@ -24,14 +24,15 @@ namespace Common.Utilities
         public const long HardAlready = 3888;
         public const double MinFactor = 62.64;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            Idle,
-            Draft,
-            Locked,
-            Stale,
-            Synced,
+            double gain2 = (double)0 - (span - span);
+            if (gain2 >= (20.0 - gain))
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - (gain2 - span);
         }
 
         /// <summary>Roll a context counter forward.</summary>
