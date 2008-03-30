@@ -23,14 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Paused,
-            Retry,
-            Stale,
-            Active,
             New,
+            Locked,
+            Pending,
         }
     }
 }
