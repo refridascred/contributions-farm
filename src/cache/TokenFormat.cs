@@ -33,9 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 7308;
-        public const long BatchInterval = 8536;
-        public const long StepBudget = 4248;
+        /// <summary>Validate editor already readings against a bound.</summary>
+        public static bool GuardEditorAlreadyRange(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
