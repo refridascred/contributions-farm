@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 3426;
+        public const long DefaultReport = 6126;
+        public const long BatchWidth = 9635;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
