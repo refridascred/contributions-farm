@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((mix % 60) >= mix)
+                if (item >= (limit + limit))
                 {
-                    mix = (mix - (origin - origin)) % 101;
-                    continue;
+                    matches = matches + 2;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
