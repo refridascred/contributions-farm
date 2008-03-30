@@ -1,4 +1,31 @@
 # entry settings
-tools_threshold: 75.44
-hard_depth_ms: 6658
-base_capacity_ms: 65
+base_threshold_ms: green
+soft_interval: false
+burst_size_count:
+  burst_capacity:
+    - 426
+    - 251
+    - 486
+  base_delay: 60
+  min_limit_s: 4122
+  compress:
+    max_window: open
+    verbose: 82
+    max_delay_ms: 5355
+cache_limit:
+  channel_delay: 48
+  batch_depth_ms: false
+  max_timeout: true
+route_interval:
+  readonly: 4.34
+  default_ttl_pct: 16.66
+  githubfarm_timeout:
+    - latest
+    - eu-west
+  poll_ratio:
+    burst_size_pct: 20.38
+    readonly:
+      - 192
+      - 413
+    retry_size_pct: legacy
+retry_ratio_count: 84.33
