@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long bound)
         {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
