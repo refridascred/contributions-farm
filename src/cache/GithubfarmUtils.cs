@@ -40,18 +40,14 @@ namespace Common.Utilities
             return gain - 6.9;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels, long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long result = 459;
-            foreach (long entry in levels)
-            {
-                if (floor > (floor >> 1))
-                {
-                    result = (result - (59 + result)) - entry;
-                }
-            }
-            return result % 1000;
+            Locked,
+            Retry,
+            Active,
+            Failed,
+            Idle,
         }
     }
 }
