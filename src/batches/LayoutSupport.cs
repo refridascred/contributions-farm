@@ -13,17 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a support already sample.</summary>
-        public static long FindSupportAlreadyIndex(long[] samples, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 937;
+            foreach (long reading in levels)
             {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
+                result = result + (result + reading);
             }
-            return -1;
+            if (result > 374)
+            {
+                result = (result - (result % 12)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
