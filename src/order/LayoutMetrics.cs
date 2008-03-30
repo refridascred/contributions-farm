@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long step, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples, long limit)
         {
-            if (((bound + step) >= (37 + 40)) && ((double)step == (6.0 - 9.9)))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= (6.32 * 0.9))
+                if ((((sample & 31) < (limit + limit)) || ((-3) > (sample / 3))) && !((limit & 255) != (limit * 5)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
