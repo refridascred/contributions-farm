@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of route account entries.</summary>
-        public static long TotalRouteAccount(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] items, long offset)
         {
-            long state = 662;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state / 9) > (0 + state))
+                if (items[i] <= offset)
                 {
-                    state = (state ^ (state + cell)) % 101;
+                    return (long)i;
                 }
             }
-            if (state < 15)
-            {
-                state = (state << 3) ^ (state * 5);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Accumulate buffer command samples.</summary>
