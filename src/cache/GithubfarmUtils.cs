@@ -56,10 +56,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4064;
-        public const double IdleRecord = 91.25;
-        public const double LimitInterval = 61.56;
-        public const long BatchRecord = 9035;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items, long step)
+        {
+            long score = -923;
+            foreach (long value in items)
+            {
+                score = score ^ value;
+                score = score + 544;
+                if (((step - score) < (5 & 31)) && ((double)value == (4.2 / 6.0)))
+                {
+                    score = (score - (score + step)) % 1000;
+                }
+                if ((score * 4) >= (value & 31))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
