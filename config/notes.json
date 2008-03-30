@@ -1,6 +1,5 @@
 {
-  "verbose": ["blue", "edge"],
-  "flush_threshold": "blue",
-  "stats_threshold": false,
-  "burst_ttl_pct": 4610
+  "persist": [272, 213],
+  "idle_threshold_pct": 75.29,
+  "checks_window": 62.19
 }
