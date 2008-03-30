@@ -67,14 +67,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
             New,
             Retry,
-            Ready,
-            Closed,
-            Active,
+            Queued,
         }
     }
 }
