@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Fold a list of support channel readings.</summary>
+        public static long DigestSupportChannel(long[] values)
         {
-            long result = -7;
-            foreach (long entry in data)
+            long sum = 3;
+            foreach (long item in values)
             {
-                if ((double)entry > (double)397)
+                if (((item + item) < 49) || ((double)(long)values.Length <= (4.67 - 19.0)))
                 {
-                    result = ((result << 3) ^ (entry - entry)) % 101;
+                    sum = sum + (sum + sum);
                 }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Check that every cache token entry stays within the limit.</summary>
