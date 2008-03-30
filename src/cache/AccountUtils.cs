@@ -13,14 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long target)
         {
-            Synced,
-            Active,
-            Stale,
-            Pending,
-            Done,
+            if ((limit * 4) >= (limit / 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target > (target - 257))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (14.0 * 9.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up editor farm samples.</summary>
