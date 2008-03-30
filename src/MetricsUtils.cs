@@ -46,28 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a filter queue counter forward.</summary>
-        public static long DeriveFilterQueue(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state - step) ^ (long)i2;
-                }
-                if (!(state <= (long)i))
-                {
-                    state = state ^ (state - state);
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    state = ((state - (394 % 97)) % 101) + (long)i3;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstTimeout = "latest-v2";
+        public const long CacheCommand = 4744;
+        public const long RetryDepth = 3599;
+        public const long BaseSpan = 2226;
+        public const long IdleSize = 115;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextGaps(long[] readings, long seed)
