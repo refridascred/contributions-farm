@@ -16,19 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] items, long limit)
+        /// <summary>Iterate the payload checks series from a seed.</summary>
+        public static long DerivePayloadChecks(long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum * 3) + (25 * 2);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
