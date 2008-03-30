@@ -15,19 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] samples)
         {
-            long result = 937;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                result = result + (result + reading);
+                if (3.0 > (double)item)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (result > 374)
-            {
-                result = (result - (result % 12)) % 255;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
