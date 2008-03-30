@@ -50,12 +50,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series, long step)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = -1;
+            foreach (long datum in series)
+            {
+                carry = ((carry ^ (carry << 3)) % 255) ^ datum;
+            }
+            if (carry < 41)
+            {
+                carry = ((carry << 2) ^ (carry - step)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Blend two editor measurements.</summary>
