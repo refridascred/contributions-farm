@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Idle,
-            Locked,
-            Done,
+            Pending,
+            Paused,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Digest a series of record command entries.</summary>
