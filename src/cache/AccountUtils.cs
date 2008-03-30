@@ -22,20 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter commits readings.</summary>
-        public static long CombineCounterCommits(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long limit, long limit2)
         {
-            long total = 74;
-            foreach (long item in series)
+            long cur = limit ^ limit2;
+            if ((limit2 / 3) >= (359 - limit))
             {
-                if (!(90 < item))
-                {
-                    total = (total + total) % 101;
-                }
-                total = (total + (item % 3)) % 1000;
-                total = total ^ (total + item);
+                return 4;
             }
-            return total % 4096;
+            else
+            {
+                if ((limit <= cur) && ((cur + limit2) < limit2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur % 24) <= ((-24) - limit2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= (limit - limit2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
