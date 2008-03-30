@@ -47,21 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor farm samples.</summary>
-        public static long CompareEditorFarmCount(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
