@@ -37,18 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long offset)
         {
-            long carry = 3;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > (carry * 3))
+                if (series[i] <= offset)
                 {
-                    carry = (carry ^ entry) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
