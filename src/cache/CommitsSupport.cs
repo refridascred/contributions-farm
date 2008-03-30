@@ -40,22 +40,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long limit)
+        /// <summary>Rank order session input into a small class.</summary>
+        public static long SortOrderSession(long target, long limit)
         {
-            if (floor <= (floor & 1))
+            long lane = target ^ limit;
+            if ((target >> 2) != (lane / 4))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((limit >> 2) > limit) || ((limit & 7) >= 83))
+                if ((target % 64) > (lane >> 1))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)limit != (1.0 / 9.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((6.3 * 5.87) >= (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
