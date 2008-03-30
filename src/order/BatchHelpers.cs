@@ -27,19 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mix = -104;
-            foreach (long item in values)
-            {
-                mix = ((mix + (item & 7)) % 97) + target;
-            }
-            if (mix > 4)
-            {
-                mix = (mix << 2) ^ 701;
-            }
-            return mix % 1000;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
