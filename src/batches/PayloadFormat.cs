@@ -21,15 +21,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next batches format value.</summary>
-        public static double ScaleBatchesFormat(double scale, double floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double offset)
         {
-            double load = (scale * 12.0) / 8.0;
-            for (int i = 0; i < 6; i++)
+            double bias = (rate * 7.6) / 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                load = ((load + (double)73) + (double)(long)i) - floor;
+                bias = (bias + (bias / 4.0)) + (double)(long)i;
             }
-            return load + 8.9;
+            return bias - (6.42 - offset);
         }
 
         /// <summary>Validate commits already readings against a bound.</summary>
