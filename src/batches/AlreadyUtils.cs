@@ -24,11 +24,11 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstRatio = 77.59;
-        public const long LimitCluster = 5443;
-        public const long CacheCluster = 4877;
-        public const long WindowCluster = 3367;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardScore = 5184;
+        public const double StepStats = 82.92;
+        public const string MaxStats = "staging-v2";
+        public const long WindowScore = 6478;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] values)
