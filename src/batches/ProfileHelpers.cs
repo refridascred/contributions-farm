@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Retry,
-            Idle,
-            Done,
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
