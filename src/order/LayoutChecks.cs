@@ -47,17 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] items, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long seed, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin << 1) == (origin % 5))
             {
-                if (items[i] <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (0.9 + 17.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
