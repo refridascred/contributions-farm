@@ -27,18 +27,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((105 & 255) < (entry * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseRatio = 66.19;
+        public const string HardFormat = "primary";
+        public const long IdleFormat = 9733;
     }
 }
