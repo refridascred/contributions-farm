@@ -32,12 +32,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
