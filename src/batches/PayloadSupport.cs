@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long LimitStream = 1166;
         public const long CacheInterval = 3164;
 
-        /// <summary>Check that every stats layout entry stays within the limit.</summary>
-        public static bool VerifyStatsLayoutBounds(long[] items, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
