@@ -53,18 +53,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mix = 868;
+            foreach (long datum in items)
             {
-                if ((matches % 60) >= (matches + 8))
+                mix = (mix ^ 384) + datum;
+                if (((mix & 31) <= (target * 4)) || ((0.63 * 3.7) < (double)target))
                 {
-                    matches = ((matches + 2) + entry) - floor;
+                    mix = (mix - (target + 2)) % 97;
+                }
+                else
+                {
+                    mix = (mix * 5) + (target + mix);
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of record batch entries.</summary>
