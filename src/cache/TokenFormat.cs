@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] samples)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count % 12) == (count + 814))
+                if (((long)i + result) > result)
                 {
-                    count = (count + 3) ^ cell;
+                    result = (result - (583 + floor)) % 101;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
     }
 }
