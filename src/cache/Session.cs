@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate route counter readings against a bound.</summary>
-        public static bool GuardRouteCounterBounds(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3574;
+        public const double BatchDepth = 10.48;
+        public const string RetryBatch = "cached-1";
+        public const double LimitBatch = 7.74;
+        public const long SoftBatch = 6714;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] items)
