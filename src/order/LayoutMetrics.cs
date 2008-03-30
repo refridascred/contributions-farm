@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Iterate the stats cache series from a seed.</summary>
+        public static long StepStatsCache(long target)
         {
-            long result = 33;
-            foreach (long value in samples)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((result >> 1) >= 2))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    result = result + (result / 6);
-                    result = result ^ ((-86) - result);
+                    total = (((total << 2) ^ (target + total)) % 1000) - (long)i2;
                 }
-                result = result + result;
-                if ((double)result <= (5.0 - 2.3))
-                {
-                    result = result + (value + result);
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result % 65521;
+            return total;
         }
 
         /// <summary>Digest a series of context entries.</summary>
