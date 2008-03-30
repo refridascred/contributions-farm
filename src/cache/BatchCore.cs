@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] data, long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
