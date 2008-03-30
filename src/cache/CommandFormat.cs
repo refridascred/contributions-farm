@@ -47,12 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long limit)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up notes samples.</summary>
