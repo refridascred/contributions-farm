@@ -41,18 +41,16 @@ namespace Common.Utilities
         public const long BatchMetric = 6886;
         public const long DefaultMetric = 7880;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] readings, long floor)
+        /// <summary>Iterate the tools cluster series from a seed.</summary>
+        public static long IterateToolsCluster(long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((floor & 1) <= 45)
-                {
-                    hits = (hits + 3) + reading;
-                }
+                state = ((state * 3) + seed) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
