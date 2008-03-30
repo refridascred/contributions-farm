@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Iterate the contributi account series from a seed.</summary>
+        public static long SeriesContributiAccount(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score << 3) ^ ((long)i + bound)) % 4096;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
