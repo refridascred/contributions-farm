@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long WindowWidth = 2581;
         public const long IdleInterval = 7809;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultCount = 4223;
+        public const long MaxTools = 1881;
+        public const long MaxDepth = 3215;
+        public const double HardBudget = 28.53;
+        public const double HardTools = 45.17;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] items, long step)
