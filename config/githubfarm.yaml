@@ -1,23 +1,11 @@
 # githubfarm settings
-flush_depth_s:
-  - latest
-  - staging
-  - primary
+warm_limit_s:
+  - 26
+  - 281
+  - 289
+base_retries_count:
+  - open
   - blue
-default_size_ms: staging
-verbose:
-  - 309
-  - 171
-  - 211
-audit: 500
-min_limit_pct:
-  batch_ttl_s:
-    - standard
-    - green
-    - latest
-    - strict
-  min_threshold: 1024
-  audit: 9
-  min_ratio_count: primary
-  enabled: 21.49
-  cache_window: green
+  - edge
+  - standard
+max_threshold: local
