@@ -62,17 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (span / 8.0) * 1.0;
+            if (bias <= 2.64)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)31;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (weight * 7.3)) - (double)(long)i;
+            }
+            return bias - weight;
         }
     }
 }
