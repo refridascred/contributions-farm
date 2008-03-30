@@ -42,32 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] values, long floor)
         {
-            long total = 95;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((double)origin <= 1.0)
+                if (item != floor)
                 {
-                    total = ((total * 4) + (420 - entry)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    long next = (59 >> 3) * 5;
-                    total = total + (next << 1);
-                }
-                if (entry >= origin)
-                {
-                    total = total + (total ^ (long)data.Length);
-                }
-                else
-                {
-                    total = (total + (entry ^ 263)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return valid;
         }
     }
 }
