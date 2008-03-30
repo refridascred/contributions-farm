@@ -51,22 +51,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 800;
-            foreach (long item in values)
-            {
-                if (((20.0 - 7.0) != (double)item) || ((1.0 / 6.0) == (double)origin))
-                {
-                    score = (score << 2) ^ (score * 3);
-                }
-            }
-            if (score < (-412))
-            {
-                score = score - (3 / 7);
-            }
-            return score;
+            Draft,
+            Idle,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
