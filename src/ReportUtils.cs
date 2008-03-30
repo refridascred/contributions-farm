@@ -79,39 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long next = seed ^ origin;
-            if (((double)origin >= (double)next) && ((next % 60) <= (origin - seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (next >= (origin >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7.0 <= (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((765 + next) >= 49)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Done,
         }
     }
 }
