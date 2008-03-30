@@ -36,22 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats tools values into a single score.</summary>
-        public static long DigestStatsTools(long[] samples)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mix = 82;
-            foreach (long datum in samples)
-            {
-                if ((mix << 1) >= ((long)samples.Length - mix))
-                {
-                    mix = (mix << 3) ^ datum;
-                }
-                else
-                {
-                    mix = (mix * 4) + mix;
-                }
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up session samples.</summary>
