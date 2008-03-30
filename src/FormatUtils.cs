@@ -29,17 +29,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
