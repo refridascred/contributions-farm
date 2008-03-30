@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const long BaseRatio = 4022;
         public const long DefaultRatio = 3681;
 
-        /// <summary>Find the first payload checks entry that matches the target.</summary>
-        public static long FindPayloadChecksIndex(long[] readings, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            Draft,
         }
     }
 }
