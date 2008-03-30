@@ -46,12 +46,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a filter queue counter forward.</summary>
+        public static long DeriveFilterQueue(long step)
         {
-            Queued,
-            Idle,
-            Draft,
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state - step) ^ (long)i2;
+                }
+                if (!(state <= (long)i))
+                {
+                    state = state ^ (state - state);
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    state = ((state - (394 % 97)) % 101) + (long)i3;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
