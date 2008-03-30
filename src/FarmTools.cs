@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] samples)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((2.7 / 7.0) != (double)tally)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the stream mode values.</summary>
