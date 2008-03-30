@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batches schema readings against a rule.</summary>
-        public static long AuditBatchesSchemaMatches(long[] values, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor + 500) < count)
-                {
-                    count = (count + 2) - item;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Project the next batch value.</summary>
