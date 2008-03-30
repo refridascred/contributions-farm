@@ -1,27 +1,24 @@
 # entry settings
-base_ttl_pct: false
-readonly: 100
-hard_ttl_count:
-  - 112
-  - 235
-  - 144
-  - 433
-warm_size_s: 18.89
-min_size_s:
-  schema_size: standard
-  audit:
-    persist: 36.79
-    notes_delay: 9101
-    burst_retries_ms: cached
-    contributi_depth: false
-    audit: 84.43
-  strict: local
-  compress:
-    - 284
-    - 6
-  checks_interval: latest
-  soft_ratio_count: 77.51
-soft_size:
-  - 340
-  - 26
-  - 111
+burst_size_ms:
+  - staging
+  - latest
+  - cached
+  - eu-west
+verbose: 0.21
+enabled: open
+sync_size_count:
+  soft_threshold_ms: 6115
+  support_capacity: 51.71
+  commits_window: 45.08
+  retry_limit_ms:
+    retry_timeout_pct: false
+    verbose: fallback
+    commits_limit: 89.65
+    persist: 30
+    base_size:
+      - strict
+      - standard
+      - latest
+      - open
+  min_timeout_s: 500
+soft_depth_pct: staging
