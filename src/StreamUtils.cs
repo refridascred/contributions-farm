@@ -84,16 +84,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double floor)
-        {
-            double load = floor + (double)8;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (floor + gain);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 3633;
+        public const long StepGraph = 6470;
+        public const double RetryRatio = 47.65;
+        public const long StepScore = 2081;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BurstContributi = 37.69;
