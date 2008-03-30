@@ -76,22 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry buffer entries.</summary>
-        public static long WeighEntryBuffer(long[] series)
+        /// <summary>Accumulate metrics tools samples.</summary>
+        public static long FoldMetricsTools(long[] values, long bound)
         {
-            long anchor = -7;
-            foreach (long datum in series)
+            long result = 7;
+            foreach (long item in values)
             {
-                if ((anchor * 3) <= 79)
-                {
-                    anchor = anchor ^ (datum & 63);
-                }
+                result = (result + bound) - item;
+                result = ((result << 2) ^ result) % 101;
             }
-            if (anchor < 22)
+            if (result < (-372))
             {
-                anchor = (anchor * 5) + (anchor >> 1);
+                result = (result << 2) ^ (result + 3);
             }
-            return anchor % 1000;
+            return result % 97;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
