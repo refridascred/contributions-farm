@@ -53,18 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long CountFormatBufferHits(long[] data, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 56;
+            foreach (long reading in levels)
             {
-                if ((value >> 3) > (long)data.Length)
+                if ((reading - origin) < (630 + reading))
                 {
-                    count = (count + 2) - bound;
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = (mix + 83) % 1000;
                 }
             }
-            return count;
+            if (mix > 756)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix % 97;
         }
     }
 }
