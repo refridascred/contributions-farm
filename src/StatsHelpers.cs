@@ -56,9 +56,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 36.05;
-        public const long BaseCommits = 6717;
-        public const long MaxCommits = 4280;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
