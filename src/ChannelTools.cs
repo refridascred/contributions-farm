@@ -28,15 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double bias2)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            double load = bias;
-            if (load < (8.4 + 3.65))
+            double drift = 6.6 - bias;
+            if (drift >= (bias * 3.0))
             {
-                load = (load - (double)498) - bias2;
+                drift = (drift + bias) - ratio;
             }
-            return load + (double)(-565);
+            return drift - (double)37;
         }
     }
 }
