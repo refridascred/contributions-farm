@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] values, long origin)
+        /// <summary>Count batch support pairs that satisfy a relation.</summary>
+        public static long CompareBatchSupportCount(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Derive the next report cache value from a seed.</summary>
