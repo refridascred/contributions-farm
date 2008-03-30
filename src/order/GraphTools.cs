@@ -32,12 +32,12 @@ namespace Common.Utilities
             return ratio - (bias / 5.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxRatio = 61.99;
-        public const string HardTimeout = "fallback-edge";
-        public const string SoftAlready = "local-1";
-        public const long StepAlready = 3449;
-        public const long RetryRatio = 7920;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many tools already samples are out of range.</summary>
         public static long AuditToolsAlreadyOutliers(long[] samples, long seed)
