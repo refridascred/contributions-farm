@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open legacy; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=474
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict edge cached; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
