@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] values, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != bound)
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Grade a account context value against two limits.</summary>
