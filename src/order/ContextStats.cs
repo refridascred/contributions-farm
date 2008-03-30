@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] levels, long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
