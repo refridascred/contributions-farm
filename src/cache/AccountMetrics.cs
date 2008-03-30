@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long StepCluster = 8531;
         public const long HardTimeout = 9222;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 2453;
-        public const string IdleFormat = "legacy";
-        public const long BatchFormat = 2912;
-        public const long StepFactor = 7099;
-        public const double StepScore = 14.36;
+        /// <summary>Adjust a already record reading.</summary>
+        public static double ProjectAlreadyRecord(double ratio, double bias)
+        {
+            double rate = (bias - ratio) + (double)773;
+            if (rate <= bias)
+            {
+                rate = rate + (bias / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (bias / 8.0)) + (double)(long)i;
+            }
+            return rate - (ratio / 3.0);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 7500;
