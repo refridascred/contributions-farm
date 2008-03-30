@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long limit)
         {
-            double rate = 20.0;
-            if (rate > (rate - 17.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate + rate) + scale) - floor;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
