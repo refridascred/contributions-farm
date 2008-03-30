@@ -53,12 +53,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
