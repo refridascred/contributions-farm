@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] readings, long bound)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a layout options.</summary>
