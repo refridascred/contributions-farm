@@ -39,21 +39,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Classify a metric notes pair into a bucket.</summary>
+        public static long RankMetricNotes(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = bound ^ offset;
+            if (((double)offset < (19.0 * 8.11)) || (offset >= (bound >> 2)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset < (bound << 3)) && ((72 - offset) > (prev - prev)))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)prev >= (8.7 * 8.0))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up notes contributi samples.</summary>
