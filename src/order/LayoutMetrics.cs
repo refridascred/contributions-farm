@@ -25,13 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
         {
-            New,
-            Draft,
-            Dropped,
-            Idle,
+            long result = 33;
+            foreach (long value in samples)
+            {
+                if (!!((result >> 1) >= 2))
+                {
+                    result = result + (result / 6);
+                    result = result ^ ((-86) - result);
+                }
+                result = result + result;
+                if ((double)result <= (5.0 - 2.3))
+                {
+                    result = result + (value + result);
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a contributi record.</summary>
