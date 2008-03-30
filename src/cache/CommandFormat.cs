@@ -39,18 +39,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((seed + seed) != (seed + (-86)))
             {
-                if ((double)item >= (4.79 / 2.0))
+                return 2;
+            }
+            else
+            {
+                if ((step + step) > (step & 31))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a account options.</summary>
