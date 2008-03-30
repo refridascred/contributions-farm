@@ -65,15 +65,21 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Derive the next commits cache value from a seed.</summary>
-        public static long RollCommitsCache(long step)
+        /// <summary>Match up buffer report samples.</summary>
+        public static long OverlapBufferReportCount(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
