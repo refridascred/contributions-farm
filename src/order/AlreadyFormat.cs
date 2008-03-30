@@ -55,9 +55,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 6519;
-        public const long BaseEntry = 940;
-        public const long SoftWidth = 5018;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long target, long offset)
+        {
+            if (7 >= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((323 % 16) > (target - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset >= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
