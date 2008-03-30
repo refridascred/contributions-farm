@@ -13,19 +13,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 63;
-            foreach (long sample in data)
-            {
-                carry = ((carry << 3) ^ (sample + seed)) % 97;
-            }
-            if (carry > 57)
-            {
-                carry = (carry - ((long)data.Length + carry)) % 101;
-            }
-            return carry;
+            Synced,
+            Queued,
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine editor profile values into a single score.</summary>
