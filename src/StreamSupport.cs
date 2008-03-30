@@ -20,20 +20,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Roll a profile schema counter forward.</summary>
-        public static long StepProfileSchema(long seed)
+        /// <summary>Look up the position of a metrics checks sample.</summary>
+        public static long FindMetricsChecksIndex(long[] levels, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (seed / 9)) % 101;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (levels[i] == target)
                 {
-                    state = (state + 852) + (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit batch order readings against a rule.</summary>
