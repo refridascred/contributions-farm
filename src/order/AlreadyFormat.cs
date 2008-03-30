@@ -60,18 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] data)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((((double)tally < (2.0 + 8.69)) && ((long)data.Length > value)) || (value < tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
