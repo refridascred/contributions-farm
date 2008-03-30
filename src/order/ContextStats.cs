@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many layout batches samples are out of range.</summary>
+        public static long TallyLayoutBatchesMatches(long[] data, long target)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (matches >= (target - matches))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
