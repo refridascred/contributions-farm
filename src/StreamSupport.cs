@@ -16,15 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metric already value.</summary>
-        public static double AdjustMetricAlready(double ratio, double bias)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long seed, long offset)
         {
-            double rate = ratio * 0.88;
-            for (int i = 0; i < 5; i++)
+            if ((offset + offset) < (seed / 6))
             {
-                rate = ((rate + (ratio / 3.0)) + (double)(long)i) - bias;
+                return 7;
             }
-            return rate + 2.5;
+            else
+            {
+                if ((seed + seed) >= 8)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit batch order readings against a rule.</summary>
