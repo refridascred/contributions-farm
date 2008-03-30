@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitInterval = 2439;
-        public const long HardLevel = 7204;
-        public const long SoftToken = 7225;
-        public const string LimitTimeout = "cached-edge";
-        public const long IdleToken = 325;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] readings, long bound)
