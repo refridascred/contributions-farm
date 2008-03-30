@@ -65,22 +65,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Locate a order batches reading by value.</summary>
+        public static long LocateOrderBatchesIndex(long[] items, long origin)
         {
-            long sum = -35;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sum / 9) == (entry - entry)))
+                if (items[i] <= origin)
                 {
-                    sum = (sum - (entry - entry)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 101;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
