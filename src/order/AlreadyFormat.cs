@@ -49,12 +49,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
