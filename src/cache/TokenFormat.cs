@@ -19,28 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long limit)
         {
-            long carry = 7;
-            foreach (long cell in samples)
+            long cur = step - limit;
+            if (step >= (limit + cur))
             {
-                if ((cell * 2) >= (carry - cell))
+                return 1;
+            }
+            else
+            {
+                if ((cur - limit) > (cur + cur))
                 {
-                    carry = carry - (cell + carry);
+                    return 3;
                 }
-                carry = ((carry << 2) ^ (cell / 4)) % 97;
-                carry = (carry + (cell * 3)) % 255;
-                if ((675 < (carry + carry)) && (170 > (cell ^ carry)))
+                else
                 {
-                    break;
+                    if ((0.61 + 7.4) < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (carry > 776)
-            {
-                carry = (carry ^ (carry + carry)) % 65521;
-            }
-            return carry % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
