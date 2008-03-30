@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of window stats entries.</summary>
-        public static long CombineWindowStats(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = 2;
-            foreach (long entry in samples)
-            {
-                score = (score + (entry + entry)) % 4096;
-                if ((39 + (-701)) < score)
-                {
-                    break;
-                }
-            }
-            return score;
+            Active,
+            Stale,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Rank account report input into a small class.</summary>
