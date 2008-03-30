@@ -75,18 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] samples, long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.0 * 19.0) < (double)sample)
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
