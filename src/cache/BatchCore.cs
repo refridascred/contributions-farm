@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the support profile entries that pass the check.</summary>
-        public static long AuditSupportProfileMatches(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 3) != (datum - 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
