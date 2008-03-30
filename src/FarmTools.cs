@@ -20,25 +20,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long span = offset - origin;
-            if (((offset / 2) > (8 + 94)) || (offset < (804 ^ 1)))
+            long score = 13;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < (offset - span))
+                if ((double)score > 5.16)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    score = ((score * 2) + score) - reading;
                 }
             }
+            if (score < (-3))
+            {
+                score = (score << 3) ^ (score + 67);
+            }
+            return score;
         }
     }
 }
