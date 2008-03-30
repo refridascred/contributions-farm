@@ -19,19 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long bound, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long cur = bound + origin;
+            if ((cur >> 3) >= origin)
             {
-                if (datum > origin)
+                return 4;
+            }
+            else
+            {
+                if (((bound ^ bound) > (bound - 8)) || ((1 >> 4) > cur))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((cur >> 4) != (origin - 75))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the format state values.</summary>
