@@ -24,13 +24,18 @@ namespace Common.Utilities
             return weight - 4.16;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            Stale,
-            Failed,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (78 <= (count / 5))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
