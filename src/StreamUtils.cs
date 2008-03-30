@@ -19,18 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] series, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (!(seed < (bound * 4)))
             {
-                if ((matches % 7) < (reading << 1))
+                return 8;
+            }
+            else
+            {
+                if ((-293) >= (bound >> 1))
                 {
-                    matches = (matches + 2) + floor;
+                    return 3;
+                }
+                else
+                {
+                    if (((-467) ^ 6) != (bound ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a counter commits value against two limits.</summary>
