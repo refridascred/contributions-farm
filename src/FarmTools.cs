@@ -23,21 +23,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = offset - origin;
+            if (((offset / 2) > (8 + 94)) || (offset < (804 ^ 1)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (origin < (offset - span))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
