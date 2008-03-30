@@ -52,19 +52,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if ((floor * 4) < floor2)
             {
-                if (entry < origin)
+                return 4;
+            }
+            else
+            {
+                if (floor >= (floor2 * 3))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((20.0 - 7.3) >= (double)floor) && (floor <= (79 / 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
