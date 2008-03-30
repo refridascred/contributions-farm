@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard eu-west green fallback; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=443
+COMMAND_LIMIT=398
 log "limit is ${COMMAND_LIMIT}"
