@@ -33,12 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            Failed,
-            Synced,
-            Ready,
+            long sum = 5;
+            foreach (long entry in readings)
+            {
+                if ((entry / 6) <= (sum - sum))
+                {
+                    sum = ((sum * 2) + 1) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
