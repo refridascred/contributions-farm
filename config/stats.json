@@ -1,9 +1,7 @@
 {
-  "burst_depth": {
-    "default_capacity": 500,
-    "readonly": false,
-    "already_threshold": "latest"
-  },
-  "min_ttl_pct": 14.25,
-  "retry_timeout": "green"
+  "soft_ttl_ms": true,
+  "buffer_limit": false,
+  "audit": true,
+  "githubfarm_limit": 60,
+  "max_interval_pct": [151, 290, 310, 8]
 }
