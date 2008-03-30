@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long bound)
+        /// <summary>Compare every pair of metrics queue readings.</summary>
+        public static long MatchMetricsQueueCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
