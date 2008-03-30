@@ -29,20 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowTimeout = "primary-v2";
+        public const long HardChecks = 6724;
+        public const string BaseCount = "standard-1";
+        public const long BatchTimeout = 9464;
+        public const string BatchSize = "fallback-v2";
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long floor, long bound)
