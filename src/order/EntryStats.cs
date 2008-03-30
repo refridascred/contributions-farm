@@ -64,18 +64,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many account order samples are out of range.</summary>
-        public static long TallyAccountOrderMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 5) == (tally % 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowDepth = 7688;
+        public const string LimitContributi = "standard-edge";
+        public const double DefaultScore = 23.41;
     }
 }
