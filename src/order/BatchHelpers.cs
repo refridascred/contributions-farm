@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double weight, double span)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double rate = 8.87;
-            if (rate > (rate - rate))
-            {
-                rate = rate + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (weight + span)) + (double)(long)i;
-            }
-            return rate + span;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
