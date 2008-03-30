@@ -35,18 +35,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - ((long)i << 2)) % 101;
-                anchor = (anchor + (origin + anchor)) % 65521;
-                anchor = (anchor ^ ((long)i << 2)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
