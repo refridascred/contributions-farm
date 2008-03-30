@@ -23,18 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8631;
+        public const long CacheFormat = 1703;
+        public const long DefaultTimeout = 3120;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] levels)
