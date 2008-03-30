@@ -49,19 +49,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values, long floor)
         {
-            long score = -810;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                score = score ^ entry;
-                if ((floor << 2) >= entry)
+                if ((matches % 60) >= (matches + 8))
                 {
-                    score = score + (long)samples.Length;
+                    matches = ((matches + 2) + entry) - floor;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a filter summary.</summary>
