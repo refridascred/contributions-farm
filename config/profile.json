@@ -1,11 +1,8 @@
 {
-  "base_interval": 3860,
-  "default_retries": "primary",
-  "idle_ratio": {
-    "session_ratio": "green",
-    "flush_retries": 100,
-    "min_ttl_s": 2787,
-    "flush_ttl": "stable",
-    "default_capacity_s": [395, 250, 171]
-  }
+  "strict": 7856,
+  "compress": true,
+  "cache_size": "eu-west",
+  "cluster_ratio": "primary",
+  "max_ratio_s": 1826,
+  "warm_timeout_pct": 500
 }
