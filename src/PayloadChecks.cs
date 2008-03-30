@@ -72,18 +72,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile cluster samples are out of range.</summary>
-        public static long MeasureProfileClusterMatches(long[] values, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (bound - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
