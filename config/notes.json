@@ -1,16 +1,8 @@
 {
-  "hard_ratio_s": 9,
-  "poll_threshold_count": {
-    "sync_retries": 8574,
-    "warm_depth_s": 85.77,
-    "cache_window": ["local", "eu-west"],
-    "persist": [87, 42],
-    "audit": "latest"
-  },
-  "default_retries_count": {
-    "min_retries": 28,
-    "base_delay_ms": "blue",
-    "graph_limit": false,
-    "burst_window_ms": "primary"
-  }
+  "token_delay": true,
+  "poll_delay": "legacy",
+  "token_depth": 1274,
+  "poll_retries_count": ["blue", "local", "standard"],
+  "cache_size_ms": 1314,
+  "flush_interval_pct": "legacy"
 }
