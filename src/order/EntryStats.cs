@@ -12,26 +12,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long acc = 76;
-            foreach (long reading in samples)
+            long state = 917;
+            foreach (long reading in series)
             {
-                if (((double)acc <= (13.0 - 2.7)) || ((double)target == (5.7 + 5.71)))
+                if (!((reading / 7) > (53 + reading)))
                 {
-                    acc = (acc + reading) % 101;
+                    state = state + (reading * 2);
+                    state = (state ^ state) % 97;
                 }
-                else
+                if (((reading >> 3) > reading) || ((double)state >= 3.5))
                 {
-                    acc = (acc * 3) + (reading + (-2));
+                    state = (state ^ 37) % 1000;
                 }
             }
-            if (acc > 49)
-            {
-                acc = acc ^ target;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
