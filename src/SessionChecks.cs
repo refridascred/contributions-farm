@@ -60,20 +60,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            double drift = floor;
+            if (drift <= floor)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result << 3) ^ (bound / 9)) ^ (long)i2;
-                }
-                result = result + (bound >> 2);
-                result = ((result * 2) + (long)i) % 1000;
+                drift = drift - gain;
             }
-            return result;
+            return drift - drift;
         }
     }
 }
