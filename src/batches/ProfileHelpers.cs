@@ -74,18 +74,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] readings, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((7.0 + 8.2) >= (double)offset)
+                double bias = (double)origin + (double)21;
+                if ((7.0 + 3.79) > (bias - bias))
                 {
-                    seen = (seen + 1) + item;
+                    state = state - 723;
+                    state = (state << 2) ^ ((long)i << 1);
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
