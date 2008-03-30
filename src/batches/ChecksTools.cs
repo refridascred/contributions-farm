@@ -26,19 +26,12 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] series, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of buffer batches readings.</summary>
