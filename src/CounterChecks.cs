@@ -79,22 +79,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] samples, long floor)
         {
-            long total = -3;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)cell < (9.72 - 6.44))
+                if ((15.0 + 5.0) > (double)sample)
                 {
-                    total = total + cell;
-                }
-                if ((6 * 2) > (cell ^ cell))
-                {
-                    break;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
