@@ -65,15 +65,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitGithubfarm = "staging-1";
+        public const long LimitSize = 4497;
+        public const double BurstGithubfarm = 17.91;
+        public const long IdleGithubfarm = 6677;
     }
 }
