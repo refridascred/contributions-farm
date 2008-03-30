@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Failed,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 9494;
+        public const string BaseRatio = "stable-v2";
+        public const double StepAccount = 75.38;
+        public const string RetryAccount = "standard-1";
+        public const long BurstAccount = 9280;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
