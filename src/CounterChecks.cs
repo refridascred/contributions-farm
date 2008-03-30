@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Idle,
-            Closed,
-            Queued,
-            Pending,
-            Active,
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
