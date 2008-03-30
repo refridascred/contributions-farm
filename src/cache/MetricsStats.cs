@@ -28,14 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] values, long offset)
         {
-            Ready,
-            Locked,
-            Idle,
-            New,
-            Closed,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
