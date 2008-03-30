@@ -28,21 +28,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading + 33) > (limit << 2))
                 {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - (limit + carry);
+                }
+                if ((limit + carry) > (reading >> 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
