@@ -1,17 +1,8 @@
 {
-  "retry_size_pct": "eu-west",
-  "sync_ttl_count": "eu-west",
-  "idle_window_s": {
-    "strict": 94,
-    "persist": true,
-    "channel_ratio": {
-      "batch_threshold_ms": 65.02,
-      "support_delay": 37.86,
-      "cache_delay": "edge",
-      "verbose": false,
-      "stats_ttl": "primary",
-      "hard_size_count": ["stable", "green"]
-    }
-  },
-  "verbose": 20.6
+  "retry_ratio": 20,
+  "soft_retries": 43.46,
+  "support_interval": false,
+  "format_delay": "green",
+  "verbose": "green",
+  "min_ratio_ms": 70
 }
