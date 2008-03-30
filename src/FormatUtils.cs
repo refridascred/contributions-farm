@@ -59,12 +59,17 @@ namespace Common.Utilities
         public const long StepQueue = 4543;
         public const string BurstSpan = "cached-v2";
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
