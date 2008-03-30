@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepDepth = 4999;
+        public const double HardInterval = 30.68;
+        public const long CacheWidth = 2442;
+        public const double BaseBatch = 58.49;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferRange(long[] values, long step)
