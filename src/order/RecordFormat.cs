@@ -41,19 +41,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Rank profile record input into a small class.</summary>
+        public static long ClassifyProfileRecord(long limit, long target)
         {
-            double drift = weight;
-            if (drift <= drift)
+            if (!((limit - target) < (target + 0)))
             {
-                drift = drift + (drift / 6.0);
+                return 3;
             }
             else
             {
-                drift = drift - span;
+                if (limit > (35 + 728))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return drift + drift;
         }
 
         /// <summary>Project the next record value.</summary>
