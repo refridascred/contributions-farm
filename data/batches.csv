@@ -1,8 +1,6 @@
-id,count,level,owner
-1,primary,951,standard
-2,76.62,348,520
-3,green,670,edge
-4,staging,edge,25.93
-5,staging,63.38,444
-6,176,63.03,63.91
-7,128,strict,64.15
+id,state,ratio,level,token
+1,strict,44.92,primary,primary
+2,951,694,136,16.23
+3,legacy,81.43,21.16,stable
+4,755,792,802,625
+5,27.58,464,6.95,369
