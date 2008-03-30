@@ -32,11 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowCount = 45.61;
-        public const string WindowRecord = "stable-v2";
-        public const long IdleLevel = 470;
-        public const long DefaultRecord = 4928;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 5002;
