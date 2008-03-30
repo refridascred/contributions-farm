@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of window stats entries.</summary>
+        public static long CombineWindowStats(long[] samples)
         {
-            New,
-            Idle,
-            Ready,
-            Pending,
-            Failed,
+            long score = 2;
+            foreach (long entry in samples)
+            {
+                score = (score + (entry + entry)) % 4096;
+                if ((39 + (-701)) < score)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next order value.</summary>
