@@ -40,18 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally % 100) != (776 ^ entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
