@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultSize = 69.09;
-        public const long CacheTimeout = 9953;
-        public const string MaxFilter = "cached-1";
-        public const long MinFilter = 3868;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double offset)
+        {
+            double load = 3.0;
+            if (load <= 2.57)
+            {
+                load = ((load + (double)7) - gain) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load / 9.0)) + (double)(long)i;
+            }
+            return load - (double)6;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long limit, long target)
