@@ -36,16 +36,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next notes filter value from a seed.</summary>
-        public static long IterateNotesFilter(long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark << 3) ^ (mark >> 4);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
