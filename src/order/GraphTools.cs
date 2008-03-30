@@ -43,11 +43,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepRatio = 9754;
-        public const double MaxStream = 12.61;
-        public const long BurstStream = 4229;
-        public const long WindowFactor = 4211;
-        public const long MaxSize = 1389;
+        /// <summary>Count the cluster filter entries that pass the check.</summary>
+        public static long TallyClusterFilterOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((163 % 7) >= cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
