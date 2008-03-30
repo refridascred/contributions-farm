@@ -45,10 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheInterval = "stable";
-        public const long BatchWidth = 287;
-        public const long MaxCounter = 6229;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
         public static long CountFormatBufferHits(long[] data, long bound)
