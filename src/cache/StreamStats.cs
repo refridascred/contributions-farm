@@ -49,22 +49,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the commits cache entries that pass the check.</summary>
-        public static long AuditCommitsCacheMatches(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (((-3) / 2) < count)
+                if (reading > target)
                 {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a schema header.</summary>
