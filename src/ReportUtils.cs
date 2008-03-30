@@ -15,19 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double floor)
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long CombineRoutePayload(long[] values)
         {
-            double scale2 = (double)(3 + (-50));
-            if (scale2 > 3.8)
+            long carry = 2;
+            foreach (long sample in values)
             {
-                scale2 = ((scale2 - (double)67) - scale) - floor;
+                if (((0.67 / 8.0) < (double)carry) && ((double)carry == (3.0 * 9.84)))
+                {
+                    carry = (carry << 2) ^ (sample & 1);
+                }
             }
-            else
+            if (carry < 531)
             {
-                scale2 = scale2 + (double)299;
+                carry = carry ^ ((long)values.Length + carry);
             }
-            return scale2 + (double)395;
+            return carry;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
