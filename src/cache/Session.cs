@@ -34,22 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double gain, double offset)
         {
-            long score = 53;
-            foreach (long sample in items)
+            double drift = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sample / 7) != (503 + (-82)))
-                {
-                    score = ((score << 3) ^ (sample / 4)) % 4096;
-                }
+                drift = ((drift + (drift + gain)) + (double)(long)i) + offset;
             }
-            if (score > 0)
-            {
-                score = (score ^ ((-84) % 100)) % 4096;
-            }
-            return score % 65521;
+            return drift + 2.5;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
