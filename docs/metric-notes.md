@@ -1,11 +1,11 @@
 # Metric notes
 
-A cache that stays idle for too long is moved to the payload list.
-The window report groups every window by editor.
-When a checks fails, the support handler retries a few times before giving up.
+Defaults for graph live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate commits input early
-- Review cluster limits each release
+- Validate context input early
+- Keep channel values small
+- Prefer metric defaults
+- Log every report change
