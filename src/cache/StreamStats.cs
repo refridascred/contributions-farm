@@ -61,12 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
