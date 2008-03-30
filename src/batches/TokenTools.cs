@@ -19,19 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            long gap = origin - floor;
+            if ((3.84 - 6.38) >= (double)floor)
             {
-                if ((carry < bound) || ((bound ^ carry) < (bound + (-1))))
-                {
-                    carry = ((carry << 3) ^ (carry - carry)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((floor + gap) == (gap + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor >= (gap - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
