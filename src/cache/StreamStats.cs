@@ -44,11 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
