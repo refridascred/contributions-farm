@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((((4.0 * 2.63) >= (double)datum) && ((datum & 3) < (datum + datum))) && ((2.0 + 2.0) <= (double)datum))
+                if ((853 - seen) > (seen - sample))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
