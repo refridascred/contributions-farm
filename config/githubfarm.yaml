@@ -1,10 +1,7 @@
 # githubfarm settings
-enabled: 30
-base_delay: local
-profile_size: cached
-persist: 3753
-already_ratio:
-  - 82
-  - 150
-  - 177
-  - 18
+dry_run: 6160
+min_depth_pct: standard
+default_timeout_pct: blue
+base_window: 67.22
+idle_timeout_pct: 500
+hard_window: green
