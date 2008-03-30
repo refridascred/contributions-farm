@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items, long offset)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 584;
+            foreach (long entry in items)
+            {
+                mix = ((mix << 3) ^ (offset & 3)) % 4096;
+                if ((entry + mix) < (offset & 1))
+                {
+                    mix = (mix ^ (65 / 9)) % 4096;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix % 97)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
