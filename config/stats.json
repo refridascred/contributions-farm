@@ -1,12 +1,7 @@
 {
-  "base_depth_ms": 500,
-  "cache_interval_count": 19,
-  "burst_ratio_pct": "standard",
-  "already_threshold": "green",
-  "window_ratio": {
-    "batch_interval_count": "green",
-    "idle_ttl_count": 92.64,
-    "warm_ttl_pct": false
-  },
-  "session_timeout": [26, 451]
+  "batch_delay": false,
+  "strict": false,
+  "cache_ratio_pct": [226, 472, 481, 160],
+  "base_capacity_ms": 48.81,
+  "route_ttl": "latest"
 }
