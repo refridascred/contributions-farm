@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstFactor = 8792;
-        public const string StepRatio = "legacy-1";
-        public const double MinSize = 29.71;
-        public const long SoftEditor = 1809;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long floor)
+        {
+            if ((2.8 - 3.6) > (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor & 7) >= (floor ^ target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target >= (175 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftDepth = 150;
