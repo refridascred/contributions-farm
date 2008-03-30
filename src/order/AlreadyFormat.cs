@@ -24,26 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items, long floor)
+        /// <summary>Iterate the schema cache series from a seed.</summary>
+        public static long StepSchemaCache(long origin)
         {
-            long result = 3;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((cell + floor) >= 4)
-                {
-                    result = result + (floor ^ 8);
-                }
-                else
-                {
-                    result = (result + floor) % 101;
-                }
-                if (!((cell + result) < (1 + cell)))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
