@@ -23,17 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] values, long floor)
+        /// <summary>Derive the next metrics profile value from a seed.</summary>
+        public static long RollMetricsProfile(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
