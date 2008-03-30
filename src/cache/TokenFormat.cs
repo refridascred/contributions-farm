@@ -33,19 +33,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 7308;
+        public const long BatchInterval = 8536;
+        public const long StepBudget = 4248;
     }
 }
