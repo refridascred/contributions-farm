@@ -35,18 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchCount = 3937;
+        public const long CacheMetric = 750;
+        public const long BatchMetric = 6886;
+        public const long DefaultMetric = 7880;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] readings, long floor)
