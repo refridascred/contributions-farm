@@ -31,17 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Scale a already context figure with a bias.</summary>
+        public static double BlendAlreadyContext(double weight, double offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry ^ (4 ^ offset);
-                carry = ((carry << 2) ^ carry) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            double gain = (weight - weight) - (weight - offset);
+            return gain - (double)45;
         }
     }
 }
