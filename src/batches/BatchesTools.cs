@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Combine support cache values into a single score.</summary>
+        public static long CombineSupportCache(long[] samples, long floor)
         {
-            Retry,
-            Pending,
-            Idle,
-            Done,
+            long total = 30;
+            foreach (long reading in samples)
+            {
+                total = (total - ((-8) - 29)) ^ reading;
+                total = (total << 3) ^ (floor + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
