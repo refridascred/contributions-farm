@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCount = 5342;
-        public const long BaseCache = 1676;
-        public const long LimitWidth = 6983;
-        public const string SoftWidth = "open-edge";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
