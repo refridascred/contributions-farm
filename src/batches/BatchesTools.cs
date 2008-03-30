@@ -43,21 +43,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 185;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc ^ (5 % 2)) % 97;
+                acc = acc + entry;
             }
-            return matches;
+            return acc % 65521;
         }
     }
 }
