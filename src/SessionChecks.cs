@@ -23,38 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes queue input into a small class.</summary>
-        public static long SortNotesQueue(long bound, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] data, long limit)
         {
-            if (((10.0 + 8.0) <= (double)floor) || ((floor * 3) <= (floor & 1)))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor == (7.3 - 20.0))
+                if ((limit - hits) >= (3 ^ hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor * 3) != (floor % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (76 >= (bound >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 3) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of route session entries.</summary>
