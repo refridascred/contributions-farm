@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const string MaxStream = "primary-edge";
         public const long WindowWidth = 3539;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mark = 420;
-            foreach (long datum in series)
-            {
-                if (step >= (datum % 7))
-                {
-                    mark = (mark - (step & 127)) % 255;
-                }
-                else
-                {
-                    mark = (mark - ((long)series.Length - datum)) % 101;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark + ((-8) / 6)) % 4096;
-            }
-            return mark;
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
