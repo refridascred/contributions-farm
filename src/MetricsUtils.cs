@@ -35,11 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 65;
-        public const long DefaultBatches = 2788;
-        public const long HardBatches = 8900;
-        public const double BurstCount = 20.28;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Idle,
+            Dropped,
+            Locked,
+            Active,
+            Done,
+        }
 
         /// <summary>Derive the next metric route value from a seed.</summary>
         public static long RollMetricRoute(long limit)
