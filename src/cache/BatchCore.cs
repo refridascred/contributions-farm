@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the contributi account series from a seed.</summary>
-        public static long SeriesContributiAccount(long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] values, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 5;
+            foreach (long reading in values)
             {
-                score = ((score << 3) ^ ((long)i + bound)) % 4096;
-                score = ((score * 4) + (long)i) % 101;
+                result = result + (reading & 255);
+                if ((reading * 2) == (bound >> 3))
+                {
+                    result = (result + (79 >> 3)) % 4096;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
