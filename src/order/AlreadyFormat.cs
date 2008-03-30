@@ -23,17 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Project the next context farm value.</summary>
+        public static double ProjectContextFarm(double rate, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor * 2) + (floor - floor);
-                anchor = ((anchor << 2) ^ ((long)i / 3)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                weight = ((weight + 2.1) + (double)(long)i) + rate;
             }
-            return anchor;
+            return weight + weight;
         }
 
         /// <summary>Hold a contributi header.</summary>
