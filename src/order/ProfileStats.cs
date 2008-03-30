@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a route summary.</summary>
