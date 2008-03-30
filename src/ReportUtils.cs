@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            Pending,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
