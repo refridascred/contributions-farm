@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] levels, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((7.9 * 5.39) < (double)matches)
+                if ((((4.0 * 2.63) >= (double)datum) && ((datum & 3) < (datum + datum))) && ((2.0 + 2.0) <= (double)datum))
                 {
-                    matches = ((matches + 2) - entry) - floor;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
