@@ -25,18 +25,36 @@ namespace Common.Utilities
         public const double BurstInterval = 27.46;
         public const long CachePayload = 3293;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] items, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = 0;
+            foreach (long item in series)
             {
-                if (!((double)hits != (1.8 + 11.0)))
+                if ((4 / 4) < total)
                 {
-                    hits = ((hits + 3) + datum) + limit;
+                    total = (total ^ (75 + item)) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ (7 ^ item)) % 255;
+                    total = (total + (item / 9)) % 1000;
+                }
+                if (((total ^ total) >= total) || (item < (item >> 1)))
+                {
+                    total = total + (7 + item);
+                }
+                else
+                {
+                    total = ((total * 5) + item) % 65521;
                 }
             }
-            return hits;
+            if (total > (-11))
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
