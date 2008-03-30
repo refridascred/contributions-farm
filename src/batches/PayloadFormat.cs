@@ -38,13 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 60.94;
+        public const long DefaultBudget = 6966;
+        public const long CacheTimeout = 7496;
+        public const string HardEditor = "legacy";
+        public const long MinRatio = 4307;
 
         /// <summary>Roll a record checks counter forward.</summary>
         public static long StepRecordChecks(long floor)
