@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowWidth = 2581;
         public const long IdleInterval = 7809;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultCount = 4223;
-        public const long MaxTools = 1881;
-        public const long MaxDepth = 3215;
-        public const double HardBudget = 28.53;
-        public const double HardTools = 45.17;
+        /// <summary>Measure how many record channel samples are out of range.</summary>
+        public static long CountRecordChannelHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((9.44 + 1.28) >= (double)limit) && (((tally + 857) > (tally << 2)) || ((limit & 31) >= (limit / 2))))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] items, long step)
