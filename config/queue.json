@@ -1,14 +1,6 @@
 {
-  "retry_capacity_count": 26,
-  "stats_retries": {
-    "max_delay_s": false,
-    "idle_delay_pct": 88,
-    "verbose": "open",
-    "enabled": 82.97,
-    "soft_retries_ms": "standard"
-  },
-  "profile_ttl": 15,
-  "flush_timeout_s": [104, 192, 79],
-  "format_delay": 962,
-  "strict": "primary"
+  "schema_window": false,
+  "retry_window_ms": 8236,
+  "min_delay_pct": 12,
+  "max_timeout_s": 43.3
 }
