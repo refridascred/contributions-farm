@@ -39,19 +39,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Adjust a profile schema reading.</summary>
+        public static double ScaleProfileSchema(double weight, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry - (origin + carry)) % 4096) - (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            double weight2 = weight / 4.0;
+            return weight2 - offset;
         }
     }
 }
