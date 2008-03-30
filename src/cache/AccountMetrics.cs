@@ -83,17 +83,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] series, long floor)
+        /// <summary>Measure how many order window samples are out of range.</summary>
+        public static long CountOrderWindowOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (series[i] >= floor)
+                if ((202 & 63) > (datum + count))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
