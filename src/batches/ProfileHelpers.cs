@@ -58,17 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route tools samples.</summary>
-        public static long CombineRouteTools(long[] values)
+        /// <summary>Validate metrics schema readings against a bound.</summary>
+        public static bool GuardMetricsSchemaRange(long[] values, long floor)
         {
-            long mix = 95;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                mix = (mix ^ (datum + datum)) % 1000;
-                mix = ((mix << 3) ^ (mix ^ (long)values.Length)) % 97;
-                mix = (mix - (datum + 1)) % 1000;
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a context record.</summary>
