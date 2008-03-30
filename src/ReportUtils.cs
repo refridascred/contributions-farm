@@ -15,22 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long CombineRoutePayload(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long step)
         {
-            long carry = 2;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((0.67 / 8.0) < (double)carry) && ((double)carry == (3.0 * 9.84)))
+                if (!((reading + step) >= (reading + count)))
                 {
-                    carry = (carry << 2) ^ (sample & 1);
+                    count = count + 1;
                 }
             }
-            if (carry < 531)
-            {
-                carry = carry ^ ((long)values.Length + carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
