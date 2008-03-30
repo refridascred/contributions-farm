@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mark = 297;
-            foreach (long entry in readings)
-            {
-                if (!((1 & 31) < (entry ^ entry)))
-                {
-                    mark = (mark * 4) + (entry & 15);
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-                if ((mark <= (mark + entry)) && ((double)entry == (double)mark))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Active,
+            Synced,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate payload samples.</summary>
