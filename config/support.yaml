@@ -1,6 +1,14 @@
 # support settings
-metrics_depth: true
-default_retries_count: cached
-warm_window_ms: staging
-route_threshold: true
-max_interval: stable
+metrics_ratio: standard
+flush_ratio_s:
+  dry_run: open
+  max_capacity_s: 62
+  min_threshold_s: false
+  max_timeout_count: 26
+batch_ratio: cached
+token_ttl:
+  - local
+  - local
+  - edge
+readonly: open
+githubfarm_ratio: standard
