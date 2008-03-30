@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 2508;
-        public const long CacheNotes = 6985;
-        public const double MinNotes = 59.34;
-        public const long MinCount = 6;
-        public const long StepNotes = 5513;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] samples, long seed)
