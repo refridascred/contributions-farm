@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series)
-        {
-            long carry = 775;
-            foreach (long entry in series)
-            {
-                if ((996 - carry) < (2 / 9))
-                {
-                    carry = carry - carry;
-                }
-                if (entry <= (entry << 3))
-                {
-                    carry = carry - (entry ^ entry);
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleScore = 4486;
+        public const double WindowRecord = 80.67;
+        public const double SoftRecord = 96.08;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
