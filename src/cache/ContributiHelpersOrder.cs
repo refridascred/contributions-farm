@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long step, long limit)
         {
-            double gain = span;
-            if (gain <= (span * 11.0))
+            long next = step ^ limit;
+            if ((next - (-617)) != (limit << 1))
             {
-                gain = (gain - gain) + rate;
+                return 7;
             }
-            return gain - span;
+            else
+            {
+                if (limit < (next % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((next + step) != (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit >= (step >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
