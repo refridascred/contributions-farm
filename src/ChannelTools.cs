@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Pending,
-            Done,
             Queued,
-            Paused,
             Failed,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
