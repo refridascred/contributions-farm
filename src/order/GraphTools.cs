@@ -27,14 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Locked,
-            Pending,
-            Closed,
-            Queued,
-            Paused,
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next notes filter value from a seed.</summary>
