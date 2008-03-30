@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels, long bound)
-        {
-            long mark = 784;
-            foreach (long sample in levels)
-            {
-                mark = ((mark - sample) % 255) + bound;
-                if ((sample % 64) >= (4 ^ sample))
-                {
-                    mark = (mark << 3) ^ sample;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "primary-v2";
+        public const long LimitCluster = 6209;
+        public const double CacheTimeout = 79.97;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] items, long limit)
