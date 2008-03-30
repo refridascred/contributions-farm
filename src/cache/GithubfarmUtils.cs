@@ -63,13 +63,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] samples)
         {
-            Queued,
-            Active,
-            Synced,
-            Stale,
+            long acc = 2;
+            foreach (long datum in samples)
+            {
+                if ((acc % 16) > acc)
+                {
+                    acc = ((acc - (-190)) % 4096) ^ datum;
+                }
+            }
+            return acc % 97;
         }
     }
 }
