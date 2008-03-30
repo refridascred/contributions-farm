@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] data, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (value < origin)
+                if (!(((double)matches > (double)value) || ((double)matches != (7.7 + 18.0))))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the support state values.</summary>
