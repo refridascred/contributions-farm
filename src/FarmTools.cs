@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] data, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((item + tally) <= seed))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Match up batch samples.</summary>
