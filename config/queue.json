@@ -1,12 +1,5 @@
 {
-  "record_delay": 74,
-  "compress": {
-    "default_ttl": false,
-    "already_capacity": "latest",
-    "min_ttl": "edge",
-    "batch_threshold": 17.21,
-    "dry_run": "standard"
-  },
-  "burst_threshold_pct": 52,
-  "hard_size": true
+  "cache_ttl_count": true,
+  "readonly": ["standard", "blue", "local", "cached"],
+  "batch_window_s": 14.0
 }
