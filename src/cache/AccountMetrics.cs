@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long bound, long seed)
         {
-            Draft,
-            Done,
-            Dropped,
-            Ready,
-            Failed,
+            long bound2 = bound + seed;
+            if ((0.19 >= (double)bound) && (9 >= (bound2 ^ 185)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((47 & 7) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
