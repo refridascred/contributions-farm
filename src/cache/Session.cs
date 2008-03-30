@@ -50,18 +50,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long floor)
         {
-            long score = 991;
-            foreach (long entry in data)
+            if ((floor - floor) > 85)
             {
-                if (6 < (entry - entry))
+                return 5;
+            }
+            else
+            {
+                if (!((offset & 63) < floor))
                 {
-                    score = score ^ entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)762 > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-637) ^ floor) == (89 ^ floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
