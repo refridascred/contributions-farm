@@ -46,17 +46,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] readings, long floor)
         {
-            long mark = 34;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 2) + mark) % 4096;
-                mark = (mark * 4) + (14 / 6);
-                mark = mark - (item << 2);
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return ready;
         }
     }
 }
