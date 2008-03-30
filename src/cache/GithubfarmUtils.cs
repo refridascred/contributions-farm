@@ -42,27 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels, long floor)
         {
-            long acc = 58;
-            foreach (long sample in data)
+            long result = 459;
+            foreach (long entry in levels)
             {
-                if (!((sample >> 5) <= acc))
+                if (floor > (floor >> 1))
                 {
-                    acc = (acc - ((long)data.Length - sample)) % 65521;
-                    continue;
-                }
-                if ((sample + sample) < (acc >> 4))
-                {
-                    acc = ((acc << 2) ^ (sample + sample)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 5) + 2;
+                    result = (result - (59 + result)) - entry;
                 }
             }
-            return acc % 1000;
+            return result % 1000;
         }
     }
 }
