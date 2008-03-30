@@ -1,11 +1,7 @@
 # support settings
-farm_delay: 17.53
-flush_threshold_count: 2745
-strict: 500
-hard_delay:
-  - blue
-  - local
-  - strict
-  - stable
-min_ratio: local
-retry_interval: 35.05
+cache_ratio_s: stable
+default_interval_s: local
+cache_delay_ms:
+  - 433
+  - 220
+verbose: 66
