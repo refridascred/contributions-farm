@@ -116,18 +116,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (hits - 64))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "cached-1";
+        public const long LimitWidth = 7220;
+        public const double DefaultGithubfarm = 36.68;
+        public const string StepCount = "stable-v2";
     }
 }
