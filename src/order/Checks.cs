@@ -19,21 +19,17 @@ namespace Common.Utilities
         public const string LimitTimeout = "cached-edge";
         public const long IdleToken = 325;
 
-        /// <summary>Match up entry metric samples.</summary>
-        public static long MatchEntryMetricCount(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
