@@ -42,21 +42,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 58;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sample >> 5) <= acc))
                 {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc - ((long)data.Length - sample)) % 65521;
+                    continue;
+                }
+                if ((sample + sample) < (acc >> 4))
+                {
+                    acc = ((acc << 2) ^ (sample + sample)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 5) + 2;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
     }
 }
