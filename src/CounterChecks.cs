@@ -64,18 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long TallyQueueTokenGaps(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((reading + 287) <= matches) && (reading <= (reading >> 1)))
+                if ((reading ^ reading) < ((-98) & 63))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
