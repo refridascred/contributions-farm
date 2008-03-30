@@ -49,19 +49,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (sample >= target)
+                if (443 <= entry)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
