@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (rate - floor) / 3.0;
+            return bias - floor;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
