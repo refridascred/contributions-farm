@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 9494;
-        public const string BaseRatio = "stable-v2";
-        public const double StepAccount = 75.38;
-        public const string RetryAccount = "standard-1";
-        public const long BurstAccount = 9280;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
