@@ -31,18 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen < (1.46 * 11.0))
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
                 {
-                    seen = (seen + 2) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
