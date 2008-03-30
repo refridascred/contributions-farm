@@ -21,11 +21,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Compare every pair of buffer farm readings.</summary>
+        public static long OverlapBufferFarmCount(long[] values)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
