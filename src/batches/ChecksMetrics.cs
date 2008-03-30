@@ -50,12 +50,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long target)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long lane = bound + target;
+            if ((double)lane >= (6.89 / 7.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= (2.0 * 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Roll a command token counter forward.</summary>
