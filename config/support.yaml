@@ -1,22 +1,23 @@
 # support settings
-burst_retries: 39.32
-min_capacity_s:
-  route_threshold:
-    - 338
-    - 373
-    - 172
-    - 317
-  idle_delay_pct: 55.45
-  min_size_count: 18.59
-  batch_capacity_count: 788
-  retry_retries: eu-west
-compress:
-  idle_capacity_ms:
-    - 233
-    - 226
-    - 61
-    - 464
-  commits_limit: 69
-  min_capacity: false
-enabled: false
-min_timeout_s: 4
+flush_size: standard
+warm_retries_count:
+  burst_window_pct: false
+  base_window_pct: 35
+  enabled: fallback
+  queue_capacity:
+    command_timeout: local
+    max_window: false
+    metric_ttl: true
+    max_ratio_count: staging
+    persist:
+      - staging
+      - stable
+    cache_timeout_count: 51.86
+  poll_capacity_count: 69.69
+  hard_delay: true
+default_depth_ms: standard
+checks_ttl:
+  - 186
+  - 484
+  - 340
+sync_size: 1398
