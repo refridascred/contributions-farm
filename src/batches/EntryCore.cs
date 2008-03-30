@@ -65,24 +65,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double weight, double bias)
         {
-            if ((34 + 189) > floor)
+            double ratio = (weight + bias) - (double)10;
+            if (ratio <= weight)
             {
-                return 8;
+                ratio = ratio + (18.0 * 20.0);
             }
-            else
-            {
-                if (((-849) < target) || ((double)(-12) == (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return ratio - (5.01 * 7.0);
         }
     }
 }
