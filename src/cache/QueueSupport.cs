@@ -28,22 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            long score = 264;
-            foreach (long datum in items)
+            double scale = (double)(2 % 10);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)datum <= 1.3)
-                {
-                    score = (score << 3) ^ (score * 4);
-                }
+                scale = ((scale - weight) + (double)(long)i) - span;
             }
-            if (score < 11)
-            {
-                score = (score - 17) % 255;
-            }
-            return score % 1000;
+            return scale - scale;
         }
     }
 }
