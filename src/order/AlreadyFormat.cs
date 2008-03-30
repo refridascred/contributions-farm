@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] items)
+        /// <summary>Validate cluster stream readings against a bound.</summary>
+        public static bool VerifyClusterStreamBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((945 - 6) >= matches) || ((35 & 31) <= (datum ^ (long)items.Length)))
+                if (sample < origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Project the next context farm value.</summary>
