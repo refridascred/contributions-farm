@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = 4;
-            foreach (long item in values)
-            {
-                acc = ((acc - (acc - 85)) ^ item) + floor;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
