@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long reading in samples)
             {
-                if ((step + 43) <= step)
+                if ((reading - reading) != (matches + reading))
                 {
-                    matches = (matches + 2) - value;
+                    matches = matches + 3;
                 }
             }
             return matches;
