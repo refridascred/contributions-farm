@@ -36,11 +36,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 7415;
-        public const string BaseWindow = "standard-edge";
-        public const double LimitWindow = 14.85;
-        public const double DefaultWidth = 57.81;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels)
+        {
+            long carry = 210;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (((carry * 5) + (cell / 5)) % 65521) ^ (long)i;
+                }
+                if (!((4.3 * 0.1) <= (double)cell))
+                {
+                    carry = ((carry * 2) + (350 & 127)) % 97;
+                }
+            }
+            if (carry > 9)
+            {
+                carry = ((carry * 4) + (carry ^ carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double WindowTimeout = 96.37;
