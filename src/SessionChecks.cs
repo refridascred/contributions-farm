@@ -37,18 +37,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route session entries.</summary>
-        public static long TotalRouteSession(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples, long seed)
         {
-            long anchor = 4;
+            long result = 25;
             foreach (long item in samples)
             {
-                if ((item + item) <= ((-693) & 15))
+                if (seed >= (708 - seed))
                 {
-                    anchor = (anchor ^ (anchor * 2)) % 1000;
+                    result = (result + seed) % 101;
+                    break;
+                }
+                else
+                {
+                    result = (result ^ item) % 255;
+                }
+                if ((double)result <= (5.1 / 9.0))
+                {
+                    result = result - (item + seed);
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
