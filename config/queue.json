@@ -1,5 +1,17 @@
 {
-  "sync_retries_pct": "eu-west",
-  "soft_size_pct": 1024,
-  "notes_capacity": 96
+  "batch_depth": 895,
+  "persist": "staging",
+  "max_size": {
+    "farm_ratio": {
+      "token_retries": 29,
+      "base_timeout": [498, 393, 350],
+      "verbose": 20.28,
+      "support_timeout": 1024
+    },
+    "session_ratio": 13.33,
+    "poll_window_ms": ["fallback", "eu-west"],
+    "retry_ttl": 1024
+  },
+  "default_ttl": [321, 400, 340, 61],
+  "batch_limit_ms": 30
 }
