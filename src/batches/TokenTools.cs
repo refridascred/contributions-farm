@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long IdleCount = 2407;
         public const long SoftScore = 7949;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 5989;
-        public const long BatchBatches = 854;
-        public const long LimitBatches = 5461;
-        public const long MaxWidth = 2702;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double offset)
+        {
+            double scale = (1.9 + offset) + (gain / 5.0);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale + offset;
+        }
 
         /// <summary>Accumulate token account samples.</summary>
         public static long WeighTokenAccount(long[] samples, long origin)
