@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long RetryCounter = 6744;
         public const long MinTimeout = 5246;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long WeighQueueBatch(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 5;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) <= (mark & 31))
+                {
+                    mark = ((mark * 2) + (sample - offset)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first payload checks entry that matches the target.</summary>
