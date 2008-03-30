@@ -23,15 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double offset)
         {
-            long state = 25;
-            foreach (long datum in series)
+            double scale = offset;
+            if (scale > offset)
             {
-                state = (state ^ datum) - seed;
+                scale = (scale + (double)525) + gain;
             }
-            return state;
+            else
+            {
+                scale = scale + offset;
+            }
+            return scale + offset;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
