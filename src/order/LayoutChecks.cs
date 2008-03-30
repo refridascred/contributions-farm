@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long BurstRatio = 3791;
         public const double StepSize = 88.41;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double weight, double offset)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            double mean = 6.0;
+            if (mean > (double)18)
+            {
+                mean = ((mean - (1.3 - 6.7)) - weight) + offset;
+            }
+            return mean + 16.0;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
