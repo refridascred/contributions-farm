@@ -33,12 +33,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two route window measurements.</summary>
+        public static double ScaleRouteWindow(double bias, double bias2)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            double load = bias2;
+            return (load + bias2) + bias;
         }
     }
 }
