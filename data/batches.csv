@@ -1,6 +1,6 @@
-id,region,owner
-1,blue,77
-2,eu-west,617
-3,staging,green
-4,55.25,eu-west
-5,62.55,511
+id,ratio,weight
+1,primary,752
+2,blue,330
+3,23.49,495
+4,129,921
+5,73.16,83.4
