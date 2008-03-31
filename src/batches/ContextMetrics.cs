@@ -37,19 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double drift = (double)((-406) + 36);
-            if (drift >= 5.8)
-            {
-                drift = drift - rate;
-            }
-            else
-            {
-                drift = drift - (offset * 4.62);
-            }
-            return drift - 3.1;
+            Draft,
+            Idle,
+            Done,
+            Ready,
         }
     }
 }
