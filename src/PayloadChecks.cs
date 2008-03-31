@@ -83,11 +83,21 @@ namespace Common.Utilities
             return bias - (scale - offset);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
