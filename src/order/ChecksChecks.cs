@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = sum - (target / 6);
-                if ((target - target) != ((long)i + sum))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate account githubfarm readings against a bound.</summary>
