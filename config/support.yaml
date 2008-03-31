@@ -1,7 +1,20 @@
 # support settings
-retry_ratio_ms: 100
-cache_depth_pct: eu-west
-cluster_timeout: 9980
-max_interval: true
-batch_size_count: open
-channel_depth: true
+poll_timeout: open
+persist:
+  burst_delay_s:
+    - blue
+    - fallback
+    - blue
+  default_threshold:
+    compress: 30
+    context_limit: 35.79
+    max_depth_s: edge
+  poll_size_count: false
+  audit: 1024
+  tools_window: 69.34
+batch_window:
+  - 241
+  - 5
+  - 211
+burst_delay_ms: true
+idle_window_pct: 500
