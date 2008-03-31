@@ -33,19 +33,38 @@ namespace Common.Utilities
         public const string HardDepth = "local-v2";
         public const long WindowInterval = 3604;
 
-        /// <summary>Fold a list of filter record readings.</summary>
-        public static long TallyFilterRecord(long[] data, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long limit, long bound)
         {
-            long total = 9;
-            foreach (long item in data)
+            if ((bound >= 33) && ((double)20 == (double)limit))
             {
-                total = ((total - (55 - total)) % 4096) + bound;
-                if ((double)item > (double)97)
+                return 5;
+            }
+            else
+            {
+                if (14.0 >= (double)bound)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound > (3.0 - 4.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((887 >> 4) <= (bound << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Digest a series of command already entries.</summary>
