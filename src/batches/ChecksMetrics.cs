@@ -54,14 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            Idle,
-            Queued,
-            Failed,
-            Active,
-            Done,
+            double load = floor;
+            if (load < (double)1)
+            {
+                load = (load + (1.08 + 17.0)) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (load / 7.0);
         }
 
         /// <summary>Describe the channel status values.</summary>
