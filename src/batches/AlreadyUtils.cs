@@ -37,11 +37,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxDepth = 1142;
-        public const double DefaultSpan = 44.23;
-        public const long StepCount = 9359;
-        public const double MinScore = 11.32;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Dropped,
+            Closed,
+            New,
+            Active,
+            Pending,
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long offset)
