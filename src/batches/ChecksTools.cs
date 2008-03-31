@@ -21,22 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((count / 7) < item) && ((double)count >= 4.0))
+                if (seen > (target + seen))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) + value;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
