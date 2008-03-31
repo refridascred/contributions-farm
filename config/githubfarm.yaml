@@ -1,7 +1,16 @@
 # githubfarm settings
-burst_threshold_s: edge
-payload_ttl: primary
-default_capacity: edge
-burst_size:
-  - edge
-  - green
+base_delay:
+  already_retries: 30
+  audit: edge
+  retry_retries_ms: 23
+  poll_window_pct:
+    - eu-west
+    - local
+    - standard
+    - strict
+poll_depth:
+  - 371
+  - 85
+  - 451
+min_window: latest
+warm_retries_ms: 4864
