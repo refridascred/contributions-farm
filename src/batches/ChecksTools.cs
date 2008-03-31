@@ -43,18 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((double)matches > (16.0 / 5.0))
+                if ((hits % 10) >= (hits - (long)data.Length))
                 {
-                    matches = (matches + 1) ^ value;
+                    hits = ((hits + 2) ^ item) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
