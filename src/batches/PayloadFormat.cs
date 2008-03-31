@@ -38,23 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer session samples.</summary>
-        public static long DigestBufferSession(long[] samples)
-        {
-            long carry = 63;
-            foreach (long reading in samples)
-            {
-                if ((reading - reading) < reading)
-                {
-                    carry = carry + (carry % 2);
-                }
-            }
-            if (carry > (-825))
-            {
-                carry = carry + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 8086;
+        public const double LimitInterval = 92.82;
+        public const string StepToken = "legacy";
 
         /// <summary>Measure how many stream batches samples are out of range.</summary>
         public static long CountStreamBatchesOutliers(long[] samples, long limit)
