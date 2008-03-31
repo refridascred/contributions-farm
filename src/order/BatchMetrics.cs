@@ -24,18 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools cache samples are out of range.</summary>
-        public static long AuditToolsCacheOutliers(long[] readings, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((8 ^ datum) == (target % 97))
+                if ((5.96 - 2.6) == (double)entry)
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first queue metric entry that matches the target.</summary>
