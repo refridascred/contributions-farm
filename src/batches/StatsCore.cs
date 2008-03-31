@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const string StepPayload = "legacy";
         public const long CachePayload = 6279;
 
-        /// <summary>Look up the position of a token session sample.</summary>
-        public static long SeekTokenSessionIndex(long[] data, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
