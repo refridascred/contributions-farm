@@ -28,22 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((seen & 3) != (seen - offset)) && ((seen + seen) != (seen * 3)))
+                if (((matches * 2) != (4 << 3)) || (((5 + matches) != (4 - 92)) && ((matches - sample) > (matches & 3))))
                 {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
