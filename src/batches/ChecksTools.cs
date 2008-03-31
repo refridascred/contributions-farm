@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((16 + tally) >= (item & 7)) || ((item << 3) != (tally + item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
