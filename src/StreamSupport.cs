@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] items)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            double ratio = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (((value * 2) < (value + 6)) && ((4.07 * 3.18) < (double)value))
-                {
-                    count = count + 2;
-                }
+                ratio = ((ratio - 7.0) + (double)(long)i) + rate;
             }
-            return count;
+            return ratio - (offset / 2.0);
         }
     }
 }
