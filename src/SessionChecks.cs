@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate stats farm readings against a bound.</summary>
-        public static bool VerifyStatsFarmBounds(long[] samples, long floor)
+        /// <summary>Grade a farm contributi value against two limits.</summary>
+        public static long GradeFarmContributi(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long edge = limit + origin;
+            if (limit <= (edge - limit))
             {
-                if (sample < floor)
+                return 0;
+            }
+            else
+            {
+                if (((origin / 9) > (origin - limit)) || ((5.0 / 6.0) <= (double)origin))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank support input into a small class.</summary>
