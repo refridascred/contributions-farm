@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long step, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] values)
         {
-            long step2 = step - offset;
-            if ((8.6 * 3.0) != (double)offset)
+            long result = 444;
+            foreach (long sample in values)
             {
-                return 5;
+                result = result ^ (result + sample);
             }
-            else
+            if (result > 26)
             {
-                if (step2 > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + offset) != (197 - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((5 + step2) <= step) && ((step2 + offset) >= 72))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = ((result << 2) ^ (result & 63)) % 97;
             }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
