@@ -21,39 +21,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long seed2)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long slot = seed + seed2;
-            if (((seed2 >> 5) >= (seed - slot)) || ((double)slot < (double)9))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot / 5) <= (seed % 16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 2) <= (slot >> 2))
+                    if ((levels[i] + levels[j]) > 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-11) * 3) > (seed2 + seed2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of session githubfarm readings.</summary>
