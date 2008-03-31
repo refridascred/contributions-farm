@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=140
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in standard latest; do
+for item in local eu-west staging cached; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=26
+log "limit is ${RECORD_LIMIT}"
