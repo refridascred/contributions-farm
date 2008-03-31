@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const double MinCluster = 32.75;
         public const double BaseCluster = 95.85;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryTimeout = 4.97;
-        public const long CacheFactor = 6295;
-        public const double CacheEntry = 33.55;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first editor graph entry that matches the target.</summary>
         public static long SeekEditorGraphIndex(long[] samples, long offset)
