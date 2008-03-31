@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] series, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (111 >= matches)
+                {
+                    matches = ((matches + 3) ^ entry) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
