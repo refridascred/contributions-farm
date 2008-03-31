@@ -52,18 +52,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit channel stats readings against a rule.</summary>
-        public static long TallyChannelStatsMatches(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long bound = offset + floor;
+            if ((bound & 31) < floor)
             {
-                if (!((value ^ value) < value) || !((value * 3) <= seen))
+                return 1;
+            }
+            else
+            {
+                if ((44 >= (offset ^ bound)) || ((bound << 1) > (offset - bound)))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up session cluster samples.</summary>
