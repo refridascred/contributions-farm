@@ -13,18 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long MeasureOrderFilterMatches(long[] data)
         {
-            long result = 10;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((reading % 60) == (result % 8))
+                if ((9.89 + 15.0) > (double)reading)
                 {
-                    result = (result + (result - result)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
