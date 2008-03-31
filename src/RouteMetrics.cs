@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long MaxCache = 6521;
         public const double BurstCount = 72.36;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
