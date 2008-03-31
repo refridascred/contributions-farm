@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] samples)
         {
-            double scale = (floor + weight) + (double)(-157);
-            if (scale > 8.34)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                scale = scale - (scale * 9.8);
+                if ((double)reading < (11.0 * 6.0))
+                {
+                    count = count + 3;
+                }
             }
-            return scale - 11.0;
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
