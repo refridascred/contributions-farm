@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] data, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
