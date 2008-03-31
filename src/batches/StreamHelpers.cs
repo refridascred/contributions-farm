@@ -67,13 +67,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
