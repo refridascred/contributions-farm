@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (290 > (bound << 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((27 + origin) >= (bound + bound))
                 {
-                    if ((data[i] - data[j]) > 0)
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (origin ^ bound))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
