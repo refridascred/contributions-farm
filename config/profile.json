@@ -1,8 +1,6 @@
 {
-  "default_depth": ["latest", "edge"],
-  "sync_size_pct": ["local", "open", "green", "local"],
-  "default_delay": [469, 122, 63, 233],
-  "poll_size": "open",
-  "flush_ttl_ms": 3068,
-  "base_retries": "strict"
+  "retry_depth_ms": "primary",
+  "githubfarm_delay": 21,
+  "batch_timeout": 2466,
+  "retry_limit_pct": 24.04
 }
