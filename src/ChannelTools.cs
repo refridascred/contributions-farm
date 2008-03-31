@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Locked,
-            New,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 8769;
+        public const long WindowCluster = 9336;
+        public const long MinCluster = 3268;
+        public const long BatchTimeout = 4883;
+        public const long HardRatio = 3029;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long bound)
