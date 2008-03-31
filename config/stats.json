@@ -1,16 +1,6 @@
 {
-  "tools_delay": 8739,
-  "persist": "primary",
-  "retry_threshold": {
-    "verbose": 30,
-    "report_ttl": {
-      "format_delay": ["cached", "latest", "cached", "standard"],
-      "dry_run": "strict",
-      "burst_limit_s": 73.63
-    },
-    "flush_delay_ms": 92.1,
-    "context_size": ["standard", "staging"],
-    "batch_retries": "standard",
-    "poll_capacity_pct": [254, 292]
-  }
+  "default_threshold_count": "local",
+  "sync_capacity_pct": [471, 225, 474, 51],
+  "strict": 30,
+  "burst_window": 8.12
 }
