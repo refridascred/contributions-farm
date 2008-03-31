@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "primary";
-        public const long DefaultOrder = 4574;
-        public const long HardScore = 4450;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Synced,
+            Closed,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] series, long offset)
