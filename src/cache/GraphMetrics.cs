@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double SoftTools = 87.16;
         public const long WindowFactor = 5870;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Audit command profile readings against a rule.</summary>
+        public static long CountCommandProfileMatches(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count / 2) >= (-6))
                 {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) ^ reading) + limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of stats tools entries.</summary>
