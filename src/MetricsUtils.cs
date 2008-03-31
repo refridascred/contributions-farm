@@ -24,14 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] items, long step)
         {
-            Queued,
-            Done,
-            Active,
-            Retry,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
