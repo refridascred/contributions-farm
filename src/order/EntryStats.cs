@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            Closed,
-            Draft,
-            Paused,
-            Failed,
-            Stale,
+            double bias = weight;
+            if (bias < (bias * 18.0))
+            {
+                bias = (bias + 4.6) - span;
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + (double)458;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
