@@ -71,12 +71,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
