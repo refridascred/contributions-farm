@@ -23,14 +23,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long BucketCommandFormat(long limit, long offset)
         {
-            Failed,
-            New,
-            Locked,
-            Draft,
-            Ready,
+            if (((-140) & 15) > (limit - 30))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit + offset) > (offset << 2)) && (offset < (0 - (-43))))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.3 / 6.0) <= (0.8 - 6.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
