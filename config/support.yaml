@@ -1,5 +1,20 @@
 # support settings
-commits_timeout: 19.04
-window_threshold: 655
-max_interval: 3150
-hard_timeout_pct: 100
+checks_size: 1024
+warm_timeout_count: 5194
+order_interval:
+  poll_ratio_count: 92.24
+  batches_depth:
+    - 473
+    - 407
+    - 317
+    - 444
+  enabled:
+    retry_limit_pct: 250
+    cache_limit: 21
+    sync_size:
+      - 65
+      - 201
+  base_retries_count: 0.24
+verbose: 38.41
+account_delay: true
+dry_run: true
