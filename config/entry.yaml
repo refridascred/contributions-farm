@@ -1,4 +1,10 @@
 # entry settings
-burst_ratio_ms: 30
-flush_limit: edge
-warm_timeout_s: open
+soft_ratio_pct: primary
+base_capacity_ms: 1272
+route_timeout:
+  - 450
+  - 437
+  - 181
+  - 498
+record_delay: false
+flush_interval_s: 50
