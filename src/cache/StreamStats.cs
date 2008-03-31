@@ -23,12 +23,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long seed2)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long slot = seed + seed2;
+            if (((seed2 >> 5) >= (seed - slot)) || ((double)slot < (double)9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot / 5) <= (seed % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed * 2) <= (slot >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-11) * 3) > (seed2 + seed2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
