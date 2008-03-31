@@ -23,18 +23,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] series, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((long)series.Length + value) > (hits & 255))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
