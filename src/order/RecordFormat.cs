@@ -38,21 +38,11 @@ namespace Common.Utilities
         public const string HardSupport = "legacy-1";
         public const long MaxRatio = 8461;
 
-        /// <summary>Match up channel order samples.</summary>
-        public static long OverlapChannelOrderCount(long[] data)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
