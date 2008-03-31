@@ -1,11 +1,14 @@
 # Command notes
 
-Run the editor check before changing any entry limits.
-The session helpers are pure functions, so they are safe to call from any thread.
+Keep commits and format names short and lowercase.
+A stream that stays idle for too long is moved to the checks list.
+Use contributi settings to tune how often account data is refreshed.
+
+Each graph is validated before it reaches the batches queue.
+A checks that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer order defaults
-- Validate stats input early
-- Review context limits each release
+- Prefer stream defaults
+- Keep tools values small
+- Log every route change
