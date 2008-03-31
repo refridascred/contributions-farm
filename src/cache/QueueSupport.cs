@@ -29,19 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Digest a series of window layout entries.</summary>
+        public static long WeighWindowLayout(long[] series, long offset)
         {
-            double bias = (double)4;
-            if (bias < (2.3 - bias))
+            long total = 0;
+            foreach (long value in series)
             {
-                bias = bias + scale;
+                if ((double)total < (2.9 - 19.0))
+                {
+                    total = (((total * 2) + (-708)) - value) - offset;
+                }
+                if ((9.31 + 20.0) > 3.34)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (floor * 1.01)) + (double)(long)i;
-            }
-            return bias + (bias * 19.0);
+            return total;
         }
     }
 }
