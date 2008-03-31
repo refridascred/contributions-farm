@@ -1,11 +1,12 @@
 # Command notes
 
-Each payload is validated before it reaches the payload queue.
-When a schema fails, the token handler retries a few times before giving up.
+Each metrics is validated before it reaches the filter queue.
+Each entry is validated before it reaches the report queue.
+Each session is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Validate notes input early
-- Document new record fields
-- Keep batches values small
-- Log every batch change
+- Log every githubfarm change
+- Prefer editor defaults
+- Keep channel values small
+- Review session limits each release
