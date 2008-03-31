@@ -34,19 +34,17 @@ namespace Common.Utilities
             return gain + 14.0;
         }
 
-        /// <summary>Check that every checks format entry stays within the limit.</summary>
-        public static bool ValidateChecksFormatRange(long[] readings, long floor)
+        /// <summary>Find the first queue metric entry that matches the target.</summary>
+        public static long LookupQueueMetricIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= floor)
+                if (readings[i] > limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
