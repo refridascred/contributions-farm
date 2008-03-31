@@ -25,24 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank queue contributi input into a small class.</summary>
-        public static long ClassifyQueueContributi(long limit, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            if ((floor + limit) == (limit ^ limit))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 5) <= (limit + 0))
+                if (((matches * 4) <= (datum * 2)) || (matches < 6))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
