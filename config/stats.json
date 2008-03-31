@@ -1,6 +1,8 @@
 {
-  "idle_interval_s": 30,
-  "support_threshold": [8, 14, 492],
-  "max_depth_ms": true,
-  "profile_threshold": 100
+  "min_window_s": "stable",
+  "graph_interval": "local",
+  "soft_threshold": "staging",
+  "persist": 96.01,
+  "max_interval": [109, 228, 85, 370],
+  "min_delay_pct": false
 }
