@@ -39,18 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long CountGithubfarmCacheGaps(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry <= (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Synced,
+            Failed,
         }
     }
 }
