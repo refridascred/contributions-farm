@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double offset)
+        /// <summary>Count the graph farm entries that pass the check.</summary>
+        public static long MeasureGraphFarmOutliers(long[] levels)
         {
-            double gain = offset * 3.01;
-            if (gain > gain)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                gain = gain - gain;
+                if ((66 ^ reading) <= 186)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain = gain + (5.21 / 6.0);
-            }
-            return gain + (rate / 4.0);
+            return hits;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
