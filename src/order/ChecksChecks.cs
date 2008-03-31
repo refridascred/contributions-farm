@@ -34,25 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already schema input into a small class.</summary>
-        public static long BucketAlreadySchema(long offset, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long delta = offset + step;
-            if ((double)delta > 9.93)
-            {
-                return 8;
-            }
-            else
-            {
-                if (delta < (delta + delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Failed,
+            Active,
         }
     }
 }
