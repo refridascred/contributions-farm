@@ -1,7 +1,11 @@
 {
-  "verbose": 500,
-  "githubfarm_depth": "local",
-  "flush_ttl_s": 21.52,
-  "queue_ttl": ["cached", "blue", "latest", "blue"],
-  "idle_depth": "staging"
+  "notes_size": "primary",
+  "min_depth_count": 12.94,
+  "metric_retries": [145, 196, 267],
+  "cache_limit": "fallback",
+  "idle_ratio_s": {
+    "idle_interval_ms": "legacy",
+    "retry_delay": true,
+    "poll_threshold_count": "open"
+  }
 }
