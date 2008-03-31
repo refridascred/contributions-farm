@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long mark = 269;
+            foreach (long cell in samples)
+            {
+                mark = (mark ^ (676 << 2)) - cell;
+            }
+            if (mark > 4)
+            {
+                mark = (mark + (7 >> 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the commits context series from a seed.</summary>
