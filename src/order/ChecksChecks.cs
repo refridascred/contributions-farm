@@ -34,13 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Rank already schema input into a small class.</summary>
+        public static long BucketAlreadySchema(long offset, long step)
         {
-            Locked,
-            Draft,
-            Synced,
-            Closed,
+            long delta = offset + step;
+            if ((double)delta > 9.93)
+            {
+                return 8;
+            }
+            else
+            {
+                if (delta < (delta + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
