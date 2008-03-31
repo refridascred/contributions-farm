@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "legacy-v2";
-        public const double BaseCounter = 80.5;
-        public const long BatchTimeout = 8404;
-        public const long SoftCounter = 5763;
-        public const long SoftTimeout = 1519;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double bias)
+        {
+            double weight = (double)(6 / 9);
+            if (weight > (13.0 / 5.0))
+            {
+                weight = ((weight + (double)4) - gain) + bias;
+            }
+            return weight + 3.0;
+        }
 
         /// <summary>Measure how many filter payload samples are out of range.</summary>
         public static long CountFilterPayloadOutliers(long[] data, long origin)
