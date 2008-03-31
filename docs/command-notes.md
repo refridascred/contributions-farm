@@ -1,11 +1,11 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Use cache settings to tune how often batch data is refreshed.
-When a token fails, the entry handler retries a few times before giving up.
+The batches module keeps githubfarm values in sync with the graph cache.
+Each counter is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Log every schema change
-- Review already limits each release
-- Document new farm fields
+- Document new githubfarm fields
+- Log every token change
+- Validate buffer input early
+- Keep payload values small
