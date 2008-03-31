@@ -70,17 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 1384;
+        public const long CacheLayout = 909;
+        public const long DefaultWidth = 2806;
+        public const long WindowSpan = 4413;
+        public const long BatchLayout = 8138;
     }
 }
