@@ -22,18 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] series)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)tally >= 0.9)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = (tally + 2) ^ item;
+                    carry = ((carry - ((long)i >> 4)) % 1000) + (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
