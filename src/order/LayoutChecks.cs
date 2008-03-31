@@ -58,15 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = 526;
-            foreach (long datum in items)
-            {
-                sum = (((sum << 2) ^ (sum >> 4)) % 101) ^ datum;
-            }
-            return sum;
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the command mode values.</summary>
