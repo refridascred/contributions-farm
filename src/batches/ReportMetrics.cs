@@ -38,22 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] values)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (612 <= (count - count))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
