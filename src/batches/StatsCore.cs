@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 5372;
-        public const string StepPayload = "legacy";
-        public const long CachePayload = 6279;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] series)
+        {
+            long carry = 1;
+            foreach (long datum in series)
+            {
+                if (carry < (315 + 60))
+                {
+                    carry = ((carry + carry) % 101) - datum;
+                }
+                carry = (carry - ((long)series.Length * 4)) % 1000;
+            }
+            if (carry < 517)
+            {
+                carry = carry - (carry / 7);
+            }
+            return carry;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxDepth = 8826;
