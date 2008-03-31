@@ -65,9 +65,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxBudget = 67.2;
-        public const long MinInterval = 8428;
-        public const long BurstMetric = 2234;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
