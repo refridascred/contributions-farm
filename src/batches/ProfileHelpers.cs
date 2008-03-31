@@ -44,18 +44,22 @@ namespace Common.Utilities
             return weight + (double)94;
         }
 
-        /// <summary>Combine notes entry values into a single score.</summary>
-        public static long TallyNotesEntry(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            long anchor = -7;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((double)anchor > (5.6 - 4.36))
+                if ((sample & 7) < (tally + sample))
                 {
-                    anchor = ((anchor - (anchor % 2)) % 101) ^ entry;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
