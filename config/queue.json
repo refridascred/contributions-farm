@@ -1,13 +1,8 @@
 {
-  "metric_ratio": 44,
-  "editor_threshold": {
-    "compress": 61,
-    "cache_timeout_pct": true,
-    "default_threshold_count": 100,
-    "buffer_interval": "local",
-    "persist": 76,
-    "session_window": 26.8
-  },
-  "verbose": 30,
-  "flush_delay_count": 30
+  "idle_retries": "green",
+  "batch_delay_pct": 15.92,
+  "base_retries_s": "latest",
+  "compress": ["primary", "latest"],
+  "warm_depth_ms": false,
+  "min_depth_s": 3480
 }
