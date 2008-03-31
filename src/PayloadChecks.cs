@@ -14,10 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 9277;
-        public const long DefaultSpan = 3916;
-        public const long LimitMetric = 897;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Active,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double gain, double span)
