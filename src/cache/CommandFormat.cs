@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long cur = origin - offset;
+            if ((cur - offset) > (407 / 5))
             {
-                if (((989 + datum) < (hits + hits)) && ((22 % 5) < (datum - hits)))
+                return 8;
+            }
+            else
+            {
+                if ((2 - offset) < (cur >> 2))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((cur + cur) == (offset * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin >= (offset + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
