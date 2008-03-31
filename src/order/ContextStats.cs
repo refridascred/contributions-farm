@@ -44,18 +44,21 @@ namespace Common.Utilities
             return gain + (rate / 4.0);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] levels, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 4) > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
