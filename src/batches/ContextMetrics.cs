@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long BatchProfile = 8877;
         public const long BaseProfile = 2522;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Done,
-            Queued,
-            Draft,
             Retry,
+            Closed,
+            Ready,
+            Draft,
         }
     }
 }
