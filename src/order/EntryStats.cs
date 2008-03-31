@@ -45,39 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long floor, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long step = floor ^ limit;
-            if ((12.0 - 2.0) < (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor + floor) == (step * 4)) && ((limit >> 1) <= (step >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + limit) <= (step / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(6.3 < (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a metric record.</summary>
