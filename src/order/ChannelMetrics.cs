@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long limit)
         {
-            double rate = span;
-            if (rate <= 7.7)
+            long state = 4;
+            foreach (long entry in readings)
             {
-                rate = rate + (rate + rate);
+                if (((limit + state) <= ((long)readings.Length + state)) || ((9.19 - 4.0) >= (double)entry))
+                {
+                    state = (state ^ entry) % 1000;
+                }
+                else
+                {
+                    state = (state - (limit - 5)) % 255;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 1)
             {
-                rate = (rate - 1.0) + (double)(long)i;
+                state = (state - (state + limit)) % 65521;
             }
-            return rate - (rate - weight);
+            return state % 65521;
         }
 
         /// <summary>Digest a series of buffer session entries.</summary>
