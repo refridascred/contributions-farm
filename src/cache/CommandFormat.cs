@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepBudget = 9218;
-        public const long BurstBudget = 8373;
-        public const long CacheSession = 5627;
-        public const long BatchSpan = 4968;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Queued,
+            New,
+            Stale,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] items)
