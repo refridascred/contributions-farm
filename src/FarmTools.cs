@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSpan = 6967;
-        public const long MinSize = 7772;
-        public const long WindowSession = 749;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 89.32;
+        public const string WindowCount = "standard-edge";
+        public const long BurstWidth = 2669;
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double scale, double floor)
