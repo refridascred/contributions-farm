@@ -33,18 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] samples)
+        /// <summary>Rank buffer cluster input into a small class.</summary>
+        public static long ClassifyBufferCluster(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long next = offset ^ offset2;
+            if ((offset2 - offset) < offset2)
             {
-                if ((double)reading < (11.0 * 6.0))
+                return 7;
+            }
+            else
+            {
+                if ((14 - offset2) < (next & 7))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (1 > (next * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
