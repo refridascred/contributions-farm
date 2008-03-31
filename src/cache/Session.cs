@@ -33,11 +33,17 @@ namespace Common.Utilities
         public const long CacheCount = 8849;
         public const string HardBuffer = "staging";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long step)
         {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
