@@ -1,19 +1,19 @@
 # support settings
-idle_ttl_pct: fallback
-poll_interval_pct: 61.68
-idle_limit:
-  enabled:
-    - 388
-    - 403
-    - 18
-  burst_ttl_ms: 53
-  hard_retries:
-    enabled: standard
-    verbose: fallback
-    sync_interval_pct: 42.67
-  batch_window_count:
-    - 356
-    - 291
-    - 50
-  cluster_retries: 500
-  warm_timeout_pct: 1
+batch_window:
+  flush_interval_ms:
+    sync_timeout: 1024
+    idle_depth_s: standard
+    soft_depth: 250
+  hard_interval_pct: true
+  metrics_capacity:
+    warm_threshold: 7694
+    dry_run: 8428
+    window_size:
+      - latest
+      - strict
+    batch_limit: latest
+    flush_retries_count: local
+  base_depth_pct: primary
+  max_threshold_s: local
+commits_threshold: 100
+max_size_ms: eu-west
