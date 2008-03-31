@@ -32,15 +32,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next githubfarm window value from a seed.</summary>
-        public static long DeriveGithubfarmWindow(long limit)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
