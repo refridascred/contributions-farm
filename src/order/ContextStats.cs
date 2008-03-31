@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long sum = 26;
-            foreach (long datum in data)
-            {
-                sum = ((((sum * 4) + sum) % 1000) - datum) - floor;
-            }
-            return sum;
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the already level values.</summary>
