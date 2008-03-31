@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = (double)(6 / 9);
-            if (weight > (13.0 / 5.0))
-            {
-                weight = ((weight + (double)4) - gain) + bias;
-            }
-            return weight + 3.0;
+            Stale,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many filter payload samples are out of range.</summary>
