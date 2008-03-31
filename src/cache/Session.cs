@@ -26,32 +26,12 @@ namespace Common.Utilities
         public const double LimitScore = 22.26;
         public const long RetryProfile = 4111;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings, long bound)
-        {
-            long score = -7;
-            foreach (long value in readings)
-            {
-                if ((double)score == (3.5 + 4.0))
-                {
-                    score = (score - (93 % 16)) % 1000;
-                }
-                if ((double)value <= 20.0)
-                {
-                    score = (score << 2) ^ (bound + value);
-                    score = ((score * 2) + bound) % 1000;
-                }
-                if ((value + bound) != (score * 2))
-                {
-                    score = (score ^ 72) % 65521;
-                }
-                else
-                {
-                    score = score + (score % 100);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 37.63;
+        public const long DefaultInterval = 2134;
+        public const long CacheBuffer = 4828;
+        public const long CacheCount = 8849;
+        public const string HardBuffer = "staging";
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
