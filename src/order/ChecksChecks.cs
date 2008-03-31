@@ -16,11 +16,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
