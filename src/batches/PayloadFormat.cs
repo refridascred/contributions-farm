@@ -53,24 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items, long floor)
         {
-            long state = 1;
-            foreach (long cell in items)
+            long acc = 2;
+            foreach (long reading in items)
             {
-                state = ((state ^ state) % 4096) ^ cell;
-                state = (state * 3) + (state * 3);
-                if ((double)14 == (double)state)
+                acc = ((acc * 3) + (reading + floor)) % 101;
+                if (9.9 < (double)acc)
                 {
-                    break;
+                    acc = (acc << 3) ^ ((-37) + acc);
                 }
             }
-            if (state < 680)
-            {
-                state = ((state << 2) ^ (37 / 3)) % 65521;
-            }
-            return state % 97;
+            return acc;
         }
     }
 }
