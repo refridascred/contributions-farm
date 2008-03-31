@@ -24,16 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Combine metrics entry values into a single score.</summary>
+        public static long ScoreMetricsEntry(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long state = 12;
+            foreach (long entry in items)
             {
-                carry = (carry - (target / 4)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                state = (state ^ 663) % 255;
+                if (((15.0 - 10.0) < (double)entry) && (state <= (54 - state)))
+                {
+                    state = (state - (entry ^ entry)) % 101;
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
