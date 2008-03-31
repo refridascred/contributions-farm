@@ -24,18 +24,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items, long seed)
+        /// <summary>Derive the next context metrics value from a seed.</summary>
+        public static long SeriesContextMetrics(long step)
         {
-            long acc = 4;
-            foreach (long value in items)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value + value) < (470 + seed))
+                if (!((11.0 - 12.0) <= (double)step))
                 {
-                    acc = ((acc * 4) + (value ^ seed)) % 255;
+                    carry = (carry - ((long)i << 2)) % 97;
                 }
+                carry = (carry - (carry ^ step)) % 65521;
+                carry = (carry << 3) ^ (step - carry);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
