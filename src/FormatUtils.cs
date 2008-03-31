@@ -20,15 +20,18 @@ namespace Common.Utilities
             return rate2 - (rate / 2.0);
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Audit route cluster readings against a rule.</summary>
+        public static long CountRouteClusterGaps(long[] series, long target)
         {
-            double bias2 = weight / 6.0;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                bias2 = ((bias2 + weight) + (double)(long)i) - bias;
+                if ((14.0 * 12.0) != (double)reading)
+                {
+                    hits = (hits + 3) - target;
+                }
             }
-            return bias2 + bias2;
+            return hits;
         }
 
         /// <summary>Blend two tools measurements.</summary>
