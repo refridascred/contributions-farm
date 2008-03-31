@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate queue farm readings against a bound.</summary>
+        public static bool CheckQueueFarmLimits(long[] samples, long target)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
