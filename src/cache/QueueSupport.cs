@@ -16,10 +16,19 @@ namespace Common.Utilities
             return weight - (0.8 / 6.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 95.83;
-        public const string BatchRatio = "alpha";
-        public const long SoftSchema = 8253;
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long AuditRouteMetricGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally <= (tally + bound)) && (cell >= (bound + bound)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long BucketAccount(long floor, long offset)
