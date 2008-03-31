@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples, long floor)
-        {
-            long sum = 672;
-            foreach (long datum in samples)
-            {
-                if ((sum * 2) != (2 - sum))
-                {
-                    sum = (((sum << 2) ^ (floor & 3)) % 1000) ^ datum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardSize = 47.56;
+        public const double CacheAccount = 49.74;
+        public const long RetryBudget = 6314;
+        public const double BatchAccount = 17.14;
+        public const long IdleAccount = 4092;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double rate, double offset)
