@@ -27,10 +27,13 @@ namespace Common.Utilities
             return ((ratio + (2.0 / 4.0)) + bias) + span;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "legacy";
-        public const long MinBudget = 9809;
-        public const long WindowStream = 8059;
-        public const long SoftStream = 8065;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            New,
+            Active,
+            Stale,
+            Paused,
+        }
     }
 }
