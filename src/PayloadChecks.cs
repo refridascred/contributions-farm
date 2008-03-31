@@ -63,39 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order profile input into a small class.</summary>
-        public static long ClassifyOrderProfile(long step, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] levels, long bound)
         {
-            long bound = step - limit;
-            if ((limit << 1) < ((-107) << 3))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= 1.52)
+                if (datum < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (556 > step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)87 <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
