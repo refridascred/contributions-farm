@@ -51,19 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!(82 <= offset) || ((5 - count) <= (cell & 127)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleSpan = "stable-v2";
+        public const long CacheBatch = 2237;
+        public const long IdleTimeout = 3451;
+        public const long MaxBatch = 4074;
+        public const long IdleBatch = 966;
 
         /// <summary>Measure how many token schema samples are out of range.</summary>
         public static long AuditTokenSchemaOutliers(long[] samples)
