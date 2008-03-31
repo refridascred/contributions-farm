@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] values)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(7.12 >= (double)datum) || ((datum <= (hits / 2)) && ((double)hits >= (15.0 + 7.9))))
+                if (result < (long)i)
                 {
-                    hits = hits + 1;
+                    result = result ^ result;
                 }
+                else
+                {
+                    result = (result ^ (result / 3)) % 1000;
+                }
+                result = (result ^ (result + offset)) % 101;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
