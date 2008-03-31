@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] series, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value < (6.1 + 3.45))
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
