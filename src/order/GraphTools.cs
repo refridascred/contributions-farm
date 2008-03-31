@@ -33,10 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 2537;
-        public const long BaseWidth = 6304;
-        public const long BurstFormat = 611;
+        /// <summary>Digest a series of profile commits entries.</summary>
+        public static long TallyProfileCommits(long[] samples, long seed)
+        {
+            long mark = 236;
+            foreach (long item in samples)
+            {
+                mark = ((mark + (item << 1)) % 1000) - seed;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
