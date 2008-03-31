@@ -21,12 +21,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items, long seed)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!((seed + matches) >= seed) && ((matches & 255) >= (matches + matches)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
