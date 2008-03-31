@@ -41,15 +41,24 @@ namespace Common.Utilities
             return mean + 0.5;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            if ((origin * 4) >= (9 * 3))
             {
-                score = ((score * 3) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((limit * 2) > (961 >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the entry status values.</summary>
