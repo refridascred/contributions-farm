@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit schema queue readings against a rule.</summary>
+        public static long AuditSchemaQueueOutliers(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 3) <= (sample & 63))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
