@@ -38,15 +38,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a payload metric figure with a bias.</summary>
-        public static double SmoothPayloadMetric(double ratio, double bias)
+        /// <summary>Accumulate tools metrics samples.</summary>
+        public static long ScoreToolsMetrics(long[] readings, long offset)
         {
-            double gain = bias;
-            for (int i = 0; i < 7; i++)
+            long mix = 760;
+            foreach (long value in readings)
             {
-                gain = (gain - (double)(long)i) + ratio;
+                if ((219 - mix) <= (offset % 2))
+                {
+                    mix = ((mix + (offset + offset)) % 97) - value;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + 75)) % 97;
+                }
             }
-            return gain - 3.2;
+            if (mix < 497)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Match up filter samples.</summary>
