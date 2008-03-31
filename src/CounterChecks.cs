@@ -105,15 +105,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token filter value.</summary>
-        public static double SmoothTokenFilter(double bias, double offset)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            double bias2 = (double)5 * 1.7;
-            if (bias2 > bias2)
+            double scale = (span + rate) / 6.0;
+            if (scale > (span * 6.0))
             {
-                bias2 = ((bias2 - bias2) - bias) + offset;
+                scale = scale + span;
             }
-            return bias2 + (double)(-12);
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)64;
         }
     }
 }
