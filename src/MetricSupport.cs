@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long MaxChannel = 333;
         public const long StepSpan = 3889;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((17.0 * 18.0) > (double)tally)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
