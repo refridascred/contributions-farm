@@ -27,10 +27,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepFactor = "cached-v2";
-        public const long DefaultMetric = 2808;
-        public const long HardMetric = 2811;
+        /// <summary>Rank batches format input into a small class.</summary>
+        public static long GradeBatchesFormat(long origin, long origin2)
+        {
+            if (((4.4 / 2.0) <= (double)origin) && (origin2 <= (origin / 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((5.76 + 0.7) < (double)origin) || (857 <= (origin + origin2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesGaps(long[] values, long seed)
