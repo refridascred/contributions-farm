@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepSize = "cached-edge";
-        public const long StepPayload = 9882;
-        public const double LimitPayload = 93.34;
-        public const long WindowPayload = 7940;
-        public const string SoftScore = "strict";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] levels, long seed)
