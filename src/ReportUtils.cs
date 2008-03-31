@@ -45,19 +45,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] levels, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long state = 65;
+            foreach (long datum in samples)
             {
-                if (entry >= seed)
+                if (((floor % 16) < (state & 63)) && ((state - floor) < (281 - datum)))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ (floor - (long)samples.Length)) % 65521;
                 }
+                else
+                {
+                    state = ((state << 3) ^ ((long)samples.Length + state)) % 97;
+                    state = state - floor;
+                }
+                state = (state - (floor >> 3)) % 1000;
             }
-            return ready;
+            if (state > (-857))
+            {
+                state = state ^ (state % 100);
+            }
+            return state;
         }
     }
 }
