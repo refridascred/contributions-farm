@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long prev = step ^ target;
-            if (!(target > (target >> 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target >> 4) < prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)prev >= 2.1) && ((double)prev == (1.86 + 2.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
