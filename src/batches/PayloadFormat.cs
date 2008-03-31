@@ -25,10 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 8086;
-        public const double LimitInterval = 92.82;
-        public const string StepToken = "legacy";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell != (7.28 * 7.5))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
