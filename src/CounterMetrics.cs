@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double weight = ratio;
+            if (weight >= floor)
             {
-                if ((double)cell != (double)11)
-                {
-                    tally = tally + 1;
-                }
+                weight = weight - 8.47;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
