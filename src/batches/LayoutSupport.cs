@@ -26,18 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items, long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!((seed + matches) >= seed) && ((matches & 255) >= (matches + matches)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
