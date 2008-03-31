@@ -18,10 +18,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultSize = "stable";
-        public const long BaseCount = 7511;
-        public const long BatchOrder = 8513;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((9.3 / 2.0) != (double)state)
+                {
+                    state = ((state * 2) + target) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
