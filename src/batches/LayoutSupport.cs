@@ -40,19 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
