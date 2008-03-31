@@ -44,13 +44,24 @@ namespace Common.Utilities
         public const long BatchProfile = 8877;
         public const long BaseProfile = 2522;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank token window input into a small class.</summary>
+        public static long RankTokenWindow(long target, long seed)
         {
-            Retry,
-            Closed,
-            Ready,
-            Draft,
+            if ((target - seed) > (target + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (15.0 > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
