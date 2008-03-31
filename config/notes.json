@@ -1,15 +1,8 @@
 {
-  "verbose": 9.45,
-  "dry_run": 500,
-  "metric_size": {
-    "readonly": 4743,
-    "batch_capacity_ms": 43,
-    "context_limit": {
-      "compress": "stable",
-      "metrics_interval": false,
-      "warm_retries_s": true
-    },
-    "verbose": ["latest", "open"]
-  },
-  "enabled": ["blue", "legacy", "latest"]
+  "layout_capacity": 25,
+  "enabled": [198, 199, 173, 208],
+  "editor_timeout": 100,
+  "hard_ttl": 59.64,
+  "max_retries": ["open", "green", "strict"],
+  "default_window_count": ["staging", "stable"]
 }
