@@ -20,20 +20,13 @@ namespace Common.Utilities
             return weight - (offset / 2.0);
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix - (30 ^ mix);
-                if ((((long)i * 4) < ((long)i - (long)i)) || ((16.0 - 5.73) > (double)mix))
-                {
-                    mix = mix - mix;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a payload header.</summary>
