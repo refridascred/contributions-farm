@@ -51,22 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Measure how many checks account samples are out of range.</summary>
+        public static long MeasureChecksAccountGaps(long[] readings)
         {
-            long score = 16;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((-503) >> 5) >= (cell - (-762)))
+                if ((double)datum >= (6.7 + 16.0))
                 {
-                    score = ((score << 2) ^ (cell - score)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
