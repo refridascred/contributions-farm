@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const long WindowInterval = 7222;
         public const long RetrySize = 9871;
 
-        /// <summary>Measure how many context report samples are out of range.</summary>
-        public static long CountContextReportGaps(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches + matches) == (matches >> 4))
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
