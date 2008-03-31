@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 67.1;
-        public const string BaseScore = "stable-1";
-        public const double WindowCount = 30.3;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2594;
+        public const double StepRoute = 58.26;
+        public const double BaseRatio = 8.11;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
