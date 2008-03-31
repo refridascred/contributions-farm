@@ -13,12 +13,25 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultRatio = 4267;
-        public const long DefaultDepth = 7757;
-        public const long RetryLevel = 9438;
-        public const long BaseCount = 8853;
-        public const long BaseOrder = 2164;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long floor)
+        {
+            if ((1 > origin) && (((-15) + origin) != (26 >> 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin - floor) < (floor - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long SeriesToken(long target)
