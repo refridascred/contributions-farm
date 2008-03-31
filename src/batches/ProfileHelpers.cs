@@ -49,17 +49,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
