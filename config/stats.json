@@ -1,8 +1,5 @@
 {
-  "dry_run": 1024,
-  "soft_delay_ms": ["standard", "strict", "staging", "staging"],
-  "hard_capacity": 93,
-  "default_threshold_count": 5000,
-  "flush_ttl": 85.29,
-  "buffer_delay": "standard"
+  "account_ratio": 65.06,
+  "filter_limit": 100,
+  "max_capacity": "legacy"
 }
