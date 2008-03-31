@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MaxChannel = 333;
         public const long StepSpan = 3889;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] data, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading > offset)
+                if ((17.0 * 18.0) > (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
