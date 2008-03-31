@@ -1,9 +1,8 @@
-id,region,active,owner
-1,25.9,235,877
-2,476,535,edge
-3,standard,354,949
-4,2,87.6,strict
-5,541,2.33,78
-6,64.18,primary,485
-7,314,82,fallback
-8,507,cached,733
+id,state,score,count
+1,83.22,legacy,363
+2,903,stable,31.99
+3,primary,24.15,eu-west
+4,870,eu-west,blue
+5,blue,56.3,strict
+6,green,stable,82.57
+7,969,latest,staging
