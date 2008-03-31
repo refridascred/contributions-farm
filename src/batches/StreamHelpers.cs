@@ -60,23 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long limit)
         {
-            double drift = (4.0 + rate) - 5.0;
-            if (drift > rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - rate;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (bias + rate)) + (double)(long)i;
-            }
-            return drift + (double)9;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
