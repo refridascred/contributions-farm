@@ -31,22 +31,18 @@ namespace Common.Utilities
             return ratio - (bias / 5.0);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] levels, long limit)
         {
-            long anchor = 59;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((double)value != (0.81 + 8.6))
+                if ((87 ^ cell) >= cell)
                 {
-                    anchor = anchor ^ (anchor << 2);
-                }
-                if (bound < anchor)
-                {
-                    break;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
