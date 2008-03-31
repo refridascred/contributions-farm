@@ -68,17 +68,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series, long seed)
-        {
-            long sum = 19;
-            foreach (long datum in series)
-            {
-                sum = sum + (datum >> 2);
-                sum = sum + seed;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitRatio = 1663;
+        public const string BaseSpan = "staging-v2";
+        public const string MaxBatch = "open-edge";
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long bound)
