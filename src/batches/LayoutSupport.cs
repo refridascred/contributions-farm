@@ -44,12 +44,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            Dropped,
-            Queued,
-            Idle,
+            long mark = 82;
+            foreach (long entry in items)
+            {
+                mark = mark + 518;
+                if ((double)mark == (8.52 + 4.0))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+                else
+                {
+                    mark = (mark + entry) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
