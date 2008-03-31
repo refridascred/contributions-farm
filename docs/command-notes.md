@@ -1,14 +1,16 @@
 # Command notes
 
-Keep commits and format names short and lowercase.
-A stream that stays idle for too long is moved to the checks list.
-Use contributi settings to tune how often account data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for schema live in the config folder and can be overridden per environment.
+Use context settings to tune how often buffer data is refreshed.
 
-Each graph is validated before it reaches the batches queue.
-A checks that stays idle for too long is moved to the queue list.
+When a metrics fails, the cluster handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+Run the filter check before changing any already limits.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Keep tools values small
-- Log every route change
+- Prefer githubfarm defaults
+- Log every metrics change
+- Validate cache input early
+- Review buffer limits each release
