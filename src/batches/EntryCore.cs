@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const long BurstSession = 9836;
         public const long DefaultSession = 2606;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] values)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count <= (count << 3))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
