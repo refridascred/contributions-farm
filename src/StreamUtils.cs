@@ -28,15 +28,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            double scale = bias + (double)813;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + (floor + bias)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale + (double)5;
+            return count;
         }
 
         /// <summary>Fold a list of layout cache readings.</summary>
