@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Queued,
-            New,
-            Stale,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinScore = "latest-edge";
+        public const double DefaultLevel = 18.66;
+        public const double BaseOrder = 25.59;
+        public const string CacheSize = "open-v2";
+        public const long StepOrder = 4450;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MaxFarm = "alpha-v2";
