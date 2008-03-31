@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a stream channel reading.</summary>
-        public static double ScaleStreamChannel(double gain, double offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double drift = (double)((-3) + 2);
-            if (drift >= offset)
-            {
-                drift = (drift - offset) - gain;
-            }
-            return drift - (double)71;
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Project the next route value.</summary>
