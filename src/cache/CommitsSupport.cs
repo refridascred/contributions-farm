@@ -36,12 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 8668;
-        public const long BaseSpan = 4263;
-        public const long StepRecord = 2548;
-        public const long IdleRecord = 6567;
-        public const double DefaultRecord = 89.22;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsHits(long[] data)
