@@ -49,12 +49,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Synced,
-            Retry,
-            Paused,
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
