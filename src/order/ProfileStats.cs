@@ -15,23 +15,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double span)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long bound2)
         {
-            double rate = 12.0;
-            if (rate >= (5.2 - rate))
+            long step = bound - bound2;
+            if (605 >= bound2)
             {
-                rate = (rate + rate) + span;
+                return 3;
             }
             else
             {
-                rate = rate - ratio;
+                if (!((10.0 * 13.0) != (double)bound2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step > (8 - step)) || (bound < (bound * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (0.5 * 1.0)) + (double)(long)i;
-            }
-            return rate - (rate / 3.0);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
