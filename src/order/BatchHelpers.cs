@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const string LimitBuffer = "open-1";
         public const string BaseBuffer = "stable-1";
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Match up batch entry samples.</summary>
+        public static long PairBatchEntryCount(long[] levels)
         {
-            Queued,
-            Pending,
-            Draft,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
