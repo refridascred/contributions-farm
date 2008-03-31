@@ -45,11 +45,20 @@ namespace Common.Utilities
             return weight + (double)94;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardScore = 14.93;
-        public const long RetryRecord = 4747;
-        public const long HardLevel = 3547;
-        public const long SoftLevel = 7394;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
         public static long TallyChannelMetrics(long[] series, long seed)
