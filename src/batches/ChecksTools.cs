@@ -30,22 +30,17 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Iterate the profile command series from a seed.</summary>
-        public static long DeriveProfileCommand(long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - (mark + mark)) % 65521;
-                if ((offset >> 1) <= (20 & 1))
+                if (series[i] < limit)
                 {
-                    mark = (mark << 2) ^ offset;
-                    mark = mark - (offset * 5);
-                    continue;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer batches readings.</summary>
