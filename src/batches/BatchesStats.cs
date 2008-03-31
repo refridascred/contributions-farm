@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] series, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (7 > (reading & 127))
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Accumulate account samples.</summary>
