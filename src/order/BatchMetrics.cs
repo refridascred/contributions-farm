@@ -34,18 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks account samples are out of range.</summary>
-        public static long MeasureChecksAccountGaps(long[] readings)
+        /// <summary>Count context profile pairs that satisfy a relation.</summary>
+        public static long OverlapContextProfileCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum >= (6.7 + 16.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two session measurements.</summary>
