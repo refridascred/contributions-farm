@@ -20,14 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Retry,
-            Locked,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5525;
+        public const long LimitGraph = 6103;
+        public const long StepGraph = 2701;
+        public const double BaseGraph = 8.38;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
