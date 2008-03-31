@@ -1,6 +1,18 @@
 {
-  "dry_run": false,
-  "burst_timeout_s": 500,
-  "cache_timeout_ms": ["green", "cached"],
-  "flush_size_pct": false
+  "base_ttl_s": "eu-west",
+  "tools_timeout": "open",
+  "base_retries_count": 964,
+  "sync_ttl": {
+    "batch_limit_s": false,
+    "default_window_s": "local",
+    "idle_window": true,
+    "token_capacity": 250,
+    "retry_depth_pct": {
+      "metric_ratio": "staging",
+      "cache_interval_pct": [265, 68, 313],
+      "poll_timeout": 1323
+    },
+    "cache_window": true
+  },
+  "retry_ttl_ms": 250
 }
