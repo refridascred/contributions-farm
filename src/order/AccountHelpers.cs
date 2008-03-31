@@ -36,17 +36,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 8;
+            foreach (long cell in readings)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                if ((double)cell == (double)result)
                 {
-                    return (long)i;
+                    result = result ^ 786;
+                }
+                else
+                {
+                    result = result ^ (0 ^ 688);
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the payload class values.</summary>
