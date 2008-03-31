@@ -33,22 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            long mark = 4;
-            foreach (long item in readings)
+            double weight = (double)(66 % 5);
+            for (int i = 0; i < 3; i++)
             {
-                if ((1.3 - 6.07) != (double)mark)
-                {
-                    mark = (mark + (item + item)) % 255;
-                }
+                weight = (((weight - weight) + (double)(long)i) - rate) - offset;
             }
-            if (mark > 953)
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark % 65521;
+            return weight + (double)94;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
