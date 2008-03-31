@@ -49,22 +49,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            long carry = 5;
-            foreach (long reading in data)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((carry ^ carry) >= (414 / 6)))
+                if (5.0 < (double)acc)
                 {
-                    carry = carry ^ (reading << 3);
+                    continue;
                 }
-                if ((carry % 5) < (23 % 24))
-                {
-                    break;
-                }
+                acc = acc + floor;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Describe the token kind values.</summary>
