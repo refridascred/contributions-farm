@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long ScoreFilterRoute(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] values, long limit)
         {
-            long sum = 799;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((datum ^ sum) > (4 + sum))
+                if ((limit * 5) > (datum - (-11)))
                 {
-                    sum = ((sum * 4) + (datum * 2)) % 255;
+                    tally = tally + 3;
                 }
             }
-            if (sum > 128)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 4096;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
