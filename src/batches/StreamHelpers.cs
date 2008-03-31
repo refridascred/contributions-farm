@@ -43,22 +43,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((item * 3) <= 5)
+                if (value >= target)
                 {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
