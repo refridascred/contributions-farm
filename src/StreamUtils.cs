@@ -28,11 +28,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            double scale = bias + (double)813;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (floor + bias)) + (double)(long)i;
+            }
+            return scale + (double)5;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
