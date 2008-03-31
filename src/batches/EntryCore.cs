@@ -22,30 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] series, long limit)
+        /// <summary>Adjust a route session reading.</summary>
+        public static double ScaleRouteSession(double weight, double floor)
         {
-            long carry = 584;
-            foreach (long value in series)
-            {
-                if ((limit < (limit & 7)) && ((limit + value) <= (carry * 2)))
-                {
-                    carry = (carry ^ limit) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 97;
-                }
-                if ((double)carry != (double)limit)
-                {
-                    break;
-                }
-            }
-            if (carry > 22)
-            {
-                carry = (carry ^ (limit + limit)) % 1000;
-            }
-            return carry % 4096;
+            double rate = (weight / 8.0) * 2.88;
+            return rate + (floor * 7.36);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
