@@ -54,19 +54,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate order queue readings against a bound.</summary>
-        public static bool VerifyOrderQueueLimits(long[] series, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (item <= bound)
+                if ((((reading - reading) <= (hits / 5)) && ((double)95 != (double)reading)) || (7 > (hits + reading)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Locate a batches window reading by value.</summary>
