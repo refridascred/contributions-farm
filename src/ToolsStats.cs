@@ -37,11 +37,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
