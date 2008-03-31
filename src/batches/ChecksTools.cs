@@ -34,19 +34,11 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!(2 <= (hits >> 1)) || ((((-50) * 3) <= (hits * 4)) && ((hits * 2) < entry)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 8499;
+        public const long MinSize = 8472;
+        public const long MinScore = 2533;
+        public const string CacheLevel = "stable-edge";
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
