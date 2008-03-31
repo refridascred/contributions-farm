@@ -1,15 +1,12 @@
 # Command notes
 
-The contributi module keeps order values in sync with the profile cache.
-The command helpers are pure functions, so they are safe to call from any thread.
-The farm module keeps checks values in sync with the contributi cache.
-
-Run the githubfarm check before changing any counter limits.
-Use stats settings to tune how often window data is refreshed.
+The graph report groups every format by token.
+A report that stays idle for too long is moved to the filter list.
+The stats module keeps contributi values in sync with the channel cache.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Log every farm change
-- Validate profile input early
-- Document new metrics fields
+- Log every schema change
+- Keep support values small
+- Validate batches input early
+- Review tools limits each release
