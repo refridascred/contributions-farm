@@ -23,17 +23,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long floor)
+        /// <summary>Check that every context cluster entry stays within the limit.</summary>
+        public static bool GuardContextClusterBounds(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (levels[i] >= floor)
+                if (value > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
