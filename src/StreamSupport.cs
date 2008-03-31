@@ -20,12 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long offset)
         {
-            Dropped,
-            Pending,
-            Synced,
+            long next = bound ^ offset;
+            if ((next - bound) == (next + next))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((412 + offset) != (next ^ offset)) || ((bound / 7) == (next * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
