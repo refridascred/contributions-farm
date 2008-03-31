@@ -27,22 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] items, long offset)
+        /// <summary>Check that every stats batches entry stays within the limit.</summary>
+        public static bool ValidateStatsBatchesBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((offset + offset) <= 673)
+                if (entry > target)
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
