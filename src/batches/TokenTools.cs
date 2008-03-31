@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double weight, double floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double weight2 = (double)(261 + 16);
-            if (weight2 < (weight2 + weight2))
-            {
-                weight2 = weight2 - weight;
-            }
-            else
-            {
-                weight2 = weight2 + (floor * 0.69);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (17.0 - weight)) + (double)(long)i;
-            }
-            return weight2 - (floor + floor);
+            Idle,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
