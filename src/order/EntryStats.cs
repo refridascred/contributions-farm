@@ -48,14 +48,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long target)
         {
-            Locked,
-            Paused,
-            Retry,
-            New,
-            Dropped,
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)(long)i >= (double)target)
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a order counter forward.</summary>
