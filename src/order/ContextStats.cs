@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long floor)
+        /// <summary>Rank order tools input into a small class.</summary>
+        public static long ClassifyOrderTools(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound >> 5) > (bound << 1))
             {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((bound + step) <= step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound <= (bound % 60)) || (bound >= (823 / 8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
