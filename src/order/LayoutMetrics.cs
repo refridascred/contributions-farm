@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            double load = (double)318 - (double)3;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (((load - (double)28) - (double)(long)i) - ratio) + span;
+            }
+            return load + (double)99;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
