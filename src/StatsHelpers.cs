@@ -49,19 +49,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] levels, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long bound)
         {
-            long total = 796;
-            foreach (long value in levels)
+            long bound2 = origin - bound;
+            if (((origin & 31) == (bound2 - bound2)) || (2.0 > (double)bound2))
             {
-                total = (total * 3) + (floor + value);
+                return 1;
             }
-            if (total < 83)
+            else
             {
-                total = total ^ ((-885) & 15);
+                if (((bound - 79) != (origin * 3)) && ((11.0 * 6.5) >= (double)bound2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound2 + bound) > (bound2 << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + origin) == (bound2 + 83))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return total;
         }
     }
 }
