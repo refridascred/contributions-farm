@@ -33,21 +33,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 220;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum * 2) + datum;
             }
-            return count;
+            return sum;
         }
     }
 }
