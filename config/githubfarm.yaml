@@ -1,8 +1,23 @@
 # githubfarm settings
-commits_interval: 44.75
-max_depth_count: 88.44
-editor_size:
-  - standard
-  - edge
-  - fallback
-soft_delay: 5541
+compress:
+  poll_ratio: 60
+  poll_capacity: 100
+  cluster_limit: 7928
+  default_capacity:
+    - 240
+    - 152
+    - 403
+  window_retries: true
+order_window:
+  cache_retries: cached
+  batch_retries: latest
+  default_interval_count:
+    - 456
+    - 111
+    - 370
+  metric_window: true
+  burst_retries: 7.1
+contributi_window: 500
+min_size_ms: 21
+enabled: 1024
+hard_timeout_ms: 37.3
