@@ -34,21 +34,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)anchor <= (double)step))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (step & 31)) % 255;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
