@@ -33,13 +33,11 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            double rate = gain * 3.6;
+            return (rate - (gain / 4.0)) + offset;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
