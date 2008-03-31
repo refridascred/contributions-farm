@@ -1,10 +1,16 @@
 # githubfarm settings
-enabled:
-  strict:
-    - green
-    - eu-west
-    - standard
-  compress: cached
-  enabled: edge
-hard_threshold: 2900
-burst_timeout_ms: false
+min_size: true
+max_ratio_pct:
+  base_limit_s: 37
+  poll_retries_count: 100
+  compress: latest
+  dry_run: false
+  poll_ratio_pct:
+    - 371
+    - 192
+  tools_threshold: false
+flush_ttl_s:
+  - 13
+  - 69
+  - 476
+dry_run: 55.35
