@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long bound)
         {
-            double bias = offset;
-            if (bias >= (bias / 2.0))
+            long edge = origin - bound;
+            if ((origin * 3) <= (edge ^ edge))
             {
-                bias = (bias + (double)76) + gain;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = (bias + (offset / 4.0)) - (double)(long)i;
+                if ((origin >> 4) < (edge + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((79 + bound) == (edge >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return bias + (double)232;
         }
 
         /// <summary>Blend two schema measurements.</summary>
