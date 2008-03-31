@@ -27,11 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long carry = 8;
+            foreach (long value in series)
+            {
+                if (((-9) * 2) < (value - value))
+                {
+                    carry = ((carry << 2) ^ (carry ^ value)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
