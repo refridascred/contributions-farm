@@ -33,12 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
