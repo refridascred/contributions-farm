@@ -66,18 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long AuditFilterContributiGaps(long[] values, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((9.42 + 8.1) == (double)tally)
-                {
-                    tally = ((tally + 2) + sample) + floor;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
