@@ -1,6 +1,5 @@
 {
-  "cache_retries_count": 7665,
-  "poll_interval_pct": 60,
-  "tools_ratio": false,
-  "context_window": 44.45
+  "sync_delay_ms": "green",
+  "flush_limit_count": ["staging", "fallback"],
+  "max_size": 100
 }
