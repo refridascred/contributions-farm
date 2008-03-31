@@ -64,17 +64,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 1902;
+        public const long BatchWidth = 7836;
+        public const long DefaultInterval = 858;
+        public const string IdleFilter = "cached";
+        public const long StepSize = 4219;
     }
 }
