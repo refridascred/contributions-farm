@@ -60,22 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long score = -1;
-            foreach (long item in data)
-            {
-                if ((bound >> 1) >= score)
-                {
-                    score = score + bound;
-                }
-                if ((bound < item) && ((bound ^ (long)data.Length) <= bound))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
