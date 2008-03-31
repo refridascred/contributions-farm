@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)(long)i > (2.0 - 5.0))
-                {
-                    acc = (acc - (650 - acc)) % 101;
-                    acc = (acc * 4) + (acc + acc);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
