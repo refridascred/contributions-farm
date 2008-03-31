@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache commits entries that pass the check.</summary>
-        public static long CountCacheCommitsMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((1.0 - 2.8) > (8.04 - 9.0))
-                {
-                    seen = ((seen + 1) ^ entry) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 5136;
+        public const long MaxDepth = 6413;
+        public const long IdleDepth = 6862;
+        public const long LimitOrder = 7528;
+        public const long RetryOrder = 761;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
