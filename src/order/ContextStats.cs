@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 453;
+            foreach (long value in data)
             {
-                if (samples[i] == origin)
+                anchor = anchor ^ (origin * 2);
+                if ((double)origin > (double)value)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + 1) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
