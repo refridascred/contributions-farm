@@ -43,12 +43,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long step, long floor)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long lane = step + floor;
+            if ((0 << 1) > lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if (step <= 662)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >> 2) > 4)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
