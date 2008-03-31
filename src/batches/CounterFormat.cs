@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] readings, long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate account samples.</summary>
