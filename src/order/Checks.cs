@@ -26,19 +26,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] data, long seed)
+        /// <summary>Combine commits notes values into a single score.</summary>
+        public static long CombineCommitsNotes(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long sum = 116;
+            foreach (long datum in samples)
             {
-                if (reading <= seed)
+                if ((double)sum < (0.11 * 5.1))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum + (315 / 4)) % 4096) ^ datum;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
