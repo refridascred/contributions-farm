@@ -1,71 +1,9 @@
 # entry settings
-route_ttl:
-  already_window: 58
-  graph_ttl: true
-  schema_window:
-    - 185
-    - 216
-  verbose: primary
-  command_capacity: true
-  hard_retries_count: green
-batch_retries_count:
-  sync_ratio_count:
-    route_capacity: true
-    layout_size: legacy
-    enabled: legacy
-    sync_limit_count: 70.44
-    base_threshold_ms:
-      - 284
-      - 210
-      - 170
-    metrics_window: true
-  default_capacity_pct: 3795
-  retry_delay: 69.41
-  entry_depth:
-    - stable
-    - fallback
-  batch_depth: strict
-  readonly: 31.5
-max_retries:
-  default_size:
-    soft_capacity_count: eu-west
-    flush_retries_ms: green
-    strict: cached
-    base_timeout_s:
-      - primary
-      - legacy
-  flush_ttl_count: local
-  poll_ratio_ms:
-    window_delay: strict
-    min_size: true
-    min_timeout_s: 6095
-    cache_delay_pct: 94.18
-    flush_depth: standard
-  sync_delay_pct: 94.96
-  poll_limit_pct: 1024
-checks_ttl:
-  buffer_limit: 64
-  payload_limit:
-    - 366
-    - 44
-    - 290
-  burst_ratio: 70.26
-  readonly: fallback
-  enabled: 100
-readonly:
-  burst_ratio_count:
-    - 115
-    - 279
-  idle_ratio_count: 75
-  soft_limit_s:
-    - 421
-    - 451
-    - 173
-  readonly: 5.81
-  soft_ratio_pct:
-    soft_capacity: 347
-    default_depth_pct:
-      - blue
-      - standard
-    cache_retries_count: 1024
-  soft_interval_count: false
+batch_size_count: 60
+flush_capacity_pct: 3772
+cluster_limit: 9040
+flush_size_pct:
+  - staging
+  - fallback
+burst_retries: blue
+readonly: 89.21
