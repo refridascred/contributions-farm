@@ -17,18 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long value in data)
             {
-                if ((double)value != (3.1 / 9.0))
+                if ((10.0 - 20.0) > (double)value)
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine stats filter values into a single score.</summary>
