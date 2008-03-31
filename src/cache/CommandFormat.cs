@@ -19,12 +19,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinScore = "latest-edge";
-        public const double DefaultLevel = 18.66;
-        public const double BaseOrder = 25.59;
-        public const string CacheSize = "open-v2";
-        public const long StepOrder = 4450;
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool ValidateFilterPayloadRange(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MaxFarm = "alpha-v2";
