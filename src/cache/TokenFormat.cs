@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] items)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen > (seen * 4))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
