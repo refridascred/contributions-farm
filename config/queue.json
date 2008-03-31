@@ -1,15 +1,6 @@
 {
-  "enabled": 2681,
-  "persist": {
-    "retry_interval_count": true,
-    "commits_window": "latest",
-    "poll_window_ms": 100
-  },
-  "sync_window": true,
-  "format_capacity": {
-    "burst_delay_count": 500,
-    "warm_retries": "open",
-    "githubfarm_retries": 30,
-    "verbose": "standard"
-  }
+  "soft_timeout_ms": 42,
+  "cache_delay": 72.3,
+  "min_delay_pct": ["edge", "stable"],
+  "min_threshold_pct": "cached"
 }
