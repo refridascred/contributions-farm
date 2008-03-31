@@ -39,17 +39,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 6413;
+        public const double BaseSize = 88.28;
+        public const long BatchRatio = 8565;
+        public const long CacheCluster = 1213;
+        public const double WindowCluster = 11.83;
     }
 }
