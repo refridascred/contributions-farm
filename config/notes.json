@@ -1,13 +1,6 @@
 {
-  "payload_delay": {
-    "route_delay": ["primary", "fallback", "stable"],
-    "hard_capacity_ms": ["blue", "latest"],
-    "idle_size_pct": "open",
-    "retry_threshold_pct": true,
-    "soft_retries_count": 26.33,
-    "dry_run": 19.18
-  },
-  "channel_size": false,
-  "max_depth": 0.75,
-  "poll_threshold_s": 2633
+  "cache_window": 50,
+  "dry_run": "legacy",
+  "verbose": "strict",
+  "contributi_timeout": "eu-west"
 }
