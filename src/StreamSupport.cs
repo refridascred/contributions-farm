@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every cache filter entry stays within the limit.</summary>
-        public static bool CheckCacheFilterRange(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8080;
+        public const double MaxRatio = 14.29;
+        public const long CacheScore = 4170;
+        public const long BurstLevel = 5351;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long bound, long offset)
