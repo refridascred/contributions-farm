@@ -19,17 +19,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] levels, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ ((-92) * 2);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
