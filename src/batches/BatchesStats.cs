@@ -28,11 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long total = 52;
+            foreach (long item in samples)
+            {
+                if (((item & 31) < total) || (((long)samples.Length << 2) <= 1))
+                {
+                    total = (total ^ (total ^ item)) % 97;
+                }
+            }
+            if (total < 785)
+            {
+                total = (total + (total ^ 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
