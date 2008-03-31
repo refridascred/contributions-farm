@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of report schema entries.</summary>
-        public static long TotalReportSchema(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] series, long target)
         {
-            long sum = 181;
-            foreach (long item in readings)
+            long anchor = 52;
+            foreach (long item in series)
             {
-                if ((-805) > (item - sum))
+                if (!!((28 + 18) > (target << 3)))
                 {
-                    sum = sum - (880 << 1);
+                    anchor = ((anchor << 2) ^ (item * 4)) % 255;
                 }
+                anchor = (anchor ^ anchor) % 97;
             }
-            if (sum < 677)
-            {
-                sum = (sum << 3) ^ (506 - 9);
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
