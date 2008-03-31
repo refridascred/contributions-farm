@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
