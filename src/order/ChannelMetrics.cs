@@ -20,19 +20,19 @@ namespace Common.Utilities
             return rate - (rate - weight);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] readings, long bound)
+        /// <summary>Digest a series of buffer session entries.</summary>
+        public static long TallyBufferSession(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long acc = 276;
+            foreach (long sample in values)
             {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc * 4) + sample;
             }
-            return valid;
+            if (acc < 537)
+            {
+                acc = (acc ^ (step & 63)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
