@@ -29,16 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long score = 49;
+            foreach (long datum in data)
             {
-                total = (total * 3) + (7 + total);
-                total = ((total * 2) + (long)i) % 65521;
+                score = ((score - (score - score)) % 97) + datum;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
