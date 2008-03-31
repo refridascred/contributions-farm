@@ -37,11 +37,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxDepth = "open-1";
-        public const long CacheBudget = 859;
-        public const double MaxReport = 78.76;
-        public const string StepReport = "legacy-1";
-        public const long WindowReport = 1171;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardLevel = 39.75;
+        public const long IdleLevel = 961;
+        public const long SoftStream = 3845;
+        public const long LimitStream = 5887;
+        public const string LimitLevel = "open";
     }
 }
