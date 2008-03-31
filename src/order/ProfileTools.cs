@@ -56,9 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepLevel = "local-edge";
-        public const long RetrySession = 7803;
-        public const double SoftSession = 37.25;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)target > 5.6)
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
