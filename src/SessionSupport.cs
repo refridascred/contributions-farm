@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long DigestStatsAccount(long[] values)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mark = 2;
-            foreach (long sample in values)
-            {
-                mark = (mark * 5) + (sample ^ mark);
-            }
-            return mark % 1000;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
