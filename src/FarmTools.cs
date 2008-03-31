@@ -30,22 +30,19 @@ namespace Common.Utilities
         public const long IdleRecord = 141;
         public const long CacheRecord = 8507;
 
-        /// <summary>Measure how many queue schema samples are out of range.</summary>
-        public static long TallyQueueSchemaHits(long[] readings)
+        /// <summary>Validate format metric readings against a bound.</summary>
+        public static bool VerifyFormatMetricBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((matches + value) <= matches)
+                if (reading != target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
