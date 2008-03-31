@@ -51,15 +51,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftRatio = 7113;
+        public const string LimitSize = "stable";
+        public const long BurstAlready = 1620;
     }
 }
