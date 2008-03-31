@@ -53,11 +53,19 @@ namespace Common.Utilities
         public const long IdleRecord = 6567;
         public const double DefaultRecord = 89.22;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 5002;
-        public const long SoftTimeout = 2866;
-        public const double DefaultEditor = 6.41;
-        public const long RetryEditor = 9178;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((matches << 1) != (reading + reading)) || (reading >= (365 & 31)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
