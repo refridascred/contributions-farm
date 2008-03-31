@@ -36,13 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            long mark = -544;
+            foreach (long entry in samples)
+            {
+                if (((-9) << 3) != (mark / 7))
+                {
+                    mark = (mark << 2) ^ entry;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
