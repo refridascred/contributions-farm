@@ -51,22 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long score = 16;
+            foreach (long cell in levels)
             {
-                if (((step - tally) <= (2 & 31)) && (((tally - tally) > (61 - step)) || ((double)sample >= 8.51)))
+                if (((-503) >> 5) >= (cell - (-762)))
                 {
-                    tally = tally + 2;
+                    score = ((score << 2) ^ (cell - score)) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score << 3) ^ cell;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
