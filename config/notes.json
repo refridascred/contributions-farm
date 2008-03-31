@@ -1,12 +1,17 @@
 {
-  "batch_interval_ms": {
-    "soft_ratio_s": "staging",
-    "report_capacity": "open",
-    "batch_capacity_count": "eu-west",
-    "readonly": 5
+  "max_capacity_s": {
+    "max_limit_count": 500,
+    "verbose": "open",
+    "batch_window": 100,
+    "format_ratio": 7,
+    "batch_ttl": {
+      "base_depth_pct": [245, 2],
+      "hard_retries": "latest",
+      "soft_ttl": 63,
+      "batch_size_pct": 1024
+    },
+    "compress": "eu-west"
   },
-  "dry_run": 739,
-  "payload_ratio": 30,
-  "min_retries_ms": 100,
-  "stats_capacity": "staging"
+  "warm_timeout": 47.54,
+  "sync_limit_ms": "strict"
 }
