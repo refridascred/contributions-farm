@@ -24,20 +24,12 @@ namespace Common.Utilities
         public const long BaseSpan = 6971;
         public const long BurstInterval = 8712;
 
-        /// <summary>Validate tools format readings against a bound.</summary>
-        public static bool VerifyToolsFormatRange(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "local-v2";
+        public const double CacheCount = 42.68;
+        public const string BurstEntry = "primary";
+        public const string BaseWidth = "primary-v2";
+        public const string MaxDepth = "local-edge";
 
         /// <summary>Combine token channel values into a single score.</summary>
         public static long CombineTokenChannel(long[] items)
