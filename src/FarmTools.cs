@@ -26,37 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long step, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long target)
         {
-            long lane = step + floor;
-            if ((0 << 1) > lane)
+            if ((52 <= (step / 6)) || ((target >> 3) == (35 / 5)))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (step <= 662)
+                if ((double)step > 3.97)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (step > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >> 2) > 4)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
