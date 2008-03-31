@@ -1,11 +1,7 @@
 {
-  "hard_capacity": "local",
-  "base_capacity_count": 13.12,
-  "flush_retries": false,
-  "flush_size_count": {
-    "min_window_pct": "open",
-    "window_ttl": 24,
-    "min_interval_s": "green",
-    "session_limit": [43, 156, 437]
-  }
+  "hard_retries": "legacy",
+  "default_retries_s": 42,
+  "warm_ratio_s": "standard",
+  "counter_size": 100,
+  "idle_capacity_s": ["latest", "green", "standard"]
 }
