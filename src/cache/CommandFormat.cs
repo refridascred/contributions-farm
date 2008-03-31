@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long RollCacheEditor(long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor ^ (offset / 9)) % 255;
-                if (((double)anchor > (5.13 + 4.45)) || (((long)i & 15) > (anchor / 4)))
-                {
-                    anchor = (anchor * 2) + offset;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
