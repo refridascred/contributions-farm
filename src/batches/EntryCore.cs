@@ -51,12 +51,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
