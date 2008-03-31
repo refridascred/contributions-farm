@@ -33,10 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 9839;
-        public const string HardSupport = "legacy-1";
-        public const long MaxRatio = 8461;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] items)
