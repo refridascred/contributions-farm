@@ -18,15 +18,10 @@ namespace Common.Utilities
         public const double SoftScore = 57.2;
         public const long SoftWidth = 5992;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double rate, double offset)
-        {
-            double ratio = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio - 7.0) + (double)(long)i) + rate;
-            }
-            return ratio - (offset / 2.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 37.31;
+        public const string MinRatio = "alpha-edge";
+        public const long RetryAlready = 2906;
+        public const double BaseAlready = 51.99;
     }
 }
