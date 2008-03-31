@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cluster batches entries that pass the check.</summary>
-        public static long CountClusterBatchesGaps(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((double)cell >= (0.1 + 5.2))
+                if (reading > seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
