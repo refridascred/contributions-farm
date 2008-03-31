@@ -37,13 +37,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Draft,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxDepth = 1142;
+        public const double DefaultSpan = 44.23;
+        public const long StepCount = 9359;
+        public const double MinScore = 11.32;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long offset)
