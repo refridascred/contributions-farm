@@ -1,16 +1,14 @@
 # githubfarm settings
-account_ratio: 6122
-burst_capacity: false
-idle_interval:
-  max_ttl_count:
-    - local
-    - green
-    - legacy
-  idle_threshold_pct:
-    - blue
-    - stable
-  persist: 4640
-batch_retries: false
-default_depth_s:
-  - primary
-  - local
+burst_retries_ms:
+  report_capacity:
+    retry_capacity_pct: 98.96
+    poll_ttl_pct: true
+    batch_retries: 35
+    compress: false
+    max_limit_s: 60
+    verbose: green
+  warm_size_s: 500
+  min_threshold_s: primary
+contributi_window: staging
+retry_size_s: 500
+idle_window: false
