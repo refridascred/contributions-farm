@@ -1,10 +1,10 @@
 # githubfarm settings
-hard_capacity:
-  burst_limit_s: blue
-  hard_capacity: 3662
-  compress:
-    - 495
-    - 327
-    - 117
-audit: true
-tools_window: 6684
+min_depth_pct: 15
+commits_depth: false
+editor_retries: 16
+strict:
+  - blue
+  - latest
+  - eu-west
+readonly: false
+max_ratio: 35.32
