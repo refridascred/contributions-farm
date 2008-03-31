@@ -41,23 +41,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Locate a format token reading by value.</summary>
+        public static long LocateFormatTokenIndex(long[] levels, long bound)
         {
-            long score = 9;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ (sample + sample)) % 4096;
-                if ((score << 2) >= (score - score))
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 2)
-            {
-                score = ((score * 3) + score) % 4096;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
