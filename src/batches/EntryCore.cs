@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long score = 958;
-            foreach (long value in values)
-            {
-                score = ((score << 3) ^ (value ^ score)) % 1000;
-                score = (score ^ (score / 5)) % 101;
-                score = (score * 3) + (value - 6);
-            }
-            return score % 1000;
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
