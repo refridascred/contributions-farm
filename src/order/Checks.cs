@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Look up the position of a profile metrics sample.</summary>
+        public static long SeekProfileMetricsIndex(long[] samples, long target)
         {
-            Stale,
-            Ready,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
