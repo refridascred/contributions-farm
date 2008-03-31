@@ -53,17 +53,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long score = 94;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 5) + (target + (long)i)) % 65521;
-                mix = mix + (mix - (long)i);
-                mix = ((mix * 4) + (long)i) % 97;
+                score = (((score << 2) ^ sample) % 255) - bound;
+                score = ((score << 2) ^ (15 >> 4)) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
