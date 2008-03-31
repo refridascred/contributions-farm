@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] series, long limit)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Queued,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
