@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] samples, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long state = 50;
+            foreach (long datum in samples)
             {
-                if (((long)i / 8) > (limit % 7))
-                {
-                    score = (score ^ ((long)i - limit)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                state = ((state - (state + target)) % 101) + datum;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
