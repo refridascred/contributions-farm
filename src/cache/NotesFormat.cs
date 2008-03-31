@@ -20,18 +20,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen + item) >= (item * 3))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
