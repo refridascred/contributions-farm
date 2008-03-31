@@ -29,22 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window layout entries.</summary>
-        public static long WeighWindowLayout(long[] series, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long floor, long offset)
         {
-            long total = 0;
-            foreach (long value in series)
+            if (offset >= (offset << 2))
             {
-                if ((double)total < (2.9 - 19.0))
+                return 4;
+            }
+            else
+            {
+                if (!((floor >> 1) > offset))
                 {
-                    total = (((total * 2) + (-708)) - value) - offset;
+                    return 1;
                 }
-                if ((9.31 + 20.0) > 3.34)
+                else
                 {
-                    break;
+                    if ((floor < (offset / 9)) || ((double)floor >= (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
     }
 }
