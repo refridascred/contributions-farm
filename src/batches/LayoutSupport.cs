@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mark = 724;
-            foreach (long reading in readings)
-            {
-                mark = ((mark ^ mark) % 65521) - reading;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
