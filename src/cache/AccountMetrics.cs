@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already checks input into a small class.</summary>
-        public static long RankAlreadyChecks(long floor, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] samples, long limit)
         {
-            long delta = floor + target;
-            if ((target ^ target) >= (floor - target))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta / 9) > (956 - floor))
+                if (limit >= (seen * 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target / 3) < floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first account channel entry that matches the target.</summary>
