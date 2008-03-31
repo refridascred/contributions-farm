@@ -24,11 +24,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseCount = 3168;
-        public const double BaseTimeout = 13.66;
-        public const long DefaultRoute = 5123;
-        public const double SoftSize = 43.23;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
