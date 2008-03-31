@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long sum = 155;
+            foreach (long item in data)
+            {
+                sum = (sum + (0 + sum)) % 1000;
+                if ((sum - sum) >= item)
+                {
+                    sum = sum ^ (sum >> 3);
+                }
+            }
+            if (sum > 3)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a record record.</summary>
