@@ -1,15 +1,10 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the counter list.
-The farm report groups every window by stream.
-
-Run the cache check before changing any queue limits.
-A queue that stays idle for too long is moved to the report list.
-The commits module keeps batch values in sync with the farm cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Run the cache check before changing any channel limits.
 
 ## Guidelines
 
+- Validate stats input early
+- Review cluster limits each release
 - Log every record change
-- Validate support input early
-- Keep cluster values small
-- Prefer command defaults
