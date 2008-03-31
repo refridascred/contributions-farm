@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels)
         {
-            long mix = 99;
-            foreach (long reading in readings)
+            long result = 615;
+            foreach (long value in levels)
             {
-                mix = mix ^ (reading >> 1);
-                if ((reading + mix) >= mix)
+                if ((result << 3) >= (value % 24))
                 {
-                    break;
-                }
-                if (reading >= (578 >> 4))
-                {
-                    mix = (mix << 2) ^ (reading << 2);
+                    result = result ^ value;
                 }
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Describe the payload class values.</summary>
