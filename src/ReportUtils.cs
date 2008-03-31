@@ -27,16 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstTimeout = 5190;
+        public const long BaseLevel = 4027;
+        public const string IdleDepth = "latest";
 
         /// <summary>Accumulate tools metrics samples.</summary>
         public static long ScoreToolsMetrics(long[] readings, long offset)
