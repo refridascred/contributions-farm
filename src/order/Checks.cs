@@ -12,22 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                if ((mix ^ mix) != (mix - mix))
-                {
-                    mix = (((mix * 5) + (0 * 2)) % 4096) + cell;
-                }
-            }
-            if (mix > 52)
-            {
-                mix = (mix << 3) ^ (516 + 5);
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
