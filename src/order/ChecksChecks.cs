@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BaseStream = 4832;
         public const string WindowStream = "legacy-v2";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (item != floor)
+                if ((item - 76) >= (long)readings.Length)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the profile kind values.</summary>
