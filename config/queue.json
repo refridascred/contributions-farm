@@ -1,6 +1,6 @@
 {
-  "max_size_s": 100,
-  "default_limit": false,
-  "enabled": false,
-  "hard_size": 39.47
+  "burst_size": false,
+  "channel_depth": "stable",
+  "commits_timeout": true,
+  "max_limit_count": "latest"
 }
