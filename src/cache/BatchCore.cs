@@ -26,10 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 9267;
-        public const long IdleInterval = 5679;
-        public const long DefaultCommits = 1488;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
