@@ -61,21 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Fold a list of tools metrics readings.</summary>
+        public static long WeighToolsMetrics(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 9;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc * 2) <= (58 / 8))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                acc = ((acc + (long)data.Length) % 255) + reading;
             }
-            return matches;
+            return acc % 4096;
         }
     }
 }
