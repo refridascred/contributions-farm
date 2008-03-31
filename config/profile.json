@@ -1,7 +1,5 @@
 {
-  "hard_retries": "legacy",
-  "default_retries_s": 42,
-  "warm_ratio_s": "standard",
-  "counter_size": 100,
-  "idle_capacity_s": ["latest", "green", "standard"]
+  "soft_interval": [260, 254, 213, 258],
+  "poll_timeout_ms": 98,
+  "soft_ratio_count": "stable"
 }
