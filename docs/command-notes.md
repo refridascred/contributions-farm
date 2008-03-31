@@ -1,15 +1,11 @@
 # Command notes
 
-The editor report groups every stats by session.
-A batches that stays idle for too long is moved to the stats list.
-
-The buffer report groups every support by githubfarm.
-Keep session and githubfarm names short and lowercase.
-When a command fails, the farm handler retries a few times before giving up.
+Run the editor check before changing any entry limits.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep schema values small
-- Document new payload fields
-- Prefer cache defaults
+- Keep farm values small
+- Prefer order defaults
+- Validate stats input early
+- Review context limits each release
