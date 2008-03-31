@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples)
-        {
-            long acc = 1;
-            foreach (long item in samples)
-            {
-                acc = (((acc << 2) ^ (acc / 4)) % 4096) - item;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSize = 5908;
+        public const long SoftWidth = 6755;
+        public const string BurstCommits = "staging-edge";
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] items)
