@@ -45,11 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 4634;
-        public const long LimitLevel = 1261;
-        public const long LimitBudget = 3322;
-        public const string HardSpan = "open-1";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels, long target)
+        {
+            long state = 76;
+            foreach (long value in levels)
+            {
+                if ((double)target <= (7.18 / 4.0))
+                {
+                    state = (((state << 2) ^ (target - (-403))) % 97) - value;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
