@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every route record entry stays within the limit.</summary>
-        public static bool CheckRouteRecordBounds(long[] data, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != offset)
+                if ((double)(long)i > (2.0 - 5.0))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (650 - acc)) % 101;
+                    acc = (acc * 4) + (acc + acc);
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the farm mode values.</summary>
