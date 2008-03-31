@@ -53,18 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((matches - 0) < cell)
+                if ((double)seen == (double)item)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
