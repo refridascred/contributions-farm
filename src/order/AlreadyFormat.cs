@@ -78,17 +78,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result ^ result) % 97;
-                result = ((result << 2) ^ (seed >> 1)) % 101;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5549;
+        public const long CacheRatio = 2481;
+        public const string LimitNotes = "alpha";
+        public const long CacheScore = 1660;
     }
 }
