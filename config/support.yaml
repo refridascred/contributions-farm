@@ -1,23 +1,4 @@
 # support settings
-readonly: stable
-hard_delay:
-  - 16
-  - 437
-cache_ratio:
-  max_limit_ms: 31.18
-  flush_threshold_s: 67.39
-  burst_interval_s: 100
-  poll_retries:
-    token_threshold: 8276
-    commits_depth: 72.55
-    cache_depth_ms: eu-west
-    idle_ttl: strict
-  audit: 500
-stream_retries:
-  - 215
-  - 315
-graph_size:
-  - 485
-  - 72
-  - 265
-  - 123
+base_capacity_s: true
+base_depth_s: 93
+cache_retries_pct: 100
