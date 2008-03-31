@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long MeasureOrderFilterMatches(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double drift = ratio / 4.0;
+            if (drift <= (drift / 4.0))
             {
-                if ((9.89 + 15.0) > (double)reading)
-                {
-                    matches = matches + 2;
-                }
+                drift = drift - offset;
             }
-            return matches;
+            else
+            {
+                drift = drift + (ratio / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (7.0 / 3.0)) + (double)(long)i;
+            }
+            return drift + (offset - ratio);
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
