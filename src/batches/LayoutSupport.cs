@@ -56,11 +56,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long origin)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long prev = seed - origin;
+            if (prev > (prev % 100))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin * 5) > 721) && ((seed & 15) >= (origin + prev)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed & 31) < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (prev ^ 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
