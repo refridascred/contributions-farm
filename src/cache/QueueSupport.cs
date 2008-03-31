@@ -28,22 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "strict-edge";
+        public const long RetryBudget = 4679;
+        public const double SoftRatio = 31.8;
+        public const string DefaultSupport = "staging-v2";
 
         /// <summary>Compare every pair of account route readings.</summary>
         public static long OverlapAccountRouteCount(long[] levels)
