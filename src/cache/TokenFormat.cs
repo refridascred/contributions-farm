@@ -23,19 +23,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every context cluster entry stays within the limit.</summary>
-        public static bool GuardContextClusterBounds(long[] levels, long step)
+        /// <summary>Iterate the commits context series from a seed.</summary>
+        public static long DeriveCommitsContext(long origin)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry - ((long)i % 100)) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
     }
 }
