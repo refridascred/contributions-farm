@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double ratio, double bias)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            double weight = bias * 20.0;
-            if (weight <= (double)7)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                weight = (weight + (weight + 5.0)) + ratio;
+                sum = sum - (target / 6);
+                if ((target - target) != ((long)i + sum))
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return weight + bias;
+            return sum;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
