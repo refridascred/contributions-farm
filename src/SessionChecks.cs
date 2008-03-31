@@ -13,13 +13,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Synced,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinDepth = 6408;
+        public const long BaseSpan = 6971;
+        public const long BurstInterval = 8712;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] series)
