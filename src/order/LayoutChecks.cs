@@ -75,11 +75,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
