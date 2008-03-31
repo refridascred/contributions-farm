@@ -1,7 +1,7 @@
-id,token,level
-1,850,latest
-2,88.35,828
-3,440,staging
-4,80.8,131
-5,cached,37.95
-6,primary,905
+id,token,active
+1,eu-west,943
+2,74.26,77.11
+3,322,860
+4,fallback,67.23
+5,258,local
+6,53.74,60.85
