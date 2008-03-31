@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long CountMetricMetricsHits(long[] levels, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (4.64 * 15.0))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
