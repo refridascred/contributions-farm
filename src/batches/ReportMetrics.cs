@@ -29,15 +29,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
         {
-            long total = 27;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total << 2) ^ (699 << 2)) % 101) + value;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
