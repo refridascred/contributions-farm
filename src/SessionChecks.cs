@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] levels, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
