@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result * 5) + offset;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultScore = 28.79;
+        public const long StepContributi = 1300;
+        public const long RetryContributi = 8326;
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double weight, double bias)
