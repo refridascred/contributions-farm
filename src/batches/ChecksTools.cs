@@ -45,18 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of buffer batches readings.</summary>
-        public static long FoldBufferBatches(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items)
         {
-            long acc = 30;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!((4.6 / 5.0) < (double)entry))
+                if ((double)matches > (16.0 / 5.0))
                 {
-                    acc = acc ^ (acc >> 3);
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
