@@ -48,19 +48,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] samples, long floor)
         {
-            double load = ratio + 8.1;
-            if (load <= (13.0 + load))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - load) - bias;
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (ratio / 7.0)) + (double)(long)i;
-            }
-            return load + (double)3;
+            return -1;
         }
     }
 }
