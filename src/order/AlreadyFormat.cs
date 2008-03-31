@@ -26,13 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many entry token samples are out of range.</summary>
+        public static long MeasureEntryTokenGaps(long[] items, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) != (entry % 16))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
