@@ -62,15 +62,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long CountSupportQueueGaps(long[] readings, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((613 >> 4) == (item % 16))
+                {
+                    tally = (tally + 1) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
