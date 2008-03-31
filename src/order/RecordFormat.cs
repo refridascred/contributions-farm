@@ -51,23 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long TallyOrderToolsOutliers(long[] samples, long limit)
         {
-            long sum = 602;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if (seen > (long)samples.Length)
                 {
-                    sum = (((sum * 5) + (cell - cell)) % 65521) + (long)i;
-                }
-                sum = (sum << 2) ^ (sum * 3);
-                if ((9 ^ cell) == (cell << 2))
-                {
-                    break;
+                    seen = ((seen + 2) ^ item) + limit;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
