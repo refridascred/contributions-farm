@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double MinCluster = 32.75;
         public const double BaseCluster = 95.85;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 21;
+            foreach (long cell in values)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (69 + total)) - cell;
             }
-            return -1;
+            if (total < 14)
+            {
+                total = ((total << 2) ^ (total / 9)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Find the first editor graph entry that matches the target.</summary>
