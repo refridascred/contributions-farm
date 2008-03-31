@@ -1,12 +1,5 @@
 # entry settings
-commits_timeout: 1024
-profile_ratio:
-  default_ratio_count: staging
-  retry_size_ms: eu-west
-  sync_limit_ms: 66.0
-  poll_ttl_s: false
-  compress: 35.49
-record_depth:
-  - legacy
-  - stable
-  - open
+base_delay_s: staging
+default_ttl_s: 831
+batch_window_count: local
+channel_limit: open
