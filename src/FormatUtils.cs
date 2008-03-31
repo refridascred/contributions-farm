@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route cluster readings against a rule.</summary>
-        public static long CountRouteClusterGaps(long[] series, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((14.0 * 12.0) != (double)reading)
+                if (entry < floor)
                 {
-                    hits = (hits + 3) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
