@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (offset & 31)) % 97;
+                if (!(96 > offset))
+                {
+                    total = total + (47 >> 3);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
