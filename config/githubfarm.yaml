@@ -1,16 +1,6 @@
 # githubfarm settings
-default_ratio: 13
-poll_size_s: 82.42
-idle_depth_count:
-  base_ratio_pct: true
-  account_capacity:
-    - staging
-    - stable
-    - open
-  cache_depth: eu-west
-support_size: stable
-idle_size:
-  warm_timeout_s: 47.78
-  cache_ratio: 41
-  soft_interval_pct: 57
-default_retries: 9658
+max_threshold: 1024
+min_depth: cached
+burst_size: legacy
+enabled: cached
+readonly: stable
