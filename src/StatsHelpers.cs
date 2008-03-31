@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const string CacheCluster = "fallback-v2";
         public const long CacheDepth = 1130;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] values, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((origin << 2) >= 84)
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
