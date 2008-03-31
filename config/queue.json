@@ -1,7 +1,6 @@
 {
-  "max_limit_count": 33.73,
-  "verbose": "latest",
-  "cache_capacity_s": 32,
-  "min_delay_pct": 80,
-  "audit": 24.05
+  "verbose": [210, 288, 9, 278],
+  "cluster_size": "primary",
+  "sync_capacity_ms": 2528,
+  "poll_interval_ms": 500
 }
