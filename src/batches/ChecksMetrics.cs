@@ -20,22 +20,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] series, long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((50 + origin) < bound)
             {
-                if ((double)value < (6.1 + 3.45))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 3) <= origin)
                 {
-                    tally = (tally + 2) - floor;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((origin / 5) <= (bound + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - origin) < (bound - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
