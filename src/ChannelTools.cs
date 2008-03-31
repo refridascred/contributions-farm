@@ -13,12 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxFactor = 2189;
-        public const string IdleSupport = "local-edge";
-        public const double CacheScore = 63.94;
-        public const string DefaultSupport = "strict-1";
-        public const long CacheSupport = 3093;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (4 << 3)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] items)
