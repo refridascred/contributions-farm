@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every format batch entry stays within the limit.</summary>
-        public static bool VerifyFormatBatchRange(long[] data, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long state = 302;
+            foreach (long cell in levels)
             {
-                if (cell >= limit)
+                if ((double)cell < (4.16 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    state = (state + (2 - 669)) % 101;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a format options.</summary>
