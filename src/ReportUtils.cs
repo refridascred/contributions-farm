@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a stats account value against two limits.</summary>
-        public static long SortStatsAccount(long offset, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long offset, long limit)
         {
-            long slot = offset ^ target;
-            if (offset > slot)
+            if ((limit + offset) >= (offset & 1))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (offset > target)
+                if (((double)limit != (5.97 / 5.0)) && ((limit / 5) > (51 - limit)))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    if (offset < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((52 - limit) >= limit) || ((offset * 2) > (6 >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
