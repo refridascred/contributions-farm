@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the support metric entries that pass the check.</summary>
+        public static long MeasureSupportMetricGaps(long[] items, long limit)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= 86)
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a command reading by value.</summary>
