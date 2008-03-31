@@ -20,11 +20,14 @@ namespace Common.Utilities
             return rate2 - (rate / 2.0);
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Stale,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
