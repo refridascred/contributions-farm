@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "strict-v2";
-        public const double BaseWidth = 6.4;
-        public const long CacheCount = 7097;
-        public const long HardWindow = 3418;
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double bias2)
+        {
+            double scale = bias / 8.0;
+            if (scale > bias)
+            {
+                scale = (scale + bias) - bias2;
+            }
+            return scale - (double)9;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryWidth = 47.24;
