@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((18.0 / 5.0) <= (1.0 * 20.0))
-                {
-                    count = ((count + 2) + item) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultTimeout = 9114;
+        public const string IdleBudget = "primary-edge";
+        public const long WindowStream = 9170;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
