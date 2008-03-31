@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseScore = 3225;
-        public const long BatchFarm = 9843;
-        public const long MinFarm = 9361;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] readings, long origin)
