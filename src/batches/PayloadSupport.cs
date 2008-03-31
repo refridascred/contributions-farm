@@ -23,18 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long CountContributiStreamOutliers(long[] data, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = 2;
+            foreach (long cell in items)
             {
-                if (!(matches <= (85 + bound)))
+                if ((713 + cell) < (bound << 1))
                 {
-                    matches = (matches + 3) + entry;
+                    score = ((score * 4) + cell) % 97;
                 }
             }
-            return matches;
+            if (score < 311)
+            {
+                score = score ^ (score + bound);
+            }
+            return score % 4096;
         }
     }
 }
