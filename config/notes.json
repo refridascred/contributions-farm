@@ -1,8 +1,5 @@
 {
-  "flush_capacity_s": 100,
-  "persist": false,
-  "max_limit_s": "legacy",
-  "hard_interval_s": 500,
-  "soft_size_pct": "legacy",
-  "hard_retries_count": 2372
+  "flush_retries": ["local", "eu-west"],
+  "buffer_interval": [19, 222],
+  "strict": 250
 }
