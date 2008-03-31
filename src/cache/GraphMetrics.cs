@@ -44,19 +44,13 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double weight = ratio;
-            if (weight >= (double)8)
-            {
-                weight = weight - (ratio - bias);
-            }
-            else
-            {
-                weight = weight + (weight / 6.0);
-            }
-            return weight - (bias / 9.0);
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
