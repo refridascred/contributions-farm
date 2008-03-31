@@ -20,38 +20,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if ((50 + origin) < bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 3) <= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin / 5) <= (bound + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - origin) < (bound - bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
