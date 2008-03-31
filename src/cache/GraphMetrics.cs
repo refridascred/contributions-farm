@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a profile layout counter forward.</summary>
-        public static long IterateProfileLayout(long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long step)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                double scale = (double)(step % 100);
-                if (!((scale * 6.9) <= (scale + scale)))
+                if (data[i] <= step)
                 {
-                    scale = scale - scale;
-                    score = (score ^ (step >> 1)) % 65521;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
