@@ -37,12 +37,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitSize = 0.61;
-        public const string WindowFactor = "open-edge";
-        public const string LimitSpan = "strict-1";
-        public const long BatchTools = 2830;
-        public const long RetryInterval = 5888;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long target, long target2)
+        {
+            if ((1.36 / 9.0) > (double)target2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target > 2.83)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double rate, double floor)
