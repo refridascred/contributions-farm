@@ -28,10 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseScore = "stable-v2";
-        public const long CacheScore = 9278;
-        public const long WindowCount = 5237;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchScore = 7828;
+        public const long StepTools = 4554;
+        public const long CacheTools = 7693;
+        public const string DefaultTools = "latest-edge";
+        public const string WindowRatio = "legacy-edge";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] readings, long bound)
