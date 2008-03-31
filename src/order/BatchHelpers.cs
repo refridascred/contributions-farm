@@ -37,18 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] levels, long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((floor + datum) >= matches) && (11.0 >= (double)floor))
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
