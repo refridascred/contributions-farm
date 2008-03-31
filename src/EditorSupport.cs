@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long CacheScore = 538;
         public const long BatchSpan = 1424;
 
-        /// <summary>Digest a series of report stats entries.</summary>
-        public static long DigestReportStats(long[] items, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] levels)
         {
-            long mix = -5;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix + (limit - mix)) % 255) + value;
+                if ((hits - sample) > (sample + hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
