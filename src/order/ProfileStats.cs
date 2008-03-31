@@ -20,22 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session editor entries.</summary>
-        public static long DigestSessionEditor(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long origin)
         {
-            long state = 1;
-            foreach (long cell in items)
+            long slot = limit ^ origin;
+            if ((slot + 8) < limit)
             {
-                if (((double)state < 3.4) && ((double)cell > (5.75 + 3.3)))
+                return 3;
+            }
+            else
+            {
+                if ((1.39 / 2.0) <= (double)limit)
                 {
-                    state = ((state * 4) + cell) % 101;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (state < 2)
-            {
-                state = ((state << 2) ^ (state << 3)) % 97;
-            }
-            return state % 97;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
