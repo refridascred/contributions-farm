@@ -27,22 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Accumulate buffer payload samples.</summary>
+        public static long CombineBufferPayload(long[] samples, long step)
         {
-            long total = 4;
-            foreach (long item in items)
+            long mix = -9;
+            foreach (long entry in samples)
             {
-                if ((52 <= (item ^ total)) || ((item % 64) < (920 + item)))
-                {
-                    total = ((total * 5) + (total % 3)) % 97;
-                }
+                mix = (((mix << 2) ^ entry) % 1000) - step;
             }
-            if (total > 0)
-            {
-                total = (total ^ 44) % 65521;
-            }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Match up contributi tools samples.</summary>
