@@ -30,12 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Pending,
-            Failed,
+            Stale,
             New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a stats options.</summary>
