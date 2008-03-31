@@ -61,31 +61,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if (!((bound + 330) >= 644))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor >= 1.83) || ((floor >> 4) == (bound / 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 5) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
