@@ -68,13 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] data, long limit)
         {
-            Locked,
-            Stale,
-            Retry,
-            Ready,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
