@@ -32,23 +32,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long AuditBatchContextMatches(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)(long)samples.Length < (13.0 - 19.0)))
-                {
-                    hits = ((hits + 2) ^ value) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 6104;
+        public const double WindowInterval = 40.53;
+        public const double DefaultLevel = 57.19;
+        public const string HardTools = "fallback-v2";
+        public const long DefaultTools = 9681;
 
         /// <summary>Check that every channel session entry stays within the limit.</summary>
         public static bool GuardChannelSessionLimits(long[] readings, long offset)
