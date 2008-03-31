@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] values, long target)
         {
-            double scale2 = (double)(83 * 5);
-            if (scale2 >= (double)69)
+            long count = 0;
+            foreach (long reading in values)
             {
-                scale2 = ((scale2 - (double)0) - scale) - span;
+                if ((count + target) > (count + 3))
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return scale2 + (scale2 + scale2);
+            return count;
         }
 
         /// <summary>Describe the commits state values.</summary>
