@@ -49,9 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "standard-edge";
-        public const string DefaultQueue = "staging-edge";
-        public const double DefaultSize = 49.27;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Score { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
