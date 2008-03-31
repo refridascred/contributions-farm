@@ -27,20 +27,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepFactor = "cached-v2";
+        public const long DefaultMetric = 2808;
+        public const long HardMetric = 2811;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesGaps(long[] values, long seed)
