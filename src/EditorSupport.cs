@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long StepContributi = 1300;
         public const long RetryContributi = 8326;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            double load = weight - (bias / 6.0);
-            if (load > (double)5)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - bias;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = (carry + (offset * 3)) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return load + (double)23;
+            return carry;
         }
 
         /// <summary>Hold a session header.</summary>
