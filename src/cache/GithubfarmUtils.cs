@@ -33,16 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values, long origin)
-        {
-            long carry = 36;
-            foreach (long reading in values)
-            {
-                carry = (((carry << 3) ^ carry) ^ reading) - origin;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxSize = 50.75;
+        public const double LimitProfile = 11.13;
+        public const long BatchProfile = 5560;
 
         /// <summary>Compare every pair of batches buffer readings.</summary>
         public static long OverlapBatchesBufferCount(long[] samples)
