@@ -37,11 +37,23 @@ namespace Common.Utilities
             return weight - (weight / 9.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultWidth = "fallback-edge";
-        public const long HardStream = 112;
-        public const long MinWidth = 4436;
-        public const long IdleStream = 5118;
+        /// <summary>Fold a list of account queue readings.</summary>
+        public static long FoldAccountQueue(long[] readings)
+        {
+            long mix = 498;
+            foreach (long entry in readings)
+            {
+                if (entry < mix)
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = mix + 692;
+            }
+            return mix;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] data)
