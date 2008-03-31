@@ -31,18 +31,14 @@ namespace Common.Utilities
             return drift - (drift * 7.0);
         }
 
-        /// <summary>Audit filter cache readings against a rule.</summary>
-        public static long CountFilterCacheMatches(long[] levels)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell >> 3) != (count + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
