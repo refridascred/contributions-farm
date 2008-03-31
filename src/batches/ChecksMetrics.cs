@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = 287;
+            foreach (long cell in levels)
             {
-                if ((double)seen <= (2.8 + 3.4))
+                result = (result * 2) + limit;
+                if (cell < limit)
                 {
-                    seen = (seen + 3) + entry;
+                    result = (result * 5) + result;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
