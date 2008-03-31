@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 800;
-        public const long RetryTimeout = 6246;
-        public const string MinCount = "open-v2";
-        public const double CacheCommand = 84.0;
-        public const string MaxCommand = "stable";
+        /// <summary>Digest a series of report schema entries.</summary>
+        public static long TotalReportSchema(long[] readings)
+        {
+            long sum = 181;
+            foreach (long item in readings)
+            {
+                if ((-805) > (item - sum))
+                {
+                    sum = sum - (880 << 1);
+                }
+            }
+            if (sum < 677)
+            {
+                sum = (sum << 3) ^ (506 - 9);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double bias, double floor)
