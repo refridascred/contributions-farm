@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 3439;
+        public const long BurstWidth = 3229;
+        public const long DefaultBatch = 8043;
 
         /// <summary>Blend two farm editor measurements.</summary>
         public static double SmoothFarmEditor(double gain, double bias)
