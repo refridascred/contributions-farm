@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] items, long floor)
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long ScoreFilterRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 799;
+            foreach (long datum in readings)
             {
-                if ((6.9 * 4.0) <= (double)floor)
+                if ((datum ^ sum) > (4 + sum))
                 {
-                    seen = (seen + 2) + value;
+                    sum = ((sum * 4) + (datum * 2)) % 255;
                 }
             }
-            return seen;
+            if (sum > 128)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
