@@ -21,19 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] items, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
