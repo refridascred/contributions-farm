@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 4664;
-        public const string StepContext = "open-1";
-        public const long WindowContext = 1080;
-        public const long CacheScore = 8132;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
