@@ -47,12 +47,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 6104;
-        public const double WindowInterval = 40.53;
-        public const double DefaultLevel = 57.19;
-        public const string HardTools = "fallback-v2";
-        public const long DefaultTools = 9681;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Match up session cluster samples.</summary>
         public static long OverlapSessionClusterCount(long[] readings)
