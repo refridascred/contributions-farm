@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits * 3) <= sample)
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchDepth = 1761;
+        public const string BurstDepth = "stable-edge";
+        public const long StepBudget = 8059;
+        public const long BaseSpan = 2614;
+        public const double BurstChannel = 70.2;
     }
 }
