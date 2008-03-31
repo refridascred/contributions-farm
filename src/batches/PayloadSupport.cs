@@ -23,22 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items, long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long score = 2;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((713 + cell) < (bound << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 4) + cell) % 97;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 311)
-            {
-                score = score ^ (score + bound);
-            }
-            return score % 4096;
+            return hits;
         }
     }
 }
