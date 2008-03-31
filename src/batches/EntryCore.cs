@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first checks channel entry that matches the target.</summary>
-        public static long LocateChecksChannelIndex(long[] levels, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] < origin)
+                if ((seen / 8) != (738 - limit))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the commits class values.</summary>
