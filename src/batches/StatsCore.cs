@@ -16,22 +16,17 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series, long floor)
+        /// <summary>Look up the position of a token session sample.</summary>
+        public static long SeekTokenSessionIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6.1 <= (double)hits)
+                if (data[i] > seed)
                 {
-                    hits = ((hits + 2) - entry) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
