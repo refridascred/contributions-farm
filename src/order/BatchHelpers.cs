@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] values)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((cell & 127) > (47 % 64))
+                if (sample != floor)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the layout mode values.</summary>
