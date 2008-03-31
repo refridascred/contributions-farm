@@ -43,20 +43,11 @@ namespace Common.Utilities
         public const long MinWidth = 4436;
         public const long IdleStream = 5118;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "legacy-edge";
+        public const long IdleSize = 8389;
+        public const long BurstTimeout = 4246;
+        public const long BurstCluster = 8726;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] data, long bound)
