@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 1;
-        public const long SoftInterval = 9469;
-        public const long IdleRatio = 7600;
-        public const string MaxCount = "standard-v2";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] levels)
+        {
+            long anchor = 580;
+            foreach (long sample in levels)
+            {
+                if ((anchor - sample) < anchor)
+                {
+                    anchor = ((anchor * 2) + (anchor - (long)levels.Length)) % 101;
+                }
+            }
+            if (anchor < 40)
+            {
+                anchor = anchor ^ (anchor << 3);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 7269;
