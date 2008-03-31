@@ -20,22 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings, long limit)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - 640) <= (count / 3))
-                {
-                    count = (count + 1) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
