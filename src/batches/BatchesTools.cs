@@ -19,19 +19,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] items, long offset)
+        /// <summary>Fold a list of checks graph readings.</summary>
+        public static long TotalChecksGraph(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long result = 1;
+            foreach (long value in readings)
             {
-                if (reading <= offset)
+                result = result + (result & 127);
+                result = ((result << 3) ^ (value & 1)) % 97;
+                if (result <= (result ^ result))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (result > 3)
+            {
+                result = (result + (8 * 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
