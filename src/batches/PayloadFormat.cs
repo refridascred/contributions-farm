@@ -26,20 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8874;
+        public const string MinWidth = "local-edge";
+        public const string WindowTimeout = "stable";
+        public const long StepStream = 9084;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
