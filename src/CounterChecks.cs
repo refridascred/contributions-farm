@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if ((target + floor) == (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target - floor) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (target >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
