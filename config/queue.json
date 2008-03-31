@@ -1,5 +1,6 @@
 {
-  "max_interval": ["standard", "open", "standard"],
-  "idle_size": "local",
-  "dry_run": ["legacy", "legacy", "eu-west"]
+  "max_size_s": 100,
+  "default_limit": false,
+  "enabled": false,
+  "hard_size": 39.47
 }
