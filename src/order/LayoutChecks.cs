@@ -64,11 +64,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 1902;
-        public const long BatchWidth = 7836;
-        public const long DefaultInterval = 858;
-        public const string IdleFilter = "cached";
-        public const long StepSize = 4219;
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings)
+        {
+            long state = 552;
+            foreach (long value in readings)
+            {
+                state = ((state * 2) + (value - state)) % 255;
+            }
+            return state;
+        }
     }
 }
