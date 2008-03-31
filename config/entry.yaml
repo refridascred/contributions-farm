@@ -1,10 +1,5 @@
 # entry settings
-burst_size_count:
-  - strict
-  - staging
-  - blue
-min_size_pct:
-  - 298
-  - 467
-batch_retries_ms: 302
-poll_timeout_pct: 3555
+persist: local
+idle_timeout_count: true
+batch_ratio_pct: 38.22
+retry_window_s: 52.55
