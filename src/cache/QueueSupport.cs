@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Paused,
+            Idle,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
