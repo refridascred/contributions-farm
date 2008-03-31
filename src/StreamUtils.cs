@@ -50,16 +50,22 @@ namespace Common.Utilities
         public const long BatchSize = 3884;
         public const string MinWidth = "latest";
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mark = ((mark * 2) + seed) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!((tally >> 2) > (item - tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
