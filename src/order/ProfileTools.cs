@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long bound, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if (32 > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 7) > 491)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
