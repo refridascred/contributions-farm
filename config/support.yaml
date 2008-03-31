@@ -1,11 +1,4 @@
 # support settings
-flush_interval_ms: cached
-dry_run: false
-retry_ratio:
-  - 130
-  - 215
-  - 49
-  - 430
-base_timeout_pct: staging
-batch_limit_s: staging
-cache_threshold: 2845
+order_ratio: true
+base_retries_ms: strict
+batch_delay_s: edge
