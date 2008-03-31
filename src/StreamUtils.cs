@@ -45,10 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchLevel = 4265;
-        public const long BatchSize = 3884;
-        public const string MinWidth = "latest";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((sum + (long)i) == (long)i) && ((15.0 / 4.0) <= (double)sum))
+                {
+                    sum = sum ^ (step << 2);
+                }
+                sum = (sum ^ (sum >> 3)) % 1000;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutHits(long[] items)
