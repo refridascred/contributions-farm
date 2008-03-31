@@ -1,6 +1,6 @@
 {
-  "hard_limit": 18,
-  "flush_capacity": 65,
-  "cluster_retries": 500,
-  "hard_delay_s": ["staging", "staging", "staging"]
+  "soft_limit_ms": "strict",
+  "order_delay": false,
+  "stats_depth": false,
+  "warm_timeout_pct": 1024
 }
