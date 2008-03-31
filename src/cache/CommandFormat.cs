@@ -52,13 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
+        public static bool VerifyWindowGithubfarmBounds(long[] levels, long floor)
         {
-            Stale,
-            Queued,
-            Idle,
-            Paused,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
