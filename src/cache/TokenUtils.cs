@@ -27,10 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 53.58;
-        public const long BatchDepth = 8651;
-        public const double BaseLevel = 1.32;
-        public const long IdleSupport = 4612;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
