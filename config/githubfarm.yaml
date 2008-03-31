@@ -1,21 +1,7 @@
 # githubfarm settings
-base_retries_count:
-  retry_ttl:
-    - 304
-    - 323
-    - 412
-    - 384
-  batch_ttl: 23.68
-  persist: 520
-  verbose:
-    - 171
-    - 272
-    - 294
-  readonly: 80.45
-  base_window_pct: cached
-warm_ttl_ms:
-  - standard
-  - standard
+burst_threshold_s: edge
+payload_ttl: primary
+default_capacity: edge
+burst_size:
   - edge
-  - cached
-warm_delay_s: 4219
+  - green
