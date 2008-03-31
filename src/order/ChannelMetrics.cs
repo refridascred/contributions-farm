@@ -27,12 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Stale,
-            Done,
-            Locked,
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
