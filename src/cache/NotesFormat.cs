@@ -20,11 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 2800;
-        public const long CacheLevel = 7923;
-        public const string RetryGithubfarm = "legacy-1";
-        public const long DefaultGithubfarm = 1448;
-        public const long HardGithubfarm = 9079;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen + item) >= (item * 3))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
