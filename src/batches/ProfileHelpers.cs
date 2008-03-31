@@ -49,20 +49,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (5.0 < (double)acc)
+                if (data[i] > floor)
                 {
-                    continue;
+                    return (long)i;
                 }
-                acc = acc + floor;
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the token kind values.</summary>
