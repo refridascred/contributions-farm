@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] data, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 330;
+            foreach (long value in items)
             {
-                if (data[i] <= limit)
+                if ((double)value <= (8.8 - 9.0))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (state >> 3)) % 255;
+                }
+                else
+                {
+                    state = state + (state + 5);
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Hold a context entry.</summary>
