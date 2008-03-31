@@ -74,17 +74,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support order reading by value.</summary>
-        public static long LocateSupportOrderIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepLevel = 2670;
+        public const double StepWidth = 75.51;
+        public const long WindowFormat = 2569;
+        public const string MinTimeout = "fallback";
     }
 }
