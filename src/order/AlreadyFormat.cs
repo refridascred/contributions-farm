@@ -48,11 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            double drift = 0.9;
+            if (drift > scale)
+            {
+                drift = (drift - scale) - bias;
+            }
+            return drift - (14.0 - scale);
         }
 
         /// <summary>Combine stream values into a single score.</summary>
