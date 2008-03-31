@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((limit * 5) > (datum - (-11)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSpan = 6967;
+        public const long MinSize = 7772;
+        public const long WindowSession = 749;
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double scale, double floor)
