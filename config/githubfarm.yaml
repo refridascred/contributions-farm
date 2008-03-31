@@ -1,19 +1,18 @@
 # githubfarm settings
-audit: 43.25
-hard_limit: 4670
-poll_size_ms:
-  - 299
-  - 83
-  - 38
-  - 463
-cache_retries_ms:
-  compress: 55.12
-  hard_capacity_ms:
-    - primary
-    - strict
-  base_size_s:
-    - 413
-    - 478
-    - 176
-  idle_threshold_s: staging
-cache_capacity_pct: 6820
+retry_timeout: latest
+poll_window: 1965
+filter_ratio:
+  verbose: 47.8
+  strict: 803
+  compress: 9160
+  cache_window_s:
+    metrics_threshold: 43
+    dry_run: primary
+    route_delay: 53.07
+batch_ttl_s: legacy
+soft_ratio:
+  warm_window_count: eu-west
+  channel_ratio: primary
+  retry_ratio_pct: primary
+  tools_size: 37.54
+  session_limit: 98
