@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stream batch entries that pass the check.</summary>
-        public static long MeasureStreamBatchGaps(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + 19) != (sample << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
