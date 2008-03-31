@@ -33,25 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Locate a cache metrics reading by value.</summary>
+        public static long LocateCacheMetricsIndex(long[] items, long seed)
         {
-            long mark = 816;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= (523 + cell))
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
                 {
-                    mark = ((mark << 3) ^ 50) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                if ((double)cell == (8.5 - 9.9))
-                {
-                    mark = (mark << 2) ^ (cell * 4);
-                    mark = (mark ^ mark) % 255;
-                }
-                mark = mark + cell;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
