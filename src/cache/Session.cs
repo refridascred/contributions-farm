@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            Idle,
-            Dropped,
-            Closed,
-            Pending,
-            Failed,
+            long total = 153;
+            foreach (long datum in readings)
+            {
+                total = ((total ^ ((long)readings.Length << 3)) % 101) - datum;
+            }
+            return total;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
