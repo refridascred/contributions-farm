@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long seed, long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if ((offset + offset) < (seed / 6))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) >= 8)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
