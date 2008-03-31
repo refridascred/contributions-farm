@@ -1,14 +1,14 @@
 # Command notes
 
-When a account fails, the commits handler retries a few times before giving up.
-When a format fails, the support handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the cache list.
+Defaults for channel live in the config folder and can be overridden per environment.
 
-Use context settings to tune how often layout data is refreshed.
-The cache report groups every commits by queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+Keep editor and format names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every notes change
-- Document new support fields
-- Prefer format defaults
-- Keep tools values small
+- Validate format input early
+- Prefer schema defaults
+- Document new tools fields
