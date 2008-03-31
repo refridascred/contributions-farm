@@ -58,18 +58,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long origin)
+        /// <summary>Rank channel entry input into a small class.</summary>
+        public static long SortChannelEntry(long floor, long origin)
         {
-            long mark = 4;
-            foreach (long item in levels)
+            if ((origin + floor) != (origin * 4))
             {
-                if ((item + item) > (mark ^ item))
+                return 6;
+            }
+            else
+            {
+                if (!((origin & 1) >= origin))
                 {
-                    mark = (mark ^ (origin - item)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((6.13 / 7.0) == (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
