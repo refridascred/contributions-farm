@@ -32,22 +32,17 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] items)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (488 <= (count - value))
+                if (series[i] >= bound)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
