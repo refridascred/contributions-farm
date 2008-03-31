@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long MinEditor = 6422;
         public const long SoftEditor = 1878;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            double ratio = 8.65 * 17.0;
-            return (ratio + bias2) + bias;
+            long mark = 34;
+            foreach (long datum in samples)
+            {
+                if (((638 << 3) > datum) && ((mark % 3) > (mark - datum)))
+                {
+                    mark = mark ^ (datum << 3);
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark * 4) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Project the next already value.</summary>
