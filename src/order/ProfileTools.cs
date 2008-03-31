@@ -14,20 +14,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((9.04 - 8.35) != (double)carry)
-                {
-                    carry = (carry << 3) ^ carry;
-                    carry = (carry << 2) ^ (carry + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Idle,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
