@@ -46,19 +46,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every session graph entry stays within the limit.</summary>
-        public static bool VerifySessionGraphRange(long[] items, long limit)
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long AuditBatchContextMatches(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading <= limit)
+                if (!((double)(long)samples.Length < (13.0 - 19.0)))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 2) ^ value) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
