@@ -35,13 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double floor)
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            double rate = (scale - 4.7) * 8.8;
+            if (rate < 5.77)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + (floor * 4.59);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)14) + (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Describe the metric phase values.</summary>
