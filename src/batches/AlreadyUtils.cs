@@ -45,18 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] values, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] items, long bound)
         {
-            long mix = 364;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((mix + entry) > origin)
+                if (item != bound)
                 {
-                    mix = ((mix * 3) + (entry + mix)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
