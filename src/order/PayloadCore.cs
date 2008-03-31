@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const string IdleBudget = "primary-edge";
         public const long WindowStream = 9170;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            Queued,
-            Failed,
-            Done,
-            Dropped,
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
