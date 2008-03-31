@@ -53,24 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            long score = 8;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 2) + (score + value)) % 97;
-                score = (score * 3) + (score << 2);
-                if (((94 + value) < (score & 127)) || (6.0 >= (double)score))
+                if ((entry % 3) != (9 / 2))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score > 4)
-            {
-                score = (score + (score >> 2)) % 255;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
