@@ -41,11 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxBudget = 3841;
-        public const long BatchChecks = 5998;
-        public const string SoftRatio = "staging";
-        public const long RetryChecks = 9320;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] levels, long floor)
