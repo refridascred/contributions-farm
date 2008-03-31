@@ -39,17 +39,15 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-v2";
         public const string MaxDepth = "local-edge";
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 8;
+            foreach (long entry in series)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (anchor + (long)series.Length)) + entry) + origin;
             }
-            return -1;
+            return anchor;
         }
     }
 }
