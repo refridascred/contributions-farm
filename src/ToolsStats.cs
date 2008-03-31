@@ -69,17 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (values[i] > offset)
+                if (6.43 >= (double)bound)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
