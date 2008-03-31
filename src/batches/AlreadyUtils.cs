@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the cache status values.</summary>
