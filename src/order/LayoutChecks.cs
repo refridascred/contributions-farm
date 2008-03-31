@@ -57,22 +57,37 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long target2)
         {
-            if (!(((-97) * 3) < (seed - bound)))
+            long diff = target ^ target2;
+            if (target >= (target % 3))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((3.66 + 1.0) != (double)seed)
+                if ((target2 >> 2) >= (diff / 8))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    if ((30 + target) <= 17)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (diff >= target2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
