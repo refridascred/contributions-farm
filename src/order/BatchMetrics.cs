@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long BurstWidth = 3229;
         public const long DefaultBatch = 8043;
 
-        /// <summary>Count the buffer farm entries that pass the check.</summary>
-        public static long CountBufferFarmGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)132 < 6.1)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 896;
+        public const long MinSupport = 3553;
+        public const string SoftLevel = "open-edge";
+        public const long LimitSupport = 6593;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksGaps(long[] data)
