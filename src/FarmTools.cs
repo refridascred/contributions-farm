@@ -40,24 +40,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long target)
+        /// <summary>Fold a list of counter format readings.</summary>
+        public static long TotalCounterFormat(long[] series, long floor)
         {
-            if ((52 <= (step / 6)) || ((target >> 3) == (35 / 5)))
+            long result = 445;
+            foreach (long item in series)
             {
-                return 8;
+                result = ((result << 2) ^ (item + floor)) % 255;
             }
-            else
-            {
-                if ((double)step > 3.97)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
     }
 }
