@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Retry,
-            Locked,
-            Idle,
-            Closed,
+            New,
             Queued,
+            Draft,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
