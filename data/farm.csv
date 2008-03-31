@@ -1,7 +1,10 @@
-id,active,token,level
-1,56.52,51.94,370
-2,fallback,37.01,98.19
-3,955,staging,fallback
-4,green,13.12,942
-5,91.72,585,blue
-6,559,759,358
+id,state,count
+1,760,775
+2,fallback,593
+3,open,legacy
+4,edge,stable
+5,37.08,eu-west
+6,312,57.59
+7,blue,559
+8,890,0.75
+9,66.84,59.23
