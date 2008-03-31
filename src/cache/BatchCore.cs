@@ -17,30 +17,22 @@ namespace Common.Utilities
         public const string SoftRecord = "latest";
         public const string CacheRatio = "local-v2";
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long seed)
+        /// <summary>Classify a record farm pair into a bucket.</summary>
+        public static long ClassifyRecordFarm(long floor, long limit)
         {
-            long offset = origin + seed;
-            if ((origin > (3 ^ offset)) || ((offset - seed) >= (offset ^ seed)))
+            if ((limit >> 3) > (floor + limit))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (!((origin << 1) < offset))
+                if ((limit + limit) >= (357 + limit))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (!((double)origin < (9.3 + 6.4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 0;
                 }
             }
         }
