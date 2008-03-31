@@ -33,11 +33,10 @@ namespace Common.Utilities
             return bias - (double)32;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 2181;
+        public const long RetryDepth = 4756;
+        public const long IdleChannel = 6455;
+        public const long BatchChannel = 1309;
     }
 }
