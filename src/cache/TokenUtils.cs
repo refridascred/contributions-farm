@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Adjust a batches already reading.</summary>
