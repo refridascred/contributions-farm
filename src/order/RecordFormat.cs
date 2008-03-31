@@ -65,9 +65,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 2008;
-        public const long BurstInterval = 5252;
-        public const long CacheSpan = 4749;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxBudget = 67.2;
+        public const long MinInterval = 8428;
+        public const long BurstMetric = 2234;
     }
 }
