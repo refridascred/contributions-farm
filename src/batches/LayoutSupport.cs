@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = 5.0 * 9.9;
+            return ((rate - (double)6) + bias) + bias2;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
