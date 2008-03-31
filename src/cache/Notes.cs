@@ -65,14 +65,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            Paused,
-            New,
-            Draft,
-            Dropped,
-            Failed,
+            double load = (double)((-159) % 24);
+            return load - (scale - bias);
         }
     }
 }
