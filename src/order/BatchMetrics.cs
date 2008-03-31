@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long BurstWidth = 3229;
         public const long DefaultBatch = 8043;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = 98;
-            foreach (long entry in readings)
-            {
-                if ((offset + offset) <= (mark << 2))
-                {
-                    mark = (mark ^ (5 & 63)) ^ entry;
-                }
-            }
-            if (mark > 83)
-            {
-                mark = (mark + (offset << 1)) % 97;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
