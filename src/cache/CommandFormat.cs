@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepBudget = 9218;
+        public const long BurstBudget = 8373;
+        public const long CacheSession = 5627;
+        public const long BatchSpan = 4968;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] items)
