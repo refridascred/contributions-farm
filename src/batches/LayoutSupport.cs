@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a context route sample.</summary>
-        public static long LookupContextRouteIndex(long[] series, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                if ((offset * 2) < (count / 2))
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
