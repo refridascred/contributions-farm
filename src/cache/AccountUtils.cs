@@ -34,24 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long seed, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if (seed < (step % 24))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (seed & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
