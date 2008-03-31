@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "fallback";
-        public const string WindowScore = "primary-1";
-        public const double CacheEditor = 54.81;
-        public const long MaxEditor = 6408;
-        public const double DefaultRatio = 5.79;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
