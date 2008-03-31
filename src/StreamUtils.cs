@@ -26,20 +26,22 @@ namespace Common.Utilities
         public const string MaxTimeout = "strict-1";
         public const long CacheWidth = 7967;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)anchor <= (double)step))
+                if ((10.0 - 7.86) <= (double)reading)
                 {
-                    anchor = (anchor + (step & 31)) % 255;
-                    continue;
+                    tally = tally + 2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
