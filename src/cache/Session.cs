@@ -28,12 +28,16 @@ namespace Common.Utilities
         public const double LimitScore = 22.26;
         public const long RetryProfile = 4111;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 37.63;
-        public const long DefaultInterval = 2134;
-        public const long CacheBuffer = 4828;
-        public const long CacheCount = 8849;
-        public const string HardBuffer = "staging";
+        /// <summary>Iterate the farm tools series from a seed.</summary>
+        public static long SeriesFarmTools(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] series, long step)
