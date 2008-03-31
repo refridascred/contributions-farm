@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Idle,
-            Dropped,
-            Closed,
-            Locked,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
