@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const double MinCluster = 32.75;
         public const double BaseCluster = 95.85;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values)
-        {
-            long total = 21;
-            foreach (long cell in values)
-            {
-                total = (total ^ (69 + total)) - cell;
-            }
-            if (total < 14)
-            {
-                total = ((total << 2) ^ (total / 9)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryTimeout = 4.97;
+        public const long CacheFactor = 6295;
+        public const double CacheEntry = 33.55;
 
         /// <summary>Find the first editor graph entry that matches the target.</summary>
         public static long SeekEditorGraphIndex(long[] samples, long offset)
