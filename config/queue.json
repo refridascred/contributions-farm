@@ -1,6 +1,8 @@
 {
-  "readonly": true,
-  "enabled": [216, 304],
-  "audit": 49,
-  "base_limit_s": 1024
+  "cache_ttl_pct": "local",
+  "poll_ttl": ["blue", "stable", "latest", "latest"],
+  "verbose": "primary",
+  "channel_depth": [132, 382],
+  "default_limit": "cached",
+  "base_threshold_pct": 88.01
 }
