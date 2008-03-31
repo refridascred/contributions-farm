@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
