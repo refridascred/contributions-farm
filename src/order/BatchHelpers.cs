@@ -33,20 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheLevel = 4813;
+        public const long BurstLevel = 116;
+        public const string BurstTimeout = "fallback";
+        public const long CacheInterval = 5329;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long step)
