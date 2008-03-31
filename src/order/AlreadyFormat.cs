@@ -23,22 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] series, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally & 31) > (tally * 2))
-                {
-                    tally = ((tally + 2) ^ cell) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate githubfarm route readings against a bound.</summary>
