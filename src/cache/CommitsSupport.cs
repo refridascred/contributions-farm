@@ -57,18 +57,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((matches << 1) != (reading + reading)) || (reading >= (365 & 31)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
