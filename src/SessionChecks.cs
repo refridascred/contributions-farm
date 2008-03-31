@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long BaseSpan = 6971;
         public const long BurstInterval = 8712;
 
-        /// <summary>Combine context cluster values into a single score.</summary>
-        public static long DigestContextCluster(long[] values)
+        /// <summary>Validate tools format readings against a bound.</summary>
+        public static bool VerifyToolsFormatRange(long[] series, long step)
         {
-            long total = 432;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                total = total ^ (total >> 3);
-                if ((total * 5) >= item)
+                if (value < step)
                 {
-                    total = (total * 3) + (item % 2);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
