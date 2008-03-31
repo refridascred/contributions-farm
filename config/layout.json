@@ -1,15 +1,15 @@
 {
-  "burst_ttl": 8909,
-  "strict": 2.04,
-  "sync_retries": {
-    "retry_ttl": 74.3,
-    "enabled": 1024,
-    "idle_window_s": {
-      "sync_size": "open",
-      "idle_retries_count": true,
-      "default_retries": 1024,
-      "cache_ttl": "edge"
+  "base_limit_ms": "stable",
+  "sync_size_pct": {
+    "enabled": 45,
+    "min_delay_s": {
+      "poll_threshold_pct": 60,
+      "idle_size_s": [432, 28, 431],
+      "verbose": [162, 49, 358, 275],
+      "dry_run": [300, 284, 481, 191],
+      "flush_size_count": 7747
     },
-    "sync_capacity": true
-  }
+    "retry_retries_s": "staging"
+  },
+  "retry_limit_count": false
 }
