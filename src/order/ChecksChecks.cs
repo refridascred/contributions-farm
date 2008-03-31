@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double ratio, double bias)
         {
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double weight = bias * 20.0;
+            if (weight <= (double)7)
+            {
+                weight = (weight + (weight + 5.0)) + ratio;
+            }
+            return weight + bias;
         }
 
         /// <summary>Hold a metric entry.</summary>
