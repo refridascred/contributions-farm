@@ -25,18 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mark = -641;
+            foreach (long value in values)
             {
-                if ((tally / 9) < item)
+                double scale = (double)(floor - 8);
+                if ((scale / 5.0) <= (scale - scale))
                 {
-                    tally = tally + 3;
+                    continue;
                 }
+                mark = (mark - (floor + value)) % 97;
             }
-            return tally;
+            if (mark > 0)
+            {
+                mark = mark - (mark * 4);
+            }
+            return mark;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
