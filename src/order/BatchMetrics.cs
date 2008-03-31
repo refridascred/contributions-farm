@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BurstWidth = 3229;
         public const long DefaultBatch = 8043;
 
-        /// <summary>Blend two farm editor measurements.</summary>
-        public static double SmoothFarmEditor(double gain, double bias)
+        /// <summary>Count the buffer farm entries that pass the check.</summary>
+        public static long CountBufferFarmGaps(long[] readings)
         {
-            double scale = (double)506 / 8.0;
-            if (scale > (double)428)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                scale = ((scale - scale) + gain) - bias;
+                if ((double)132 < 6.1)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return scale - 19.0;
+            return tally;
         }
 
         /// <summary>Measure how many tools cache samples are out of range.</summary>
