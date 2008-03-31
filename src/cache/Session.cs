@@ -46,24 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            if ((968 + origin) <= (step + origin))
+            double rate = bias * 8.63;
+            if (rate < (scale / 2.0))
             {
-                return 4;
+                rate = rate + (6.0 - rate);
             }
             else
             {
-                if (0.67 < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = rate + scale;
             }
+            return rate + (double)331;
         }
     }
 }
