@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
-        public static long PairStatsStreamCount(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
