@@ -1,8 +1,8 @@
-id,region,active,level,label
-1,primary,194,strict,cached
-2,556,93.16,156,open
-3,eu-west,77.64,48.67,strict
-4,6.06,78.23,494,38.07
-5,991,74.89,43.02,617
-6,eu-west,latest,613,edge
-7,staging,edge,341,695
+id,region,token
+1,846,471
+2,918,4.16
+3,747,cached
+4,33.69,745
+5,edge,592
+6,10.16,stable
+7,legacy,eu-west
