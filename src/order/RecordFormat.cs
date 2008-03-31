@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const string HardSupport = "legacy-1";
         public const long MaxRatio = 8461;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series, long offset)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long acc = 16;
+            foreach (long value in series)
+            {
+                acc = acc ^ (value + 707);
+                if ((acc ^ offset) == (29 + value))
+                {
+                    acc = acc - (8 - 32);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
