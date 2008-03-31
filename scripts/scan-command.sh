@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=163
-log "limit is ${COMMAND_LIMIT}"
-
-for item in open cached standard eu-west; do
+for item in local latest eu-west blue; do
     log "checking ${item}"
 done
+
+mode="${1:-latest}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
