@@ -19,17 +19,11 @@ namespace Common.Utilities
             return (weight - (double)8) + ratio;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstWidth = 97.28;
+        public const long SoftWidth = 8492;
+        public const long StepChecks = 909;
+        public const long LimitChecks = 1725;
+        public const double HardChecks = 89.54;
     }
 }
