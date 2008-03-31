@@ -62,18 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) >= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
