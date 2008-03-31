@@ -24,19 +24,11 @@ namespace Common.Utilities
             return bias2 - (double)965;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell > (cell + cell)) || ((matches + offset) == (offset + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 76.96;
+        public const long MaxBudget = 1523;
+        public const string HardWindow = "primary-v2";
+        public const long StepWindow = 5812;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double AdjustQueue(double weight, double offset)
