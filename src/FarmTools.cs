@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long bound2)
         {
-            Ready,
-            Done,
-            Failed,
-            New,
-            Dropped,
+            if (((9.36 + 4.47) != (double)bound2) && (((-802) / 6) >= (bound2 / 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6.2 * 0.7) == (double)bound2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound2 - 247) >= (bound2 % 10)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
