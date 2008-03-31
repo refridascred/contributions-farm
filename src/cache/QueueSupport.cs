@@ -16,17 +16,10 @@ namespace Common.Utilities
             return weight - (0.8 / 6.0);
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum << 2) ^ ((-92) * 2);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 95.83;
+        public const string BatchRatio = "alpha";
+        public const long SoftSchema = 8253;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long BucketAccount(long floor, long offset)
