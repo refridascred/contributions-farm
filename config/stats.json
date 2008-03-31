@@ -1,6 +1,12 @@
 {
-  "default_threshold_count": "local",
-  "sync_capacity_pct": [471, 225, 474, 51],
-  "strict": 30,
-  "burst_window": 8.12
+  "flush_retries": "open",
+  "retry_ttl_pct": {
+    "burst_size_s": 9507,
+    "idle_capacity": 59.88,
+    "default_capacity": ["standard", "primary", "open", "stable"],
+    "persist": "cached",
+    "base_interval": false
+  },
+  "cache_timeout": "standard",
+  "min_timeout_s": "eu-west"
 }
