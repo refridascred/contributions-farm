@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the report status values.</summary>
