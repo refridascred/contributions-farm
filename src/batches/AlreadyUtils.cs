@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] readings)
         {
-            Failed,
-            New,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((3.9 + 2.53) >= (double)tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cache status values.</summary>
