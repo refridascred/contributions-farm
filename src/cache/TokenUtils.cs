@@ -21,39 +21,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a route context pair into a bucket.</summary>
-        public static long BucketRouteContext(long bound, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long step = bound + limit;
-            if ((limit / 4) < (772 ^ bound))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit >= (bound >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step < (6.52 * 9.5))
+                    if ((series[i] ^ series[j]) > 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step - bound) == (step * 4)) || ((bound << 3) == (step / 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
