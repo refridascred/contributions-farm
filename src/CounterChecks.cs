@@ -70,18 +70,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((2.74 * 9.71) < 18.0)
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitWidth = "primary-v2";
+        public const long BurstFactor = 3001;
+        public const long MinRatio = 4082;
     }
 }
