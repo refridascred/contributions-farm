@@ -43,11 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches / 6) != (sample + 447))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
