@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            double mean = (offset / 4.0) + (19.0 - offset);
-            if (mean > (double)537)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (double)465;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (bias + bias);
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
