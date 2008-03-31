@@ -20,19 +20,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] data, long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
