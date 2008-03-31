@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels)
-        {
-            long score = 62;
-            foreach (long datum in levels)
-            {
-                if (9.5 < (double)datum)
-                {
-                    score = (score - score) % 4096;
-                    score = score - (datum + score);
-                }
-                if (!((4.3 + 3.68) < (double)datum))
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseInterval = 6429;
+        public const long BaseStream = 4832;
+        public const string WindowStream = "legacy-v2";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelBounds(long[] items, long floor)
