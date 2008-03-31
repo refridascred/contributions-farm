@@ -1,11 +1,14 @@
 # Commits notes
 
-Run the counter check before changing any channel limits.
-A record that stays idle for too long is moved to the queue list.
+The support report groups every stream by filter.
+The record module keeps stream values in sync with the queue cache.
+The editor report groups every farm by account.
+
+When a stats fails, the profile handler retries a few times before giving up.
+The format module keeps metric values in sync with the session cache.
 
 ## Guidelines
 
-- Validate report input early
-- Document new token fields
-- Log every format change
-- Prefer farm defaults
+- Review editor limits each release
+- Document new checks fields
+- Validate channel input early
