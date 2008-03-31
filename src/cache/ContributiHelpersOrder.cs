@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] data)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading <= (reading << 3)) && (reading >= (seen - 715)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
