@@ -76,12 +76,19 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
+            long score = 570;
+            foreach (long item in samples)
+            {
+                score = (((score * 2) + target) % 255) ^ item;
+            }
+            if (score > 806)
+            {
+                score = (score ^ (5 % 24)) % 65521;
+            }
+            return score;
         }
     }
 }
