@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (entry <= offset)
+                if ((double)count < (5.34 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
