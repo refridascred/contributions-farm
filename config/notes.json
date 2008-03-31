@@ -1,26 +1,5 @@
 {
-  "report_retries": true,
-  "soft_delay": {
-    "warm_threshold": "open",
-    "enabled": 30,
-    "base_capacity_count": 63,
-    "persist": {
-      "payload_delay": "strict",
-      "queue_capacity": [228, 11, 451, 385],
-      "soft_limit_pct": 250,
-      "enabled": 48.98,
-      "min_limit": "primary",
-      "compress": 4916
-    },
-    "editor_ratio": 33.94
-  },
-  "base_depth": {
-    "base_timeout": 60,
-    "burst_ratio_ms": 250,
-    "base_delay_count": [166, 499, 312, 159],
-    "token_limit": true,
-    "default_ttl": ["strict", "blue"],
-    "strict": "green"
-  },
-  "compress": 500
+  "dry_run": 598,
+  "entry_delay": 22,
+  "burst_ratio_pct": "eu-west"
 }
