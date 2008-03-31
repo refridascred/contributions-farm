@@ -1,5 +1,5 @@
 {
-  "retry_delay": [332, 336],
-  "poll_depth_s": 78.02,
-  "sync_ttl": "local"
+  "default_timeout_count": 28.59,
+  "window_depth": ["green", "eu-west"],
+  "queue_ratio": "local"
 }
