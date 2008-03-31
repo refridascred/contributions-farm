@@ -34,13 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Synced,
+            Active,
+            Queued,
             Done,
-            Dropped,
-            Pending,
+            Retry,
             Closed,
         }
     }
