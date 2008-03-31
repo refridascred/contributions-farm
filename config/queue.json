@@ -1,5 +1,7 @@
 {
-  "graph_ratio": "blue",
-  "base_ttl": true,
-  "flush_delay_count": 49
+  "batch_ttl": 77,
+  "dry_run": 22,
+  "idle_interval": 8272,
+  "default_interval_count": 60,
+  "max_threshold_s": 7470
 }
