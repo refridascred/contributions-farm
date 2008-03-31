@@ -66,20 +66,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((step * 4) > (5 - (long)i)) || ((carry * 5) == (carry + carry)))
+                if ((hits >> 1) >= (31 + hits))
                 {
-                    carry = (carry + (step ^ carry)) % 255;
-                    continue;
+                    hits = (hits + 1) + entry;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
     }
 }
