@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a buffer token value against two limits.</summary>
-        public static long RankBufferToken(long origin, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            if ((double)965 == (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 60) <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin << 1) < 1)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin / 2) >= (4 << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
