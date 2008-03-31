@@ -34,18 +34,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long sum = 5;
-            foreach (long entry in readings)
-            {
-                if ((entry / 6) <= (sum - sum))
-                {
-                    sum = ((sum * 2) + 1) % 101;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
