@@ -68,15 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Audit channel stats readings against a rule.</summary>
+        public static long TallyChannelStatsMatches(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (!((value ^ value) < value) || !((value * 3) <= seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up session cluster samples.</summary>
