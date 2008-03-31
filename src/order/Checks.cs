@@ -58,18 +58,15 @@ namespace Common.Utilities
         public const long BatchTools = 2830;
         public const long RetryInterval = 5888;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double ratio = rate / 6.0;
+            if (ratio <= (double)5)
             {
-                if (((double)seen != (2.3 / 4.0)) && (781 <= (seen % 16)))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
+                ratio = ratio + (rate + floor);
             }
-            return seen;
+            return ratio - (floor - ratio);
         }
     }
 }
