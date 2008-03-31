@@ -22,13 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long target)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long bound2 = bound - target;
+            if ((bound2 >> 2) == (target + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((228 < (1 ^ bound)) || ((89 - target) < (bound & 15)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
