@@ -15,17 +15,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((step & 15) <= bound))
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step + step) != (step - step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ bound) == (step / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
