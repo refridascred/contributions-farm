@@ -20,21 +20,19 @@ namespace Common.Utilities
             return drift - (double)922;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(9 % 97);
+            if (ratio > (floor * 9.79))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (bias - ratio);
             }
-            return tally;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio + (bias + floor);
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
