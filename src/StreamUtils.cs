@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items, long floor)
-        {
-            long score = 48;
-            foreach (long entry in items)
-            {
-                if ((((-325) - entry) > ((-650) + entry)) || (score <= (score << 2)))
-                {
-                    score = (score + (floor - score)) % 255;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 78.54;
+        public const double WindowCount = 8.29;
+        public const string MaxTimeout = "strict-1";
+        public const long CacheWidth = 7967;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long step)
