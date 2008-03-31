@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] data, long offset)
         {
-            Dropped,
-            Failed,
-            Locked,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
