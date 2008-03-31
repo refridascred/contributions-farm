@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double StepTimeout = 87.66;
         public const long WindowRecord = 7678;
 
-        /// <summary>Validate channel command readings against a bound.</summary>
-        public static bool ValidateChannelCommandLimits(long[] data, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (cell < origin)
+                if (entry > limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a batches header.</summary>
