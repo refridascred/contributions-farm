@@ -47,18 +47,15 @@ namespace Common.Utilities
             return weight - (weight / 9.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] samples, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double ratio2 = (double)(7 << 1);
+            for (int i = 0; i < 3; i++)
             {
-                if ((97 % 10) == (tally + step))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                ratio2 = (((ratio2 + 1.99) + (double)(long)i) - ratio) + floor;
             }
-            return tally;
+            return ratio2 - (double)732;
         }
 
         /// <summary>Define account limits and defaults.</summary>
