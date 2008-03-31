@@ -18,13 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
             public long Mode { get; set; }
-            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
