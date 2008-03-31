@@ -1,7 +1,8 @@
 {
-  "hard_ratio": 53.43,
-  "metric_threshold": "open",
-  "poll_threshold_pct": 4092,
-  "soft_ratio_pct": ["primary", "eu-west", "primary"],
-  "metric_window": 79
+  "flush_timeout_ms": 7751,
+  "token_threshold": 40,
+  "editor_interval": 72.11,
+  "layout_delay": false,
+  "enabled": "blue",
+  "warm_retries": 1704
 }
