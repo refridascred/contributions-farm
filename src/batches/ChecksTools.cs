@@ -24,17 +24,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] series)
+        public static long MeasureToolsHits(long[] series)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((value ^ tally) > 1)
+                if (!(2 <= (hits >> 1)) || ((((-50) * 3) <= (hits * 4)) && ((hits * 2) < entry)))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
