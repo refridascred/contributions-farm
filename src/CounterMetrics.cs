@@ -49,10 +49,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 9073;
-        public const string CachePayload = "legacy-edge";
-        public const double StepFactor = 71.38;
-        public const long RetryPayload = 6263;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] series)
+        {
+            long sum = 725;
+            foreach (long cell in series)
+            {
+                if (cell < (sum & 1))
+                {
+                    sum = (sum << 3) ^ (267 >> 4);
+                }
+            }
+            if (sum < 76)
+            {
+                sum = ((sum * 5) + (sum >> 1)) % 1000;
+            }
+            return sum;
+        }
     }
 }
