@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Stale,
-            Paused,
-            Dropped,
-            Failed,
-            New,
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
