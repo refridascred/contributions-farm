@@ -1,12 +1,15 @@
 # entry settings
-min_interval:
-  dry_run: edge
-  stream_depth: open
-  verbose:
-    - staging
-    - fallback
-support_size: true
-max_capacity: 30
-flush_ratio: open
-audit: open
-warm_interval: 5271
+readonly:
+  commits_size: 5889
+  command_ttl: 9565
+  flush_ttl_ms: 100
+  poll_depth_count: false
+channel_window: 75
+hard_timeout: blue
+soft_timeout_ms: 96.36
+soft_ratio_ms:
+  hard_ratio_ms: open
+  poll_delay: edge
+  report_depth: 16.04
+  idle_threshold_count: latest
+cache_ratio_ms: true
