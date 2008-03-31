@@ -38,15 +38,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine channel already values into a single score.</summary>
-        public static long ScoreChannelAlready(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long result = 159;
-            foreach (long value in levels)
-            {
-                result = (result ^ (result + 546)) ^ value;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
