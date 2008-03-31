@@ -1,4 +1,12 @@
 # githubfarm settings
-max_retries_count: 2
-profile_limit: staging
-readonly: standard
+window_depth:
+  - latest
+  - stable
+tools_limit:
+  - 211
+  - 52
+  - 127
+  - 441
+dry_run: 23.69
+readonly: 55.33
+poll_timeout_pct: 8053
