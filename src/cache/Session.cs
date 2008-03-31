@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Idle,
-            Synced,
-            Dropped,
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
