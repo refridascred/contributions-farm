@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long bound2)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long edge = bound + bound2;
-            if (20.0 <= (double)bound)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 + edge) < (bound2 % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
