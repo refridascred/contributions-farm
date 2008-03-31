@@ -77,15 +77,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long step)
         {
-            double scale = (5.0 - 8.46) + (bias - bias);
-            if (scale > ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - bias;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return scale + 0.5;
+            return -1;
         }
     }
 }
