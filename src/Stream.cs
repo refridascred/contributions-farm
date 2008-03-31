@@ -50,13 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] items, long origin)
         {
-            Ready,
-            Queued,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (42 >= (hits >> 3))
+                {
+                    hits = ((hits + 3) + datum) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of route report readings.</summary>
