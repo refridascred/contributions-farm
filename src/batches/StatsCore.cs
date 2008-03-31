@@ -15,21 +15,18 @@ namespace Common.Utilities
         public const long BatchFarm = 7429;
         public const double BatchBudget = 55.15;
 
-        /// <summary>Match up context checks samples.</summary>
-        public static long CompareContextChecksCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item + hits) >= 627)
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up contributi tools samples.</summary>
