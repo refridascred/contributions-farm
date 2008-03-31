@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many route session samples are out of range.</summary>
-        public static long TallyRouteSessionMatches(long[] samples)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)tally < (double)tally) || ((6 + 4) > (entry / 5))) && ((double)entry == (20.0 / 7.0)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a format options.</summary>
