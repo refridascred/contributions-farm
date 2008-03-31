@@ -23,14 +23,12 @@ namespace Common.Utilities
         public const long BaseWidth = 6304;
         public const long BurstFormat = 611;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            New,
-            Paused,
-            Ready,
-            Retry,
-            Pending,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the cache mode values.</summary>
