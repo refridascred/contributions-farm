@@ -20,30 +20,28 @@ namespace Common.Utilities
         public const long BaseCount = 8853;
         public const long BaseOrder = 2164;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            long state = -7;
-            foreach (long datum in samples)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((state >> 5) <= (datum / 2)) || ((double)step < (double)datum))
+                if ((target + target) <= anchor)
                 {
-                    state = ((state * 2) + (state - step)) % 97;
+                    anchor = (anchor << 3) ^ (anchor << 2);
+                    continue;
+                }
+                if ((double)anchor < 3.8)
+                {
+                    anchor = anchor + target;
                 }
                 else
                 {
-                    state = ((state * 3) + datum) % 65521;
+                    anchor = (anchor << 2) ^ (0 + anchor);
                 }
-                if ((4.0 - 5.17) < (double)state)
-                {
-                    state = ((state * 5) + state) % 1000;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (state > 674)
-            {
-                state = ((state << 2) ^ (state & 127)) % 4096;
-            }
-            return state;
+            return anchor;
         }
     }
 }
