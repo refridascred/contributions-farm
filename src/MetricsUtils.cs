@@ -49,14 +49,19 @@ namespace Common.Utilities
         public const double BatchStats = 31.7;
         public const string LimitStats = "alpha";
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every tools filter entry stays within the limit.</summary>
+        public static bool ValidateToolsFilterBounds(long[] samples, long limit)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Active,
-            Retry,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
