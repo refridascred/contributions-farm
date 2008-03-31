@@ -52,15 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor entry values into a single score.</summary>
-        public static long TotalEditorEntry(long[] items, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] series, long origin)
         {
-            long sum = 481;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                sum = (((sum * 3) + target) % 1000) + cell;
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Classify a githubfarm context pair into a bucket.</summary>
