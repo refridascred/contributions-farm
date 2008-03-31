@@ -69,14 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long limit)
         {
-            Retry,
-            Closed,
-            Active,
-            Draft,
-            Paused,
+            long result = 4;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= 7.9)
+                {
+                    result = (result + ((-130) / 4)) + limit;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the channel state values.</summary>
