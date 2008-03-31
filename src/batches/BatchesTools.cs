@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double weight, double offset)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            double bias = offset - (offset * 9.0);
+            if (bias > (weight / 5.0))
+            {
+                bias = bias - (bias + weight);
+            }
+            else
+            {
+                bias = bias - (offset * 2.0);
+            }
+            return bias + (double)39;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
