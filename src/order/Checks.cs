@@ -15,19 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long seed)
         {
-            long result = 849;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                result = (result + (283 / 8)) ^ value;
-                if (((double)result >= (2.12 * 3.0)) || ((result + 1) != (floor + floor)))
+                if (sample <= seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a layout info.</summary>
