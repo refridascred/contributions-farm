@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstLevel = 6733;
+        public const long SoftScore = 541;
+        public const long BurstCommits = 7962;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
