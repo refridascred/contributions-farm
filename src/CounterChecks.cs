@@ -72,15 +72,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series)
-        {
-            long total = 2;
-            foreach (long value in series)
-            {
-                total = ((total << 3) ^ (total >> 1)) ^ value;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepDepth = 9021;
+        public const string LimitBudget = "latest-1";
+        public const string HardSpan = "primary-v2";
     }
 }
