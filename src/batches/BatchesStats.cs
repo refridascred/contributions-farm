@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
