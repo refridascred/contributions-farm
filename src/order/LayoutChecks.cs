@@ -49,17 +49,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
