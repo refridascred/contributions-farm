@@ -42,18 +42,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout account samples are out of range.</summary>
-        public static long TallyLayoutAccountGaps(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((floor % 5) <= (floor - floor))
             {
-                if ((seen ^ (long)samples.Length) != (value >> 4))
+                return 0;
+            }
+            else
+            {
+                if ((floor * 4) == (9 / 3))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((133 + bound) >= (floor - 70))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((8.54 / 2.0) <= (double)floor) || ((3 & 3) <= (bound % 64)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
