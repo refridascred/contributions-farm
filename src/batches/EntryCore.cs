@@ -37,15 +37,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
             long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)readings.Length >= (count ^ item)) || ((count / 7) != (count + item)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
