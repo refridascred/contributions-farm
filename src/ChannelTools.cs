@@ -19,16 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] samples, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long state = 158;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 3) + (4 << 3)) % 1000;
-                mark = ((mark * 2) + (long)i) % 101;
+                state = (state ^ ((-133) - 63)) - limit;
+                state = state + reading;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
