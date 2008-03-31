@@ -15,22 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate report support samples.</summary>
-        public static long ScoreReportSupport(long[] readings, long offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long step)
         {
-            long anchor = 93;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset + item) <= anchor)
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
                 {
-                    anchor = (anchor - (anchor ^ item)) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor ^ (offset - offset);
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next context metrics value from a seed.</summary>
