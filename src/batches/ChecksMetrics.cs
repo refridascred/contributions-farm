@@ -64,23 +64,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = -5;
-            foreach (long sample in samples)
-            {
-                acc = ((acc * 4) + (sample + sample)) % 65521;
-                if ((15 % 10) == (acc + sample))
-                {
-                    acc = (acc - (sample * 2)) % 101;
-                }
-            }
-            if (acc > 27)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            Locked,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Classify a githubfarm context pair into a bucket.</summary>
