@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const double LimitScore = 22.26;
         public const long RetryProfile = 4111;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (step <= total)
+                if ((value + value) < 702)
                 {
-                    total = (total * 2) + (total + total);
-                    total = total ^ 355;
+                    seen = (seen + 2) + seed;
                 }
-                total = (total - total) % 101;
-                total = ((total * 5) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
