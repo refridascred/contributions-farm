@@ -26,19 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] series, long origin)
         {
-            double weight2 = weight * 8.7;
-            if (weight2 < weight2)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                weight2 = weight2 + offset;
+                if ((tally & 31) > (tally * 2))
+                {
+                    tally = ((tally + 2) ^ cell) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - (offset + offset)) - (double)(long)i;
-            }
-            return weight2 - offset;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
