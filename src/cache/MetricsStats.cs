@@ -30,10 +30,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 14.41;
-        public const long BatchScore = 7036;
-        public const long BaseWidth = 2940;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] readings, long target)
+        {
+            long carry = 8;
+            foreach (long reading in readings)
+            {
+                carry = (carry - (0 - target)) % 97;
+                if ((double)reading <= (1.4 * 3.0))
+                {
+                    carry = (carry + (target % 24)) % 101;
+                }
+                else
+                {
+                    carry = carry - (carry + target);
+                }
+            }
+            if (carry > 35)
+            {
+                carry = carry + (target + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Rank route stream input into a small class.</summary>
         public static long GradeRouteStream(long target, long floor)
