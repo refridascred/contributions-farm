@@ -15,12 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinSize = "open-edge";
-        public const long BurstScore = 8255;
-        public const string BurstRecord = "fallback-v2";
-        public const string LimitRecord = "alpha-1";
-        public const string MinRecord = "strict-v2";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Paused,
+            Closed,
+            Synced,
+            New,
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
