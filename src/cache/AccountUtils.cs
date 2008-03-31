@@ -13,22 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long state = 276;
-            foreach (long entry in readings)
-            {
-                if (entry > (state + entry))
-                {
-                    state = ((state * 2) + (579 & 1)) % 101;
-                }
-            }
-            if (state < 184)
-            {
-                state = (state - (455 * 2)) % 4096;
-            }
-            return state;
+            Failed,
+            Locked,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the entry state values.</summary>
