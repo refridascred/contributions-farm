@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Grade a stats account value against two limits.</summary>
+        public static long SortStatsAccount(long offset, long target)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            long slot = offset ^ target;
+            if (offset > slot)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset > target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
