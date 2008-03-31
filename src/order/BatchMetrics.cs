@@ -51,17 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = 13.0;
+            if (rate2 <= (double)106)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 - rate2) - rate) - offset;
             }
-            return -1;
+            return rate2 + 5.0;
         }
     }
 }
