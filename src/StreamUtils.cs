@@ -79,11 +79,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 37.69;
-        public const long BatchBudget = 5640;
-        public const string HardTimeout = "staging";
-        public const long MinContributi = 7628;
-        public const long LimitContributi = 7403;
+        /// <summary>Grade a channel githubfarm value against two limits.</summary>
+        public static long ClassifyChannelGithubfarm(long seed, long limit)
+        {
+            if ((limit / 3) <= (seed << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit & 31) <= (seed % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + seed) >= seed) && (((-88) / 4) > (limit & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(limit > (limit % 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
