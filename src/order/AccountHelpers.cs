@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples, long bound)
         {
-            long sum = -81;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum ^ (0 + sum)) ^ item;
+                if ((3.0 * 5.85) < (double)bound)
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Find the first farm cache entry that matches the target.</summary>
