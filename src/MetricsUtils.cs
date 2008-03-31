@@ -57,23 +57,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((9.17 * 1.91) == (double)reading)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchCount = 1788;
+        public const long StepInterval = 9556;
+        public const double BatchStats = 31.7;
+        public const string LimitStats = "alpha";
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
