@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 5) + (origin - mix)) % 1000;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 800;
+        public const long RetryTimeout = 6246;
+        public const string MinCount = "open-v2";
+        public const double CacheCommand = 84.0;
+        public const string MaxCommand = "stable";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double bias, double floor)
