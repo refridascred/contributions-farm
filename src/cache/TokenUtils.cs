@@ -13,13 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Idle,
-            Synced,
-            Done,
-            Draft,
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a route context pair into a bucket.</summary>
