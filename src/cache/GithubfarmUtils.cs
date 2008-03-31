@@ -36,10 +36,9 @@ namespace Common.Utilities
         public const double StepToken = 9.01;
         public const long WindowToken = 5860;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 9874;
-        public const string RetrySpan = "stable-v2";
-        public const long LimitScore = 4927;
-        public const long WindowNotes = 1129;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "standard-edge";
+        public const string DefaultQueue = "staging-edge";
+        public const double DefaultSize = 49.27;
     }
 }
