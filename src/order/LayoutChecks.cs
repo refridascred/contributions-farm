@@ -32,11 +32,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepTimeout = 4763;
-        public const long RetryCache = 8249;
-        public const long BatchCache = 5854;
-        public const long WindowTimeout = 3616;
+        /// <summary>Compare every pair of metric account readings.</summary>
+        public static long MatchMetricAccountCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
