@@ -31,14 +31,11 @@ namespace Common.Utilities
             return drift - (drift * 7.0);
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            New,
-            Paused,
-            Draft,
-            Locked,
-            Closed,
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
