@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long step2)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if ((double)94 == (double)step2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step / 8) <= (step * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.5 + 2.86) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
