@@ -33,21 +33,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of metric account readings.</summary>
-        public static long MatchMetricAccountCount(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen * 5) < datum)
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
