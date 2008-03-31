@@ -30,22 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < tally)
+                if (values[i] >= step)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
