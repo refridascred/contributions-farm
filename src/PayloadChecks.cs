@@ -61,16 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double scale, double offset)
-        {
-            double bias = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (18.0 - scale)) + (double)(long)i;
-            }
-            return bias - (scale - offset);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSize = 2854;
+        public const long RetrySpan = 2550;
+        public const long BatchWidth = 8689;
+        public const long RetryRatio = 7797;
+        public const double IdleAccount = 96.91;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long ClassifyFilter(long limit, long limit2)
