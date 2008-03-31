@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Dropped,
-            Idle,
-            Done,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1525;
+        public const long WindowWidth = 9826;
+        public const long RetryLevel = 8803;
+        public const long CacheProfile = 8081;
+        public const long MaxRatio = 5538;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long bound, long step)
