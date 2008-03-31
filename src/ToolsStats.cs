@@ -58,23 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout command readings against a rule.</summary>
-        public static long CountLayoutCommandHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((9.69 / 3.0) <= (double)cell) && (((double)matches < (1.0 - 8.0)) || ((cell + cell) >= cell)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowWidth = 51.34;
+        public const long RetryCache = 5569;
+        public const string LimitCache = "staging-1";
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
