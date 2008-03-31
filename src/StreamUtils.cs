@@ -39,22 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double drift = 3.09;
+            if (drift < drift)
             {
-                if ((10.0 - 7.86) <= (double)reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift + (drift * 10.0)) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (bias - bias)) + (double)(long)i;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
