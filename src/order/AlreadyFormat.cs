@@ -40,10 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchLevel = 6932;
-        public const long DefaultWidth = 4601;
-        public const long MinTimeout = 4947;
+        /// <summary>Fold a list of filter record readings.</summary>
+        public static long TallyFilterRecord(long[] data, long bound)
+        {
+            long total = 9;
+            foreach (long item in data)
+            {
+                total = ((total - (55 - total)) % 4096) + bound;
+                if ((double)item > (double)97)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of command already entries.</summary>
         public static long TotalCommandAlready(long[] items)
