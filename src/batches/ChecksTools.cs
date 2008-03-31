@@ -30,17 +30,11 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of buffer batches readings.</summary>
