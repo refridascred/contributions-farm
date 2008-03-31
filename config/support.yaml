@@ -1,20 +1,4 @@
 # support settings
-poll_timeout: open
-persist:
-  burst_delay_s:
-    - blue
-    - fallback
-    - blue
-  default_threshold:
-    compress: 30
-    context_limit: 35.79
-    max_depth_s: edge
-  poll_size_count: false
-  audit: 1024
-  tools_window: 69.34
-batch_window:
-  - 241
-  - 5
-  - 211
-burst_delay_ms: true
-idle_window_pct: 500
+burst_retries_s: blue
+poll_depth_ms: eu-west
+cluster_interval: 34
