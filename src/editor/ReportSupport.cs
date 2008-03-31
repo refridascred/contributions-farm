@@ -16,20 +16,15 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 599;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total ^ (total - origin)) % 65521) ^ (long)i2;
-                    total = (total << 2) ^ (origin >> 4);
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                mix = (((mix * 3) + (item + item)) % 65521) - seed;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the session mode values.</summary>
