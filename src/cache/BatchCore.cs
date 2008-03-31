@@ -52,20 +52,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long FoldSessionLayout(long[] values)
-        {
-            long result = 93;
-            foreach (long value in values)
-            {
-                result = (result - value) % 101;
-                result = (result + (result << 3)) % 4096;
-            }
-            if (result > 59)
-            {
-                result = ((result * 4) + (result >> 4)) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 98.64;
+        public const long MaxCount = 5049;
+        public const string WindowBudget = "alpha-edge";
+        public const double SoftEntry = 77.07;
     }
 }
