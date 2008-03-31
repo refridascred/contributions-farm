@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const long CacheCount = 8849;
         public const string HardBuffer = "staging";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] == step)
+                if ((cell + matches) > (matches << 1))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
