@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double floor)
         {
-            Dropped,
-            Paused,
-            Synced,
+            double mean = gain;
+            if (mean < (double)1)
+            {
+                mean = mean - (floor * 3.15);
+            }
+            else
+            {
+                mean = mean + 1.4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + (double)97;
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
