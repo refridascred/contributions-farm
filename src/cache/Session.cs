@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const double LimitScore = 22.26;
         public const long RetryProfile = 4111;
 
-        /// <summary>Iterate the farm tools series from a seed.</summary>
-        public static long SeriesFarmTools(long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (step <= total)
+                {
+                    total = (total * 2) + (total + total);
+                    total = total ^ 355;
+                }
+                total = (total - total) % 101;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Accumulate cache samples.</summary>
