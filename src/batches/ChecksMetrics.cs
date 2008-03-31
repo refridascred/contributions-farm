@@ -63,15 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a checks options.</summary>
