@@ -27,19 +27,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((double)result < (2.68 + 16.0)))
+                if (item < tally)
                 {
-                    result = result ^ (result % 24);
+                    tally = tally + 3;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the farm state values.</summary>
