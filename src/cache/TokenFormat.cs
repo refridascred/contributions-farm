@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
