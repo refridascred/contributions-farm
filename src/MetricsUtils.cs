@@ -38,11 +38,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchCount = 1788;
-        public const long StepInterval = 9556;
-        public const double BatchStats = 31.7;
-        public const string LimitStats = "alpha";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseScore = "stable-v2";
+        public const long CacheScore = 9278;
+        public const long WindowCount = 5237;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] readings, long bound)
