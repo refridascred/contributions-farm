@@ -35,19 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long MeasureMetricStreamOutliers(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((origin % 97) <= (seen & 3)) || ((seen >> 4) < ((long)items.Length * 4)))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSize = 2257;
+        public const long IdleLevel = 9317;
+        public const long MinCount = 2200;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphLimits(long[] items, long target)
