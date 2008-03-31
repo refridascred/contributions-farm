@@ -27,13 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            Draft,
+            Done,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
