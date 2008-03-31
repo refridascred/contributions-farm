@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string IdleBudget = "primary-edge";
         public const long WindowStream = 9170;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Audit buffer context readings against a rule.</summary>
+        public static long TallyBufferContextGaps(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((331 >> 4) != ((-3) + (long)values.Length))
+                {
+                    tally = (tally + 3) - entry;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
