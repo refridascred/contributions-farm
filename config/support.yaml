@@ -1,6 +1,14 @@
 # support settings
-entry_window: strict
-max_delay: true
-batch_capacity: 71
-poll_timeout_count: 1024
-default_size: 0.17
+idle_ratio: 383
+retry_ratio_ms: 7266
+account_ttl: 5208
+cluster_limit:
+  compress: 96.92
+  poll_retries_pct: 771
+  hard_window: legacy
+  batch_timeout:
+    - 471
+    - 384
+    - 39
+    - 242
+  verbose: open
