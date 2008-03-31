@@ -42,21 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of checks filter readings.</summary>
-        public static long CompareChecksFilterCount(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != origin)
                 {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
