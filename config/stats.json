@@ -1,5 +1,5 @@
 {
-  "sync_retries": 12,
-  "readonly": "standard",
-  "enabled": "latest"
+  "flush_capacity_pct": 100,
+  "flush_retries_pct": "edge",
+  "checks_threshold": 45.06
 }
