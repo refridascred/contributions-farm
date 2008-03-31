@@ -20,18 +20,20 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long CacheSupport = 3093;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = 21;
+            foreach (long datum in items)
             {
-                if ((double)count < (5.34 / 5.0))
+                if (!((datum + score) != (score + 36)))
                 {
-                    count = (count + 3) + item;
+                    score = (score * 3) + score;
                 }
+                score = (score - (score & 255)) % 101;
+                score = (score - (score ^ datum)) % 4096;
             }
-            return count;
+            return score % 4096;
         }
     }
 }
