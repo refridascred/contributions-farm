@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const long MaxChannel = 333;
         public const long StepSpan = 3889;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] data, long offset)
         {
-            long slot = origin ^ limit;
-            if ((3.38 - 9.0) >= (double)limit)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((((-50) - origin) != (origin + origin)) && ((7.0 * 5.4) >= (double)limit))
+                if (reading > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (0.2 >= (double)slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
