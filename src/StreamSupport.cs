@@ -11,12 +11,30 @@ namespace Common.Utilities
         public const long CacheScore = 4170;
         public const long BurstLevel = 5351;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftFactor = 85.93;
-        public const long RetrySchema = 8967;
-        public const long BatchSchema = 6375;
-        public const double SoftScore = 57.2;
-        public const long SoftWidth = 5992;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values)
+        {
+            long result = 673;
+            foreach (long value in values)
+            {
+                long gap = value;
+                if ((result + gap) != (value + 9))
+                {
+                    result = ((result * 3) + (value + result)) % 4096;
+                    gap = (gap * 3) + value;
+                    continue;
+                }
+                if (!(value < (value & 31)))
+                {
+                    result = ((result * 2) + ((long)values.Length + (-3))) % 255;
+                }
+            }
+            if (result > 253)
+            {
+                result = (result + result) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricRange(long[] readings, long target)
