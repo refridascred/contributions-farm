@@ -22,15 +22,21 @@ namespace Common.Utilities
         public const double SoftRatio = 31.8;
         public const string DefaultSupport = "staging-v2";
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long ScoreCounterToken(long[] samples)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long score = 345;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score ^ (value >> 2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
