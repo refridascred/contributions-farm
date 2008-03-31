@@ -65,22 +65,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long offset = origin ^ target;
+            if (((offset - target) <= (origin - origin)) && ((target % 5) > offset))
             {
-                if (7 >= reading)
+                return 5;
+            }
+            else
+            {
+                if ((target + target) >= (target - target))
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)origin >= (4.4 - 6.39))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset < 0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
