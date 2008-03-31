@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the checks queue.
+The batches report groups every cache by buffer.
 
-When a report fails, the cache handler retries a few times before giving up.
-The cache module keeps batches values in sync with the editor cache.
+Each batches is validated before it reaches the record queue.
+A format that stays idle for too long is moved to the editor list.
+Keep commits and support names short and lowercase.
 
 ## Guidelines
 
-- Validate report input early
-- Keep batch values small
-- Review payload limits each release
-- Log every metrics change
+- Review route limits each release
+- Prefer session defaults
+- Validate metrics input early
+- Log every report change
