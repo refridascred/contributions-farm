@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long target2)
+        /// <summary>Grade a schema stream value against two limits.</summary>
+        public static long SortSchemaStream(long offset, long floor)
         {
-            long diff = target + target2;
-            if (((758 << 1) > (target << 2)) && ((target + diff) >= target))
+            if (!((2.4 * 1.5) <= (double)floor))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((8 + target2) != (target * 5)) || (target2 <= (target - target2)))
+                if ((7 < (5 + offset)) || ((floor ^ floor) >= (floor % 8)))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)target2 <= (double)target)
+                    if ((double)offset < (3.3 + 12.0))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        return 2;
                     }
                 }
             }
