@@ -38,11 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinWidth = 97.38;
-        public const long SoftSession = 6463;
-        public const double MinSession = 41.94;
-        public const long LimitSession = 7098;
-        public const string BaseCount = "stable-edge";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (612 <= (count - count))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
