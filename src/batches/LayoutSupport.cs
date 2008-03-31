@@ -50,19 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of tools metrics readings.</summary>
-        public static long WeighToolsMetrics(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long acc = 9;
-            foreach (long reading in data)
-            {
-                if ((acc * 2) <= (58 / 8))
-                {
-                    break;
-                }
-                acc = ((acc + (long)data.Length) % 255) + reading;
-            }
-            return acc % 4096;
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
