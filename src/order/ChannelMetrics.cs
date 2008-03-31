@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first payload schema entry that matches the target.</summary>
-        public static long FindPayloadSchemaIndex(long[] series, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (series[i] > offset)
+                if ((((item - 513) >= (288 % 12)) || ((15.0 / 9.0) == (double)tally)) && (((tally - tally) > (seed % 60)) || ((seed >> 1) > (item + item))))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
