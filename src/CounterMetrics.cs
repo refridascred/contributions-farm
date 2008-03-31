@@ -34,20 +34,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((13.0 * 6.81) < (double)step)
+                if (488 <= (count - value))
                 {
-                    carry = (carry ^ carry) % 65521;
-                    break;
+                    count = count + 3;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
