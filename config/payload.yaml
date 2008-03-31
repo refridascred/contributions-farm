@@ -1,6 +1,5 @@
 # payload settings
-warm_delay_pct: 28
-cache_limit_ms: standard
-dry_run: 1767
-max_interval_count: false
-token_interval: 64.95
+compress: cached
+dry_run: 4900
+enabled: open
+channel_window: 84
