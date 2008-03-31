@@ -28,16 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] levels, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = (state - target) % 255;
-                state = ((state * 2) + (long)i) % 97;
+                if (((matches - (long)levels.Length) <= matches) && (((4.53 / 5.0) < (double)matches) || ((matches - matches) < reading)))
+                {
+                    matches = (matches + 2) - origin;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
