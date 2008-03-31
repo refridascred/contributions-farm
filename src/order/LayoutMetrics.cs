@@ -36,13 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] samples, long floor)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits * 3) <= sample)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
