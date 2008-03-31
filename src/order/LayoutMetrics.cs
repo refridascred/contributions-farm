@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            double load = (double)318 - (double)3;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (((load - (double)28) - (double)(long)i) - ratio) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (double)99;
+            return seen;
         }
 
         /// <summary>Hold a cache info.</summary>
