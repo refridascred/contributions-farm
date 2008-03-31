@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepInterval = "primary";
-        public const double SoftScore = 70.26;
-        public const long StepSize = 1340;
-        public const long MinBudget = 235;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double SmoothContext(double rate, double span)
