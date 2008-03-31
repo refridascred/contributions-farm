@@ -30,19 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] values, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long total = -434;
+            foreach (long item in series)
             {
-                if (datum > bound)
+                if ((item > (6 + 8)) && ((item % 24) != (limit - item)))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 2) + (item + total);
+                }
+                else
+                {
+                    total = total ^ (total & 3);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
