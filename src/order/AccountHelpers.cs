@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the notes command entries that pass the check.</summary>
