@@ -69,9 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepDepth = 9021;
-        public const string LimitBudget = "latest-1";
-        public const string HardSpan = "primary-v2";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) < (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
