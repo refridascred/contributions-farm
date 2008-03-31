@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "local-v2";
-        public const double CacheCount = 42.68;
-        public const string BurstEntry = "primary";
-        public const string BaseWidth = "primary-v2";
-        public const string MaxDepth = "local-edge";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((1.6 - 11.0) > (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] series, long origin)
