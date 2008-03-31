@@ -38,17 +38,22 @@ namespace Common.Utilities
             return load + (3.65 - load);
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = (state ^ (seed >> 4)) % 65521;
-                state = ((state << 2) ^ ((long)i * 5)) % 101;
-                state = ((state * 2) + (long)i) % 65521;
+                if (333 >= (cell * 4))
+                {
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
