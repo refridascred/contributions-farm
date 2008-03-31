@@ -1,5 +1,6 @@
 {
-  "context_delay": "staging",
-  "format_ttl": 9684,
-  "audit": ["eu-west", "blue", "strict", "latest"]
+  "profile_ratio": "blue",
+  "support_ratio": "cached",
+  "default_threshold_s": 250,
+  "idle_threshold_pct": "edge"
 }
