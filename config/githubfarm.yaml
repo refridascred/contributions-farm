@@ -1,5 +1,38 @@
 # githubfarm settings
-default_threshold_s: 14.29
-strict: 2.94
-contributi_ratio: false
-compress: fallback
+sync_ttl_pct:
+  dry_run: 250
+  metrics_ratio: edge
+  batches_capacity: 250
+  retry_timeout_s: 9
+verbose:
+  cache_timeout: cached
+  compress: green
+  poll_ratio:
+    min_ttl: stable
+    persist: 69.98
+    min_limit_ms: false
+    min_delay_ms: true
+  idle_limit_s: 6456
+  batch_threshold:
+    compress: standard
+    poll_retries_pct: primary
+    default_size_ms:
+      - fallback
+      - latest
+      - blue
+    readonly: 1024
+    persist: 100
+batches_depth:
+  - fallback
+  - edge
+  - fallback
+  - latest
+default_depth_ms:
+  tools_ratio: eu-west
+  hard_timeout:
+    - 74
+    - 452
+    - 418
+    - 453
+  command_size: latest
+  burst_retries_s: edge
