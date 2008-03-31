@@ -46,9 +46,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4119;
-        public const long MinChecks = 2960;
-        public const long StepChecks = 9475;
+        /// <summary>Rank farm tools input into a small class.</summary>
+        public static long GradeFarmTools(long offset, long target)
+        {
+            if (((target + 78) == (6 * 2)) || ((target - offset) < offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((615 > (offset >> 4)) && ((double)target < 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((8.14 * 3.0) > (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
