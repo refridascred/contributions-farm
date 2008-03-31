@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "stable-1";
-        public const string LimitBuffer = "open-1";
-        public const string BaseBuffer = "stable-1";
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long bound, long target)
