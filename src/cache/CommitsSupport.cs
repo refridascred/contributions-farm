@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long floor)
         {
-            double load = offset;
-            for (int i = 0; i < 5; i++)
+            if ((offset - floor) <= (-635))
             {
-                load = (load + gain) + (double)(long)i;
+                return 2;
             }
-            return load - (load + load);
+            else
+            {
+                if (((floor - floor) < (57 + floor)) && ((93 & 31) >= (1 + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (7.7 <= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor > (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a command farm figure with a bias.</summary>
