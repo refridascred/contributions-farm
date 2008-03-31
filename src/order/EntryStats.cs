@@ -52,9 +52,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowDepth = 7688;
-        public const string LimitContributi = "standard-edge";
-        public const double DefaultScore = 23.41;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = state + (long)i;
+                state = (state + (offset % 8)) % 255;
+                if ((state >> 1) < (state + 3))
+                {
+                    state = (state + ((long)i + offset)) % 4096;
+                    break;
+                }
+                else
+                {
+                    state = state - (offset + state);
+                    state = (state + state) % 101;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
