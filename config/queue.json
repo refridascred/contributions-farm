@@ -1,11 +1,6 @@
 {
-  "buffer_size": 19.47,
-  "audit": {
-    "layout_interval": 60,
-    "poll_timeout_ms": true,
-    "payload_ratio": "edge",
-    "audit": "latest",
-    "poll_interval": 38
-  },
-  "burst_window_s": false
+  "idle_size_pct": "stable",
+  "batch_size_s": false,
+  "githubfarm_window": "local",
+  "verbose": 18.77
 }
