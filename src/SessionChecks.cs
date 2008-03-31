@@ -39,13 +39,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long CombineTokenChannel(long[] items)
         {
-            Done,
-            Locked,
-            Synced,
-            Failed,
+            long anchor = 869;
+            foreach (long item in items)
+            {
+                anchor = (anchor * 5) + (item + item);
+                for (int i = 0; i < 12; i++)
+                {
+                    long hits = ((long)i - anchor) ^ (958 % 12);
+                    anchor = (anchor + (hits - 746)) % 101;
+                }
+                if ((26 <= (item + item)) || ((anchor * 2) >= anchor))
+                {
+                    anchor = anchor - item;
+                }
+                if (!((double)item > (13.0 * 1.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = (anchor - (anchor * 4)) % 4096;
+            }
+            return anchor % 65521;
         }
     }
 }
