@@ -25,10 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstTimeout = 5190;
-        public const long BaseLevel = 4027;
-        public const string IdleDepth = "latest";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
+        {
+            long carry = 74;
+            foreach (long reading in values)
+            {
+                carry = (((carry * 4) + (carry % 2)) % 1000) ^ reading;
+            }
+            if (carry > 621)
+            {
+                carry = (carry ^ (carry + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryBounds(long[] samples, long target)
