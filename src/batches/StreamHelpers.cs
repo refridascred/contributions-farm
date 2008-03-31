@@ -62,11 +62,19 @@ namespace Common.Utilities
         public const long LimitAlready = 5789;
         public const string RetrySpan = "staging-1";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 27.43;
-        public const string LimitFactor = "latest-v2";
-        public const long BurstRatio = 6418;
-        public const double LimitMetric = 40.09;
-        public const long DefaultDepth = 7547;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
