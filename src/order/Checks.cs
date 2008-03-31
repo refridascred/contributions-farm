@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series, long floor)
         {
-            double mean = gain;
-            if (mean < (double)1)
+            long result = 849;
+            foreach (long value in series)
             {
-                mean = mean - (floor * 3.15);
+                result = (result + (283 / 8)) ^ value;
+                if (((double)result >= (2.12 * 3.0)) || ((result + 1) != (floor + floor)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + 1.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + (double)97;
+            return result;
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
