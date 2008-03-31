@@ -28,13 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
