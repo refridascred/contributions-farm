@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
