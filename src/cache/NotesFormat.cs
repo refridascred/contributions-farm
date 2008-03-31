@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Draft,
-            Retry,
-            Dropped,
-            Active,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a payload header.</summary>
