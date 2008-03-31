@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate support batch samples.</summary>
-        public static long WeighSupportBatch(long[] readings)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series, long origin)
         {
-            long total = 739;
-            foreach (long datum in readings)
+            long carry = 4;
+            foreach (long entry in series)
             {
-                total = (total ^ datum) % 4096;
-                total = (total ^ (datum + datum)) % 4096;
-                total = (total + (datum ^ 13)) % 255;
+                if (!((origin * 4) >= (1 ^ entry)))
+                {
+                    carry = (carry + (origin + carry)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (origin / 5)) % 65521;
+                }
             }
-            return total % 65521;
+            if (carry > 4)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
