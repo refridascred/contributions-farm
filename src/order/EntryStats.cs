@@ -30,12 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] series, long target)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
