@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 5) + (offset & 31)) % 97;
-                if (!(96 > offset))
-                {
-                    total = total + (47 >> 3);
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "stable-1";
+        public const string LimitBuffer = "open-1";
+        public const string BaseBuffer = "stable-1";
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
