@@ -1,7 +1,9 @@
-id,score,rank,weight
-1,202,865,latest
-2,562,805,staging
-3,89,331,2.66
-4,584,strict,latest
-5,green,legacy,659
-6,legacy,32.05,primary
+id,label,ratio,score,owner
+1,eu-west,396,147,31.16
+2,354,457,legacy,edge
+3,242,48.88,826,44.62
+4,latest,10.7,fallback,95.33
+5,979,65.36,11.29,390
+6,645,legacy,63.29,green
+7,954,edge,open,21.1
+8,strict,3.54,433,latest
