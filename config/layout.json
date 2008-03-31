@@ -1,8 +1,5 @@
 {
-  "default_retries_s": 814,
-  "default_timeout": "legacy",
-  "strict": true,
-  "readonly": "strict",
-  "base_timeout_ms": 1304,
-  "checks_depth": true
+  "verbose": "legacy",
+  "retry_threshold_count": 5,
+  "warm_size": 250
 }
