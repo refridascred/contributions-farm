@@ -1,6 +1,14 @@
 # entry settings
-soft_retries: open
-cache_retries: 19.14
-burst_window_count: 28.81
-record_capacity: latest
-dry_run: eu-west
+dry_run: false
+soft_timeout: 10
+session_limit: eu-west
+warm_window: true
+record_size:
+  - cached
+  - edge
+  - fallback
+batch_limit_pct:
+  - 65
+  - 332
+  - 298
+  - 240
