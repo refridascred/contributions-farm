@@ -43,9 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "local-edge";
-        public const double WindowToken = 74.43;
-        public const long MaxToken = 4215;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
