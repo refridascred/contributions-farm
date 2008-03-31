@@ -15,19 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double bias, double bias2)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            double scale = bias;
+            if (scale > (bias * 20.0))
             {
-                if (((double)sum <= (1.8 / 8.0)) || (((long)i + offset) <= (long)i))
-                {
-                    sum = sum + offset;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                scale = scale - bias2;
             }
-            return sum;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + bias;
         }
 
         /// <summary>Accumulate layout samples.</summary>
