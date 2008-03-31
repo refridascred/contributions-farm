@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardScore = "fallback-edge";
-        public const long BatchCount = 3786;
-        public const string HardWindow = "strict";
-        public const double MaxCount = 93.04;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((double)item > (2.2 / 3.0)) || ((step >> 2) <= (2 - seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
