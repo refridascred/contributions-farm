@@ -22,16 +22,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 5) + acc) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
