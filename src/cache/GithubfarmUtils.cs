@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((entry - matches) >= matches)
+                if (reading != bound)
                 {
-                    matches = (matches + 2) + target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
