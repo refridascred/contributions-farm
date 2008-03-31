@@ -81,15 +81,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
