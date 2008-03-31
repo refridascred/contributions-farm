@@ -29,21 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum != seed)
                 {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
