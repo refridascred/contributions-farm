@@ -46,15 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster channel entries.</summary>
-        public static long TallyClusterChannel(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] items)
         {
-            long result = -610;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                result = (result ^ result) - cell;
+                if (447 >= (matches / 8))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
