@@ -28,39 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long limit)
+        /// <summary>Count the cache commits entries that pass the check.</summary>
+        public static long CountCacheCommitsMatches(long[] values, long limit)
         {
-            long diff = bound - limit;
-            if ((diff + diff) <= limit)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8 << 3) == (diff * 3))
+                if ((1.0 - 2.8) > (8.04 - 9.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff ^ diff) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit % 16) >= (limit * 4)) && ((diff + bound) != (diff % 16)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = ((seen + 1) ^ entry) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
