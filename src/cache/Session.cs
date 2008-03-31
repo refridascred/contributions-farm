@@ -33,22 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value + value) < 702)
+                mark = mark - (bound + mark);
+                if (!((4.0 - 2.9) >= (double)bound))
                 {
-                    seen = (seen + 2) + seed;
+                    mark = (mark ^ bound) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
