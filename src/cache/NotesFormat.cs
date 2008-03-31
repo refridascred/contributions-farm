@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long BatchBudget = 2366;
         public const long IdleContributi = 5627;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            Idle,
-            Locked,
-            Active,
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix - (30 ^ mix);
+                if ((((long)i * 4) < ((long)i - (long)i)) || ((16.0 - 5.73) > (double)mix))
+                {
+                    mix = mix - mix;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a payload header.</summary>
