@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 6861;
+        public const long IdleRecord = 141;
+        public const long CacheRecord = 8507;
 
         /// <summary>Measure how many queue schema samples are out of range.</summary>
         public static long TallyQueueSchemaHits(long[] readings)
