@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=445
-log "limit is ${COMMAND_LIMIT}"
-
-for item in staging standard local; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=7
+log "limit is ${COMMAND_LIMIT}"
