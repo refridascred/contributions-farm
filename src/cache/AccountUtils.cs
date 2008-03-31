@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] values, long offset)
+        /// <summary>Project the next support cluster value.</summary>
+        public static double AdjustSupportCluster(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading <= (double)seen) || ((seen + reading) > (reading * 3)))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            double ratio = (double)(3 << 1);
+            return ((ratio + (2.0 / 4.0)) + bias) + span;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
