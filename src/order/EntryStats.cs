@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Grade a layout window value against two limits.</summary>
+        public static long RankLayoutWindow(long floor, long origin)
         {
-            New,
-            Pending,
-            Dropped,
-            Failed,
-            Queued,
+            if (!((double)origin >= (9.0 + 9.55)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin - floor) == (origin * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >> 3) > 40)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
