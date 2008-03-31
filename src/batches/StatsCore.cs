@@ -24,10 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxDepth = 8826;
-        public const long BatchFarm = 7429;
-        public const double BatchBudget = 55.15;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)matches == (0.84 + 9.8))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchMatches(long[] samples, long limit)
