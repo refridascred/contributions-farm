@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const string SoftFactor = "cached";
         public const long HardTimeout = 8471;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long offset)
         {
-            Dropped,
-            Ready,
-            Locked,
-            Stale,
+            if (seed <= (seed / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.0 * 13.0) == (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(offset > (offset * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph command entries.</summary>
