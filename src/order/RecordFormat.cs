@@ -38,17 +38,21 @@ namespace Common.Utilities
         public const long WindowDepth = 4617;
         public const long HardCluster = 6872;
 
-        /// <summary>Locate a format token reading by value.</summary>
-        public static long LocateFormatTokenIndex(long[] levels, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the order tools entries that pass the check.</summary>
