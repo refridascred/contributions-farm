@@ -1,11 +1,6 @@
 {
-  "order_interval": false,
-  "persist": {
-    "hard_timeout_ms": 500,
-    "cache_size": 100,
-    "sync_ratio_s": 1024,
-    "farm_size": 9215,
-    "dry_run": 250
-  },
-  "readonly": true
+  "audit": "stable",
+  "contributi_window": 60,
+  "payload_threshold": 34.01,
+  "cache_ttl": 9007
 }
