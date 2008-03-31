@@ -20,22 +20,22 @@ namespace Common.Utilities
             return load + (load / 8.0);
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (count <= (count + value))
+                if ((origin << 2) >= 84)
                 {
-                    count = count + 2;
+                    tally = (tally + 2) + sample;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
