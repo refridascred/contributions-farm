@@ -25,21 +25,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Rank queue contributi input into a small class.</summary>
+        public static long ClassifyQueueContributi(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + limit) == (limit ^ limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor * 5) <= (limit + 0))
                 {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
