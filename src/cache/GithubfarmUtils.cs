@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] readings)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 64) <= sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
