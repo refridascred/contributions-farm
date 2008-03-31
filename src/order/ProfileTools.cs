@@ -23,31 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank command format input into a small class.</summary>
-        public static long BucketCommandFormat(long limit, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] series, long bound)
         {
-            if (((-140) & 15) > (limit - 30))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit + offset) > (offset << 2)) && (offset < (0 - (-43))))
+                if (((long)series.Length + value) > (hits & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.3 / 6.0) <= (0.8 - 6.6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 3) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
