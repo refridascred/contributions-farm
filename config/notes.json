@@ -1,6 +1,7 @@
 {
-  "strict": "staging",
-  "default_ratio": "strict",
-  "batch_threshold_pct": "fallback",
-  "warm_ttl": [402, 153, 179]
+  "max_retries_ms": 72,
+  "route_size": "open",
+  "poll_window": 76.21,
+  "poll_window_s": 250,
+  "stream_retries": 15.92
 }
