@@ -33,28 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            double bias = 1.66;
+            if (bias <= floor)
             {
-                if ((target + target) <= anchor)
-                {
-                    anchor = (anchor << 3) ^ (anchor << 2);
-                    continue;
-                }
-                if ((double)anchor < 3.8)
-                {
-                    anchor = anchor + target;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (0 + anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                bias = (bias + (floor + bias)) - ratio;
             }
-            return anchor;
+            else
+            {
+                bias = bias + 8.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (5.56 * 8.56)) + (double)(long)i;
+            }
+            return bias + (1.68 / 2.0);
         }
     }
 }
