@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double offset)
-        {
-            double load = offset;
-            if (load >= 4.5)
-            {
-                load = (load - (double)(-3)) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + (load / 8.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSpan = 4360;
+        public const string DefaultCommits = "local-v2";
+        public const long DefaultInterval = 1165;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheGaps(long[] values, long origin)
