@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double span)
-        {
-            double drift = (weight + weight) * 2.2;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (double)556;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "alpha-1";
+        public const long MinRatio = 5196;
+        public const double SoftSpan = 62.73;
+        public const double HardBudget = 83.92;
+        public const string MaxCommand = "latest-v2";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
