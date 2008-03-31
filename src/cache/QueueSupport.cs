@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples, long offset)
+        /// <summary>Classify a token metric pair into a bucket.</summary>
+        public static long SortTokenMetric(long step, long step2)
         {
-            long state = 616;
-            foreach (long datum in samples)
+            long lane = step + step2;
+            if ((lane * 5) >= (step - lane))
             {
-                if ((datum + datum) >= datum)
+                return 7;
+            }
+            else
+            {
+                if ((double)step > (3.4 / 6.0))
                 {
-                    state = ((state * 5) + state) + offset;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
