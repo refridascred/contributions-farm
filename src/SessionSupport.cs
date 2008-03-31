@@ -31,13 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items)
         {
-            New,
-            Paused,
-            Draft,
-            Locked,
+            long result = 3;
+            foreach (long reading in items)
+            {
+                if ((reading >= (result - reading)) || (6.0 <= (double)reading))
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
