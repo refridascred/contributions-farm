@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)matches == (6.3 * 6.0))
+                long offset = (long)i;
+                if ((offset / 3) < (target ^ target))
                 {
-                    matches = (matches + 1) + value;
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of cluster stats readings.</summary>
