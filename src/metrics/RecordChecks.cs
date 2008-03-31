@@ -27,17 +27,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account farm counter forward.</summary>
-        public static long StepAccountFarm(long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long limit, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long cur = limit ^ origin;
+            if (!((1.58 / 6.0) < (double)cur))
             {
-                sum = ((sum * 5) + step) % 4096;
-                sum = (sum + sum) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (((cur << 1) != (210 % 97)) || ((cur / 3) == (cur + 28)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (5.6 > (double)cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
