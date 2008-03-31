@@ -30,10 +30,11 @@ namespace Common.Utilities
             return bias - (double)32;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 2181;
-        public const long RetryDepth = 4756;
-        public const long IdleChannel = 6455;
-        public const long BatchChannel = 1309;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 96.62;
+        public const long StepDepth = 7021;
+        public const long RetryGithubfarm = 9045;
+        public const string StepGithubfarm = "strict";
+        public const long SoftTimeout = 9456;
     }
 }
