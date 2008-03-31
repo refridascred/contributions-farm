@@ -1,8 +1,7 @@
 {
-  "cache_ttl_pct": "local",
-  "poll_ttl": ["blue", "stable", "latest", "latest"],
-  "verbose": "primary",
-  "channel_depth": [132, 382],
-  "default_limit": "cached",
-  "base_threshold_pct": 88.01
+  "verbose": 500,
+  "githubfarm_depth": "local",
+  "flush_ttl_s": 21.52,
+  "queue_ttl": ["cached", "blue", "latest", "blue"],
+  "idle_depth": "staging"
 }
