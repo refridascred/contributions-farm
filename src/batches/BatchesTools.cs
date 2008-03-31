@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
