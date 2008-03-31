@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a tools batches sample.</summary>
-        public static long SeekToolsBatchesIndex(long[] items, long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target > (target >> 2)) && ((double)step >= (8.87 * 2.6)))
             {
-                if (items[i] > bound)
+                return 4;
+            }
+            else
+            {
+                if ((step ^ target) > step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((step ^ target) < (step << 1)) && ((step / 5) != ((-6) << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step == (double)534)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
