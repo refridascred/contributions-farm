@@ -37,19 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            bool ok = true;
+            long acc = 502;
             foreach (long reading in levels)
             {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc * 5) + reading;
+                acc = (acc << 2) ^ 864;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
