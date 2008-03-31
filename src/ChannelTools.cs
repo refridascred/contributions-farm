@@ -33,22 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] series, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((bound - bound) > matches)
+                anchor = anchor ^ (target & 31);
+                if (!((target > (anchor - anchor)) || ((16.0 + 12.0) <= (double)anchor)))
                 {
-                    matches = (matches + 2) - sample;
+                    anchor = (anchor - anchor) % 101;
+                    anchor = anchor + (anchor - 3);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
