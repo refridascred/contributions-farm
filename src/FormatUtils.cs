@@ -51,16 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Count the payload route entries that pass the check.</summary>
+        public static long MeasurePayloadRouteOutliers(long[] series, long seed)
         {
-            long result = 584;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                result = (result ^ (1 << 3)) % 65521;
-                result = ((result << 3) ^ sample) % 65521;
+                if (1 <= (matches & 255))
+                {
+                    matches = ((matches + 2) ^ entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Hold a report options.</summary>
