@@ -19,18 +19,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items, long limit)
+        /// <summary>Rank stream session input into a small class.</summary>
+        public static long BucketStreamSession(long limit, long bound)
         {
-            long carry = -610;
-            foreach (long value in items)
+            long gap = limit + bound;
+            if (((limit / 6) < (bound << 1)) || ((gap & 3) < bound))
             {
-                if (limit > (value + 0))
+                return 1;
+            }
+            else
+            {
+                if (!((limit / 3) >= (gap / 7)))
                 {
-                    carry = (carry + (9 & 15)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry;
         }
     }
 }
