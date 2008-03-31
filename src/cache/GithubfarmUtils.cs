@@ -23,23 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] levels)
-        {
-            long anchor = 580;
-            foreach (long sample in levels)
-            {
-                if ((anchor - sample) < anchor)
-                {
-                    anchor = ((anchor * 2) + (anchor - (long)levels.Length)) % 101;
-                }
-            }
-            if (anchor < 40)
-            {
-                anchor = anchor ^ (anchor << 3);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseWidth = 3181;
+        public const long RetryContext = 4165;
+        public const long LimitCount = 5958;
+        public const double StepContext = 65.98;
+        public const long CacheSpan = 1420;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 7269;
