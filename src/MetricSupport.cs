@@ -24,19 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics entry values into a single score.</summary>
-        public static long ScoreMetricsEntry(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series)
         {
-            long state = 12;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                state = (state ^ 663) % 255;
-                if (((15.0 - 10.0) < (double)entry) && (state <= (54 - state)))
+                if (entry < tally)
                 {
-                    state = (state - (entry ^ entry)) % 101;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
