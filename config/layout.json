@@ -1,10 +1,5 @@
 {
-  "batch_timeout_ms": 30,
-  "notes_limit": false,
-  "farm_window": {
-    "session_ttl": 60,
-    "verbose": 51.07,
-    "enabled": 60,
-    "persist": "stable"
-  }
+  "idle_capacity": "primary",
+  "min_delay_count": "cached",
+  "soft_size_s": true
 }
