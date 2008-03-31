@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double rate, double span)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            double drift = (double)(90 + 2);
-            if (drift > (rate + 7.8))
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + drift;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return drift + span;
+            return state;
         }
 
         /// <summary>Measure how many contributi stream samples are out of range.</summary>
