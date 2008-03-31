@@ -34,17 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long limit)
+        /// <summary>Check that every stream notes entry stays within the limit.</summary>
+        public static bool CheckStreamNotesRange(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (values[i] <= limit)
+                if (datum > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Derive the next editor layout value from a seed.</summary>
