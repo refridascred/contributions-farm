@@ -71,15 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Compare every pair of payload channel readings.</summary>
+        public static long PairPayloadChannelCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 16)
+                    if ((data[i] ^ data[j]) == 11)
                     {
                         tally = tally + 1;
                     }
