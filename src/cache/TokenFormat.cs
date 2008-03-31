@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] series, long seed)
         {
-            long total = 145;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                total = (total + (total + limit)) % 97;
-                total = (total + (-107)) % 97;
-                if ((limit + 135) > (value / 3))
+                if (datum <= seed)
                 {
-                    total = total + (value - total);
+                    valid = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
