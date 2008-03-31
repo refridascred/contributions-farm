@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseInterval = 6429;
-        public const long BaseStream = 4832;
-        public const string WindowStream = "legacy-v2";
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long StepBufferOrder(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] readings)
