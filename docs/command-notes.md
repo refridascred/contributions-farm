@@ -1,14 +1,14 @@
 # Command notes
 
-Keep schema and counter names short and lowercase.
-Keep profile and entry names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the farm queue.
+When a stream fails, the checks handler retries a few times before giving up.
+Keep commits and report names short and lowercase.
 
-Each route is validated before it reaches the batch queue.
-Keep batches and stats names short and lowercase.
+The notes report groups every session by payload.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every already change
-- Keep checks values small
-- Document new batch fields
+- Keep context values small
+- Review batches limits each release
+- Validate format input early
