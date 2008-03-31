@@ -1,8 +1,29 @@
 # support settings
-persist: 36
-flush_limit_s: 30
-batch_delay:
-  - 197
-  - 316
-  - 377
-compress: open
+channel_interval:
+  - green
+  - primary
+  - strict
+batch_limit_pct: true
+idle_limit_ms: strict
+base_threshold: 250
+base_retries_pct:
+  batch_limit: 83
+  base_retries_s: 60
+  sync_depth_ms: 83.6
+command_window:
+  compress:
+    - 411
+    - 138
+    - 311
+    - 202
+  dry_run: 60
+  hard_size_pct:
+    min_capacity_ms: open
+    flush_window_count: edge
+    soft_depth_s: 72
+  batch_limit_s: primary
+  audit: 24
+  channel_timeout:
+    audit: true
+    burst_depth_pct: 86.99
+    base_size_pct: true
