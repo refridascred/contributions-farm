@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (reading > seed)
+                if (((double)reading <= (double)seen) || ((seen + reading) > (reading * 3)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
