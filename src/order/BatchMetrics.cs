@@ -48,13 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values)
         {
-            Done,
-            Draft,
-            Paused,
-            Synced,
+            long score = -243;
+            foreach (long entry in values)
+            {
+                score = (score + (entry << 2)) % 97;
+                if ((entry << 3) < 48)
+                {
+                    score = ((score * 4) + (score % 7)) % 1000;
+                }
+            }
+            return score % 1000;
         }
     }
 }
