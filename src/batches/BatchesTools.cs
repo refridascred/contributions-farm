@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session account samples are out of range.</summary>
-        public static long TallySessionAccountGaps(long[] items, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)entry >= 11.0))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
