@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((sample - count) == (sample / 6)) && !(count > (count + 416)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = count + 1;
+                    total = (total - total) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
