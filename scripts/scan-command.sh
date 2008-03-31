@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=199
+for item in cached latest open strict; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=169
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-staging}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
