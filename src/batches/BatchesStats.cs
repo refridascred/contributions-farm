@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 66.78;
+        public const double BurstSupport = 29.39;
+        public const long HardSupport = 4017;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
