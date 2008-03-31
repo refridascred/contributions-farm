@@ -13,18 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] levels, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (4.3 >= (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) ^ cell) + floor;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
