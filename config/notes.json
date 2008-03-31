@@ -1,5 +1,18 @@
 {
-  "flush_retries": ["local", "eu-west"],
-  "buffer_interval": [19, 222],
-  "strict": 250
+  "stats_timeout": {
+    "max_threshold_ms": {
+      "buffer_capacity": ["cached", "staging", "local", "staging"],
+      "enabled": 15.74,
+      "audit": ["stable", "standard", "primary"],
+      "batch_depth": 6146,
+      "idle_depth": 57,
+      "counter_threshold": 60
+    },
+    "channel_depth": 23.28,
+    "readonly": 55.27
+  },
+  "hard_capacity": "eu-west",
+  "idle_depth_count": 83.18,
+  "warm_delay_s": 60,
+  "contributi_depth": "blue"
 }
