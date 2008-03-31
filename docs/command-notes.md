@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-A cache that stays idle for too long is moved to the payload list.
-Defaults for cache live in the config folder and can be overridden per environment.
+The entry report groups every record by counter.
+A record that stays idle for too long is moved to the batches list.
+Keep filter and filter names short and lowercase.
 
 ## Guidelines
 
-- Validate queue input early
-- Document new schema fields
-- Log every context change
+- Keep entry values small
+- Validate tools input early
+- Review cluster limits each release
+- Document new support fields
