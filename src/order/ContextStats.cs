@@ -26,19 +26,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] samples, long bound)
         {
-            long carry = 181;
-            foreach (long sample in levels)
+            long mix = 36;
+            foreach (long datum in samples)
             {
-                carry = (carry - (1 ^ seed)) + sample;
+                if ((datum >> 4) == (bound >> 4))
+                {
+                    mix = mix - (datum & 31);
+                }
+                mix = (mix - (bound + bound)) % 101;
             }
-            if (carry < 57)
+            if (mix < 146)
             {
-                carry = ((carry * 3) + (seed & 7)) % 1000;
+                mix = mix + mix;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
