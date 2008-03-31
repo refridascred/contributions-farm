@@ -31,19 +31,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches cluster entries.</summary>
-        public static long DigestBatchesCluster(long[] series)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long step, long offset)
         {
-            long result = 37;
-            foreach (long value in series)
+            if ((double)offset != (7.0 * 20.0))
             {
-                result = (result ^ (value << 1)) % 97;
-                if (!((result << 1) >= (value - result)))
+                return 1;
+            }
+            else
+            {
+                if (85 >= (offset >> 5))
                 {
-                    result = (result * 3) + 0;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step > (8.9 / 8.0)) && ((offset ^ step) <= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.0 - 18.0) <= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
