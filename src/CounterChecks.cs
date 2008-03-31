@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mean + 0.5;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)matches >= 0.1)
-                {
-                    matches = (matches + 2) - reading;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
