@@ -53,22 +53,12 @@ namespace Common.Utilities
         public const double DefaultEditor = 6.41;
         public const long RetryEditor = 9178;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] data, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((matches & 15) < (step % 97)) && (matches >= ((long)data.Length & 63)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
