@@ -59,11 +59,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 1279;
-        public const string MinCounter = "cached-edge";
-        public const string CacheInterval = "primary";
-        public const long RetryInterval = 2286;
-        public const string StepCounter = "alpha-1";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Queued,
+            Locked,
+            Ready,
+            Stale,
+        }
     }
 }
