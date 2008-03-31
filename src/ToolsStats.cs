@@ -43,17 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (readings[i] < offset)
+                if (item >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
