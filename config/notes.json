@@ -1,7 +1,5 @@
 {
-  "max_retries_ms": 72,
-  "route_size": "open",
-  "poll_window": 76.21,
-  "poll_window_s": 250,
-  "stream_retries": 15.92
+  "metric_depth": 2518,
+  "metrics_retries": "eu-west",
+  "filter_interval": true
 }
