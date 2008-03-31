@@ -45,12 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 4557;
-        public const string CacheScore = "standard";
-        public const double DefaultOrder = 18.94;
-        public const long HardOrder = 6398;
-        public const long SoftOrder = 5733;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
