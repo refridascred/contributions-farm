@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitBudget = 77.13;
+        public const string SoftContext = "standard-1";
+        public const long DefaultContext = 6882;
+        public const long CacheLevel = 5874;
+        public const long BurstContext = 507;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] samples)
