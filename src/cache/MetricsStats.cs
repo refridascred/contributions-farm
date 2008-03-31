@@ -10,14 +10,31 @@ namespace Common.Utilities
         public const long LimitFactor = 7525;
         public const string WindowSize = "legacy-v2";
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long floor, long target)
         {
-            New,
-            Failed,
-            Draft,
-            Queued,
-            Stale,
+            if (((double)floor > (19.0 - 5.0)) && (87 < (target - target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + target) > 76)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 7) <= (floor & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
