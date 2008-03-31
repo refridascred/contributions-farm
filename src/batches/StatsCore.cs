@@ -41,18 +41,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] readings)
+        /// <summary>Match up contributi tools samples.</summary>
+        public static long CompareContributiToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > (sample >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
