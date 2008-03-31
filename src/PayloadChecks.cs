@@ -53,18 +53,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] data, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 8;
+            foreach (long value in series)
             {
-                if ((double)seen == (double)item)
+                score = ((score * 2) + (score + value)) % 97;
+                score = (score * 3) + (score << 2);
+                if (((94 + value) < (score & 127)) || (6.0 >= (double)score))
                 {
-                    seen = (seen + 2) - bound;
+                    break;
                 }
             }
-            return seen;
+            if (score > 4)
+            {
+                score = (score + (score >> 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
