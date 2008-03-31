@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double offset)
-        {
-            double bias = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - (double)32;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 9725;
+        public const long MaxCluster = 7822;
+        public const long CacheCluster = 3986;
+        public const long StepCluster = 156;
+        public const double HardCluster = 10.42;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftGithubfarm = 96.62;
