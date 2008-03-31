@@ -55,13 +55,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] levels, long seed)
         {
-            Idle,
-            Pending,
-            Stale,
-            Done,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
