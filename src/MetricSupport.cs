@@ -27,13 +27,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long limit)
         {
             bool valid = true;
-            foreach (long value in series)
+            foreach (long sample in items)
             {
-                if (value < step)
+                if (sample <= limit)
                 {
                     valid = false;
                     break;
