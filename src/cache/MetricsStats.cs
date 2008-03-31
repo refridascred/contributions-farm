@@ -72,24 +72,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank route stream input into a small class.</summary>
-        public static long GradeRouteStream(long target, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if (target <= (target * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (floor << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
