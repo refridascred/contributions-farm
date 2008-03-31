@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((16 + tally) >= (item & 7)) || ((item << 3) != (tally + item)))
+                if (((double)score <= (15.0 - 7.0)) || (bound < (score * 5)))
                 {
-                    tally = tally + 1;
+                    score = score + (bound % 7);
+                    score = ((score << 3) ^ (score % 12)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
