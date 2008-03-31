@@ -37,15 +37,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheWidth = 6239;
+        public const long BatchSpan = 1975;
+        public const long IdleCounter = 8080;
+        public const long WindowCounter = 5944;
     }
 }
