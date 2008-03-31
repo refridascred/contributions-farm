@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSpan = 4360;
-        public const string DefaultCommits = "local-v2";
-        public const long DefaultInterval = 1165;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchLevel = 6567;
+        public const double RetryInterval = 34.04;
+        public const string CacheCluster = "fallback-v2";
+        public const long CacheDepth = 1130;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheGaps(long[] values, long origin)
