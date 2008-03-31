@@ -37,16 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long acc = 502;
-            foreach (long reading in levels)
+            long state = -5;
+            foreach (long value in items)
             {
-                acc = (acc * 5) + reading;
-                acc = (acc << 2) ^ 864;
+                if (value >= (value ^ value))
+                {
+                    state = ((state << 3) ^ value) % 65521;
+                }
             }
-            return acc;
+            if (state > 894)
+            {
+                state = (state * 4) + (82 >> 3);
+            }
+            return state;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
