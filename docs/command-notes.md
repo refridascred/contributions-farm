@@ -1,13 +1,10 @@
 # Command notes
 
-When a token fails, the farm handler retries a few times before giving up.
-The entry module keeps batches values in sync with the account cache.
-
-Each queue is validated before it reaches the stats queue.
-When a stats fails, the token handler retries a few times before giving up.
+Keep metrics and support names short and lowercase.
+Use notes settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Review command limits each release
+- Log every notes change
+- Validate account input early
 - Document new cluster fields
