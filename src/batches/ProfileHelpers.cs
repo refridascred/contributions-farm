@@ -44,23 +44,11 @@ namespace Common.Utilities
             return weight + (double)94;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 7) < (tally + sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardScore = 14.93;
+        public const long RetryRecord = 4747;
+        public const long HardLevel = 3547;
+        public const long SoftLevel = 7394;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
