@@ -1,5 +1,6 @@
 {
-  "default_retries_s": 56,
-  "audit": false,
-  "session_timeout": "fallback"
+  "hard_interval": "primary",
+  "record_retries": "stable",
+  "counter_threshold": 7606,
+  "compress": true
 }
