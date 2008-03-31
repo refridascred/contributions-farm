@@ -32,11 +32,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two route window measurements.</summary>
-        public static double ScaleRouteWindow(double bias, double bias2)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            double load = bias2;
-            return (load + bias2) + bias;
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(step >= (9 / 3)))
+                {
+                    carry = (carry * 3) + (step + step);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = carry ^ ((long)i2 + step);
+                }
+                carry = ((carry * 2) + ((-78) / 8)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
