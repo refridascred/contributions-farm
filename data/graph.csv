@@ -1,8 +1,6 @@
-id,label
-1,37.27
-2,504
-3,587
-4,27.8
-5,421
-6,432
-7,8.44
+id,label,count,token
+1,73.71,703,standard
+2,stable,green,8.4
+3,local,blue,latest
+4,primary,967,154
+5,71.69,179,779
