@@ -1,14 +1,25 @@
 # githubfarm settings
-burst_retries_ms:
-  report_capacity:
-    retry_capacity_pct: 98.96
-    poll_ttl_pct: true
-    batch_retries: 35
-    compress: false
-    max_limit_s: 60
-    verbose: green
-  warm_size_s: 500
-  min_threshold_s: primary
-contributi_window: staging
-retry_size_s: 500
-idle_window: false
+burst_capacity:
+  burst_ttl_pct:
+    - stable
+    - edge
+    - eu-west
+  base_retries_count:
+    flush_size_count:
+      - 140
+      - 52
+    cache_limit_s: local
+    min_window_pct:
+      - 300
+      - 121
+    cache_depth_pct:
+      - 408
+      - 442
+      - 422
+      - 190
+  max_window: 39
+audit: legacy
+retry_depth: legacy
+sync_capacity_count: 100
+persist: cached
+verbose: true
