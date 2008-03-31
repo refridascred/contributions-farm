@@ -57,15 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] samples, long seed)
         {
-            double ratio = rate / 6.0;
-            if (ratio <= (double)5)
+            long mark = 793;
+            foreach (long item in samples)
             {
-                ratio = ratio + (rate + floor);
+                if (!((100 - seed) == (26 + item)))
+                {
+                    mark = (mark + item) % 1000;
+                }
             }
-            return ratio - (floor - ratio);
+            if (mark > 22)
+            {
+                mark = (mark - (seed >> 5)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
