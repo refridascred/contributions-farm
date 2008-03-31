@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a profile layout counter forward.</summary>
+        public static long IterateProfileLayout(long step)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                double scale = (double)(step % 100);
+                if (!((scale * 6.9) <= (scale + scale)))
+                {
+                    scale = scale - scale;
+                    score = (score ^ (step >> 1)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
