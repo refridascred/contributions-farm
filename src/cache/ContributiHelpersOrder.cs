@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((floor - floor) != (floor + floor)) || ((limit - floor) > (limit >> 3)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor <= (limit % 2)) || ((floor >> 4) > (limit + floor)))
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
