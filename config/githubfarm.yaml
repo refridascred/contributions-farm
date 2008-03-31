@@ -1,6 +1,16 @@
 # githubfarm settings
-max_threshold: 1024
-min_depth: cached
-burst_size: legacy
-enabled: cached
-readonly: stable
+account_ratio: 6122
+burst_capacity: false
+idle_interval:
+  max_ttl_count:
+    - local
+    - green
+    - legacy
+  idle_threshold_pct:
+    - blue
+    - stable
+  persist: 4640
+batch_retries: false
+default_depth_s:
+  - primary
+  - local
