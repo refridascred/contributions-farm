@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] readings, long seed)
         {
-            long acc = 41;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                acc = (acc ^ (value * 3)) + target;
+                if ((7.74 + 7.7) == (double)seed)
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
