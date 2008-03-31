@@ -1,5 +1,5 @@
 {
-  "flush_limit_pct": 53.53,
-  "soft_size": 6.28,
-  "warm_timeout_ms": 10
+  "record_timeout": 16,
+  "base_depth_ms": [371, 280, 43],
+  "batch_ttl": "open"
 }
