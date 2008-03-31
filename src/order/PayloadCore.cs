@@ -45,18 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (origin > tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
