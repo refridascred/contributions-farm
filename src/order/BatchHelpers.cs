@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            if ((double)floor != (9.0 - 1.96))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) < (floor + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (58 < (floor >> 4))
+                    if ((samples[i] + samples[j]) < 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit & 1) >= (floor << 2)) || ((double)floor <= 13.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
