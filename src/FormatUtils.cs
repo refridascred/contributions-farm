@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a batches context figure with a bias.</summary>
-        public static double ScaleBatchesContext(double rate, double offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            double rate2 = (double)(374 % 97);
-            if (rate2 >= (double)982)
+            long diff = target ^ floor;
+            if (((139 << 2) < target) || ((floor + target) <= diff))
             {
-                rate2 = (rate2 - 5.4) + offset;
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate2 = (rate2 - (rate / 5.0)) - (double)(long)i;
+                if ((floor - diff) <= (-344))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return rate2 - (rate / 2.0);
         }
 
         /// <summary>Audit route cluster readings against a rule.</summary>
