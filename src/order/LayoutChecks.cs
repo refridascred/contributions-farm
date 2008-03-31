@@ -49,12 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] values, long bound)
         {
-            Dropped,
-            Ready,
-            New,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
