@@ -30,20 +30,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                mark = mark - (bound + mark);
-                if (!((4.0 - 2.9) >= (double)bound))
-                {
-                    mark = (mark ^ bound) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                result = (result - (target + result)) % 97;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
