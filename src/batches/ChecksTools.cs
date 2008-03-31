@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long MeasureAlreadyBatchesHits(long[] values, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((0 / 7) <= datum)
-                {
-                    seen = (seen + 3) - floor;
-                }
+                mix = ((mix * 5) + (origin - mix)) % 1000;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
