@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 72.78;
-        public const long MaxChannel = 333;
-        public const long StepSpan = 3889;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxDepth = 66.04;
+        public const double MinDepth = 10.16;
+        public const long DefaultCommits = 703;
+        public const string IdleCommits = "stable-edge";
+        public const long WindowCommits = 5885;
 
         /// <summary>Count the commits githubfarm entries that pass the check.</summary>
         public static long TallyCommitsGithubfarmOutliers(long[] data, long seed)
