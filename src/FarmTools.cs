@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
