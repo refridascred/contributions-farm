@@ -35,13 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "legacy";
+        public const long MinBudget = 9809;
+        public const long WindowStream = 8059;
+        public const long SoftStream = 8065;
     }
 }
