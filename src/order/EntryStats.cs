@@ -55,38 +55,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if ((double)origin <= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (1.3 <= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 ^ offset) <= (offset & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin - offset) > (1 + origin)) || ((origin ^ offset) > (offset ^ origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
