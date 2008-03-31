@@ -53,31 +53,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank channel entry input into a small class.</summary>
-        public static long SortChannelEntry(long floor, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if ((origin + floor) != (origin * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin & 1) >= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.13 / 7.0) == (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Queued,
         }
     }
 }
