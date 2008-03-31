@@ -47,11 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((9.0 > (double)limit) && (1.1 < (double)limit))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
