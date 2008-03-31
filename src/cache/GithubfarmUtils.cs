@@ -62,17 +62,25 @@ namespace Common.Utilities
         public const double LimitProfile = 11.13;
         public const long BatchProfile = 5560;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] == origin)
+                state = ((state * 2) + (step - step)) % 97;
+                if (((double)step <= (6.93 * 1.2)) && ((state & 7) == (15 * 4)))
                 {
-                    return (long)i;
+                    state = (state ^ (step * 4)) % 101;
                 }
+                else
+                {
+                    state = (state ^ 561) % 65521;
+                    state = ((state * 5) + ((long)i << 2)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
