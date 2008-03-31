@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (datum <= seed)
+                if (((cell / 6) < (step + step)) && ((cell + 7) > (seen + 44)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
