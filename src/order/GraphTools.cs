@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long origin)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long datum in samples)
             {
-                if (datum >= hits)
+                if (94 < (matches % 97))
                 {
-                    hits = (hits + 2) + step;
+                    matches = ((matches + 3) + datum) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
