@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Adjust a batches already reading.</summary>
