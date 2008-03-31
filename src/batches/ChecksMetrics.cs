@@ -63,15 +63,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
+        public static long RankGithubfarmContext(long offset, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long offset2 = offset - origin;
+            if ((8.0 / 2.0) <= (double)offset2)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((0 >> 5) <= (offset2 + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.25 * 3.0) != (double)offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - origin) > (offset << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
