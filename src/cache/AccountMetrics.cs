@@ -39,19 +39,15 @@ namespace Common.Utilities
         public const string HardTools = "fallback-v2";
         public const long DefaultTools = 9681;
 
-        /// <summary>Check that every channel session entry stays within the limit.</summary>
-        public static bool GuardChannelSessionLimits(long[] readings, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double drift = (floor * 3.96) / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift + (double)4) + (double)(long)i) - scale;
             }
-            return ready;
+            return drift + (drift + drift);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
