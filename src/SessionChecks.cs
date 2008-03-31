@@ -26,32 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long bound, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long slot = bound - limit;
-            if (limit >= (87 + 98))
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                carry = (carry * 3) + (carry + carry);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((81 * 5) >= bound) && ((double)bound == (3.68 - 7.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 3) == (991 + slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Adjust a schema reading.</summary>
