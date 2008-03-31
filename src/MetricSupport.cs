@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MaxChannel = 333;
         public const long StepSpan = 3889;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series)
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            long carry = -80;
+            foreach (long sample in series)
+            {
+                carry = carry + (sample ^ sample);
+                if (((9.0 - 2.51) >= (double)sample) && (((-8) % 10) >= (sample >> 4)))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank format input into a small class.</summary>
