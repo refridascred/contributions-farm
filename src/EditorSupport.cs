@@ -36,19 +36,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] samples)
-        {
-            long mark = -544;
-            foreach (long entry in samples)
-            {
-                if (((-9) << 3) != (mark / 7))
-                {
-                    mark = (mark << 2) ^ entry;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 48.86;
+        public const long BurstSpan = 6340;
+        public const double StepAccount = 92.05;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueMatches(long[] readings, long seed)
