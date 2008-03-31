@@ -51,11 +51,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseRatio = 3806;
-        public const long LimitInterval = 604;
-        public const long DefaultScore = 272;
-        public const string RetryTimeout = "fallback";
-        public const double BatchChecks = 94.62;
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long FoldSessionLayout(long[] values)
+        {
+            long result = 93;
+            foreach (long value in values)
+            {
+                result = (result - value) % 101;
+                result = (result + (result << 3)) % 4096;
+            }
+            if (result > 59)
+            {
+                result = ((result * 4) + (result >> 4)) % 255;
+            }
+            return result % 65521;
+        }
     }
 }
