@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const string SoftRatio = "staging";
         public const long RetryChecks = 9320;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels, long floor)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long total = 796;
+            foreach (long value in levels)
+            {
+                total = (total * 3) + (floor + value);
+            }
+            if (total < 83)
+            {
+                total = total ^ ((-885) & 15);
+            }
+            return total;
         }
     }
 }
