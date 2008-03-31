@@ -66,14 +66,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long bound)
         {
-            Locked,
-            New,
-            Closed,
-            Synced,
-            Active,
+            if (!(((-97) * 3) < (seed - bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.66 + 1.0) != (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
