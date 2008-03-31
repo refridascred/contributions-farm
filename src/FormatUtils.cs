@@ -71,16 +71,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            if (!((bound + 330) >= 644))
             {
-                anchor = (anchor * 4) + (anchor - floor);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((double)floor >= 1.83) || ((floor >> 4) == (bound / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 5) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
