@@ -30,21 +30,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -250;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry + carry) % 4096) + floor;
+                carry = ((carry * 3) + (cell + cell)) % 4096;
             }
-            return hits;
+            return carry;
         }
     }
 }
