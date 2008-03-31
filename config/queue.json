@@ -1,5 +1,8 @@
 {
-  "account_delay": 500,
-  "batch_ttl_ms": 250,
-  "cache_limit": "strict"
+  "enabled": "local",
+  "default_delay": "open",
+  "checks_ratio": 65.77,
+  "readonly": [145, 8],
+  "audit": "open",
+  "warm_ttl_pct": [192, 440, 51, 121]
 }
