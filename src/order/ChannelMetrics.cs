@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 14;
+            foreach (long item in values)
             {
-                if ((((item - 513) >= (288 % 12)) || ((15.0 / 9.0) == (double)tally)) && (((tally - tally) > (seed % 60)) || ((seed >> 1) > (item + item))))
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor * 2) + item) - bound;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the route phase values.</summary>
