@@ -13,13 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((long)i % 3) >= (target ^ score)))
+                {
+                    score = (score + ((-868) + (long)i)) % 4096;
+                }
+                score = (score << 2) ^ (score & 15);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a context entry.</summary>
