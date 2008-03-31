@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            Paused,
-            Done,
-            Dropped,
-            Active,
-            Stale,
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (mix + (offset & 31)) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a context snapshot.</summary>
