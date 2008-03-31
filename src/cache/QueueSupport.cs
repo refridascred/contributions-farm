@@ -35,10 +35,21 @@ namespace Common.Utilities
         public const long BaseBatch = 4029;
         public const string MinBatch = "local-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 76.47;
-        public const long DefaultLevel = 3106;
-        public const long LimitCommand = 2230;
-        public const long SoftCommand = 1016;
+        /// <summary>Compare every pair of account route readings.</summary>
+        public static long OverlapAccountRouteCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
