@@ -45,19 +45,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long CombineLayoutCache(long[] data)
-        {
-            long score = 9;
-            foreach (long sample in data)
-            {
-                if ((5.0 - 1.01) <= (double)score)
-                {
-                    score = (score * 2) + (sample % 60);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchLevel = 4265;
+        public const long BatchSize = 3884;
+        public const string MinWidth = "latest";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 3633;
