@@ -23,23 +23,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Digest a series of batches cluster entries.</summary>
+        public static long DigestBatchesCluster(long[] series)
         {
-            long score = 43;
-            foreach (long item in values)
+            long result = 37;
+            foreach (long value in series)
             {
-                score = (score - (item / 9)) % 101;
-                if ((959 - score) != (item + 21))
+                result = (result ^ (value << 1)) % 97;
+                if (!((result << 1) >= (value - result)))
                 {
-                    score = score + 4;
+                    result = (result * 3) + 0;
                 }
             }
-            if (score > 354)
-            {
-                score = (score + (score - 6)) % 97;
-            }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
