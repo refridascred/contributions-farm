@@ -32,39 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank notes tools input into a small class.</summary>
-        public static long RankNotesTools(long origin, long target)
+        /// <summary>Find the first stats filter entry that matches the target.</summary>
+        public static long SeekStatsFilterIndex(long[] values, long step)
         {
-            long cur = origin + target;
-            if ((3 & 3) >= origin)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target > (target + cur)) && ((target - cur) < target))
+                if (values[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin >= (target % 60)) || (3.19 <= (double)cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin & 63) < (4 * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
