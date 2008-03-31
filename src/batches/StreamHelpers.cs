@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = state - state;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
