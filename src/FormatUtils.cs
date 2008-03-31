@@ -53,11 +53,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 26.23;
-        public const long MinQueue = 3315;
-        public const long StepQueue = 4543;
-        public const string BurstSpan = "cached-v2";
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] levels, long offset)
