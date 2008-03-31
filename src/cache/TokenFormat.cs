@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] values, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] data)
         {
             long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin >= (origin / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
