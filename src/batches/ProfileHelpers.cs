@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] samples, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if ((double)cell < (double)0)
+                if (mix <= (item * 5))
                 {
-                    count = (count + 3) - target;
+                    mix = mix - (item * 2);
+                }
+                else
+                {
+                    mix = (mix ^ item) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next cluster value.</summary>
