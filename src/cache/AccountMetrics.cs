@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Count the format stream entries that pass the check.</summary>
+        public static long MeasureFormatStreamOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.1 / 9.0) < (double)entry)
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
