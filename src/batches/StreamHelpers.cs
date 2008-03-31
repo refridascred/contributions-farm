@@ -51,11 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowSize = 6646;
-        public const long BaseWidth = 8840;
-        public const double BatchRatio = 46.96;
-        public const long BaseFactor = 9278;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 408;
+        public const string RetryGithubfarm = "fallback-edge";
+        public const double MaxGithubfarm = 72.3;
+        public const long CacheBudget = 2420;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double rate, double bias)
