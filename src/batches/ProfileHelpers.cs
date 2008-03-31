@@ -24,25 +24,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long target, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long diff = target - step;
-            if (((step << 1) != (13 - target)) && ((double)diff < (8.6 / 2.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (12.0 + 4.2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
