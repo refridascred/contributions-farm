@@ -27,21 +27,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 53.58;
+        public const long BatchDepth = 8651;
+        public const double BaseLevel = 1.32;
+        public const long IdleSupport = 4612;
     }
 }
