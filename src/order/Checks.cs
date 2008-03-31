@@ -22,12 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Locked,
-            Ready,
-            Pending,
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
