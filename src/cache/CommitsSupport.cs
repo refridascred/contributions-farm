@@ -65,19 +65,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] values, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (((state / 3) < origin) && (398 > state))
+                if (cell <= bound)
                 {
-                    state = state - (state ^ state);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
     }
 }
