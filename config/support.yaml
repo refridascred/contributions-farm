@@ -1,17 +1,8 @@
 # support settings
-sync_limit_count:
-  readonly: 53
-  burst_ttl: local
-  flush_limit_count:
-    cache_depth: cached
-    warm_interval: 30
-    metric_limit: 232
-    dry_run: false
-  hard_capacity_count: 3460
-hard_depth_ms: 64.65
-batch_delay: 21
-idle_capacity_count:
-  - 370
-  - 423
-  - 462
-warm_ttl: 42.68
+batch_threshold:
+  - staging
+  - fallback
+soft_capacity_pct: 55.29
+batch_delay:
+  - strict
+  - legacy
