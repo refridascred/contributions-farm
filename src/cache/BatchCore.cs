@@ -62,13 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Queued,
-            Pending,
-            New,
-            Paused,
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
