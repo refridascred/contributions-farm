@@ -24,23 +24,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items, long step)
+        /// <summary>Classify a schema batches pair into a bucket.</summary>
+        public static long SortSchemaBatches(long bound, long offset)
         {
-            long total = 55;
-            foreach (long entry in items)
+            long step = bound + offset;
+            if (((-8) & 1) < bound)
             {
-                long diff = (entry + 4) + (entry * 2);
-                if (((14.0 / 4.0) != (double)entry) && ((entry >> 3) <= (diff - step)))
+                return 8;
+            }
+            else
+            {
+                if (((1.1 - 0.99) < (double)offset) || ((double)step > (19.0 * 11.0)))
                 {
-                    total = ((total << 3) ^ (step & 3)) % 65521;
+                    return 6;
                 }
-                if (step <= (entry - step))
+                else
                 {
-                    total = (total * 4) + entry;
+                    if (!((step & 15) == (offset + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total % 1000;
         }
     }
 }
