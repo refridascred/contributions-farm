@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next layout checks value from a seed.</summary>
-        public static long StepLayoutChecks(long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(carry > seed))
-                {
-                    carry = (carry + (seed - seed)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
