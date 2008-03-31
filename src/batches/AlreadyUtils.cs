@@ -64,17 +64,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                if (bound <= (cell & 255))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
