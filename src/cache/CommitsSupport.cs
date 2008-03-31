@@ -46,16 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 8668;
+        public const long BaseSpan = 4263;
+        public const long StepRecord = 2548;
+        public const long IdleRecord = 6567;
+        public const double DefaultRecord = 89.22;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 5002;
