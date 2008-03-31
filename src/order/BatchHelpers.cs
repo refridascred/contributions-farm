@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long prev = step ^ target;
+            if (!(target > (target >> 4)))
             {
-                if (((double)count <= (7.6 - 8.0)) || ((entry - 9) < count))
+                return 0;
+            }
+            else
+            {
+                if (!((target >> 4) < prev))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)prev >= 2.1) && ((double)prev == (1.86 + 2.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
