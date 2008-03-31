@@ -51,12 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
+            long sum = 602;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (((sum * 5) + (cell - cell)) % 65521) + (long)i;
+                }
+                sum = (sum << 2) ^ (sum * 3);
+                if ((9 ^ cell) == (cell << 2))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
