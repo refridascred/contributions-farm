@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long seed, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] series, long origin)
         {
-            long slot = seed - floor;
-            if ((floor & 15) < slot)
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.9 * 0.3) == (double)seed)
+                if (sample != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed < (13.0 + 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed != (8.3 * 8.49))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate account window readings against a bound.</summary>
