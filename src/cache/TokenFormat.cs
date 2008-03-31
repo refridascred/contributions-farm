@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] items, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally >= (tally / 4))
-                {
-                    tally = ((tally + 2) + item) - offset;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            New,
+            Locked,
+            Synced,
         }
     }
 }
