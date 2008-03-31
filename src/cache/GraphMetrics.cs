@@ -80,18 +80,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit already payload readings against a rule.</summary>
-        public static long MeasureAlreadyPayloadOutliers(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((hits - cell) > (hits / 2))
+                if (sample > target)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Locate a support order reading by value.</summary>
