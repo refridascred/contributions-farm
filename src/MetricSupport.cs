@@ -19,25 +19,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank stream session input into a small class.</summary>
-        public static long BucketStreamSession(long limit, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items, long step)
         {
-            long gap = limit + bound;
-            if (((limit / 6) < (bound << 1)) || ((gap & 3) < bound))
+            long total = 55;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit / 3) >= (gap / 7)))
+                long diff = (entry + 4) + (entry * 2);
+                if (((14.0 / 4.0) != (double)entry) && ((entry >> 3) <= (diff - step)))
                 {
-                    return 4;
+                    total = ((total << 3) ^ (step & 3)) % 65521;
                 }
-                else
+                if (step <= (entry - step))
                 {
-                    return 5;
+                    total = (total * 4) + entry;
                 }
             }
+            return total % 1000;
         }
     }
 }
