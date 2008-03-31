@@ -1,8 +1,7 @@
 {
-  "persist": "staging",
-  "cache_limit_pct": 52.04,
-  "strict": 60,
-  "base_retries_pct": 30,
-  "flush_window_pct": 2566,
-  "readonly": 633
+  "persist": true,
+  "dry_run": 8598,
+  "verbose": 3587,
+  "max_interval": ["blue", "stable"],
+  "cache_threshold_count": false
 }
