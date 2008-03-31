@@ -44,13 +44,12 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit already payload readings against a rule.</summary>
