@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstFactor = 7625;
+        public const string MinScore = "legacy";
+        public const double SoftSize = 69.44;
+        public const string IdleSize = "primary-1";
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] levels, long seed)
