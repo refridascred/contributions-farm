@@ -66,19 +66,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] items)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long sum = 526;
+            foreach (long datum in items)
             {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (((sum << 2) ^ (sum >> 4)) % 101) ^ datum;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a session entry.</summary>
