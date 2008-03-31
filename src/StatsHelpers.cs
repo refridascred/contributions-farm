@@ -20,19 +20,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] series, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= origin)
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
