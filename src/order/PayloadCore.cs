@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] values, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + target) > (count + 3))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            double rate = bias;
+            return rate + gain;
         }
 
         /// <summary>Describe the commits state values.</summary>
