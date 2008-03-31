@@ -37,9 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftCount = 64.21;
-        public const double DefaultToken = 84.42;
-        public const string MinDepth = "open-1";
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
