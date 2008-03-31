@@ -24,13 +24,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
