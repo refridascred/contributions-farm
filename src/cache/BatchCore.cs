@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            New,
-            Synced,
-            Queued,
+            long sum = 712;
+            foreach (long cell in series)
+            {
+                if (((double)cell >= (double)sum) && ((cell + cell) < (long)series.Length))
+                {
+                    sum = sum - 8;
+                }
+                sum = ((sum * 2) + (cell * 5)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
