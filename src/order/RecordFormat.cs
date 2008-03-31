@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series)
+        /// <summary>Find the first already stream entry that matches the target.</summary>
+        public static long SeekAlreadyStreamIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits - reading) < (reading - reading))
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
