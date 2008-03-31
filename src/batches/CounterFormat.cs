@@ -13,22 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] items, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] samples, long seed)
         {
-            long acc = 75;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((datum - offset) < datum)
+                if ((8.84 * 3.0) == (double)matches)
                 {
-                    acc = (acc - acc) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ datum) % 97;
+                    matches = ((matches + 1) + sample) - seed;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
