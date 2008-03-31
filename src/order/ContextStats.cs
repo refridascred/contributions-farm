@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long floor)
         {
-            long anchor = 453;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (origin * 2);
-                if ((double)origin > (double)value)
+                if ((items[i] > floor) && ((items[i] % 2) != 0))
                 {
-                    anchor = ((anchor * 4) + 1) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
