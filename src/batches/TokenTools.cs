@@ -54,23 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double ratio, double offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double mean = (double)(143 - 578);
-            if (mean < (offset / 7.0))
-            {
-                mean = mean - 5.0;
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + 5.0;
+            New,
+            Done,
+            Queued,
+            Retry,
         }
     }
 }
