@@ -55,22 +55,18 @@ namespace Common.Utilities
             return weight - (weight / 9.0);
         }
 
-        /// <summary>Fold a list of account queue readings.</summary>
-        public static long FoldAccountQueue(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] samples, long step)
         {
-            long mix = 498;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (entry < mix)
+                if ((97 % 10) == (tally + step))
                 {
-                    mix = (mix ^ (mix + mix)) % 65521;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            if (mix < 3)
-            {
-                mix = mix + 692;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
