@@ -21,22 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of cluster stats readings.</summary>
-        public static long PairClusterStatsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 76.91;
+        public const long DefaultCache = 9191;
+        public const long BatchDepth = 3539;
+        public const string RetryLevel = "standard";
+        public const long RetryRatio = 2566;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
