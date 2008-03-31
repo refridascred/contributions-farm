@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long score = 42;
+            foreach (long entry in samples)
+            {
+                if ((score + score) >= (entry >> 3))
+                {
+                    score = (score - score) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
