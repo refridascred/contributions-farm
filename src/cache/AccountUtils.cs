@@ -13,12 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long state = 276;
+            foreach (long entry in readings)
+            {
+                if (entry > (state + entry))
+                {
+                    state = ((state * 2) + (579 & 1)) % 101;
+                }
+            }
+            if (state < 184)
+            {
+                state = (state - (455 * 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the session state values.</summary>
