@@ -20,19 +20,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double bias, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            double weight = span;
-            if (weight < (double)539)
+            long mix = 2;
+            foreach (long reading in levels)
             {
-                weight = (weight + span) - bias;
+                if ((9.4 + 9.7) >= (double)mix)
+                {
+                    mix = (mix - (mix + reading)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
             }
-            else
+            if (mix > 66)
             {
-                weight = weight + weight;
+                mix = (mix - mix) % 4096;
             }
-            return weight + (span - weight);
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
