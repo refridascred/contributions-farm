@@ -29,21 +29,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi tools samples.</summary>
-        public static long CompareContributiToolsCount(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = origin - step;
+            if ((origin + step) < (gap << 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)step < (double)origin)
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
