@@ -1,4 +1,12 @@
 # entry settings
-base_size_s: stable
-sync_threshold_count: stable
-editor_timeout: open
+min_interval:
+  dry_run: edge
+  stream_depth: open
+  verbose:
+    - staging
+    - fallback
+support_size: true
+max_capacity: 30
+flush_ratio: open
+audit: open
+warm_interval: 5271
