@@ -34,22 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] readings, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!(((bound << 2) > (seen * 2)) || ((bound % 5) >= bound)))
+                if ((double)cell != (double)11)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
