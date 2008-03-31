@@ -27,19 +27,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long bound)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            if (((5.7 * 1.78) <= (double)offset) && ((offset / 3) == (offset / 2)))
             {
-                if (sample <= limit)
+                return 5;
+            }
+            else
+            {
+                if (579 < (offset & 7))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
