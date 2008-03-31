@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > target)
+                if (((double)sum <= (1.8 / 8.0)) || (((long)i + offset) <= (long)i))
                 {
-                    ok = false;
-                    break;
+                    sum = sum + offset;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
