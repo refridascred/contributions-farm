@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Blend two format stream measurements.</summary>
+        public static double ProjectFormatStream(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = 8.97;
+            if (gain2 > gain2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = gain2 + 9.0;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + (gain - 0.6);
+            }
+            return gain2 + offset;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
