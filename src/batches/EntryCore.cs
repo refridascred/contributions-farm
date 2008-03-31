@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
