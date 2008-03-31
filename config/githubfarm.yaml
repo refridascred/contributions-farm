@@ -1,38 +1,23 @@
 # githubfarm settings
-sync_ttl_pct:
-  dry_run: 250
-  metrics_ratio: edge
-  batches_capacity: 250
-  retry_timeout_s: 9
-verbose:
-  cache_timeout: cached
-  compress: green
-  poll_ratio:
-    min_ttl: stable
-    persist: 69.98
-    min_limit_ms: false
-    min_delay_ms: true
-  idle_limit_s: 6456
-  batch_threshold:
-    compress: standard
-    poll_retries_pct: primary
-    default_size_ms:
-      - fallback
-      - latest
-      - blue
-    readonly: 1024
-    persist: 100
-batches_depth:
-  - fallback
-  - edge
-  - fallback
-  - latest
-default_depth_ms:
-  tools_ratio: eu-west
-  hard_timeout:
-    - 74
-    - 452
-    - 418
-    - 453
-  command_size: latest
-  burst_retries_s: edge
+hard_delay_pct: fallback
+burst_ratio:
+  - 243
+  - 236
+  - 328
+filter_depth: 60
+poll_size_pct: standard
+farm_interval:
+  min_ttl_s: 250
+  idle_size_pct: 62
+  flush_delay_count: 7022
+  warm_ttl: blue
+  cache_ttl_pct:
+    enabled: 84.88
+    base_ttl_count: false
+    batch_ttl: 2571
+    default_retries:
+      - 490
+      - 255
+    sync_timeout: open
+    verbose: true
+stream_ttl: 7486
