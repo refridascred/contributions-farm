@@ -17,19 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool ValidateContextPayloadLimits(long[] readings, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double load = weight - (bias / 6.0);
+            if (load > (double)5)
             {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load - bias;
             }
-            return valid;
+            return load + (double)23;
         }
 
         /// <summary>Hold a session header.</summary>
