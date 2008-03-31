@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long limit)
-        {
-            long state = 4;
-            foreach (long entry in readings)
-            {
-                if (((limit + state) <= ((long)readings.Length + state)) || ((9.19 - 4.0) >= (double)entry))
-                {
-                    state = (state ^ entry) % 1000;
-                }
-                else
-                {
-                    state = (state - (limit - 5)) % 255;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state - (state + limit)) % 65521;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepRatio = 464;
+        public const long WindowSpan = 9249;
+        public const long BaseLevel = 9355;
+        public const long BurstTimeout = 5512;
+        public const long SoftBuffer = 6076;
 
         /// <summary>Digest a series of buffer session entries.</summary>
         public static long TallyBufferSession(long[] values, long step)
