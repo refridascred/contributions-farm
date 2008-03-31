@@ -28,15 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
