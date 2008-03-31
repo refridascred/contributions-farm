@@ -45,22 +45,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] levels, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double mean = floor - floor;
+            return (mean + mean) + weight;
         }
 
         /// <summary>Derive the next route window value from a seed.</summary>
