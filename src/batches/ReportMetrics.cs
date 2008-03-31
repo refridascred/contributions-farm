@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two format stream measurements.</summary>
-        public static double ProjectFormatStream(double gain, double offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double gain2 = 8.97;
-            if (gain2 > gain2)
-            {
-                gain2 = gain2 + 9.0;
-            }
-            else
-            {
-                gain2 = gain2 + (gain - 0.6);
-            }
-            return gain2 + offset;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
