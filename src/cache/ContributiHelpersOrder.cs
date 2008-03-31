@@ -34,18 +34,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values, long bound)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long acc = 6;
-            foreach (long sample in values)
-            {
-                if (((acc + bound) < (sample & 127)) || ((acc % 60) == (905 % 100)))
-                {
-                    acc = (acc << 3) ^ ((-7) >> 4);
-                }
-            }
-            return acc;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
