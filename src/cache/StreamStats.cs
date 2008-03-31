@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardScore = "fallback-edge";
+        public const long BatchCount = 3786;
+        public const string HardWindow = "strict";
+        public const double MaxCount = 93.04;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
