@@ -46,17 +46,13 @@ namespace Common.Utilities
             return rate - (rate * 6.9);
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] readings, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a notes summary.</summary>
