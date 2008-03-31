@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "legacy-1";
-        public const string LimitCount = "alpha";
-        public const double SoftTools = 87.16;
-        public const long WindowFactor = 5870;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepInterval = "primary";
+        public const double SoftScore = 70.26;
+        public const long StepSize = 1340;
+        public const long MinBudget = 235;
 
         /// <summary>Audit command profile readings against a rule.</summary>
         public static long CountCommandProfileMatches(long[] values, long limit)
