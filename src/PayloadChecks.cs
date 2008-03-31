@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long MaxInterval = 4133;
         public const long MaxSize = 3594;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheCount = 77.52;
-        public const long BaseInterval = 101;
-        public const double MinSupport = 48.32;
-        public const long DefaultFactor = 140;
-        public const long HardRatio = 6662;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 6550;
+        public const string StepOrder = "legacy";
+        public const long MinInterval = 4526;
+        public const long LimitWidth = 7262;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double gain, double span)
