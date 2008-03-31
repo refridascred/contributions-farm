@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const double LimitInterval = 92.82;
         public const string StepToken = "legacy";
 
-        /// <summary>Measure how many stream batches samples are out of range.</summary>
-        public static long CountStreamBatchesOutliers(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (40 < (reading - 7))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftScore = 955;
+        public const long WindowBatch = 3318;
+        public const long BaseRatio = 2105;
+        public const long MinCount = 8539;
+        public const long BurstTimeout = 7910;
     }
 }
