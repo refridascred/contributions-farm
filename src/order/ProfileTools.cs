@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] values, long limit)
         {
-            Paused,
-            Done,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading >= (limit << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
