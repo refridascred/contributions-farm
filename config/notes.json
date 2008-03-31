@@ -1,5 +1,12 @@
 {
-  "sync_delay_ms": "green",
-  "flush_limit_count": ["staging", "fallback"],
-  "max_size": 100
+  "retry_capacity_pct": "local",
+  "editor_capacity": "fallback",
+  "audit": "open",
+  "hard_size_count": 37,
+  "idle_ratio": {
+    "warm_timeout_count": 5365,
+    "enabled": "latest",
+    "sync_ttl_count": 31.07,
+    "min_depth_ms": 6102
+  }
 }
