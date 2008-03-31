@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] levels, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((88 / 2) < (step / 8))
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the route status values.</summary>
