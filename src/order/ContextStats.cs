@@ -27,18 +27,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the graph farm entries that pass the check.</summary>
-        public static long MeasureGraphFarmOutliers(long[] levels)
+        /// <summary>Iterate the entry editor series from a seed.</summary>
+        public static long RollEntryEditor(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((66 ^ reading) <= 186)
-                {
-                    hits = hits + 1;
-                }
+                acc = (acc << 2) ^ ((long)i >> 1);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
