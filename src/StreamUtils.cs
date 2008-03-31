@@ -42,12 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Dropped,
-            New,
-            Retry,
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
