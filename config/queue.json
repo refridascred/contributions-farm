@@ -1,6 +1,15 @@
 {
-  "batch_timeout": "green",
-  "metric_window": 20.88,
-  "soft_threshold": "green",
-  "compress": 18
+  "batch_timeout_ms": 18,
+  "entry_retries": "edge",
+  "verbose": false,
+  "enabled": {
+    "warm_timeout_ms": false,
+    "batch_ratio_ms": "stable",
+    "default_retries_s": false,
+    "audit": {
+      "max_capacity_count": 1024,
+      "min_limit": 23.82,
+      "cache_ttl_count": [50, 463, 257, 491]
+    }
+  }
 }
