@@ -42,31 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm tools input into a small class.</summary>
-        public static long GradeFarmTools(long offset, long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            if (((target + 78) == (6 * 2)) || ((target - offset) < offset))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((615 > (offset >> 4)) && ((double)target < 17.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((8.14 * 3.0) > (double)target))
+                    if ((values[i] - values[j]) < 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
