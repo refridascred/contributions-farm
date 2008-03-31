@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const double BatchStats = 31.7;
         public const string LimitStats = "alpha";
 
-        /// <summary>Check that every tools filter entry stays within the limit.</summary>
-        public static bool ValidateToolsFilterBounds(long[] samples, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (sample != limit)
+                if ((4.2 * 6.0) > (double)item)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
