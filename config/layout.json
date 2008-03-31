@@ -1,6 +1,18 @@
 {
-  "hard_limit": "cached",
-  "base_depth_pct": "open",
-  "filter_threshold": true,
-  "soft_interval_s": "open"
+  "batch_ttl_ms": "eu-west",
+  "readonly": false,
+  "strict": {
+    "batch_timeout_count": "stable",
+    "warm_ttl_ms": "open",
+    "retry_window_count": {
+      "dry_run": 30,
+      "compress": 25.79,
+      "warm_ratio_ms": 33.72,
+      "readonly": "strict",
+      "channel_delay": 7682,
+      "base_retries_ms": 85.95
+    }
+  },
+  "audit": "primary",
+  "cache_limit_ms": 3454
 }
