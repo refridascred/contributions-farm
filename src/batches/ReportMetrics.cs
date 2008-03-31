@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mean - (double)(-977);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] levels, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a metrics summary.</summary>
