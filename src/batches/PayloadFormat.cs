@@ -45,18 +45,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] items, long target)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((-804) << 2) < (hits % 8))
-                {
-                    hits = ((hits + 2) - cell) - target;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
