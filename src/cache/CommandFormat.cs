@@ -30,23 +30,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items)
-        {
-            long state = -5;
-            foreach (long value in items)
-            {
-                if (value >= (value ^ value))
-                {
-                    state = ((state << 3) ^ value) % 65521;
-                }
-            }
-            if (state > 894)
-            {
-                state = (state * 4) + (82 >> 3);
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "alpha-v2";
+        public const string StepFarm = "stable";
+        public const long RetryFarm = 8642;
+        public const long LimitWidth = 7763;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long offset)
