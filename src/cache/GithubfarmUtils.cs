@@ -23,10 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 398;
-        public const string SoftPayload = "strict-v2";
-        public const double CacheWidth = 9.33;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 1;
+        public const long SoftInterval = 9469;
+        public const long IdleRatio = 7600;
+        public const string MaxCount = "standard-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 7269;
