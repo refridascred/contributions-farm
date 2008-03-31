@@ -62,13 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            Active,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a cluster summary.</summary>
