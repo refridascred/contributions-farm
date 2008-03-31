@@ -24,21 +24,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 4;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.3 - 6.07) != (double)mark)
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (item + item)) % 255;
                 }
             }
-            return tally;
+            if (mark > 953)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate already samples.</summary>
