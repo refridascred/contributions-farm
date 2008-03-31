@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile commits entry stays within the limit.</summary>
-        public static bool ValidateProfileCommitsLimits(long[] samples, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
