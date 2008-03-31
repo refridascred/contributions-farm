@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in open strict edge; do
+for item in standard eu-west legacy; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=269
+log "limit is ${CHANNEL_LIMIT}"
