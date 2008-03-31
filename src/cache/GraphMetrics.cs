@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = 5;
-            foreach (long entry in readings)
-            {
-                if ((entry - 898) != (entry & 31))
-                {
-                    acc = (acc - (acc + entry)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (acc * 5)) % 65521;
-                }
-            }
-            if (acc < 290)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 65521;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
