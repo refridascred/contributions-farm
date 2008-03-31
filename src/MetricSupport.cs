@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Measure how many route session samples are out of range.</summary>
+        public static long TallyRouteSessionMatches(long[] samples)
         {
-            long state = 302;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)cell < (4.16 / 9.0))
+                if ((((double)tally < (double)tally) || ((6 + 4) > (entry / 5))) && ((double)entry == (20.0 / 7.0)))
                 {
-                    state = (state + (2 - 669)) % 101;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a format options.</summary>
