@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the notes command entries that pass the check.</summary>
-        public static long CountNotesCommandMatches(long[] levels)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= (count - reading))
+                if (readings[i] < floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
