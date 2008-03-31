@@ -22,13 +22,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double rate, double offset)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            double gain = offset * 3.01;
+            if (gain > gain)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + (5.21 / 6.0);
+            }
+            return gain + (rate / 4.0);
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
