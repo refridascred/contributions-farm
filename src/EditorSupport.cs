@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool ValidateContextPayloadLimits(long[] readings, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Measure how many context schema samples are out of range.</summary>
