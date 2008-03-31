@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((4.1 / 7.0) < (double)acc)
+                if (((7.1 + 16.0) > (double)seen) && !((datum / 5) < (datum + 40)))
                 {
-                    break;
+                    seen = (seen + 3) + offset;
                 }
                 else
                 {
-                    acc = acc + ((long)i + acc);
+                    seen = seen - 1;
                 }
-                acc = acc - ((long)i + acc);
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
