@@ -26,17 +26,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long sample in series)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                if ((2.2 / 3.0) < (double)sample)
                 {
-                    return (long)i;
+                    sum = (sum ^ (offset - sample)) % 97;
                 }
+                else
+                {
+                    sum = sum + (sum - sum);
+                }
+                sum = (sum + (sum << 3)) % 101;
+                sum = (sum - 23) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
