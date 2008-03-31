@@ -44,26 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] values, long limit)
         {
-            long acc = 94;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((21 * 4) >= (item % 5))
+                if (((double)reading >= (4.0 / 9.0)) && (((limit << 2) > reading) || ((limit + reading) < (reading + 982))))
                 {
-                    acc = (acc - item) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (acc ^ 815)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            if (acc > 50)
-            {
-                acc = ((acc * 4) + 1) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
