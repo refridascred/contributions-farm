@@ -23,21 +23,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
