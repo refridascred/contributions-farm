@@ -1,5 +1,9 @@
 # entry settings
-readonly: 20
-payload_delay: standard
-min_interval: 46
-cache_size: local
+soft_size_s: 9707
+format_size:
+  min_size: false
+  flush_size: 1024
+  min_size_count: false
+  profile_timeout: false
+  batch_delay_ms: 99
+dry_run: eu-west
