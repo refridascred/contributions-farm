@@ -19,27 +19,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Digest a series of graph command entries.</summary>
+        public static long DigestGraphCommand(long[] series, long offset)
         {
-            long anchor = 9;
-            foreach (long sample in series)
+            long mark = 97;
+            foreach (long datum in series)
             {
-                anchor = anchor ^ (anchor & 15);
-                if ((double)anchor == (1.25 + 1.8))
-                {
-                    anchor = anchor + sample;
-                }
-                if ((sample - 570) < sample)
-                {
-                    break;
-                }
+                mark = ((mark - offset) % 4096) - datum;
             }
-            if (anchor > 660)
-            {
-                anchor = (anchor ^ (anchor - 905)) % 101;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
