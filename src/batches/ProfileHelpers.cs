@@ -67,19 +67,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            double weight = offset;
-            if (weight > rate)
+            double gain = (double)(1 >> 3);
+            if (gain >= (0.48 * 7.75))
             {
-                weight = weight + 18.0;
+                gain = (gain + 19.0) + floor;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight - rate) + (double)(long)i;
+                gain = gain + (bias - bias);
             }
-            return weight - weight;
+            return gain - (bias / 6.0);
         }
     }
 }
