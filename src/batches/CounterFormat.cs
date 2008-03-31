@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a command batch value against two limits.</summary>
-        public static long BucketCommandBatch(long bound, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long target)
         {
-            if (bound >= (bound + 867))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) == (bound + bound))
+                if (series[i] < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
