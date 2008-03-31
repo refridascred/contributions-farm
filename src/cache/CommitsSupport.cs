@@ -36,25 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics notes input into a small class.</summary>
-        public static long RankMetricsNotes(long floor, long step)
+        /// <summary>Digest a series of cluster channel entries.</summary>
+        public static long TallyClusterChannel(long[] data)
         {
-            long delta = floor ^ step;
-            if (((delta ^ 9) >= (floor / 2)) && (delta >= (floor + step)))
+            long result = -610;
+            foreach (long cell in data)
             {
-                return 4;
+                result = (result ^ result) - cell;
             }
-            else
-            {
-                if ((delta % 8) != (floor + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
