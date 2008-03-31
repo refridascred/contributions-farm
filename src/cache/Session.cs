@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] levels, long origin)
+        /// <summary>Compare every pair of format account readings.</summary>
+        public static long OverlapFormatAccountCount(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item - origin) == (count ^ count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
