@@ -66,19 +66,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] series, long offset)
+        /// <summary>Rank channel buffer input into a small class.</summary>
+        public static long ClassifyChannelBuffer(long target, long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long diff = target ^ seed;
+            if (target < (diff + (-8)))
             {
-                if (datum <= offset)
+                return 0;
+            }
+            else
+            {
+                if (((diff - diff) >= (target * 2)) && ((target % 60) <= (seed % 5)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((diff % 3) != (diff + diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((146 << 1) != (target + diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
