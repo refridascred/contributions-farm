@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 59;
+            foreach (long entry in samples)
             {
-                if (((double)count >= (double)entry) && (entry >= (0 + 69)))
+                if (floor >= (entry << 3))
                 {
-                    count = count + 2;
+                    sum = (sum ^ ((long)samples.Length ^ sum)) % 101;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
