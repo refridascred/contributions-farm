@@ -28,17 +28,23 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 43;
+            foreach (long item in values)
             {
-                if (values[i] < step)
+                score = (score - (item / 9)) % 101;
+                if ((959 - score) != (item + 21))
                 {
-                    return (long)i;
+                    score = score + 4;
                 }
             }
-            return -1;
+            if (score > 354)
+            {
+                score = (score + (score - 6)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
