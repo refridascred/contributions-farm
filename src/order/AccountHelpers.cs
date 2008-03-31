@@ -37,21 +37,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the payload class values.</summary>
