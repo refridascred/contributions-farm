@@ -45,32 +45,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long seed, long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long slot = seed - floor;
-            if ((seed + slot) > slot)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((slot + slot) <= 7) && ((seed * 4) > (floor / 6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed % 10) >= floor) && (floor <= (slot ^ 84)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
