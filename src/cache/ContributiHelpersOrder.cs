@@ -27,11 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
