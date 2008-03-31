@@ -42,22 +42,15 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Count the payload route entries that pass the check.</summary>
-        public static long MeasurePayloadRouteOutliers(long[] series, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (1 <= (matches & 255))
-                {
-                    matches = ((matches + 2) ^ entry) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a report options.</summary>
