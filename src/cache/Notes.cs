@@ -63,18 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long result = 4;
-            foreach (long cell in samples)
+            long state = 2;
+            foreach (long sample in levels)
             {
-                if ((double)cell >= 7.9)
+                if (!(((-77) / 3) < (sample << 1)))
                 {
-                    result = (result + ((-130) / 4)) + limit;
+                    state = ((state << 2) ^ (sample - sample)) % 101;
                 }
+                state = state ^ (sample << 3);
             }
-            return result;
+            if (state > (-5))
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the channel state values.</summary>
