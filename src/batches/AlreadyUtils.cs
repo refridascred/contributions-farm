@@ -37,11 +37,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "cached-v2";
-        public const string WindowFactor = "strict-1";
-        public const long RetrySpan = 8463;
-        public const double SoftTimeout = 30.85;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total ^ ((long)i - floor)) % 101;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long target, long bound)
