@@ -31,13 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series, long bound)
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((bound - bound) > matches)
+                {
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
