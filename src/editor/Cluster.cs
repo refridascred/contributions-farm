@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] series, long seed)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)count > (3.0 / 3.0)))
+                {
+                    count = ((count + 3) + sample) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
