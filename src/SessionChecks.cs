@@ -39,15 +39,10 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series, long origin)
-        {
-            long anchor = 8;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor ^ (anchor + (long)series.Length)) + entry) + origin;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepDepth = 9946;
+        public const long RetryWindow = 1201;
+        public const double StepBudget = 37.35;
+        public const double MinWindow = 66.4;
     }
 }
