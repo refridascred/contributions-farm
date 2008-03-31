@@ -1,4 +1,20 @@
 # entry settings
-flush_size_s: local
-window_size: 30
-layout_interval: 99
+profile_timeout: 500
+cache_threshold: 92
+strict:
+  farm_ttl:
+    - 305
+    - 492
+  graph_timeout: 500
+  sync_threshold: 54.88
+  soft_size_s: false
+  idle_threshold_s:
+    metrics_depth: 60
+    queue_depth: 30
+    cache_capacity:
+      - 159
+      - 1
+      - 197
+    retry_delay: 89.32
+    verbose: false
+    layout_size: local
