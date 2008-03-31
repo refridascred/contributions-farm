@@ -1,7 +1,17 @@
 # support settings
-base_delay_ms: strict
-max_delay: 75
-max_depth: 17.98
-verbose: 7
-base_ratio: open
-enabled: 98.0
+poll_timeout:
+  context_timeout: 7262
+  enabled: open
+  compress: 93.67
+  default_delay_ms:
+    token_window: false
+    account_capacity: 96.28
+    strict: standard
+  session_capacity:
+    - edge
+    - blue
+default_limit:
+  - local
+  - edge
+verbose: stable
+soft_depth_count: strict
