@@ -13,12 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultWidth = 1152;
-        public const double LimitCache = 95.35;
-        public const long BaseCache = 2923;
-        public const double IdleCache = 29.93;
-        public const long MaxCache = 5673;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((matches >> 5) != ((-7) % 2)) || (((matches - sample) < (7 % 64)) || ((2 + matches) <= sample)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] data, long seed)
