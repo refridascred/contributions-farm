@@ -44,31 +44,19 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long floor2)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            if ((double)floor2 > (20.0 - 6.04))
+            double weight = ratio;
+            if (weight >= (double)8)
             {
-                return 7;
+                weight = weight - (ratio - bias);
             }
             else
             {
-                if (floor <= (62 / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor2 <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight = weight + (weight / 6.0);
             }
+            return weight - (bias / 9.0);
         }
 
         /// <summary>Roll a filter counter forward.</summary>
