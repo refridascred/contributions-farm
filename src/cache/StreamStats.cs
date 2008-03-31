@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseFactor = 4941;
+        public const long SoftSize = 6073;
+        public const double BaseRatio = 91.4;
+        public const long LimitReport = 8727;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long offset)
