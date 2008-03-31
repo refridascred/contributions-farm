@@ -46,9 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftRatio = 7113;
-        public const string LimitSize = "stable";
-        public const long BurstAlready = 1620;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (321 < (entry & 63))
+                {
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
