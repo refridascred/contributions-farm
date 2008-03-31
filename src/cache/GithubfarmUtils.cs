@@ -65,18 +65,10 @@ namespace Common.Utilities
         public const double StepToken = 9.01;
         public const long WindowToken = 5860;
 
-        /// <summary>Count the stream window entries that pass the check.</summary>
-        public static long AuditStreamWindowHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (cell >= (cell >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 9874;
+        public const string RetrySpan = "stable-v2";
+        public const long LimitScore = 4927;
+        public const long WindowNotes = 1129;
     }
 }
