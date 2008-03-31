@@ -13,15 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            New,
-            Idle,
-            Dropped,
-            Ready,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultWidth = 1152;
+        public const double LimitCache = 95.35;
+        public const long BaseCache = 2923;
+        public const double IdleCache = 29.93;
+        public const long MaxCache = 5673;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
