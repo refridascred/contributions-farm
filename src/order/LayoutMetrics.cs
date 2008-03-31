@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command profile entry that matches the target.</summary>
-        public static long SeekCommandProfileIndex(long[] levels, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of context entries.</summary>
