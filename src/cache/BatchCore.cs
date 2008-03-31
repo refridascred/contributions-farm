@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long StepLevel = 9417;
         public const double MaxContributi = 27.5;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "fallback-v2";
-        public const long CacheRecord = 8334;
-        public const long MinCount = 2745;
-        public const string SoftRecord = "latest";
-        public const string CacheRatio = "local-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 9267;
+        public const long IdleInterval = 5679;
+        public const long DefaultCommits = 1488;
 
         /// <summary>Classify a record farm pair into a bucket.</summary>
         public static long ClassifyRecordFarm(long floor, long limit)
