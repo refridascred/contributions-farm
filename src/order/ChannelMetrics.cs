@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] data)
         {
-            long carry = -7;
-            foreach (long item in items)
+            long result = 2;
+            foreach (long reading in data)
             {
-                if ((carry & 1) >= 105)
+                if (reading < (result << 1))
                 {
-                    carry = ((carry << 3) ^ (635 << 3)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (96 - item);
+                    result = (result << 2) ^ ((long)data.Length + 48);
                 }
             }
-            if (carry > 90)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
