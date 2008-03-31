@@ -65,38 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long bound, long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if ((floor % 5) <= (floor - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 4) == (9 / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((133 + bound) >= (floor - 70))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((8.54 / 2.0) <= (double)floor) || ((3 & 3) <= (bound % 64)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
