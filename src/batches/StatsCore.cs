@@ -55,24 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] items, long target)
-        {
-            long mix = 868;
-            foreach (long datum in items)
-            {
-                mix = (mix ^ 384) + datum;
-                if (((mix & 31) <= (target * 4)) || ((0.63 * 3.7) < (double)target))
-                {
-                    mix = (mix - (target + 2)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 5) + (target + mix);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultRatio = 71.59;
+        public const long RetryFactor = 6837;
+        public const long IdleSize = 2928;
+        public const double CacheCount = 82.86;
+        public const long WindowTimeout = 4593;
 
         /// <summary>Digest a series of record batch entries.</summary>
         public static long CombineRecordBatch(long[] series, long floor)
