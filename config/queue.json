@@ -1,6 +1,22 @@
 {
-  "verbose": [210, 288, 9, 278],
-  "cluster_size": "primary",
-  "sync_capacity_ms": 2528,
-  "poll_interval_ms": 500
+  "compress": 1583,
+  "soft_size_ms": {
+    "hard_threshold_ms": {
+      "default_ratio_count": 59.53,
+      "base_threshold_s": 8855,
+      "readonly": "open",
+      "soft_size_count": [58, 338, 122],
+      "base_depth_pct": [309, 321],
+      "hard_delay_count": [436, 191]
+    },
+    "dry_run": 92.03,
+    "max_timeout_count": ["green", "standard"],
+    "channel_limit": ["edge", "staging"],
+    "hard_timeout": "edge",
+    "audit": 87.49
+  },
+  "order_size": false,
+  "context_size": true,
+  "burst_interval": "green",
+  "payload_ttl": 3
 }
