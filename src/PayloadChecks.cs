@@ -49,11 +49,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long bound)
         {
-            double load = span;
-            return (load + (span * 19.0)) + gain;
+            long score = -1;
+            foreach (long item in data)
+            {
+                if ((bound >> 1) >= score)
+                {
+                    score = score + bound;
+                }
+                if ((bound < item) && ((bound ^ (long)data.Length) <= bound))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
