@@ -40,13 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
