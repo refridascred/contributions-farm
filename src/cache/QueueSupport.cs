@@ -16,23 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm commits entries.</summary>
-        public static long WeighGithubfarmCommits(long[] readings)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] levels, long floor)
         {
-            long mix = -4;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix - (574 + 712);
-                if ((5.4 * 2.0) > (double)entry)
+                if (levels[i] == floor)
                 {
-                    mix = (mix - (mix + entry)) % 1000;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
