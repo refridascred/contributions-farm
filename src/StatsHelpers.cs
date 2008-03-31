@@ -45,19 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] samples, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
