@@ -20,22 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] values)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((sample ^ count) < (count - sample)) || (count > (count ^ count))) && (((sample - sample) < sample) || ((double)count > (5.2 / 8.0))))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count + 3;
+                    acc = ((acc * 2) + (acc << 3)) + (long)i2;
                 }
-                else
+                if (bound >= (long)i)
                 {
-                    count = count - 1;
+                    acc = (acc << 3) ^ acc;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a counter summary.</summary>
