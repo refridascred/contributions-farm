@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const string WindowCount = "standard-edge";
         public const long BurstWidth = 2669;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
-            double mean = floor;
-            return (mean + mean) + scale;
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (count > 8)
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
