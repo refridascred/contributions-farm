@@ -1,8 +1,7 @@
 {
-  "flush_capacity_s": 49,
-  "verbose": true,
-  "support_timeout": 65,
-  "retry_capacity_s": 33.84,
-  "batch_ttl": false,
-  "buffer_size": false
+  "batch_delay": ["staging", "local"],
+  "readonly": 8762,
+  "channel_retries": 7127,
+  "batch_threshold_ms": 3926,
+  "hard_interval_pct": ["strict", "green", "green", "blue"]
 }
