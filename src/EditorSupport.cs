@@ -40,19 +40,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits - sample) > (sample + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseDepth = 35.67;
+        public const double MaxScore = 29.86;
+        public const long StepMetric = 3739;
+        public const long SoftInterval = 2285;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowBounds(long[] samples, long floor)
