@@ -30,11 +30,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of metric metrics entries.</summary>
+        public static long WeighMetricMetrics(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long state = 5;
+            foreach (long entry in readings)
+            {
+                if (6.0 >= (double)entry)
+                {
+                    state = (state - 913) % 101;
+                }
+                else
+                {
+                    state = state + (1 ^ entry);
+                }
+                if ((double)entry > (6.68 / 4.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
