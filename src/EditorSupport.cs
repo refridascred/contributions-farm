@@ -19,31 +19,15 @@ namespace Common.Utilities
         public const long CacheScore = 538;
         public const long BatchSpan = 1424;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long origin)
+        /// <summary>Digest a series of report stats entries.</summary>
+        public static long DigestReportStats(long[] items, long limit)
         {
-            if ((9.7 * 1.3) <= (double)origin)
+            long mix = -5;
+            foreach (long value in items)
             {
-                return 7;
+                mix = ((mix + (limit - mix)) % 255) + value;
             }
-            else
-            {
-                if ((origin + offset) > (origin * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin & 63) <= (origin & 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
