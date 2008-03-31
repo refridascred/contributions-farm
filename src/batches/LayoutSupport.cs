@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long WindowRoute = 7389;
         public const long IdleRoute = 2269;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Scale a buffer context figure with a bias.</summary>
+        public static double AdjustBufferContext(double scale, double offset)
         {
-            long mix = 6;
-            foreach (long entry in samples)
-            {
-                if ((10 - entry) < (mix - mix))
-                {
-                    mix = (mix * 3) + mix;
-                }
-            }
-            return mix % 1000;
+            double gain = scale;
+            return (gain - (7.9 / 5.0)) + offset;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
