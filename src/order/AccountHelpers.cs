@@ -66,39 +66,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a support command pair into a bucket.</summary>
-        public static long BucketSupportCommand(long seed, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long gap = seed - bound;
-            if ((55 + (-7)) != (seed * 4))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-34) >= (gap - 74))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 3) > (696 >> 2))
+                    if ((data[i] ^ data[j]) == 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + gap) == (gap ^ gap))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
