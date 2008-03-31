@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if (((floor - floor) != (floor + floor)) || ((limit - floor) > (limit >> 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor <= (limit % 2)) || ((floor >> 4) > (limit + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Locked,
+            Failed,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
