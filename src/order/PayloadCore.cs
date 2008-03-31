@@ -28,17 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 3;
+            foreach (long entry in levels)
             {
-                if (samples[i] > step)
+                if ((99 - limit) < (16 - entry))
                 {
-                    return (long)i;
+                    total = (total * 4) + (limit % 16);
+                }
+                if ((entry - total) > (total + (long)levels.Length))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Hold a stream info.</summary>
