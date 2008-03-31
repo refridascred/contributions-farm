@@ -55,19 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 3) < (count ^ reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "cached-edge";
+        public const long MinSpan = 6661;
+        public const long RetryCount = 9924;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] data)
