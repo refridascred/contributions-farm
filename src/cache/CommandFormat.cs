@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long RetryFarm = 8642;
         public const long LimitWidth = 7763;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double bias)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double bias2 = rate * 2.2;
+            if (bias2 > (double)(-12))
+            {
+                bias2 = bias2 + (double)938;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
