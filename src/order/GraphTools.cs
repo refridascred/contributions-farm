@@ -53,14 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series)
         {
-            Ready,
-            New,
-            Stale,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (double)matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
