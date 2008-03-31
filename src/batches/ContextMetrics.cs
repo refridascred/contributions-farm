@@ -65,13 +65,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Draft,
-            Idle,
-            Done,
-            Ready,
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
