@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values, long seed)
-        {
-            long mark = 437;
-            foreach (long value in values)
-            {
-                if (seed <= (value + mark))
-                {
-                    mark = (mark + 1) % 255;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "strict-v2";
+        public const double BaseWidth = 6.4;
+        public const long CacheCount = 7097;
+        public const long HardWindow = 3418;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryWidth = 47.24;
