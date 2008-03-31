@@ -39,19 +39,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long state = 3;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (((result << 2) ^ (limit - 833)) % 97) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                state = (((state << 2) ^ (state - (long)items.Length)) % 1000) - cell;
             }
-            return result;
+            if (state > 51)
+            {
+                state = state + (state % 8);
+            }
+            return state;
         }
     }
 }
