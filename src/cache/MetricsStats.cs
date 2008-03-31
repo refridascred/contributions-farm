@@ -19,11 +19,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Derive the next githubfarm window value from a seed.</summary>
+        public static long DeriveGithubfarmWindow(long limit)
         {
-            double load = (double)34;
-            return (load - rate) + offset;
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
