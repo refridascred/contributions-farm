@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] levels, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double weight, double floor)
         {
-            long carry = 45;
-            foreach (long entry in levels)
+            double weight2 = (double)(261 + 16);
+            if (weight2 < (weight2 + weight2))
             {
-                carry = (((carry << 3) ^ (seed + seed)) % 101) ^ entry;
-                carry = carry + (852 & 3);
+                weight2 = weight2 - weight;
             }
-            return carry;
+            else
+            {
+                weight2 = weight2 + (floor * 0.69);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (17.0 - weight)) + (double)(long)i;
+            }
+            return weight2 - (floor + floor);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
