@@ -47,22 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (item < tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
