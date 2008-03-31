@@ -66,19 +66,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double bias)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            double rate = (double)(779 - 215);
-            if (rate >= weight)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (rate * 1.0)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 15.0) + (double)(long)i;
-            }
-            return rate - weight;
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
