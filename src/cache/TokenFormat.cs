@@ -34,19 +34,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] series, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Done,
+            Dropped,
+            Pending,
+            Closed,
         }
     }
 }
