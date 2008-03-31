@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank support record input into a small class.</summary>
-        public static long RankSupportRecord(long origin, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long bound = origin + floor;
-            if ((floor / 4) < bound)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound <= (double)floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin / 3) < (floor + origin))
+                    if ((samples[i] + samples[j]) < 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
