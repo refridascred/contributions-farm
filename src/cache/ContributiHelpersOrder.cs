@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "latest";
+        public const string IdleFactor = "strict-v2";
+        public const long CacheFarm = 326;
+        public const long MinSize = 541;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryGraph = 5525;
