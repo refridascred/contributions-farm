@@ -27,12 +27,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long total = 8;
+            foreach (long entry in readings)
+            {
+                if (((entry + bound) > (entry % 100)) && (2 <= (entry << 3)))
+                {
+                    total = (total + (entry / 2)) % 4096;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total + ((long)readings.Length ^ total)) % 97;
+            }
+            return total % 65521;
         }
     }
 }
