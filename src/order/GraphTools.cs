@@ -53,12 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Queued,
-            Failed,
-            Done,
+            Ready,
+            New,
+            Stale,
+            Synced,
             Pending,
         }
     }
