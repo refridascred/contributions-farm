@@ -34,10 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "strict-v2";
-        public const long DefaultReport = 6616;
-        public const string SoftCount = "open-1";
-        public const long IdleDepth = 1027;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - offset) < (datum - offset))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
