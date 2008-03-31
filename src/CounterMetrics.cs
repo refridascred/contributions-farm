@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftWidth = 8779;
+        public const long MinEditor = 6422;
+        public const long SoftEditor = 1878;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 7772;
