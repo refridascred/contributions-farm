@@ -21,15 +21,18 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Measure how many tools cache samples are out of range.</summary>
+        public static long AuditToolsCacheOutliers(long[] readings, long target)
         {
-            double gain = ratio;
-            if (gain >= (ratio * 11.0))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                gain = (gain + (ratio + gain)) - bias;
+                if ((8 ^ datum) == (target % 97))
+                {
+                    seen = seen + 1;
+                }
             }
-            return gain + 14.0;
+            return seen;
         }
 
         /// <summary>Find the first queue metric entry that matches the target.</summary>
