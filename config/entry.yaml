@@ -1,20 +1,9 @@
 # entry settings
-profile_timeout: 500
-cache_threshold: 92
-strict:
-  farm_ttl:
-    - 305
-    - 492
-  graph_timeout: 500
-  sync_threshold: 54.88
-  soft_size_s: false
-  idle_threshold_s:
-    metrics_depth: 60
-    queue_depth: 30
-    cache_capacity:
-      - 159
-      - 1
-      - 197
-    retry_delay: 89.32
-    verbose: false
-    layout_size: local
+sync_ratio_count: true
+hard_ratio_s: 13.05
+strict: 83
+batch_ttl: strict
+flush_retries_pct: false
+already_interval:
+  - blue
+  - strict
