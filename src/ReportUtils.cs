@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            Synced,
-            Pending,
-            Locked,
-            Dropped,
-            Idle,
+            double drift = (weight + weight) * 2.2;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (double)556;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
