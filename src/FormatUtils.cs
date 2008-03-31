@@ -20,11 +20,15 @@ namespace Common.Utilities
             return rate2 - (rate / 2.0);
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            double bias2 = weight / 6.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = ((bias2 + weight) + (double)(long)i) - bias;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Blend two tools measurements.</summary>
