@@ -39,17 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2031;
+        public const long BaseToken = 6753;
+        public const string WindowToken = "alpha-v2";
+        public const long IdleToken = 6562;
     }
 }
