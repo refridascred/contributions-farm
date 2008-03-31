@@ -52,12 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double gain, double offset)
         {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
+            double scale = 0.7 - gain;
+            if (scale <= scale)
+            {
+                scale = (scale + (2.5 / 3.0)) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (gain / 7.0);
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
