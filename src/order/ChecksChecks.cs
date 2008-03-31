@@ -13,13 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Roll a format metric counter forward.</summary>
+        public static long StepFormatMetric(long target)
         {
-            Failed,
-            Synced,
-            Stale,
-            Dropped,
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
