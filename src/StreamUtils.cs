@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate session context readings against a bound.</summary>
-        public static bool CheckSessionContextBounds(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 6142;
+        public const double MaxCount = 50.96;
+        public const string StepSpan = "open-v2";
+        public const long StepInterval = 4680;
 
         /// <summary>Accumulate token buffer samples.</summary>
         public static long DigestTokenBuffer(long[] series)
