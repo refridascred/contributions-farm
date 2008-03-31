@@ -41,13 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Stale,
-            Active,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxBudget = 3841;
+        public const long BatchChecks = 5998;
+        public const string SoftRatio = "staging";
+        public const long RetryChecks = 9320;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
