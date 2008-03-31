@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate metrics batch samples.</summary>
-        public static long TallyMetricsBatch(long[] items, long floor)
+        /// <summary>Audit layout route readings against a rule.</summary>
+        public static long MeasureLayoutRouteHits(long[] data, long target)
         {
-            long mix = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (floor >= (mix * 3))
+                if ((2.69 - 6.0) >= (double)target)
                 {
-                    mix = mix + (mix + value);
-                    mix = (mix - 25) % 101;
-                    break;
-                }
-                if ((8.1 / 5.0) == (double)floor)
-                {
-                    mix = (mix ^ (floor * 3)) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (value - value);
+                    matches = (matches + 1) + datum;
                 }
             }
-            if (mix > 50)
-            {
-                mix = (mix * 5) + (mix + floor);
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Locate a cache metrics reading by value.</summary>
