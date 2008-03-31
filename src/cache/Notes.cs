@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series)
         {
-            double bias2 = (double)772 / 9.0;
-            if (bias2 > bias2)
+            long score = 902;
+            foreach (long sample in series)
             {
-                bias2 = (bias2 - offset) + bias;
+                if ((13.0 / 5.0) < (double)sample)
+                {
+                    score = score ^ (sample >> 1);
+                }
+                else
+                {
+                    score = (score + 8) % 1000;
+                }
             }
-            else
+            if (score > 95)
             {
-                bias2 = bias2 - (offset / 4.0);
+                score = ((score * 3) + (124 * 3)) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + offset) + (double)(long)i;
-            }
-            return bias2 - (double)965;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
