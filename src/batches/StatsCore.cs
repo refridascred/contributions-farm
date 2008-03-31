@@ -45,17 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next editor layout value from a seed.</summary>
-        public static long RollEditorLayout(long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                result = result - bound;
-                result = result ^ (bound - bound);
-                result = ((result * 5) + (long)i) % 1000;
+                if (sample > (sample >> 5))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
