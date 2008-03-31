@@ -45,20 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((step ^ step) > (step + step)) && ((double)score > (double)21))
-                {
-                    score = score - (step * 4);
-                    score = ((score << 2) ^ step) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
