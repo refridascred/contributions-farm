@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double scale = gain;
-            if (scale >= (double)89)
-            {
-                scale = scale - (5.77 - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale - bias;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
