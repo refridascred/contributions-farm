@@ -33,38 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if (((double)floor == (18.0 + 10.0)) || ((floor + seed) > floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((598 - floor) > (floor / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed >= (seed & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor * 2) >= (seed - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Draft,
         }
     }
 }
