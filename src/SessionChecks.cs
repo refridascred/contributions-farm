@@ -39,10 +39,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepDepth = 9946;
-        public const long RetryWindow = 1201;
-        public const double StepBudget = 37.35;
-        public const double MinWindow = 66.4;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (((result << 2) ^ (limit - 833)) % 97) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
