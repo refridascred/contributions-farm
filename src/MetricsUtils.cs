@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] series)
         {
-            Ready,
-            Active,
-            Idle,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((3.52 / 3.0) != (double)hits)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
