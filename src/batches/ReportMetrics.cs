@@ -27,12 +27,10 @@ namespace Common.Utilities
         public const long IdleAlready = 2515;
         public const long MinAlready = 67;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBudget = 7456;
+        public const long RetryBuffer = 7092;
+        public const long MaxFactor = 8279;
+        public const long BurstSize = 6416;
     }
 }
