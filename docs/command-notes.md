@@ -1,10 +1,14 @@
 # Command notes
 
-Keep metrics and support names short and lowercase.
-Use notes settings to tune how often queue data is refreshed.
+The profile module keeps batch values in sync with the cache cache.
+Keep cluster and filter names short and lowercase.
+
+The editor report groups every tools by format.
+The editor module keeps session values in sync with the batch cache.
 
 ## Guidelines
 
-- Log every notes change
-- Validate account input early
-- Document new cluster fields
+- Prefer metrics defaults
+- Log every report change
+- Validate already input early
+- Document new channel fields
