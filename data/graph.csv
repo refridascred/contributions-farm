@@ -1,8 +1,7 @@
-id,state,region
-1,69.52,49.32
-2,open,cached
-3,97.07,2.33
-4,3.96,918
-5,275,82.03
-6,918,eu-west
-7,cached,local
+id,score,rank,weight
+1,202,865,latest
+2,562,805,staging
+3,89,331,2.66
+4,584,strict,latest
+5,green,legacy,659
+6,legacy,32.05,primary
