@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] samples, long origin)
+        /// <summary>Combine record account values into a single score.</summary>
+        public static long TallyRecordAccount(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mark = -397;
+            foreach (long reading in values)
             {
-                if (item <= origin)
+                if ((seed + mark) < seed)
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark * 3) + (seed << 2)) % 255) + reading;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
