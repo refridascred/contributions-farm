@@ -19,19 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (entry >= bound)
+                if (cell <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
