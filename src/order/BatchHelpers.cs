@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const string LimitBuffer = "open-1";
         public const string BaseBuffer = "stable-1";
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long target)
         {
-            Dropped,
-            Pending,
-            Done,
-            Queued,
+            if (target > (bound / 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound << 2) == (bound % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
