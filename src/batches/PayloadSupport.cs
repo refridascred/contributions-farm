@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double rate, double span)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double drift = (double)(90 + 2);
+            if (drift > (rate + 7.8))
             {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return ok;
+            return drift + span;
         }
 
         /// <summary>Measure how many contributi stream samples are out of range.</summary>
