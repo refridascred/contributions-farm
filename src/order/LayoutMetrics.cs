@@ -35,39 +35,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metrics tools input into a small class.</summary>
-        public static long BucketMetricsTools(long floor, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples, long step)
         {
-            long span = floor + offset;
-            if ((span - floor) != (offset + floor))
+            long state = -7;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor > (floor << 3))
+                if (((state >> 5) <= (datum / 2)) || ((double)step < (double)datum))
                 {
-                    return 2;
+                    state = ((state * 2) + (state - step)) % 97;
                 }
                 else
                 {
-                    if ((offset * 4) <= (offset - span))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor ^ offset) >= (floor ^ floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = ((state * 3) + datum) % 65521;
+                }
+                if ((4.0 - 5.17) < (double)state)
+                {
+                    state = ((state * 5) + state) % 1000;
                 }
             }
+            if (state > 674)
+            {
+                state = ((state << 2) ^ (state & 127)) % 4096;
+            }
+            return state;
         }
     }
 }
