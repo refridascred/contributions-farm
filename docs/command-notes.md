@@ -1,14 +1,14 @@
 # Command notes
 
-The context report groups every editor by support.
-A entry that stays idle for too long is moved to the format list.
-Keep githubfarm and layout names short and lowercase.
+A counter that stays idle for too long is moved to the commits list.
+Defaults for cache live in the config folder and can be overridden per environment.
+Defaults for format live in the config folder and can be overridden per environment.
 
-The order module keeps checks values in sync with the window cache.
-Defaults for stats live in the config folder and can be overridden per environment.
+The account report groups every route by record.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer counter defaults
-- Validate cluster input early
+- Keep route values small
+- Log every record change
+- Validate buffer input early
