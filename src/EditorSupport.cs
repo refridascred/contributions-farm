@@ -57,12 +57,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstWidth = 8.61;
-        public const long CacheSpan = 3810;
-        public const long RetrySize = 9638;
-        public const string MaxMetric = "alpha-edge";
-        public const long DefaultMetric = 5937;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
+        {
+            long acc = 88;
+            foreach (long sample in data)
+            {
+                acc = ((acc * 4) + (acc + 4)) % 101;
+                if ((double)sample > (9.9 / 4.0))
+                {
+                    acc = ((acc << 3) ^ (-83)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 2) + acc) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueMatches(long[] readings, long seed)
