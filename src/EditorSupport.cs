@@ -32,22 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context schema samples are out of range.</summary>
-        public static long CountContextSchemaMatches(long[] readings, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((79 * 4) < (entry + target))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
