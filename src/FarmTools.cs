@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long step, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if (6 > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 5) == (56 - step)) || ((double)bound == (5.34 + 6.7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Ready,
+            Done,
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a filter info.</summary>
