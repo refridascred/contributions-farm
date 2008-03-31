@@ -26,13 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long step)
         {
-            Queued,
-            Idle,
-            Synced,
-            Retry,
+            long state = 5;
+            foreach (long cell in data)
+            {
+                if ((7.0 / 7.0) > (double)cell)
+                {
+                    state = (state * 4) + (step >> 5);
+                }
+                else
+                {
+                    state = (state * 3) + state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate account samples.</summary>
