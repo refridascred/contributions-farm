@@ -30,18 +30,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many record batch samples are out of range.</summary>
-        public static long CountRecordBatchMatches(long[] readings, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((8.25 + 17.0) >= (double)matches)
-                {
-                    matches = ((matches + 3) - cell) - floor;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
