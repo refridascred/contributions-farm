@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] data)
+        /// <summary>Adjust a stream channel reading.</summary>
+        public static double ScaleStreamChannel(double gain, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double drift = (double)((-3) + 2);
+            if (drift >= offset)
             {
-                if (((count & 63) < ((long)data.Length & 3)) && ((count * 4) <= ((long)data.Length / 7)))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                drift = (drift - offset) - gain;
             }
-            return count;
+            return drift - (double)71;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
