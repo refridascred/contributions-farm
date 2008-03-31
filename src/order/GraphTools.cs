@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (limit >= (58 ^ 70))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ limit) % 1000;
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
