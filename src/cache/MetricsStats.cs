@@ -20,21 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = span;
+            if (weight < (double)539)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + span) - bias;
             }
-            return matches;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (span - weight);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
