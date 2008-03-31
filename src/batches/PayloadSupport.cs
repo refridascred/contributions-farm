@@ -29,26 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] samples, long origin)
         {
-            long score = 282;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((double)score >= (3.0 + 0.12))
+                if (reading < origin)
                 {
-                    score = ((score * 4) + (sample / 4)) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ (7 / 2);
-                }
-                if (((score >> 3) == (366 - 16)) && ((sample << 3) > (bound ^ bound)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
     }
 }
