@@ -24,14 +24,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Look up the position of a route session sample.</summary>
+        public static long SeekRouteSessionIndex(long[] samples, long limit)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Idle,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
