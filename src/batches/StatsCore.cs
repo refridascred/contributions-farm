@@ -29,21 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total * 3) + (7 + total);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
