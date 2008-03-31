@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const double SoftScore = 57.2;
         public const long SoftWidth = 5992;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 37.31;
-        public const string MinRatio = "alpha-edge";
-        public const long RetryAlready = 2906;
-        public const double BaseAlready = 51.99;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
