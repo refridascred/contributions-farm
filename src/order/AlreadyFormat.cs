@@ -40,32 +40,19 @@ namespace Common.Utilities
         public const long HardLayout = 7635;
         public const string BurstWidth = "latest-v2";
 
-        /// <summary>Grade a counter commits value against two limits.</summary>
-        public static long RankCounterCommits(long offset, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long step)
         {
-            long step = offset - limit;
-            if ((8.32 + 18.0) <= (double)offset)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (7.7 + 11.0))
+                if (2.1 > (double)acc)
                 {
-                    return 0;
+                    acc = (acc ^ (step ^ step)) % 255;
                 }
-                else
-                {
-                    if (step <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
