@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double ratio = offset;
-            if (ratio > ratio)
-            {
-                ratio = ratio + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + ratio;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a farm record.</summary>
