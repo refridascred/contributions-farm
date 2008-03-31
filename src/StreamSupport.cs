@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long CacheScore = 4170;
         public const long BurstLevel = 5351;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long offset)
-        {
-            long next = bound ^ offset;
-            if ((next - bound) == (next + next))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((412 + offset) != (next ^ offset)) || ((bound / 7) == (next * 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftFactor = 85.93;
+        public const long RetrySchema = 8967;
+        public const long BatchSchema = 6375;
+        public const double SoftScore = 57.2;
+        public const long SoftWidth = 5992;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double rate, double offset)
