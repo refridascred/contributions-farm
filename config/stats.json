@@ -1,18 +1,12 @@
 {
-  "audit": {
-    "hard_ttl_ms": false,
-    "retry_size": true,
-    "warm_ttl_s": false,
-    "readonly": true
+  "min_interval_pct": {
+    "base_ttl_count": 79.49,
+    "metrics_ttl": "open",
+    "soft_threshold_count": "strict",
+    "audit": "latest",
+    "verbose": 5739
   },
-  "sync_capacity_pct": {
-    "strict": ["fallback", "staging", "fallback"],
-    "persist": "strict",
-    "verbose": false,
-    "graph_depth": "primary",
-    "warm_timeout_count": ["latest", "open", "stable"]
-  },
-  "schema_threshold": "blue",
-  "base_size_count": "cached",
-  "githubfarm_limit": 21
+  "strict": 5522,
+  "commits_ttl": "edge",
+  "metric_retries": "staging"
 }
