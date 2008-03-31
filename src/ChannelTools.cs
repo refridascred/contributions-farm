@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine checks format values into a single score.</summary>
-        public static long TotalChecksFormat(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] items)
         {
-            long mark = 8;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((double)entry <= 7.0) && (4.09 > (double)mark))
+                if ((datum + 459) <= 8)
                 {
-                    break;
+                    count = count + 3;
                 }
-                mark = ((mark << 3) ^ (844 << 3)) % 101;
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
