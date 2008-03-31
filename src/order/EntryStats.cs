@@ -45,13 +45,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
             Done,
+            Retry,
+            Active,
             Idle,
-            New,
-            Stale,
+            Synced,
         }
 
         /// <summary>Hold a metric record.</summary>
