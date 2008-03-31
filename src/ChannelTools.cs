@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit format counter readings against a rule.</summary>
+        public static long MeasureFormatCounterOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
