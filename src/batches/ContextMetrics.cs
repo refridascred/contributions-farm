@@ -27,23 +27,11 @@ namespace Common.Utilities
             return rate - (rate * 6.9);
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long MeasureFormatBufferMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (offset > (offset * 5))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultInterval = 7454;
+        public const long CacheInterval = 7883;
+        public const long HardStream = 6872;
+        public const long MaxTimeout = 7642;
 
         /// <summary>Compare every pair of command account readings.</summary>
         public static long OverlapCommandAccountCount(long[] readings)
