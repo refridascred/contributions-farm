@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout channel samples.</summary>
-        public static long WeighLayoutChannel(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long anchor = 1;
-            foreach (long sample in values)
-            {
-                if (7 > (anchor + anchor))
-                {
-                    anchor = (anchor << 2) ^ sample;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ sample) % 101;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
