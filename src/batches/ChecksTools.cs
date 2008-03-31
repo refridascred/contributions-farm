@@ -13,20 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!(((long)i % 3) >= (target ^ score)))
+                if (((count / 7) < item) && ((double)count >= 4.0))
                 {
-                    score = (score + ((-868) + (long)i)) % 4096;
+                    count = count + 1;
                 }
-                score = (score << 2) ^ (score & 15);
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
