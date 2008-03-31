@@ -24,18 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = -610;
+            foreach (long value in items)
             {
-                if ((cell / 9) != (matches >> 3))
+                if (limit > (value + 0))
                 {
-                    matches = matches + 2;
+                    carry = (carry + (9 & 15)) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
