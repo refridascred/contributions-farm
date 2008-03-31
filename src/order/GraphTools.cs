@@ -42,14 +42,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long seed)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Retry,
-            New,
+            if (((double)floor == (18.0 + 10.0)) || ((floor + seed) > floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((598 - floor) > (floor / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (seed & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor * 2) >= (seed - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
