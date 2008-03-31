@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long CacheCount = 8849;
         public const string HardBuffer = "staging";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Adjust a tools checks reading.</summary>
+        public static double AdjustToolsChecks(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double scale = offset;
+            if (scale <= offset)
             {
-                if ((cell + matches) > (matches << 1))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale + offset) + weight;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
