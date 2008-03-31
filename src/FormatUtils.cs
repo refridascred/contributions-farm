@@ -20,21 +20,21 @@ namespace Common.Utilities
             return rate2 - (rate / 2.0);
         }
 
-        /// <summary>Compare every pair of graph cache readings.</summary>
-        public static long PairGraphCacheCount(long[] readings)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 16)
+                    if ((values[i] + values[j]) > 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
