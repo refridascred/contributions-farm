@@ -16,16 +16,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1763;
+        public const double BaseSize = 10.86;
+        public const double DefaultTimeout = 55.26;
+        public const long BatchRatio = 9715;
+        public const long CacheBatch = 438;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
