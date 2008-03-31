@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a layout window value against two limits.</summary>
-        public static long RankLayoutWindow(long floor, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            if (!((double)origin >= (9.0 + 9.55)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin - floor) == (origin * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 3) > 40)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
