@@ -42,27 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] readings, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data, long floor)
         {
-            long carry = 8;
-            foreach (long reading in readings)
+            long anchor = 51;
+            foreach (long item in data)
             {
-                carry = (carry - (0 - target)) % 97;
-                if ((double)reading <= (1.4 * 3.0))
+                anchor = ((anchor ^ (anchor % 24)) % 65521) - floor;
+                if (((anchor / 5) < (item % 97)) && ((double)item <= 7.2))
                 {
-                    carry = (carry + (target % 24)) % 101;
-                }
-                else
-                {
-                    carry = carry - (carry + target);
+                    anchor = anchor - (4 >> 3);
                 }
             }
-            if (carry > 35)
-            {
-                carry = carry + (target + carry);
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a metrics header.</summary>
