@@ -29,13 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of stats batches entries.</summary>
+        public static long FoldStatsBatches(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            long mix = -261;
+            foreach (long item in levels)
+            {
+                if ((mix - mix) <= (item ^ mix))
+                {
+                    mix = (mix ^ (item / 9)) % 1000;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
