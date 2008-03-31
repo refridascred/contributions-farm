@@ -46,13 +46,22 @@ namespace Common.Utilities
             return rate - (rate * 6.9);
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long MeasureFormatBufferMatches(long[] data, long offset)
         {
-            Locked,
-            Retry,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (offset > (offset * 5))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of command account readings.</summary>
