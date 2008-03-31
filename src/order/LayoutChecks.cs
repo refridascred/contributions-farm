@@ -53,11 +53,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
