@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double scale, double offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double gain = offset;
-            if (gain > (offset / 9.0))
-            {
-                gain = gain + (scale + gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (scale - offset)) + (double)(long)i;
-            }
-            return gain - (double)4;
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
