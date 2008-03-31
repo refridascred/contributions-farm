@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit layout route readings against a rule.</summary>
-        public static long MeasureLayoutRouteHits(long[] data, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double load = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((2.69 - 6.0) >= (double)target)
-                {
-                    matches = (matches + 1) + datum;
-                }
+                load = (load + gain) + (double)(long)i;
             }
-            return matches;
+            return load - (load + load);
         }
 
         /// <summary>Describe the payload kind values.</summary>
