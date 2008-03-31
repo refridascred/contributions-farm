@@ -13,38 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a metrics schema pair into a bucket.</summary>
-        public static long SortMetricsSchema(long target, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values, long seed)
         {
-            if (!((target & 15) < (target % 24)))
+            long mark = 437;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (target > seed)
+                if (seed <= (value + mark))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > ((-1) << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((579 >> 2) != (seed << 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = (mark + 1) % 255;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
