@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)(long)readings.Length > 8.9)
-                {
-                    hits = ((hits + 1) + value) + target;
-                }
+                result = (result * 5) + offset;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate context payload readings against a bound.</summary>
