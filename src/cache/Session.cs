@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long step)
+        /// <summary>Derive the next contributi command value from a seed.</summary>
+        public static long StepContributiCommand(long floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor + (9 / 3)) % 4096;
+                anchor = ((anchor << 2) ^ ((long)i - 965)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
