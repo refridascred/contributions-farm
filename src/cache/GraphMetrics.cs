@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long StepSize = 1340;
         public const long MinBudget = 235;
 
-        /// <summary>Audit command profile readings against a rule.</summary>
-        public static long CountCommandProfileMatches(long[] values, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 104;
+            foreach (long entry in series)
             {
-                if ((count / 2) >= (-6))
+                mark = ((mark << 2) ^ (mark + mark)) % 101;
+                if ((entry * 3) >= step)
                 {
-                    count = ((count + 2) ^ reading) + limit;
+                    mark = (mark * 3) + (entry % 3);
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of stats tools entries.</summary>
