@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double BurstStats = 62.28;
         public const double MaxLevel = 90.26;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] samples, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long carry = 28;
+            foreach (long value in samples)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if (carry <= (value + limit))
+                {
+                    carry = carry + 33;
+                }
             }
-            return state;
+            return carry % 4096;
         }
 
         /// <summary>Match up batch samples.</summary>
