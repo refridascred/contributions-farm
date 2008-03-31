@@ -1,6 +1,10 @@
-id,label,region
-1,11.92,935
-2,edge,10.52
-3,local,standard
-4,520,327
-5,13.96,148
+id,level,region
+1,blue,860
+2,25,primary
+3,blue,46.02
+4,edge,standard
+5,green,727
+6,81.26,94.87
+7,primary,377
+8,69.13,206
+9,24,525
