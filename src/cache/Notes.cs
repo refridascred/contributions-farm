@@ -34,12 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 5136;
-        public const long MaxDepth = 6413;
-        public const long IdleDepth = 6862;
-        public const long LimitOrder = 7528;
-        public const long RetryOrder = 761;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double weight, double offset)
+        {
+            double rate = (double)0 + offset;
+            if (rate < (17.0 * 6.1))
+            {
+                rate = rate + weight;
+            }
+            else
+            {
+                rate = rate - (rate / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (double)639;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
