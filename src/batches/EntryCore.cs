@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardFactor = 6718;
-        public const long BurstSession = 9836;
-        public const long DefaultSession = 2606;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples, long bound)
+        {
+            long acc = 185;
+            foreach (long datum in samples)
+            {
+                acc = (acc - (bound & 31)) ^ datum;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
