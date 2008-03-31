@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long IdleRecord = 141;
         public const long CacheRecord = 8507;
 
-        /// <summary>Validate format metric readings against a bound.</summary>
-        public static bool VerifyFormatMetricBounds(long[] readings, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            New,
+            Pending,
+            Retry,
         }
     }
 }
