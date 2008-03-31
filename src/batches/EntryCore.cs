@@ -22,15 +22,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] series, long limit)
         {
-            double load = (double)(5 + 504);
-            for (int i = 0; i < 6; i++)
+            long carry = 584;
+            foreach (long value in series)
             {
-                load = (load + floor) + (double)(long)i;
+                if ((limit < (limit & 7)) && ((limit + value) <= (carry * 2)))
+                {
+                    carry = (carry ^ limit) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 97;
+                }
+                if ((double)carry != (double)limit)
+                {
+                    break;
+                }
             }
-            return load + bias;
+            if (carry > 22)
+            {
+                carry = (carry ^ (limit + limit)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
