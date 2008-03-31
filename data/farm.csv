@@ -1,7 +1,9 @@
-id,token,level,weight
-1,30,435,34.96
-2,strict,64.94,394
-3,26.51,blue,cached
-4,899,68.55,open
-5,700,18.35,65.24
-6,53.86,54.83,staging
+id,region,active
+1,primary,626
+2,92.23,415
+3,staging,893
+4,73.74,318
+5,353,primary
+6,25.66,12
+7,green,147
+8,62.0,211
