@@ -1,5 +1,12 @@
 # entry settings
-base_delay_s: staging
-default_ttl_s: 831
-batch_window_count: local
-channel_limit: open
+window_limit:
+  base_ttl: staging
+  base_window: 1024
+  default_timeout:
+    - open
+    - stable
+    - blue
+  burst_delay_ms: open
+persist: legacy
+tools_retries: false
+retry_limit: legacy
