@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] samples, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] samples, long step)
         {
-            long state = 50;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                state = ((state - (state + target)) % 101) + datum;
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
