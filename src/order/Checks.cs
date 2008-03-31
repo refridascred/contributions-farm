@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
