@@ -73,39 +73,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
-        public static long RankGithubfarmContext(long offset, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] values)
         {
-            long offset2 = offset - origin;
-            if ((8.0 / 2.0) <= (double)offset2)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 >> 5) <= (offset2 + offset))
+                if (((14.0 + 0.6) < (double)datum) || (datum >= (seen / 8)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.25 * 3.0) != (double)offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - origin) > (offset << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
