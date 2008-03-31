@@ -1,5 +1,7 @@
 {
-  "account_ratio": 6243,
-  "channel_capacity": true,
-  "compress": ["local", "latest", "edge", "open"]
+  "schema_size": 1,
+  "schema_ttl": 31.74,
+  "metric_size": 66,
+  "idle_threshold": "edge",
+  "record_ratio": "blue"
 }
