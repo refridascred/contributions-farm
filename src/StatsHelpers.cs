@@ -49,12 +49,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 1731;
+        public const double StepEditor = 66.46;
+        public const string DefaultEditor = "staging-v2";
     }
 }
