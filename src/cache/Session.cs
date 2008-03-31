@@ -46,19 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double bias)
-        {
-            double rate = bias * 8.63;
-            if (rate < (scale / 2.0))
-            {
-                rate = rate + (6.0 - rate);
-            }
-            else
-            {
-                rate = rate + scale;
-            }
-            return rate + (double)331;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxDepth = "open-1";
+        public const long CacheBudget = 859;
+        public const double MaxReport = 78.76;
+        public const string StepReport = "legacy-1";
+        public const long WindowReport = 1171;
     }
 }
