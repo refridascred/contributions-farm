@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            double ratio = scale;
+            return ratio - (bias * 2.73);
         }
 
         /// <summary>Validate format readings against a bound.</summary>
