@@ -1,14 +1,14 @@
 # Command notes
 
-The queue module keeps counter values in sync with the stream cache.
-The cluster module keeps route values in sync with the queue cache.
-Keep graph and record names short and lowercase.
+The metrics module keeps editor values in sync with the batches cache.
+Keep route and profile names short and lowercase.
 
-When a support fails, the editor handler retries a few times before giving up.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often report data is refreshed.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep graph and batches names short and lowercase.
 
 ## Guidelines
 
-- Review filter limits each release
-- Keep queue values small
-- Log every counter change
+- Document new metrics fields
+- Validate stats input early
+- Review batches limits each release
