@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long mark = 34;
-            foreach (long datum in samples)
-            {
-                if (((638 << 3) > datum) && ((mark % 3) > (mark - datum)))
-                {
-                    mark = mark ^ (datum << 3);
-                }
-            }
-            if (mark < 3)
-            {
-                mark = (mark * 4) + mark;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next already value.</summary>
