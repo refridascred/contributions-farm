@@ -56,14 +56,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            Done,
-            Failed,
-            Locked,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample << 3) < (matches << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
