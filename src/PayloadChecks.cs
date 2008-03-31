@@ -81,12 +81,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count + entry) > count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
