@@ -59,13 +59,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long floor)
         {
-            Queued,
-            Locked,
-            Ready,
-            Stale,
+            if ((double)floor >= 6.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ floor) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target - target) == (target ^ floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
