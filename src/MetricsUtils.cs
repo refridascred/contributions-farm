@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long StepFactor = 5498;
         public const long StepTimeout = 6244;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Closed,
-            Draft,
-            Synced,
-            Idle,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinSize = "open-edge";
+        public const long BurstScore = 8255;
+        public const string BurstRecord = "fallback-v2";
+        public const string LimitRecord = "alpha-1";
+        public const string MinRecord = "strict-v2";
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
