@@ -19,11 +19,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 6936;
-        public const long HardBudget = 7767;
-        public const long HardAlready = 331;
-        public const long WindowAlready = 2525;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series, long seed)
+        {
+            long score = 799;
+            foreach (long sample in series)
+            {
+                if ((19 ^ score) <= seed)
+                {
+                    score = ((score * 5) + seed) ^ sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] series, long limit)
