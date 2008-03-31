@@ -42,11 +42,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultInterval = 7454;
-        public const long CacheInterval = 7883;
-        public const long HardStream = 6872;
-        public const long MaxTimeout = 7642;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((carry - (long)i) <= bound)
+                {
+                    carry = (carry - (carry ^ 68)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
