@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report notes samples.</summary>
-        public static long CompareReportNotesCount(long[] readings)
+        /// <summary>Fold a list of batches profile readings.</summary>
+        public static long FoldBatchesProfile(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 73;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((2.72 / 5.0) > (double)limit) || ((double)state != (4.94 + 0.42)))
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (state / 9)) % 4096;
+                }
+                if ((state <= (630 << 1)) || ((state + item) < (item * 2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
