@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double weight = (double)(1 & 255);
+            if (weight < (ratio - weight))
             {
-                if ((value << 2) <= (hits ^ 51))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight - (double)5) + span;
             }
-            return hits;
+            return weight - (0.8 / 6.0);
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
