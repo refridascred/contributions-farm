@@ -1,10 +1,8 @@
 # githubfarm settings
-notes_ratio: 29.16
-stats_depth: true
-channel_ttl: true
-cluster_window:
-  - eu-west
-  - cached
-  - staging
-  - local
-soft_depth_pct: 8518
+commits_interval: 44.75
+max_depth_count: 88.44
+editor_size:
+  - standard
+  - edge
+  - fallback
+soft_delay: 5541
