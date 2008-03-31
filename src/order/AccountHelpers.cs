@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Locked,
-            Closed,
-            Failed,
-            Dropped,
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the notes command entries that pass the check.</summary>
