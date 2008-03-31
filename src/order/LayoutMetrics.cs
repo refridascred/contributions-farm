@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] values, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (sample < floor)
+                if (!(((limit % 60) < hits) && (9.4 <= (double)limit)))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
