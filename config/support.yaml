@@ -1,7 +1,7 @@
 # support settings
-min_interval: local
-persist: false
-editor_retries: 89
-base_ratio_pct: 5144
-strict: true
-checks_retries: eu-west
+base_delay_ms: strict
+max_delay: 75
+max_depth: 17.98
+verbose: 7
+base_ratio: open
+enabled: 98.0
