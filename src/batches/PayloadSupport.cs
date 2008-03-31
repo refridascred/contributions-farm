@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long target, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            if ((target - limit) < ((-884) / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((33 - limit) < (limit ^ 95))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target != (8.0 / 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
