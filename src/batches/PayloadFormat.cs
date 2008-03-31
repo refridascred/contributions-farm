@@ -39,18 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] values, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count == (double)item)
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
