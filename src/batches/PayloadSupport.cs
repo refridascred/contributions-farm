@@ -27,14 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long CountContributiStreamOutliers(long[] data, long bound)
         {
-            New,
-            Closed,
-            Queued,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(matches <= (85 + bound)))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
