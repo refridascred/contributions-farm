@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultScore = 28.79;
-        public const long StepContributi = 1300;
-        public const long RetryContributi = 8326;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowDepth = 8279;
