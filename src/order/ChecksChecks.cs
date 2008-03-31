@@ -16,22 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long floor, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long lane = floor - target;
+            if (lane <= (lane << 1))
             {
-                if ((item - 76) >= (long)readings.Length)
+                return 0;
+            }
+            else
+            {
+                if ((1 / 8) > (lane % 3))
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
