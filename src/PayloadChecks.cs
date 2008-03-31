@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const long MinWidth = 4436;
         public const long IdleStream = 5118;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "legacy-edge";
-        public const long IdleSize = 8389;
-        public const long BurstTimeout = 4246;
-        public const long BurstCluster = 8726;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] data, long bound)
