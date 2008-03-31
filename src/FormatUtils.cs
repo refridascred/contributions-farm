@@ -55,15 +55,21 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
