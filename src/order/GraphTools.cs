@@ -27,22 +27,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long sum = 51;
-            foreach (long item in data)
-            {
-                if ((4.0 + 6.3) <= (double)item)
-                {
-                    sum = sum + (item % 60);
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum + (sum % 8)) % 4096;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
