@@ -42,22 +42,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = 2;
-            foreach (long reading in series)
-            {
-                if ((double)sum < 7.12)
-                {
-                    sum = (sum ^ (sum - 702)) + reading;
-                }
-                else
-                {
-                    sum = sum + (sum ^ 6);
-                }
-            }
-            return sum % 4096;
+            Paused,
+            Retry,
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a metrics header.</summary>
