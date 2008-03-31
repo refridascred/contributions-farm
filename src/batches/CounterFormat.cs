@@ -55,21 +55,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
