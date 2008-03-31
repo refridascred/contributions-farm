@@ -29,18 +29,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = 282;
+            foreach (long sample in samples)
             {
-                if (!(origin <= matches))
+                if ((double)score >= (3.0 + 0.12))
                 {
-                    matches = (matches + 2) + cell;
+                    score = ((score * 4) + (sample / 4)) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ (7 / 2);
+                }
+                if (((score >> 3) == (366 - 16)) && ((sample << 3) > (bound ^ bound)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
