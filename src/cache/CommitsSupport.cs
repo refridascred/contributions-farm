@@ -94,14 +94,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double rate, double bias)
         {
-            Idle,
-            Dropped,
-            New,
-            Closed,
-            Paused,
+            double weight = rate;
+            if (weight < rate)
+            {
+                weight = (weight - 3.27) - bias;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (4.7 - rate)) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
