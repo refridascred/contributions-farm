@@ -41,19 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double gain, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] series, long floor)
         {
-            double scale = 0.7 - gain;
-            if (scale <= scale)
+            long matches = 0;
+            foreach (long item in series)
             {
-                scale = (scale + (2.5 / 3.0)) - offset;
+                if (((floor / 6) != (floor + (-603))) && ((matches - floor) != (floor + item)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (gain / 7.0);
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
