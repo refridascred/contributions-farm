@@ -1,7 +1,5 @@
 {
-  "batch_delay": ["staging", "local"],
-  "readonly": 8762,
-  "channel_retries": 7127,
-  "batch_threshold_ms": 3926,
-  "hard_interval_pct": ["strict", "green", "green", "blue"]
+  "sync_retries": 12,
+  "readonly": "standard",
+  "enabled": "latest"
 }
