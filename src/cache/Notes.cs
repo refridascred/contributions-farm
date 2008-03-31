@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit support cache readings against a rule.</summary>
-        public static long TallySupportCacheHits(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((double)hits != (5.49 - 14.0)) && !(48 < (item + hits)))
+                if (cell <= offset)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
