@@ -1,9 +1,7 @@
 # support settings
-verbose: eu-west
-audit: 30
-format_delay:
-  counter_size: 2140
-  audit: true
-  channel_ratio: 77.52
-schema_retries: primary
-default_threshold: 76.46
+retry_ratio_ms: 100
+cache_depth_pct: eu-west
+cluster_timeout: 9980
+max_interval: true
+batch_size_count: open
+channel_depth: true
