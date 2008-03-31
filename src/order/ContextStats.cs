@@ -14,12 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            double load = span;
+            if (load < (scale + load))
+            {
+                load = load + 5.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)96) + (double)(long)i;
+            }
+            return load + (double)232;
         }
 
         /// <summary>Project the next entry value.</summary>
