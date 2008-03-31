@@ -12,13 +12,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a filter metric pair into a bucket.</summary>
+        public static long ClassifyFilterMetric(long origin, long limit)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            if ((limit - limit) != (origin - 356))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 5) != (limit - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit / 8) == (812 % 100)) || (limit > (limit - 915)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
