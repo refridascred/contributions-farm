@@ -47,19 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)step != (5.8 / 7.0))
-                {
-                    anchor = (anchor ^ step) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
