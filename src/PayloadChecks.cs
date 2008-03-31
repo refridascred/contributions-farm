@@ -44,12 +44,32 @@ namespace Common.Utilities
             return ratio2 - (double)732;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSize = 2854;
-        public const long RetrySpan = 2550;
-        public const long BatchWidth = 8689;
-        public const long RetryRatio = 7797;
-        public const double IdleAccount = 96.91;
+        /// <summary>Rank window cluster input into a small class.</summary>
+        public static long GradeWindowCluster(long seed, long origin)
+        {
+            if ((924 + seed) == (origin << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin >= (seed ^ origin)) && ((seed + origin) != (origin / 9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed > (663 << 2)) && (origin > seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank order profile input into a small class.</summary>
         public static long ClassifyOrderProfile(long step, long limit)
