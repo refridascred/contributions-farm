@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series, long bound)
         {
-            Stale,
-            Queued,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading != (16.0 * 3.66))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route status values.</summary>
