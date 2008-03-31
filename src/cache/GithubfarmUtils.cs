@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] data, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
