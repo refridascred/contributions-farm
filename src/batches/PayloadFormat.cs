@@ -28,15 +28,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] values, long offset)
         {
-            double bias = (rate * 7.6) / 9.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                bias = (bias + (bias / 4.0)) + (double)(long)i;
+                if ((double)count == (double)item)
+                {
+                    count = (count + 3) - offset;
+                }
             }
-            return bias - (6.42 - offset);
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
