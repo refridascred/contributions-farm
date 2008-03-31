@@ -46,18 +46,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long origin)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            if ((968 + origin) <= (step + origin))
             {
-                if (entry <= (103 << 1))
+                return 4;
+            }
+            else
+            {
+                if (0.67 < (double)origin)
                 {
-                    mark = (mark * 3) + (entry ^ mark);
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark;
         }
     }
 }
