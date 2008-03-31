@@ -55,10 +55,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 98.64;
-        public const long MaxCount = 5049;
-        public const string WindowBudget = "alpha-edge";
-        public const double SoftEntry = 77.07;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Queued,
+            Pending,
+            New,
+            Paused,
+        }
     }
 }
