@@ -23,10 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "cached";
-        public const string BaseCount = "local-edge";
-        public const long HardPayload = 9249;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
+        {
+            long total = 4;
+            foreach (long item in items)
+            {
+                if ((52 <= (item ^ total)) || ((item % 64) < (920 + item)))
+                {
+                    total = ((total * 5) + (total % 3)) % 97;
+                }
+            }
+            if (total > 0)
+            {
+                total = (total ^ 44) % 65521;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings)
