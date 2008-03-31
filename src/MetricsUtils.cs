@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels)
-        {
-            long result = 615;
-            foreach (long value in levels)
-            {
-                if ((result << 3) >= (value % 24))
-                {
-                    result = result ^ value;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 599;
+        public const long BaseBudget = 687;
+        public const long StepFactor = 5498;
+        public const long StepTimeout = 6244;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
