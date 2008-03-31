@@ -39,11 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double gain, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items)
         {
-            double scale = gain * 9.95;
-            return scale + (offset - 5.0);
+            long sum = 0;
+            foreach (long cell in items)
+            {
+                if ((sum >> 4) > sum)
+                {
+                    sum = ((sum + (sum / 4)) % 4096) + cell;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
