@@ -53,12 +53,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Retry,
-            Pending,
-            Queued,
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
