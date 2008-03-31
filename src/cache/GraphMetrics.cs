@@ -61,12 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of stats tools entries.</summary>
+        public static long WeighStatsTools(long[] items, long limit)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long score = 9;
+            foreach (long item in items)
+            {
+                if ((item / 9) <= score)
+                {
+                    score = ((score * 3) + (score * 5)) % 255;
+                }
+                score = ((score * 5) + ((-20) - limit)) % 1000;
+                if ((double)item > (0.7 * 7.3))
+                {
+                    score = score - (score << 1);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit already payload readings against a rule.</summary>
