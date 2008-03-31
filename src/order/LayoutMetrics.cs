@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next batch channel value.</summary>
-        public static double SmoothBatchChannel(double weight, double span)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double rate = 5.8;
-            if (rate <= (double)861)
-            {
-                rate = (rate + (double)681) - span;
-            }
-            else
-            {
-                rate = rate + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (7.42 + rate)) - (double)(long)i;
-            }
-            return rate + weight;
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
