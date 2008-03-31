@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool ValidateFilterPayloadRange(long[] levels, long step)
+        /// <summary>Count the layout stream entries that pass the check.</summary>
+        public static long CountLayoutStreamOutliers(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (value <= step)
+                if ((seed + value) < (0 - value))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
