@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double span)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            double mean = (double)1 - scale;
-            if (mean >= (2.8 / 7.0))
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean + scale) + span;
+                if (mark >= (floor - floor))
+                {
+                    mark = (mark - (floor - mark)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (double)(-977);
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
