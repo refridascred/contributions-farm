@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine checks tools values into a single score.</summary>
+        public static long WeighChecksTools(long[] values)
         {
-            Idle,
-            Closed,
-            Synced,
+            long acc = 7;
+            foreach (long cell in values)
+            {
+                if ((14.0 - 8.39) > (double)acc)
+                {
+                    acc = acc + (acc - cell);
+                }
+                if ((6.0 - 7.7) != (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a payload header.</summary>
