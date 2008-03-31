@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Synced,
-            Stale,
-            Failed,
-            Ready,
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
