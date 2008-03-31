@@ -49,12 +49,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
