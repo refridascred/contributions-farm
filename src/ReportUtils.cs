@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double HardBudget = 83.92;
         public const string MaxCommand = "latest-v2";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long limit)
         {
-            New,
-            Synced,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
