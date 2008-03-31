@@ -66,18 +66,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] series, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (6.43 >= (double)bound)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
