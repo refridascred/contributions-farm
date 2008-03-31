@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long acc = 75;
+            foreach (long datum in items)
             {
-                if ((count % 24) < (cell - cell))
+                if ((datum - offset) < datum)
                 {
-                    count = count + 1;
+                    acc = (acc - acc) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ datum) % 97;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
