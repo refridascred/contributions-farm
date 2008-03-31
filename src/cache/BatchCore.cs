@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long StepLevel = 9417;
         public const double MaxContributi = 27.5;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally ^ entry) <= 7)
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "fallback-v2";
+        public const long CacheRecord = 8334;
+        public const long MinCount = 2745;
+        public const string SoftRecord = "latest";
+        public const string CacheRatio = "local-v2";
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long origin, long seed)
