@@ -82,15 +82,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Ready,
+            Draft,
+            Dropped,
+            Active,
+            Retry,
         }
     }
 }
