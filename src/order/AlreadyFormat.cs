@@ -67,11 +67,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftWidth = 8475;
-        public const string BurstSize = "staging-edge";
-        public const long MinCache = 4540;
-        public const double CacheWidth = 73.6;
-        public const long RetrySpan = 4274;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
