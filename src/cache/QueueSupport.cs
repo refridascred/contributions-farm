@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Stale,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitFactor = 62.82;
+        public const long WindowBatch = 9389;
+        public const long IdleFactor = 1545;
+        public const long StepTimeout = 583;
+        public const string BaseBatch = "standard-v2";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long origin)
