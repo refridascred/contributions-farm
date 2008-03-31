@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Count the stream batch entries that pass the check.</summary>
+        public static long MeasureStreamBatchGaps(long[] levels)
         {
-            long mix = 255;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 2) + value) % 65521;
+                if ((sample + 19) != (sample << 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (mix < (-3))
-            {
-                mix = ((mix << 3) ^ 917) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
