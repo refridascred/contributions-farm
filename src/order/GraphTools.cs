@@ -47,12 +47,13 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Locked,
-            Closed,
-            Stale,
+            Failed,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the cache mode values.</summary>
