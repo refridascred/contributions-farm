@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long diff = target ^ floor;
-            if (((139 << 2) < target) || ((floor + target) <= diff))
+            long result = 833;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - diff) <= (-344))
+                if ((entry - 272) > result)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    result = (result - 2) % 4096;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
