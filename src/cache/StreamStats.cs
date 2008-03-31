@@ -30,18 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = 800;
-            foreach (long cell in items)
-            {
-                if ((double)239 <= 6.4)
-                {
-                    score = (((score << 2) ^ (cell + score)) % 4096) + target;
-                }
-            }
-            return score;
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
