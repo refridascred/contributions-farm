@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
