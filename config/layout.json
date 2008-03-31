@@ -1,19 +1,5 @@
 {
-  "strict": 2372,
-  "default_size_s": 97,
-  "batch_limit_pct": "standard",
-  "retry_interval_ms": [174, 232, 330],
-  "retry_threshold_pct": {
-    "counter_capacity": true,
-    "enabled": 76.97,
-    "sync_timeout_ms": 40,
-    "default_capacity": 28.67,
-    "flush_retries_count": "strict",
-    "cache_depth_ms": {
-      "dry_run": [242, 78],
-      "hard_ttl_ms": 0.14,
-      "soft_ratio": 86.51,
-      "audit": false
-    }
-  }
+  "dry_run": [410, 104, 56, 9],
+  "flush_limit_count": "standard",
+  "idle_size_s": "primary"
 }
