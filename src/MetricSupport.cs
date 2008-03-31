@@ -24,19 +24,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstWidth = 6200;
+        public const string RetryInterval = "fallback-1";
+        public const double BurstLayout = 61.23;
+        public const long RetryFactor = 2770;
     }
 }
