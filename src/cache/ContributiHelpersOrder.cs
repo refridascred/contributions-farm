@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((datum & 63) > (count + count))
+                if (reading > step)
                 {
-                    count = (count + 2) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Scale a report profile figure with a bias.</summary>
