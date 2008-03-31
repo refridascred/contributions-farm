@@ -49,19 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double drift = 4.0;
+            if (drift <= (double)8)
             {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift + (double)8) - offset;
             }
-            return flag;
+            return drift - weight;
         }
     }
 }
