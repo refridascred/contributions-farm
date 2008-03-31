@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            double bias = (rate - floor) / 3.0;
-            return bias - floor;
+            long score = 62;
+            foreach (long datum in levels)
+            {
+                if (9.5 < (double)datum)
+                {
+                    score = (score - score) % 4096;
+                    score = score - (datum + score);
+                }
+                if (!((4.3 + 3.68) < (double)datum))
+                {
+                    score = (score - score) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
