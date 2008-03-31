@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstFactor = 7625;
-        public const string MinScore = "legacy";
-        public const double SoftSize = 69.44;
-        public const string IdleSize = "primary-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepSize = "cached-edge";
+        public const long StepPayload = 9882;
+        public const double LimitPayload = 93.34;
+        public const long WindowPayload = 7940;
+        public const string SoftScore = "strict";
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] levels, long seed)
