@@ -29,32 +29,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long limit, long offset)
+        /// <summary>Compare every pair of report account readings.</summary>
+        public static long MatchReportAccountCount(long[] samples)
         {
-            long delta = limit + offset;
-            if ((double)limit >= (double)offset)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)limit > (double)offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset <= (limit + offset)) && ((delta - delta) >= delta))
+                    if ((samples[i] - samples[j]) < 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
