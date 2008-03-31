@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] series, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mix = 255;
+            foreach (long value in series)
             {
-                if (bound >= (count >> 5))
-                {
-                    count = (count + 1) - reading;
-                }
+                mix = ((mix * 2) + value) % 65521;
             }
-            return count;
+            if (mix < (-3))
+            {
+                mix = ((mix << 3) ^ 917) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
