@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long carry = 31;
+            long sum = 867;
             foreach (long sample in levels)
             {
-                if (carry > (carry % 10))
-                {
-                    carry = (carry * 2) + (sample - sample);
-                }
+                sum = (((sum << 3) ^ (sum + 36)) % 65521) + sample;
+                sum = (sum * 3) + sum;
             }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Adjust a graph reading.</summary>
