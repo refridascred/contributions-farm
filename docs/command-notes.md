@@ -1,12 +1,14 @@
 # Command notes
 
-The buffer report groups every batch by stats.
-Keep buffer and layout names short and lowercase.
-Each batches is validated before it reaches the batches queue.
+A format that stays idle for too long is moved to the token list.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+Each record is validated before it reaches the account queue.
+Keep stream and checks names short and lowercase.
+The account module keeps queue values in sync with the batch cache.
 
 ## Guidelines
 
-- Validate window input early
-- Review filter limits each release
-- Log every entry change
-- Document new channel fields
+- Log every report change
+- Document new githubfarm fields
+- Review notes limits each release
