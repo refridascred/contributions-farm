@@ -72,13 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
