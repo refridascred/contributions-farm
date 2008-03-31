@@ -27,21 +27,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)hits != (11.0 + 20.0)) || !((double)99 > (1.47 / 3.0)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) ^ value) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
