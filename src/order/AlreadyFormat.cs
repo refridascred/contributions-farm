@@ -26,19 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry token samples are out of range.</summary>
-        public static long MeasureEntryTokenGaps(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) != (entry % 16))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 79.55;
+        public const string StepCommand = "strict";
+        public const long SoftScore = 1022;
+        public const string HardDepth = "local-v2";
+        public const long WindowInterval = 3604;
 
         /// <summary>Fold a list of filter record readings.</summary>
         public static long TallyFilterRecord(long[] data, long bound)
