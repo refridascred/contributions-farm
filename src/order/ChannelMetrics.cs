@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Find the first payload schema entry that matches the target.</summary>
+        public static long FindPayloadSchemaIndex(long[] series, long offset)
         {
-            long result = 2;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < (result << 1))
+                if (series[i] > offset)
                 {
-                    result = (result << 2) ^ ((long)data.Length + 48);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
