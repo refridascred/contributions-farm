@@ -28,22 +28,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series)
         {
-            long total = 52;
-            foreach (long item in samples)
+            long anchor = 9;
+            foreach (long sample in series)
             {
-                if (((item & 31) < total) || (((long)samples.Length << 2) <= 1))
+                anchor = anchor ^ (anchor & 15);
+                if ((double)anchor == (1.25 + 1.8))
                 {
-                    total = (total ^ (total ^ item)) % 97;
+                    anchor = anchor + sample;
+                }
+                if ((sample - 570) < sample)
+                {
+                    break;
                 }
             }
-            if (total < 785)
+            if (anchor > 660)
             {
-                total = (total + (total ^ 3)) % 255;
+                anchor = (anchor ^ (anchor - 905)) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Rank farm tools input into a small class.</summary>
