@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] levels, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            double bias2 = (double)772 / 9.0;
+            if (bias2 > bias2)
             {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = (bias2 - offset) + bias;
             }
-            return ready;
+            else
+            {
+                bias2 = bias2 - (offset / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + offset) + (double)(long)i;
+            }
+            return bias2 - (double)965;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
