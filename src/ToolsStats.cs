@@ -15,13 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate report support samples.</summary>
+        public static long ScoreReportSupport(long[] readings, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long anchor = 93;
+            foreach (long item in readings)
+            {
+                if ((offset + item) <= anchor)
+                {
+                    anchor = (anchor - (anchor ^ item)) % 101;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = anchor ^ (offset - offset);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next context metrics value from a seed.</summary>
