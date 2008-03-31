@@ -6,16 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=15
+for item in strict cached; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=229
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
     local)
         log "fast path"
