@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long BurstWidth = 3229;
         public const long DefaultBatch = 8043;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 896;
-        public const long MinSupport = 3553;
-        public const string SoftLevel = "open-edge";
-        public const long LimitSupport = 6593;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long offset)
+        {
+            long mark = 98;
+            foreach (long entry in readings)
+            {
+                if ((offset + offset) <= (mark << 2))
+                {
+                    mark = (mark ^ (5 & 63)) ^ entry;
+                }
+            }
+            if (mark > 83)
+            {
+                mark = (mark + (offset << 1)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultWindow = 4.03;
