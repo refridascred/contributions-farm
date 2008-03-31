@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] items)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + 459) <= 8)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
