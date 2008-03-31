@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch order readings against a rule.</summary>
-        public static long AuditBatchOrderMatches(long[] samples, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!((double)11 >= (double)entry))
+                if (((value * 2) < (value + 6)) && ((4.07 * 3.18) < (double)value))
                 {
-                    seen = (seen + 3) - floor;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
