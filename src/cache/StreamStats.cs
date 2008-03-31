@@ -36,18 +36,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples, long floor)
+        /// <summary>Combine channel already values into a single score.</summary>
+        public static long ScoreChannelAlready(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long result = 159;
+            foreach (long value in levels)
             {
-                if ((tally + floor) <= (tally / 2))
-                {
-                    tally = (tally + 1) + cell;
-                }
+                result = (result ^ (result + 546)) ^ value;
             }
-            return tally;
+            return result;
         }
     }
 }
