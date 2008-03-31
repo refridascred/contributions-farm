@@ -1,6 +1,13 @@
 {
-  "verbose": 1462,
-  "metric_depth": "green",
-  "burst_interval_count": ["open", "fallback", "fallback"],
-  "sync_delay_ms": "latest"
+  "soft_threshold_pct": [83, 373, 407],
+  "graph_threshold": 2015,
+  "compress": true,
+  "batch_window_ms": {
+    "burst_retries": "cached",
+    "commits_delay": "strict",
+    "verbose": 3120,
+    "session_retries": 79.16,
+    "compress": "legacy"
+  },
+  "poll_window": 1953
 }
