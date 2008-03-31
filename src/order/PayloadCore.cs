@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor graph entry that matches the target.</summary>
-        public static long SeekEditorGraphIndex(long[] samples, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if (origin > tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
