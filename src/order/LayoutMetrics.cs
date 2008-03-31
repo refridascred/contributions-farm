@@ -13,16 +13,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
-        {
-            long mark = 66;
-            foreach (long sample in items)
-            {
-                mark = (((mark * 3) + (long)items.Length) % 1000) - sample;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultRatio = 4267;
+        public const long DefaultDepth = 7757;
+        public const long RetryLevel = 9438;
+        public const long BaseCount = 8853;
+        public const long BaseOrder = 2164;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long FoldStream(long[] samples, long step)
