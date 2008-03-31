@@ -1,6 +1,6 @@
 {
-  "cache_capacity_ms": 45,
-  "poll_size_pct": true,
-  "cache_retries_s": 3954,
-  "githubfarm_threshold": 7
+  "window_interval": false,
+  "warm_ratio_ms": "open",
+  "cache_size": 6994,
+  "warm_ttl_s": true
 }
