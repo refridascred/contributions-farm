@@ -39,12 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double gain, double offset)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            double scale = gain * 9.95;
+            return scale + (offset - 5.0);
         }
     }
 }
