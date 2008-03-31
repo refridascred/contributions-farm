@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + seed) < (tally + 384))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
