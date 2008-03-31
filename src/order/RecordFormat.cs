@@ -31,12 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 6089;
-        public const long HardInterval = 9229;
-        public const string BaseCluster = "primary-1";
-        public const long WindowDepth = 4617;
-        public const long HardCluster = 6872;
+        /// <summary>Check that every farm schema entry stays within the limit.</summary>
+        public static bool ValidateFarmSchemaRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] items)
