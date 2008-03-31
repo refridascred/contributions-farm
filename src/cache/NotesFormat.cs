@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long limit, long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if (limit >= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 1) > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a metric payload reading.</summary>
