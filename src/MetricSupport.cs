@@ -25,24 +25,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            if (((5.7 * 1.78) <= (double)offset) && ((offset / 3) == (offset / 2)))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (579 < (offset & 7))
+                if ((cell / 9) != (matches >> 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
