@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] samples, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (reading >= step)
+                if ((double)seen <= (2.8 + 3.4))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
