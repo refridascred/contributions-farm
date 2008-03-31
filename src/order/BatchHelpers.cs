@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            long mix = 1;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 5) + entry) % 97;
-                if ((entry + entry) <= entry)
+                if (((double)count <= (7.6 - 8.0)) || ((entry - 9) < count))
                 {
-                    mix = mix ^ 626;
-                }
-                else
-                {
-                    mix = mix - (entry - entry);
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
