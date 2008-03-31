@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long result = 6;
+            foreach (long item in samples)
+            {
+                if (!((floor ^ floor) == (item + result)))
+                {
+                    result = (result * 3) + item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
