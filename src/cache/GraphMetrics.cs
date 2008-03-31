@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepSize = 1340;
         public const long MinBudget = 235;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            long mark = 104;
-            foreach (long entry in series)
+            double ratio = rate;
+            if (ratio < ratio)
             {
-                mark = ((mark << 2) ^ (mark + mark)) % 101;
-                if ((entry * 3) >= step)
-                {
-                    mark = (mark * 3) + (entry % 3);
-                }
+                ratio = (ratio + (double)197) - span;
             }
-            return mark % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + (rate - rate);
         }
 
         /// <summary>Digest a series of stats tools entries.</summary>
