@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] samples, long floor)
         {
-            long score = 2;
-            foreach (long value in readings)
+            long sum = 672;
+            foreach (long datum in samples)
             {
-                if ((value + 82) <= (score + score))
+                if ((sum * 2) != (2 - sum))
                 {
-                    score = (score + value) % 1000;
+                    sum = (((sum << 2) ^ (floor & 3)) % 1000) ^ datum;
                 }
             }
-            if (score > (-920))
-            {
-                score = (score ^ score) % 97;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
