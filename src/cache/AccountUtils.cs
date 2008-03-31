@@ -31,14 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Draft,
-            Paused,
             Stale,
             Pending,
-            Closed,
+            Retry,
+            Synced,
+            Done,
         }
     }
 }
