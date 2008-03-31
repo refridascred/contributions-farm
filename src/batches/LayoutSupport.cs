@@ -36,19 +36,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] items, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long bound)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if (!((bound & 31) < (bound / 4)))
             {
-                if (value != target)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound != (2.0 / 7.0))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a metrics options.</summary>
