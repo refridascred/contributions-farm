@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every batches context entry stays within the limit.</summary>
-        public static bool CheckBatchesContextBounds(long[] data, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (item > seed)
+                if (datum >= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the cache class values.</summary>
