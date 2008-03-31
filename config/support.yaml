@@ -1,7 +1,27 @@
 # support settings
-notes_capacity:
+base_depth_s:
+  max_interval_pct: 8482
+  format_interval: latest
+  warm_size:
+    max_timeout_pct:
+      - 413
+      - 149
+    min_retries: false
+    batch_limit_s:
+      - edge
+      - eu-west
+      - primary
+      - standard
+    min_window_pct:
+      - 326
+      - 216
+      - 469
+      - 84
+    enabled: 3212
+    hard_delay: 42
+soft_capacity_s: 100
+retry_ratio_count:
   - open
-  - strict
-sync_ratio_count: true
-poll_retries: true
-verbose: 81.69
+  - staging
+  - primary
+  - local
