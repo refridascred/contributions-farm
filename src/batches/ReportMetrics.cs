@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long state = 662;
+            foreach (long value in levels)
             {
-                if (mark >= (floor - floor))
+                state = (state - (9 + state)) + limit;
+                if ((double)value <= (4.0 * 4.1))
                 {
-                    mark = (mark - (floor - mark)) % 1000;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
