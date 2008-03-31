@@ -20,11 +20,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 2800;
+        public const long CacheLevel = 7923;
+        public const string RetryGithubfarm = "legacy-1";
+        public const long DefaultGithubfarm = 1448;
+        public const long HardGithubfarm = 9079;
     }
 }
