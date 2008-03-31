@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Measure how many batches tools samples are out of range.</summary>
+        public static long CountBatchesToolsMatches(long[] data)
         {
-            long result = 5;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!((result - reading) > (result - result)))
+                if (!((4 ^ entry) >= (entry * 3)) || (((-19) + entry) >= (964 >> 2)))
                 {
-                    result = (result + result) % 65521;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    result = result - (reading ^ reading);
-                }
-                if (((result >> 3) > (78 ^ reading)) || ((reading >> 4) <= reading))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
