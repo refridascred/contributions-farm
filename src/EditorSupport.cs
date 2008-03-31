@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowDepth = 8279;
-        public const long RetryBuffer = 389;
-        public const long CacheScore = 538;
-        public const long BatchSpan = 1424;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples, long floor)
+        {
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                if (!((floor * 4) >= (419 % 16)))
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 97) ^ cell;
+                }
+                if (((double)floor == (1.4 + 7.89)) || ((double)913 == (double)floor))
+                {
+                    anchor = (anchor - (anchor - 2)) % 4096;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterMatches(long[] levels)
