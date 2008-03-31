@@ -33,19 +33,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate cache stats readings against a bound.</summary>
-        public static bool CheckCacheStatsBounds(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryWidth = 47.24;
+        public const long BurstGraph = 6402;
+        public const long MinGraph = 2568;
     }
 }
