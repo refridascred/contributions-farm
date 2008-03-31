@@ -39,10 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2031;
-        public const long BaseToken = 6753;
-        public const string WindowToken = "alpha-v2";
-        public const long IdleToken = 6562;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Locked,
+            Retry,
+            Stale,
+            Active,
+            New,
+        }
     }
 }
