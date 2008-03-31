@@ -44,19 +44,18 @@ namespace Common.Utilities
             return weight + (double)94;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long seed)
+        /// <summary>Combine notes entry values into a single score.</summary>
+        public static long TallyNotesEntry(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long anchor = -7;
+            foreach (long entry in samples)
             {
-                if (reading < seed)
+                if ((double)anchor > (5.6 - 4.36))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor - (anchor % 2)) % 101) ^ entry;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a contributi info.</summary>
