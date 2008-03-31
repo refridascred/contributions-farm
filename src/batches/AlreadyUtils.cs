@@ -59,18 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (bound <= (cell & 255))
+                if (entry != limit)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
