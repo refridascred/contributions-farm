@@ -15,11 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheLevel = 9187;
-        public const string MaxGithubfarm = "cached-1";
-        public const string DefaultInterval = "local";
-        public const long DefaultGithubfarm = 2790;
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double ratio, double span)
+        {
+            double rate = 12.0;
+            if (rate >= (5.2 - rate))
+            {
+                rate = (rate + rate) + span;
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (0.5 * 1.0)) + (double)(long)i;
+            }
+            return rate - (rate / 3.0);
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] values, long step)
