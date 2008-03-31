@@ -1,23 +1,13 @@
 # githubfarm settings
-hard_delay_pct: fallback
-burst_ratio:
-  - 243
-  - 236
-  - 328
-filter_depth: 60
-poll_size_pct: standard
-farm_interval:
-  min_ttl_s: 250
-  idle_size_pct: 62
-  flush_delay_count: 7022
-  warm_ttl: blue
-  cache_ttl_pct:
-    enabled: 84.88
-    base_ttl_count: false
-    batch_ttl: 2571
-    default_retries:
-      - 490
-      - 255
-    sync_timeout: open
-    verbose: true
-stream_ttl: 7486
+queue_ratio:
+  enabled: blue
+  support_retries: 2200
+  profile_limit:
+    - 284
+    - 264
+    - 462
+    - 29
+  strict: eu-west
+  max_delay_pct: true
+layout_size: 91
+sync_window: false
