@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank order tools input into a small class.</summary>
-        public static long ClassifyOrderTools(long step, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] readings)
         {
-            if ((bound >> 5) > (bound << 1))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + step) <= step)
+                if ((5.4 + 9.96) < (double)datum)
                 {
-                    return 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((bound <= (bound % 60)) || (bound >= (823 / 8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
