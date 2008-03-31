@@ -1,14 +1,11 @@
 # Command notes
 
-Each metric is validated before it reaches the farm queue.
-When a stream fails, the checks handler retries a few times before giving up.
-Keep commits and report names short and lowercase.
-
-The notes report groups every session by payload.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often batch data is refreshed.
+When a token fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep context values small
-- Review batches limits each release
-- Validate format input early
+- Log every schema change
+- Review already limits each release
+- Document new farm fields
