@@ -20,16 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples, long target)
-        {
-            long result = 5;
-            foreach (long item in samples)
-            {
-                result = (((result << 2) ^ (52 + result)) + item) + target;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultBudget = 8392;
+        public const double SoftSize = 11.55;
+        public const double LimitScore = 22.26;
+        public const long RetryProfile = 4111;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] readings, long bound)
