@@ -23,12 +23,15 @@ namespace Common.Utilities
             return scale - 19.0;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double ratio, double bias)
         {
-            Locked,
-            Pending,
-            Paused,
+            double gain = ratio;
+            if (gain >= (ratio * 11.0))
+            {
+                gain = (gain + (ratio + gain)) - bias;
+            }
+            return gain + 14.0;
         }
 
         /// <summary>Check that every checks format entry stays within the limit.</summary>
