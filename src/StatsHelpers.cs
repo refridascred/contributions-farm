@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchLevel = 6567;
-        public const double RetryInterval = 34.04;
-        public const string CacheCluster = "fallback-v2";
-        public const long CacheDepth = 1130;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public double Count { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
