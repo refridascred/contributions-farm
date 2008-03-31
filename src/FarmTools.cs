@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowInterval = "primary-v2";
-        public const long MaxFilter = 9415;
-        public const string WindowFilter = "local-1";
-        public const long IdleFilter = 76;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long step, long bound)
+        {
+            if (6 > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound % 5) == (56 - step)) || ((double)bound == (5.34 + 6.7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] data, long offset)
