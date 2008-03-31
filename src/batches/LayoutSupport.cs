@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSpan = "staging-1";
-        public const long HardSupport = 2518;
-        public const long CacheSupport = 9584;
-        public const double MinInterval = 18.53;
-        public const string DefaultSize = "cached-edge";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long step2)
+        {
+            if ((double)94 == (double)step2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 8) <= (step * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.5 + 2.86) < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] items)
