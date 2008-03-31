@@ -1,8 +1,17 @@
 {
-  "min_size_pct": false,
-  "dry_run": 100,
-  "flush_size": "fallback",
-  "strict": 66.23,
-  "min_size_ms": 100,
-  "stats_capacity": 93
+  "retry_depth": 2628,
+  "idle_delay_s": "standard",
+  "verbose": 6068,
+  "sync_retries_pct": {
+    "buffer_depth": false,
+    "base_delay": {
+      "cache_threshold": ["edge", "strict"],
+      "base_delay_s": "latest",
+      "order_ttl": "fallback",
+      "strict": 930,
+      "flush_delay_ms": 100,
+      "flush_timeout_pct": 5710
+    },
+    "sync_ratio_ms": [449, 412, 317]
+  }
 }
