@@ -23,19 +23,18 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (item >= limit)
+                if ((value ^ tally) > 1)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
