@@ -51,22 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry tools entries that pass the check.</summary>
-        public static long MeasureEntryToolsHits(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] items, long offset)
         {
-            long seen = 0;
+            bool valid = true;
             foreach (long value in items)
             {
-                if ((value >> 2) == (seen % 97))
+                if (value > offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
