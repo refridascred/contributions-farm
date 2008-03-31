@@ -29,15 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of graph command entries.</summary>
-        public static long DigestGraphCommand(long[] series, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data, long target)
         {
-            long mark = 97;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark - offset) % 4096) - datum;
+                if ((target - tally) == (tally ^ target))
+                {
+                    tally = (tally + 1) - cell;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
