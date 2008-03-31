@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] values)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen >> 3) == ((-64) + seen))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
