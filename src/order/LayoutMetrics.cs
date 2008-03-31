@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((carry > (carry >> 4)) && ((0.02 + 2.3) <= (double)seed))
-                {
-                    carry = ((carry * 5) + ((long)i << 1)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Synced,
+            Pending,
+            Failed,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
