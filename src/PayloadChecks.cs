@@ -75,22 +75,11 @@ namespace Common.Utilities
             return bias - (scale - offset);
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count + entry) > count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
