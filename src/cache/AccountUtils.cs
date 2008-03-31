@@ -13,19 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Validate account window readings against a bound.</summary>
+        public static bool VerifyAccountWindowRange(long[] levels, long origin)
         {
-            double drift = weight;
-            if (drift >= (floor - drift))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                drift = drift - drift;
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + weight;
+            return stale;
         }
 
         /// <summary>Match up checks samples.</summary>
