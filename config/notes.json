@@ -1,5 +1,14 @@
 {
-  "layout_timeout": "legacy",
-  "order_window": ["fallback", "staging", "standard", "strict"],
-  "readonly": ["fallback", "local", "legacy", "eu-west"]
+  "readonly": "blue",
+  "burst_timeout_pct": 1714,
+  "tools_ttl": [63, 230],
+  "verbose": 15.67,
+  "stream_limit": {
+    "flush_ttl_s": [157, 497, 488],
+    "persist": 60,
+    "command_size": ["legacy", "latest"],
+    "profile_limit": false,
+    "readonly": [113, 326, 144],
+    "compress": 60
+  }
 }
