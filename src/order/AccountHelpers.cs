@@ -97,19 +97,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] items, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long bound2 = seed - bound;
+            if ((15.0 / 8.0) > (double)bound)
             {
-                if (sample != step)
+                return 1;
+            }
+            else
+            {
+                if ((bound2 + bound) <= (6 + 1))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound2 ^ bound) > (seed / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((bound + seed) > (bound2 + bound)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
