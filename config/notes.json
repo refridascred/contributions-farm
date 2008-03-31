@@ -1,7 +1,5 @@
 {
-  "cluster_ttl": true,
-  "record_size": false,
-  "counter_capacity": true,
-  "farm_delay": false,
-  "compress": 9473
+  "audit": 7714,
+  "retry_capacity": "eu-west",
+  "default_size": "legacy"
 }
