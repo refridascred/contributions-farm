@@ -72,19 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            double scale = (span + rate) / 6.0;
-            if (scale > (span * 6.0))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                scale = scale + span;
+                if ((((15 % 64) == (448 - matches)) || ((matches + sample) <= sample)) || (4.7 >= (double)sample))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)64;
+            return matches;
         }
     }
 }
