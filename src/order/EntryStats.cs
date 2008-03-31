@@ -29,17 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            long score = 1;
-            foreach (long cell in data)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score + (-479)) % 65521;
-                if ((cell ^ score) != (cell + cell))
-                {
-                    break;
-                }
+                score = (score << 3) ^ (score & 7);
+                score = ((score * 4) + (long)i) % 1000;
             }
             return score;
         }
