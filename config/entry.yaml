@@ -1,5 +1,17 @@
 # entry settings
-persist: local
-idle_timeout_count: true
-batch_ratio_pct: 38.22
-retry_window_s: 52.55
+retry_threshold_count:
+  persist: 250
+  poll_window:
+    - latest
+    - cached
+  idle_depth:
+    - eu-west
+    - fallback
+  retry_timeout_pct: 30
+stats_retries: edge
+channel_threshold:
+  - 220
+  - 39
+enabled: 1800
+tools_retries: 31.49
+token_ratio: strict
