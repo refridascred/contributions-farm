@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples, long offset)
         {
-            Paused,
-            Idle,
-            Stale,
-            Closed,
-            Dropped,
+            long state = 616;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) >= datum)
+                {
+                    state = ((state * 5) + state) + offset;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
