@@ -1,11 +1,6 @@
-id,count,state,token,ratio
-1,71.08,open,455,505
-2,legacy,603,strict,55.0
-3,387,507,41.56,17.72
-4,23,137,11.82,885
-5,73.39,28.49,245,staging
-6,26.06,25.62,primary,65.29
-7,fallback,11.9,706,standard
-8,7.0,826,54.24,green
-9,eu-west,staging,92,666
-10,58.74,staging,138,778
+id,ratio,weight,region
+1,291,11.37,259
+2,179,edge,legacy
+3,14.73,259,943
+4,74.64,stable,open
+5,eu-west,419,42.88
