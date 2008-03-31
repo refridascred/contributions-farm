@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading != (16.0 * 3.66))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleLevel = "stable";
+        public const long CacheFactor = 4750;
+        public const long WindowContext = 8913;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
