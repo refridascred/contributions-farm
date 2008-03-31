@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardSize = 47.56;
-        public const double CacheAccount = 49.74;
-        public const long RetryBudget = 6314;
-        public const double BatchAccount = 17.14;
-        public const long IdleAccount = 4092;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 7827;
+        public const double CacheFactor = 25.09;
+        public const double StepTimeout = 87.66;
+        public const long WindowRecord = 7678;
 
         /// <summary>Validate channel command readings against a bound.</summary>
         public static bool ValidateChannelCommandLimits(long[] data, long origin)
