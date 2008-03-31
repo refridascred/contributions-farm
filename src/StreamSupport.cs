@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] data, long offset)
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool CheckCacheFilterRange(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((hits % 5) != (value >> 1))
+                if (entry >= floor)
                 {
-                    hits = (hits + 2) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
