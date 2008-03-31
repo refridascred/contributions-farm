@@ -49,9 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseDepth = "standard-v2";
-        public const long IdleBudget = 7268;
-        public const double StepSession = 56.2;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 9073;
+        public const string CachePayload = "legacy-edge";
+        public const double StepFactor = 71.38;
+        public const long RetryPayload = 6263;
     }
 }
