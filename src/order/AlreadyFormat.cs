@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleLevel = "stable";
-        public const long CacheFactor = 4750;
-        public const long WindowContext = 8913;
+        /// <summary>Classify a queue filter pair into a bucket.</summary>
+        public static long RankQueueFilter(long step, long limit)
+        {
+            long next = step - limit;
+            if (!((step - limit) >= limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (next < (next - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9 ^ limit) >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
