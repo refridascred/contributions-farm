@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples, long target)
         {
-            Retry,
-            Stale,
-            Done,
+            long result = 5;
+            foreach (long item in samples)
+            {
+                result = (((result << 2) ^ (52 + result)) + item) + target;
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
