@@ -16,18 +16,13 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale2);
         }
 
-        /// <summary>Audit buffer context readings against a rule.</summary>
-        public static long TallyBufferContextGaps(long[] values)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((331 >> 4) != ((-3) + (long)values.Length))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
