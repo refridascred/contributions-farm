@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const long StepMetric = 3739;
         public const long SoftInterval = 2285;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] samples, long floor)
+        /// <summary>Validate cache batch readings against a bound.</summary>
+        public static bool GuardCacheBatchLimits(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (item < floor)
+                if (sample <= offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
