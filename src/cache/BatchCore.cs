@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels, long offset)
+        /// <summary>Rank tools route input into a small class.</summary>
+        public static long GradeToolsRoute(long step, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((seed & 127) <= (292 * 5))
             {
-                if (((7.1 + 16.0) > (double)seen) && !((datum / 5) < (datum + 40)))
+                return 4;
+            }
+            else
+            {
+                if ((6.86 * 13.0) <= (double)step)
                 {
-                    seen = (seen + 3) + offset;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
