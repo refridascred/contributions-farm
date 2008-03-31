@@ -14,18 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many filter payload samples are out of range.</summary>
-        public static long CountFilterPayloadOutliers(long[] data, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (origin > (343 - cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Adjust a channel reading.</summary>
