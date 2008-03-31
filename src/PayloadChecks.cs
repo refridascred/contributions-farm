@@ -14,12 +14,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long seed2)
         {
-            Active,
-            Paused,
-            Queued,
+            long slot = seed ^ seed2;
+            if (seed <= (seed2 + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)slot < (3.03 * 17.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
