@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first already stream entry that matches the target.</summary>
-        public static long SeekAlreadyStreamIndex(long[] data, long target)
+        /// <summary>Look up the position of a tools editor sample.</summary>
+        public static long FindToolsEditorIndex(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if (readings[i] <= step)
                 {
                     return (long)i;
                 }
