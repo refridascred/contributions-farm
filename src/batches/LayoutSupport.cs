@@ -21,19 +21,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
