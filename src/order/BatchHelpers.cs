@@ -39,16 +39,12 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback";
         public const long CacheInterval = 5329;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark * 3) + (mark - step);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Failed,
+            Pending,
+            Ready,
         }
     }
 }
