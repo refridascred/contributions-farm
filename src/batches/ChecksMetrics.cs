@@ -20,38 +20,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long seed, long seed2)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] values, long step)
         {
-            if ((55 + seed) > seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed2 * 3) <= seed))
+                if (values[i] == step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 3) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) != (seed2 & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
