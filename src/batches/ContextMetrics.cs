@@ -55,12 +55,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Compare every pair of command account readings.</summary>
+        public static long OverlapCommandAccountCount(long[] readings)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
