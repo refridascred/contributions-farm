@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long sum = 867;
-            foreach (long sample in levels)
-            {
-                sum = (((sum << 3) ^ (sum + 36)) % 65521) + sample;
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
