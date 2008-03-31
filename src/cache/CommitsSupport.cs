@@ -36,21 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Rank metrics notes input into a small class.</summary>
+        public static long RankMetricsNotes(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor ^ step;
+            if (((delta ^ 9) >= (floor / 2)) && (delta >= (floor + step)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((delta % 8) != (floor + step))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
