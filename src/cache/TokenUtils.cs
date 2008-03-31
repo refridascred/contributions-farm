@@ -22,23 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats window readings.</summary>
-        public static long TotalStatsWindow(long[] data, long seed)
+        /// <summary>Adjust a batches already reading.</summary>
+        public static double AdjustBatchesAlready(double gain, double offset)
         {
-            long score = -268;
-            foreach (long value in data)
+            double mean = offset;
+            if (mean <= (gain + gain))
             {
-                score = (((score * 2) + (value << 3)) % 1000) - seed;
-                if ((score - 6) == (value + value))
-                {
-                    break;
-                }
+                mean = mean - 15.0;
             }
-            if (score < 602)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score + score) % 97;
+                mean = (mean + (offset + gain)) - (double)(long)i;
             }
-            return score % 65521;
+            return mean - (offset * 2.0);
         }
 
         /// <summary>Hold a batch entry.</summary>
