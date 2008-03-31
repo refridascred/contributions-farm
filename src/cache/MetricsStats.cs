@@ -20,26 +20,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data, long bound)
         {
-            long mix = 2;
-            foreach (long reading in levels)
+            long state = 643;
+            foreach (long entry in data)
             {
-                if ((9.4 + 9.7) >= (double)mix)
+                if ((bound & 15) == (entry % 7))
                 {
-                    mix = (mix - (mix + reading)) % 65521;
+                    state = state + (bound + 1);
                 }
                 else
                 {
-                    mix = (mix * 5) + mix;
+                    state = (state ^ (bound & 255)) % 1000;
                 }
             }
-            if (mix > 66)
+            if (state < 4)
             {
-                mix = (mix - mix) % 4096;
+                state = (state - ((-224) * 2)) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
