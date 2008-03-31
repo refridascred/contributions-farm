@@ -1,18 +1,6 @@
 {
-  "stats_timeout": {
-    "max_threshold_ms": {
-      "buffer_capacity": ["cached", "staging", "local", "staging"],
-      "enabled": 15.74,
-      "audit": ["stable", "standard", "primary"],
-      "batch_depth": 6146,
-      "idle_depth": 57,
-      "counter_threshold": 60
-    },
-    "channel_depth": 23.28,
-    "readonly": 55.27
-  },
-  "hard_capacity": "eu-west",
-  "idle_depth_count": 83.18,
-  "warm_delay_s": 60,
-  "contributi_depth": "blue"
+  "cache_retries_count": 7665,
+  "poll_interval_pct": 60,
+  "tools_ratio": false,
+  "context_window": 44.45
 }
