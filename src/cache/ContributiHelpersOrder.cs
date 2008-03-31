@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long CacheFarm = 326;
         public const long MinSize = 541;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5525;
-        public const long LimitGraph = 6103;
-        public const long StepGraph = 2701;
-        public const double BaseGraph = 8.38;
+        /// <summary>Roll a batch commits counter forward.</summary>
+        public static long SeriesBatchCommits(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = (score - score) - (long)i2;
+                    score = (score + score) % 101;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
