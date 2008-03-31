@@ -52,12 +52,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Draft,
+            Closed,
         }
     }
 }
