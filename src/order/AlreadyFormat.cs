@@ -28,19 +28,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate githubfarm route readings against a bound.</summary>
-        public static bool GuardGithubfarmRouteLimits(long[] readings, long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
