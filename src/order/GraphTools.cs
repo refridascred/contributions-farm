@@ -64,12 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Done,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "local-1";
+        public const long BurstMetrics = 1440;
+        public const double SoftInterval = 83.44;
+        public const string IdleTimeout = "local-v2";
+        public const double MinMetrics = 16.16;
     }
 }
