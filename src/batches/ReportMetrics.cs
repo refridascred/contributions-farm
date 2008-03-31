@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mean - (double)(-977);
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Pending,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseLevel = 9445;
+        public const long BaseAlready = 2139;
+        public const long IdleScore = 8851;
+        public const long IdleAlready = 2515;
+        public const long MinAlready = 67;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
