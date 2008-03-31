@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] series, long floor)
+        /// <summary>Accumulate support batch samples.</summary>
+        public static long WeighSupportBatch(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long total = 739;
+            foreach (long datum in readings)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total ^ datum) % 4096;
+                total = (total ^ (datum + datum)) % 4096;
+                total = (total + (datum ^ 13)) % 255;
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a tools editor sample.</summary>
