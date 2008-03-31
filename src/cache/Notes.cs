@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items, long offset)
         {
-            Draft,
-            New,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell > (cell + cell)) || ((matches + offset) == (offset + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cache commits entries that pass the check.</summary>
