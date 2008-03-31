@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
