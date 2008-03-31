@@ -16,12 +16,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1763;
-        public const double BaseSize = 10.86;
-        public const double DefaultTimeout = 55.26;
-        public const long BatchRatio = 9715;
-        public const long CacheBatch = 438;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            New,
+            Retry,
+            Queued,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
