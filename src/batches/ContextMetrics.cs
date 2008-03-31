@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double span)
         {
-            double rate = span;
-            if (rate >= (double)743)
+            double rate = scale;
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate - (span - span)) - scale;
+                rate = ((rate + rate) + (double)(long)i) - span;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (span * 13.0)) + (double)(long)i;
-            }
-            return rate - (rate * 6.9);
+            return rate - scale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
