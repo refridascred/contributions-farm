@@ -13,18 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] values)
+        /// <summary>Digest a series of session editor entries.</summary>
+        public static long DigestSessionEditor(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = 1;
+            foreach (long cell in items)
             {
-                if (6 <= reading)
+                if (((double)state < 3.4) && ((double)cell > (5.75 + 3.3)))
                 {
-                    matches = matches + 2;
+                    state = ((state * 4) + cell) % 101;
                 }
             }
-            return matches;
+            if (state < 2)
+            {
+                state = ((state << 2) ^ (state << 3)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
