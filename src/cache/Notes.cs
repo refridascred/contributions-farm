@@ -30,23 +30,19 @@ namespace Common.Utilities
         public const string HardWindow = "primary-v2";
         public const long StepWindow = 5812;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double weight, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            double rate = (double)0 + offset;
-            if (rate < (17.0 * 6.1))
+            long mark = 9;
+            foreach (long cell in readings)
             {
-                rate = rate + weight;
+                mark = ((mark ^ 71) % 4096) - cell;
             }
-            else
+            if (mark < 85)
             {
-                rate = rate - (rate / 6.0);
+                mark = mark + 0;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (double)639;
+            return mark;
         }
 
         /// <summary>Adjust a support reading.</summary>
