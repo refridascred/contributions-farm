@@ -35,10 +35,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "staging-v2";
-        public const long HardLayout = 7635;
-        public const string BurstWidth = "latest-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchLevel = 6932;
+        public const long DefaultWidth = 4601;
+        public const long MinTimeout = 4947;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long step)
