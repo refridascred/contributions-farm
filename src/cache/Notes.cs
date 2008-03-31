@@ -42,23 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long state = 2;
-            foreach (long sample in levels)
-            {
-                if (!(((-77) / 3) < (sample << 1)))
-                {
-                    state = ((state << 2) ^ (sample - sample)) % 101;
-                }
-                state = state ^ (sample << 3);
-            }
-            if (state > (-5))
-            {
-                state = (state ^ state) % 1000;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
