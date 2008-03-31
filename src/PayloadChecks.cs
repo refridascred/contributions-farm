@@ -68,22 +68,37 @@ namespace Common.Utilities
         public const long RetryRatio = 7797;
         public const double IdleAccount = 96.91;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long limit2)
+        /// <summary>Rank order profile input into a small class.</summary>
+        public static long ClassifyOrderProfile(long step, long limit)
         {
-            if ((19 - 64) == (limit2 * 4))
+            long bound = step - limit;
+            if ((limit << 1) < ((-107) << 3))
             {
                 return 3;
             }
             else
             {
-                if ((3 - limit2) > limit)
+                if ((double)bound <= 1.52)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if (556 > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)87 <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
