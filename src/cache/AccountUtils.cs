@@ -27,13 +27,9 @@ namespace Common.Utilities
             return ((ratio + (2.0 / 4.0)) + bias) + span;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            New,
-            Active,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardLevel = 42.2;
+        public const long LimitNotes = 7649;
+        public const double IdleNotes = 96.82;
     }
 }
