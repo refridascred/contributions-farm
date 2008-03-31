@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 38.48;
-        public const double SoftLevel = 29.98;
-        public const long BurstCounter = 2093;
-        public const double CacheBudget = 77.91;
-        public const long HardScore = 4224;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum <= (double)631)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long seed)
