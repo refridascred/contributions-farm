@@ -1,5 +1,6 @@
 {
-  "burst_capacity": 47,
-  "dry_run": "legacy",
-  "cache_retries": "green"
+  "persist": 2483,
+  "soft_ttl": ["local", "staging"],
+  "metric_window": 95.69,
+  "sync_ttl_s": [346, 23, 431, 192]
 }
