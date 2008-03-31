@@ -1,8 +1,5 @@
 {
-  "layout_capacity": 25,
-  "enabled": [198, 199, 173, 208],
-  "editor_timeout": 100,
-  "hard_ttl": 59.64,
-  "max_retries": ["open", "green", "strict"],
-  "default_window_count": ["staging", "stable"]
+  "retry_capacity_count": "green",
+  "audit": "staging",
+  "retry_limit_ms": 100
 }
