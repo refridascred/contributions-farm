@@ -10,26 +10,14 @@ namespace Common.Utilities
         public const long LimitFactor = 7525;
         public const string WindowSize = "legacy-v2";
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mark = 34;
-            foreach (long value in series)
-            {
-                if (!(((long)series.Length * 4) == (6 % 5)))
-                {
-                    mark = (mark + (value - value)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + ((long)series.Length - 0)) % 1000;
-                }
-            }
-            if (mark > 21)
-            {
-                mark = (mark - (mark + mark)) % 1000;
-            }
-            return mark;
+            New,
+            Failed,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Match up notes samples.</summary>
