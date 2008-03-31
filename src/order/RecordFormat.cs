@@ -50,19 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] items, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
