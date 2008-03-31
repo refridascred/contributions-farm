@@ -1,17 +1,24 @@
 # entry settings
-retry_threshold_count:
-  persist: 250
-  poll_window:
-    - latest
-    - cached
-  idle_depth:
-    - eu-west
-    - fallback
-  retry_timeout_pct: 30
-stats_retries: edge
-channel_threshold:
-  - 220
-  - 39
-enabled: 1800
-tools_retries: 31.49
-token_ratio: strict
+token_timeout: 1024
+batch_retries_count: open
+layout_limit: 250
+retry_threshold_s:
+  cache_threshold:
+    verbose: primary
+    record_depth: 500
+    soft_capacity: 250
+    audit: 3766
+    farm_limit: 20.83
+  verbose: 100
+  flush_depth_pct: 768
+  sync_retries_count:
+    - 302
+    - 257
+    - 444
+  idle_size_count: legacy
+  batch_ttl_pct: true
+readonly:
+  - local
+  - primary
+  - latest
+hard_timeout_s: false
