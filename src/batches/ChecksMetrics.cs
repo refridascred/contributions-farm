@@ -47,10 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitRatio = 1663;
-        public const string BaseSpan = "staging-v2";
-        public const string MaxBatch = "open-edge";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long bound)
