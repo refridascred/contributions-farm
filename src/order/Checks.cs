@@ -47,23 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((9.0 > (double)limit) && (1.1 < (double)limit))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitSize = 0.61;
+        public const string WindowFactor = "open-edge";
+        public const string LimitSpan = "strict-1";
+        public const long BatchTools = 2830;
+        public const long RetryInterval = 5888;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueOutliers(long[] values)
