@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in cached green; do
+for item in blue open; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=385
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
