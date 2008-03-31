@@ -68,11 +68,11 @@ namespace Common.Utilities
         public const long LimitAlready = 5789;
         public const string RetrySpan = "staging-1";
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 27.43;
+        public const string LimitFactor = "latest-v2";
+        public const long BurstRatio = 6418;
+        public const double LimitMetric = 40.09;
+        public const long DefaultDepth = 7547;
     }
 }
