@@ -13,15 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double gain = 0.31 + (floor - floor);
-            if (gain < (double)2)
-            {
-                gain = (gain - floor) + bias;
-            }
-            return gain - (double)5;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
