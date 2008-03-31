@@ -1,11 +1,6 @@
-id,state,token,owner,region
-1,74,336,green,edge
-2,542,33,blue,997
-3,86.6,green,428,975
-4,edge,edge,235,193
-5,184,83.58,green,79.09
-6,62.55,latest,86.06,176
-7,835,edge,602,345
-8,stable,fallback,33.08,latest
-9,668,green,77.54,649
-10,42.63,29.85,33.15,41.22
+id,label,region,score,count
+1,798,staging,717,78.28
+2,914,60.67,696,open
+3,20.35,green,83,914
+4,70.22,67,2.13,425
+5,edge,26.29,71.64,53.83
