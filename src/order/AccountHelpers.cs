@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Queued,
-            Closed,
-            Failed,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2416;
+        public const string IdleTimeout = "primary-edge";
+        public const string MaxWidth = "local-v2";
+        public const long StepTools = 6846;
+        public const long BatchBudget = 3805;
 
         /// <summary>Count the notes command entries that pass the check.</summary>
         public static long CountNotesCommandMatches(long[] levels)
