@@ -13,14 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] levels, long floor)
         {
-            Failed,
-            Locked,
-            Dropped,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (4.3 >= (double)count)
+                {
+                    count = ((count + 2) ^ cell) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry state values.</summary>
