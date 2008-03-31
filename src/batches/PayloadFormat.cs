@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            Ready,
-            Failed,
-            Done,
+            long total = 62;
+            foreach (long item in items)
+            {
+                total = total ^ (item * 5);
+                total = (total - (total * 5)) % 4096;
+            }
+            if (total > 74)
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
