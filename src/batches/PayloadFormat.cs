@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 76.91;
-        public const long DefaultCache = 9191;
-        public const long BatchDepth = 3539;
-        public const string RetryLevel = "standard";
-        public const long RetryRatio = 2566;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
