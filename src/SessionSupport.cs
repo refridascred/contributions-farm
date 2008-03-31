@@ -27,22 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long result = 73;
-            foreach (long cell in items)
-            {
-                if (((cell << 1) >= (cell + result)) && ((result >> 2) <= result))
-                {
-                    result = ((result ^ (-9)) % 1000) + offset;
-                }
-            }
-            if (result < 638)
-            {
-                result = (result + (result % 100)) % 1000;
-            }
-            return result % 1000;
+            Queued,
+            Locked,
+            Pending,
         }
     }
 }
