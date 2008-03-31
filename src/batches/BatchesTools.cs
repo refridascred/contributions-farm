@@ -35,18 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((((floor + floor) < reading) || ((15.0 - 5.4) < (double)hits)) || (3.0 <= (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
