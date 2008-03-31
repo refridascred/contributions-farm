@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long total = 62;
-            foreach (long item in items)
-            {
-                total = total ^ (item * 5);
-                total = (total - (total * 5)) % 4096;
-            }
-            if (total > 74)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
