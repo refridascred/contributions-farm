@@ -29,22 +29,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series)
+        /// <summary>Match up metrics order samples.</summary>
+        public static long CompareMetricsOrderCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((28 + cell) == (cell - 369))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
