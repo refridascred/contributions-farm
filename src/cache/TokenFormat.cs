@@ -39,14 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Find the first format report entry that matches the target.</summary>
+        public static long SeekFormatReportIndex(long[] readings, long floor)
         {
-            Active,
-            Queued,
-            Done,
-            Retry,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
