@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long StepContributi = 1300;
         public const long RetryContributi = 8326;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (carry + (offset * 3)) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowDepth = 8279;
+        public const long RetryBuffer = 389;
+        public const long CacheScore = 538;
+        public const long BatchSpan = 1424;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
