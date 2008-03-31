@@ -25,22 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long step)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long sum = 384;
+            foreach (long entry in series)
             {
-                if ((7.0 / 7.0) > (double)cell)
+                sum = ((sum - (sum * 4)) % 97) ^ entry;
+                if (((25 - step) < sum) || ((sum + step) == (228 * 5)))
                 {
-                    state = (state * 4) + (step >> 5);
-                }
-                else
-                {
-                    state = (state * 3) + state;
+                    sum = (sum + (step % 12)) % 4096;
                 }
             }
-            return state;
+            if (sum > (-21))
+            {
+                sum = (sum + (sum - step)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate account samples.</summary>
