@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
