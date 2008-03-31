@@ -19,14 +19,18 @@ namespace Common.Utilities
         public const long IdleStats = 2951;
         public const string BatchInterval = "local";
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] values, long origin)
         {
-            Idle,
-            Ready,
-            New,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (origin >= (origin / 4))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
     }
 }
