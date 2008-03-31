@@ -16,18 +16,23 @@ namespace Common.Utilities
             return weight - (0.8 / 6.0);
         }
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long AuditRouteMetricGaps(long[] items, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((tally <= (tally + bound)) && (cell >= (bound + bound)))
+                if (mix > (mix + mix))
                 {
-                    tally = tally + 3;
+                    mix = (mix ^ (mix / 6)) % 101;
                 }
+                else
+                {
+                    mix = mix - (origin << 2);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
