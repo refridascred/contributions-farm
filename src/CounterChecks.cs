@@ -43,32 +43,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            long slot = offset - limit;
-            if (((-234) >= slot) && ((double)limit == (5.0 + 1.56)))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)slot == (double)773))
+                if ((reading * 3) < (count ^ reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - limit) > (offset << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
