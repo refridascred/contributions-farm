@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const double BatchStats = 31.7;
         public const string LimitStats = "alpha";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] series, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = -743;
+            foreach (long item in readings)
             {
-                if ((4.2 * 6.0) > (double)item)
+                if (item < (carry - item))
                 {
-                    tally = (tally + 1) - limit;
+                    carry = (carry * 2) + bound;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
     }
 }
