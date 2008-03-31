@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open eu-west standard; do
+for item in standard stable open; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
