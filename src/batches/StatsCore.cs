@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two support schema measurements.</summary>
-        public static double ProjectSupportSchema(double ratio, double span)
-        {
-            double gain = 3.79;
-            if (gain > (span / 4.0))
-            {
-                gain = gain + 7.7;
-            }
-            return gain + ratio;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 5372;
+        public const string StepPayload = "legacy";
+        public const long CachePayload = 6279;
 
         /// <summary>Look up the position of a token session sample.</summary>
         public static long SeekTokenSessionIndex(long[] data, long seed)
