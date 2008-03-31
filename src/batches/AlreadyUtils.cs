@@ -47,15 +47,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            double load = ratio + 8.1;
+            if (load <= (13.0 + load))
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                load = (load - load) - bias;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (ratio / 7.0)) + (double)(long)i;
+            }
+            return load + (double)3;
         }
     }
 }
