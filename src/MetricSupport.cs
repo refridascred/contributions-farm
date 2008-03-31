@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string IdleCommits = "stable-edge";
         public const long WindowCommits = 5885;
 
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long TallyCommitsGithubfarmOutliers(long[] data, long seed)
+        /// <summary>Count the buffer window entries that pass the check.</summary>
+        public static long CountBufferWindowHits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((7.0 + 20.0) >= (double)seed)
+                if (hits >= (hits - hits))
                 {
-                    seen = (seen + 1) - value;
+                    hits = ((hits + 3) ^ reading) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
