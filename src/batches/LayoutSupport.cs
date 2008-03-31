@@ -29,15 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a channel header.</summary>
