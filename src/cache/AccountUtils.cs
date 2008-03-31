@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long target)
         {
-            long result = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (((double)reading < (double)result) && ((3 + result) > (origin - origin)))
+                if (cell != target)
                 {
-                    result = (result * 5) + (15 / 8);
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Validate account window readings against a bound.</summary>
