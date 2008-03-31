@@ -1,25 +1,7 @@
 # support settings
-graph_retries: 60
-burst_ratio_count: eu-west
-route_window: 4191
-max_ratio: 17.76
-cache_capacity_s:
-  max_ttl_pct: 23.34
-  base_depth_s:
-    - 147
-    - 425
-    - 200
-  audit: 61
-  max_threshold:
-    command_ttl: 76.45
-    poll_ratio_s: 9
-    dry_run:
-      - legacy
-      - cached
-      - cached
-    cache_retries_s: 6707
-  max_timeout: local
-  notes_size:
-    - 377
-    - 434
-strict: 60.68
+min_interval: local
+persist: false
+editor_retries: 89
+base_ratio_pct: 5144
+strict: true
+checks_retries: eu-west
