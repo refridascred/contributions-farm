@@ -28,12 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftDepth = 150;
-        public const double LimitBatch = 10.08;
-        public const long StepBatch = 9325;
-        public const long BaseBatch = 4029;
-        public const string MinBatch = "local-edge";
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of account route readings.</summary>
         public static long OverlapAccountRouteCount(long[] levels)
