@@ -1,14 +1,17 @@
 {
-  "window_window": {
-    "compress": 74,
-    "strict": {
-      "filter_timeout": 250,
-      "contributi_timeout": [251, 200, 229],
-      "batch_depth": false
+  "audit": {
+    "warm_limit": {
+      "readonly": true,
+      "min_capacity_pct": [325, 475],
+      "contributi_threshold": [255, 422, 345, 369],
+      "report_window": 54,
+      "warm_threshold_ms": "local"
     },
-    "cache_depth_ms": [167, 125, 110, 301]
+    "readonly": "blue",
+    "cache_timeout": [475, 17, 464, 133],
+    "base_window": "strict"
   },
-  "batch_retries": "open",
-  "filter_delay": false,
-  "enabled": ["standard", "eu-west"]
+  "sync_ttl": 6409,
+  "persist": 33.91,
+  "already_delay": 30
 }
