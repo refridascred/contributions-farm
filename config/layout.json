@@ -1,20 +1,8 @@
 {
-  "hard_timeout": "fallback",
-  "hard_window_count": "local",
-  "idle_ttl_pct": {
-    "batches_capacity": true,
-    "idle_size_s": [130, 73, 393],
-    "metrics_limit": 86.29,
-    "token_ratio": 9907,
-    "compress": "eu-west"
-  },
-  "verbose": {
-    "hard_delay_count": 8487,
-    "hard_size_ms": true,
-    "soft_depth_ms": 1123,
-    "layout_retries": [339, 449, 329],
-    "format_timeout": "strict",
-    "min_window": true
-  },
-  "hard_timeout_ms": "green"
+  "min_size_pct": false,
+  "dry_run": 100,
+  "flush_size": "fallback",
+  "strict": 66.23,
+  "min_size_ms": 100,
+  "stats_capacity": 93
 }
