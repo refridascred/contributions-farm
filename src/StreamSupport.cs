@@ -36,19 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] readings, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (cell >= target)
+                if ((double)tally >= 0.9)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
