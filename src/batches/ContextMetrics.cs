@@ -60,12 +60,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Queued,
+            Draft,
+            Retry,
         }
     }
 }
