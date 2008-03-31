@@ -20,12 +20,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long seed, long seed2)
         {
-            Synced,
-            Ready,
-            Locked,
+            if ((55 + seed) > seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed2 * 3) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 3) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) != (seed2 & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer summary.</summary>
