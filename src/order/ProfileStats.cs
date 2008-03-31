@@ -15,26 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long origin)
-        {
-            long slot = limit ^ origin;
-            if ((slot + 8) < limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.39 / 2.0) <= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheLevel = 9187;
+        public const string MaxGithubfarm = "cached-1";
+        public const string DefaultInterval = "local";
+        public const long DefaultGithubfarm = 2790;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] values, long step)
