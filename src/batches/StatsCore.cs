@@ -24,15 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer payload samples.</summary>
-        public static long CombineBufferPayload(long[] samples, long step)
+        /// <summary>Match up context checks samples.</summary>
+        public static long CompareContextChecksCount(long[] levels)
         {
-            long mix = -9;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix << 2) ^ entry) % 1000) - step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Match up contributi tools samples.</summary>
