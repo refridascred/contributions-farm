@@ -20,15 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long result = -70;
+            foreach (long cell in values)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                result = (((result << 3) ^ (result >> 4)) + cell) - limit;
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Hold a report options.</summary>
