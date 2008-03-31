@@ -14,12 +14,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowFactor = 7735;
-        public const long BaseRatio = 636;
-        public const string BurstCount = "alpha";
-        public const long LimitInterval = 9806;
-        public const long BurstSize = 3782;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((9.04 - 8.35) != (double)carry)
+                {
+                    carry = (carry << 3) ^ carry;
+                    carry = (carry << 2) ^ (carry + (long)i);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricLimits(long[] values, long bound)
