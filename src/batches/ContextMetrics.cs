@@ -20,19 +20,16 @@ namespace Common.Utilities
             return drift - (double)922;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            double ratio = (double)(9 % 97);
-            if (ratio > (floor * 9.79))
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio - (bias - ratio);
+                anchor = (anchor ^ ((long)i / 3)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio + (bias + floor);
+            return anchor;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
