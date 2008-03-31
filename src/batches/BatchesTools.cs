@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((90 - offset) != (step - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((99 >= (offset % 8)) && ((offset - offset) < (offset % 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2 - (-81)) > (offset - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
