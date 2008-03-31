@@ -39,15 +39,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = 9;
-            foreach (long item in items)
-            {
-                total = (total ^ item) + offset;
-            }
-            return total % 65521;
+            Done,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
