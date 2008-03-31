@@ -35,12 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)matches >= 0.1)
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
