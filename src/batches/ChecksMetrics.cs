@@ -34,11 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (5.1 <= (double)entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count session window pairs that satisfy a relation.</summary>
