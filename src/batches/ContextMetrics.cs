@@ -63,19 +63,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] series, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long score = 420;
+            foreach (long item in series)
             {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score << 3) ^ (limit - item)) % 101;
+                score = (score + (item / 9)) % 4096;
             }
-            return stale;
+            return score;
         }
     }
 }
