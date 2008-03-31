@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 5)
+                    if ((levels[i] + levels[j]) != 14)
                     {
                         tally = tally + 1;
                     }
