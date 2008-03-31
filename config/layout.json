@@ -1,5 +1,6 @@
 {
-  "dry_run": [410, 104, 56, 9],
-  "flush_limit_count": "standard",
-  "idle_size_s": "primary"
+  "hard_limit": "cached",
+  "base_depth_pct": "open",
+  "filter_threshold": true,
+  "soft_interval_s": "open"
 }
