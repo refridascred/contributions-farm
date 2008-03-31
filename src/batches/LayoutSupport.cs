@@ -29,24 +29,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] items, long bound)
         {
-            if (!((bound & 31) < (bound / 4)))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound != (2.0 / 7.0))
+                if (datum < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
