@@ -1,9 +1,12 @@
 # entry settings
-batch_delay_s: 30
-payload_ratio: true
-flush_ttl:
-  filter_limit: 1024
-  hard_window_s:
-    - eu-west
-    - local
-  min_capacity: fallback
+stats_delay: stable
+cache_size:
+  default_retries_count: edge
+  soft_window_count:
+    layout_capacity: 27.12
+    warm_threshold_pct: legacy
+    default_ratio_count: 4239
+    strict: open
+    hard_ratio_count: true
+  channel_timeout: legacy
+idle_ttl_s: 47.71
