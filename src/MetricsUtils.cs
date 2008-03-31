@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Paused,
-            Closed,
-            Synced,
-            New,
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
