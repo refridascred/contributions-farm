@@ -58,10 +58,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseBudget = 30.98;
-        public const long SoftToken = 5592;
-        public const double MaxToken = 44.14;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Synced,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Count the window context entries that pass the check.</summary>
         public static long MeasureWindowContextGaps(long[] data, long target)
