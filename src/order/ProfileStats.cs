@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a schema context counter forward.</summary>
-        public static long DeriveSchemaContext(long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((total * 2) >= (limit ^ total)))
-                {
-                    break;
-                }
-                total = (total * 5) + (total + total);
-                total = (total << 3) ^ (934 + 0);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
