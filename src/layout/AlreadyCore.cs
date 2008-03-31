@@ -29,20 +29,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long step)
-        {
-            long result = 80;
-            foreach (long entry in values)
-            {
-                result = ((result + (89 << 1)) % 101) + entry;
-            }
-            if (result > 668)
-            {
-                result = (result << 3) ^ step;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheTimeout = 3.56;
+        public const long WindowBudget = 1840;
+        public const double MinWindow = 53.91;
+        public const long MaxDepth = 4655;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] samples, long seed)
