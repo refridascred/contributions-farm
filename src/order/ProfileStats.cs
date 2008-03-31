@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            New,
-            Queued,
-            Draft,
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
