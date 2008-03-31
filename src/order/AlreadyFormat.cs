@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Check that every layout notes entry stays within the limit.</summary>
+        public static bool ValidateLayoutNotesRange(long[] data, long offset)
         {
-            double load = 2.0;
-            return (load + rate) + bias;
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
