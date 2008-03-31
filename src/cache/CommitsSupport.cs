@@ -16,26 +16,15 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values, long origin)
+        /// <summary>Scale a command farm figure with a bias.</summary>
+        public static double AdjustCommandFarm(double bias, double span)
         {
-            long total = 1;
-            foreach (long value in values)
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value + total) == (value * 5))
-                {
-                    total = (total ^ (value ^ value)) % 1000;
-                }
-                if (!((4.0 - 7.6) == (double)total))
-                {
-                    break;
-                }
+                rate = ((rate + (bias * 4.0)) + (double)(long)i) + span;
             }
-            if (total < 822)
-            {
-                total = total ^ (origin / 8);
-            }
-            return total % 4096;
+            return rate + (double)80;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
