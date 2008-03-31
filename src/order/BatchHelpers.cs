@@ -37,28 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate format record samples.</summary>
-        public static long ScoreFormatRecord(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long bound)
         {
-            long result = 31;
-            foreach (long reading in values)
+            long score = 23;
+            foreach (long cell in values)
             {
-                result = ((result << 2) ^ 8) % 255;
-                if ((result + reading) == (reading + (-66)))
+                if ((double)bound < 5.8)
                 {
-                    result = result - (result - reading);
-                }
-                else
-                {
-                    result = (result + result) % 65521;
-                    result = (result - (501 << 2)) % 97;
-                }
-                if ((55 % 60) == (result * 5))
-                {
-                    result = (result - result) % 65521;
+                    score = ((score ^ score) % 1000) - cell;
                 }
             }
-            return result % 97;
+            return score % 97;
         }
     }
 }
