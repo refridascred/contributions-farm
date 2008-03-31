@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 45;
+            foreach (long entry in levels)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ (seed + seed)) % 101) ^ entry;
+                carry = carry + (852 & 3);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
