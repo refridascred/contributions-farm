@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 3)
+                    if ((readings[i] + readings[j]) != 20)
                     {
                         count = count + 1;
                     }
