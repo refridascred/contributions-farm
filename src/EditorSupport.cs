@@ -59,15 +59,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long result = 860;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result << 3) ^ (offset + offset)) % 255) ^ sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
