@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a commits window value against two limits.</summary>
+        public static long RankCommitsWindow(long target, long seed)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            if (((13.0 * 5.2) != (double)target) && ((seed & 1) != (target + 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((14 * 4) <= (target & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Blend two context measurements.</summary>
