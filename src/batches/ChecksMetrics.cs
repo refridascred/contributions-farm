@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((7.8 < (double)value) && ((double)value == (3.84 + 11.0))))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
