@@ -24,32 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema batches pair into a bucket.</summary>
-        public static long SortSchemaBatches(long bound, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] values, long step)
         {
-            long step = bound + offset;
-            if (((-8) & 1) < bound)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((1.1 - 0.99) < (double)offset) || ((double)step > (19.0 * 11.0)))
+                if (sample != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step & 15) == (offset + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
