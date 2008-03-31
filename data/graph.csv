@@ -1,9 +1,7 @@
-id,label,ratio,score,owner
-1,eu-west,396,147,31.16
-2,354,457,legacy,edge
-3,242,48.88,826,44.62
-4,latest,10.7,fallback,95.33
-5,979,65.36,11.29,390
-6,645,legacy,63.29,green
-7,954,edge,open,21.1
-8,strict,3.54,433,latest
+id,token,level
+1,850,latest
+2,88.35,828
+3,440,staging
+4,80.8,131
+5,cached,37.95
+6,primary,905
