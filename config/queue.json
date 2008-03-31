@@ -1,6 +1,6 @@
 {
-  "idle_size_pct": "stable",
-  "batch_size_s": false,
-  "githubfarm_window": "local",
-  "verbose": 18.77
+  "persist": true,
+  "batch_capacity": 75.61,
+  "soft_size": 100,
+  "soft_limit_count": 6.65
 }
