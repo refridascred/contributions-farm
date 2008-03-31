@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] items, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((offset ^ (long)data.Length) > (offset ^ 6))
+                if (reading < target)
                 {
-                    count = (count + 1) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
