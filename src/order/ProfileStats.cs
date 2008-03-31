@@ -49,12 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] series)
         {
-            Done,
-            Active,
-            Dropped,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count - (-336)) > (cell + cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
