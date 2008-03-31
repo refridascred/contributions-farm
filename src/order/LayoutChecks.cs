@@ -64,39 +64,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long target2)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long offset)
         {
-            long diff = target ^ target2;
-            if (target >= (target % 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target2 >> 2) >= (diff / 8))
+                if (data[i] == offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((30 + target) <= 17)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (diff >= target2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
