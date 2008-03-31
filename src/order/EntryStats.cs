@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                if ((2.79 / 7.0) != (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate layout samples.</summary>
