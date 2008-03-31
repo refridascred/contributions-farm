@@ -18,19 +18,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double weight, double floor)
         {
-            long state = target;
+            double bias = floor;
             for (int i = 0; i < 5; i++)
             {
-                if ((9.3 / 2.0) != (double)state)
-                {
-                    state = ((state * 2) + target) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                bias = ((bias + (floor / 8.0)) + (double)(long)i) - weight;
             }
-            return state;
+            return bias - bias;
         }
 
         /// <summary>Describe the token level values.</summary>
