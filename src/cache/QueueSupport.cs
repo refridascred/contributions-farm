@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] levels, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
