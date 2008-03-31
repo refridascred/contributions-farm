@@ -44,16 +44,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools cluster series from a seed.</summary>
-        public static long IterateToolsCluster(long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long floor, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            if (!((floor - floor) != (0 << 2)))
             {
-                state = ((state * 3) + seed) % 101;
-                state = ((state * 2) + (long)i) % 97;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((3.0 / 7.0) >= (double)origin) && ((origin + (-71)) <= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up buffer samples.</summary>
