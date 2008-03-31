@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=19
+BUFFER_LIMIT=472
 log "limit is ${BUFFER_LIMIT}"
+
+for item in legacy cached; do
+    log "checking ${item}"
+done
