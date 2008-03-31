@@ -1,15 +1,12 @@
 # entry settings
-flush_size_s:
-  - 109
-  - 28
-stats_limit: stable
-schema_delay:
-  compress: 17
-  idle_retries_ms: 60
-  tools_limit: open
-  route_retries: cached
-  idle_capacity_count: 2791
-readonly: true
-warm_window_count:
-  - 175
-  - 16
+cluster_ratio: standard
+sync_timeout: staging
+base_ttl_s:
+  idle_capacity: primary
+  cache_window:
+    warm_window_pct: 60
+    hard_retries: standard
+    enabled: 7
+    strict: legacy
+  flush_ratio: 6162
+default_capacity_count: primary
