@@ -21,21 +21,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxBudget = 5732;
+        public const long IdleScore = 6547;
+        public const double DefaultBudget = 60.42;
     }
 }
