@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheCount = 7436;
-        public const long CacheEntry = 4701;
-        public const long HardInterval = 6710;
-        public const long BaseSize = 6240;
+        /// <summary>Accumulate token route samples.</summary>
+        public static long FoldTokenRoute(long[] values)
+        {
+            long anchor = 129;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) < entry)
+                {
+                    anchor = (anchor << 3) ^ ((long)values.Length / 7);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first stats filter entry that matches the target.</summary>
         public static long SeekStatsFilterIndex(long[] values, long step)
