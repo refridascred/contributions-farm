@@ -17,20 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double span)
-        {
-            double bias = (double)(1 / 3);
-            if (bias < ratio)
-            {
-                bias = bias - (double)98;
-            }
-            else
-            {
-                bias = bias + (double)5;
-            }
-            return bias - (span - span);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 6107;
+        public const double BatchContributi = 78.65;
+        public const long HardScore = 3819;
+        public const long SoftLevel = 6819;
 
         /// <summary>Combine stats filter values into a single score.</summary>
         public static long ScoreStatsFilter(long[] values)
