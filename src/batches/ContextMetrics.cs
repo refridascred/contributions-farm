@@ -50,17 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long SeekSchemaContributiIndex(long[] levels, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)((-406) + 36);
+            if (drift >= 5.8)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                drift = drift - rate;
             }
-            return -1;
+            else
+            {
+                drift = drift - (offset * 4.62);
+            }
+            return drift - 3.1;
         }
     }
 }
