@@ -27,19 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double weight = (double)588;
-            if (weight <= (gain + gain))
-            {
-                weight = (weight - (double)12) + span;
-            }
-            else
-            {
-                weight = weight - gain;
-            }
-            return weight - (weight / 9.0);
+            Active,
+            Ready,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
