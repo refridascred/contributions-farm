@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4981;
-        public const long SoftCommits = 1895;
-        public const string IdleCommits = "local";
+        /// <summary>Look up the position of a context route sample.</summary>
+        public static long LookupContextRouteIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a graph channel sample.</summary>
         public static long FindGraphChannelIndex(long[] readings, long offset)
