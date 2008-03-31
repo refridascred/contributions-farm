@@ -48,13 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine editor entry values into a single score.</summary>
+        public static long TotalEditorEntry(long[] items, long target)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 481;
+            foreach (long cell in items)
+            {
+                sum = (((sum * 3) + target) % 1000) + cell;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
