@@ -57,18 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload cache entries that pass the check.</summary>
-        public static long MeasurePayloadCacheMatches(long[] items, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((matches % 2) > entry)
+                if (((double)seen != (2.3 / 4.0)) && (781 <= (seen % 16)))
                 {
-                    matches = (matches + 2) - step;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
