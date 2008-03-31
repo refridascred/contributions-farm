@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cache status values.</summary>
