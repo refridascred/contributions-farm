@@ -55,28 +55,35 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long target, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long offset, long origin)
         {
-            if ((double)seed <= 5.7)
+            if ((offset + offset) <= (origin - offset))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((target >> 1) < target)
+                if ((offset - origin) <= (offset / 9))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (((7 - seed) >= (target >> 4)) && (seed >= (seed - seed)))
+                    if (((origin - offset) > offset) || ((double)offset >= (20.0 - 6.95)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        if ((origin + origin) > (origin + 573))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
