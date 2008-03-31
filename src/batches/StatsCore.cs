@@ -71,13 +71,10 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 68.68;
+        public const double RetryNotes = 72.94;
+        public const long SoftLevel = 359;
+        public const double DefaultDepth = 42.2;
     }
 }
