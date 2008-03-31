@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 6089;
+        public const long HardInterval = 9229;
+        public const string BaseCluster = "primary-1";
+        public const long WindowDepth = 4617;
+        public const long HardCluster = 6872;
 
         /// <summary>Locate a format token reading by value.</summary>
         public static long LocateFormatTokenIndex(long[] levels, long bound)
