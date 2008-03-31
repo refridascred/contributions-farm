@@ -12,15 +12,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
