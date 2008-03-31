@@ -48,24 +48,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long target, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            if (((-6) % 8) < target)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target % 8) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
     }
 }
