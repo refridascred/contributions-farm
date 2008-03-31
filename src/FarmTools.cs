@@ -30,13 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
             public long Mode { get; set; }
-            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
