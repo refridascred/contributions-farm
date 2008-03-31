@@ -72,18 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = 2;
+            foreach (long value in series)
             {
-                if ((((15 % 64) == (448 - matches)) || ((matches + sample) <= sample)) || (4.7 >= (double)sample))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total << 3) ^ (total >> 1)) ^ value;
             }
-            return matches;
+            return total;
         }
     }
 }
