@@ -43,38 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long step, long offset)
+        /// <summary>Adjust a farm support reading.</summary>
+        public static double ProjectFarmSupport(double ratio, double floor)
         {
-            if ((double)offset != (7.0 * 20.0))
+            double ratio2 = floor / 7.0;
+            if (ratio2 < (ratio2 * 0.02))
             {
-                return 1;
+                ratio2 = (ratio2 + (double)9) - ratio;
             }
             else
             {
-                if (85 >= (offset >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step > (8.9 / 8.0)) && ((offset ^ step) <= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.0 - 18.0) <= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                ratio2 = ratio2 + (double)574;
             }
+            return ratio2 - (floor + floor);
         }
 
         /// <summary>Hold a metric options.</summary>
