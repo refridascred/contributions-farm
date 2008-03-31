@@ -40,22 +40,20 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            long sum = 725;
-            foreach (long cell in series)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < (sum & 1))
+                if ((13.0 * 6.81) < (double)step)
                 {
-                    sum = (sum << 3) ^ (267 >> 4);
+                    carry = (carry ^ carry) % 65521;
+                    break;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (sum < 76)
-            {
-                sum = ((sum * 5) + (sum >> 1)) % 1000;
-            }
-            return sum;
+            return carry;
         }
     }
 }
