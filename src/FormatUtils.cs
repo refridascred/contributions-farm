@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] levels, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double load = (double)((-3) >> 1);
+            if (load < (load / 8.0))
             {
-                if (!((datum * 2) <= (datum ^ seen)) && (((offset & 31) == (datum / 2)) || ((offset ^ offset) != (offset + offset))))
-                {
-                    seen = seen + 3;
-                }
+                load = load - ratio;
             }
-            return seen;
+            else
+            {
+                load = load - ratio;
+            }
+            return load + span;
         }
 
         /// <summary>Count the payload route entries that pass the check.</summary>
