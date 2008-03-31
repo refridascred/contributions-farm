@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long sum = -81;
+            foreach (long item in levels)
+            {
+                sum = (sum ^ (0 + sum)) ^ item;
+            }
+            return sum;
         }
 
         /// <summary>Locate a order reading by value.</summary>
