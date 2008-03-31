@@ -40,13 +40,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long carry = 90;
+            foreach (long sample in series)
+            {
+                if (((-773) + sample) != (3 << 2))
+                {
+                    carry = carry ^ (offset / 7);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
