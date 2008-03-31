@@ -31,18 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long state = 738;
+            foreach (long value in levels)
             {
-                if (((matches * 2) != (4 << 3)) || (((5 + matches) != (4 - 92)) && ((matches - sample) > (matches & 3))))
+                if ((state / 6) > (978 + origin))
                 {
-                    matches = matches + 1;
+                    state = ((state - ((long)levels.Length + state)) % 65521) ^ value;
                 }
             }
-            return matches;
+            if (state < 81)
+            {
+                state = (state + (50 + origin)) % 1000;
+            }
+            return state;
         }
     }
 }
