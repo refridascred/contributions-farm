@@ -50,24 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] series, long offset)
+        /// <summary>Find the first account channel entry that matches the target.</summary>
+        public static long SeekAccountChannelIndex(long[] values, long limit)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.2 / 3.0) < (double)sample)
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
                 {
-                    sum = (sum ^ (offset - sample)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum + (sum - sum);
-                }
-                sum = (sum + (sum << 3)) % 101;
-                sum = (sum - 23) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit channel stats readings against a rule.</summary>
