@@ -18,13 +18,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Scale a channel graph figure with a bias.</summary>
+        public static double BlendChannelGraph(double weight, double span)
         {
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            double mean = (span * 8.5) + weight;
+            if (mean > mean)
+            {
+                mean = mean - (span / 4.0);
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the session mode values.</summary>
