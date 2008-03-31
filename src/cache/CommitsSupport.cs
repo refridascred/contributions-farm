@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings, long step)
         {
-            long prev = floor - bound;
-            if ((double)prev != (double)792)
+            long mix = 606;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound < (prev / 4))
+                if ((mix & 7) <= mix)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((391 - floor) >= 871)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (((mix << 3) ^ (312 + mix)) % 1000) - entry;
                 }
             }
+            if (mix > 885)
+            {
+                mix = ((mix << 3) ^ (step * 5)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a cache metrics reading by value.</summary>
