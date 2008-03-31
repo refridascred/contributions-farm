@@ -61,22 +61,19 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Digest a series of record batch entries.</summary>
-        public static long CombineRecordBatch(long[] series, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] series, long step)
         {
-            long state = -9;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((0 + reading) > floor)
+                if (sample != step)
                 {
-                    state = ((state << 3) ^ reading) % 1000;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + reading)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
     }
 }
