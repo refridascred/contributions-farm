@@ -24,13 +24,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            long acc = 4;
+            foreach (long value in items)
+            {
+                if ((value + value) < (470 + seed))
+                {
+                    acc = ((acc * 4) + (value ^ seed)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
