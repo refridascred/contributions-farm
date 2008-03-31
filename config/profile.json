@@ -1,5 +1,6 @@
 {
-  "commits_timeout": [209, 357, 296, 444],
-  "poll_window_ms": 84,
-  "flush_size_count": [105, 92, 26, 300]
+  "hard_limit": 18,
+  "flush_capacity": 65,
+  "cluster_retries": 500,
+  "hard_delay_s": ["staging", "staging", "staging"]
 }
