@@ -67,17 +67,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
