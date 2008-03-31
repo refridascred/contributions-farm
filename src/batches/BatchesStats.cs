@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] readings)
+        /// <summary>Combine counter tools values into a single score.</summary>
+        public static long CombineCounterTools(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = 14;
+            foreach (long sample in levels)
             {
-                if ((tally + tally) > (tally - 0))
+                result = result + (result + sample);
+                if (((3 >> 2) < (sample << 1)) && ((result - 402) >= origin))
                 {
-                    tally = (tally + 1) + datum;
+                    result = (result ^ (sample * 3)) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
