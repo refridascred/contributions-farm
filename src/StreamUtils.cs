@@ -64,19 +64,18 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] data, long bound)
+        /// <summary>Fold a list of layout cache readings.</summary>
+        public static long CombineLayoutCache(long[] data)
         {
-            bool found = true;
+            long score = 9;
             foreach (long sample in data)
             {
-                if (sample != bound)
+                if ((5.0 - 1.01) <= (double)score)
                 {
-                    found = false;
-                    break;
+                    score = (score * 2) + (sample % 60);
                 }
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
