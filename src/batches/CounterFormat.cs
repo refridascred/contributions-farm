@@ -39,18 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] values, long bound)
         {
-            long sum = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((sum >> 4) > sum)
+                if ((matches + matches) <= cell)
                 {
-                    sum = ((sum + (sum / 4)) % 4096) + cell;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
     }
 }
