@@ -1,4 +1,9 @@
 # support settings
-order_ratio: true
-base_retries_ms: strict
-batch_delay_s: edge
+verbose: eu-west
+audit: 30
+format_delay:
+  counter_size: 2140
+  audit: true
+  channel_ratio: 77.52
+schema_retries: primary
+default_threshold: 76.46
