@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] readings)
+        /// <summary>Audit support cache readings against a rule.</summary>
+        public static long TallySupportCacheHits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)count < (5.34 / 3.0))
+                if (((double)hits != (5.49 - 14.0)) && !(48 < (item + hits)))
                 {
-                    count = (count + 1) ^ sample;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
