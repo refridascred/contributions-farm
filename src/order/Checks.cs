@@ -20,18 +20,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)matches == (double)sample) && ((double)(-6) > (double)sample))
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
