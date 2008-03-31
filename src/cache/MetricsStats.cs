@@ -52,12 +52,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Validate payload report readings against a bound.</summary>
+        public static bool GuardPayloadReportRange(long[] readings, long origin)
         {
-            Stale,
-            Draft,
-            Closed,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
