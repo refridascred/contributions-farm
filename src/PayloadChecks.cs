@@ -84,21 +84,24 @@ namespace Common.Utilities
             return bias - (scale - offset);
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((19 - 64) == (limit2 * 4))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((3 - limit2) > limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
