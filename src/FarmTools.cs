@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string WindowCount = "standard-edge";
         public const long BurstWidth = 2669;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long offset)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long cell in data)
             {
-                if (count > 8)
+                if ((offset ^ (long)data.Length) > (offset ^ 6))
                 {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) ^ cell;
                 }
             }
             return count;
