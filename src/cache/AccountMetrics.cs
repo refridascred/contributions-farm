@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long bound, long origin)
+        /// <summary>Look up the position of a tools batches sample.</summary>
+        public static long SeekToolsBatchesIndex(long[] items, long bound)
         {
-            if (290 > (bound << 1))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((27 + origin) >= (bound + bound))
+                if (items[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > (origin ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
