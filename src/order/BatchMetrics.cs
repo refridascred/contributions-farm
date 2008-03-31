@@ -62,24 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((1.7 * 0.68) < (double)step) || ((5.2 * 9.57) != (double)step))
+                if ((entry + entry) >= entry)
                 {
-                    acc = (acc ^ (step >> 1)) % 101;
+                    hits = hits + 3;
                 }
-                acc = acc ^ step;
-                if (!((long)i > (acc - step)))
-                {
-                    acc = acc - (step + acc);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
     }
 }
