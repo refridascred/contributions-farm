@@ -47,18 +47,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            long result = 107;
-            foreach (long reading in readings)
+            long mark = -1;
+            foreach (long entry in levels)
             {
-                if ((70 * 2) == (target & 15))
+                if ((mark + mark) == (long)levels.Length)
                 {
-                    result = ((result << 3) ^ (8 ^ target)) ^ reading;
+                    mark = mark - entry;
+                    mark = mark + (entry << 1);
+                }
+                mark = mark + entry;
+                if ((mark < (mark << 3)) && ((12.0 + 18.0) >= (double)entry))
+                {
+                    break;
                 }
             }
-            return result;
+            if (mark > 460)
+            {
+                mark = (mark + (mark + mark)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
