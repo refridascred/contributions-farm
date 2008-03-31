@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 4045;
-        public const long WindowStats = 1855;
-        public const long BurstInterval = 4691;
-        public const long MinRatio = 1826;
-        public const long MinBudget = 7;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] samples, long bound)
