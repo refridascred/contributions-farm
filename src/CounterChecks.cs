@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!((0 + matches) > reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the stats level values.</summary>
