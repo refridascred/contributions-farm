@@ -30,11 +30,19 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of buffer batches readings.</summary>
