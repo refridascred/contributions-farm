@@ -19,12 +19,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8346;
-        public const double BurstReport = 81.37;
-        public const string MinCount = "legacy-1";
-        public const double RetryScore = 59.41;
-        public const string StepReport = "local";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] samples, long origin)
