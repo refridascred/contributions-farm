@@ -1,13 +1,7 @@
 # entry settings
-poll_delay:
-  - stable
-  - standard
-  - stable
-  - primary
-soft_window_count: 100
-max_threshold: cached
-min_window:
-  - blue
-  - cached
-  - blue
-  - cached
+already_window: true
+record_limit: 43.56
+max_threshold_count:
+  - 474
+  - 163
+  - 291
