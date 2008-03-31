@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowScore = "local-edge";
-        public const long MaxQueue = 4169;
-        public const long WindowLevel = 8694;
-        public const long IdleQueue = 7006;
-        public const long SoftQueue = 3534;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Ready,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
