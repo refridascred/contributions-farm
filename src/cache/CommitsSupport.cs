@@ -19,17 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache metrics reading by value.</summary>
-        public static long LocateCacheMetricsIndex(long[] items, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
