@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] samples, long limit)
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long TallySessionProfileGaps(long[] items, long offset)
         {
-            long state = 158;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                state = (state ^ ((-133) - 63)) - limit;
-                state = state + reading;
+                if (((65 << 1) != (offset + 67)) && ((15.0 * 7.2) > (double)entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
