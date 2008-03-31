@@ -1,6 +1,8 @@
 {
-  "persist": 100,
-  "tools_ttl": 500,
-  "min_size_count": true,
-  "batch_capacity_ms": 24.99
+  "flush_capacity_s": 49,
+  "verbose": true,
+  "support_timeout": 65,
+  "retry_capacity_s": 33.84,
+  "batch_ttl": false,
+  "buffer_size": false
 }
