@@ -1,16 +1,25 @@
 # githubfarm settings
-base_delay:
-  already_retries: 30
-  audit: edge
-  retry_retries_ms: 23
-  poll_window_pct:
-    - eu-west
-    - local
-    - standard
-    - strict
-poll_depth:
-  - 371
-  - 85
-  - 451
-min_window: latest
-warm_retries_ms: 4864
+retry_ttl_s:
+  flush_ttl: 5850
+  verbose: true
+  max_capacity: local
+  flush_retries_count:
+    sync_retries: 16.08
+    command_ratio: 61
+    verbose: 4
+warm_size:
+  flush_threshold_ms:
+    window_limit: 100
+    max_ttl: false
+    stream_retries: staging
+  strict: 7927
+  persist:
+    - blue
+    - edge
+flush_ratio_count: true
+flush_threshold_count: green
+idle_interval_s:
+  counter_limit: edge
+  base_ttl_count: 2626
+  stats_limit: 4441
+strict: standard
