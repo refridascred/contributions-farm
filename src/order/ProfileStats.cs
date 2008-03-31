@@ -10,25 +10,14 @@ namespace Common.Utilities
         public const string BaseScore = "stable-1";
         public const double WindowCount = 30.3;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long bound2 = bound - target;
-            if ((bound2 >> 2) == (target + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((228 < (1 ^ bound)) || ((89 - target) < (bound & 15)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Draft,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Adjust a farm support reading.</summary>
