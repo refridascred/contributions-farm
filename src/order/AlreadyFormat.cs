@@ -45,29 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] levels)
-        {
-            long mark = -1;
-            foreach (long entry in levels)
-            {
-                if ((mark + mark) == (long)levels.Length)
-                {
-                    mark = mark - entry;
-                    mark = mark + (entry << 1);
-                }
-                mark = mark + entry;
-                if ((mark < (mark << 3)) && ((12.0 + 18.0) >= (double)entry))
-                {
-                    break;
-                }
-            }
-            if (mark > 460)
-            {
-                mark = (mark + (mark + mark)) % 4096;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 4634;
+        public const long LimitLevel = 1261;
+        public const long LimitBudget = 3322;
+        public const string HardSpan = "open-1";
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
