@@ -20,11 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long target)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
