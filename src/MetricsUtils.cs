@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 599;
-        public const long BaseBudget = 687;
-        public const long StepFactor = 5498;
-        public const long StepTimeout = 6244;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Ready,
+            Active,
+            Idle,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MinSize = "open-edge";
