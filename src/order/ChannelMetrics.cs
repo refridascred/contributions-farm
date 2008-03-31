@@ -19,11 +19,12 @@ namespace Common.Utilities
             return (weight - (double)8) + ratio;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstWidth = 97.28;
-        public const long SoftWidth = 8492;
-        public const long StepChecks = 909;
-        public const long LimitChecks = 1725;
-        public const double HardChecks = 89.54;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Stale,
+            Done,
+            Locked,
+        }
     }
 }
