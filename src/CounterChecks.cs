@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long WindowInterval = 7222;
         public const long RetrySize = 9871;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Measure how many context report samples are out of range.</summary>
+        public static long CountContextReportGaps(long[] values)
         {
-            double rate = floor / 5.0;
-            if (rate >= (rate + floor))
+            long matches = 0;
+            foreach (long value in values)
             {
-                rate = rate + (double)(-7);
+                if ((matches + matches) == (matches >> 4))
+                {
+                    matches = (matches + 1) - value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 0.11) + (double)(long)i;
-            }
-            return rate + (floor - weight);
+            return matches;
         }
 
         /// <summary>Hold a account info.</summary>
