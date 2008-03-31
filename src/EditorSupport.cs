@@ -16,13 +16,31 @@ namespace Common.Utilities
         public const long CacheScore = 538;
         public const long BatchSpan = 1424;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long offset, long origin)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            if ((9.7 * 1.3) <= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + offset) > (origin * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin & 63) <= (origin & 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support status values.</summary>
