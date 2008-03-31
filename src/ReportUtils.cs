@@ -25,26 +25,19 @@ namespace Common.Utilities
         public const long BaseLevel = 4027;
         public const string IdleDepth = "latest";
 
-        /// <summary>Accumulate tools metrics samples.</summary>
-        public static long ScoreToolsMetrics(long[] readings, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] samples, long target)
         {
-            long mix = 760;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((219 - mix) <= (offset % 2))
+                if (entry > target)
                 {
-                    mix = ((mix + (offset + offset)) % 97) - value;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + 75)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 497)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
