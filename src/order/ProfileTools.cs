@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long bound)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
