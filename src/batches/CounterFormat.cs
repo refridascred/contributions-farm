@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] readings, long seed)
         {
-            double drift = offset;
-            if (drift > offset)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                drift = (drift + offset) - rate;
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + (drift / 8.0);
+            return flag;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
