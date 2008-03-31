@@ -74,9 +74,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 1731;
-        public const double StepEditor = 66.46;
-        public const string DefaultEditor = "staging-v2";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen + limit) >= (6 + sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
