@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 6861;
-        public const long IdleRecord = 141;
-        public const long CacheRecord = 8507;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
