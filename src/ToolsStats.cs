@@ -64,17 +64,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] series, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                if (((count + cell) <= bound) || ((-4) > cell))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
