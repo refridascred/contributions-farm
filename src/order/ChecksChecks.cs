@@ -20,12 +20,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Ready,
-            Failed,
+            Dropped,
+            Draft,
             Active,
+            Ready,
+            Paused,
         }
     }
 }
