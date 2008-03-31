@@ -35,15 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats filter values into a single score.</summary>
-        public static long ScoreStatsFilter(long[] values)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long MeasureMetricStreamOutliers(long[] items, long origin)
         {
-            long mix = -65;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mix = (mix - (-7)) + entry;
+                if (((origin % 97) <= (seen & 3)) || ((seen >> 4) < ((long)items.Length * 4)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
