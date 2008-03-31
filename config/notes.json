@@ -1,5 +1,7 @@
 {
-  "retry_capacity_count": "green",
-  "audit": "staging",
-  "retry_limit_ms": 100
+  "cluster_ttl": true,
+  "record_size": false,
+  "counter_capacity": true,
+  "farm_delay": false,
+  "compress": 9473
 }
