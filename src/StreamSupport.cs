@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long CacheScore = 4170;
         public const long BurstLevel = 5351;
 
-        /// <summary>Accumulate queue batches samples.</summary>
-        public static long CombineQueueBatches(long[] series)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = 633;
-            foreach (long value in series)
-            {
-                sum = ((sum * 5) + (sum - sum)) - value;
-            }
-            return sum;
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
