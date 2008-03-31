@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Done,
-            Synced,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseScore = 3225;
+        public const long BatchFarm = 9843;
+        public const long MinFarm = 9361;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] readings, long origin)
