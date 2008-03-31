@@ -64,21 +64,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = scale;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias + (18.0 - scale)) + (double)(long)i;
             }
-            return matches;
+            return bias - (scale - offset);
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
