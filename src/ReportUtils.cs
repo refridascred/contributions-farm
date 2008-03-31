@@ -69,28 +69,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples, long floor)
+        /// <summary>Locate a batches window reading by value.</summary>
+        public static long SeekBatchesWindowIndex(long[] levels, long offset)
         {
-            long state = 65;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((floor % 16) < (state & 63)) && ((state - floor) < (281 - datum)))
+                if (levels[i] <= offset)
                 {
-                    state = ((state << 2) ^ (floor - (long)samples.Length)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state << 3) ^ ((long)samples.Length + state)) % 97;
-                    state = state - floor;
-                }
-                state = (state - (floor >> 3)) % 1000;
             }
-            if (state > (-857))
-            {
-                state = state ^ (state % 100);
-            }
-            return state;
+            return -1;
         }
     }
 }
