@@ -66,31 +66,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long floor)
         {
-            if ((seed - origin) > (seed / 6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + origin) <= (2 - origin))
+                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 127) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
