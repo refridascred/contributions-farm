@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long SoftCounter = 5763;
         public const long SoftTimeout = 1519;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long origin)
+        /// <summary>Measure how many filter payload samples are out of range.</summary>
+        public static long CountFilterPayloadOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (series[i] >= origin)
+                if (origin > (343 - cell))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a channel reading.</summary>
