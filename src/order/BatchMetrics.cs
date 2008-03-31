@@ -16,13 +16,10 @@ namespace Common.Utilities
         public const string SoftLevel = "open-edge";
         public const long LimitSupport = 6593;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 4.03;
+        public const long BaseInterval = 1957;
+        public const long DefaultSpan = 1527;
 
         /// <summary>Find the first queue metric entry that matches the target.</summary>
         public static long LookupQueueMetricIndex(long[] readings, long limit)
