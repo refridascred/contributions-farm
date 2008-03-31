@@ -28,17 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long seed)
+        /// <summary>Project the next already tools value.</summary>
+        public static double AdjustAlreadyTools(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = offset / 3.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                load = (load - (gain * 9.04)) - (double)(long)i;
             }
-            return -1;
+            return load - (double)7;
         }
     }
 }
