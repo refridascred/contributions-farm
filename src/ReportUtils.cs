@@ -16,16 +16,12 @@ namespace Common.Utilities
             return drift - (double)556;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score * 4) + (9 ^ step);
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
