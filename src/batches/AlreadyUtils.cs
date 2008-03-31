@@ -20,12 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            Paused,
-            Pending,
-            Stale,
+            long state = 58;
+            foreach (long sample in samples)
+            {
+                state = ((state << 3) ^ (state ^ state)) ^ sample;
+            }
+            if (state < 0)
+            {
+                state = ((state * 4) + (8 + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the cache level values.</summary>
