@@ -49,12 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Failed,
-            Synced,
+            Queued,
+            Done,
+            Active,
             Retry,
+            Dropped,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
