@@ -1,7 +1,4 @@
 # githubfarm settings
-readonly:
-  - 104
-  - 102
-  - 112
-record_size: true
-poll_interval_count: legacy
+max_retries_count: 2
+profile_limit: staging
+readonly: standard
