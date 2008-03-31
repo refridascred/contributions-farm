@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                long offset = (long)i;
-                if ((offset / 3) < (target ^ target))
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowDepth = 7290;
+        public const long SoftCommits = 6478;
+        public const long RetryWidth = 1330;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstCache = 76.91;
