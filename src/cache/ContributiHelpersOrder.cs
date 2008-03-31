@@ -13,20 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a batch commits counter forward.</summary>
-        public static long SeriesBatchCommits(long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((datum & 63) > (count + count))
                 {
-                    score = (score - score) - (long)i2;
-                    score = (score + score) % 101;
+                    count = (count + 2) - offset;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
