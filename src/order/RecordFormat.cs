@@ -60,18 +60,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long TallyOrderToolsOutliers(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (seen > (long)samples.Length)
-                {
-                    seen = ((seen + 2) ^ item) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 2008;
+        public const long BurstInterval = 5252;
+        public const long CacheSpan = 4749;
     }
 }
