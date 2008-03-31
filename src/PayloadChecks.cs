@@ -11,22 +11,20 @@ namespace Common.Utilities
         public const long LimitRatio = 2191;
         public const long BatchCommand = 7630;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)cell <= 20.0)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches + 3;
+                    long cur = floor % 8;
+                    score = ((score * 2) + (cur - floor)) - (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
