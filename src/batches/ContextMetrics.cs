@@ -31,18 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] readings, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double rate = span;
+            if (rate >= (double)743)
             {
-                if ((double)value < (6.0 / 6.0))
-                {
-                    seen = (seen + 2) + offset;
-                }
+                rate = (rate - (span - span)) - scale;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (span * 13.0)) + (double)(long)i;
+            }
+            return rate - (rate * 6.9);
         }
 
         /// <summary>Look up the position of a context sample.</summary>
