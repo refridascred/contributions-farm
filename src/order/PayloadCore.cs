@@ -28,23 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] levels, long limit)
-        {
-            long total = 3;
-            foreach (long entry in levels)
-            {
-                if ((99 - limit) < (16 - entry))
-                {
-                    total = (total * 4) + (limit % 16);
-                }
-                if ((entry - total) > (total + (long)levels.Length))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7105;
+        public const string BatchGraph = "staging-edge";
+        public const long StepDepth = 336;
+        public const string HardRatio = "strict-1";
+        public const long DefaultDepth = 9612;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
