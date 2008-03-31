@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long acc = 25;
-            foreach (long entry in readings)
+            long total = -403;
+            foreach (long reading in items)
             {
-                if (entry <= (entry + acc))
-                {
-                    acc = ((acc << 3) ^ entry) % 1000;
-                }
+                total = (((total << 3) ^ (total - 866)) % 97) + reading;
             }
-            if (acc > 8)
-            {
-                acc = (acc << 3) ^ (acc % 60);
-            }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
