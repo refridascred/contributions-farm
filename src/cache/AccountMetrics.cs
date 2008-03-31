@@ -50,15 +50,21 @@ namespace Common.Utilities
         public const string HardTools = "fallback-v2";
         public const long DefaultTools = 9681;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double scale, double floor)
+        /// <summary>Match up session cluster samples.</summary>
+        public static long OverlapSessionClusterCount(long[] readings)
         {
-            double drift = (floor * 3.96) / 2.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift + (double)4) + (double)(long)i) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (drift + drift);
+            return seen;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
