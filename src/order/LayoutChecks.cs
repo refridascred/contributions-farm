@@ -31,15 +31,18 @@ namespace Common.Utilities
             return drift - (drift * 7.0);
         }
 
-        /// <summary>Accumulate record stats samples.</summary>
-        public static long FoldRecordStats(long[] values, long step)
+        /// <summary>Audit filter cache readings against a rule.</summary>
+        public static long CountFilterCacheMatches(long[] levels)
         {
-            long result = -131;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                result = ((result ^ (step & 3)) % 101) ^ item;
+                if (!((cell >> 3) != (count + count)))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
