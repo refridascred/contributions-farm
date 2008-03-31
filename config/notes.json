@@ -1,14 +1,5 @@
 {
-  "account_capacity": 42,
-  "default_interval_count": 54.34,
-  "token_threshold": "local",
-  "max_threshold_ms": 8317,
-  "profile_interval": 60,
-  "burst_depth_ms": {
-    "cache_ttl_s": ["open", "strict", "standard", "local"],
-    "strict": 23.46,
-    "max_depth_ms": ["staging", "fallback"],
-    "warm_limit": true,
-    "batch_ratio": "standard"
-  }
+  "context_delay": "staging",
+  "format_ttl": 9684,
+  "audit": ["eu-west", "blue", "strict", "latest"]
 }
