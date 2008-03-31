@@ -1,5 +1,18 @@
 {
-  "verbose": 72.9,
-  "flush_capacity": 61,
-  "graph_ratio": true
+  "audit": {
+    "hard_ttl_ms": false,
+    "retry_size": true,
+    "warm_ttl_s": false,
+    "readonly": true
+  },
+  "sync_capacity_pct": {
+    "strict": ["fallback", "staging", "fallback"],
+    "persist": "strict",
+    "verbose": false,
+    "graph_depth": "primary",
+    "warm_timeout_count": ["latest", "open", "stable"]
+  },
+  "schema_threshold": "blue",
+  "base_size_count": "cached",
+  "githubfarm_limit": 21
 }
