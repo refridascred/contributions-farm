@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const double RetryDepth = 80.73;
         public const long BaseCache = 9619;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] values, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((matches / 6) != (sample + 447))
+                if ((((double)step >= 7.6) || ((double)step < 8.0)) && !((double)value < (double)step))
                 {
-                    matches = (matches + 2) + seed;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
