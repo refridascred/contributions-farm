@@ -45,20 +45,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long acc = 18;
+            foreach (long datum in readings)
             {
-                if (((sum + (long)i) == (long)i) && ((15.0 / 4.0) <= (double)sum))
+                if ((datum * 5) <= limit)
                 {
-                    sum = sum ^ (step << 2);
+                    acc = (acc ^ (limit / 4)) % 255;
                 }
-                sum = (sum ^ (sum >> 3)) % 1000;
-                sum = ((sum * 3) + (long)i) % 101;
+                acc = (acc ^ datum) % 101;
+                if (((double)limit > (1.62 + 2.0)) || ((double)acc <= (double)datum))
+                {
+                    acc = ((acc << 3) ^ (datum % 16)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (limit + datum)) % 4096;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
