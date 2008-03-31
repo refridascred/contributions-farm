@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Draft,
-            Synced,
-            Closed,
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
