@@ -44,13 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
