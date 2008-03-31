@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long bound)
         {
-            Retry,
-            Synced,
-            New,
-            Failed,
-            Stale,
+            long prev = floor - bound;
+            if ((double)prev != (double)792)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound < (prev / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((391 - floor) >= 871)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
