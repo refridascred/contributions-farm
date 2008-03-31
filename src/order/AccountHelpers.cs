@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2416;
-        public const string IdleTimeout = "primary-edge";
-        public const string MaxWidth = "local-v2";
-        public const long StepTools = 6846;
-        public const long BatchBudget = 3805;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Locked,
+            Closed,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Count the notes command entries that pass the check.</summary>
         public static long CountNotesCommandMatches(long[] levels)
