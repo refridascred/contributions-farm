@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
+            public double Region { get; set; }
             public bool Total { get; set; }
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
