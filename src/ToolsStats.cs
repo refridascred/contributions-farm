@@ -77,31 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already profile pair into a bucket.</summary>
-        public static long SortAlreadyProfile(long floor, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long bound)
         {
-            if ((bound % 12) == ((-808) ^ bound))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (double)bound)
+                if (sample >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor / 5) >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
