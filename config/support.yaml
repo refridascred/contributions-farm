@@ -1,17 +1,5 @@
 # support settings
-poll_timeout:
-  context_timeout: 7262
-  enabled: open
-  compress: 93.67
-  default_delay_ms:
-    token_window: false
-    account_capacity: 96.28
-    strict: standard
-  session_capacity:
-    - edge
-    - blue
-default_limit:
-  - local
-  - edge
-verbose: stable
-soft_depth_count: strict
+commits_timeout: 19.04
+window_threshold: 655
+max_interval: 3150
+hard_timeout_pct: 100
