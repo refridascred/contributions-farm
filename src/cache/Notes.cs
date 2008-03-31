@@ -49,21 +49,15 @@ namespace Common.Utilities
             return rate + (double)639;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(97 + 23);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias + (double)(long)i) - scale) - floor;
             }
-            return matches;
+            return bias - (double)19;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
