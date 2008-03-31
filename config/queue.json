@@ -1,7 +1,8 @@
 {
-  "githubfarm_timeout": 86,
-  "batch_capacity": [267, 424],
-  "retry_capacity_pct": false,
-  "default_interval_ms": ["stable", "edge", "cached", "fallback"],
-  "soft_depth": 100
+  "poll_ratio_pct": 49,
+  "sync_size_ms": 29.34,
+  "max_size_pct": [478, 204],
+  "max_retries": 6491,
+  "verbose": 1827,
+  "sync_delay_s": 73.45
 }
