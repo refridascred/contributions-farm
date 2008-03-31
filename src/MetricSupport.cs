@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const long MaxChannel = 333;
         public const long StepSpan = 3889;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long limit)
         {
-            long carry = -80;
-            foreach (long sample in series)
+            long slot = origin ^ limit;
+            if ((3.38 - 9.0) >= (double)limit)
             {
-                carry = carry + (sample ^ sample);
-                if (((9.0 - 2.51) >= (double)sample) && (((-8) % 10) >= (sample >> 4)))
+                return 6;
+            }
+            else
+            {
+                if ((((-50) - origin) != (origin + origin)) && ((7.0 * 5.4) >= (double)limit))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (0.2 >= (double)slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
