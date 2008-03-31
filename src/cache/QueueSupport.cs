@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a cache window figure with a bias.</summary>
-        public static double ProjectCacheWindow(double scale, double span)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
         {
-            double drift = scale;
-            if (drift <= (double)14)
+            long mark = 70;
+            foreach (long sample in series)
             {
-                drift = (drift - (double)9) + span;
+                if (!((968 % 16) <= (sample >> 3)))
+                {
+                    mark = (mark ^ 991) % 4096;
+                }
+                else
+                {
+                    mark = (mark - sample) % 4096;
+                }
+                mark = (mark - (mark / 3)) % 101;
+                mark = ((mark * 4) + (mark * 2)) % 97;
+                if (((double)sample >= (6.5 / 6.0)) && (mark >= (-1)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)616;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift * 19.0)) + (double)(long)i;
-            }
-            return drift + 3.0;
+            return mark % 4096;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
