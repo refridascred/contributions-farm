@@ -58,24 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Fold a list of session githubfarm readings.</summary>
+        public static long TallySessionGithubfarm(long[] levels, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            long result = 7;
+            foreach (long cell in levels)
             {
-                if (!(step >= (9 / 3)))
+                if (origin >= (origin * 4))
                 {
-                    carry = (carry * 3) + (step + step);
+                    result = ((result * 3) + (result & 15)) - cell;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = carry ^ ((long)i2 + step);
-                }
-                carry = ((carry * 2) + ((-78) / 8)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
     }
 }
