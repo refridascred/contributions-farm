@@ -52,19 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] series, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long acc = -5;
+            foreach (long sample in samples)
             {
-                if (value >= origin)
+                acc = ((acc * 4) + (sample + sample)) % 65521;
+                if ((15 % 10) == (acc + sample))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (sample * 2)) % 101;
                 }
             }
-            return flag;
+            if (acc > 27)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Classify a githubfarm context pair into a bucket.</summary>
