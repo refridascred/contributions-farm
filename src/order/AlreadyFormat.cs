@@ -42,15 +42,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Compare every pair of checks filter readings.</summary>
+        public static long CompareChecksFilterCount(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 4)
+                    if ((series[i] + series[j]) > 4)
                     {
                         matches = matches + 1;
                     }
