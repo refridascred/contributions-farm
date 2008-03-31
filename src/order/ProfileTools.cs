@@ -24,22 +24,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series, long limit)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long total = -434;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item > (6 + 8)) && ((item % 24) != (limit - item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total * 2) + (item + total);
-                }
-                else
-                {
-                    total = total ^ (total & 3);
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
