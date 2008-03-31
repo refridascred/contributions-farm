@@ -30,19 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] series, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long score = 1;
+            foreach (long cell in data)
             {
-                if (cell > target)
+                score = (score + (-479)) % 65521;
+                if ((cell ^ score) != (cell + cell))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
