@@ -88,18 +88,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long state = -1;
-            foreach (long item in items)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((state - 74) == (state & 3)))
-                {
-                    state = state ^ (item - item);
-                }
+                anchor = (anchor * 4) + (anchor - floor);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return state % 1000;
+            return anchor;
         }
     }
 }
