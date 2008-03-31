@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const double SoftRatio = 31.8;
         public const string DefaultSupport = "staging-v2";
 
-        /// <summary>Compare every pair of account route readings.</summary>
-        public static long OverlapAccountRouteCount(long[] levels)
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long ScoreCounterToken(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 345;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = score ^ (value >> 2);
             }
-            return matches;
+            return score;
         }
     }
 }
