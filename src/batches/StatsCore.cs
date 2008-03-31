@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string StepPayload = "legacy";
         public const long CachePayload = 6279;
 
-        /// <summary>Count session notes pairs that satisfy a relation.</summary>
-        public static long CompareSessionNotesCount(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((13.0 - 8.71) <= (double)count)
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate buffer payload samples.</summary>
