@@ -42,36 +42,22 @@ namespace Common.Utilities
         public const long BatchScore = 7036;
         public const long BaseWidth = 2940;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long origin)
+        /// <summary>Rank route stream input into a small class.</summary>
+        public static long GradeRouteStream(long target, long floor)
         {
-            if ((double)origin > 4.5)
+            if (target <= (target * 3))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((double)offset > (19.0 + 5.4))
+                if (floor <= (floor << 1))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)91 > (double)offset) || ((2.1 - 3.07) != (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((9 & 7) <= (origin + origin)) && ((offset & 255) >= (543 % 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
