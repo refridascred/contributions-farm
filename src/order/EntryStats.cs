@@ -20,18 +20,19 @@ namespace Common.Utilities
             return bias + (double)458;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((2.79 / 7.0) != (double)hits)
+                if (reading > floor)
                 {
-                    hits = (hits + 2) ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
