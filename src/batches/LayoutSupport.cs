@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 253;
+            foreach (long reading in items)
+            {
+                if (reading > (reading & 1))
+                {
+                    anchor = anchor - (71 ^ anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
