@@ -1,5 +1,18 @@
 # support settings
-min_threshold_ms: 62.63
-flush_delay: edge
-poll_ratio_pct: latest
-cache_size_count: standard
+persist:
+  - edge
+  - local
+  - latest
+idle_size_count: open
+soft_ratio_s:
+  - 117
+  - 296
+  - 281
+  - 17
+audit:
+  channel_delay: fallback
+  default_limit_ms: 45
+  metrics_threshold: 42.61
+  verbose: 94.91
+idle_timeout_ms: 30.38
+stream_timeout: primary
