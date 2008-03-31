@@ -37,15 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            double ratio = weight + floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - (weight / 4.0)) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + (double)(-33);
+            return hits;
         }
     }
 }
