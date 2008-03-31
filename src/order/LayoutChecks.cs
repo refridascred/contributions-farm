@@ -77,12 +77,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            double scale = (5.0 - 8.46) + (bias - bias);
+            if (scale > ratio)
+            {
+                scale = scale - bias;
+            }
+            return scale + 0.5;
         }
     }
 }
