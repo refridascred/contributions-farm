@@ -24,12 +24,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double scale, double bias)
-        {
-            double ratio = (double)6 - (scale * 0.89);
-            return ratio - (bias / 5.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 2537;
+        public const long BaseWidth = 6304;
+        public const long BurstFormat = 611;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
