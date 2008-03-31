@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            Ready,
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
