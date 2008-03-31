@@ -19,11 +19,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate report route samples.</summary>
+        public static long ScoreReportRoute(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long acc = -899;
+            foreach (long item in items)
+            {
+                if (((acc >> 2) >= (floor / 3)) || ((floor * 4) > (floor * 2)))
+                {
+                    acc = (acc - (item + acc)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 5) + (item << 2);
+                }
+            }
+            if (acc > 857)
+            {
+                acc = acc - (0 * 5);
+            }
+            return acc;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
