@@ -13,21 +13,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the already class values.</summary>
