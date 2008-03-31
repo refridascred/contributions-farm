@@ -45,12 +45,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 2) > (item * 4))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
     }
 }
