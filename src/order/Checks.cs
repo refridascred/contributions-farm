@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long target)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)score >= 19.0)
+                if (!((double)matches == (double)sample) && ((double)(-6) > (double)sample))
                 {
-                    score = ((((score * 3) + (score + 13)) % 4096) - entry) + target;
+                    matches = (matches + 2) + target;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
