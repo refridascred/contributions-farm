@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            Done,
-            New,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((0 + matches) > reading))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
