@@ -69,11 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            Retry,
+            Closed,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a metrics entry.</summary>
