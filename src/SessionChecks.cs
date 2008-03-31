@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Validate stats farm readings against a bound.</summary>
+        public static bool VerifyStatsFarmBounds(long[] samples, long floor)
         {
-            long mix = 67;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((datum + mix) == (datum - mix))
+                if (sample < floor)
                 {
-                    mix = (mix - 389) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
