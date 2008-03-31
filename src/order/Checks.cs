@@ -42,13 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)step != (5.8 / 7.0))
+                {
+                    anchor = (anchor ^ step) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
