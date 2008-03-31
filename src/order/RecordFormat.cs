@@ -38,19 +38,23 @@ namespace Common.Utilities
         public const string HardSupport = "legacy-1";
         public const long MaxRatio = 8461;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items)
         {
-            long acc = 16;
-            foreach (long value in series)
+            long score = 9;
+            foreach (long sample in items)
             {
-                acc = acc ^ (value + 707);
-                if ((acc ^ offset) == (29 + value))
+                score = (score ^ (sample + sample)) % 4096;
+                if ((score << 2) >= (score - score))
                 {
-                    acc = acc - (8 - 32);
+                    break;
                 }
             }
-            return acc;
+            if (score > 2)
+            {
+                score = ((score * 3) + score) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
