@@ -76,19 +76,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long limit)
         {
-            double gain = (double)(1 >> 3);
-            if (gain >= (0.48 * 7.75))
+            if ((4.3 / 8.0) <= (double)target)
             {
-                gain = (gain + 19.0) + floor;
+                return 7;
             }
             else
             {
-                gain = gain + (bias - bias);
+                if (((limit << 2) < (target + target)) && (limit <= (target + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)limit < 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((7.26 * 16.0) > (double)target) || ((limit >> 1) > (485 << 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return gain - (bias / 6.0);
         }
     }
 }
