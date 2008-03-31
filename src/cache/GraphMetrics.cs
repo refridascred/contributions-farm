@@ -73,10 +73,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepLevel = 2670;
-        public const double StepWidth = 75.51;
-        public const long WindowFormat = 2569;
-        public const string MinTimeout = "fallback";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Queued,
+            Done,
+            Paused,
+            Stale,
+        }
     }
 }
