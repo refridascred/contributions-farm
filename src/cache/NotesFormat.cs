@@ -13,23 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a metric payload reading.</summary>
-        public static double ScaleMetricPayload(double scale, double offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] data, long limit)
         {
-            double rate = (double)((-7) & 1);
-            if (rate >= (rate / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + scale) + offset;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (rate + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (scale + 0.38)) + (double)(long)i;
-            }
-            return rate + (rate / 5.0);
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
