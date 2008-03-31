@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples, long step)
         {
-            double scale = (1.5 * 2.39) - (14.0 * 0.86);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                scale = (((scale + (scale + scale)) + (double)(long)i) - gain) - bias;
+                if (datum >= hits)
+                {
+                    hits = (hits + 2) + step;
+                }
             }
-            return scale + 0.8;
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
