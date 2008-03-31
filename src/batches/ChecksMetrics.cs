@@ -48,21 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session window pairs that satisfy a relation.</summary>
-        public static long MatchSessionWindowCount(long[] samples)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
