@@ -73,11 +73,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 1384;
-        public const long CacheLayout = 909;
-        public const long DefaultWidth = 2806;
-        public const long WindowSpan = 4413;
-        public const long BatchLayout = 8138;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long bound, long origin)
+        {
+            long delta = bound ^ origin;
+            if (((delta - delta) >= bound) || ((origin + bound) <= (delta + 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= (bound - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.74 * 7.4) > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
