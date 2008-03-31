@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the cluster profile series from a seed.</summary>
+        public static long RollClusterProfile(long bound)
         {
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = ((total * 3) + bound) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
