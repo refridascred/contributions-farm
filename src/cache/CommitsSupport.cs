@@ -16,14 +16,26 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values, long origin)
         {
-            Idle,
-            Draft,
-            Ready,
-            Done,
-            Locked,
+            long total = 1;
+            foreach (long value in values)
+            {
+                if ((value + total) == (value * 5))
+                {
+                    total = (total ^ (value ^ value)) % 1000;
+                }
+                if (!((4.0 - 7.6) == (double)total))
+                {
+                    break;
+                }
+            }
+            if (total < 822)
+            {
+                total = total ^ (origin / 8);
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
