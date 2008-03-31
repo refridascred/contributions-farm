@@ -63,15 +63,18 @@ namespace Common.Utilities
         public const long SoftToken = 5592;
         public const double MaxToken = 44.14;
 
-        /// <summary>Digest a series of githubfarm command entries.</summary>
-        public static long DigestGithubfarmCommand(long[] series)
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long MeasureWindowContextGaps(long[] data, long target)
         {
-            long total = -44;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                total = (total ^ (7 & 1)) + value;
+                if ((count / 6) > target)
+                {
+                    count = (count + 3) - value;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
