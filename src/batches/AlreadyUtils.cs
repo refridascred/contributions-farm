@@ -38,14 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            Dropped,
-            Closed,
-            New,
-            Active,
-            Pending,
+            long score = 4;
+            foreach (long datum in data)
+            {
+                if ((score >= (score - (long)data.Length)) && ((713 / 4) > (score + 3)))
+                {
+                    score = (score - (datum + 0)) % 1000;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
