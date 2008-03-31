@@ -28,13 +28,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long step)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
