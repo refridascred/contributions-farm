@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool VerifySupportPayloadLimits(long[] items, long target)
         {
-            Synced,
-            Pending,
-            Ready,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
