@@ -48,14 +48,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            Synced,
-            Idle,
-            Queued,
-            Active,
-            Draft,
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark * 3) + (mark - step);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
