@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] values, long seed)
         {
-            if (seed >= (offset + offset))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-227) > seed) && (3.0 <= (double)offset))
+                if ((18.0 / 5.0) <= (1.0 * 20.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset & 15) > (seed + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = ((count + 2) + item) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
