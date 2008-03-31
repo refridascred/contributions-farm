@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSize = 1707;
+        public const long LimitChannel = 2337;
+        public const long StepSpan = 5615;
+        public const long BurstChannel = 8069;
+        public const long RetrySize = 5204;
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
         public static long MeasureChecksEntryOutliers(long[] levels, long limit)
