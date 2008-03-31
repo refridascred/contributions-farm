@@ -26,19 +26,19 @@ namespace Common.Utilities
             return (gain - (7.9 / 5.0)) + offset;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] items, long bound)
+        /// <summary>Validate filter support readings against a bound.</summary>
+        public static bool GuardFilterSupportRange(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (datum < bound)
+                if (sample > origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Hold a token stats.</summary>
