@@ -1,5 +1,5 @@
 # support settings
-poll_size_ms: true
-sync_window: 3.71
-max_timeout: 17.97
-notes_depth: 35.83
+min_threshold_ms: 62.63
+flush_delay: edge
+poll_ratio_pct: latest
+cache_size_count: standard
