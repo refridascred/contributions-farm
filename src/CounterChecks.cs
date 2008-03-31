@@ -62,10 +62,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "cached-edge";
-        public const long MinSpan = 6661;
-        public const long RetryCount = 9924;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Dropped,
+            Done,
+            Stale,
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] data)
