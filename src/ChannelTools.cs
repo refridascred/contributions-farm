@@ -19,19 +19,39 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long CacheSupport = 3093;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long span = offset ^ target;
+            if (target < 147)
             {
-                if (sample > origin)
+                return 6;
+            }
+            else
+            {
+                if (!((double)span >= 7.8))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset != (13.0 / 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.0 / 8.0) < (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
