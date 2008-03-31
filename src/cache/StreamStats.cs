@@ -64,18 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session githubfarm readings.</summary>
-        public static long TallySessionGithubfarm(long[] levels, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long result = 7;
-            foreach (long cell in levels)
+            long result = 104;
+            foreach (long value in readings)
             {
-                if (origin >= (origin * 4))
+                if (result > value)
                 {
-                    result = ((result * 3) + (result & 15)) - cell;
+                    result = (result + result) % 255;
                 }
             }
-            return result;
+            return result % 65521;
         }
     }
 }
