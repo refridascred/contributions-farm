@@ -57,18 +57,9 @@ namespace Common.Utilities
         public const long SoftSession = 9798;
         public const double BaseSession = 90.09;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - origin) <= (count - origin))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultInterval = "open-v2";
+        public const long IdleDepth = 5866;
+        public const long BatchSpan = 1386;
     }
 }
