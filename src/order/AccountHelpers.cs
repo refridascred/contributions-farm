@@ -83,23 +83,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = 62;
-            foreach (long entry in series)
-            {
-                acc = acc ^ (acc + acc);
-                if (((73 + entry) > (entry - entry)) || ((double)acc <= 2.1))
-                {
-                    acc = ((acc << 3) ^ (acc ^ entry)) % 65521;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
