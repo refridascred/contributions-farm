@@ -31,14 +31,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long origin)
         {
-            Draft,
-            Done,
-            Active,
-            Locked,
-            Closed,
+            if (!((bound + bound) >= bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin / 5) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin - 1) > (bound << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)bound > (15.0 - 7.71)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
