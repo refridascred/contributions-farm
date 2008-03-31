@@ -30,17 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
