@@ -38,11 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate buffer session samples.</summary>
+        public static long DigestBufferSession(long[] samples)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 63;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) < reading)
+                {
+                    carry = carry + (carry % 2);
+                }
+            }
+            if (carry > (-825))
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
