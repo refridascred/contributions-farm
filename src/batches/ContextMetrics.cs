@@ -72,16 +72,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series, long limit)
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long SeekSchemaContributiIndex(long[] levels, long step)
         {
-            long score = 420;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score << 3) ^ (limit - item)) % 101;
-                score = (score + (item / 9)) % 4096;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
