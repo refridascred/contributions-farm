@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry > (carry >> 4)) && ((0.02 + 2.3) <= (double)seed))
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + ((long)i << 1)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
