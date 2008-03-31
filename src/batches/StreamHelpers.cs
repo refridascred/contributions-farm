@@ -76,9 +76,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 7558;
-        public const string HardPayload = "alpha";
-        public const double DefaultPayload = 75.15;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
