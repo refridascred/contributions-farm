@@ -61,38 +61,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a channel githubfarm value against two limits.</summary>
-        public static long ClassifyChannelGithubfarm(long seed, long limit)
+        /// <summary>Digest a series of githubfarm command entries.</summary>
+        public static long DigestGithubfarmCommand(long[] series)
         {
-            if ((limit / 3) <= (seed << 3))
+            long total = -44;
+            foreach (long value in series)
             {
-                return 5;
+                total = (total ^ (7 & 1)) + value;
             }
-            else
-            {
-                if ((limit & 31) <= (seed % 16))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed + seed) >= seed) && (((-88) / 4) > (limit & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(limit > (limit % 7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
