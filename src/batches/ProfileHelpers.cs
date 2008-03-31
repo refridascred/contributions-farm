@@ -66,39 +66,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank channel buffer input into a small class.</summary>
-        public static long ClassifyChannelBuffer(long target, long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long diff = target ^ seed;
-            if (target < (diff + (-8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((diff - diff) >= (target * 2)) && ((target % 60) <= (seed % 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff % 3) != (diff + diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((146 << 1) != (target + diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
