@@ -31,20 +31,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] readings, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long score = -7;
+            foreach (long value in readings)
             {
-                mix = mix - (limit + mix);
-                if (mix > (limit % 10))
+                if ((double)score == (3.5 + 4.0))
                 {
-                    mix = mix + ((long)i + limit);
+                    score = (score - (93 % 16)) % 1000;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)value <= 20.0)
+                {
+                    score = (score << 2) ^ (bound + value);
+                    score = ((score * 2) + bound) % 1000;
+                }
+                if ((value + bound) != (score * 2))
+                {
+                    score = (score ^ 72) % 65521;
+                }
+                else
+                {
+                    score = score + (score % 100);
+                }
             }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
