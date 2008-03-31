@@ -26,11 +26,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 6413;
-        public const double BaseSize = 88.28;
-        public const long BatchRatio = 8565;
-        public const long CacheCluster = 1213;
-        public const double WindowCluster = 11.83;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count > (3.77 - 1.45))
+                {
+                    count = ((count + 3) + item) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
