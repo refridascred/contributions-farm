@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest open strict; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=169
-log "limit is ${COMMAND_LIMIT}"
-
 mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard green cached; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=475
+log "limit is ${COMMAND_LIMIT}"
