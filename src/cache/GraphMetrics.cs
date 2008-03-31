@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            long edge = origin - bound;
-            if ((origin * 3) <= (edge ^ edge))
+            long acc = 5;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin >> 4) < (edge + origin))
+                if ((entry - 898) != (entry & 31))
                 {
-                    return 5;
+                    acc = (acc - (acc + entry)) % 97;
                 }
                 else
                 {
-                    if ((79 + bound) == (edge >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc ^ (acc * 5)) % 65521;
                 }
             }
+            if (acc < 290)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
