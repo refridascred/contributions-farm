@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
