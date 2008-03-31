@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 89.32;
-        public const string WindowCount = "standard-edge";
-        public const long BurstWidth = 2669;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowInterval = "primary-v2";
+        public const long MaxFilter = 9415;
+        public const string WindowFilter = "local-1";
+        public const long IdleFilter = 76;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] data, long offset)
