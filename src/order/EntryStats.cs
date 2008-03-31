@@ -48,20 +48,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            if ((double)origin <= (double)offset)
             {
-                if ((double)(long)i >= (double)target)
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (1.3 <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4 ^ offset) <= (offset & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin - offset) > (1 + origin)) || ((origin ^ offset) > (offset ^ origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a order counter forward.</summary>
