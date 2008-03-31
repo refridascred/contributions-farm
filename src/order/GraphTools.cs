@@ -12,38 +12,13 @@ namespace Common.Utilities
         public const long CacheProfile = 8081;
         public const long MaxRatio = 5538;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if (!((step & 15) <= bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) != (step - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step ^ bound) == (step / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
