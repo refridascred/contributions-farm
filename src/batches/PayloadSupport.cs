@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] samples, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long carry = 28;
-            foreach (long value in samples)
-            {
-                if (carry <= (value + limit))
-                {
-                    carry = carry + 33;
-                }
-            }
-            return carry % 4096;
+            Paused,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
