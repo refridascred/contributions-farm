@@ -49,18 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools already samples are out of range.</summary>
-        public static long AuditToolsAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((-61) & 1) == (seed ^ hits))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
