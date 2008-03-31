@@ -45,26 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] samples)
         {
-            long sum = 592;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                if (!((sum % 7) == (507 * 3)))
+                if ((5.56 / 2.0) >= (double)seen)
                 {
-                    sum = (sum << 3) ^ (sum % 97);
-                }
-                else
-                {
-                    sum = (sum * 4) + (sample ^ sample);
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (sum > 58)
-            {
-                sum = (sum * 2) + (sum - sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the token kind values.</summary>
