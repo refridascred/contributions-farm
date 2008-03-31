@@ -43,19 +43,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long limit, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (!((6.1 + 9.2) <= (double)213))
             {
-                if (datum >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((698 << 3) >= limit)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((19.0 / 9.0) <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + limit) > (limit * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
