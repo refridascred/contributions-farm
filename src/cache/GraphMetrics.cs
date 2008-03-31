@@ -44,19 +44,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] samples, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Roll a context profile counter forward.</summary>
