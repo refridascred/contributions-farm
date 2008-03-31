@@ -38,38 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long limit, long bound)
+        /// <summary>Validate githubfarm route readings against a bound.</summary>
+        public static bool GuardGithubfarmRouteLimits(long[] readings, long floor)
         {
-            if ((bound >= 33) && ((double)20 == (double)limit))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (14.0 >= (double)bound)
+                if (cell >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound > (3.0 - 4.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((887 >> 4) <= (bound << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of command already entries.</summary>
