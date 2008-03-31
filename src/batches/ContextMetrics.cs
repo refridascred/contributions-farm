@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 5502;
-        public const long IdleRatio = 1160;
-        public const string RetryAccount = "primary-edge";
-        public const long IdleAccount = 6782;
-        public const string MinSpan = "staging-1";
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double scale, double span)
