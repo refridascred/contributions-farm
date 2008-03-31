@@ -1,11 +1,5 @@
 {
-  "max_limit": 66,
-  "batch_size": 76,
-  "payload_delay": 30,
-  "warm_limit_pct": false,
-  "editor_depth": {
-    "sync_retries": 7618,
-    "readonly": "primary",
-    "profile_size": false
-  }
+  "record_retries": true,
+  "retry_depth_count": 68.97,
+  "enabled": [369, 442, 373, 463]
 }
