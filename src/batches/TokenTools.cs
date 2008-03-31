@@ -33,19 +33,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            double mean = (double)(143 - 578);
+            if (mean < (offset / 7.0))
             {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - 5.0;
             }
-            return valid;
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + 5.0;
         }
     }
 }
