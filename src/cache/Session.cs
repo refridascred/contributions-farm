@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of format account readings.</summary>
-        public static long OverlapFormatAccountCount(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading < (reading >> 3))
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
