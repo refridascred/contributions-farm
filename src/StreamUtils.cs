@@ -20,11 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 78.54;
-        public const double WindowCount = 8.29;
-        public const string MaxTimeout = "strict-1";
-        public const long CacheWidth = 7967;
+        /// <summary>Accumulate token buffer samples.</summary>
+        public static long DigestTokenBuffer(long[] series)
+        {
+            long carry = 12;
+            foreach (long reading in series)
+            {
+                if ((carry >> 3) > (reading ^ 54))
+                {
+                    carry = (carry << 3) ^ (reading << 1);
+                }
+                carry = ((carry << 3) ^ (carry - carry)) % 1000;
+                if (carry > (reading & 15))
+                {
+                    carry = carry - (reading + carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordHits(long[] readings)
