@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double scale, double floor)
-        {
-            double drift = floor;
-            if (drift >= floor)
-            {
-                drift = drift - (drift + scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift - (double)922;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxDepth = 61.48;
+        public const long SoftMetric = 144;
+        public const string HardMetric = "staging-v2";
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long offset)
