@@ -1,20 +1,7 @@
 # githubfarm settings
-context_ratio:
-  base_limit_ms:
-    min_ratio_ms:
-      - edge
-      - edge
-      - strict
-      - stable
-    persist: 47
-    default_window_ms: eu-west
-    strict: local
-    support_delay: 97
-  hard_threshold_pct: 5196
-  poll_threshold:
-    - primary
-    - green
-    - edge
-    - cached
-poll_ttl_pct: true
-already_size: false
+base_ratio_s: green
+base_timeout_ms: true
+format_size: latest
+idle_depth_s: 2716
+idle_ratio: 53
+flush_size_count: true
