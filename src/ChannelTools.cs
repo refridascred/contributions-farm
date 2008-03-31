@@ -20,39 +20,18 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long CacheSupport = 3093;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            long span = offset ^ target;
-            if (target < 147)
+            long count = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)span >= 7.8))
+                if ((double)count < (5.34 / 5.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset != (13.0 / 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.0 / 8.0) < (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
     }
 }
