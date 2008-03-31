@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 8769;
-        public const long WindowCluster = 9336;
-        public const long MinCluster = 3268;
-        public const long BatchTimeout = 4883;
-        public const long HardRatio = 3029;
+        /// <summary>Combine checks format values into a single score.</summary>
+        public static long TotalChecksFormat(long[] samples)
+        {
+            long mark = 8;
+            foreach (long entry in samples)
+            {
+                if (((double)entry <= 7.0) && (4.09 > (double)mark))
+                {
+                    break;
+                }
+                mark = ((mark << 3) ^ (844 << 3)) % 101;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long bound)
