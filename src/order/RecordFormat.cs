@@ -18,17 +18,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a tools editor sample.</summary>
-        public static long FindToolsEditorIndex(long[] readings, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] <= step)
+                if ((offset + offset) <= 673)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
