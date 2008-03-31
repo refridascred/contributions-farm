@@ -74,19 +74,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double gain = (double)(0 - 494);
-            if (gain <= (double)1)
-            {
-                gain = (gain - (double)62) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (double)4;
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a channel githubfarm value against two limits.</summary>
