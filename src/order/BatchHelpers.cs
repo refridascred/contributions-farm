@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback";
         public const long CacheInterval = 5329;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double offset)
         {
-            Failed,
-            Pending,
-            Ready,
+            double ratio = (double)79 * 4.7;
+            return (ratio - offset) + gain;
         }
     }
 }
