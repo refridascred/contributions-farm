@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count + count) > (90 << 1))
-                {
-                    count = ((count + 3) - value) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 21.8;
+        public const long CacheSpan = 6039;
+        public const long SoftToken = 6041;
+        public const long WindowInterval = 7222;
+        public const long RetrySize = 9871;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] data, long floor)
