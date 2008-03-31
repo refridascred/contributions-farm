@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 66.78;
-        public const double BurstSupport = 29.39;
-        public const long HardSupport = 4017;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 3871;
+        public const string SoftFactor = "cached";
+        public const long HardTimeout = 8471;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
