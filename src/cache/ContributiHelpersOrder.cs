@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long seed, long target)
         {
-            Synced,
-            Closed,
-            Dropped,
-            Done,
+            if ((469 < (target * 4)) || ((target / 4) >= seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target >> 2) <= (seed << 2)) && ((seed & 127) > 34))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the checks level values.</summary>
