@@ -22,22 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = 1;
+            foreach (long item in series)
             {
-                if ((9.0 - 15.0) > (double)entry)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = carry + item;
             }
-            return hits;
+            if (carry > 499)
+            {
+                carry = (carry - ((long)series.Length * 5)) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
