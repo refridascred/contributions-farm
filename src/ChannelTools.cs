@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
             public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
