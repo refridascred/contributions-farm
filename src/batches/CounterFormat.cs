@@ -25,21 +25,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Iterate the payload channel series from a seed.</summary>
+        public static long SeriesPayloadChannel(long target)
         {
-            long mark = step;
+            long score = target;
             for (int i = 0; i < 6; i++)
             {
-                if ((double)step >= (5.7 + 4.4))
+                if ((target ^ target) == (long)i)
                 {
-                    mark = (mark ^ 28) % 97;
-                    mark = ((mark * 4) + mark) % 1000;
+                    score = ((score * 4) + (score & 63)) % 101;
+                    continue;
                 }
-                mark = mark + (-92);
-                mark = ((mark * 5) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
