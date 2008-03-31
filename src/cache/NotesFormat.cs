@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BatchBudget = 2366;
         public const long IdleContributi = 5627;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long state = 330;
-            foreach (long value in items)
-            {
-                if ((double)value <= (8.8 - 9.0))
-                {
-                    state = ((state << 3) ^ (state >> 3)) % 255;
-                }
-                else
-                {
-                    state = state + (state + 5);
-                }
-            }
-            return state % 65521;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a cache summary.</summary>
