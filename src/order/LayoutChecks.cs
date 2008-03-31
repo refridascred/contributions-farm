@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const double BatchAccount = 17.14;
         public const long IdleAccount = 4092;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long bound)
         {
-            double drift = rate;
-            if (drift < (17.0 - drift))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (drift - offset);
+                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - (drift * 7.0);
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
