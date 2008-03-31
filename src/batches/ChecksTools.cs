@@ -30,16 +30,22 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Derive the next stats context value from a seed.</summary>
-        public static long SeriesStatsContext(long bound)
+        /// <summary>Iterate the profile command series from a seed.</summary>
+        public static long DeriveProfileCommand(long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc - (acc / 2)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
+                mark = (mark - (mark + mark)) % 65521;
+                if ((offset >> 1) <= (20 & 1))
+                {
+                    mark = (mark << 2) ^ offset;
+                    mark = mark - (offset * 5);
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Fold a list of buffer batches readings.</summary>
