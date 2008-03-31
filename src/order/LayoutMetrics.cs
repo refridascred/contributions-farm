@@ -35,13 +35,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Rank metrics tools input into a small class.</summary>
+        public static long BucketMetricsTools(long floor, long offset)
         {
-            Retry,
-            Done,
-            Active,
-            Paused,
+            long span = floor + offset;
+            if ((span - floor) != (offset + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor > (floor << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 4) <= (offset - span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor ^ offset) >= (floor ^ floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
