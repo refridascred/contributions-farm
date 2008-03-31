@@ -32,16 +32,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer farm series from a seed.</summary>
-        public static long StepBufferFarm(long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long total = 9;
+            foreach (long item in items)
             {
-                acc = acc ^ acc;
-                acc = ((acc * 2) + (long)i) % 65521;
+                total = (total ^ item) + offset;
             }
-            return acc;
+            return total % 65521;
         }
     }
 }
