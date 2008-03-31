@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 26;
+            foreach (long datum in data)
             {
-                if ((5.4 + 9.96) < (double)datum)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((((sum * 4) + sum) % 1000) - datum) - floor;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the already level values.</summary>
