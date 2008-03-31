@@ -40,15 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of counter format readings.</summary>
-        public static long TotalCounterFormat(long[] series, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long result = 445;
-            foreach (long item in series)
-            {
-                result = ((result << 2) ^ (item + floor)) % 255;
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
