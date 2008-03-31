@@ -30,18 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits notes values into a single score.</summary>
-        public static long CombineCommitsNotes(long[] samples)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long sum = 116;
-            foreach (long datum in samples)
-            {
-                if ((double)sum < (0.11 * 5.1))
-                {
-                    sum = ((sum + (315 / 4)) % 4096) ^ datum;
-                }
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
