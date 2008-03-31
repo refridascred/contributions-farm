@@ -49,11 +49,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepFactor = 95.77;
-        public const long MinContributi = 9971;
-        public const long LimitDepth = 2828;
-        public const long CacheRatio = 5382;
-        public const long RetryContributi = 8200;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits / 6) != ((long)readings.Length * 5))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
+        }
     }
 }
