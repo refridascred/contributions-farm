@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many batches tools samples are out of range.</summary>
-        public static long CountBatchesToolsMatches(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((4 ^ entry) >= (entry * 3)) || (((-19) + entry) >= (964 >> 2)))
+                if (cell >= 64)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
