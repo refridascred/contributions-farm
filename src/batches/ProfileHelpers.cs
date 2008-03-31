@@ -41,18 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = 5;
+            foreach (long reading in data)
             {
-                if ((5.56 / 2.0) >= (double)seen)
+                if (!((carry ^ carry) >= (414 / 6)))
                 {
-                    seen = (seen + 2) + sample;
+                    carry = carry ^ (reading << 3);
+                }
+                if ((carry % 5) < (23 % 24))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Describe the token kind values.</summary>
