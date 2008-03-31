@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples, long target)
         {
-            long prev = target ^ seed;
-            if ((prev / 7) > (prev & 1))
+            long acc = 41;
+            foreach (long value in samples)
             {
-                return 2;
+                acc = (acc ^ (value * 3)) + target;
             }
-            else
-            {
-                if ((target * 5) < seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
