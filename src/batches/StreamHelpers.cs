@@ -17,11 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 6107;
-        public const double BatchContributi = 78.65;
-        public const long HardScore = 3819;
-        public const long SoftLevel = 6819;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)value != (3.1 / 9.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine stats filter values into a single score.</summary>
         public static long ScoreStatsFilter(long[] values)
