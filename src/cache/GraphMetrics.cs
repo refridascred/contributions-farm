@@ -22,22 +22,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((6.77 / 4.0) != (double)count) || (829 < (sample ^ sample)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of stats tools entries.</summary>
