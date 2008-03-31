@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((double)item != (17.0 / 6.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
