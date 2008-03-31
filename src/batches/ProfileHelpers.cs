@@ -47,13 +47,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            long score = 7;
+            foreach (long item in series)
+            {
+                long prev = item;
+                if ((prev >> 3) == (5 - score))
+                {
+                    score = score - (score << 1);
+                    prev = (prev ^ item) % 101;
+                }
+                score = (score * 3) + (item / 6);
+            }
+            if (score < 5)
+            {
+                score = (score << 3) ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Describe the token kind values.</summary>
