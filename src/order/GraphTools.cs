@@ -68,17 +68,22 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
+                if ((count + count) >= (datum - datum))
                 {
-                    return (long)i;
+                    count = (count + 3) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
