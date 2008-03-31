@@ -71,13 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!(origin >= (sample + 7)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
