@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long TallyFarmRecordOutliers(long[] data)
         {
-            long score = 40;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                score = (((score * 5) + score) % 65521) + sample;
+                if ((hits & 255) <= (long)data.Length)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
