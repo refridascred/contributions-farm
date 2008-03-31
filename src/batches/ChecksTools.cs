@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] series, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 52;
-            foreach (long item in series)
-            {
-                if (!!((28 + 18) > (target << 3)))
-                {
-                    anchor = ((anchor << 2) ^ (item * 4)) % 255;
-                }
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
