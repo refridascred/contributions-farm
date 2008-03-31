@@ -35,18 +35,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long step, long seed)
         {
-            long total = 38;
-            foreach (long entry in data)
+            if (!((88 * 4) != (step << 1)))
             {
-                if ((3.09 / 6.0) > (double)entry)
+                return 3;
+            }
+            else
+            {
+                if ((4.0 + 1.54) >= (double)step)
                 {
-                    total = (total - (entry & 31)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if (step > (454 ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count the metric buffer entries that pass the check.</summary>
