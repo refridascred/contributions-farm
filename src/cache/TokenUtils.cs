@@ -27,22 +27,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] readings, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long total = 8;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry + bound) > (entry % 100)) && (2 <= (entry << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + (entry / 2)) % 4096;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = (total + ((long)readings.Length ^ total)) % 97;
-            }
-            return total % 65521;
+            return matches;
         }
     }
 }
