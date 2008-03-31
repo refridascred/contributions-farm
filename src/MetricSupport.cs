@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Ready,
-            Closed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 72.78;
+        public const long MaxChannel = 333;
+        public const long StepSpan = 3889;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
