@@ -1,12 +1,4 @@
 # entry settings
-window_limit:
-  base_ttl: staging
-  base_window: 1024
-  default_timeout:
-    - open
-    - stable
-    - blue
-  burst_delay_ms: open
-persist: legacy
-tools_retries: false
-retry_limit: legacy
+report_interval: standard
+filter_limit: staging
+soft_ratio_ms: 67
