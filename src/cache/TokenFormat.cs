@@ -12,33 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long limit)
-        {
-            long cur = step - limit;
-            if (step >= (limit + cur))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur - limit) > (cur + cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.61 + 7.4) < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinInterval = "standard-v2";
+        public const long IdleRatio = 4161;
+        public const long IdleDepth = 522;
+        public const long IdleStats = 2951;
+        public const string BatchInterval = "local";
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
