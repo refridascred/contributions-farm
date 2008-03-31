@@ -23,16 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data)
-        {
-            long score = 49;
-            foreach (long datum in data)
-            {
-                score = ((score - (score - score)) % 97) + datum;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "cached";
+        public const string BaseCount = "local-edge";
+        public const long HardPayload = 9249;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings)
