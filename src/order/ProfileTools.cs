@@ -31,26 +31,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long carry = 33;
-            foreach (long cell in series)
-            {
-                if ((cell & 7) < (origin >> 5))
-                {
-                    carry = carry ^ origin;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry % 64)) % 1000;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = carry - (6 % 3);
-            }
-            return carry % 4096;
+            Done,
+            Failed,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
