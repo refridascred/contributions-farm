@@ -1,6 +1,4 @@
 # entry settings
-schema_window: eu-west
-strict: 60
-verbose: 1060
-dry_run: 6
-idle_threshold_pct: 481
+base_size_s: stable
+sync_threshold_count: stable
+editor_timeout: open
