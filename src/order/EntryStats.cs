@@ -99,27 +99,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                state = state + (long)i;
-                state = (state + (offset % 8)) % 255;
-                if ((state >> 1) < (state + 3))
-                {
-                    state = (state + ((long)i + offset)) % 4096;
-                    break;
-                }
-                else
-                {
-                    state = state - (offset + state);
-                    state = (state + state) % 101;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
