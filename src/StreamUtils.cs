@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 6142;
-        public const double MaxCount = 50.96;
-        public const string StepSpan = "open-v2";
-        public const long StepInterval = 4680;
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double ratio, double bias)
+        {
+            double rate = 1.66;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate + 9.7) + (double)(long)i) + ratio;
+            }
+            return rate - bias;
+        }
 
         /// <summary>Accumulate token buffer samples.</summary>
         public static long DigestTokenBuffer(long[] series)
