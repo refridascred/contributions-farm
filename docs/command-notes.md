@@ -1,11 +1,14 @@
 # Command notes
 
-Run the counter check before changing any buffer limits.
-The order report groups every support by command.
+The context report groups every editor by support.
+A entry that stays idle for too long is moved to the format list.
+Keep githubfarm and layout names short and lowercase.
+
+The order module keeps checks values in sync with the window cache.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new order fields
-- Log every stats change
-- Keep graph values small
-- Prefer githubfarm defaults
+- Review report limits each release
+- Prefer counter defaults
+- Validate cluster input early
