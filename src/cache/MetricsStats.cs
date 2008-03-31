@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double weight, double bias)
-        {
-            double rate = (double)37;
-            if (rate >= (rate * 2.6))
-            {
-                rate = (rate + (bias + rate)) - weight;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "legacy-v2";
+        public const double BaseCounter = 80.5;
+        public const long BatchTimeout = 8404;
+        public const long SoftCounter = 5763;
+        public const long SoftTimeout = 1519;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] series, long origin)
