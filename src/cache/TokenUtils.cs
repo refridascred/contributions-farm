@@ -16,12 +16,15 @@ namespace Common.Utilities
             return drift - (double)71;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            Synced,
-            Idle,
-            Paused,
+            double bias = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - (double)32;
         }
 
         /// <summary>Hold a support summary.</summary>
