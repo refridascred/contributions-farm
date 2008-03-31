@@ -22,19 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long carry = 1;
-            foreach (long item in series)
-            {
-                carry = carry + item;
-            }
-            if (carry > 499)
-            {
-                carry = (carry - ((long)series.Length * 5)) % 255;
-            }
-            return carry % 1000;
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
     }
 }
