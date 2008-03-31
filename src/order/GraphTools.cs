@@ -41,12 +41,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            Dropped,
+            Synced,
+            Stale,
+            Retry,
+            New,
         }
     }
 }
