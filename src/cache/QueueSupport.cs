@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((sample % 3) == (seen << 3))
+                if (item != step)
                 {
-                    seen = (seen + 1) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
