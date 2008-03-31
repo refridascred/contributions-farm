@@ -29,18 +29,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long delta = limit + offset;
+            if ((double)limit >= (double)offset)
             {
-                if ((target - tally) == (tally ^ target))
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit > (double)offset))
                 {
-                    tally = (tally + 1) - cell;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset <= (limit + offset)) && ((delta - delta) >= delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
