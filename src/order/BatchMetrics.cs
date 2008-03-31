@@ -51,18 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route checks samples are out of range.</summary>
-        public static long CountRouteChecksOutliers(long[] items)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.8 * 5.0) > (double)count)
+                if (readings[i] <= seed)
                 {
-                    count = (count + 1) - item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
