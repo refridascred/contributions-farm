@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepRatio = 464;
-        public const long WindowSpan = 9249;
-        public const long BaseLevel = 9355;
-        public const long BurstTimeout = 5512;
-        public const long SoftBuffer = 6076;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items)
+        {
+            long carry = -7;
+            foreach (long item in items)
+            {
+                if ((carry & 1) >= 105)
+                {
+                    carry = ((carry << 3) ^ (635 << 3)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (96 - item);
+                }
+            }
+            if (carry > 90)
+            {
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] items, long bound)
