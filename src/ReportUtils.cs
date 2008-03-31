@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 4569;
-        public const long BaseRatio = 1819;
-        public const long LimitInterval = 9139;
-        public const long IdleSchema = 5234;
-        public const double LimitSchema = 58.79;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LocateCacheIndex(long[] readings, long limit)
