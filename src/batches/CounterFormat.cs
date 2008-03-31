@@ -13,12 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)step >= (5.7 + 4.4))
+                {
+                    mark = (mark ^ 28) % 97;
+                    mark = ((mark * 4) + mark) % 1000;
+                }
+                mark = mark + (-92);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
