@@ -25,23 +25,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next graph stream value.</summary>
-        public static double BlendGraphStream(double weight, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double load = (double)(-62) - offset;
-            if (load > load)
-            {
-                load = (load + offset) + weight;
-            }
-            else
-            {
-                load = load + (double)57;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - load;
+            Locked,
+            Failed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
