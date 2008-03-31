@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long state = -7;
+            foreach (long cell in samples)
+            {
+                if ((double)(long)samples.Length <= (double)cell)
+                {
+                    state = ((state << 3) ^ (cell + 4)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
