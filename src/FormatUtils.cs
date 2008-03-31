@@ -45,21 +45,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= target)
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next route window value from a seed.</summary>
