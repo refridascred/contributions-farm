@@ -25,19 +25,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long carry = 66;
-            foreach (long datum in items)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry << 3) ^ (datum * 2)) % 97;
-                if (892 > carry)
-                {
-                    carry = (carry - (carry / 2)) % 97;
-                }
+                state = (state ^ (6 + (long)i)) % 101;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
     }
 }
