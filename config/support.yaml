@@ -1,9 +1,7 @@
 # support settings
-payload_depth: latest
-max_capacity: latest
-idle_depth: 1.12
-retry_timeout_count: 7000
-poll_capacity_count:
-  - local
-  - edge
-  - open
+tools_size: standard
+verbose: 23
+flush_threshold_pct: 69.89
+compress: 13.6
+readonly: true
+min_timeout_pct: eu-west
