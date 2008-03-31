@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 4784;
+        public const long MaxCache = 4647;
+        public const double StepLevel = 20.85;
+        public const long BurstInterval = 6548;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstLevel = 6733;
