@@ -15,18 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine schema payload values into a single score.</summary>
-        public static long ScoreSchemaPayload(long[] series, long limit)
+        /// <summary>Accumulate notes context samples.</summary>
+        public static long TotalNotesContext(long[] samples, long limit)
         {
-            long mix = 83;
-            foreach (long cell in series)
+            long total = 221;
+            foreach (long value in samples)
             {
-                if (!((double)cell != (2.62 / 3.0)))
+                if ((total + total) >= (value - limit))
                 {
-                    mix = ((mix - (cell + mix)) % 1000) + limit;
+                    total = (total ^ (value * 2)) % 4096;
                 }
             }
-            return mix;
+            if (total > 8)
+            {
+                total = (total * 4) + (limit >> 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
