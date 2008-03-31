@@ -25,18 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
-        public static long TallyGithubfarmFilterGaps(long[] items, long seed)
+        /// <summary>Compare every pair of cluster stats readings.</summary>
+        public static long PairClusterStatsCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed <= 20.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + datum;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a notes record.</summary>
