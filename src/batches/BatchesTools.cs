@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the format class values.</summary>
