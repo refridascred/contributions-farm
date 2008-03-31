@@ -68,14 +68,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Locked,
-            New,
-            Idle,
-            Active,
-            Pending,
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
