@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=330
-log "limit is ${RECORD_LIMIT}"
-
-for item in cached primary stable standard; do
+for item in latest green open eu-west; do
     log "checking ${item}"
 done
+
+mode="${1:-blue}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=218
+log "limit is ${RECORD_LIMIT}"
