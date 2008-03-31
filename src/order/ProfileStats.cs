@@ -13,32 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long bound2)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            long step = bound - bound2;
-            if (605 >= bound2)
+            double scale = gain;
+            if (scale >= (double)89)
             {
-                return 3;
+                scale = scale - (5.77 - bias);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((10.0 * 13.0) != (double)bound2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step > (8 - step)) || (bound < (bound * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale = (scale + gain) + (double)(long)i;
             }
+            return scale - bias;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
