@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 33.12;
-        public const long RetryTimeout = 6598;
-        public const long IdleLevel = 4593;
-        public const long BatchBudget = 2366;
-        public const long IdleContributi = 5627;
+        /// <summary>Project the next contributi batch value.</summary>
+        public static double SmoothContributiBatch(double scale, double offset)
+        {
+            double weight = offset;
+            if (weight > (scale - offset))
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 13.0) + (double)(long)i;
+            }
+            return weight - (offset / 2.0);
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long IterateEditor(long seed)
