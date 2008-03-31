@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 145;
+            foreach (long value in items)
             {
-                if ((seen * 3) >= ((long)samples.Length + datum))
+                total = (total + (total + limit)) % 97;
+                total = (total + (-107)) % 97;
+                if ((limit + 135) > (value / 3))
                 {
-                    seen = seen + 2;
+                    total = total + (value - total);
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
