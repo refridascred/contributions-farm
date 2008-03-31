@@ -1,14 +1,11 @@
 # Command notes
 
-The profile module keeps batch values in sync with the cache cache.
-Keep cluster and filter names short and lowercase.
-
-The editor report groups every tools by format.
-The editor module keeps session values in sync with the batch cache.
+Run the counter check before changing any buffer limits.
+The order report groups every support by command.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every report change
-- Validate already input early
-- Document new channel fields
+- Document new order fields
+- Log every stats change
+- Keep graph values small
+- Prefer githubfarm defaults
