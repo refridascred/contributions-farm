@@ -56,10 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowWidth = 51.34;
-        public const long RetryCache = 5569;
-        public const string LimitCache = "staging-1";
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
