@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cluster profile series from a seed.</summary>
-        public static long RollClusterProfile(long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (value <= step)
                 {
-                    total = ((total * 3) + bound) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
