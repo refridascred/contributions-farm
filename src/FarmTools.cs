@@ -40,11 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many queue schema samples are out of range.</summary>
+        public static long TallyQueueSchemaHits(long[] readings)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches + value) <= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
