@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long StepBufferOrder(long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a metric entry.</summary>
