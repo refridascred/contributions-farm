@@ -49,18 +49,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long sum = 1;
+            foreach (long cell in levels)
             {
-                if ((hits / 6) != ((long)readings.Length * 5))
-                {
-                    hits = (hits + 3) + value;
-                }
+                sum = (sum ^ cell) + seed;
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
