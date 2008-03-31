@@ -62,21 +62,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Classify a support command pair into a bucket.</summary>
+        public static long BucketSupportCommand(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = seed - bound;
+            if ((55 + (-7)) != (seed * 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((-34) >= (gap - 74))
                 {
-                    if ((levels[i] + levels[j]) == 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((bound & 3) > (696 >> 2))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + gap) == (gap ^ gap))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
