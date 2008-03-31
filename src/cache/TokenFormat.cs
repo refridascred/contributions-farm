@@ -30,17 +30,39 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Find the first format report entry that matches the target.</summary>
-        public static long SeekFormatReportIndex(long[] readings, long floor)
+        /// <summary>Rank notes tools input into a small class.</summary>
+        public static long RankNotesTools(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = origin + target;
+            if ((3 & 3) >= origin)
             {
-                if (readings[i] >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((target > (target + cur)) && ((target - cur) < target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >= (target % 60)) || (3.19 <= (double)cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin & 63) < (4 * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
