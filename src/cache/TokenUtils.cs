@@ -16,23 +16,12 @@ namespace Common.Utilities
             return drift - (double)71;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double drift = ratio / 4.0;
-            if (drift <= (drift / 4.0))
-            {
-                drift = drift - offset;
-            }
-            else
-            {
-                drift = drift + (ratio / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (7.0 / 3.0)) + (double)(long)i;
-            }
-            return drift + (offset - ratio);
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a support summary.</summary>
