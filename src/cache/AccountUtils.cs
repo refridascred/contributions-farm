@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long seed, long floor)
         {
-            Done,
-            Queued,
-            Synced,
+            long slot = seed - floor;
+            if ((floor & 15) < slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.9 * 0.3) == (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < (13.0 + 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed != (8.3 * 8.49))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account window readings against a bound.</summary>
