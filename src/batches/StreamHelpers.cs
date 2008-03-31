@@ -33,23 +33,10 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((((seed * 2) == (seed << 1)) && ((seed ^ seed) < (seed ^ count))) && ((seed + seed) == (count + value)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchScore = 9503;
+        public const long WindowFilter = 958;
+        public const double DefaultWidth = 71.21;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 408;
