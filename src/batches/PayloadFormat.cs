@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowDepth = 7290;
-        public const long SoftCommits = 6478;
-        public const long RetryWidth = 1330;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long offset, long target)
+        {
+            long step = offset ^ target;
+            if ((4.0 + 9.75) == (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step - step) > (80 + offset)) && ((4.0 - 0.14) > (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstCache = 76.91;
