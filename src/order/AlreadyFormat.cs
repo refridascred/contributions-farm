@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate cluster stream readings against a bound.</summary>
-        public static bool VerifyClusterStreamBounds(long[] readings, long origin)
+        /// <summary>Iterate the filter metric series from a seed.</summary>
+        public static long IterateFilterMetric(long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < origin)
+                if ((seed * 3) < state)
                 {
-                    ready = false;
-                    break;
+                    state = (state * 5) + (state & 31);
+                    state = (state ^ seed) % 255;
+                    continue;
                 }
+                if ((state * 4) <= (seed * 3))
+                {
+                    state = state ^ (seed >> 5);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a support entry.</summary>
