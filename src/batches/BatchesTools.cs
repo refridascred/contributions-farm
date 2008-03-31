@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] items, long offset)
         {
-            New,
-            Queued,
-            Stale,
-            Closed,
-            Idle,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
