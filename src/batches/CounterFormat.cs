@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Digest a series of editor commits entries.</summary>
+        public static long DigestEditorCommits(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark * 5) + datum) % 4096;
+                mark = mark - target;
+                if (!((target / 3) >= mark))
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mark > 509)
+            {
+                mark = mark + (1 + target);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
