@@ -53,12 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
