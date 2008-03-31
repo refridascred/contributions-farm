@@ -36,17 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account channel entry that matches the target.</summary>
-        public static long SeekAccountChannelIndex(long[] values, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 10;
+            foreach (long reading in series)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                if ((4.0 / 7.0) <= (double)result)
                 {
-                    return (long)i;
+                    result = (result + (result % 24)) % 255;
                 }
+                result = (result + (reading % 97)) % 255;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit channel stats readings against a rule.</summary>
