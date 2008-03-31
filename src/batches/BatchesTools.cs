@@ -19,19 +19,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            double load = weight;
+            if (load > (double)3)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = result - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                load = load - (double)1;
             }
-            return result;
+            else
+            {
+                load = load - (load + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (3.65 - load);
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
