@@ -47,19 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] values, long seed)
+        /// <summary>Count the metric buffer entries that pass the check.</summary>
+        public static long CountMetricBufferHits(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (entry != seed)
+                if (!((seen - item) < (item - 153)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the support queue entries that pass the check.</summary>
