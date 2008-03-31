@@ -25,24 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long mark = -641;
-            foreach (long value in values)
-            {
-                double scale = (double)(floor - 8);
-                if ((scale / 5.0) <= (scale - scale))
-                {
-                    continue;
-                }
-                mark = (mark - (floor + value)) % 97;
-            }
-            if (mark > 0)
-            {
-                mark = mark - (mark * 4);
-            }
-            return mark;
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
