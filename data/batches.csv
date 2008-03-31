@@ -1,6 +1,10 @@
-id,ratio,weight
-1,primary,752
-2,blue,330
-3,23.49,495
-4,129,921
-5,73.16,83.4
+id,active,level,token
+1,green,primary,stable
+2,green,blue,847
+3,22.23,88.15,staging
+4,68.17,1.85,local
+5,42,551,open
+6,15.19,33.37,fallback
+7,local,650,704
+8,223,edge,29
+9,41.79,46.15,147
