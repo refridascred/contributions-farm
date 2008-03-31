@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Look up the position of a payload command sample.</summary>
+        public static long FindPayloadCommandIndex(long[] samples, long offset)
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
