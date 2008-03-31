@@ -32,19 +32,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long step)
         {
-            double weight = ratio;
-            if (weight >= floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - 8.47;
+                if ((values[i] <= step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
