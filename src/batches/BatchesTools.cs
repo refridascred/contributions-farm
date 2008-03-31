@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double weight, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long step)
         {
-            double bias = offset - (offset * 9.0);
-            if (bias > (weight / 5.0))
+            if ((90 - offset) != (step - step))
             {
-                bias = bias - (bias + weight);
+                return 7;
             }
             else
             {
-                bias = bias - (offset * 2.0);
+                if ((99 >= (offset % 8)) && ((offset - offset) < (offset % 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2 - (-81)) > (offset - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return bias + (double)39;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
