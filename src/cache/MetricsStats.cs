@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Stale,
-            Paused,
-            New,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardBudget = 1.85;
+        public const long LimitFactor = 7525;
+        public const string WindowSize = "legacy-v2";
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
