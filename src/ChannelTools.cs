@@ -31,20 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long score = 21;
-            foreach (long datum in items)
-            {
-                if (!((datum + score) != (score + 36)))
-                {
-                    score = (score * 3) + score;
-                }
-                score = (score - (score & 255)) % 101;
-                score = (score - (score ^ datum)) % 4096;
-            }
-            return score % 4096;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
