@@ -78,11 +78,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
