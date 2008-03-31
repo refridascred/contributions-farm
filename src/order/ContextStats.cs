@@ -21,17 +21,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a route session sample.</summary>
-        public static long SeekRouteSessionIndex(long[] samples, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
