@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
