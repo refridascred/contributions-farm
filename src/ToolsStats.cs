@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Done,
-            Idle,
-            Locked,
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
