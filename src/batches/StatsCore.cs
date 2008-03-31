@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] series, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double scale = offset;
+            if (scale < offset)
             {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - scale;
             }
-            return stale;
+            return scale - bias;
         }
     }
 }
