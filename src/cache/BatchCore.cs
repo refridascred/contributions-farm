@@ -31,24 +31,14 @@ namespace Common.Utilities
         public const long IdleInterval = 5679;
         public const long DefaultCommits = 1488;
 
-        /// <summary>Classify a record farm pair into a bucket.</summary>
-        public static long ClassifyRecordFarm(long floor, long limit)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if ((limit >> 3) > (floor + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) >= (357 + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Synced,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of session layout entries.</summary>
