@@ -31,11 +31,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double offset)
+        /// <summary>Accumulate format record samples.</summary>
+        public static long ScoreFormatRecord(long[] values)
         {
-            double ratio = (double)79 * 4.7;
-            return (ratio - offset) + gain;
+            long result = 31;
+            foreach (long reading in values)
+            {
+                result = ((result << 2) ^ 8) % 255;
+                if ((result + reading) == (reading + (-66)))
+                {
+                    result = result - (result - reading);
+                }
+                else
+                {
+                    result = (result + result) % 65521;
+                    result = (result - (501 << 2)) % 97;
+                }
+                if ((55 % 60) == (result * 5))
+                {
+                    result = (result - result) % 65521;
+                }
+            }
+            return result % 97;
         }
     }
 }
