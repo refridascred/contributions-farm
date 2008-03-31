@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] levels, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long mix = 67;
+            foreach (long datum in series)
             {
-                if (value != offset)
+                if ((datum + mix) == (datum - mix))
                 {
-                    found = false;
-                    break;
+                    mix = (mix - 389) % 4096;
                 }
             }
-            return found;
+            return mix % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
