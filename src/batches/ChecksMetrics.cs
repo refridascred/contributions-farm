@@ -88,12 +88,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
