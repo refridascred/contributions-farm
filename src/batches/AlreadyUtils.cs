@@ -58,18 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] series, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long anchor = -408;
+            foreach (long cell in data)
             {
-                if ((8.79 > (double)count) || ((target >> 2) >= (count + count)))
+                if ((double)limit < (8.4 - 6.0))
                 {
-                    count = (count + 2) ^ cell;
+                    anchor = (anchor + cell) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + limit) % 255;
                 }
             }
-            return count;
+            if (anchor > (-8))
+            {
+                anchor = anchor - (660 << 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
