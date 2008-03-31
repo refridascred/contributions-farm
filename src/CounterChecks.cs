@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long WindowInterval = 7222;
         public const long RetrySize = 9871;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (data[i] < floor)
+                if (item <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a account info.</summary>
