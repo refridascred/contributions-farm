@@ -27,22 +27,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items, long offset)
         {
-            long state = 738;
-            foreach (long value in levels)
+            long result = 73;
+            foreach (long cell in items)
             {
-                if ((state / 6) > (978 + origin))
+                if (((cell << 1) >= (cell + result)) && ((result >> 2) <= result))
                 {
-                    state = ((state - ((long)levels.Length + state)) % 65521) ^ value;
+                    result = ((result ^ (-9)) % 1000) + offset;
                 }
             }
-            if (state < 81)
+            if (result < 638)
             {
-                state = (state + (50 + origin)) % 1000;
+                result = (result + (result % 100)) % 1000;
             }
-            return state;
+            return result % 1000;
         }
     }
 }
