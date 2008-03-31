@@ -1,6 +1,6 @@
 {
-  "warm_window_s": 60,
-  "cache_ttl_ms": 7.45,
-  "soft_delay": true,
-  "poll_threshold_pct": "green"
+  "audit": false,
+  "min_delay_pct": 95.77,
+  "burst_depth_count": 50,
+  "dry_run": [396, 117, 184, 299]
 }
