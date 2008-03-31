@@ -29,13 +29,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series)
         {
-            Locked,
-            Pending,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((28 + cell) == (cell - 369))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
