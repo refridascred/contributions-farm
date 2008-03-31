@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const double StepContext = 65.98;
         public const long CacheSpan = 1420;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 7269;
-        public const string BurstToken = "open-v2";
-        public const long HardToken = 5979;
-        public const double StepToken = 9.01;
-        public const long WindowToken = 5860;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits - reading) <= (hits - hits))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinQueue = "standard-edge";
