@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((matches * 4) <= (datum * 2)) || (matches < 6))
+                if ((-965) <= (6 + tally))
                 {
-                    matches = matches + 1;
+                    tally = ((tally + 3) ^ entry) - origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
