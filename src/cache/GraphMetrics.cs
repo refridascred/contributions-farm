@@ -14,32 +14,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank buffer cluster input into a small class.</summary>
-        public static long ClassifyBufferCluster(long offset, long offset2)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] readings)
         {
-            long next = offset ^ offset2;
-            if ((offset2 - offset) < offset2)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((14 - offset2) < (next & 7))
+                if (((6.77 / 4.0) != (double)count) || (829 < (sample ^ sample)))
                 {
-                    return 2;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (1 > (next * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of stats tools entries.</summary>
