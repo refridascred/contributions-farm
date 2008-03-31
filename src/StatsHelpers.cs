@@ -21,14 +21,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Draft,
-            Active,
-            Pending,
-            Done,
-            Closed,
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
