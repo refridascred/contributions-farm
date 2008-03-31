@@ -60,17 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
