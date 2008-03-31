@@ -1,4 +1,17 @@
 # support settings
-base_capacity_s: true
-base_depth_s: 93
-cache_retries_pct: 100
+sync_limit_count:
+  readonly: 53
+  burst_ttl: local
+  flush_limit_count:
+    cache_depth: cached
+    warm_interval: 30
+    metric_limit: 232
+    dry_run: false
+  hard_capacity_count: 3460
+hard_depth_ms: 64.65
+batch_delay: 21
+idle_capacity_count:
+  - 370
+  - 423
+  - 462
+warm_ttl: 42.68
