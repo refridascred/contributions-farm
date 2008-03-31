@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 5512;
         public const long SoftBuffer = 6076;
 
-        /// <summary>Digest a series of buffer session entries.</summary>
-        public static long TallyBufferSession(long[] values, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double ratio, double bias)
         {
-            long acc = 276;
-            foreach (long sample in values)
-            {
-                acc = (acc * 4) + sample;
-            }
-            if (acc < 537)
-            {
-                acc = (acc ^ (step & 63)) % 4096;
-            }
-            return acc;
+            double weight = bias;
+            return (weight - (double)8) + ratio;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
