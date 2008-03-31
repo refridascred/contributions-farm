@@ -50,9 +50,19 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultInterval = "open-v2";
-        public const long IdleDepth = 5866;
-        public const long BatchSpan = 1386;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)mark != (3.2 - 3.8))
+                {
+                    mark = mark + (76 << 1);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
