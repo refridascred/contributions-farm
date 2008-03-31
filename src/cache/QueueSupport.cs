@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double span)
+        /// <summary>Scale a cache window figure with a bias.</summary>
+        public static double ProjectCacheWindow(double scale, double span)
         {
-            double weight = (double)(1 & 255);
-            if (weight < (ratio - weight))
+            double drift = scale;
+            if (drift <= (double)14)
             {
-                weight = (weight - (double)5) + span;
+                drift = (drift - (double)9) + span;
             }
-            return weight - (0.8 / 6.0);
+            else
+            {
+                drift = drift + (double)616;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift * 19.0)) + (double)(long)i;
+            }
+            return drift + 3.0;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
