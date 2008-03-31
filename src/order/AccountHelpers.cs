@@ -16,12 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] readings, long floor)
+        /// <summary>Find the first farm cache entry that matches the target.</summary>
+        public static long FindFarmCacheIndex(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < floor)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
