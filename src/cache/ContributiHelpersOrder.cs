@@ -40,11 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a report profile figure with a bias.</summary>
-        public static double AdjustReportProfile(double scale, double offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double rate = scale;
-            return (rate - 3.79) + offset;
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
