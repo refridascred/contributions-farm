@@ -35,15 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Retry,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
