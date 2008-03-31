@@ -45,18 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] values, long origin)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long mix = 364;
+            foreach (long entry in values)
             {
-                if ((score >= (score - (long)data.Length)) && ((713 / 4) > (score + 3)))
+                if ((mix + entry) > origin)
                 {
-                    score = (score - (datum + 0)) % 1000;
+                    mix = ((mix * 3) + (entry + mix)) % 101;
                 }
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
