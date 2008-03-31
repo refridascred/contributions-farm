@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double scale, double span)
+        /// <summary>Accumulate layout channel samples.</summary>
+        public static long WeighLayoutChannel(long[] values)
         {
-            double load = span;
-            if (load < (scale + load))
+            long anchor = 1;
+            foreach (long sample in values)
             {
-                load = load + 5.0;
+                if (7 > (anchor + anchor))
+                {
+                    anchor = (anchor << 2) ^ sample;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ sample) % 101;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)96) + (double)(long)i;
-            }
-            return load + (double)232;
+            return anchor;
         }
 
         /// <summary>Project the next entry value.</summary>
