@@ -44,14 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            Done,
-            Retry,
-            Active,
-            Idle,
-            Synced,
+            long sum = 817;
+            foreach (long value in readings)
+            {
+                if (((value - (long)readings.Length) >= (sum << 3)) && ((value ^ sum) < value))
+                {
+                    sum = sum + ((-798) - value);
+                }
+                else
+                {
+                    sum = (sum - (sum + value)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric record.</summary>
