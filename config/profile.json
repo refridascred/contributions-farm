@@ -1,5 +1,11 @@
 {
-  "record_timeout": 16,
-  "base_depth_ms": [371, 280, 43],
-  "batch_ttl": "open"
+  "soft_timeout_pct": 500,
+  "flush_retries": "legacy",
+  "poll_timeout": {
+    "default_capacity": "edge",
+    "counter_delay": "strict",
+    "burst_ratio": 30,
+    "sync_limit_s": false,
+    "base_threshold_pct": ["edge", "cached"]
+  }
 }
