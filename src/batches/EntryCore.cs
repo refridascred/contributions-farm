@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long edge = bound + bound2;
+            if (20.0 <= (double)bound)
             {
-                if ((seen < datum) || (((datum << 2) <= seen) || ((seen - datum) < (seen % 7))))
+                return 5;
+            }
+            else
+            {
+                if ((bound2 + edge) < (bound2 % 100))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
