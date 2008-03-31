@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const double IdleCache = 29.93;
         public const long MaxCache = 5673;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] data, long seed)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cluster stats.</summary>
