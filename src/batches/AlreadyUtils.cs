@@ -65,19 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] items, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (item != bound)
+                if ((8.79 > (double)count) || ((target >> 2) >= (count + count)))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
