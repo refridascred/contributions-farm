@@ -1,10 +1,15 @@
 # entry settings
-soft_ratio_pct: primary
-base_capacity_ms: 1272
-route_timeout:
-  - 450
-  - 437
-  - 181
-  - 498
-record_delay: false
-flush_interval_s: 50
+flush_size_s:
+  - 109
+  - 28
+stats_limit: stable
+schema_delay:
+  compress: 17
+  idle_retries_ms: 60
+  tools_limit: open
+  route_retries: cached
+  idle_capacity_count: 2791
+readonly: true
+warm_window_count:
+  - 175
+  - 16
