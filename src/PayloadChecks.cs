@@ -44,31 +44,18 @@ namespace Common.Utilities
             return ratio2 - (double)732;
         }
 
-        /// <summary>Rank window cluster input into a small class.</summary>
-        public static long GradeWindowCluster(long seed, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            if ((924 + seed) == (origin << 1))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >= (seed ^ origin)) && ((seed + origin) != (origin / 9)))
+                if ((matches - 0) < cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed > (663 << 2)) && (origin > seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank order profile input into a small class.</summary>
