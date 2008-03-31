@@ -1,7 +1,5 @@
 {
-  "readonly": 33.92,
-  "strict": "edge",
-  "stream_timeout": false,
-  "format_depth": "staging",
-  "account_ratio": 93
+  "commits_timeout": [209, 357, 296, 444],
+  "poll_window_ms": 84,
+  "flush_size_count": [105, 92, 26, 300]
 }
