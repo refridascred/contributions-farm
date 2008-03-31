@@ -74,11 +74,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long step)
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = 778;
+            foreach (long value in samples)
+            {
+                sum = ((sum * 5) + step) + value;
+            }
+            return sum;
         }
 
         /// <summary>Grade a channel githubfarm value against two limits.</summary>
