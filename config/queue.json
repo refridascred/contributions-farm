@@ -1,15 +1,5 @@
 {
-  "batch_timeout_ms": 18,
-  "entry_retries": "edge",
-  "verbose": false,
-  "enabled": {
-    "warm_timeout_ms": false,
-    "batch_ratio_ms": "stable",
-    "default_retries_s": false,
-    "audit": {
-      "max_capacity_count": 1024,
-      "min_limit": 23.82,
-      "cache_ttl_count": [50, 463, 257, 491]
-    }
-  }
+  "max_limit": 6097,
+  "farm_threshold": "edge",
+  "poll_ratio_pct": ["blue", "open", "eu-west", "open"]
 }
