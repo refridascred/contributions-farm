@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultBudget = 8392;
-        public const double SoftSize = 11.55;
-        public const double LimitScore = 22.26;
-        public const long RetryProfile = 4111;
+        /// <summary>Measure how many metrics tools samples are out of range.</summary>
+        public static long AuditMetricsToolsHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample / 4) < (tally - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] items, long seed)
