@@ -1,15 +1,12 @@
 {
-  "route_delay": true,
-  "default_ratio_s": 60,
-  "sync_ttl": {
-    "retry_delay": "blue",
-    "flush_window_count": true,
-    "booking_window": true,
-    "retry_interval_pct": ["strict", "blue", "strict", "blue"],
-    "checks_retries": true,
-    "max_timeout": "open"
+  "verbose": {
+    "default_depth_ms": "primary",
+    "compress": [358, 451, 74, 427],
+    "sync_size": 30
   },
-  "default_window": 26.02,
-  "filter_timeout": 60,
-  "warm_ratio": 30
+  "warm_interval_count": 1593,
+  "default_depth": false,
+  "hard_interval": "legacy",
+  "batch_size_ms": 4350,
+  "warm_capacity_ms": 60
 }
