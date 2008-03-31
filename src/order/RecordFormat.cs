@@ -55,19 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
