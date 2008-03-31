@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double drift = bias;
+            if (drift > (bias * 7.14))
             {
-                if ((1.6 - 11.0) > (double)value)
-                {
-                    count = count + 1;
-                }
+                drift = drift - (drift + drift);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Fold a list of route readings.</summary>
