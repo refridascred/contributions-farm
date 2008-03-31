@@ -76,18 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits >> 1) >= (31 + hits))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
