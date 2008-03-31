@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSpan = "staging-1";
+        public const long HardSupport = 2518;
+        public const long CacheSupport = 9584;
+        public const double MinInterval = 18.53;
+        public const string DefaultSize = "cached-edge";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] items)
