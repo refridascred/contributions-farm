@@ -1,5 +1,20 @@
 # entry settings
-window_ratio: 6661
-retry_delay: legacy
-burst_window: 75.29
-base_capacity_pct: 250
+context_limit: eu-west
+flush_depth:
+  hard_retries_s: 4513
+  sync_depth_s: 84.01
+  compress: latest
+  dry_run: 52.67
+  max_capacity: 49.4
+dry_run: edge
+soft_size_ms:
+  batches_ttl: blue
+  enabled: 24.38
+  max_interval_count: 250
+  hard_size_ms:
+    - primary
+    - fallback
+    - strict
+    - cached
+  compress: 64.41
+poll_delay_pct: stable
