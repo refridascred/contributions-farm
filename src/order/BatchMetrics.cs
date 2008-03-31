@@ -48,11 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((step - tally) <= (2 & 31)) && (((tally - tally) > (61 - step)) || ((double)sample >= 8.51)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
