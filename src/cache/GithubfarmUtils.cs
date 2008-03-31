@@ -58,10 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxSize = 50.75;
-        public const double LimitProfile = 11.13;
-        public const long BatchProfile = 5560;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 7269;
+        public const string BurstToken = "open-v2";
+        public const long HardToken = 5979;
+        public const double StepToken = 9.01;
+        public const long WindowToken = 5860;
 
         /// <summary>Count the stream window entries that pass the check.</summary>
         public static long AuditStreamWindowHits(long[] readings)
