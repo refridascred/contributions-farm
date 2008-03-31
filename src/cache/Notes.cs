@@ -79,12 +79,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            New,
+            Draft,
+            Dropped,
+            Failed,
         }
     }
 }
