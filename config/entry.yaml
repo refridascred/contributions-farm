@@ -1,19 +1,4 @@
 # entry settings
-queue_capacity: latest
-burst_capacity_count:
-  context_interval:
-    - strict
-    - stable
-    - staging
-  notes_interval: 3579
-  retry_retries_count: 87
-  verbose:
-    - staging
-    - open
-editor_retries: staging
-default_threshold_pct: 100
-strict:
-  - 382
-  - 40
-  - 135
-cache_ratio_count: staging
+burst_ratio_ms: 30
+flush_limit: edge
+warm_timeout_s: open
