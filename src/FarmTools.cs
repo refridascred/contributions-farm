@@ -29,13 +29,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Done,
-            New,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 695;
+        public const double MinChannel = 87.13;
+        public const long HardTimeout = 3091;
+        public const long StepLevel = 88;
+        public const double RetrySpan = 5.66;
     }
 }
