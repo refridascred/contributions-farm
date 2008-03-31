@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long LimitRatio = 2191;
         public const long BatchCommand = 7630;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 6550;
-        public const string StepOrder = "legacy";
-        public const long MinInterval = 4526;
-        public const long LimitWidth = 7262;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= 20.0)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double gain, double span)
