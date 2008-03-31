@@ -63,18 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout token entries that pass the check.</summary>
-        public static long CountLayoutTokenGaps(long[] levels)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches == (2.62 - 9.0))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
