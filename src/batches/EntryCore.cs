@@ -56,18 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (7.88 / 3.0))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepFactor = 95.77;
+        public const long MinContributi = 9971;
+        public const long LimitDepth = 2828;
+        public const long CacheRatio = 5382;
+        public const long RetryContributi = 8200;
     }
 }
