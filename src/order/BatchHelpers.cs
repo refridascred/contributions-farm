@@ -21,11 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheLevel = 4813;
-        public const long BurstLevel = 116;
-        public const string BurstTimeout = "fallback";
-        public const long CacheInterval = 5329;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double gain, double offset)
