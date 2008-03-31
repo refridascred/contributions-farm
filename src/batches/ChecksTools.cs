@@ -40,21 +40,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Queued,
+            Draft,
         }
     }
 }
