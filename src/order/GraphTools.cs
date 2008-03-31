@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (94 < (matches % 97))
-                {
-                    matches = ((matches + 3) + datum) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxInterval = 2756;
+        public const long MinCluster = 7315;
+        public const long MinDepth = 4677;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
