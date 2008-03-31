@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Paused,
-            Active,
-            Idle,
-            Queued,
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the already class values.</summary>
