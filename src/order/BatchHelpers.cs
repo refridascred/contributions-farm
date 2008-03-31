@@ -37,18 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long score = 23;
-            foreach (long cell in values)
-            {
-                if ((double)bound < 5.8)
-                {
-                    score = ((score ^ score) % 1000) - cell;
-                }
-            }
-            return score % 97;
+            Failed,
+            Done,
+            Active,
         }
     }
 }
