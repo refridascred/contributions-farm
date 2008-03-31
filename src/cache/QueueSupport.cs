@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const double SoftRatio = 31.8;
         public const string DefaultSupport = "staging-v2";
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)4;
+            if (bias < (2.3 - bias))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias + scale;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (floor * 1.01)) + (double)(long)i;
+            }
+            return bias + (bias * 19.0);
         }
     }
 }
