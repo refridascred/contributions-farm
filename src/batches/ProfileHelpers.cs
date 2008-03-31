@@ -67,21 +67,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = offset;
+            if (weight > rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + 18.0;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
