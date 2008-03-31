@@ -37,18 +37,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series, long offset)
+        /// <summary>Check that every checks format entry stays within the limit.</summary>
+        public static bool ValidateChecksFormatRange(long[] readings, long floor)
         {
-            long carry = 90;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (((-773) + sample) != (3 << 2))
+                if (item >= floor)
                 {
-                    carry = carry ^ (offset / 7);
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
