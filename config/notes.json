@@ -1,15 +1,12 @@
 {
-  "metric_capacity": 34.7,
-  "context_window": {
-    "entry_size": ["latest", "primary", "cached"],
-    "tools_interval": "primary",
-    "hard_delay_pct": {
-      "dry_run": 100,
-      "max_timeout_pct": "blue",
-      "stats_delay": [86, 104, 172, 263]
-    }
+  "compress": {
+    "base_size": 250,
+    "flush_interval": true,
+    "flush_delay": ["legacy", "standard", "cached", "primary"],
+    "poll_interval_ms": 30,
+    "soft_capacity_s": 500,
+    "metric_interval": 24
   },
-  "token_window": "stable",
-  "flush_window_pct": 30,
-  "channel_depth": 31.92
+  "idle_limit": 19.15,
+  "commits_capacity": 60
 }
