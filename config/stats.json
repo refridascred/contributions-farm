@@ -1,5 +1,6 @@
 {
-  "hard_window": "green",
-  "editor_ratio": 93,
-  "warm_timeout": 5334
+  "editor_ratio": false,
+  "default_timeout_s": 61.57,
+  "schema_delay": 4837,
+  "flush_ratio": 10
 }
