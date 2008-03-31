@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long floor)
         {
-            long mark = 269;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark ^ (676 << 2)) - cell;
+                if (datum <= floor)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark > 4)
-            {
-                mark = (mark + (7 >> 5)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
