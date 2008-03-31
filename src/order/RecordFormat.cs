@@ -42,18 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values, long limit)
+        /// <summary>Scale a farm token figure with a bias.</summary>
+        public static double ScaleFarmToken(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double scale = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)hits > (double)entry)
-                {
-                    hits = (hits + 2) - limit;
-                }
+                scale = ((scale + (scale + scale)) + (double)(long)i) - floor;
             }
-            return hits;
+            return scale - 13.0;
         }
 
         /// <summary>Hold a counter options.</summary>
