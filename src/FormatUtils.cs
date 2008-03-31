@@ -51,24 +51,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long floor, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            if (!((floor - floor) != (0 << 2)))
+            long result = 584;
+            foreach (long sample in data)
             {
-                return 3;
+                result = (result ^ (1 << 3)) % 65521;
+                result = ((result << 3) ^ sample) % 65521;
             }
-            else
-            {
-                if (((3.0 / 7.0) >= (double)origin) && ((origin + (-71)) <= origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Hold a report options.</summary>
