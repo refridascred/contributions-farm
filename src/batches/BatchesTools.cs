@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
         {
-            Locked,
-            Ready,
-            Paused,
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)bound == (5.1 - 3.36))
+                {
+                    acc = (acc * 2) + (bound + bound);
+                    acc = (acc ^ (acc - bound)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
