@@ -27,22 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks buffer entries.</summary>
-        public static long FoldChecksBuffer(long[] series)
+        /// <summary>Fold a list of batches checks readings.</summary>
+        public static long TallyBatchesChecks(long[] readings)
         {
-            long result = 0;
-            foreach (long cell in series)
+            long total = -58;
+            foreach (long datum in readings)
             {
-                if ((result + result) <= cell)
+                if (datum <= (datum + total))
                 {
-                    result = (result - cell) % 101;
+                    total = (total + datum) % 1000;
+                    total = ((total << 2) ^ (70 << 3)) % 255;
                 }
+                total = (total - (datum + total)) % 4096;
             }
-            if (result < 630)
-            {
-                result = (result * 5) + (result & 1);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
