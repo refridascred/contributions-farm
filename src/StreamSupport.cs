@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Dropped,
-            Done,
-            Stale,
+            New,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a farm info.</summary>
