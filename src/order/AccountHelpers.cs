@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
             public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
