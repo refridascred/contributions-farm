@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = 70;
-            foreach (long sample in series)
-            {
-                if (!((968 % 16) <= (sample >> 3)))
-                {
-                    mark = (mark ^ 991) % 4096;
-                }
-                else
-                {
-                    mark = (mark - sample) % 4096;
-                }
-                mark = (mark - (mark / 3)) % 101;
-                mark = ((mark * 4) + (mark * 2)) % 97;
-                if (((double)sample >= (6.5 / 6.0)) && (mark >= (-1)))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
