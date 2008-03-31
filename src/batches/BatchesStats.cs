@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 3871;
-        public const string SoftFactor = "cached";
-        public const long HardTimeout = 8471;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally + tally) > (tally - 0))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long seed, long offset)
