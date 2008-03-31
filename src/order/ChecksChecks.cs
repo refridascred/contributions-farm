@@ -16,15 +16,38 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long seed, long seed2)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            if ((seed2 + seed2) < seed)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((double)seed2 > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((1.76 / 9.0) == (double)seed2) || ((175 % 97) <= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.2 - 3.41) > (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
