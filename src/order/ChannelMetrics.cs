@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 5512;
         public const long SoftBuffer = 6076;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double ratio, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long bound)
         {
-            double weight = bias;
-            return (weight - (double)8) + ratio;
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the profile state values.</summary>
