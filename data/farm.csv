@@ -1,8 +1,6 @@
-id,state,count,level
-1,green,open,48.6
-2,70.41,94.67,89.43
-3,8.74,45.56,296
-4,fallback,latest,primary
-5,eu-west,legacy,27.03
-6,785,267,primary
-7,66,15.31,417
+id,ratio,score
+1,460,536
+2,113,standard
+3,primary,stable
+4,staging,501
+5,fallback,574
