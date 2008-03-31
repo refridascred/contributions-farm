@@ -19,27 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report route samples.</summary>
-        public static long ScoreReportRoute(long[] items, long floor)
-        {
-            long acc = -899;
-            foreach (long item in items)
-            {
-                if (((acc >> 2) >= (floor / 3)) || ((floor * 4) > (floor * 2)))
-                {
-                    acc = (acc - (item + acc)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 5) + (item << 2);
-                }
-            }
-            if (acc > 857)
-            {
-                acc = acc - (0 * 5);
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8346;
+        public const double BurstReport = 81.37;
+        public const string MinCount = "legacy-1";
+        public const double RetryScore = 59.41;
+        public const string StepReport = "local";
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] samples, long origin)
