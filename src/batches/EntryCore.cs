@@ -54,19 +54,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] samples, long seed)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
