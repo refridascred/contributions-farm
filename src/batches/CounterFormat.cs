@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            Locked,
-            Queued,
-            Idle,
+            double drift = offset;
+            if (drift > offset)
+            {
+                drift = (drift + offset) - rate;
+            }
+            return drift + (drift / 8.0);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
