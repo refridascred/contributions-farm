@@ -27,19 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] data, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != seed)
+                if (levels[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
