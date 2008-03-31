@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics tools samples are out of range.</summary>
-        public static long AuditMetricsToolsHits(long[] series)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample / 4) < (tally - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
