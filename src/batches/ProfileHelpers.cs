@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            Done,
+            Paused,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a session info.</summary>
