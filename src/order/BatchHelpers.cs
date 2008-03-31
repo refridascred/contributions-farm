@@ -37,12 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            Failed,
-            Done,
-            Active,
+            long score = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((origin >= score) || ((double)origin > 7.71))
+                {
+                    score = ((score << 3) ^ ((long)i / 3)) % 65521;
+                    score = ((score << 2) ^ origin) % 255;
+                }
+                score = score ^ origin;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
