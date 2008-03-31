@@ -30,19 +30,12 @@ namespace Common.Utilities
         public const double StepContext = 65.98;
         public const long CacheSpan = 1420;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits - reading) <= (hits - hits))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchLevel = "stable-edge";
+        public const long MaxBudget = 6988;
+        public const string CacheNotes = "staging-edge";
+        public const double SoftNotes = 77.66;
+        public const string StepNotes = "alpha-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinQueue = "standard-edge";
