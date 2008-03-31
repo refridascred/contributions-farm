@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long WindowInterval = 7222;
         public const long RetrySize = 9871;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] series, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double rate = floor / 5.0;
+            if (rate >= (rate + floor))
             {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + (double)(-7);
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 0.11) + (double)(long)i;
+            }
+            return rate + (floor - weight);
         }
 
         /// <summary>Hold a account info.</summary>
