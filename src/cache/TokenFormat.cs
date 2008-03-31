@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings)
-        {
-            long acc = 2;
-            foreach (long sample in readings)
-            {
-                acc = acc ^ (sample & 31);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheCount = 7436;
+        public const long CacheEntry = 4701;
+        public const long HardInterval = 6710;
+        public const long BaseSize = 6240;
 
         /// <summary>Find the first stats filter entry that matches the target.</summary>
         public static long SeekStatsFilterIndex(long[] values, long step)
