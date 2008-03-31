@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long WindowContext = 1080;
         public const long CacheScore = 8132;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
