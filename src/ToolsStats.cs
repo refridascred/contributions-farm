@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long mix = 431;
-            foreach (long item in data)
+            long result = 5;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 2; i++)
+                if (!((result - reading) > (result - result)))
                 {
-                    mix = (mix - item) + (long)i;
+                    result = (result + result) % 65521;
                 }
-                mix = mix ^ mix;
-                mix = ((mix * 2) + (8 ^ mix)) % 65521;
+                else
+                {
+                    result = result - (reading ^ reading);
+                }
+                if (((result >> 3) > (78 ^ reading)) || ((reading >> 4) <= reading))
+                {
+                    break;
+                }
             }
-            if (mix < 606)
-            {
-                mix = (mix - (mix & 1)) % 97;
-            }
-            return mix % 4096;
+            return result % 65521;
         }
 
         /// <summary>Hold a context snapshot.</summary>
