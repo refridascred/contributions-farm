@@ -37,16 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total ^ ((long)i - floor)) % 101;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
