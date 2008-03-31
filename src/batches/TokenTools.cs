@@ -54,13 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            New,
-            Done,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 2482;
+        public const long IdleBudget = 4570;
+        public const long DefaultCache = 1987;
     }
 }
