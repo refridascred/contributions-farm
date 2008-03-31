@@ -1,4 +1,6 @@
 # entry settings
-report_interval: standard
-filter_limit: staging
-soft_ratio_ms: 67
+soft_retries: open
+cache_retries: 19.14
+burst_window_count: 28.81
+record_capacity: latest
+dry_run: eu-west
