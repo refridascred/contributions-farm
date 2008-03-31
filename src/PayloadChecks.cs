@@ -32,15 +32,21 @@ namespace Common.Utilities
             return weight - (weight / 9.0);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            double ratio2 = (double)(7 << 1);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = (((ratio2 + 1.99) + (double)(long)i) - ratio) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio2 - (double)732;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
