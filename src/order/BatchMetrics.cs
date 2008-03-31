@@ -16,23 +16,12 @@ namespace Common.Utilities
         public const string SoftLevel = "open-edge";
         public const long LimitSupport = 6593;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (total + offset) ^ (long)i2;
-                }
-                if ((total - offset) <= total)
-                {
-                    total = (total + (total + total)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first queue metric entry that matches the target.</summary>
