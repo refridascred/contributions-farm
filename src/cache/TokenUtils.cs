@@ -13,19 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a batches already reading.</summary>
-        public static double AdjustBatchesAlready(double gain, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            double mean = offset;
-            if (mean <= (gain + gain))
+            long result = 10;
+            foreach (long reading in samples)
             {
-                mean = mean - 15.0;
+                if ((reading % 60) == (result % 8))
+                {
+                    result = (result + (result - result)) % 4096;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (offset + gain)) - (double)(long)i;
-            }
-            return mean - (offset * 2.0);
+            return result % 1000;
         }
 
         /// <summary>Hold a batch entry.</summary>
