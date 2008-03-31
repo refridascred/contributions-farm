@@ -1,18 +1,13 @@
 # support settings
-verbose: legacy
-max_interval_ms: 9009
-cluster_delay: legacy
-soft_timeout_ms:
-  retry_retries: latest
-  filter_depth: 60
-  hard_ratio_pct: eu-west
-min_limit:
-  sync_interval_pct:
-    - legacy
-    - stable
-  enabled: false
-  context_ttl: blue
-  flush_timeout_ms:
-    - 331
-    - 395
-    - 123
+route_interval:
+  - standard
+  - eu-west
+readonly:
+  - 456
+  - 53
+  - 12
+  - 12
+batch_retries_s: 65
+burst_window_pct: standard
+default_ratio: 33.18
+min_timeout_s: false
