@@ -22,19 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry - ((long)i >> 4)) % 1000) + (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
