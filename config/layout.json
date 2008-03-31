@@ -1,6 +1,10 @@
 {
-  "default_delay_ms": [463, 247],
-  "min_timeout_count": 97,
-  "soft_capacity_s": "legacy",
-  "hard_limit_ms": ["fallback", "open", "local"]
+  "batch_timeout_ms": 30,
+  "notes_limit": false,
+  "farm_window": {
+    "session_ttl": 60,
+    "verbose": 51.07,
+    "enabled": 60,
+    "persist": "stable"
+  }
 }
