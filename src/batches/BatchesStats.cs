@@ -40,16 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long carry = -250;
-            foreach (long cell in levels)
+            long total = 454;
+            foreach (long entry in samples)
             {
-                carry = ((carry + carry) % 4096) + floor;
-                carry = ((carry * 3) + (cell + cell)) % 4096;
+                if (1.3 < (double)total)
+                {
+                    total = total - entry;
+                }
+                else
+                {
+                    total = total - (entry / 2);
+                }
             }
-            return carry;
+            return total;
         }
     }
 }
