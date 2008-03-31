@@ -1,7 +1,8 @@
 {
-  "persist": true,
-  "dry_run": 8598,
-  "verbose": 3587,
-  "max_interval": ["blue", "stable"],
-  "cache_threshold_count": false
+  "dry_run": 1024,
+  "soft_delay_ms": ["standard", "strict", "staging", "staging"],
+  "hard_capacity": 93,
+  "default_threshold_count": 5000,
+  "flush_ttl": 85.29,
+  "buffer_delay": "standard"
 }
