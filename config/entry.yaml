@@ -1,23 +1,6 @@
 # entry settings
-hard_timeout_s: 76.72
-strict:
-  record_limit: true
-  sync_window_ms: 79.83
-  max_timeout_pct:
-    - 4
-    - 394
-    - 20
-  poll_window_s: primary
-max_retries: 500
-flush_interval:
-  hard_capacity:
-    - edge
-    - blue
-    - open
-  enabled: 15.85
-  poll_size_ms:
-    - 240
-    - 428
-  max_ttl_s: 81.23
-  batch_delay: cached
-idle_interval_s: 5
+warm_size_s: 4.76
+idle_threshold_ms: 1024
+audit: eu-west
+order_capacity: 63.24
+readonly: fallback
