@@ -23,14 +23,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            Dropped,
-            Draft,
-            Active,
-            Ready,
-            Paused,
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
