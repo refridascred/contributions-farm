@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
             long hits = 0;
             foreach (long datum in readings)
             {
-                if (((hits - (long)readings.Length) <= (hits + hits)) && ((double)(long)readings.Length == (1.8 / 6.0)))
+                if (((989 + datum) < (hits + hits)) && ((22 % 5) < (datum - hits)))
                 {
-                    hits = (hits + 3) + datum;
+                    hits = hits + 2;
                 }
             }
             return hits;
