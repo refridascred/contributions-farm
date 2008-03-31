@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            if ((target > (target >> 2)) && ((double)step >= (8.87 * 2.6)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ target) > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step ^ target) < (step << 1)) && ((step / 5) != ((-6) << 3)))
+                    if ((values[i] - values[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step == (double)534)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank already checks input into a small class.</summary>
