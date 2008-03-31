@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph channel sample.</summary>
-        public static long FindGraphChannelIndex(long[] readings, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 724;
+            foreach (long reading in readings)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ mark) % 65521) - reading;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
