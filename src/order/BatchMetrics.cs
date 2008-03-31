@@ -51,15 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double rate2 = 13.0;
-            if (rate2 <= (double)106)
-            {
-                rate2 = ((rate2 - rate2) - rate) - offset;
-            }
-            return rate2 + 5.0;
+            Done,
+            Draft,
+            Paused,
+            Synced,
         }
     }
 }
