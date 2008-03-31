@@ -52,17 +52,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metrics commits sample.</summary>
-        public static long LocateMetricsCommitsIndex(long[] levels, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
