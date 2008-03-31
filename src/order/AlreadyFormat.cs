@@ -40,19 +40,11 @@ namespace Common.Utilities
             return (load + rate) + bias;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] values, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
