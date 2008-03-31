@@ -15,20 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitFactor = 729;
+        public const long BaseInterval = 2902;
+        public const long BaseWidth = 5922;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
