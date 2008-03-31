@@ -27,11 +27,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "strict-v2";
+        public const long DefaultReport = 6616;
+        public const string SoftCount = "open-1";
+        public const long IdleDepth = 1027;
     }
 }
