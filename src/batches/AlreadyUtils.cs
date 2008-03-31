@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long seed)
         {
-            long total = -403;
-            foreach (long reading in items)
+            long prev = target ^ seed;
+            if ((prev / 7) > (prev & 1))
             {
-                total = (((total << 3) ^ (total - 866)) % 97) + reading;
+                return 2;
             }
-            return total % 97;
+            else
+            {
+                if ((target * 5) < seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
