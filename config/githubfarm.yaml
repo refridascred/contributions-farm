@@ -1,6 +1,25 @@
 # githubfarm settings
-compress: 62.56
-default_delay_pct: 8263
-poll_threshold_count: 72.73
-soft_size: staging
-strict: 2405
+cache_capacity_s:
+  verbose:
+    - 312
+    - 79
+  soft_interval: legacy
+  persist: stable
+poll_retries: cached
+verbose:
+  layout_capacity:
+    - 338
+    - 377
+    - 414
+    - 378
+  command_retries:
+    - edge
+    - fallback
+    - cached
+    - primary
+  idle_threshold_s:
+    - edge
+    - green
+    - eu-west
+    - fallback
+idle_depth_ms: 4006
