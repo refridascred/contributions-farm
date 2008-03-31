@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = offset - limit;
+            if ((double)limit <= (2.1 / 5.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((9.18 * 14.0) >= (double)span))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < (2.15 + 6.0))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.3 * 7.7) <= (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
