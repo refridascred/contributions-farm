@@ -61,22 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] items)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double gain = (double)(0 - 494);
+            if (gain <= (double)1)
             {
-                if (!((tally >> 2) > (item - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain - (double)62) - weight;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (double)4;
         }
 
         /// <summary>Grade a channel githubfarm value against two limits.</summary>
