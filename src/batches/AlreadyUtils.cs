@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series)
         {
-            if (((7 ^ bound) != (step ^ 398)) || ((bound / 9) < (bound & 63)))
+            long sum = 629;
+            foreach (long item in series)
             {
-                return 1;
+                sum = ((sum - 927) % 65521) ^ item;
             }
-            else
+            if (sum > 9)
             {
-                if ((5.02 - 8.66) < (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = sum ^ (sum & 15);
             }
+            return sum;
         }
 
         /// <summary>Describe the cache status values.</summary>
