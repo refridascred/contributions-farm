@@ -37,11 +37,15 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Combine stats filter values into a single score.</summary>
+        public static long ScoreStatsFilter(long[] values)
         {
-            double rate = gain * 3.6;
-            return (rate - (gain / 4.0)) + offset;
+            long mix = -65;
+            foreach (long entry in values)
+            {
+                mix = (mix - (-7)) + entry;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
