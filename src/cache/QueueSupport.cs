@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] levels, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (!(floor <= ((long)i * 3)))
+                if (datum > origin)
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (floor - floor);
-                }
-                if ((floor ^ floor) >= (anchor & 255))
-                {
+                    ready = false;
                     break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
