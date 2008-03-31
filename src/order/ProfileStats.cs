@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitInterval = 5286;
-        public const long IdleWidth = 7919;
-        public const long BaseMetrics = 2463;
-        public const double MaxMetrics = 78.4;
+        /// <summary>Roll a schema context counter forward.</summary>
+        public static long DeriveSchemaContext(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((total * 2) >= (limit ^ total)))
+                {
+                    break;
+                }
+                total = (total * 5) + (total + total);
+                total = (total << 3) ^ (934 + 0);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
