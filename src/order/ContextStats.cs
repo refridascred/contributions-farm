@@ -26,23 +26,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mix = 36;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 4) == (bound >> 4))
-                {
-                    mix = mix - (datum & 31);
-                }
-                mix = (mix - (bound + bound)) % 101;
-            }
-            if (mix < 146)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            Draft,
+            Dropped,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
