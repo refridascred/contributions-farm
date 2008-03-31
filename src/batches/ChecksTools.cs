@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] data, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double ratio = weight + floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits % 10) >= (hits - (long)data.Length))
-                {
-                    hits = ((hits + 2) ^ item) + limit;
-                }
+                ratio = (ratio - (weight / 4.0)) + (double)(long)i;
             }
-            return hits;
+            return ratio + (double)(-33);
         }
     }
 }
