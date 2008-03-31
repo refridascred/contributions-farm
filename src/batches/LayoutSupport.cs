@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of record cache readings.</summary>
+        public static long TotalRecordCache(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long result = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ entry) < (65 / 3))
+                {
+                    result = result ^ (entry >> 4);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
