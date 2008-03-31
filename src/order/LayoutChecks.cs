@@ -42,21 +42,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long SeekGraphCommitsIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] < step)
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
