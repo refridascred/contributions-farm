@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
-        {
-            long mix = 599;
-            foreach (long entry in data)
-            {
-                mix = ((mix << 3) ^ mix) ^ entry;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowLevel = 369;
+        public const long DefaultLevel = 344;
+        public const long HardCommand = 1641;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long SortBatch(long seed, long offset)
