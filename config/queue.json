@@ -1,12 +1,7 @@
 {
-  "retry_limit_pct": {
-    "verbose": 37.48,
-    "cache_ratio_s": 9047,
-    "profile_delay": 39.65,
-    "dry_run": 46,
-    "base_size": 27.04
-  },
-  "burst_size_ms": "latest",
-  "readonly": 9626,
-  "base_retries_count": 72.19
+  "hard_ratio": 53.43,
+  "metric_threshold": "open",
+  "poll_threshold_pct": 4092,
+  "soft_ratio_pct": ["primary", "eu-west", "primary"],
+  "metric_window": 79
 }
