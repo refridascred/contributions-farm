@@ -12,13 +12,39 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long floor)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long cur = offset - floor;
+            if ((double)4 == (double)cur)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor > (5.0 - 9.65))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset * 5) > floor) && ((double)offset > (3.2 / 8.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((cur + cur) >= (cur + offset)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
