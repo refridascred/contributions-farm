@@ -32,18 +32,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long SeekGraphCommitsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 4763;
+        public const long RetryCache = 8249;
+        public const long BatchCache = 5854;
+        public const long WindowTimeout = 3616;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
