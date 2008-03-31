@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            Synced,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
