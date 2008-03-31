@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Rank support record input into a small class.</summary>
+        public static long RankSupportRecord(long origin, long floor)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            long bound = origin + floor;
+            if ((floor / 4) < bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound <= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin / 3) < (floor + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
