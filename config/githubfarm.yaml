@@ -1,18 +1,20 @@
 # githubfarm settings
-retry_timeout: latest
-poll_window: 1965
-filter_ratio:
-  verbose: 47.8
-  strict: 803
-  compress: 9160
-  cache_window_s:
-    metrics_threshold: 43
-    dry_run: primary
-    route_delay: 53.07
-batch_ttl_s: legacy
-soft_ratio:
-  warm_window_count: eu-west
-  channel_ratio: primary
-  retry_ratio_pct: primary
-  tools_size: 37.54
-  session_limit: 98
+context_ratio:
+  base_limit_ms:
+    min_ratio_ms:
+      - edge
+      - edge
+      - strict
+      - stable
+    persist: 47
+    default_window_ms: eu-west
+    strict: local
+    support_delay: 97
+  hard_threshold_pct: 5196
+  poll_threshold:
+    - primary
+    - green
+    - edge
+    - cached
+poll_ttl_pct: true
+already_size: false
