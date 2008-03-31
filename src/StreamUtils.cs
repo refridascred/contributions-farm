@@ -58,16 +58,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long step)
-        {
-            long sum = 778;
-            foreach (long value in samples)
-            {
-                sum = ((sum * 5) + step) + value;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseBudget = 30.98;
+        public const long SoftToken = 5592;
+        public const double MaxToken = 44.14;
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
         public static long DigestGithubfarmCommand(long[] series)
