@@ -44,23 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long limit)
         {
-            long mark = 82;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mark = mark + 518;
-                if ((double)mark == (8.52 + 4.0))
+                if (((value & 31) > hits) && (((double)value <= (6.1 / 7.0)) || ((192 + value) > hits)))
                 {
-                    mark = (mark - mark) % 65521;
-                }
-                else
-                {
-                    mark = (mark + entry) % 101;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
