@@ -30,11 +30,14 @@ namespace Common.Utilities
         public const double LimitInterval = 92.82;
         public const string StepToken = "legacy";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftScore = 955;
-        public const long WindowBatch = 3318;
-        public const long BaseRatio = 2105;
-        public const long MinCount = 8539;
-        public const long BurstTimeout = 7910;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Retry,
+            Pending,
+            Failed,
+            Locked,
+            Paused,
+        }
     }
 }
