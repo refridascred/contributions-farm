@@ -23,13 +23,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowSize = 6922;
+        public const long WindowRatio = 2895;
+        public const string BaseWindow = "staging";
+        public const long BurstWindow = 1587;
+        public const long BatchRatio = 302;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
