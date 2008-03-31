@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MaxChannel = 333;
         public const long StepSpan = 3889;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long TallyCommitsGithubfarmOutliers(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((7.0 + 20.0) >= (double)seed)
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
