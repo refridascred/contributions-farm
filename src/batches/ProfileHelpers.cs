@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count account context pairs that satisfy a relation.</summary>
+        public static long PairAccountContextCount(long[] data)
         {
-            Done,
-            Paused,
-            Failed,
-            Retry,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session info.</summary>
