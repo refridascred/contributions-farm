@@ -62,15 +62,17 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double bias, double offset)
+        /// <summary>Locate a counter buffer reading by value.</summary>
+        public static long SeekCounterBufferIndex(long[] levels, long offset)
         {
-            double scale = offset;
-            if (scale < offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - scale;
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale - bias;
+            return -1;
         }
     }
 }
