@@ -78,10 +78,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5549;
-        public const long CacheRatio = 2481;
-        public const string LimitNotes = "alpha";
-        public const long CacheScore = 1660;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftWidth = 8475;
+        public const string BurstSize = "staging-edge";
+        public const long MinCache = 4540;
+        public const double CacheWidth = 73.6;
+        public const long RetrySpan = 4274;
     }
 }
