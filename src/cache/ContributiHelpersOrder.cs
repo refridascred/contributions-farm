@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine editor token values into a single score.</summary>
-        public static long TotalEditorToken(long[] items)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long mark = 41;
-            foreach (long item in items)
-            {
-                if (item > (item ^ item))
-                {
-                    mark = (mark + (mark / 4)) % 97;
-                }
-            }
-            return mark;
+            Synced,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the checks level values.</summary>
