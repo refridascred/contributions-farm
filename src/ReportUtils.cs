@@ -26,17 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (offset / 4.0) + (19.0 - offset);
+            if (mean > (double)537)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)465;
             }
-            return -1;
+            return mean + (bias + bias);
         }
 
         /// <summary>Digest a series of batches entries.</summary>
