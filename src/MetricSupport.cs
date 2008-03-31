@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a context record.</summary>
