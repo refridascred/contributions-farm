@@ -16,18 +16,23 @@ namespace Common.Utilities
         public const string SoftLevel = "open-edge";
         public const long LimitSupport = 6593;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((5.96 - 2.6) == (double)entry)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 1;
+                    total = (total + offset) ^ (long)i2;
                 }
+                if ((total - offset) <= total)
+                {
+                    total = (total + (total + total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Find the first queue metric entry that matches the target.</summary>
