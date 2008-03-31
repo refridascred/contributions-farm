@@ -1,4 +1,16 @@
 # support settings
-burst_retries_s: blue
-poll_depth_ms: eu-west
-cluster_interval: 34
+strict:
+  - stable
+  - green
+tools_capacity:
+  - 498
+  - 12
+flush_limit_count:
+  payload_capacity: local
+  sync_retries_ms:
+    max_threshold_pct: 69
+    burst_timeout: 5.33
+    commits_ratio: false
+  batch_size_pct: eu-west
+  sync_retries_pct: primary
+  readonly: 769
