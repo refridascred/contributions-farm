@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long limit)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if (((7 ^ bound) != (step ^ 398)) || ((bound / 9) < (bound & 63)))
             {
-                if (entry != limit)
+                return 1;
+            }
+            else
+            {
+                if ((5.02 - 8.66) < (double)bound)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the cache status values.</summary>
