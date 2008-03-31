@@ -77,18 +77,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] items, long origin)
+        /// <summary>Classify a already profile pair into a bucket.</summary>
+        public static long SortAlreadyProfile(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((bound % 12) == ((-808) ^ bound))
             {
-                if (!(origin >= (sample + 7)))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor > (double)bound)
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor / 5) >= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
