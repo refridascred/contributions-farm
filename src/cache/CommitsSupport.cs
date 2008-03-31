@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings, long step)
+        /// <summary>Accumulate metrics batch samples.</summary>
+        public static long TallyMetricsBatch(long[] items, long floor)
         {
-            long mix = 606;
-            foreach (long entry in readings)
+            long mix = 0;
+            foreach (long value in items)
             {
-                if ((mix & 7) <= mix)
+                if (floor >= (mix * 3))
                 {
-                    mix = (((mix << 3) ^ (312 + mix)) % 1000) - entry;
+                    mix = mix + (mix + value);
+                    mix = (mix - 25) % 101;
+                    break;
+                }
+                if ((8.1 / 5.0) == (double)floor)
+                {
+                    mix = (mix ^ (floor * 3)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (value - value);
                 }
             }
-            if (mix > 885)
+            if (mix > 50)
             {
-                mix = ((mix << 3) ^ (step * 5)) % 4096;
+                mix = (mix * 5) + (mix + floor);
             }
-            return mix % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Locate a cache metrics reading by value.</summary>
