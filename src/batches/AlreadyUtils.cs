@@ -47,20 +47,22 @@ namespace Common.Utilities
         public const long RetrySpan = 8463;
         public const double SoftTimeout = 30.85;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                state = state ^ ((long)i >> 3);
-                if (state >= (state / 4))
+                if ((hits ^ hits) < (hits ^ (long)samples.Length))
                 {
-                    break;
+                    hits = (hits + 1) + sample;
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
