@@ -41,18 +41,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (764 < (long)data.Length)
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
