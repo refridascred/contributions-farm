@@ -34,11 +34,17 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 8499;
-        public const long MinSize = 8472;
-        public const long MinScore = 2533;
-        public const string CacheLevel = "stable-edge";
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + acc) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
