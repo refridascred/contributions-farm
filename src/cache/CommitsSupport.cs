@@ -75,11 +75,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            double drift = 15.0;
-            return (drift - (drift + scale)) + offset;
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((state / 3) < origin) && (398 > state))
+                {
+                    state = state - (state ^ state);
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
