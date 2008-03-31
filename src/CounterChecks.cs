@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
             Done,
-            Dropped,
-            Closed,
+            New,
+            Ready,
             Draft,
         }
 
