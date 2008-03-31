@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Ready,
-            Paused,
-            Idle,
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
