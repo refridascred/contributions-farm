@@ -29,18 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats batches entries.</summary>
-        public static long FoldStatsBatches(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long mix = -261;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix - mix) <= (item ^ mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (item / 9)) % 1000;
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
