@@ -50,13 +50,20 @@ namespace Common.Utilities
         public const long HardLevel = 3547;
         public const long SoftLevel = 7394;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine channel metrics values into a single score.</summary>
+        public static long TallyChannelMetrics(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long mix = 8;
+            foreach (long entry in series)
+            {
+                mix = mix + (4 & 255);
+                mix = mix + (mix << 1);
+                if ((seed >> 3) >= (seed - entry))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Match up session samples.</summary>
