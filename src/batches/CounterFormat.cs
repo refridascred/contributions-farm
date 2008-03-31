@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of editor commits entries.</summary>
-        public static long DigestEditorCommits(long[] samples, long target)
+        /// <summary>Classify a tools schema pair into a bucket.</summary>
+        public static long BucketToolsSchema(long floor, long origin)
         {
-            long mark = 9;
-            foreach (long datum in samples)
+            if ((origin % 24) >= (floor - floor))
             {
-                mark = ((mark * 5) + datum) % 4096;
-                mark = mark - target;
-                if (!((target / 3) >= mark))
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) <= floor)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((6 + origin) != (3 - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= (origin - origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mark > 509)
-            {
-                mark = mark + (1 + target);
-            }
-            return mark;
         }
 
         /// <summary>Iterate the payload channel series from a seed.</summary>
