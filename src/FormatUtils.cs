@@ -81,32 +81,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long bound, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long delta = bound ^ origin;
-            if (((delta - delta) >= bound) || ((origin + bound) <= (delta + 2)))
+            long state = -1;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (bound - bound))
+                if (!((state - 74) == (state & 3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.74 * 7.4) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state ^ (item - item);
                 }
             }
+            return state % 1000;
         }
     }
 }
