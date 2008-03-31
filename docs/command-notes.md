@@ -1,14 +1,12 @@
 # Command notes
 
-A format that stays idle for too long is moved to the token list.
-Defaults for notes live in the config folder and can be overridden per environment.
-
-Each record is validated before it reaches the account queue.
-Keep stream and checks names short and lowercase.
-The account module keeps queue values in sync with the batch cache.
+When a support fails, the channel handler retries a few times before giving up.
+Run the queue check before changing any report limits.
+Each order is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Log every report change
-- Document new githubfarm fields
-- Review notes limits each release
+- Keep cluster values small
+- Review stream limits each release
+- Prefer record defaults
+- Validate githubfarm input early
