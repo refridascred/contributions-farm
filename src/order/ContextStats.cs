@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
