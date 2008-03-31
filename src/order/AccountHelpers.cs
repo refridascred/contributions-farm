@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)limit >= 2.0)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
