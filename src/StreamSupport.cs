@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8080;
-        public const double MaxRatio = 14.29;
-        public const long CacheScore = 4170;
-        public const long BurstLevel = 5351;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Synced,
+            Stale,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
