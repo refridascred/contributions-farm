@@ -1,6 +1,8 @@
 {
-  "profile_ratio": "blue",
-  "support_ratio": "cached",
-  "default_threshold_s": 250,
-  "idle_threshold_pct": "edge"
+  "flush_capacity_s": 100,
+  "persist": false,
+  "max_limit_s": "legacy",
+  "hard_interval_s": 500,
+  "soft_size_pct": "legacy",
+  "hard_retries_count": 2372
 }
