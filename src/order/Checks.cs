@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a profile metrics sample.</summary>
-        public static long SeekProfileMetricsIndex(long[] samples, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = ratio;
+            if (rate < (rate - floor))
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (rate * 6.76);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (ratio * 5.58);
         }
 
         /// <summary>Combine context values into a single score.</summary>
