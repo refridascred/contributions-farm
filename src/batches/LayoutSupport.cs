@@ -46,18 +46,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (((value & 31) > hits) && (((double)value <= (6.1 / 7.0)) || ((192 + value) > hits)))
+                if (value != target)
                 {
-                    hits = (hits + 2) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
