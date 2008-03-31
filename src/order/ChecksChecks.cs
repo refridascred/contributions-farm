@@ -21,15 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data, long floor)
+        /// <summary>Validate account githubfarm readings against a bound.</summary>
+        public static bool ValidateAccountGithubfarmRange(long[] levels, long floor)
         {
-            long sum = 40;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                sum = ((sum << 2) ^ (value << 2)) + floor;
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
