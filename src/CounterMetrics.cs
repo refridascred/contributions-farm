@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm record readings against a rule.</summary>
-        public static long TallyFarmRecordOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits & 255) <= (long)data.Length)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 7772;
+        public const double RetryTimeout = 85.72;
+        public const long DefaultCount = 526;
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double ratio, double floor)
