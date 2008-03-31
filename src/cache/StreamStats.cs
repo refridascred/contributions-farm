@@ -47,19 +47,12 @@ namespace Common.Utilities
             return ratio - (bias * 2.73);
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
