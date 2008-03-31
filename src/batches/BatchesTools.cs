@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema queue readings against a rule.</summary>
-        public static long AuditSchemaQueueOutliers(long[] data, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((sample / 3) <= (sample & 63))
+                if (item <= origin)
                 {
-                    seen = (seen + 3) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
