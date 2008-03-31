@@ -44,22 +44,24 @@ namespace Common.Utilities
         public const long RetrySpan = 8463;
         public const double SoftTimeout = 30.85;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long target, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (((-6) % 8) < target)
             {
-                if ((hits ^ hits) < (hits ^ (long)samples.Length))
+                return 7;
+            }
+            else
+            {
+                if ((target % 8) > bound)
                 {
-                    hits = (hits + 1) + sample;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
