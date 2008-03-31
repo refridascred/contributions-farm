@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long sum = 59;
-            foreach (long entry in samples)
-            {
-                if (floor >= (entry << 3))
-                {
-                    sum = (sum ^ ((long)samples.Length ^ sum)) % 101;
-                }
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
