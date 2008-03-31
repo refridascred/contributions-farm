@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next contributi command value from a seed.</summary>
-        public static long StepContributiCommand(long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] levels, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (9 / 3)) % 4096;
-                anchor = ((anchor << 2) ^ ((long)i - 965)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((item - origin) == (count ^ count))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
