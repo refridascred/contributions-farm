@@ -50,27 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = 18;
-            foreach (long datum in readings)
-            {
-                if ((datum * 5) <= limit)
-                {
-                    acc = (acc ^ (limit / 4)) % 255;
-                }
-                acc = (acc ^ datum) % 101;
-                if (((double)limit > (1.62 + 2.0)) || ((double)acc <= (double)datum))
-                {
-                    acc = ((acc << 3) ^ (datum % 16)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (limit + datum)) % 4096;
-                }
-            }
-            return acc;
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Digest a series of format entries.</summary>
