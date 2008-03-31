@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long BaseSpan = 6971;
         public const long BurstInterval = 8712;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Combine context cluster values into a single score.</summary>
+        public static long DigestContextCluster(long[] values)
         {
-            long carry = 8;
-            foreach (long value in series)
+            long total = 432;
+            foreach (long item in values)
             {
-                if (((-9) * 2) < (value - value))
+                total = total ^ (total >> 3);
+                if ((total * 5) >= item)
                 {
-                    carry = ((carry << 2) ^ (carry ^ value)) % 65521;
+                    total = (total * 3) + (item % 2);
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
