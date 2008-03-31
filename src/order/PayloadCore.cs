@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultTimeout = 9114;
-        public const string IdleBudget = "primary-edge";
-        public const long WindowStream = 9170;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double span)
+        {
+            double scale2 = (double)(83 * 5);
+            if (scale2 >= (double)69)
+            {
+                scale2 = ((scale2 - (double)0) - scale) - span;
+            }
+            return scale2 + (scale2 + scale2);
+        }
 
         /// <summary>Audit buffer context readings against a rule.</summary>
         public static long TallyBufferContextGaps(long[] values)
