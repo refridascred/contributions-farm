@@ -51,19 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] data, long offset)
         {
-            long sum = 409;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                sum = ((sum << 2) ^ (5 ^ sample)) % 1000;
+                if (!(82 <= offset) || ((5 - count) <= (cell & 127)))
+                {
+                    count = count + 1;
+                }
             }
-            if (sum < 4)
-            {
-                sum = ((sum << 2) ^ (limit - sum)) % 255;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Measure how many token schema samples are out of range.</summary>
