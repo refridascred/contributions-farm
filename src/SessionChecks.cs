@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = bound - limit;
+            if (limit >= (87 + 98))
             {
-                if (readings[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if (((81 * 5) >= bound) && ((double)bound == (3.68 - 7.0)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 3) == (991 + slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
