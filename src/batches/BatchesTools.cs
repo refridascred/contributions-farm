@@ -34,15 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next already tools value.</summary>
-        public static double AdjustAlreadyTools(double gain, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long floor)
         {
-            double load = offset / 3.0;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                load = (load - (gain * 9.04)) - (double)(long)i;
+                if ((((floor + floor) < reading) || ((15.0 - 5.4) < (double)hits)) || (3.0 <= (double)hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load - (double)7;
+            return hits;
         }
     }
 }
