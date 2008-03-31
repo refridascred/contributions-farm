@@ -23,12 +23,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long CountTokenRecordOutliers(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + count) != (count & 1))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
