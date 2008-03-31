@@ -26,15 +26,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long sum = 220;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum * 2) + datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
