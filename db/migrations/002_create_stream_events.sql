@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    region TEXT,
-    token TEXT
+    weight REAL,
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
+CREATE INDEX IF NOT EXISTS idx_stream_events_weight ON stream_events (weight);
 
-INSERT INTO stream_events (region, token) VALUES ('edge', 'fallback');
+INSERT INTO stream_events (weight, level, region) VALUES (33.78, 80, 'fallback');
