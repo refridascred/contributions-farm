@@ -1,20 +1,23 @@
 # support settings
-checks_size: 1024
-warm_timeout_count: 5194
-order_interval:
-  poll_ratio_count: 92.24
-  batches_depth:
-    - 473
-    - 407
-    - 317
-    - 444
-  enabled:
-    retry_limit_pct: 250
-    cache_limit: 21
-    sync_size:
-      - 65
-      - 201
-  base_retries_count: 0.24
-verbose: 38.41
-account_delay: true
-dry_run: true
+readonly: stable
+hard_delay:
+  - 16
+  - 437
+cache_ratio:
+  max_limit_ms: 31.18
+  flush_threshold_s: 67.39
+  burst_interval_s: 100
+  poll_retries:
+    token_threshold: 8276
+    commits_depth: 72.55
+    cache_depth_ms: eu-west
+    idle_ttl: strict
+  audit: 500
+stream_retries:
+  - 215
+  - 315
+graph_size:
+  - 485
+  - 72
+  - 265
+  - 123
