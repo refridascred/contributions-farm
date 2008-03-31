@@ -19,24 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double span)
-        {
-            double load = weight;
-            if (load > (double)3)
-            {
-                load = load - (double)1;
-            }
-            else
-            {
-                load = load - (load + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (3.65 - load);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 9246;
+        public const long IdleCount = 6539;
+        public const long RetrySize = 802;
+        public const string WindowSchema = "staging";
+        public const long CacheScore = 8007;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] levels, long offset)
