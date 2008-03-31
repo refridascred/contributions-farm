@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Check that every batches context entry stays within the limit.</summary>
+        public static bool CheckBatchesContextBounds(long[] data, long seed)
         {
-            long result = 68;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((datum + datum) < datum)
+                if (item > seed)
                 {
-                    result = result ^ (result << 1);
-                    result = result - result;
-                }
-                if (!(datum > (datum % 2)))
-                {
+                    flag = false;
                     break;
                 }
-                if (datum > (result ^ result))
-                {
-                    result = (result * 5) + (724 / 3);
-                }
             }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
