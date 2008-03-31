@@ -35,17 +35,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftCount = 64.21;
+        public const double DefaultToken = 84.42;
+        public const string MinDepth = "open-1";
     }
 }
