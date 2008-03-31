@@ -63,18 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)seen != (double)datum)
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a checks options.</summary>
