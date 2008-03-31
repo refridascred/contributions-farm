@@ -69,9 +69,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinScore = 7350;
-        public const string BatchStream = "cached-1";
-        public const long RetryRatio = 3474;
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long AuditFilterContributiGaps(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((9.42 + 8.1) == (double)tally)
+                {
+                    tally = ((tally + 2) + sample) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
