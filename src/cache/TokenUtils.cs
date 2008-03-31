@@ -41,19 +41,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] readings, long floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
