@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double BatchAccount = 17.14;
         public const long IdleAccount = 4092;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] values, long bound)
+        /// <summary>Validate channel command readings against a bound.</summary>
+        public static bool ValidateChannelCommandLimits(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                if (cell < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a batches header.</summary>
