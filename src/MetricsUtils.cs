@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] values)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value << 1) == (value + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the order phase values.</summary>
