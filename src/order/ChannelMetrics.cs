@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long BaseCount = 7511;
         public const long BatchOrder = 8513;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((double)hits != (11.0 + 20.0)) || !((double)99 > (1.47 / 3.0)))
-                {
-                    hits = ((hits + 2) ^ value) + offset;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Failed,
+            Closed,
         }
     }
 }
