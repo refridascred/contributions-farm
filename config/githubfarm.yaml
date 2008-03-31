@@ -1,17 +1,10 @@
 # githubfarm settings
-verbose:
-  max_limit_ms: 3353
-  cache_timeout_s: false
-  window_size: true
-readonly: false
-default_depth_count: 52.08
-batch_depth:
-  farm_interval: 9179
-  enabled: 89.61
-  window_timeout: 34
-  retry_retries_s: 2368
-  checks_window: 81
-  flush_ttl_s: legacy
-order_timeout:
-  - eu-west
-  - standard
+enabled:
+  strict:
+    - green
+    - eu-west
+    - standard
+  compress: cached
+  enabled: edge
+hard_threshold: 2900
+burst_timeout_ms: false
