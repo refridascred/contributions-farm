@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)datum <= (double)631)
+                if (count <= (count << 3))
                 {
-                    matches = matches + 3;
+                    count = (count + 3) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
