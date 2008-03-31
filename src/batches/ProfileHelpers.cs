@@ -47,25 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long seed)
         {
-            long score = 7;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                long prev = item;
-                if ((prev >> 3) == (5 - score))
+                if (reading < seed)
                 {
-                    score = score - (score << 1);
-                    prev = (prev ^ item) % 101;
+                    ok = false;
+                    break;
                 }
-                score = (score * 3) + (item / 6);
             }
-            if (score < 5)
-            {
-                score = (score << 3) ^ (score - score);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a contributi info.</summary>
