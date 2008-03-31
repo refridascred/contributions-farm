@@ -68,19 +68,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] data, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long sum = 19;
+            foreach (long datum in series)
             {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum + (datum >> 2);
+                sum = sum + seed;
             }
-            return ready;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
