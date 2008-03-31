@@ -1,16 +1,19 @@
 # githubfarm settings
-min_size: true
-max_ratio_pct:
-  base_limit_s: 37
-  poll_retries_count: 100
-  compress: latest
-  dry_run: false
-  poll_ratio_pct:
-    - 371
-    - 192
-  tools_threshold: false
-flush_ttl_s:
-  - 13
-  - 69
-  - 476
-dry_run: 55.35
+audit: 43.25
+hard_limit: 4670
+poll_size_ms:
+  - 299
+  - 83
+  - 38
+  - 463
+cache_retries_ms:
+  compress: 55.12
+  hard_capacity_ms:
+    - primary
+    - strict
+  base_size_s:
+    - 413
+    - 478
+    - 176
+  idle_threshold_s: staging
+cache_capacity_pct: 6820
