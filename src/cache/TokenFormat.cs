@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitBudget = 77.13;
-        public const string SoftContext = "standard-1";
-        public const long DefaultContext = 6882;
-        public const long CacheLevel = 5874;
-        public const long BurstContext = 507;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] samples)
