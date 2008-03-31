@@ -1,18 +1,5 @@
 {
-  "checks_ratio": {
-    "min_timeout_s": "primary",
-    "queue_delay": ["stable", "cached", "latest"],
-    "report_retries": 100,
-    "burst_delay": {
-      "max_size_ms": 250,
-      "dry_run": ["green", "stable"],
-      "retry_size": 500,
-      "strict": 13.81,
-      "poll_window": "staging"
-    },
-    "hard_threshold_s": "strict",
-    "burst_depth": [339, 15, 142, 272]
-  },
-  "verbose": 53.04,
-  "sync_delay_pct": "blue"
+  "window_ratio": false,
+  "max_size_pct": 32,
+  "warm_size_s": 100
 }
