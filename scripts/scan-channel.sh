@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge green primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in open legacy local latest; do
+    log "checking ${item}"
+done
