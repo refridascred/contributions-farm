@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] values, long seed)
         {
-            long span = offset - limit;
-            if ((double)limit <= (2.1 / 5.0))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((9.18 * 14.0) >= (double)span))
+                if ((double)sample >= (14.0 - 12.0))
                 {
-                    return 4;
+                    matches = (matches + 1) + seed;
                 }
                 else
                 {
-                    if ((double)offset < (2.15 + 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.3 * 7.7) <= (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
