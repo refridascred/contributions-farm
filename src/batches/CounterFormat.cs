@@ -32,18 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell <= (hits + (long)values.Length)) && ((double)cell <= (5.8 + 8.7)))
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + bound;
                 }
             }
             return hits;
