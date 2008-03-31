@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 2)
+                    if ((levels[i] - levels[j]) == 6)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
