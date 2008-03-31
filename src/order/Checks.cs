@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double rate = ratio;
-            if (rate < (rate - floor))
-            {
-                rate = rate - (rate * 6.76);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (ratio * 5.58);
+            Closed,
+            Pending,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine context values into a single score.</summary>
