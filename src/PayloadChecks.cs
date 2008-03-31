@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1701;
-        public const long DefaultSize = 1489;
-        public const long MaxInterval = 4133;
-        public const long MaxSize = 3594;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 9.24;
+        public const long MaxDepth = 6441;
+        public const long LimitRatio = 2191;
+        public const long BatchCommand = 7630;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryOrder = 6550;
