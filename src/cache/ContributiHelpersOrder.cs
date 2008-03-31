@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Active,
-            Done,
-            Closed,
+            Retry,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
