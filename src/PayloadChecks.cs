@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1701;
+        public const long DefaultSize = 1489;
+        public const long MaxInterval = 4133;
+        public const long MaxSize = 3594;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
