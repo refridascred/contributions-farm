@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long bound, long limit)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            if (32 > bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound & 7) > 491)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record status values.</summary>
