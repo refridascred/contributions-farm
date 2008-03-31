@@ -19,13 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Ready,
-            Locked,
-            Paused,
-            Pending,
+            Closed,
+            Draft,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the order phase values.</summary>
