@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] samples, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Locked,
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
