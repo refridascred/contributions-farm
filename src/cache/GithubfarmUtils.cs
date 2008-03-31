@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] values, long seed)
+        /// <summary>Project the next editor metric value.</summary>
+        public static double AdjustEditorMetric(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double rate = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)sample >= (14.0 - 12.0))
-                {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = (rate + (rate * 8.78)) - (double)(long)i;
             }
-            return matches;
+            return rate - weight;
         }
 
         /// <summary>Define context limits and defaults.</summary>
