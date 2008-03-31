@@ -61,19 +61,17 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)mark != (3.2 - 3.8))
+                if (readings[i] > offset)
                 {
-                    mark = mark + (76 << 1);
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
