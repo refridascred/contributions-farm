@@ -32,14 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] samples, long step)
         {
-            Ready,
-            Active,
-            Stale,
-            Failed,
-            Pending,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
