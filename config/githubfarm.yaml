@@ -1,22 +1,10 @@
 # githubfarm settings
-hard_threshold_ms:
-  cache_interval: standard
-  max_interval_count: 18.24
-  warm_retries: 87.84
-  context_ratio:
-    base_size_ms: green
-    persist: 66.03
-    enabled: staging
-    account_window: local
-    burst_window: 62
-  default_delay_s:
-    buffer_interval: true
-    notes_retries: standard
-    context_delay:
-      - 273
-      - 338
-      - 461
-      - 378
-  flush_retries_s: primary
-retry_ratio_s: 500
-min_threshold_count: 60
+notes_ratio: 29.16
+stats_depth: true
+channel_ttl: true
+cluster_window:
+  - eu-west
+  - cached
+  - staging
+  - local
+soft_depth_pct: 8518
