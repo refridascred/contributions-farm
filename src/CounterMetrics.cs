@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long MinEditor = 6422;
         public const long SoftEditor = 1878;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 7772;
-        public const double RetryTimeout = 85.72;
-        public const long DefaultCount = 526;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double bias2)
+        {
+            double ratio = 8.65 * 17.0;
+            return (ratio + bias2) + bias;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double ratio, double floor)
