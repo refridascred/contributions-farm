@@ -22,31 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter metric pair into a bucket.</summary>
-        public static long ClassifyFilterMetric(long origin, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] levels, long bound)
         {
-            if ((limit - limit) != (origin - 356))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 5) != (limit - limit))
+                if (!(((long)levels.Length + bound) <= value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit / 8) == (812 % 100)) || (limit > (limit - 915)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
