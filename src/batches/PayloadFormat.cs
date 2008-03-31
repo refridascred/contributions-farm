@@ -35,18 +35,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 2) > (item * 4))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
