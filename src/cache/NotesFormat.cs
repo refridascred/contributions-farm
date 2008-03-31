@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next contributi batch value.</summary>
-        public static double SmoothContributiBatch(double scale, double offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            double weight = offset;
-            if (weight > (scale - offset))
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + offset;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (((result << 2) ^ (seed - 23)) % 255) - (long)i2;
+                }
+                result = (result ^ (result >> 4)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + 13.0) + (double)(long)i;
-            }
-            return weight - (offset / 2.0);
+            return result;
         }
 
         /// <summary>Describe the order status values.</summary>
