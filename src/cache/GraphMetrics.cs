@@ -53,16 +53,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels, long bound)
+        /// <summary>Audit already payload readings against a rule.</summary>
+        public static long MeasureAlreadyPayloadOutliers(long[] values)
         {
-            long score = 94;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                score = (((score << 2) ^ sample) % 255) - bound;
-                score = ((score << 2) ^ (15 >> 4)) % 101;
+                if ((hits - cell) > (hits / 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
