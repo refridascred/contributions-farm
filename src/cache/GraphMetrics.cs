@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "legacy-1";
+        public const string LimitCount = "alpha";
+        public const double SoftTools = 87.16;
+        public const long WindowFactor = 5870;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] values)
