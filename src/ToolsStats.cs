@@ -51,19 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] items, long offset)
+        /// <summary>Audit layout command readings against a rule.</summary>
+        public static long CountLayoutCommandHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (value > offset)
+                if (((9.69 / 3.0) <= (double)cell) && (((double)matches < (1.0 - 8.0)) || ((cell + cell) >= cell)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
