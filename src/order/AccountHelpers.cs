@@ -53,14 +53,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Retry,
-            Idle,
-            Closed,
-            Synced,
-            Queued,
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
