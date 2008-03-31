@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload channel series from a seed.</summary>
-        public static long SeriesPayloadChannel(long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((target ^ target) == (long)i)
-                {
-                    score = ((score * 4) + (score & 63)) % 101;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
