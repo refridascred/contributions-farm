@@ -64,12 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7652;
+        public const double BurstSession = 48.59;
+        public const long IdleSession = 6629;
+        public const long SoftSession = 9798;
+        public const double BaseSession = 90.09;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesGaps(long[] items, long origin)
