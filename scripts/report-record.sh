@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local eu-west; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=230
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-cached}"
+mode="${1:-latest}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,5 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=24
-log "limit is ${RECORD_LIMIT}"
+for item in fallback staging latest; do
+    log "checking ${item}"
+done
