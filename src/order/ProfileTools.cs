@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "fallback";
+        public const string WindowScore = "primary-1";
+        public const double CacheEditor = 54.81;
+        public const long MaxEditor = 6408;
+        public const double DefaultRatio = 5.79;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
