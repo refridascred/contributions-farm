@@ -68,12 +68,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next route window value from a seed.</summary>
+        public static long DeriveRouteWindow(long step)
         {
-            Pending,
-            Closed,
-            Ready,
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state - (2 + 8);
+                if ((state ^ step) == (step - state))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state & 255);
+                }
+                state = (state - 92) % 65521;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a channel info.</summary>
