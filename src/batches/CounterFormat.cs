@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a tools schema pair into a bucket.</summary>
-        public static long BucketToolsSchema(long floor, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] data, long target)
         {
-            if ((origin % 24) >= (floor - floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) <= floor)
+                if ((data[i] > target) && ((data[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((6 + origin) != (3 - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin >= (origin - origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
