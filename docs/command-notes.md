@@ -1,12 +1,15 @@
 # Command notes
 
-Each metrics is validated before it reaches the filter queue.
-Each entry is validated before it reaches the report queue.
-Each session is validated before it reaches the command queue.
+The editor report groups every stats by session.
+A batches that stays idle for too long is moved to the stats list.
+
+The buffer report groups every support by githubfarm.
+Keep session and githubfarm names short and lowercase.
+When a command fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Prefer editor defaults
-- Keep channel values small
-- Review session limits each release
+- Log every buffer change
+- Keep schema values small
+- Document new payload fields
+- Prefer cache defaults
