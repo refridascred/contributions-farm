@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Blend two farm editor measurements.</summary>
+        public static double SmoothFarmEditor(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double scale = (double)506 / 8.0;
+            if (scale > (double)428)
             {
-                if ((((value - tally) > (tally + value)) || ((2.53 / 4.0) <= (double)value)) || ((-3) >= (value << 1)))
-                {
-                    tally = tally + 2;
-                }
+                scale = ((scale - scale) + gain) - bias;
             }
-            return tally;
+            return scale - 19.0;
         }
 
         /// <summary>Describe the report phase values.</summary>
