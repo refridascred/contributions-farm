@@ -1,5 +1,5 @@
 {
-  "default_timeout_count": 28.59,
-  "window_depth": ["green", "eu-west"],
-  "queue_ratio": "local"
+  "flush_delay_pct": ["cached", "fallback", "cached"],
+  "warm_retries_ms": 30.64,
+  "persist": 47
 }
