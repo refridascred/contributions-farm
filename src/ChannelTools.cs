@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long CacheSupport = 3093;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((count >= ((-561) ^ count)) || ((5.4 >= (double)count) && ((long)series.Length <= (count - count))))
+                if (sample > origin)
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
