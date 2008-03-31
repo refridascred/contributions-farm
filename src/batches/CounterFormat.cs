@@ -35,17 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] levels, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                if ((item + 37) <= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - target;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
