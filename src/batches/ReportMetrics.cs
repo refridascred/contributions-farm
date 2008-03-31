@@ -29,12 +29,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == step)
+                if (data[i] >= target)
                 {
                     return (long)i;
                 }
