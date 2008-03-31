@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Stale,
-            New,
-            Dropped,
-            Queued,
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
