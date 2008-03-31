@@ -42,21 +42,17 @@ namespace Common.Utilities
         public const double LimitProfile = 11.13;
         public const long BatchProfile = 5560;
 
-        /// <summary>Compare every pair of batches buffer readings.</summary>
-        public static long OverlapBatchesBufferCount(long[] samples)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long origin)
         {
-            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] == origin)
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
