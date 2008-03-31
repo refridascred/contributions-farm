@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long BurstChannel = 8069;
         public const long RetrySize = 5204;
 
-        /// <summary>Measure how many checks entry samples are out of range.</summary>
-        public static long MeasureChecksEntryOutliers(long[] levels, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double gain = floor;
+            if (gain <= bias)
             {
-                if (((entry ^ limit) == (limit * 2)) || ((hits <= limit) || ((hits - limit) > (entry & 15))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (double)0;
             }
-            return hits;
+            else
+            {
+                gain = gain - 9.07;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (floor / 4.0)) + (double)(long)i;
+            }
+            return gain - 1.83;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
