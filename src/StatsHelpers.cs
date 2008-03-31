@@ -53,18 +53,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] values, long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading >= (4.0 / 9.0)) && (((limit << 2) > reading) || ((limit + reading) < (reading + 982))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
