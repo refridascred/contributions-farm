@@ -1,6 +1,6 @@
 {
-  "cache_window": 50,
-  "dry_run": "legacy",
-  "verbose": "strict",
-  "contributi_timeout": "eu-west"
+  "strict": "staging",
+  "default_ratio": "strict",
+  "batch_threshold_pct": "fallback",
+  "warm_ttl": [402, 153, 179]
 }
