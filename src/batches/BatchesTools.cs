@@ -38,17 +38,17 @@ namespace Common.Utilities
             return load + (3.65 - load);
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] samples, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (seed >> 4)) % 65521;
+                state = ((state << 2) ^ ((long)i * 5)) % 101;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
