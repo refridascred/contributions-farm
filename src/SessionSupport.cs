@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Check that every profile commits entry stays within the limit.</summary>
+        public static bool ValidateProfileCommitsLimits(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
