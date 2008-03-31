@@ -27,16 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the entry editor series from a seed.</summary>
-        public static long RollEntryEditor(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = 181;
+            foreach (long sample in levels)
             {
-                acc = (acc << 2) ^ ((long)i >> 1);
-                acc = ((acc * 2) + (long)i) % 65521;
+                carry = (carry - (1 ^ seed)) + sample;
             }
-            return acc;
+            if (carry < 57)
+            {
+                carry = ((carry * 3) + (seed & 7)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
