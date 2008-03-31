@@ -1,28 +1,10 @@
 # githubfarm settings
-route_interval: green
-metric_window:
-  - 478
-  - 33
-retry_timeout_ms:
-  - 11
-  - 374
-  - 395
-audit: 4059
-stream_depth:
-  account_ttl: 2602
-  verbose: stable
-  base_threshold_count:
-    persist: 88.76
-    flush_retries_s: green
-    batch_threshold:
-      - standard
-      - primary
-      - fallback
-      - primary
-  enabled:
-    - standard
-    - local
-    - standard
-  warm_size: false
-  max_retries: primary
-max_limit_s: false
+poll_limit: 53
+min_retries_s:
+  verbose: 500
+  context_timeout: standard
+  batch_limit_pct: 40.66
+  persist: true
+strict: 9194
+warm_interval_pct: fallback
+enabled: 500
