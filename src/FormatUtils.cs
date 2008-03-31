@@ -40,19 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            double load = (double)((-3) >> 1);
-            if (load < (load / 8.0))
+            long acc = 61;
+            foreach (long entry in values)
             {
-                load = load - ratio;
+                acc = ((acc + acc) % 1000) ^ entry;
             }
-            else
-            {
-                load = load - ratio;
-            }
-            return load + span;
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
