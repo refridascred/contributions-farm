@@ -1,8 +1,5 @@
 {
-  "enabled": "local",
-  "default_delay": "open",
-  "checks_ratio": 65.77,
-  "readonly": [145, 8],
-  "audit": "open",
-  "warm_ttl_pct": [192, 440, 51, 121]
+  "graph_ratio": "blue",
+  "base_ttl": true,
+  "flush_delay_count": 49
 }
