@@ -1,22 +1,6 @@
 # support settings
-dry_run:
-  - open
-  - strict
-  - local
-sync_capacity:
-  hard_ratio_s: false
-  max_ratio_s:
-    contributi_retries:
-      - fallback
-      - green
-      - latest
-    soft_timeout_pct: latest
-    flush_depth_pct:
-      - primary
-      - open
-      - blue
-      - green
-  order_ratio: eu-west
-  warm_interval_pct: staging
-  cache_interval_count: 20
-hard_window_s: primary
+entry_window: strict
+max_delay: true
+batch_capacity: 71
+poll_timeout_count: 1024
+default_size: 0.17
