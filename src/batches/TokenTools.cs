@@ -19,18 +19,39 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long step, long offset)
         {
-            long score = 799;
-            foreach (long sample in series)
+            long step2 = step - offset;
+            if ((8.6 * 3.0) != (double)offset)
             {
-                if ((19 ^ score) <= seed)
+                return 5;
+            }
+            else
+            {
+                if (step2 > offset)
                 {
-                    score = ((score * 5) + seed) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((step + offset) != (197 - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((5 + step2) <= step) && ((step2 + offset) >= 72))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Blend two window measurements.</summary>
