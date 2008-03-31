@@ -1,5 +1,5 @@
 {
-  "flush_delay_pct": ["cached", "fallback", "cached"],
-  "warm_retries_ms": 30.64,
-  "persist": 47
+  "default_retries_s": 56,
+  "audit": false,
+  "session_timeout": "fallback"
 }
