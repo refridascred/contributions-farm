@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            New,
+            Idle,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the notes level values.</summary>
