@@ -25,38 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            if (!(limit < (limit - floor)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (76 > floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + floor) > limit) || ((floor << 1) != (24 - limit)))
+                    if ((series[i] - series[j]) > 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor << 2) > (limit * 4)) || (limit < (limit % 24)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
