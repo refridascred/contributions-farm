@@ -31,21 +31,11 @@ namespace Common.Utilities
         public const long LimitRoute = 4931;
         public const string StepRoute = "primary-v2";
 
-        /// <summary>Count context profile pairs that satisfy a relation.</summary>
-        public static long OverlapContextProfileCount(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
