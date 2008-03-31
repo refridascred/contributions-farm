@@ -1,7 +1,18 @@
 # support settings
-sync_depth_pct: 1024
-enabled: 67.37
-editor_size: 10.58
-editor_ratio: 13.54
-counter_ratio: 60
-hard_retries: true
+verbose: legacy
+max_interval_ms: 9009
+cluster_delay: legacy
+soft_timeout_ms:
+  retry_retries: latest
+  filter_depth: 60
+  hard_ratio_pct: eu-west
+min_limit:
+  sync_interval_pct:
+    - legacy
+    - stable
+  enabled: false
+  context_ttl: blue
+  flush_timeout_ms:
+    - 331
+    - 395
+    - 123
