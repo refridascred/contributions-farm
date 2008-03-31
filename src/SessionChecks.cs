@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-v2";
         public const string MaxDepth = "local-edge";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long step)
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
