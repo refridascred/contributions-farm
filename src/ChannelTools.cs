@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Validate cache stats readings against a bound.</summary>
+        public static bool CheckCacheStatsBounds(long[] levels, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                anchor = anchor ^ (target & 31);
-                if (!((target > (anchor - anchor)) || ((16.0 + 12.0) <= (double)anchor)))
+                if (entry >= origin)
                 {
-                    anchor = (anchor - anchor) % 101;
-                    anchor = anchor + (anchor - 3);
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return valid;
         }
     }
 }
