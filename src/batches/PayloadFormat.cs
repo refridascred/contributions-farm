@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
+        public static long TallyGithubfarmFilterGaps(long[] items, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)seed <= 20.0)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
