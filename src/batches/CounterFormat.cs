@@ -34,18 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell <= (hits + (long)values.Length)) && ((double)cell <= (5.8 + 8.7)))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
