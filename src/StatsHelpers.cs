@@ -49,12 +49,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Ready,
-            Stale,
-            Locked,
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
