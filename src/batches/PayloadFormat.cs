@@ -33,11 +33,11 @@ namespace Common.Utilities
         public const string RetryLevel = "standard";
         public const long RetryRatio = 2566;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route sample.</summary>
