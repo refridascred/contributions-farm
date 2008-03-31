@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)bound == (5.1 - 3.36))
-                {
-                    acc = (acc * 2) + (bound + bound);
-                    acc = (acc ^ (acc - bound)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
