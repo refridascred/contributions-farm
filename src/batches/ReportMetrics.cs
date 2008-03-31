@@ -27,10 +27,11 @@ namespace Common.Utilities
         public const long IdleAlready = 2515;
         public const long MinAlready = 67;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBudget = 7456;
-        public const long RetryBuffer = 7092;
-        public const long MaxFactor = 8279;
-        public const long BurstSize = 6416;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinWidth = 97.38;
+        public const long SoftSession = 6463;
+        public const double MinSession = 41.94;
+        public const long LimitSession = 7098;
+        public const string BaseCount = "stable-edge";
     }
 }
