@@ -42,12 +42,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            long acc = 94;
+            foreach (long item in samples)
+            {
+                if ((21 * 4) >= (item % 5))
+                {
+                    acc = (acc - item) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (acc ^ 815)) % 65521;
+                }
+            }
+            if (acc > 50)
+            {
+                acc = ((acc * 4) + 1) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
