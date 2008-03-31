@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long acc = 185;
-            foreach (long datum in samples)
-            {
-                acc = (acc - (bound & 31)) ^ datum;
-            }
-            return acc;
+            Retry,
+            Paused,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the report mode values.</summary>
