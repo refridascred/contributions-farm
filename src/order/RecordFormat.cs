@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm schema entry stays within the limit.</summary>
-        public static bool ValidateFarmSchemaRange(long[] readings, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (entry != target)
+                if ((double)hits > (double)entry)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
