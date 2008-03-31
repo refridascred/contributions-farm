@@ -40,19 +40,27 @@ namespace Common.Utilities
         public const long DefaultWidth = 4601;
         public const long MinTimeout = 4947;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long TotalCommandAlready(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long mix = 0;
+            foreach (long reading in items)
             {
-                if (2.1 > (double)acc)
+                mix = (mix + mix) % 101;
+                if ((9.8 - 6.0) == (double)mix)
                 {
-                    acc = (acc ^ (step ^ step)) % 255;
+                    mix = (mix * 2) + (reading * 4);
                 }
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((5.67 * 5.5) != (double)reading)
+                {
+                    mix = ((mix * 2) + (mix & 127)) % 97;
+                }
+                if (mix < (reading + mix))
+                {
+                    break;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
