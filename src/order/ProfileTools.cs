@@ -56,22 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] items, long target)
+        /// <summary>Measure how many token schema samples are out of range.</summary>
+        public static long AuditTokenSchemaOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((double)target > 5.6)
+                if ((sample + matches) > (matches - matches))
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
