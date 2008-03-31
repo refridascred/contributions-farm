@@ -1,12 +1,11 @@
 {
-  "flush_retries": "open",
-  "retry_ttl_pct": {
-    "burst_size_s": 9507,
-    "idle_capacity": 59.88,
-    "default_capacity": ["standard", "primary", "open", "stable"],
-    "persist": "cached",
-    "base_interval": false
-  },
-  "cache_timeout": "standard",
-  "min_timeout_s": "eu-west"
+  "enabled": "fallback",
+  "soft_interval": false,
+  "order_threshold": "primary",
+  "idle_ratio_pct": 50.44,
+  "base_timeout": {
+    "readonly": 4,
+    "idle_window_s": 82,
+    "soft_interval": 3
+  }
 }
