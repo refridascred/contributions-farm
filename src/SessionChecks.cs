@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a farm contributi value against two limits.</summary>
-        public static long GradeFarmContributi(long limit, long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long edge = limit + origin;
-            if (limit <= (edge - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin / 9) > (origin - limit)) || ((5.0 / 6.0) <= (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
