@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const string LimitBuffer = "open-1";
         public const string BaseBuffer = "stable-1";
 
-        /// <summary>Match up batch entry samples.</summary>
-        public static long PairBatchEntryCount(long[] levels)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
