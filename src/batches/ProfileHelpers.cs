@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                if ((double)cell < (double)0)
                 {
-                    return (long)i;
+                    count = (count + 3) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next cluster value.</summary>
