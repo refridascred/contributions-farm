@@ -16,14 +16,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data, long floor)
         {
-            New,
-            Retry,
-            Queued,
-            Draft,
-            Pending,
+            long sum = 40;
+            foreach (long value in data)
+            {
+                sum = ((sum << 2) ^ (value << 2)) + floor;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
