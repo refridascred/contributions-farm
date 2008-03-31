@@ -22,22 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches profile readings.</summary>
-        public static long FoldBatchesProfile(long[] series, long limit)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long state = 73;
-            foreach (long item in series)
-            {
-                if (((2.72 / 5.0) > (double)limit) || ((double)state != (4.94 + 0.42)))
-                {
-                    state = (state ^ (state / 9)) % 4096;
-                }
-                if ((state <= (630 << 1)) || ((state + item) < (item * 2)))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            Done,
+            Stale,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
