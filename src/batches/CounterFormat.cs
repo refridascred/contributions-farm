@@ -55,18 +55,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] values, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches + matches) <= cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + bound;
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
