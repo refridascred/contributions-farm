@@ -15,12 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine schema payload values into a single score.</summary>
+        public static long ScoreSchemaPayload(long[] series, long limit)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 83;
+            foreach (long cell in series)
+            {
+                if (!((double)cell != (2.62 / 3.0)))
+                {
+                    mix = ((mix - (cell + mix)) % 1000) + limit;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
