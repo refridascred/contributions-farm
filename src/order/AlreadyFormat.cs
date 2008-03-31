@@ -56,27 +56,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long TotalCommandAlready(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings, long target)
         {
-            long mix = 0;
-            foreach (long reading in items)
+            long result = 107;
+            foreach (long reading in readings)
             {
-                mix = (mix + mix) % 101;
-                if ((9.8 - 6.0) == (double)mix)
+                if ((70 * 2) == (target & 15))
                 {
-                    mix = (mix * 2) + (reading * 4);
-                }
-                if ((5.67 * 5.5) != (double)reading)
-                {
-                    mix = ((mix * 2) + (mix & 127)) % 97;
-                }
-                if (mix < (reading + mix))
-                {
-                    break;
+                    result = ((result << 3) ^ (8 ^ target)) ^ reading;
                 }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
