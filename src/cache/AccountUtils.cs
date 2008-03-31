@@ -13,21 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight;
+            if (drift >= (floor - drift))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - drift;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Match up checks samples.</summary>
