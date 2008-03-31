@@ -77,17 +77,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            New,
+            Closed,
+            Synced,
+            Active,
         }
     }
 }
