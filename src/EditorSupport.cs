@@ -48,21 +48,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((step ^ step) > (step + step)) && ((double)score > (double)21))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (step * 4);
+                    score = ((score << 2) ^ step) % 4096;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
