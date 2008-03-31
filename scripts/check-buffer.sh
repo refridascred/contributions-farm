@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable open; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in latest cached standard primary; do
     log "checking ${item}"
 done
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
