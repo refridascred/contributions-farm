@@ -41,9 +41,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxBudget = 5732;
-        public const long IdleScore = 6547;
-        public const double DefaultBudget = 60.42;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
