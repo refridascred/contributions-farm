@@ -1,10 +1,12 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Run the cache check before changing any channel limits.
+The buffer report groups every batch by stats.
+Keep buffer and layout names short and lowercase.
+Each batches is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Validate stats input early
-- Review cluster limits each release
-- Log every record change
+- Validate window input early
+- Review filter limits each release
+- Log every entry change
+- Document new channel fields
