@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2594;
-        public const double StepRoute = 58.26;
-        public const double BaseRatio = 8.11;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitInterval = 5286;
+        public const long IdleWidth = 7919;
+        public const long BaseMetrics = 2463;
+        public const double MaxMetrics = 78.4;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
