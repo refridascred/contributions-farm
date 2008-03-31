@@ -65,13 +65,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (7 >= reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
