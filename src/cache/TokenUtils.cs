@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue farm readings against a bound.</summary>
-        public static bool CheckQueueFarmLimits(long[] samples, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long acc = 503;
+            foreach (long item in series)
             {
-                if (entry < target)
+                if ((double)(long)series.Length == (6.31 + 3.71))
                 {
-                    ok = false;
-                    break;
+                    acc = ((((acc << 3) ^ 8) % 4096) + item) + step;
                 }
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
