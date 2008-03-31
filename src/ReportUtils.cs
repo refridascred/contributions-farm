@@ -55,21 +55,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Stale,
+            Done,
         }
     }
 }
