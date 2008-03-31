@@ -45,21 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= floor)
                 {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count the order tools entries that pass the check.</summary>
