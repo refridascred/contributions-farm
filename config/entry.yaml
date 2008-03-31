@@ -1,9 +1,19 @@
 # entry settings
-batch_size_count: 60
-flush_capacity_pct: 3772
-cluster_limit: 9040
-flush_size_pct:
-  - staging
-  - fallback
-burst_retries: blue
-readonly: 89.21
+queue_capacity: latest
+burst_capacity_count:
+  context_interval:
+    - strict
+    - stable
+    - staging
+  notes_interval: 3579
+  retry_retries_count: 87
+  verbose:
+    - staging
+    - open
+editor_retries: staging
+default_threshold_pct: 100
+strict:
+  - 382
+  - 40
+  - 135
+cache_ratio_count: staging
