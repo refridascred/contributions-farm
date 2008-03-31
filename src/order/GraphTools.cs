@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxInterval = 2756;
-        public const long MinCluster = 7315;
-        public const long MinDepth = 4677;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (limit >= (58 ^ 70))
+                {
+                    sum = ((sum << 2) ^ limit) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] levels, long step)
