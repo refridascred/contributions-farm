@@ -63,19 +63,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = 570;
-            foreach (long item in samples)
-            {
-                score = (((score * 2) + target) % 255) ^ item;
-            }
-            if (score > 806)
-            {
-                score = (score ^ (5 % 24)) % 65521;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
