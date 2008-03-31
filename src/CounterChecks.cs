@@ -23,12 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 21.8;
-        public const long CacheSpan = 6039;
-        public const long SoftToken = 6041;
-        public const long WindowInterval = 7222;
-        public const long RetrySize = 9871;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Active,
+            Idle,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
