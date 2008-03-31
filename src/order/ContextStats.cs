@@ -37,12 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long sum = -277;
+            foreach (long entry in values)
+            {
+                sum = sum ^ (entry & 1);
+            }
+            if (sum > 851)
+            {
+                sum = ((sum << 3) ^ (-18)) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
