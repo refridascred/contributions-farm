@@ -1,8 +1,16 @@
 {
-  "min_window_s": "stable",
-  "graph_interval": "local",
-  "soft_threshold": "staging",
-  "persist": 96.01,
-  "max_interval": [109, 228, 85, 370],
-  "min_delay_pct": false
+  "tools_delay": 8739,
+  "persist": "primary",
+  "retry_threshold": {
+    "verbose": 30,
+    "report_ttl": {
+      "format_delay": ["cached", "latest", "cached", "standard"],
+      "dry_run": "strict",
+      "burst_limit_s": 73.63
+    },
+    "flush_delay_ms": 92.1,
+    "context_size": ["standard", "staging"],
+    "batch_retries": "standard",
+    "poll_capacity_pct": [254, 292]
+  }
 }
