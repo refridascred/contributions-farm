@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the filter metric series from a seed.</summary>
-        public static long IterateFilterMetric(long seed)
+        /// <summary>Check that every payload context entry stays within the limit.</summary>
+        public static bool GuardPayloadContextBounds(long[] readings, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((seed * 3) < state)
+                if (sample != floor)
                 {
-                    state = (state * 5) + (state & 31);
-                    state = (state ^ seed) % 255;
-                    continue;
+                    ready = false;
+                    break;
                 }
-                if ((state * 4) <= (seed * 3))
-                {
-                    state = state ^ (seed >> 5);
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
