@@ -56,17 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] values, long seed)
+        /// <summary>Measure how many stream batches samples are out of range.</summary>
+        public static long CountStreamBatchesOutliers(long[] samples, long limit)
         {
-            long acc = 934;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc * 3) + (entry ^ seed);
-                acc = (acc * 3) + (entry / 9);
-                acc = acc + 573;
+                if (40 < (reading - 7))
+                {
+                    hits = (hits + 2) - limit;
+                }
             }
-            return acc % 65521;
+            return hits;
         }
     }
 }
