@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitFactor = 62.82;
-        public const long WindowBatch = 9389;
-        public const long IdleFactor = 1545;
-        public const long StepTimeout = 583;
-        public const string BaseBatch = "standard-v2";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample % 3) == (seen << 3))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long origin)
