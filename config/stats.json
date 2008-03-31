@@ -1,19 +1,5 @@
 {
-  "cluster_retries": ["blue", "stable"],
-  "audit": "legacy",
-  "cache_limit": "cached",
-  "cache_timeout": 3472,
-  "base_retries_count": {
-    "token_timeout": {
-      "retry_depth_pct": "edge",
-      "base_limit_s": "latest",
-      "order_window": true,
-      "token_delay": true,
-      "idle_threshold_pct": "eu-west"
-    },
-    "flush_depth": 86.99,
-    "order_window": false,
-    "min_depth": "blue",
-    "batch_threshold_count": 500
-  }
+  "hard_window": "green",
+  "editor_ratio": 93,
+  "warm_timeout": 5334
 }
