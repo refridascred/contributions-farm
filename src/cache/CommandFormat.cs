@@ -44,38 +44,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long offset, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            if ((offset + offset) <= (origin - offset))
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - origin) <= (offset / 9))
+                if (903 <= (long)i)
                 {
-                    return 2;
+                    continue;
                 }
-                else
-                {
-                    if (((origin - offset) > offset) || ((double)offset >= (20.0 - 6.95)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > (origin + 573))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = (total << 2) ^ offset;
+                total = ((total * 5) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
