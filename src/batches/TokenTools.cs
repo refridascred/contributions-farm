@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 5929;
-        public const double BurstWidth = 86.34;
-        public const double MinBudget = 78.66;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long step, long offset)
