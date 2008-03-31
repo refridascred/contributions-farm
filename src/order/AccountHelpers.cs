@@ -101,39 +101,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long seed, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long bound2 = seed - bound;
-            if ((15.0 / 8.0) > (double)bound)
+            long acc = 62;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 + bound) <= (6 + 1))
+                acc = acc ^ (acc + acc);
+                if (((73 + entry) > (entry - entry)) || ((double)acc <= 2.1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound2 ^ bound) > (seed / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((bound + seed) > (bound2 + bound)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = ((acc << 3) ^ (acc ^ entry)) % 65521;
                 }
             }
+            if (acc > 2)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
