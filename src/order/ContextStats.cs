@@ -45,19 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (datum >= offset)
+                if (764 < (long)data.Length)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
