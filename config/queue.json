@@ -1,14 +1,6 @@
 {
-  "dry_run": [394, 448, 151],
-  "flush_depth_ms": {
-    "base_timeout_ms": "fallback",
-    "batch_capacity_pct": [206, 218, 211],
-    "flush_timeout_count": "edge",
-    "idle_capacity_pct": "stable",
-    "enabled": 0.43,
-    "audit": true
-  },
-  "cluster_ratio": "latest",
-  "soft_window_s": false,
-  "flush_window_s": "local"
+  "readonly": true,
+  "enabled": [216, 304],
+  "audit": 49,
+  "base_limit_s": 1024
 }
