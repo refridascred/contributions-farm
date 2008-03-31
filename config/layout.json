@@ -1,5 +1,6 @@
 {
-  "idle_delay_s": 20,
-  "poll_depth_s": 500,
-  "sync_interval": true
+  "strict": false,
+  "idle_ttl": "green",
+  "flush_interval_count": true,
+  "account_window": 48
 }
