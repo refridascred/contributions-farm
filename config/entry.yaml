@@ -1,9 +1,5 @@
 # entry settings
-sync_ratio_count: true
-hard_ratio_s: 13.05
-strict: 83
-batch_ttl: strict
-flush_retries_pct: false
-already_interval:
-  - blue
-  - strict
+readonly: 20
+payload_delay: standard
+min_interval: 46
+cache_size: local
