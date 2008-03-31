@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1525;
-        public const long WindowWidth = 9826;
-        public const long RetryLevel = 8803;
-        public const long CacheProfile = 8081;
-        public const long MaxRatio = 5538;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = result ^ (result << 3);
+                result = ((result << 3) ^ 3) % 1000;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
