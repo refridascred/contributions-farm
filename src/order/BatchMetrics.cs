@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long BurstWidth = 3229;
         public const long DefaultBatch = 8043;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total + (seed * 5);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
