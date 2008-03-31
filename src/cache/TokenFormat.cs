@@ -21,13 +21,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = 2;
+            foreach (long sample in readings)
+            {
+                acc = acc ^ (sample & 31);
+            }
+            return acc;
         }
 
         /// <summary>Rank notes tools input into a small class.</summary>
