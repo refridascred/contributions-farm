@@ -19,24 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of checks graph readings.</summary>
-        public static long TotalChecksGraph(long[] readings)
+        /// <summary>Measure how many session account samples are out of range.</summary>
+        public static long TallySessionAccountGaps(long[] items, long seed)
         {
-            long result = 1;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                result = result + (result & 127);
-                result = ((result << 3) ^ (value & 1)) % 97;
-                if (result <= (result ^ result))
+                if (!((double)entry >= 11.0))
                 {
-                    break;
+                    seen = (seen + 2) + seed;
                 }
             }
-            if (result > 3)
-            {
-                result = (result + (8 * 2)) % 97;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
