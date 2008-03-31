@@ -13,18 +13,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long TallySessionProfileGaps(long[] items, long offset)
+        /// <summary>Classify a metrics schema pair into a bucket.</summary>
+        public static long SortMetricsSchema(long target, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if (!((target & 15) < (target % 24)))
             {
-                if (((65 << 1) != (offset + 67)) && ((15.0 * 7.2) > (double)entry))
+                return 2;
+            }
+            else
+            {
+                if (target > seed)
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (seed > ((-1) << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((579 >> 2) != (seed << 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
