@@ -67,17 +67,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a batches window reading by value.</summary>
-        public static long SeekBatchesWindowIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftLevel = 9123;
+        public const long CacheRecord = 9585;
+        public const string DefaultRecord = "alpha-v2";
+        public const long WindowRecord = 3027;
     }
 }
