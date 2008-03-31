@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (reading >= (limit << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowFactor = 7735;
+        public const long BaseRatio = 636;
+        public const string BurstCount = "alpha";
+        public const long LimitInterval = 9806;
+        public const long BurstSize = 3782;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricLimits(long[] values, long bound)
