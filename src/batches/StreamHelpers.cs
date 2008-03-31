@@ -33,10 +33,14 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchScore = 9503;
-        public const long WindowFilter = 958;
-        public const double DefaultWidth = 71.21;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] levels, long limit)
