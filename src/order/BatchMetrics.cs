@@ -62,11 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many route checks samples are out of range.</summary>
+        public static long CountRouteChecksOutliers(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((0.8 * 5.0) > (double)count)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
     }
 }
