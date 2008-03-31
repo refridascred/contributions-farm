@@ -76,19 +76,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate filter farm readings against a bound.</summary>
-        public static bool ValidateFilterFarmLimits(long[] items, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
