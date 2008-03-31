@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally - (-259)) == (seed + entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
