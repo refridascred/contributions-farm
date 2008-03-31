@@ -46,22 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Compare every pair of route githubfarm readings.</summary>
+        public static long MatchRouteGithubfarmCount(long[] series)
         {
-            long sum = 817;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value - (long)readings.Length) >= (sum << 3)) && ((value ^ sum) < value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum + ((-798) - value);
-                }
-                else
-                {
-                    sum = (sum - (sum + value)) % 65521;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a metric record.</summary>
