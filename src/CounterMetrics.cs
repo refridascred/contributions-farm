@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftWidth = 8779;
-        public const long MinEditor = 6422;
-        public const long SoftEditor = 1878;
+        /// <summary>Validate farm tools readings against a bound.</summary>
+        public static bool VerifyFarmToolsLimits(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] samples)
