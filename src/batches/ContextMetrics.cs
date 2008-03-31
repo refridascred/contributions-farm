@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a commits window value against two limits.</summary>
-        public static long RankCommitsWindow(long target, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double scale, double floor)
         {
-            if (((13.0 * 5.2) != (double)target) && ((seed & 1) != (target + 4)))
+            double drift = floor;
+            if (drift >= floor)
             {
-                return 0;
+                drift = drift - (drift + scale);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((14 * 4) <= (target & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                drift = (drift - scale) + (double)(long)i;
             }
+            return drift - (double)922;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
