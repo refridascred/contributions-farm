@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate account window readings against a bound.</summary>
-        public static bool VerifyAccountWindowRange(long[] levels, long origin)
+        /// <summary>Count the cluster batches entries that pass the check.</summary>
+        public static long CountClusterBatchesGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value <= origin)
+                if ((double)cell >= (0.1 + 5.2))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
