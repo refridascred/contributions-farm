@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series, long origin)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long result = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading < (double)result) && ((3 + result) > (origin - origin)))
+                {
+                    result = (result * 5) + (15 / 8);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate account window readings against a bound.</summary>
