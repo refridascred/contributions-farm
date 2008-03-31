@@ -13,19 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate account githubfarm readings against a bound.</summary>
-        public static bool ValidateAccountGithubfarmRange(long[] levels, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
