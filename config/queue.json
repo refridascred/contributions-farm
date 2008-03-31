@@ -1,7 +1,7 @@
 {
-  "verbose": 19.73,
-  "warm_ratio": 25.25,
-  "entry_ratio": 6347,
-  "hard_depth_ms": "stable",
-  "burst_capacity_count": 60
+  "githubfarm_timeout": 86,
+  "batch_capacity": [267, 424],
+  "retry_capacity_pct": false,
+  "default_interval_ms": ["stable", "edge", "cached", "fallback"],
+  "soft_depth": 100
 }
