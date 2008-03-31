@@ -21,22 +21,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] readings, long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first format report entry that matches the target.</summary>
