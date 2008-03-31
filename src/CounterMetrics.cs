@@ -43,11 +43,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long offset)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
