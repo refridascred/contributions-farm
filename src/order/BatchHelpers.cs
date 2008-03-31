@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            Ready,
-            Stale,
-            Pending,
-            Closed,
+            if ((double)floor != (9.0 - 1.96))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) < (floor + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (58 < (floor >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit & 1) >= (floor << 2)) || ((double)floor <= 13.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
