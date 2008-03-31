@@ -1,7 +1,23 @@
 # entry settings
-already_window: true
-record_limit: 43.56
-max_threshold_count:
-  - 474
-  - 163
-  - 291
+hard_timeout_s: 76.72
+strict:
+  record_limit: true
+  sync_window_ms: 79.83
+  max_timeout_pct:
+    - 4
+    - 394
+    - 20
+  poll_window_s: primary
+max_retries: 500
+flush_interval:
+  hard_capacity:
+    - edge
+    - blue
+    - open
+  enabled: 15.85
+  poll_size_ms:
+    - 240
+    - 428
+  max_ttl_s: 81.23
+  batch_delay: cached
+idle_interval_s: 5
