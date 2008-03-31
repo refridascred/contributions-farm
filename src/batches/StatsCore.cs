@@ -53,17 +53,21 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Locate a counter buffer reading by value.</summary>
-        public static long SeekCounterBufferIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of cache checks readings.</summary>
+        public static long MatchCacheChecksCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
