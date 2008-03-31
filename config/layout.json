@@ -1,5 +1,8 @@
 {
-  "strict": 250,
-  "record_window": 3778,
-  "max_timeout_ms": 7729
+  "verbose": false,
+  "batch_ratio_ms": 5068,
+  "hard_interval_count": [178, 103, 223, 15],
+  "batches_capacity": "edge",
+  "min_depth_pct": 97.52,
+  "hard_depth_pct": 1024
 }
