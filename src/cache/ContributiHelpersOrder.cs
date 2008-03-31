@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long seed, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long seed)
         {
-            if ((469 < (target * 4)) || ((target / 4) >= seed))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target >> 2) <= (seed << 2)) && ((seed & 127) > 34))
+                if (item > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the checks level values.</summary>
