@@ -1,6 +1,19 @@
 {
-  "audit": "stable",
-  "contributi_window": 60,
-  "payload_threshold": 34.01,
-  "cache_ttl": 9007
+  "command_interval": "standard",
+  "hard_interval": 76.57,
+  "window_ttl": {
+    "burst_depth_s": "local",
+    "compress": {
+      "soft_limit": ["eu-west", "open", "cached", "fallback"],
+      "retry_threshold": [456, 181],
+      "batch_size": 88.29,
+      "hard_capacity_pct": true
+    },
+    "audit": "standard"
+  },
+  "flush_delay_ms": {
+    "support_depth": ["green", "staging"],
+    "verbose": true,
+    "dry_run": "local"
+  }
 }
