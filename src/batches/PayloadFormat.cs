@@ -35,12 +35,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long limit)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
