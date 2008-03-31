@@ -20,19 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a farm support reading.</summary>
-        public static double ProjectFarmSupport(double ratio, double floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] series, long offset)
         {
-            double ratio2 = floor / 7.0;
-            if (ratio2 < (ratio2 * 0.02))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                ratio2 = (ratio2 + (double)9) - ratio;
+                if ((double)offset >= (15.0 * 3.05))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)574;
-            }
-            return ratio2 - (floor + floor);
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
