@@ -49,20 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "alpha-v2";
+        public const long DefaultRatio = 53;
+        public const long BurstCounter = 2003;
+        public const long CacheCounter = 8514;
+        public const double StepTimeout = 97.07;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] series, long origin)
