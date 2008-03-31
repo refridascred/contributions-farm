@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (result < (long)i)
+                if ((double)matches == (6.3 * 6.0))
                 {
-                    result = result ^ result;
+                    matches = (matches + 1) + value;
                 }
-                else
-                {
-                    result = (result ^ (result / 3)) % 1000;
-                }
-                result = (result ^ (result + offset)) % 101;
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster stats readings.</summary>
