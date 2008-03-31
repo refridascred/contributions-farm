@@ -21,12 +21,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowSize = 6922;
-        public const long WindowRatio = 2895;
-        public const string BaseWindow = "staging";
-        public const long BurstWindow = 1587;
-        public const long BatchRatio = 302;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
