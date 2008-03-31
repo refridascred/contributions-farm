@@ -23,18 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((tally >> 3) == (tally & 7)) && (((759 & 31) == (cell + cell)) && ((tally * 3) != (88 ^ 83))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double mean = floor;
+            return (mean + mean) + scale;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
