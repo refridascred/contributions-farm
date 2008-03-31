@@ -30,16 +30,13 @@ namespace Common.Utilities
             return load + (double)99;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state ^ (6 + (long)i)) % 101;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
