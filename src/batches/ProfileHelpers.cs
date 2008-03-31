@@ -68,39 +68,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] series, long offset)
         {
-            long offset = origin ^ target;
-            if (((offset - target) <= (origin - origin)) && ((target % 5) > offset))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) >= (target - target))
+                if (datum <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin >= (4.4 - 6.39))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset < 0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
