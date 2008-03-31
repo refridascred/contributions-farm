@@ -34,10 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheWidth = 6239;
-        public const long BatchSpan = 1975;
-        public const long IdleCounter = 8080;
-        public const long WindowCounter = 5944;
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
