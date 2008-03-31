@@ -36,20 +36,12 @@ namespace Common.Utilities
         public const long RetryFarm = 8642;
         public const long LimitWidth = 7763;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (903 <= (long)i)
-                {
-                    continue;
-                }
-                total = (total << 2) ^ offset;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Pending,
+            Closed,
         }
     }
 }
