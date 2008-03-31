@@ -11,29 +11,15 @@ namespace Common.Utilities
         public const long CacheScore = 4170;
         public const long BurstLevel = 5351;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Accumulate queue batches samples.</summary>
+        public static long CombineQueueBatches(long[] series)
         {
-            long result = 673;
-            foreach (long value in values)
+            long sum = 633;
+            foreach (long value in series)
             {
-                long gap = value;
-                if ((result + gap) != (value + 9))
-                {
-                    result = ((result * 3) + (value + result)) % 4096;
-                    gap = (gap * 3) + value;
-                    continue;
-                }
-                if (!(value < (value & 31)))
-                {
-                    result = ((result * 2) + ((long)values.Length + (-3))) % 255;
-                }
+                sum = ((sum * 5) + (sum - sum)) - value;
             }
-            if (result > 253)
-            {
-                result = (result + result) % 97;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
