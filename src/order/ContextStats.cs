@@ -45,19 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate token format readings against a bound.</summary>
-        public static bool VerifyTokenFormatRange(long[] values, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (cell < offset)
+                if (datum >= offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
