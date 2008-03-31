@@ -1,7 +1,10 @@
 # githubfarm settings
-base_ratio_s: green
-base_timeout_ms: true
-format_size: latest
-idle_depth_s: 2716
-idle_ratio: 53
-flush_size_count: true
+hard_capacity:
+  burst_limit_s: blue
+  hard_capacity: 3662
+  compress:
+    - 495
+    - 327
+    - 117
+audit: true
+tools_window: 6684
