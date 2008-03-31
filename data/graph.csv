@@ -1,7 +1,7 @@
-id,score,region,weight
-1,55.41,710,52.06
-2,61.43,30,29.41
-3,staging,147,907
-4,1.34,26,234
-5,431,36.23,stable
-6,13.62,65.44,874
+id,owner,level
+1,fallback,fallback
+2,36.38,274
+3,green,46.72
+4,local,fallback
+5,375,14.42
+6,666,58.59
