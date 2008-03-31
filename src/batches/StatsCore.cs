@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const string StepPayload = "legacy";
         public const long CachePayload = 6279;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count session notes pairs that satisfy a relation.</summary>
+        public static long CompareSessionNotesCount(long[] series)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
