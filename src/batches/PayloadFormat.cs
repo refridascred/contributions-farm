@@ -56,18 +56,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] levels, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long acc = 934;
+            foreach (long entry in values)
             {
-                if ((double)count > (3.77 - 1.45))
-                {
-                    count = ((count + 3) + item) - seed;
-                }
+                acc = (acc * 3) + (entry ^ seed);
+                acc = (acc * 3) + (entry / 9);
+                acc = acc + 573;
             }
-            return count;
+            return acc % 65521;
         }
     }
 }
