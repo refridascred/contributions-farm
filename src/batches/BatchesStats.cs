@@ -28,20 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches checks readings.</summary>
-        public static long TallyBatchesChecks(long[] readings)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = -58;
-            foreach (long datum in readings)
-            {
-                if (datum <= (datum + total))
-                {
-                    total = (total + datum) % 1000;
-                    total = ((total << 2) ^ (70 << 3)) % 255;
-                }
-                total = (total - (datum + total)) % 4096;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
