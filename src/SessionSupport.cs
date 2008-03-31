@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
