@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const long MinWidth = 4436;
         public const long IdleStream = 5118;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
