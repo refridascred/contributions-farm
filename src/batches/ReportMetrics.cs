@@ -38,12 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            long total = 27;
+            foreach (long value in levels)
+            {
+                total = (((total << 2) ^ (699 << 2)) % 101) + value;
+            }
+            return total % 4096;
         }
     }
 }
