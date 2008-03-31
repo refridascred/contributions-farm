@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] data)
         {
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading <= (reading << 3)) && (reading >= (seen - 715)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
