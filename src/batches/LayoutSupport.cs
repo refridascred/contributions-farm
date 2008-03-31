@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double rate = 5.0 * 9.9;
-            return ((rate - (double)6) + bias) + bias2;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
