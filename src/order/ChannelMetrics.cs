@@ -18,14 +18,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Synced,
-            Dropped,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultSize = "stable";
+        public const long BaseCount = 7511;
+        public const long BatchOrder = 8513;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterOutliers(long[] readings, long offset)
