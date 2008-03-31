@@ -66,14 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Active,
-            Closed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9456;
+        public const double SoftCount = 45.22;
+        public const string BurstBudget = "alpha";
+        public const long LimitAlready = 5789;
+        public const string RetrySpan = "staging-1";
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
