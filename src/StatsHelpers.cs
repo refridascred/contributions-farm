@@ -63,12 +63,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of filter channel entries.</summary>
+        public static long CombineFilterChannel(long[] items, long step)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            long anchor = 85;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor - 77) + reading) + step;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
