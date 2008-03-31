@@ -28,19 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch entry readings against a bound.</summary>
-        public static bool CheckBatchEntryRange(long[] levels, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (reading != offset)
+                if ((double)limit >= 2.0)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
