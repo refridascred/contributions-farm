@@ -70,18 +70,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((item + item) < (matches + matches))
+                if ((2.74 * 9.71) < 18.0)
                 {
-                    matches = matches + 1;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
