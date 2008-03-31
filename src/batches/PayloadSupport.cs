@@ -34,19 +34,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a cache session figure with a bias.</summary>
-        public static double BlendCacheSession(double ratio, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values, long origin)
         {
-            double rate = (ratio / 7.0) - offset;
-            if (rate > (double)16)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                rate = rate + offset;
+                if (!(origin <= matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate - (ratio * 8.1);
+            return matches;
         }
     }
 }
