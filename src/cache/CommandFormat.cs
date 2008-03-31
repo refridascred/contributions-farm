@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] readings)
         {
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((hits - (long)readings.Length) <= (hits + hits)) && ((double)(long)readings.Length == (1.8 / 6.0)))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
