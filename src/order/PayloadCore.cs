@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9385;
-        public const double MinCluster = 32.75;
-        public const double BaseCluster = 95.85;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long offset)
+        {
+            if (seed >= (offset + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-227) > seed) && (3.0 <= (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset & 15) > (seed + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] data, long seed)
