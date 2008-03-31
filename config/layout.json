@@ -1,15 +1,11 @@
 {
-  "base_limit_ms": "stable",
-  "sync_size_pct": {
-    "enabled": 45,
-    "min_delay_s": {
-      "poll_threshold_pct": 60,
-      "idle_size_s": [432, 28, 431],
-      "verbose": [162, 49, 358, 275],
-      "dry_run": [300, 284, 481, 191],
-      "flush_size_count": 7747
-    },
-    "retry_retries_s": "staging"
+  "order_interval": false,
+  "persist": {
+    "hard_timeout_ms": 500,
+    "cache_size": 100,
+    "sync_ratio_s": 1024,
+    "farm_size": 9215,
+    "dry_run": 250
   },
-  "retry_limit_count": false
+  "readonly": true
 }
