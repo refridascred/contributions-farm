@@ -32,9 +32,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 2482;
-        public const long IdleBudget = 4570;
-        public const long DefaultCache = 1987;
+        /// <summary>Iterate the buffer farm series from a seed.</summary>
+        public static long StepBufferFarm(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc ^ acc;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
