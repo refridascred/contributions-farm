@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitScore = 1819;
-        public const long StepLevel = 9417;
-        public const double MaxContributi = 27.5;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long origin, long offset)
+        {
+            long cur = origin - offset;
+            if ((cur % 5) == (cur - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ origin) != (offset & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 9267;
