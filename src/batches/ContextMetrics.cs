@@ -25,15 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double span)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long limit)
         {
-            double rate = scale;
-            for (int i = 0; i < 4; i++)
+            if (!(limit < (limit - floor)))
             {
-                rate = ((rate + rate) + (double)(long)i) - span;
+                return 1;
             }
-            return rate - scale;
+            else
+            {
+                if (76 > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + floor) > limit) || ((floor << 1) != (24 - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor << 2) > (limit * 4)) || (limit < (limit % 24)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
