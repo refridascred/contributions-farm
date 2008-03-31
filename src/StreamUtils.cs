@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate session context readings against a bound.</summary>
+        public static bool CheckSessionContextBounds(long[] readings, long limit)
         {
-            Dropped,
-            Ready,
-            Pending,
-            Closed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
