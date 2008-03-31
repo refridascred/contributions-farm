@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ratio - (bias * 2.73);
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items, long target)
         {
-            Failed,
-            Synced,
-            Ready,
+            long score = 800;
+            foreach (long cell in items)
+            {
+                if ((double)239 <= 6.4)
+                {
+                    score = (((score << 2) ^ (cell + score)) % 4096) + target;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
