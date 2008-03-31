@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "primary";
+        public const long DefaultOrder = 4574;
+        public const long HardScore = 4450;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] series, long offset)
