@@ -57,10 +57,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 48.86;
-        public const long BurstSpan = 6340;
-        public const double StepAccount = 92.05;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstWidth = 8.61;
+        public const long CacheSpan = 3810;
+        public const long RetrySize = 9638;
+        public const string MaxMetric = "alpha-edge";
+        public const long DefaultMetric = 5937;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueMatches(long[] readings, long seed)
