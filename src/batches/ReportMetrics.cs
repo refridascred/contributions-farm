@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] series, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double mean = (double)1 - scale;
+            if (mean >= (2.8 / 7.0))
             {
-                if (111 >= matches)
-                {
-                    matches = ((matches + 3) ^ entry) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + scale) + span;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (double)(-977);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
