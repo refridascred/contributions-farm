@@ -42,19 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            long anchor = 51;
-            foreach (long item in data)
+            long sum = 2;
+            foreach (long reading in series)
             {
-                anchor = ((anchor ^ (anchor % 24)) % 65521) - floor;
-                if (((anchor / 5) < (item % 97)) && ((double)item <= 7.2))
+                if ((double)sum < 7.12)
                 {
-                    anchor = anchor - (4 >> 3);
+                    sum = (sum ^ (sum - 702)) + reading;
+                }
+                else
+                {
+                    sum = sum + (sum ^ 6);
                 }
             }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Hold a metrics header.</summary>
