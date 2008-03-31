@@ -39,13 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Rank already checks input into a small class.</summary>
+        public static long RankAlreadyChecks(long floor, long target)
         {
-            Synced,
-            Closed,
-            Dropped,
-            Draft,
+            long delta = floor + target;
+            if ((target ^ target) >= (floor - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((delta / 9) > (956 - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((target / 3) < floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
