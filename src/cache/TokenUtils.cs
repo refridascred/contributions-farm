@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] data)
         {
-            Locked,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((count & 63) < ((long)data.Length & 3)) && ((count * 4) <= ((long)data.Length / 7)))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
