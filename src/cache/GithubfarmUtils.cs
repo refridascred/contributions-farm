@@ -23,12 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 398;
+        public const string SoftPayload = "strict-v2";
+        public const double CacheWidth = 9.33;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 7269;
