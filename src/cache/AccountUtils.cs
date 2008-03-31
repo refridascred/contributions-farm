@@ -35,21 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (seed < (step % 24))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (step <= (seed & 7))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
