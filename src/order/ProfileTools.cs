@@ -61,18 +61,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample << 3) < (matches << 1))
-                {
-                    matches = matches + 2;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
