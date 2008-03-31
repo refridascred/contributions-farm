@@ -64,32 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long target, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            long next = target - origin;
-            if ((target * 3) < (target & 3))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 9) != (target + 8))
+                if ((9.17 * 1.91) == (double)reading)
                 {
-                    return 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)next == (4.6 + 12.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
