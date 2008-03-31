@@ -35,15 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile commits entries.</summary>
-        public static long TallyProfileCommits(long[] samples, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mark = 236;
-            foreach (long item in samples)
-            {
-                mark = ((mark + (item << 1)) % 1000) - seed;
-            }
-            return mark % 65521;
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
