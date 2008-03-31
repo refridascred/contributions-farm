@@ -1,14 +1,6 @@
 {
-  "readonly": "blue",
-  "burst_timeout_pct": 1714,
-  "tools_ttl": [63, 230],
-  "verbose": 15.67,
-  "stream_limit": {
-    "flush_ttl_s": [157, 497, 488],
-    "persist": 60,
-    "command_size": ["legacy", "latest"],
-    "profile_limit": false,
-    "readonly": [113, 326, 144],
-    "compress": 60
-  }
+  "dry_run": false,
+  "burst_timeout_s": 500,
+  "cache_timeout_ms": ["green", "cached"],
+  "flush_size_pct": false
 }
