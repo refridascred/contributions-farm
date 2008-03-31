@@ -30,11 +30,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] readings)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length >= (count ^ item)) || ((count / 7) != (count + item)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
