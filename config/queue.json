@@ -1,8 +1,13 @@
 {
-  "poll_ratio_pct": 49,
-  "sync_size_ms": 29.34,
-  "max_size_pct": [478, 204],
-  "max_retries": 6491,
-  "verbose": 1827,
-  "sync_delay_s": 73.45
+  "metric_ratio": 44,
+  "editor_threshold": {
+    "compress": 61,
+    "cache_timeout_pct": true,
+    "default_threshold_count": 100,
+    "buffer_interval": "local",
+    "persist": 76,
+    "session_window": 26.8
+  },
+  "verbose": 30,
+  "flush_delay_count": 30
 }
