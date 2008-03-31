@@ -1,12 +1,14 @@
 # Command notes
 
-The graph report groups every format by token.
-A report that stays idle for too long is moved to the filter list.
-The stats module keeps contributi values in sync with the channel cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
+
+When a report fails, the cache handler retries a few times before giving up.
+The cache module keeps batches values in sync with the editor cache.
 
 ## Guidelines
 
-- Log every schema change
-- Keep support values small
-- Validate batches input early
-- Review tools limits each release
+- Validate report input early
+- Keep batch values small
+- Review payload limits each release
+- Log every metrics change
