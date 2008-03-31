@@ -49,19 +49,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
-        public static bool VerifyWindowGithubfarmBounds(long[] levels, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long target, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            if ((double)seed <= 5.7)
             {
-                if (reading != floor)
+                return 8;
+            }
+            else
+            {
+                if ((target >> 1) < target)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((7 - seed) >= (target >> 4)) && (seed >= (seed - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
