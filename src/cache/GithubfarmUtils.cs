@@ -63,25 +63,18 @@ namespace Common.Utilities
         public const double LimitProfile = 11.13;
         public const long BatchProfile = 5560;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Count the stream window entries that pass the check.</summary>
+        public static long AuditStreamWindowHits(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + (step - step)) % 97;
-                if (((double)step <= (6.93 * 1.2)) && ((state & 7) == (15 * 4)))
+                if (cell >= (cell >> 1))
                 {
-                    state = (state ^ (step * 4)) % 101;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    state = (state ^ 561) % 65521;
-                    state = ((state * 5) + ((long)i << 2)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
     }
 }
