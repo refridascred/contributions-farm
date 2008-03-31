@@ -1,6 +1,8 @@
 {
-  "window_interval": false,
-  "warm_ratio_ms": "open",
-  "cache_size": 6994,
-  "warm_ttl_s": true
+  "default_depth": ["latest", "edge"],
+  "sync_size_pct": ["local", "open", "green", "local"],
+  "default_delay": [469, 122, 63, 233],
+  "poll_size": "open",
+  "flush_ttl_ms": 3068,
+  "base_retries": "strict"
 }
