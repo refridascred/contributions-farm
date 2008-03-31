@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long limit)
+        /// <summary>Measure how many checks entry samples are out of range.</summary>
+        public static long MeasureChecksEntryOutliers(long[] levels, long limit)
         {
-            long result = -70;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                result = (((result << 3) ^ (result >> 4)) + cell) - limit;
+                if (((entry ^ limit) == (limit * 2)) || ((hits <= limit) || ((hits - limit) > (entry & 15))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
