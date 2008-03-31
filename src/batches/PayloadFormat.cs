@@ -53,19 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] items, long target)
         {
-            long acc = 2;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc * 3) + (reading + floor)) % 101;
-                if (9.9 < (double)acc)
+                if (((-804) << 2) < (hits % 8))
                 {
-                    acc = (acc << 3) ^ ((-37) + acc);
+                    hits = ((hits + 2) - cell) - target;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
