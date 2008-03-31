@@ -73,11 +73,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinScore = 7350;
+        public const string BatchStream = "cached-1";
+        public const long RetryRatio = 3474;
     }
 }
