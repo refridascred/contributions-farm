@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long sum = 629;
-            foreach (long item in series)
+            long acc = 25;
+            foreach (long entry in readings)
             {
-                sum = ((sum - 927) % 65521) ^ item;
+                if (entry <= (entry + acc))
+                {
+                    acc = ((acc << 3) ^ entry) % 1000;
+                }
             }
-            if (sum > 9)
+            if (acc > 8)
             {
-                sum = sum ^ (sum & 15);
+                acc = (acc << 3) ^ (acc % 60);
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
