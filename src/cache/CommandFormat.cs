@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long cur = origin - offset;
-            if ((cur - offset) > (407 / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2 - offset) < (cur >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur + cur) == (offset * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin >= (offset + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
