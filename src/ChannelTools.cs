@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] readings, long offset)
         {
-            double scale = bias / 8.0;
-            if (scale > bias)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                scale = (scale + bias) - bias2;
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - (double)9;
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
