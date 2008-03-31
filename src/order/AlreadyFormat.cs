@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            New,
-            Synced,
-            Closed,
-            Active,
+            double load = 2.0;
+            return (load + rate) + bias;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
