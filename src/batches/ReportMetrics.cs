@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stream context entry stays within the limit.</summary>
-        public static bool VerifyStreamContextRange(long[] levels, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
