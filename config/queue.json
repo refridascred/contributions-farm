@@ -1,16 +1,7 @@
 {
-  "retry_window_ms": 2244,
-  "compress": {
-    "readonly": 28.96,
-    "already_ttl": 100,
-    "persist": 59,
-    "verbose": "primary",
-    "burst_window": 43
-  },
-  "session_limit": 3880,
-  "warm_size_count": {
-    "layout_interval": 1024,
-    "checks_capacity": false,
-    "editor_timeout": "blue"
-  }
+  "verbose": 19.73,
+  "warm_ratio": 25.25,
+  "entry_ratio": 6347,
+  "hard_depth_ms": "stable",
+  "burst_capacity_count": 60
 }
