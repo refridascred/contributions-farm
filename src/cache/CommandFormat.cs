@@ -37,10 +37,12 @@ namespace Common.Utilities
         public const long RetryFarm = 8642;
         public const long LimitWidth = 7763;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 4638;
-        public const long CacheCluster = 8927;
-        public const long MaxLevel = 4886;
-        public const long WindowCluster = 5271;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
