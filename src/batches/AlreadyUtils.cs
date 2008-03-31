@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
-        {
-            long state = 58;
-            foreach (long sample in samples)
-            {
-                state = ((state << 3) ^ (state ^ state)) ^ sample;
-            }
-            if (state < 0)
-            {
-                state = ((state * 4) + (8 + state)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 5687;
+        public const string StepCommits = "staging-v2";
+        public const long SoftDepth = 3030;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long bound, long origin)
