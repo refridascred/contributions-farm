@@ -25,15 +25,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels, long seed)
+        /// <summary>Project the next graph stream value.</summary>
+        public static double BlendGraphStream(double weight, double offset)
         {
-            long state = -469;
-            foreach (long sample in levels)
+            double load = (double)(-62) - offset;
+            if (load > load)
             {
-                state = ((state - (state % 8)) - sample) + seed;
+                load = (load + offset) + weight;
             }
-            return state;
+            else
+            {
+                load = load + (double)57;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define account limits and defaults.</summary>
