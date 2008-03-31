@@ -26,12 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mix = 6;
+            foreach (long entry in samples)
+            {
+                if ((10 - entry) < (mix - mix))
+                {
+                    mix = (mix * 3) + mix;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
