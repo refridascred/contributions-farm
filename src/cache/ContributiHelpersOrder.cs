@@ -23,17 +23,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                long bound = 4;
+                acc = acc + (bound / 4);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
