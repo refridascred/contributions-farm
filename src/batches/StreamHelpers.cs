@@ -38,11 +38,23 @@ namespace Common.Utilities
         public const long WindowFilter = 958;
         public const double DefaultWidth = 71.21;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 408;
-        public const string RetryGithubfarm = "fallback-edge";
-        public const double MaxGithubfarm = 72.3;
-        public const long CacheBudget = 2420;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item * 3) <= 5)
+                {
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double rate, double bias)
