@@ -1,5 +1,12 @@
 {
-  "metric_depth": 2518,
-  "metrics_retries": "eu-west",
-  "filter_interval": true
+  "batch_interval_ms": {
+    "soft_ratio_s": "staging",
+    "report_capacity": "open",
+    "batch_capacity_count": "eu-west",
+    "readonly": 5
+  },
+  "dry_run": 739,
+  "payload_ratio": 30,
+  "min_retries_ms": 100,
+  "stats_capacity": "staging"
 }
