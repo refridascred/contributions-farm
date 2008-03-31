@@ -49,23 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] data)
         {
-            double rate = (scale - 4.7) * 8.8;
-            if (rate < 5.77)
+            long sum = 51;
+            foreach (long item in data)
             {
-                rate = rate - rate;
+                if ((4.0 + 6.3) <= (double)item)
+                {
+                    sum = sum + (item % 60);
+                }
             }
-            else
+            if (sum > 4)
             {
-                rate = rate + (floor * 4.59);
+                sum = (sum + (sum % 8)) % 4096;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)14) + (double)(long)i;
-            }
-            return rate + scale;
+            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
