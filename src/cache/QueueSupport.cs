@@ -16,11 +16,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "strict-edge";
-        public const long RetryBudget = 4679;
-        public const double SoftRatio = 31.8;
-        public const string DefaultSupport = "staging-v2";
+        /// <summary>Digest a series of githubfarm commits entries.</summary>
+        public static long WeighGithubfarmCommits(long[] readings)
+        {
+            long mix = -4;
+            foreach (long entry in readings)
+            {
+                mix = mix - (574 + 712);
+                if ((5.4 * 2.0) > (double)entry)
+                {
+                    mix = (mix - (mix + entry)) % 1000;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double AdjustRoute(double scale, double floor)
