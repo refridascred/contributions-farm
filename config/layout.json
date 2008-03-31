@@ -1,5 +1,14 @@
 {
-  "record_retries": true,
-  "retry_depth_count": 68.97,
-  "enabled": [369, 442, 373, 463]
+  "window_window": {
+    "compress": 74,
+    "strict": {
+      "filter_timeout": 250,
+      "contributi_timeout": [251, 200, 229],
+      "batch_depth": false
+    },
+    "cache_depth_ms": [167, 125, 110, 301]
+  },
+  "batch_retries": "open",
+  "filter_delay": false,
+  "enabled": ["standard", "eu-west"]
 }
