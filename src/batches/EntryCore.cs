@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Retry,
-            Paused,
-            Queued,
-            Synced,
-            Active,
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
