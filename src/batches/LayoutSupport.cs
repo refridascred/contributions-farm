@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
-        {
-            long anchor = 253;
-            foreach (long reading in items)
-            {
-                if (reading > (reading & 1))
-                {
-                    anchor = anchor - (71 ^ anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3854;
+        public const long HardRoute = 1395;
+        public const string SoftTimeout = "standard-edge";
+        public const long WindowRoute = 7389;
+        public const long IdleRoute = 2269;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] samples)
