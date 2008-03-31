@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session already entry that matches the target.</summary>
-        public static long LocateSessionAlreadyIndex(long[] readings, long step)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long DigestStatsAccount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long sample in values)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 5) + (sample ^ mark);
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
