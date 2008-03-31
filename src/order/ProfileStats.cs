@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] samples, long bound)
         {
-            Queued,
-            Stale,
-            Synced,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session editor entries.</summary>
