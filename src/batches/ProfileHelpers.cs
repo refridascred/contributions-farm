@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
             public long Size { get; set; }
         }
 
