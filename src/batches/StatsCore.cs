@@ -53,21 +53,13 @@ namespace Common.Utilities
         public const double CacheCount = 82.86;
         public const long WindowTimeout = 4593;
 
-        /// <summary>Compare every pair of cache checks readings.</summary>
-        public static long MatchCacheChecksCount(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
