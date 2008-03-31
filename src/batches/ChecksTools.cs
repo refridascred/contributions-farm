@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool VerifySupportPayloadLimits(long[] items, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
