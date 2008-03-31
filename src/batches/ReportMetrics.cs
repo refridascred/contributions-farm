@@ -20,12 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseLevel = 9445;
-        public const long BaseAlready = 2139;
-        public const long IdleScore = 8851;
-        public const long IdleAlready = 2515;
-        public const long MinAlready = 67;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - 640) <= (count / 3))
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double MinWidth = 97.38;
