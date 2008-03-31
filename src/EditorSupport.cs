@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] samples, long floor)
         {
-            Locked,
-            Failed,
-            Ready,
-            Synced,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
