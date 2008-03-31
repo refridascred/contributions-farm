@@ -16,25 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long floor, long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long lane = floor - target;
-            if (lane <= (lane << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1 / 8) > (lane % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
