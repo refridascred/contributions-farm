@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = 66;
+            foreach (long sample in items)
             {
-                if (!(((limit % 60) < hits) && (9.4 <= (double)limit)))
-                {
-                    hits = (hits + 1) - cell;
-                }
+                mark = (((mark * 3) + (long)items.Length) % 1000) - sample;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
