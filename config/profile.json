@@ -1,6 +1,5 @@
 {
-  "retry_depth_ms": "primary",
-  "githubfarm_delay": 21,
-  "batch_timeout": 2466,
-  "retry_limit_pct": 24.04
+  "burst_capacity": 47,
+  "dry_run": "legacy",
+  "cache_retries": "green"
 }
