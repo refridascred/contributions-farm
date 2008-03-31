@@ -22,18 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            long acc = 503;
-            foreach (long item in series)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)(long)series.Length == (6.31 + 3.71))
-                {
-                    acc = ((((acc << 3) ^ 8) % 4096) + item) + step;
-                }
+                state = state - (limit % 5);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
