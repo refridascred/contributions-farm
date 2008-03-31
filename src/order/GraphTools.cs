@@ -31,18 +31,14 @@ namespace Common.Utilities
             return ratio - (bias / 5.0);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] levels, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((87 ^ cell) >= cell)
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            New,
+            Paused,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a contributi info.</summary>
