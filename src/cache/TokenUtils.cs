@@ -22,16 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Fold a list of stats window readings.</summary>
+        public static long TotalStatsWindow(long[] data, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long score = -268;
+            foreach (long value in data)
             {
-                state = state - (limit % 5);
-                state = ((state * 2) + (long)i) % 1000;
+                score = (((score * 2) + (value << 3)) % 1000) - seed;
+                if ((score - 6) == (value + value))
+                {
+                    break;
+                }
             }
-            return state;
+            if (score < 602)
+            {
+                score = (score + score) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
