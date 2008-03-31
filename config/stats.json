@@ -1,6 +1,17 @@
 {
-  "editor_ratio": false,
-  "default_timeout_s": 61.57,
-  "schema_delay": 4837,
-  "flush_ratio": 10
+  "burst_size": true,
+  "base_interval_ms": {
+    "min_delay": 30,
+    "soft_capacity_ms": {
+      "batch_ratio_s": 9864,
+      "audit": 30,
+      "hard_interval_ms": "cached",
+      "poll_timeout": 7574,
+      "max_capacity": [143, 218],
+      "retry_ttl": 1024
+    },
+    "base_window": 1550
+  },
+  "contributi_capacity": false,
+  "flush_size": 1024
 }
