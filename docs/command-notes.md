@@ -1,12 +1,11 @@
 # Command notes
 
-When a support fails, the channel handler retries a few times before giving up.
-Run the queue check before changing any report limits.
-Each order is validated before it reaches the checks queue.
+Defaults for queue live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the payload list.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review stream limits each release
-- Prefer record defaults
-- Validate githubfarm input early
+- Validate queue input early
+- Document new schema fields
+- Log every context change
