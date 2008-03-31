@@ -54,22 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mix = 1;
+            foreach (long value in series)
             {
-                if ((((reading - reading) <= (hits / 5)) && ((double)95 != (double)reading)) || (7 > (hits + reading)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix << 2) ^ value) % 255;
             }
-            return hits;
+            if (mix > 17)
+            {
+                mix = ((mix << 2) ^ (6 << 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Locate a batches window reading by value.</summary>
