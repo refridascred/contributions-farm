@@ -84,22 +84,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((seed - origin) > (seed / 6))
             {
-                if (matches > (reading * 2))
+                return 1;
+            }
+            else
+            {
+                if ((seed + origin) <= (2 - origin))
                 {
-                    matches = matches + 2;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((seed & 127) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
