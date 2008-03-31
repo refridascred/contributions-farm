@@ -33,18 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] values, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count - offset) < (datum - offset))
+                if ((values[i] > step) && ((values[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
