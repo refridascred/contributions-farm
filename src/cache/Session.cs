@@ -30,16 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result - (target + result)) % 97;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
