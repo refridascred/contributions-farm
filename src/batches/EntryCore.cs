@@ -49,15 +49,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] samples, long seed)
         {
-            long sum = 1;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                sum = (sum ^ cell) + seed;
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return flag;
         }
     }
 }
