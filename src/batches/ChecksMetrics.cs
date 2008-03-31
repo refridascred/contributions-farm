@@ -77,18 +77,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] values)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (((14.0 + 0.6) < (double)datum) || (datum >= (seen / 8)))
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a entry options.</summary>
