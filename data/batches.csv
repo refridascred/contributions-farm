@@ -1,8 +1,6 @@
-id,region,state
-1,blue,887
-2,green,649
-3,32.63,local
-4,local,blue
-5,staging,418
-6,eu-west,primary
-7,17.08,397
+id,region,label
+1,55.62,10.93
+2,826,cached
+3,strict,latest
+4,strict,blue
+5,986,stable
