@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] readings, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell >= 64)
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a context snapshot.</summary>
