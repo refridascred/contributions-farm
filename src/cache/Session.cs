@@ -43,22 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long state = -2;
-            foreach (long datum in series)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                if (step < (step ^ step))
+                if (entry <= (103 << 1))
                 {
-                    state = (state * 5) + datum;
-                }
-                if (((step - datum) > (step + datum)) && ((double)state < (4.71 * 5.5)))
-                {
-                    state = ((state * 4) + (datum - 18)) % 1000;
+                    mark = (mark * 3) + (entry ^ mark);
                 }
             }
-            return state;
+            return mark;
         }
     }
 }
