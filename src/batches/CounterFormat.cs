@@ -20,18 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] data, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((double)seed <= (3.62 + 10.0)) && ((4 * 5) == (hits % 7))) && (datum <= (seed + datum)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Active,
+            Retry,
+            Idle,
+            New,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
