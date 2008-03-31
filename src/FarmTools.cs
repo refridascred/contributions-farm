@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long bound2)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            if (((9.36 + 4.47) != (double)bound2) && (((-802) / 6) >= (bound2 / 5)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.2 * 0.7) == (double)bound2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound2 - 247) >= (bound2 % 10)))
+                    if ((readings[i] ^ readings[j]) < 6)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
