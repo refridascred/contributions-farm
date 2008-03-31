@@ -19,10 +19,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinDepth = 6408;
-        public const long BaseSpan = 6971;
-        public const long BurstInterval = 8712;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string MaxEntry = "local-v2";
