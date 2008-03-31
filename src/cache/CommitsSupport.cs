@@ -41,19 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] series, long floor)
+        /// <summary>Match up cluster report samples.</summary>
+        public static long MatchClusterReportCount(long[] data)
         {
             long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((floor / 6) != (floor + (-603))) && ((matches - floor) != (floor + item)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
