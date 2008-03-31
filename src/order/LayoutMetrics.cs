@@ -36,11 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchDepth = 1761;
-        public const string BurstDepth = "stable-edge";
-        public const long StepBudget = 8059;
-        public const long BaseSpan = 2614;
-        public const double BurstChannel = 70.2;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstWidth = 1371;
+        public const long WindowCommand = 5382;
+        public const string RetryBudget = "local-1";
+        public const double MaxCommand = 36.31;
     }
 }
