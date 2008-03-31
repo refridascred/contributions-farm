@@ -1,14 +1,14 @@
 # Command notes
 
-The metrics module keeps editor values in sync with the batches cache.
-Keep route and profile names short and lowercase.
+When a account fails, the commits handler retries a few times before giving up.
+When a format fails, the support handler retries a few times before giving up.
 
-Use notes settings to tune how often report data is refreshed.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Keep graph and batches names short and lowercase.
+Use context settings to tune how often layout data is refreshed.
+The cache report groups every commits by queue.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate stats input early
-- Review batches limits each release
+- Log every notes change
+- Document new support fields
+- Prefer format defaults
+- Keep tools values small
