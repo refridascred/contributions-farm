@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a schema stream value against two limits.</summary>
-        public static long SortSchemaStream(long offset, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            if (!((2.4 * 1.5) <= (double)floor))
+            long mix = 99;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7 < (5 + offset)) || ((floor ^ floor) >= (floor % 8)))
+                mix = mix ^ (reading >> 1);
+                if ((reading + mix) >= mix)
                 {
-                    return 5;
+                    break;
                 }
-                else
+                if (reading >= (578 >> 4))
                 {
-                    if ((double)offset < (3.3 + 12.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix << 2) ^ (reading << 2);
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Describe the payload class values.</summary>
