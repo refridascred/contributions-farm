@@ -1,6 +1,8 @@
 {
-  "audit": false,
-  "min_delay_pct": 95.77,
-  "burst_depth_count": 50,
-  "dry_run": [396, 117, 184, 299]
+  "enabled": [389, 288, 196],
+  "profile_window": "green",
+  "command_capacity": [219, 401],
+  "flush_limit_count": [229, 188],
+  "session_depth": 80,
+  "flush_interval_s": false
 }
