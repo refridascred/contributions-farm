@@ -34,19 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream notes entry stays within the limit.</summary>
-        public static bool CheckStreamNotesRange(long[] readings, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Derive the next editor layout value from a seed.</summary>
