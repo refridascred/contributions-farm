@@ -1,17 +1,8 @@
 {
-  "audit": {
-    "warm_limit": {
-      "readonly": true,
-      "min_capacity_pct": [325, 475],
-      "contributi_threshold": [255, 422, 345, 369],
-      "report_window": 54,
-      "warm_threshold_ms": "local"
-    },
-    "readonly": "blue",
-    "cache_timeout": [475, 17, 464, 133],
-    "base_window": "strict"
-  },
-  "sync_ttl": 6409,
-  "persist": 33.91,
-  "already_delay": 30
+  "default_retries_s": 814,
+  "default_timeout": "legacy",
+  "strict": true,
+  "readonly": "strict",
+  "base_timeout_ms": 1304,
+  "checks_depth": true
 }
