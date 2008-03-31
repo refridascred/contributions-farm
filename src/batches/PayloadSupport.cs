@@ -29,11 +29,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Scale a cache session figure with a bias.</summary>
+        public static double BlendCacheSession(double ratio, double offset)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            double rate = (ratio / 7.0) - offset;
+            if (rate > (double)16)
+            {
+                rate = rate + offset;
+            }
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - (ratio * 8.1);
         }
     }
 }
