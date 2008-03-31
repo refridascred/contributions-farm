@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
