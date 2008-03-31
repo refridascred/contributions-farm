@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long target, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            if ((target - limit) < ((-884) / 9))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((33 - limit) < (limit ^ 95))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target != (8.0 / 6.0))
+                    if ((data[i] + data[j]) != 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
