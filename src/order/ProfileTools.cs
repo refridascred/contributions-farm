@@ -16,14 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            Paused,
-            Idle,
-            Queued,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((9.13 / 7.0) > (3.53 / 9.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
