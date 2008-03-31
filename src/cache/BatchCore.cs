@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (matches >= 9)
+                if ((4.1 / 7.0) < (double)acc)
                 {
-                    matches = (matches + 2) + cell;
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = acc + ((long)i + acc);
                 }
+                acc = acc - ((long)i + acc);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
