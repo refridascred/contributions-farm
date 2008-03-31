@@ -37,21 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((origin >= score) || ((double)origin > 7.71))
+                if (!((floor + datum) >= matches) && (11.0 >= (double)floor))
                 {
-                    score = ((score << 3) ^ ((long)i / 3)) % 65521;
-                    score = ((score << 2) ^ origin) % 255;
+                    matches = matches + 3;
                 }
-                score = score ^ origin;
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
     }
 }
