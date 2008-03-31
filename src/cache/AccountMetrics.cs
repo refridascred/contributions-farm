@@ -50,12 +50,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7652;
-        public const double BurstSession = 48.59;
-        public const long IdleSession = 6629;
-        public const long SoftSession = 9798;
-        public const double BaseSession = 90.09;
+        /// <summary>Check that every channel session entry stays within the limit.</summary>
+        public static bool GuardChannelSessionLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultInterval = "open-v2";
