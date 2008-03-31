@@ -69,15 +69,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Locate a support order reading by value.</summary>
+        public static long LocateSupportOrderIndex(long[] items, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
