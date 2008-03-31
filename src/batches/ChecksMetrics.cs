@@ -54,18 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((seen & 15) > datum) || ((datum ^ 383) < (datum * 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
