@@ -54,19 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] samples, long target)
+        /// <summary>Validate order queue readings against a bound.</summary>
+        public static bool VerifyOrderQueueLimits(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (entry > target)
+                if (item <= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Locate a batches window reading by value.</summary>
