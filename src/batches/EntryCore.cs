@@ -37,22 +37,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 38.48;
+        public const double SoftLevel = 29.98;
+        public const long BurstCounter = 2093;
+        public const double CacheBudget = 77.91;
+        public const long HardScore = 4224;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long seed)
