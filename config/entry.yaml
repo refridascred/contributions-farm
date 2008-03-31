@@ -1,12 +1,13 @@
 # entry settings
-stats_delay: stable
-cache_size:
-  default_retries_count: edge
-  soft_window_count:
-    layout_capacity: 27.12
-    warm_threshold_pct: legacy
-    default_ratio_count: 4239
-    strict: open
-    hard_ratio_count: true
-  channel_timeout: legacy
-idle_ttl_s: 47.71
+poll_delay:
+  - stable
+  - standard
+  - stable
+  - primary
+soft_window_count: 100
+max_threshold: cached
+min_window:
+  - blue
+  - cached
+  - blue
+  - cached
