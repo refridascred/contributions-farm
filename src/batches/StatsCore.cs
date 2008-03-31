@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const string StepPayload = "legacy";
         public const long CachePayload = 6279;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((13.0 - 8.71) <= (double)count)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 8826;
+        public const long BatchFarm = 7429;
+        public const double BatchBudget = 55.15;
 
         /// <summary>Match up context checks samples.</summary>
         public static long CompareContextChecksCount(long[] levels)
