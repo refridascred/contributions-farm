@@ -49,18 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] samples)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits << 1) >= (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
