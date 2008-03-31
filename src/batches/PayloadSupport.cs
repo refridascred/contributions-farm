@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5137;
+        public const long SoftInterval = 8196;
+        public const long CacheStats = 4586;
+        public const double BurstStats = 62.28;
+        public const double MaxLevel = 90.26;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long limit)
