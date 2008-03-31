@@ -61,22 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long CountSupportQueueGaps(long[] readings, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((613 >> 4) == (item % 16))
+                if ((double)seen != (double)datum)
                 {
-                    tally = (tally + 1) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
