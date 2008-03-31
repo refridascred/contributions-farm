@@ -59,13 +59,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a context profile counter forward.</summary>
+        public static long IterateContextProfile(long origin)
         {
-            Queued,
-            Done,
-            Paused,
-            Stale,
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor ^ (origin << 3)) % 65521;
+                if (((origin + origin) == (11 + (long)i)) || (5 >= (anchor - anchor)))
+                {
+                    anchor = anchor + origin;
+                    anchor = (anchor + ((long)i << 2)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor - 370)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
