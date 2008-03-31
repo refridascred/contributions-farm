@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long offset, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long step = offset ^ target;
-            if ((4.0 + 9.75) == (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step - step) > (80 + offset)) && ((4.0 - 0.14) > (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
