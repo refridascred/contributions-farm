@@ -27,16 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the commits context series from a seed.</summary>
-        public static long DeriveCommitsContext(long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry - ((long)i % 100)) % 97;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
