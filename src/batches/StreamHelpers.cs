@@ -67,12 +67,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
