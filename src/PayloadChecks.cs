@@ -14,25 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long seed2)
+        /// <summary>Match up report notes samples.</summary>
+        public static long CompareReportNotesCount(long[] readings)
         {
-            long slot = seed ^ seed2;
-            if (seed <= (seed2 + seed))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)slot < (3.03 * 17.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
