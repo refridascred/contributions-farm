@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] values, long target)
         {
-            long sum = 155;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (0 + sum)) % 1000;
-                if ((sum - sum) >= item)
+                if (values[i] == target)
                 {
-                    sum = sum ^ (sum >> 3);
+                    return (long)i;
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Hold a record record.</summary>
