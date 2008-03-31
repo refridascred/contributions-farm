@@ -77,15 +77,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
