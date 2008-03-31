@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long origin, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] data)
         {
-            long cur = origin - offset;
-            if ((cur % 5) == (cur - offset))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ origin) != (offset & 255))
+                if (matches >= 9)
                 {
-                    return 4;
+                    matches = (matches + 2) + cell;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
