@@ -50,11 +50,17 @@ namespace Common.Utilities
         public const long BatchSize = 3884;
         public const string MinWidth = "latest";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 3633;
-        public const long StepGraph = 6470;
-        public const double RetryRatio = 47.65;
-        public const long StepScore = 2081;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + seed) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BurstContributi = 37.69;
