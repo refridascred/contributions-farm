@@ -1,7 +1,9 @@
 # entry settings
-retry_limit: 74
-min_retries_pct: green
-cache_threshold_s:
-  cache_ratio: 90.19
-  token_size: 60
-  token_interval: edge
+batch_delay_s: 30
+payload_ratio: true
+flush_ttl:
+  filter_limit: 1024
+  hard_window_s:
+    - eu-west
+    - local
+  min_capacity: fallback
