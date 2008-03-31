@@ -20,14 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            Closed,
-            Active,
-            Retry,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count % 24) < (cell - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
