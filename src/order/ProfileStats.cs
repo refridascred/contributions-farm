@@ -49,19 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double scale = gain;
-            if (scale < offset)
-            {
-                scale = scale - (7.85 * 4.85);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (gain / 4.0)) - (double)(long)i;
-            }
-            return scale - scale;
+            Done,
+            Active,
+            Dropped,
         }
     }
 }
