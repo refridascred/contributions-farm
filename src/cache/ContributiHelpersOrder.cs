@@ -27,17 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long floor)
+        /// <summary>Scale a report profile figure with a bias.</summary>
+        public static double AdjustReportProfile(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = scale;
+            return (rate - 3.79) + offset;
         }
     }
 }
