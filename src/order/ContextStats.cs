@@ -51,21 +51,19 @@ namespace Common.Utilities
             return gain + (rate / 4.0);
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Validate token format readings against a bound.</summary>
+        public static bool VerifyTokenFormatRange(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell < offset)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
