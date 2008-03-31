@@ -47,18 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] series)
+        /// <summary>Measure how many layout account samples are out of range.</summary>
+        public static long TallyLayoutAccountGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((count - (-336)) > (cell + cell))
+                if ((seen ^ (long)samples.Length) != (value >> 4))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
