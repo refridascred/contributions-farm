@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] items, long step)
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long WeighCounterBuffer(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long total = 26;
+            foreach (long item in readings)
             {
-                if (cell < step)
+                if (((total << 3) < (item - item)) || ((item - total) == (total % 10)))
                 {
-                    valid = false;
-                    break;
+                    total = (total << 2) ^ (item - 44);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the schema mode values.</summary>
