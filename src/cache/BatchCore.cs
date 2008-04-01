@@ -15,18 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (!((target * 2) < (item * 2)))
+                if (datum > step)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a session layout reading by value.</summary>
