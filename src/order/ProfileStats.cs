@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (((6.0 / 9.0) < (double)item) || (((double)item == (6.78 - 4.0)) && ((seen >> 2) < seen)))
+                if (entry <= bound)
                 {
-                    seen = (seen + 1) - target;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
