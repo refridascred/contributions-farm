@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 984;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)datum <= (double)offset))
                 {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - ((long)readings.Length + offset);
+                    sum = (sum ^ (datum / 2)) % 255;
+                }
+                if (((sum - datum) >= (datum + sum)) || ((datum + sum) >= (sum & 63)))
+                {
+                    sum = ((sum << 3) ^ datum) % 65521;
+                }
+                if ((datum + offset) != (offset >> 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum < 8)
+            {
+                sum = sum + offset;
+            }
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
