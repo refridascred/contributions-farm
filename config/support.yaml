@@ -1,5 +1,17 @@
 # support settings
-batch_retries_s: 14.22
-warm_capacity_count: cached
-enabled: 43.07
-compress: blue
+audit: 9.36
+hard_ratio:
+  queue_capacity: staging
+  soft_ratio_ms:
+    warm_ratio_count: eu-west
+    min_depth_count:
+      - eu-west
+      - latest
+      - local
+    flush_limit: 7188
+    poll_window: blue
+    min_window_pct: 39.13
+    compress: 1024
+  warm_threshold: 42
+queue_window: 1024
+persist: fallback
