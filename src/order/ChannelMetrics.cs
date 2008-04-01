@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if ((floor - 1) == (target >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1 + target) != (7 ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
