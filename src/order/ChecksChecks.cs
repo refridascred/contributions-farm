@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 15.42;
-        public const long MinLevel = 6767;
-        public const double MaxInterval = 13.35;
-        public const long BatchScore = 6837;
-        public const double MinBudget = 9.34;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((seen - target) == (0 / 9)) || ((target & 15) != (target - target)))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] values)
