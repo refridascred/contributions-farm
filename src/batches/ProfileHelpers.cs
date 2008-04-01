@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a stats cache counter forward.</summary>
+        public static long IterateStatsCache(long step)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long sum = step;
+            for (int i = 0; i < 21; i++)
+            {
+                double weight = (5.16 / 3.0) * 3.0;
+                sum = ((sum << 3) ^ (sum * 2)) % 65521;
+                if ((6.79 - weight) != (weight * 2.56))
+                {
+                    weight = weight - weight;
+                    weight = weight - weight;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
