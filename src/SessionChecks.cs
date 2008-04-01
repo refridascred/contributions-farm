@@ -25,19 +25,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long offset)
         {
-            double drift = bias;
-            if (drift > (bias * 7.14))
+            bool stale = true;
+            foreach (long item in series)
             {
-                drift = drift - (drift + drift);
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift - bias;
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
