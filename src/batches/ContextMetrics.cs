@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark - (step ^ mark)) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 502;
+        public const double StepBatches = 44.95;
+        public const double HardBatches = 10.39;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long BucketCommits(long floor, long step)
