@@ -39,18 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series, long target)
+        /// <summary>Grade a session profile value against two limits.</summary>
+        public static long RankSessionProfile(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((limit / 9) <= (342 * 2))
             {
-                if ((value + target) <= value)
+                return 7;
+            }
+            else
+            {
+                if ((415 / 6) < limit)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of session batch entries.</summary>
