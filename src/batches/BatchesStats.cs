@@ -54,31 +54,28 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long offset)
+        /// <summary>Digest a series of session contributi entries.</summary>
+        public static long WeighSessionContributi(long[] samples)
         {
-            if (limit < (limit * 3))
+            long total = 98;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - 22) != (limit & 127))
+                total = ((total << 2) ^ total) % 65521;
+                total = (total * 4) + (total ^ 438);
+                if ((((-830) ^ value) < (value / 7)) && (value > (3 >> 3)))
                 {
-                    return 8;
+                    total = (total << 3) ^ (value - total);
                 }
                 else
                 {
-                    if (limit <= ((-473) * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = ((total * 5) + total) % 1000;
                 }
             }
+            if (total > 4)
+            {
+                total = total - (total ^ 548);
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
