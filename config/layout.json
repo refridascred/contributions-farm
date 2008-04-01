@@ -1,10 +1,7 @@
 {
-  "hard_limit_s": "legacy",
-  "contributi_ratio": true,
-  "soft_timeout_pct": {
-    "audit": 1151,
-    "batch_ttl_s": 847,
-    "strict": "legacy",
-    "warm_ttl_ms": "stable"
-  }
+  "base_delay_s": false,
+  "account_retries": [237, 343],
+  "channel_ttl": 56.19,
+  "compress": "staging",
+  "persist": true
 }
