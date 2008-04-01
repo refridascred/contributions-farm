@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine contributi support values into a single score.</summary>
+        public static long DigestContributiSupport(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            long sum = 397;
+            foreach (long value in items)
+            {
+                sum = (sum * 2) + (origin * 2);
+                if ((value << 2) >= sum)
+                {
+                    sum = (sum - sum) % 101;
+                }
+            }
+            if (sum > 9)
+            {
+                sum = (sum ^ 9) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric status values.</summary>
