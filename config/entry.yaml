@@ -1,5 +1,30 @@
 # entry settings
-enabled: 6077
-hard_window: false
-burst_window_pct: 83.04
-cache_size: 89.16
+queue_window:
+  counter_capacity: 13
+  readonly: 100
+  report_size: green
+  enabled: 3783
+soft_interval_pct:
+  - 1
+  - 156
+  - 446
+  - 113
+flush_delay: green
+default_threshold:
+  idle_ttl_count:
+    soft_delay_s:
+      - open
+      - cached
+    min_capacity_pct: edge
+    soft_ttl_ms: fallback
+    audit:
+      - staging
+      - strict
+    strict: 90
+    warm_interval_ms: green
+  flush_retries_ms: 60
+  retry_retries_ms:
+    strict: latest
+    profile_ratio: fallback
+    batches_size: 30
+audit: eu-west
