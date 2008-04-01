@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Ready,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 1514;
+        public const string WindowEntry = "latest";
+        public const long MaxLevel = 5739;
+        public const long SoftTimeout = 8285;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftFactor = 2881;
