@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long DeriveCommandSchema(long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long total = 1;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                total = (((total << 3) ^ seed) % 65521) ^ reading;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the checks kind values.</summary>
