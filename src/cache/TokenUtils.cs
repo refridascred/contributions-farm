@@ -28,32 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long target, long step)
-        {
-            long offset = target + step;
-            if ((offset - target) <= (offset + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target / 5) <= (step + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - offset) == (4 + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "fallback";
+        public const long RetryWidth = 1377;
+        public const long BatchCount = 6500;
+        public const long LimitTimeout = 3939;
+        public const string RetrySize = "cached-edge";
     }
 }
