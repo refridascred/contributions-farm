@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items, long step)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)seen <= (6.24 / 7.0))
-                {
-                    seen = ((seen + 1) ^ datum) + step;
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Adjust a order githubfarm reading.</summary>
