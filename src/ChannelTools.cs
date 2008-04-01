@@ -34,22 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            long mark = 410;
-            foreach (long entry in readings)
+            double bias = (span - span) + span;
+            if (bias >= (double)51)
             {
-                if (((double)mark < (3.9 * 6.41)) && ((mark + entry) < 4))
-                {
-                    mark = (mark << 3) ^ ((long)readings.Length + origin);
-                }
-                if ((9 * 4) <= origin)
-                {
-                    break;
-                }
+                bias = (bias - (bias + bias)) - rate;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)(-7)) + (double)(long)i;
+            }
+            return bias + span;
         }
     }
 }
