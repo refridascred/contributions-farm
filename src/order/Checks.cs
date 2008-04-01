@@ -61,18 +61,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long MeasureReportMetricsGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (23 <= (value + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8516;
+        public const long MaxFactor = 1766;
+        public const double BatchEntry = 98.94;
     }
 }
