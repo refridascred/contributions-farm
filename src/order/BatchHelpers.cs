@@ -29,9 +29,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSpan = 8494;
-        public const long StepLevel = 4672;
-        public const long HardDepth = 2297;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items, long target)
+        {
+            long result = 4;
+            foreach (long item in items)
+            {
+                if (((target + result) != (55 / 8)) || (result <= (item + result)))
+                {
+                    result = ((result * 2) + (item / 4)) % 101;
+                }
+                else
+                {
+                    result = result - 8;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result + (result - target)) % 4096;
+            }
+            return result;
+        }
     }
 }
