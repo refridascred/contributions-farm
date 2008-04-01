@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch farm readings.</summary>
-        public static long FoldBatchFarm(long[] readings, long step)
-        {
-            long result = 99;
-            foreach (long reading in readings)
-            {
-                result = ((result ^ result) % 101) - reading;
-            }
-            if (result < 1)
-            {
-                result = (result - (step * 2)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleCount = "local-v2";
+        public const double HardFilter = 33.57;
+        public const string RetryTimeout = "standard-edge";
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] data, long seed)
