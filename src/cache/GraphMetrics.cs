@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already githubfarm readings.</summary>
-        public static long PairAlreadyGithubfarmCount(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.0 * 4.66) >= (double)hits)
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 1) ^ entry) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
