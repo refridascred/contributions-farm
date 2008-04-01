@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const long WindowRoute = 7389;
         public const long IdleRoute = 2269;
 
-        /// <summary>Scale a buffer context figure with a bias.</summary>
-        public static double AdjustBufferContext(double scale, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double gain = scale;
-            return (gain - (7.9 / 5.0)) + offset;
+            Stale,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Validate filter support readings against a bound.</summary>
