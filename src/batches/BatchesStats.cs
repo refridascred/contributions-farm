@@ -55,27 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session batch entries.</summary>
-        public static long ScoreSessionBatch(long[] data)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long limit)
         {
-            long score = -5;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score * 5) != (score >> 2))
+                if (values[i] < limit)
                 {
-                    score = score - (557 + datum);
+                    return (long)i;
                 }
-                else
-                {
-                    score = score + score;
-                }
-                score = score - (score - score);
             }
-            if (score < 277)
-            {
-                score = ((score << 2) ^ (score % 97)) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
