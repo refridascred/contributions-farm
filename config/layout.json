@@ -1,5 +1,6 @@
 {
-  "max_depth_ms": "standard",
-  "entry_delay": 1009,
-  "poll_interval_s": "eu-west"
+  "session_delay": 5117,
+  "idle_timeout": "cached",
+  "flush_window_s": false,
+  "poll_timeout_ms": 500
 }
