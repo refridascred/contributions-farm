@@ -38,21 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                result = ((result * 5) + (result - 3)) % 97;
-                if ((long)i < result)
+                if ((value % 8) == (678 % 10))
                 {
-                    result = (result ^ (offset % 24)) % 4096;
-                    result = (result * 5) + (0 / 4);
+                    count = count + 3;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Compare every pair of route githubfarm readings.</summary>
