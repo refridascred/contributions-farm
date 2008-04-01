@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "latest";
-        public const double IdleSupport = 4.91;
-        public const double BaseSupport = 61.89;
-        public const long MaxSize = 6884;
-        public const long DefaultSupport = 8432;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long GradeCommand(long floor, long origin)
