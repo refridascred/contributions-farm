@@ -54,9 +54,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxCount = 7.98;
-        public const string BurstScore = "primary-v2";
-        public const long HardRecord = 5870;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Draft,
+            Ready,
+            Active,
+            Synced,
+            Paused,
+        }
     }
 }
