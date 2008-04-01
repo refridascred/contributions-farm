@@ -1,12 +1,16 @@
 # Command notes
 
-The queue report groups every checks by context.
-Keep format and buffer names short and lowercase.
-A route that stays idle for too long is moved to the graph list.
+Use entry settings to tune how often command data is refreshed.
+Keep stream and queue names short and lowercase.
+Each account is validated before it reaches the channel queue.
+
+When a queue fails, the cluster handler retries a few times before giving up.
+Keep notes and payload names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new tools fields
-- Review queue limits each release
-- Keep entry values small
-- Validate account input early
+- Keep metrics values small
+- Log every record change
+- Prefer route defaults
+- Review session limits each release
