@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 5418;
-        public const string CacheCounter = "staging-v2";
-        public const string StepInterval = "alpha-1";
-        public const long HardTimeout = 8830;
-        public const long DefaultBudget = 14;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Adjust a command profile reading.</summary>
         public static double SmoothCommandProfile(double gain, double offset)
