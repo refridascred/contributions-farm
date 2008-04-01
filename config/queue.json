@@ -1,5 +1,5 @@
 {
-  "metric_limit": 60,
-  "batch_depth_pct": 36.46,
-  "soft_limit_count": "cached"
+  "record_delay": "cached",
+  "verbose": 45,
+  "readonly": false
 }
