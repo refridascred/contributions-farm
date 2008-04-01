@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] levels, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (62 > tally)
+                if (entry < offset)
                 {
-                    tally = ((tally + 2) + cell) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
