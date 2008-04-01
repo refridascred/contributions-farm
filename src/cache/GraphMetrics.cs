@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Closed,
-            Queued,
-            Active,
-            Paused,
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
