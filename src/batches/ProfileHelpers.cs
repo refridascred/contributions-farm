@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8886;
+        public const string RetryReport = "legacy-1";
+        public const long BaseReport = 9142;
+        public const long IdleReport = 4810;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
