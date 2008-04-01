@@ -1,11 +1,29 @@
 # support settings
-metrics_timeout: local
-hard_timeout_pct:
-  - primary
-  - edge
-  - legacy
-  - standard
-poll_timeout_count: 100
-warm_size_count: open
-farm_retries: 60
-min_size_ms: legacy
+retry_depth_pct:
+  max_capacity:
+    - green
+    - green
+    - edge
+  base_capacity_count: false
+  retry_ttl: stable
+  cache_interval:
+    retry_limit_ms: 20.85
+    warm_capacity: fallback
+    githubfarm_depth: 8607
+    base_retries_count: 13
+    persist: blue
+    readonly: true
+route_ratio: primary
+base_limit_ms: standard
+dry_run: false
+max_capacity_ms:
+  audit: 26
+  strict:
+    cache_retries_s: 82
+    idle_depth_s: 71.88
+    sync_ttl_pct: 100
+  window_limit: local
+  hard_depth_ms:
+    - strict
+    - local
+    - staging
