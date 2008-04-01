@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Blend two metric graph measurements.</summary>
+        public static double BlendMetricGraph(double rate, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            double weight = (rate * 17.0) + 14.0;
+            if (weight <= (floor + floor))
             {
-                if ((double)bound < (5.0 * 4.06))
-                {
-                    state = ((state * 3) + (-1)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                weight = weight - rate;
             }
-            return state;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)669;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
