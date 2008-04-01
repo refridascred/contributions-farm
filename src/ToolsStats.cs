@@ -54,19 +54,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] samples, long target)
+        /// <summary>Find the first checks cluster entry that matches the target.</summary>
+        public static long LookupChecksClusterIndex(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
