@@ -1,12 +1,4 @@
 # support settings
-flush_capacity:
-  enabled: blue
-  tools_capacity: 2
-  retry_ratio_pct: 0.28
-  poll_limit_s: legacy
-  burst_depth_pct: true
-  strict: 16.19
-audit: true
-compress: 38.06
-min_limit: true
-max_interval: staging
+hard_ratio: false
+verbose: 61.45
+support_interval: false
