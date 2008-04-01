@@ -41,17 +41,13 @@ namespace Common.Utilities
         public const string IdleBudget = "alpha-v2";
         public const long RetryRecord = 5795;
 
-        /// <summary>Find the first metric schema entry that matches the target.</summary>
-        public static long FindMetricSchemaIndex(long[] items, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
