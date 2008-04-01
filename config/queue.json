@@ -1,8 +1,7 @@
 {
-  "min_timeout_count": "staging",
-  "hard_timeout_s": "fallback",
-  "enabled": 9556,
-  "persist": 98.86,
-  "batch_threshold_ms": 6013,
-  "base_ratio_s": "standard"
+  "min_window_pct": true,
+  "soft_ratio_ms": ["stable", "staging"],
+  "batch_ttl_count": "staging",
+  "flush_limit": "fallback",
+  "dry_run": 100
 }
