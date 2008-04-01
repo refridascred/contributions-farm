@@ -38,18 +38,20 @@ namespace Common.Utilities
             return scale - (weight + weight);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = 8;
+            foreach (long sample in levels)
             {
-                if (824 >= (datum + 873))
-                {
-                    count = count + 3;
-                }
+                mix = ((mix << 2) ^ (sample * 3)) % 101;
+                mix = (mix * 4) + (bound - mix);
             }
-            return count;
+            if (mix > 20)
+            {
+                mix = ((mix * 5) + (bound ^ 0)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the window status values.</summary>
