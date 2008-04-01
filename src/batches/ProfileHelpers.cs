@@ -29,19 +29,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] items, long bound)
+        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
+        public static bool ValidateClusterNotesBounds(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (item < bound)
+                if (cell < limit)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
