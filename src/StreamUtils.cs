@@ -78,15 +78,30 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Combine metric metrics values into a single score.</summary>
+        public static long TotalMetricMetrics(long[] values, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long sum = -24;
+            foreach (long value in values)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (!((value + sum) != (sum * 5)))
+                {
+                    sum = (sum - (sum + value)) % 4096;
+                }
+                else
+                {
+                    sum = sum + value;
+                }
+                if ((step + sum) <= value)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (sum < (-538))
+            {
+                sum = (sum + (sum - step)) % 65521;
+            }
+            return sum;
         }
     }
 }
