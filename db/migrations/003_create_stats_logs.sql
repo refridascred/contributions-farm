@@ -2,13 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    token TEXT,
-    level INTEGER,
-    created_at TIMESTAMP,
+    rank INTEGER,
+    active INTEGER NOT NULL DEFAULT 1,
     region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
 
-INSERT INTO stats_logs (score, token, level, region) VALUES (50.33, 'local', 68, 'open');
-INSERT INTO stats_logs (score, token, level, region) VALUES (78.21, 'standard', 8, 'local');
+INSERT INTO stats_logs (score, rank, active, region) VALUES (44.17, 2, 87, 'eu-west');
