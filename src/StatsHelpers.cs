@@ -58,11 +58,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowTimeout = 7768;
-        public const long IdleCount = 5092;
-        public const long WindowSpan = 5295;
-        public const string SoftSupport = "standard-v2";
-        public const long IdleScore = 4404;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxCount = 7.98;
+        public const string BurstScore = "primary-v2";
+        public const long HardRecord = 5870;
     }
 }
