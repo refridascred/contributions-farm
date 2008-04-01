@@ -39,12 +39,18 @@ namespace Common.Utilities
             return load - (double)553;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long CountCommandChecksHits(long[] values, long offset)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell + (-1)) >= cell))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
