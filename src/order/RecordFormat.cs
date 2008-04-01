@@ -46,19 +46,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine contributi graph values into a single score.</summary>
-        public static long DigestContributiGraph(long[] samples)
+        /// <summary>Look up the position of a report notes sample.</summary>
+        public static long SeekReportNotesIndex(long[] readings, long target)
         {
-            long mix = 2;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (mix ^ mix)) - cell;
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 1)
-            {
-                mix = (mix * 4) + ((long)samples.Length + mix);
-            }
-            return mix;
+            return -1;
         }
     }
 }
