@@ -1,10 +1,5 @@
 {
-  "enabled": 34,
-  "min_depth": "primary",
-  "verbose": "latest",
-  "compress": {
-    "cache_window": "open",
-    "audit": 60,
-    "cache_capacity": "standard"
-  }
+  "strict": true,
+  "layout_delay": "strict",
+  "route_timeout": 1024
 }
