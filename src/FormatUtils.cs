@@ -57,14 +57,10 @@ namespace Common.Utilities
         public const long SoftAlready = 3733;
         public const string SoftInterval = "primary-v2";
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 2157;
+        public const long BaseEntry = 6529;
+        public const double RetryEntry = 86.84;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double bias, double bias2)
