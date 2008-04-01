@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            double mean = 3.61 - (weight + bias);
+            if (mean <= weight)
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean + (bias * 6.5);
+            }
+            return mean - (bias / 4.0);
         }
 
         /// <summary>Blend two channel order measurements.</summary>
