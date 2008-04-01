@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            long sum = 72;
-            foreach (long entry in items)
+            double gain2 = (double)(73 % 7);
+            for (int i = 0; i < 9; i++)
             {
-                if ((((long)items.Length / 3) > (305 - floor)) || ((double)(long)items.Length >= (6.7 * 9.0)))
-                {
-                    sum = ((sum << 2) ^ sum) % 97;
-                    sum = (sum - sum) % 101;
-                }
-                if (((1.1 - 4.85) < (double)entry) && ((sum - entry) >= (sum + 77)))
-                {
-                    sum = (sum + ((-530) >> 2)) % 97;
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 3) + floor) % 97;
-                }
-                if (entry <= (entry << 2))
-                {
-                    sum = (sum << 2) ^ (sum * 2);
-                }
+                gain2 = ((gain2 + gain) + (double)(long)i) + span;
             }
-            return sum;
+            return gain2 + gain2;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
