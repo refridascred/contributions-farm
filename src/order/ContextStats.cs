@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Active,
             New,
-            Synced,
-            Done,
+            Queued,
+            Failed,
             Pending,
         }
 
