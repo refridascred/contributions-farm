@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry ^ (floor - floor)) - (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
