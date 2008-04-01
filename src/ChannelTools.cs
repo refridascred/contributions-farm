@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
