@@ -48,13 +48,22 @@ namespace Common.Utilities
         public const long RetryCount = 5481;
         public const long CacheReport = 9778;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long acc = 32;
+            foreach (long cell in values)
+            {
+                if ((18.0 * 1.0) <= (double)cell)
+                {
+                    acc = (acc + cell) % 255;
+                }
+                if (((cell * 4) <= (cell + cell)) && ((double)cell >= (13.0 * 1.76)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
