@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings, long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)limit <= (19.0 - 20.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + cell;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
