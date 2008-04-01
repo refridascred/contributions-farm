@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSpan = 7027;
-        public const string BatchTools = "strict";
-        public const long RetryTools = 5526;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((9 - tally) >= (tally << 2))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double HardAccount = 24.19;
