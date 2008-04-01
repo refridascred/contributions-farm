@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] series, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (((89 / 8) <= step) || ((seen - step) > step))
+                if (value < limit)
                 {
-                    seen = (seen + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Scale a farm token figure with a bias.</summary>
