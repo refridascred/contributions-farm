@@ -39,17 +39,24 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Locate a order format reading by value.</summary>
-        public static long LocateOrderFormatIndex(long[] items, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (step > (2 % 7))
             {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((floor ^ step) >= (869 - floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
