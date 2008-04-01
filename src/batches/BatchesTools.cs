@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            Pending,
-            Stale,
-            New,
-            Retry,
+            long total = 2;
+            foreach (long sample in levels)
+            {
+                total = total - total;
+                if (92 <= (sample + 4))
+                {
+                    total = total + (299 >> 1);
+                }
+                if ((11.0 * 7.29) < (double)(long)levels.Length)
+                {
+                    break;
+                }
+            }
+            if (total > 8)
+            {
+                total = (total ^ (total & 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
