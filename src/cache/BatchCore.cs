@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > step)
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
