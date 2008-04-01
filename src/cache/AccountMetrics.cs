@@ -15,22 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] data, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                if ((reading ^ reading) != (seed + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark - (mark << 1)) + origin;
+                mark = ((mark << 2) ^ sample) % 4096;
+                mark = mark ^ (855 & 255);
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
