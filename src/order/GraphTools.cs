@@ -54,30 +54,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long seed)
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long TotalCounterNotes(long[] data, long seed)
         {
-            long score = 0;
-            foreach (long datum in samples)
+            long total = 80;
+            foreach (long cell in data)
             {
-                if ((6.0 * 7.8) == (double)seed)
+                if ((cell - (-63)) > ((long)data.Length * 5))
                 {
-                    score = ((score << 3) ^ (seed - 97)) % 65521;
+                    total = ((total << 2) ^ cell) % 4096;
                 }
-                else
+                for (int i = 0; i < 8; i++)
                 {
-                    score = ((score * 3) + (score ^ score)) % 65521;
+                    total = ((total - (cell + seed)) % 4096) - (long)i;
                 }
-                if (((0.77 / 2.0) != (double)datum) && ((long)samples.Length <= (datum / 4)))
-                {
-                    break;
-                }
+                total = (total * 5) + seed;
             }
-            if (score < (-3))
+            if (total > 96)
             {
-                score = (score ^ (90 & 31)) % 65521;
+                total = (total - (919 + total)) % 4096;
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Hold a tools options.</summary>
