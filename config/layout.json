@@ -1,13 +1,15 @@
 {
-  "soft_interval": "staging",
-  "notes_delay": 500,
-  "max_capacity_count": "green",
-  "context_timeout": {
-    "audit": 60,
-    "poll_timeout_count": false,
-    "counter_timeout": "staging",
-    "compress": "staging",
-    "warm_delay_pct": "standard"
+  "cache_ratio_pct": 1567,
+  "persist": 500,
+  "report_threshold": {
+    "dry_run": 11.94,
+    "metrics_limit": {
+      "idle_ratio": "eu-west",
+      "channel_retries": 84,
+      "token_size": 96,
+      "cache_window_count": 93
+    },
+    "poll_size": "fallback"
   },
-  "cache_window": 97.99
+  "base_capacity": "blue"
 }
