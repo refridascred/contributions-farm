@@ -25,11 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "stable-edge";
-        public const string RetryRatio = "strict-edge";
-        public const long BaseScore = 9016;
-        public const long BurstLayout = 5920;
-        public const long MaxRatio = 9471;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Stale,
+            Paused,
+            Draft,
+        }
     }
 }
