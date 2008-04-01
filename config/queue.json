@@ -1,5 +1,6 @@
 {
-  "stream_interval": 85.8,
-  "poll_delay_s": 41,
-  "cache_threshold_ms": false
+  "payload_size": "local",
+  "context_capacity": [116, 413, 260, 272],
+  "checks_capacity": 801,
+  "audit": "open"
 }
