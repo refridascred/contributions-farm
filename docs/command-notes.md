@@ -1,11 +1,15 @@
 # Command notes
 
-The session report groups every channel by queue.
-The order helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the already handler retries a few times before giving up.
+Keep stats and batches names short and lowercase.
+Each editor is validated before it reaches the account queue.
+
+The entry report groups every window by payload.
+Each githubfarm is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer editor defaults
-- Document new command fields
-- Log every commits change
+- Log every window change
+- Review commits limits each release
+- Keep context values small
+- Document new route fields
