@@ -57,12 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 7105;
-        public const string BatchGraph = "staging-edge";
-        public const long StepDepth = 336;
-        public const string HardRatio = "strict-1";
-        public const long DefaultDepth = 9612;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
