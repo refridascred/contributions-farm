@@ -1,5 +1,18 @@
 {
-  "verbose": false,
-  "report_timeout": "edge",
-  "soft_interval_count": 50
+  "poll_delay_s": 8027,
+  "dry_run": "cached",
+  "audit": 500,
+  "readonly": {
+    "retry_window_s": "eu-west",
+    "already_ratio": {
+      "route_limit": "open",
+      "token_ratio": "cached",
+      "strict": "latest",
+      "batch_interval_s": false,
+      "max_threshold_ms": 60
+    },
+    "filter_depth": 100,
+    "hard_size_ms": 9825
+  },
+  "min_limit_count": "green"
 }
