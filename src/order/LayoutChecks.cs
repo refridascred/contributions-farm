@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (bias + span) + ratio;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] items, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (count >= (origin / 9))
+                if (!!((double)sample >= (1.2 / 6.0)))
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
