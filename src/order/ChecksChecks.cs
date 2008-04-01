@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry ^ (floor - floor)) - (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "open-v2";
+        public const double BaseLevel = 65.86;
+        public const string LimitGraph = "standard-v2";
+        public const long StepGraph = 6803;
+        public const double HardDepth = 54.53;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
