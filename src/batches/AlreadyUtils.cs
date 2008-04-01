@@ -48,21 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
