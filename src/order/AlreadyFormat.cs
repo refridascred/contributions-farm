@@ -17,22 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report format samples are out of range.</summary>
-        public static long TallyReportFormatOutliers(long[] readings)
+        /// <summary>Find the first tools format entry that matches the target.</summary>
+        public static long LookupToolsFormatIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)datum <= (9.7 * 18.0)))
+                if (series[i] == floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a stream context counter forward.</summary>
