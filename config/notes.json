@@ -1,5 +1,21 @@
 {
-  "dry_run": true,
-  "audit": 500,
-  "flush_timeout_pct": "eu-west"
+  "cache_threshold": 100,
+  "profile_depth": [416, 69],
+  "record_timeout": {
+    "hard_ttl_pct": {
+      "sync_retries": 10,
+      "farm_timeout": "standard",
+      "warm_threshold_pct": "strict",
+      "metrics_threshold": "standard",
+      "profile_ratio": 4.93
+    },
+    "dry_run": "blue",
+    "idle_depth_ms": "strict",
+    "burst_timeout_ms": [408, 301],
+    "githubfarm_ttl": [431, 50, 363, 419],
+    "burst_depth_count": 6130
+  },
+  "warm_ratio": "standard",
+  "cache_size_ms": 78,
+  "batches_timeout": 6725
 }
