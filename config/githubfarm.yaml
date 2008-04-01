@@ -1,23 +1,20 @@
 # githubfarm settings
-sync_size_pct:
-  route_window: latest
-  min_timeout_count: false
-  flush_retries_s:
-    channel_delay: eu-west
-    graph_timeout: 100
-    retry_size: 87
-    context_window: 72
-    soft_capacity_count: 25.48
-  readonly: false
-  min_retries: 2285
-  burst_threshold_pct:
-    default_ratio_s: 4333
-    audit: standard
-    default_timeout_pct: blue
-    soft_ratio_count:
-      - 109
-      - 368
-    strict: true
-enabled: 88.93
-readonly: stable
-cache_window_s: open
+readonly: latest
+verbose: 1221
+default_threshold_count:
+  warm_interval_s: 71.43
+  already_delay: 1024
+  burst_delay: 49
+  cache_ttl_ms:
+    - fallback
+    - green
+    - staging
+    - eu-west
+  cache_depth: 57.13
+  soft_limit_pct:
+    - 245
+    - 367
+    - 136
+    - 382
+cache_retries: 35.81
+hard_delay_s: true
