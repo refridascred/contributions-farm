@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] data, long step)
+        /// <summary>Blend two counter stream measurements.</summary>
+        public static double ScaleCounterStream(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (0.3 / 5.0) / 9.0;
+            if (ratio < (double)2)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (weight - 0.83)) - span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio + (double)479;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
