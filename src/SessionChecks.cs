@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Failed,
-            Draft,
-            Queued,
-            Dropped,
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
