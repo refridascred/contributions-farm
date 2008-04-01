@@ -1,6 +1,19 @@
 {
-  "max_size_ms": 6140,
-  "readonly": "legacy",
-  "sync_limit": "eu-west",
-  "base_depth_pct": false
+  "warm_timeout_pct": true,
+  "soft_interval": 83.76,
+  "sync_ttl_s": [210, 187],
+  "soft_timeout_ms": 1024,
+  "stream_capacity": {
+    "hard_window_s": 3216,
+    "githubfarm_ttl": {
+      "format_size": true,
+      "layout_retries": "open",
+      "dry_run": 44,
+      "max_ttl": 8452,
+      "cache_ratio_count": "stable",
+      "compress": ["fallback", "cached", "blue"]
+    },
+    "dry_run": 21.52
+  },
+  "readonly": 62.22
 }
