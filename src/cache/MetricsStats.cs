@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 82.07;
-        public const double SoftScore = 65.44;
-        public const long RetryLevel = 7296;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Locked,
+            Active,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] items, long target)
