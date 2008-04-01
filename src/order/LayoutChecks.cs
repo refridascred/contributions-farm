@@ -30,11 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Derive the next cluster record value from a seed.</summary>
