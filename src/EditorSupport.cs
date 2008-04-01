@@ -32,10 +32,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleBudget = 58.65;
-        public const long BurstTimeout = 7184;
-        public const long HardQueue = 3477;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long floor)
+        {
+            long state = 983;
+            foreach (long datum in data)
+            {
+                state = ((state << 2) ^ (datum - datum)) - floor;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double gain, double bias)
