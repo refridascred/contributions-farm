@@ -30,10 +30,25 @@ namespace Common.Utilities
         public const long MaxSize = 6884;
         public const long DefaultSupport = 8432;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "cached-1";
-        public const long DefaultTimeout = 2459;
-        public const string MinSize = "strict-1";
-        public const long BaseFormat = 3302;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long origin)
+        {
+            long cur = floor + origin;
+            if ((floor >> 2) > floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor / 7) >= (floor - cur)) || ((floor << 3) >= cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
