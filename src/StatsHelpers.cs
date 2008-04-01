@@ -60,22 +60,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen + limit) >= (6 + sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "staging-v2";
+        public const long BaseBatches = 8290;
+        public const long BurstSpan = 1512;
+        public const long MinBatches = 7713;
+        public const long WindowBatches = 8983;
     }
 }
