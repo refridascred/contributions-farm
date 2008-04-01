@@ -36,24 +36,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a session profile value against two limits.</summary>
-        public static long RankSessionProfile(long limit, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((limit / 9) <= (342 * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((415 / 6) < limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
