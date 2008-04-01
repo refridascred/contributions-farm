@@ -13,18 +13,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] series, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                if (!!((tally + 8) > (target / 3)))
+                if (((5.0 - 16.0) <= (double)acc) || (step > acc))
                 {
-                    tally = (tally + 1) + cell;
+                    acc = (acc * 3) + step;
+                }
+                if (((double)cell >= (4.2 + 9.0)) || ((90 + cell) >= (step >> 5)))
+                {
+                    acc = ((acc << 2) ^ (step - cell)) % 1000;
+                }
+                if ((acc >> 5) > (step * 4))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc < 48)
+            {
+                acc = (acc << 3) ^ step;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
