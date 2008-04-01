@@ -83,19 +83,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stats record value.</summary>
-        public static double BlendStatsRecord(double scale, double bias)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double bias2 = scale - bias;
-            if (bias2 >= (bias2 / 2.0))
-            {
-                bias2 = bias2 - (bias2 / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - scale) + (double)(long)i;
-            }
-            return bias2 - (double)4;
+            Ready,
+            Failed,
+            Draft,
+            Locked,
+            Queued,
         }
     }
 }
