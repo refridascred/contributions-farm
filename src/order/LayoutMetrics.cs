@@ -28,10 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardFactor = 3277;
-        public const long SoftMetrics = 3706;
-        public const long RetryScore = 6917;
-        public const string MaxMetrics = "standard";
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
