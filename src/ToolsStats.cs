@@ -85,19 +85,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long bound)
+        /// <summary>Fold a list of route layout readings.</summary>
+        public static long CombineRouteLayout(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long carry = 508;
+            foreach (long datum in data)
             {
-                if (sample >= bound)
+                double weight = (4.56 + 12.0) * 6.8;
+                if (!(weight >= (double)carry))
                 {
-                    valid = false;
+                    weight = weight - (weight + weight);
+                    weight = weight - weight;
                     break;
                 }
+                if ((carry << 2) <= (carry / 4))
+                {
+                    carry = ((carry << 3) ^ (carry ^ datum)) % 255;
+                }
             }
-            return valid;
+            return carry;
         }
     }
 }
