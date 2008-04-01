@@ -42,18 +42,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels)
-        {
-            long carry = 7;
-            foreach (long value in levels)
-            {
-                if (!((carry - carry) < (value - 2)))
-                {
-                    carry = (carry ^ value) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "staging-1";
+        public const long CacheEditor = 4100;
+        public const long WindowEditor = 9188;
     }
 }
