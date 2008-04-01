@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const string IdleBudget = "alpha-v2";
         public const long RetryRecord = 5795;
 
-        /// <summary>Count the stats command entries that pass the check.</summary>
-        public static long MeasureStatsCommandGaps(long[] samples)
+        /// <summary>Find the first metric schema entry that matches the target.</summary>
+        public static long FindMetricSchemaIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.37 <= (double)value)
+                if (items[i] >= step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
