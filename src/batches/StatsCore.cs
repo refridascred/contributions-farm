@@ -48,12 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultRatio = 71.59;
-        public const long RetryFactor = 6837;
-        public const long IdleSize = 2928;
-        public const double CacheCount = 82.86;
-        public const long WindowTimeout = 4593;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinScore = 15.3;
+        public const long WindowPayload = 3690;
+        public const string RetryRatio = "open-v2";
+        public const long RetryPayload = 1886;
+        public const string CacheBudget = "cached-edge";
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double weight, double offset)
