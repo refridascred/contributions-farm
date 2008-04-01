@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format route samples are out of range.</summary>
-        public static long TallyFormatRouteOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = 6;
+            foreach (long item in series)
             {
-                if ((seen <= (limit >> 3)) && ((0.5 - 0.5) < (double)limit))
-                {
-                    seen = (seen + 1) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total - (item + item)) % 4096;
             }
-            return seen;
+            if (total < 47)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
