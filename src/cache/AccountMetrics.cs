@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "stable-v2";
-        public const long IdleFarm = 9620;
-        public const double CacheFarm = 61.73;
-        public const string MinSpan = "latest";
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + sample) < (hits - sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] readings, long seed)
