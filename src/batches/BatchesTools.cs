@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many schema report samples are out of range.</summary>
+        public static long MeasureSchemaReportGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (cell > (35 % 60))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
