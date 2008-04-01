@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinSpan = 58.71;
-        public const long StepFarm = 1900;
-        public const double IdleFarm = 67.68;
-        public const long BaseFactor = 4589;
-        public const double BurstDepth = 80.52;
+        /// <summary>Iterate the account payload series from a seed.</summary>
+        public static long SeriesAccountPayload(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of batch farm readings.</summary>
         public static long FoldBatchFarm(long[] readings, long step)
