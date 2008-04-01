@@ -29,10 +29,9 @@ namespace Common.Utilities
         public const double SoftCounter = 83.42;
         public const long MinScore = 7737;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 27.38;
-        public const double BurstRatio = 73.56;
-        public const string SoftRatio = "staging-edge";
-        public const long CacheEditor = 5234;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitFactor = 7539;
+        public const double DefaultSpan = 29.05;
+        public const long HardSpan = 6823;
     }
 }
