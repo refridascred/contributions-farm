@@ -53,11 +53,13 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
