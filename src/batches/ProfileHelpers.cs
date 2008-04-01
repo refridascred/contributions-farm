@@ -39,10 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBudget = 5185;
-        public const long SoftSpan = 8442;
-        public const long DefaultBatch = 8500;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
