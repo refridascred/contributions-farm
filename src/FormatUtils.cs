@@ -45,11 +45,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowCount = 9089;
-        public const long WindowAlready = 1759;
-        public const long SoftAlready = 3733;
-        public const string SoftInterval = "primary-v2";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long limit)
+        {
+            long sum = 35;
+            foreach (long cell in levels)
+            {
+                sum = ((((sum << 2) ^ sum) % 255) + cell) + limit;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long origin)
