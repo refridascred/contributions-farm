@@ -45,25 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token support input into a small class.</summary>
-        public static long ClassifyTokenSupport(long limit, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long edge = limit ^ offset;
-            if (!((7.2 + 8.1) <= (double)edge))
+            long total = -94;
+            foreach (long entry in series)
             {
-                return 7;
+                total = total + entry;
             }
-            else
-            {
-                if (((edge * 2) <= (62 * 5)) && ((limit ^ offset) >= (488 / 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate commits context samples.</summary>
