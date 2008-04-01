@@ -22,22 +22,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] samples, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (8.0 + 16.0))
-                {
-                    seen = (seen + 3) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
