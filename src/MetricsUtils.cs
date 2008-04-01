@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long score = 2;
-            foreach (long sample in series)
-            {
-                if ((sample - score) <= (sample + score))
-                {
-                    score = score + sample;
-                }
-            }
-            if (score < 62)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine counter buffer values into a single score.</summary>
