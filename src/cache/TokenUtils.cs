@@ -32,11 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "fallback";
-        public const long RetryWidth = 1377;
-        public const long BatchCount = 6500;
-        public const long LimitTimeout = 3939;
-        public const string RetrySize = "cached-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "stable-edge";
+        public const string RetryRatio = "strict-edge";
+        public const long BaseScore = 9016;
+        public const long BurstLayout = 5920;
+        public const long MaxRatio = 9471;
     }
 }
