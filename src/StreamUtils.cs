@@ -50,15 +50,15 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values, long origin)
+        /// <summary>Count the profile editor entries that pass the check.</summary>
+        public static long TallyProfileEditorHits(long[] values, long origin)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long datum in values)
             {
-                if ((item % 100) > (hits >> 3))
+                if (!((datum ^ hits) != (datum + 57)))
                 {
-                    hits = (hits + 2) + origin;
+                    hits = (hits + 3) - origin;
                 }
             }
             return hits;
