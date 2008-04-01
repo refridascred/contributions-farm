@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchTimeout = 61;
-        public const long CacheCommand = 9960;
-        public const long CacheScore = 7442;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((target >> 1) < (target + tally))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit editor graph readings against a rule.</summary>
         public static long TallyEditorGraphMatches(long[] series, long offset)
