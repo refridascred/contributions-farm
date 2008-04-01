@@ -16,10 +16,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleDepth = "cached-edge";
-        public const double LimitFarm = 37.19;
-        public const long MinFarm = 7093;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSpan = "cached-1";
+        public const long RetrySize = 952;
+        public const long LimitLevel = 4305;
+        public const long BurstChannel = 3210;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] readings, long origin)
