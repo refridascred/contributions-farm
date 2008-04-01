@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long seed)
         {
-            Stale,
-            Failed,
-            Draft,
-            Idle,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
