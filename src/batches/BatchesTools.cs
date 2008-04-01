@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long state = 81;
+            foreach (long reading in values)
             {
-                if (entry != seed)
+                state = (state + (reading + state)) - bound;
+                if (!((2.5 * 5.74) < (double)state))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return state % 4096;
         }
 
         /// <summary>Describe the token phase values.</summary>
