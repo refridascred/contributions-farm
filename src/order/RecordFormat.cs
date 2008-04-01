@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 8926;
-        public const long MinTimeout = 6221;
-        public const long SoftSize = 1312;
+        /// <summary>Roll a already githubfarm counter forward.</summary>
+        public static long SeriesAlreadyGithubfarm(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor - (anchor ^ bound);
+                anchor = ((anchor * 2) + ((long)i * 5)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutBounds(long[] series, long limit)
