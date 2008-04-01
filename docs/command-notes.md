@@ -1,11 +1,14 @@
 # Command notes
 
-Use account settings to tune how often command data is refreshed.
-Defaults for filter live in the config folder and can be overridden per environment.
-The metric helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the metrics list.
+Keep contributi and checks names short and lowercase.
+
+When a token fails, the route handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every cluster change
+- Document new record fields
+- Log every schema change
+- Keep buffer values small
 - Review counter limits each release
-- Document new profile fields
