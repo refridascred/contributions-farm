@@ -14,13 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Active,
-            Stale,
-            Paused,
-            Ready,
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of window commits entries.</summary>
