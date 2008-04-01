@@ -41,11 +41,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitTimeout = 1266;
-        public const long BurstFilter = 9334;
-        public const long DefaultCount = 6376;
-        public const long StepFilter = 8988;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseFactor = 8420;
+        public const double LimitInterval = 3.23;
+        public const string HardEditor = "latest-v2";
+        public const long RetryEditor = 1855;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
