@@ -52,16 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 2) ^ (target - carry)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
