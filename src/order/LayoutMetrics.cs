@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long floor, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            if ((double)bound > (double)floor)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 2) < (383 + floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (4.0 - 2.79))
+                    if ((data[i] + data[j]) != 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
