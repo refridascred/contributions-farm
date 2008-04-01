@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 4645;
-        public const string DefaultFactor = "local-1";
-        public const long MaxCount = 4460;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc << 2) ^ (long)i) % 1000;
+                acc = (acc << 3) ^ (offset - acc);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] values, long origin)
