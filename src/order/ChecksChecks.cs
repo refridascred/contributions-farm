@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = 7;
-            foreach (long sample in values)
-            {
-                sum = ((sum - (sum + sum)) % 4096) + sample;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
