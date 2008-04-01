@@ -1,5 +1,27 @@
 # githubfarm settings
-retry_limit_ms: staging
-batch_timeout: eu-west
-burst_ratio_count: 775
-warm_interval_ms: latest
+idle_retries:
+  sync_limit: false
+  readonly: false
+  batch_ratio: 55
+  burst_depth: open
+  soft_window_pct:
+    compress: strict
+    min_size: true
+    batch_size: 3261
+    dry_run: staging
+    strict: latest
+    route_ratio: true
+  poll_limit_pct: 89.1
+idle_size_s:
+  - fallback
+  - local
+max_threshold_s:
+  cache_size_ms: 10
+  command_ratio: eu-west
+  compress: false
+  poll_retries_count:
+    session_depth: false
+    burst_ratio_pct: 5279
+    burst_size: 3764
+    audit: staging
+batch_ratio_count: 7954
