@@ -1,5 +1,6 @@
 {
-  "retry_timeout_s": false,
-  "record_window": ["blue", "eu-west", "stable", "strict"],
-  "flush_interval_pct": 39
+  "commits_ratio": "standard",
+  "soft_capacity_count": "green",
+  "sync_retries": 4368,
+  "entry_depth": "green"
 }
