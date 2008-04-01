@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit session metrics readings against a rule.</summary>
+        public static long TallySessionMetricsGaps(long[] items, long origin)
         {
-            Done,
-            Synced,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches < (origin & 15)) || ((item / 8) <= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
