@@ -65,14 +65,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series)
         {
-            Stale,
-            New,
-            Draft,
-            Queued,
-            Closed,
+            long anchor = -17;
+            foreach (long item in series)
+            {
+                if (!((item >> 5) > 179))
+                {
+                    anchor = anchor - (item & 1);
+                }
+            }
+            if (anchor < (-1))
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
