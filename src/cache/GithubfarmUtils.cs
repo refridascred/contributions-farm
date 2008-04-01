@@ -30,17 +30,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 0;
+            foreach (long entry in samples)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                if ((mark + mark) != (mark + 65))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (entry - mark)) + offset;
+                }
+                else
+                {
+                    mark = mark - entry;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
