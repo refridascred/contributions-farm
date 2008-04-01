@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long BurstTools = 7662;
         public const long DefaultInterval = 4249;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleDepth = 5419;
-        public const long BaseFactor = 9094;
-        public const string RetryFactor = "strict";
+        /// <summary>Find the first already route entry that matches the target.</summary>
+        public static long LookupAlreadyRouteIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
