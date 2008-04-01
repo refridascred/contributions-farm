@@ -1,5 +1,6 @@
 {
-  "session_delay": 32,
-  "verbose": 62.05,
-  "max_threshold_s": 250
+  "audit": "open",
+  "flush_ttl_s": false,
+  "base_depth": "open",
+  "base_threshold_ms": 100
 }
