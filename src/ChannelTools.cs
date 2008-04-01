@@ -25,13 +25,13 @@ namespace Common.Utilities
             return load - (double)395;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            Retry,
+            Draft,
+            Locked,
+            Idle,
         }
     }
 }
