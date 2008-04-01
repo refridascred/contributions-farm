@@ -30,15 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Closed,
-            Paused,
-            New,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 7218;
+        public const double CacheContributi = 75.2;
+        public const long HardWidth = 8475;
+        public const long SoftContributi = 7662;
+        public const long LimitWidth = 2104;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] values, long limit)
