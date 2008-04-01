@@ -40,14 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            Done,
-            Pending,
-            Synced,
-            Failed,
-            Stale,
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry << 3) ^ origin) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
