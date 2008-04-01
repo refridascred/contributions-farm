@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Idle,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
