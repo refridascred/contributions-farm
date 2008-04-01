@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback legacy strict; do
+for item in eu-west edge blue local; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-standard}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=44
+log "limit is ${COMMAND_LIMIT}"
