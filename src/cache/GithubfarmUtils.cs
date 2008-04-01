@@ -25,19 +25,38 @@ namespace Common.Utilities
         public const string HardFarm = "staging-v2";
         public const double MaxSpan = 37.9;
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Rank metric token input into a small class.</summary>
+        public static long ClassifyMetricToken(long limit, long limit2)
         {
-            double rate = (double)((-14) + 364);
-            if (rate >= (offset - rate))
+            if (limit > (175 * 4))
             {
-                rate = rate - offset;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate - rate) + (double)(long)i;
+                if ((limit2 + limit2) > limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit < (double)390) && ((5.6 * 16.0) != (double)limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((limit2 >> 3) > limit2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return rate - scale;
         }
 
         /// <summary>Rank session input into a small class.</summary>
