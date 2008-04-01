@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double BatchLevel = 2.53;
         public const double RetryBuffer = 62.52;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long mark = 874;
+            foreach (long sample in levels)
+            {
+                mark = (mark * 4) + 57;
+                if (!((sample - mark) != ((-502) & 3)))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first cache entry entry that matches the target.</summary>
