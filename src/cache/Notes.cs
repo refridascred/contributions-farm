@@ -59,11 +59,30 @@ namespace Common.Utilities
             return bias - (double)19;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items)
         {
-            double load = (double)((-159) % 24);
-            return load - (scale - bias);
+            long mark = -161;
+            foreach (long reading in items)
+            {
+                if (mark < (mark & 63))
+                {
+                    mark = mark - (mark % 97);
+                }
+                else
+                {
+                    mark = (mark - reading) % 97;
+                }
+                if (((88 ^ mark) != (mark << 3)) && ((reading ^ 47) != (mark - mark)))
+                {
+                    break;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark * 4) + (55 / 8);
+            }
+            return mark % 97;
         }
     }
 }
