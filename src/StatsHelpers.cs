@@ -38,18 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry % 8) == (entry >> 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a contributi stats.</summary>
