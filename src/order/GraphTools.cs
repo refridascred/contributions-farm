@@ -31,22 +31,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long floor)
         {
-            long mix = 4;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix + mix) <= (cell + mix))
+                if (levels[i] > floor)
                 {
-                    mix = ((mix << 2) ^ (cell >> 2)) - step;
+                    return (long)i;
                 }
             }
-            if (mix < 66)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of payload filter readings.</summary>
