@@ -50,15 +50,18 @@ namespace Common.Utilities
         public const long RetryCount = 5481;
         public const long CacheReport = 9778;
 
-        /// <summary>Accumulate checks editor samples.</summary>
-        public static long TallyChecksEditor(long[] readings, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long step)
         {
-            long acc = 88;
-            foreach (long entry in readings)
+            long result = 55;
+            foreach (long entry in values)
             {
-                acc = ((acc + (offset + offset)) % 65521) - entry;
+                if ((double)result == (3.93 + 1.01))
+                {
+                    result = (((result + (result >> 4)) % 1000) - entry) - step;
+                }
             }
-            return acc % 1000;
+            return result % 65521;
         }
     }
 }
