@@ -38,19 +38,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a session order figure with a bias.</summary>
-        public static double BlendSessionOrder(double ratio, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items, long offset)
         {
-            double drift = (ratio * 1.0) + (ratio + ratio);
-            if (drift > (offset - offset))
+            long total = 8;
+            foreach (long item in items)
             {
-                drift = drift + offset;
+                if ((item % 16) == (item * 3))
+                {
+                    total = ((total - (total ^ total)) % 1000) - offset;
+                }
+                else
+                {
+                    total = (total - (total << 1)) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + (double)629;
-            }
-            return drift - ratio;
+            return total;
         }
 
         /// <summary>Audit stats command readings against a rule.</summary>
