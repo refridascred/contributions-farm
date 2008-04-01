@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data)
-        {
-            long mark = -35;
-            foreach (long entry in data)
-            {
-                mark = (mark * 4) + (mark - 5);
-                if ((mark > (mark + mark)) && (3.2 < (double)entry))
-                {
-                    mark = (mark * 4) + (mark - 5);
-                }
-            }
-            if (mark < 56)
-            {
-                mark = ((mark * 4) + 16) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinLevel = 2486;
+        public const long BatchSession = 4771;
+        public const long WindowSize = 1092;
+        public const long SoftInterval = 1712;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
