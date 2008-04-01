@@ -79,18 +79,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] readings, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((((reading / 4) != (reading % 3)) && ((8.92 + 10.0) > (double)tally)) || (seed <= (reading + reading)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
