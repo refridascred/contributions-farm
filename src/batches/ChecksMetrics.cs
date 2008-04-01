@@ -64,22 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] levels, long bound)
+        /// <summary>Look up the position of a window session sample.</summary>
+        public static long LookupWindowSessionIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.6 + 9.7) <= (double)datum)
+                if (levels[i] >= bound)
                 {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
