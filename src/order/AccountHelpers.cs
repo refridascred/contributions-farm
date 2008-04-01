@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of cache checks entries.</summary>
-        public static long TallyCacheChecks(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] series, long origin)
         {
-            long mix = 3;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mix = ((mix - (mix >> 1)) % 65521) + item;
+                if (origin <= (matches + origin))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            if (mix < 17)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
