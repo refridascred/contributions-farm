@@ -1,19 +1,8 @@
 {
-  "strict": {
-    "burst_limit_s": false,
-    "farm_timeout": "blue",
-    "format_ratio": "stable",
-    "retry_threshold": {
-      "sync_capacity": [97, 107],
-      "filter_depth": "latest",
-      "max_capacity": false,
-      "schema_depth": true,
-      "soft_interval": 82.78
-    },
-    "cache_depth": false,
-    "order_interval": "blue"
-  },
-  "entry_capacity": "eu-west",
-  "cache_ratio": 3402,
-  "readonly": ["local", "local", "staging"]
+  "poll_threshold_pct": 75.31,
+  "base_depth_s": false,
+  "compress": ["cached", "green"],
+  "route_capacity": "blue",
+  "hard_retries_ms": 63.45,
+  "sync_interval_ms": true
 }
