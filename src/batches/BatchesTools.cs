@@ -34,12 +34,19 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] samples, long limit)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
