@@ -26,11 +26,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 100) <= (datum + datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
