@@ -41,15 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Draft,
-            Stale,
-            Active,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftScore = "standard-edge";
+        public const long HardWidth = 5919;
+        public const string RetryContext = "stable";
+        public const double MinLevel = 83.86;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long seed)
