@@ -1,9 +1,38 @@
 # githubfarm settings
-burst_capacity: 2213
-window_depth: 36.2
-flush_threshold_pct: 1024
-base_window_count: true
-stats_delay:
-  - 87
-  - 64
-  - 398
+batch_ttl_ms:
+  queue_threshold: false
+  min_limit_count:
+    hard_ratio_s: true
+    compress: legacy
+    burst_retries_ms: 13.66
+    max_depth_ms: false
+    flush_depth_ms: 7120
+  base_ttl: 38
+  soft_threshold_pct: 60
+  hard_size_ms:
+    base_limit_ms: legacy
+    dry_run:
+      - 200
+      - 79
+    context_threshold: local
+    githubfarm_window: 250
+    strict: fallback
+    account_interval:
+      - 329
+      - 295
+      - 172
+burst_timeout_ms:
+  batch_limit_count:
+    metrics_delay: true
+    warm_capacity_pct: staging
+    batch_ttl_s: fallback
+    base_size_count: 8882
+    record_window:
+      - 150
+      - 240
+  compress:
+    - 212
+    - 310
+    - 206
+  audit: cached
+base_retries: 500
