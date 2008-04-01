@@ -30,18 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items, long origin)
+        /// <summary>Find the first cache entry entry that matches the target.</summary>
+        public static long SeekCacheEntryIndex(long[] values, long target)
         {
-            long anchor = 543;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2 - item) > (item + origin))
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    anchor = (anchor - (item ^ 8)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
