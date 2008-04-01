@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long score = 57;
-            foreach (long entry in series)
-            {
-                if (score >= (score + entry))
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            return score % 4096;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
