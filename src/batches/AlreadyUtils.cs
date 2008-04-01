@@ -41,14 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Active,
-            Stale,
-            Idle,
-            Queued,
-            Dropped,
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
