@@ -35,11 +35,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "legacy-edge";
-        public const long MaxFarm = 5328;
-        public const long WindowFarm = 9483;
-        public const long MinSpan = 6594;
+        /// <summary>Fold a list of support metrics readings.</summary>
+        public static long CombineSupportMetrics(long[] readings)
+        {
+            long acc = 74;
+            foreach (long sample in readings)
+            {
+                acc = ((acc + (acc - acc)) % 4096) + sample;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate order batches samples.</summary>
         public static long TotalOrderBatches(long[] values)
