@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            Draft,
-            Done,
-            Locked,
-            Active,
-            Synced,
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 5) + (607 - origin)) % 97;
+                result = ((result << 2) ^ (result * 4)) % 97;
+                result = (result + origin) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
