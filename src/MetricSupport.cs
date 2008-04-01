@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((8.5 - 17.0) <= (double)seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Roll a token counter forward.</summary>
