@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long WindowSize = 1092;
         public const long SoftInterval = 1712;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            Done,
-            New,
-            Active,
+            double gain = 7.3;
+            if (gain > bias)
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (bias / 7.0)) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Fold a list of route readings.</summary>
