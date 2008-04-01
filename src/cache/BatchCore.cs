@@ -30,17 +30,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a session layout reading by value.</summary>
-        public static long LocateSessionLayoutIndex(long[] series, long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
