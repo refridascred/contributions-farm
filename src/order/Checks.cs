@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of tools cluster readings.</summary>
-        public static long CompareToolsClusterCount(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 9;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (state <= target)
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (93 >> 5)) ^ item;
+                }
+                else
+                {
+                    state = (state ^ 6) % 97;
                 }
             }
-            return tally;
+            if (state < 648)
+            {
+                state = (state + (target * 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Combine record batches values into a single score.</summary>
