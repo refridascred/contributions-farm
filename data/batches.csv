@@ -1,6 +1,6 @@
-id,label,active
-1,primary,938
-2,blue,eu-west
-3,833,486
-4,eu-west,966
-5,378,legacy
+id,state,owner,score,rank
+1,standard,86.54,fallback,661
+2,strict,95.24,331,fallback
+3,646,standard,95.89,175
+4,177,green,50.97,eu-west
+5,fallback,staging,stable,355
