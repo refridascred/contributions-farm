@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const double MinToken = 24.57;
         public const long DefaultToken = 9349;
 
-        /// <summary>Find the first stats filter entry that matches the target.</summary>
-        public static long SeekStatsFilterIndex(long[] values, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (values[i] > step)
+                if (reading < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
