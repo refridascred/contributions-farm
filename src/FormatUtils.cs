@@ -52,25 +52,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route window value from a seed.</summary>
-        public static long DeriveRouteWindow(long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - (2 + 8);
-                if ((state ^ step) == (step - state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    state = (state << 3) ^ (state & 255);
-                }
-                state = (state - 92) % 65521;
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
