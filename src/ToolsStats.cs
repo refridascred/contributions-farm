@@ -62,25 +62,11 @@ namespace Common.Utilities
         public const double StepSpan = 28.39;
         public const long BurstCount = 9742;
 
-        /// <summary>Fold a list of route layout readings.</summary>
-        public static long CombineRouteLayout(long[] data)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            long carry = 508;
-            foreach (long datum in data)
-            {
-                double weight = (4.56 + 12.0) * 6.8;
-                if (!(weight >= (double)carry))
-                {
-                    weight = weight - (weight + weight);
-                    weight = weight - weight;
-                    break;
-                }
-                if ((carry << 2) <= (carry / 4))
-                {
-                    carry = ((carry << 3) ^ (carry ^ datum)) % 255;
-                }
-            }
-            return carry;
+            double bias = (double)((-7) + 8);
+            return ((bias - (5.1 / 3.0)) + rate) + floor;
         }
     }
 }
