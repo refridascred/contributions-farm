@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue stats entries that pass the check.</summary>
-        public static long MeasureQueueStatsGaps(long[] readings)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if ((double)floor >= (1.2 - 4.6))
             {
-                if ((double)item != (13.0 + 9.0))
+                return 4;
+            }
+            else
+            {
+                if ((floor % 7) <= floor)
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step >= (9.0 + 20.0)) || ((floor >> 5) == (floor & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >> 5) > (floor << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next contributi value.</summary>
