@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            Dropped,
-            Ready,
-            Locked,
+            long carry = 728;
+            foreach (long item in samples)
+            {
+                carry = ((carry * 3) + (20 - item)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
