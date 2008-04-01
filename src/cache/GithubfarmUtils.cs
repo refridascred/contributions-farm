@@ -42,16 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (result << 2)) % 255;
-                result = ((result * 5) + (long)i) % 1000;
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
