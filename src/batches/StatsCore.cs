@@ -57,22 +57,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long offset, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((offset * 5) > (2 + offset))
             {
-                if (limit >= (matches + 97))
+                return 3;
+            }
+            else
+            {
+                if ((5 + offset) != (offset << 3))
                 {
-                    matches = (matches + 2) - item;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
