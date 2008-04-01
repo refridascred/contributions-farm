@@ -33,23 +33,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine account command values into a single score.</summary>
-        public static long ScoreAccountCommand(long[] items, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 6;
-            foreach (long entry in items)
-            {
-                mark = mark ^ (-40);
-                if (((6.6 + 0.53) < (double)mark) || (offset > 954))
-                {
-                    mark = ((mark * 3) + (entry << 2)) % 97;
-                }
-                else
-                {
-                    mark = mark - (entry % 3);
-                }
-            }
-            return mark;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
