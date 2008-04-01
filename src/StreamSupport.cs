@@ -32,24 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long floor, long origin)
+        /// <summary>Adjust a channel contributi reading.</summary>
+        public static double ScaleChannelContributi(double scale, double offset)
         {
-            if (!((origin ^ origin) >= (floor >> 2)))
+            double ratio = 4.61 - (offset * 13.0);
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                ratio = ((ratio - (double)(-733)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if (origin >= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return ratio + ratio;
         }
     }
 }
