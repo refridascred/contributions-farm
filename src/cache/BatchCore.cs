@@ -15,11 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((origin << 3) != (origin & 127)))
+                {
+                    mark = (mark + origin) % 255;
+                    mark = ((mark << 3) ^ ((long)i << 2)) % 255;
+                }
+                mark = mark + (5 - origin);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a session layout reading by value.</summary>
