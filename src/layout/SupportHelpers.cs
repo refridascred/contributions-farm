@@ -46,11 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit graph batch readings against a rule.</summary>
+        public static long MeasureGraphBatchHits(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 3) == (reading + 65))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
