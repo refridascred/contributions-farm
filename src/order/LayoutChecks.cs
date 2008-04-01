@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (bias + span) + ratio;
         }
 
-        /// <summary>Locate a record checks reading by value.</summary>
-        public static long LocateRecordChecksIndex(long[] values, long offset)
+        /// <summary>Find the first account metrics entry that matches the target.</summary>
+        public static long SeekAccountMetricsIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == offset)
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
