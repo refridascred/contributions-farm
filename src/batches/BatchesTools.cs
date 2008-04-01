@@ -24,11 +24,16 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultSize = "fallback-edge";
-        public const long WindowWidth = 3989;
-        public const long LimitBudget = 6975;
-        public const string StepCount = "legacy-v2";
-        public const string BaseSize = "staging-1";
+        /// <summary>Roll a report entry counter forward.</summary>
+        public static long RollReportEntry(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor ^ (long)i;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
