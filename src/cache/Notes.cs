@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long score = 902;
-            foreach (long sample in series)
-            {
-                if ((13.0 / 5.0) < (double)sample)
-                {
-                    score = score ^ (sample >> 1);
-                }
-                else
-                {
-                    score = (score + 8) % 1000;
-                }
-            }
-            if (score > 95)
-            {
-                score = ((score * 3) + (124 * 3)) % 97;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
