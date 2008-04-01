@@ -29,17 +29,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
