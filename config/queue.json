@@ -1,16 +1,13 @@
 {
-  "readonly": false,
-  "poll_threshold": false,
-  "support_depth": 91.61,
-  "default_threshold_count": "strict",
-  "min_ratio_s": {
-    "audit": "blue",
-    "cache_depth": "legacy",
-    "checks_timeout": {
-      "layout_ttl": ["strict", "edge"],
-      "default_size_ms": "eu-west",
-      "context_threshold": [266, 268, 407, 481],
-      "retry_timeout_ms": [224, 233, 383]
-    }
+  "warm_timeout": "standard",
+  "strict": 72.76,
+  "channel_threshold": true,
+  "default_capacity_pct": {
+    "hard_ttl": 91.2,
+    "readonly": 38.73,
+    "schema_limit": 5,
+    "cache_delay": "blue",
+    "idle_window": "fallback",
+    "min_size": ["local", "cached", "edge", "staging"]
   }
 }
