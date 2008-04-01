@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const double BurstSession = 8.25;
         public const string HardSession = "legacy";
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long bound)
         {
-            long sum = -277;
-            foreach (long entry in values)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                sum = sum ^ (entry & 1);
+                if (!(((double)bound > (8.0 + 8.8)) || ((5.2 * 1.9) > (double)(long)i)))
+                {
+                    score = score - bound;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (sum > 851)
-            {
-                sum = ((sum << 3) ^ (-18)) % 97;
-            }
-            return sum % 65521;
+            return score;
         }
     }
 }
