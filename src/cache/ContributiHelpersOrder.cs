@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] series, long seed)
+        /// <summary>Classify a support graph pair into a bucket.</summary>
+        public static long ClassifySupportGraph(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            if ((origin << 2) <= (origin + origin))
             {
-                if (datum <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((origin / 2) == (bound / 9))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound != (3.7 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin > 9.72)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
