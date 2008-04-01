@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double scale = 5.02 / 8.0;
-            if (scale >= bias)
-            {
-                scale = scale - (bias / 2.0);
-            }
-            else
-            {
-                scale = scale - (11.0 / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (9.22 + span)) + (double)(long)i;
-            }
-            return scale + (5.9 + 5.89);
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank record input into a small class.</summary>
