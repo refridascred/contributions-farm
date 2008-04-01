@@ -1,18 +1,5 @@
 {
-  "stream_delay": false,
-  "strict": "open",
-  "base_size_ms": false,
-  "batch_window_s": {
-    "enabled": 1326,
-    "editor_capacity": ["primary", "edge", "legacy", "local"],
-    "sync_limit_s": 250,
-    "verbose": 1639
-  },
-  "compress": "legacy",
-  "cache_capacity_pct": {
-    "stats_ttl": "green",
-    "tools_depth": 89.81,
-    "idle_threshold_count": ["cached", "edge"],
-    "base_delay_ms": 12.67
-  }
+  "enabled": 1024,
+  "cache_capacity": false,
+  "burst_ratio_count": "eu-west"
 }
