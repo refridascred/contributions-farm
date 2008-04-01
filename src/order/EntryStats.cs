@@ -51,18 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((((hits << 3) > ((long)series.Length + cell)) || ((hits / 3) < hits)) || ((cell > ((long)series.Length + cell)) && ((hits << 3) >= cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
