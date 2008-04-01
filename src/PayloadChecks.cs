@@ -30,23 +30,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double bias)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            double drift = bias;
-            if (drift >= 3.0)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                drift = drift - (gain / 2.0);
+                if (((long)i - floor) < ((long)i << 1))
+                {
+                    mix = (mix ^ floor) % 65521;
+                    mix = mix + (mix + floor);
+                }
+                else
+                {
+                    mix = mix + (mix << 1);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + gain) - (double)(long)i;
-            }
-            return drift - 7.1;
+            return mix;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
