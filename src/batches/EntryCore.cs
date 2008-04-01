@@ -13,16 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 3) ^ origin) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Locked,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
