@@ -44,20 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double bias)
-        {
-            double gain2 = gain - 8.9;
-            if (gain2 >= 1.75)
-            {
-                gain2 = gain2 - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (4.0 + bias)) - (double)(long)i;
-            }
-            return gain2 + (bias - gain2);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitTimeout = 1266;
+        public const long BurstFilter = 9334;
+        public const long DefaultCount = 6376;
+        public const long StepFilter = 8988;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long seed, long limit)
