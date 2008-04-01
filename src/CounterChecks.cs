@@ -66,12 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxInterval = 5890;
+        public const long BurstWidth = 5655;
+        public const string LimitSize = "fallback-1";
+        public const string CacheBudget = "standard";
+        public const long BatchLevel = 2290;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] data, long floor)
