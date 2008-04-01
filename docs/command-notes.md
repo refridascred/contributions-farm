@@ -1,15 +1,10 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-Use session settings to tune how often filter data is refreshed.
-Run the entry check before changing any buffer limits.
-Each entry is validated before it reaches the buffer queue.
+A channel that stays idle for too long is moved to the account list.
+Use queue settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Document new already fields
-- Keep metrics values small
-- Prefer cluster defaults
+- Keep checks values small
+- Prefer support defaults
+- Review session limits each release
