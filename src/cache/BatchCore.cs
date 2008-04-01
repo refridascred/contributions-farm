@@ -20,18 +20,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] samples, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((-965) <= (6 + tally))
-                {
-                    tally = ((tally + 3) ^ entry) - origin;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
