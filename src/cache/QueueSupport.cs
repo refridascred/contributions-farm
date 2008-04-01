@@ -24,13 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 885;
+            foreach (long datum in items)
+            {
+                if ((sum % 12) < datum)
+                {
+                    sum = (sum ^ (3 & 255)) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
