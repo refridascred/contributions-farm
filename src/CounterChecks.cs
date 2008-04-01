@@ -28,15 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Combine format already values into a single score.</summary>
+        public static long DigestFormatAlready(long[] data, long seed)
         {
-            long sum = 77;
-            foreach (long value in data)
+            long acc = 15;
+            foreach (long item in data)
             {
-                sum = ((sum + (long)data.Length) % 4096) + value;
+                if ((3 - acc) <= (item + acc))
+                {
+                    acc = (((acc << 2) ^ 25) % 101) + seed;
+                }
             }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Rank format input into a small class.</summary>
