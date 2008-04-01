@@ -50,13 +50,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long seed, long bound)
         {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            long slot = seed + bound;
+            if ((double)slot == (3.0 * 14.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound >= (slot + slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((slot ^ bound) <= (bound + bound)) || ((3 - seed) > (6 - 795)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (slot >= (slot + 175))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
