@@ -47,15 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Retry,
-            Synced,
-            Failed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowSpan = "primary-edge";
+        public const string StepRoute = "primary";
+        public const string DefaultDepth = "staging-1";
+        public const long RetryRoute = 8962;
+        public const string CacheRoute = "staging-edge";
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
