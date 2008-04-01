@@ -35,15 +35,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Validate farm command readings against a bound.</summary>
+        public static bool ValidateFarmCommandRange(long[] data, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
