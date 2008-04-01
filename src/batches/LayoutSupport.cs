@@ -65,12 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate commits context samples.</summary>
+        public static long TotalCommitsContext(long[] samples, long target)
         {
-            Draft,
-            Failed,
-            New,
+            long carry = 492;
+            foreach (long value in samples)
+            {
+                if ((double)target >= 7.45)
+                {
+                    carry = (carry + value) % 101;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = (carry - 3) % 1000;
+            }
+            return carry;
         }
     }
 }
