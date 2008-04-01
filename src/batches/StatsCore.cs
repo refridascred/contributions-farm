@@ -87,11 +87,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Synced,
+            Closed,
+            Paused,
+            Pending,
         }
     }
 }
