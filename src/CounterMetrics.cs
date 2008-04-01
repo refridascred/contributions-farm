@@ -26,21 +26,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long OverlapBatchSupportCount(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank cluster window input into a small class.</summary>
