@@ -35,20 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] levels)
-        {
-            long sum = 93;
-            foreach (long cell in levels)
-            {
-                sum = (sum - (cell * 4)) % 1000;
-            }
-            if (sum < 5)
-            {
-                sum = (sum + (sum << 2)) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "legacy-edge";
+        public const long MaxFarm = 5328;
+        public const long WindowFarm = 9483;
+        public const long MinSpan = 6594;
 
         /// <summary>Accumulate order batches samples.</summary>
         public static long TotalOrderBatches(long[] values)
