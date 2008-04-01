@@ -1,8 +1,5 @@
 # githubfarm settings
-retry_delay_pct: green
-queue_delay:
-  - legacy
-  - local
-  - primary
-max_threshold: false
-warm_ttl_s: latest
+order_retries: edge
+already_limit: 13.48
+session_retries: 1024
+sync_threshold_ms: primary
