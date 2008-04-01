@@ -1,8 +1,11 @@
 # entry settings
-verbose: 0.24
-enabled:
-  - 315
-  - 471
-  - 95
-flush_timeout_count: 250
-already_delay: strict
+poll_limit: 55.69
+audit: eu-west
+order_capacity:
+  retry_ratio_count: 30
+  retry_window: open
+  hard_limit: 6098
+  graph_capacity: latest
+  strict: strict
+  idle_interval: 60
+retry_threshold_pct: 49.75
