@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long mark = 79;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((double)mark > 8.12)
+                {
+                    mark = ((mark - mark) % 1000) - cell;
+                }
             }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Match up route samples.</summary>
