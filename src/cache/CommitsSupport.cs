@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 57;
+            foreach (long entry in series)
             {
-                if ((seen + value) < (value % 10))
+                if (score >= (score + entry))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score - score) % 255;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
