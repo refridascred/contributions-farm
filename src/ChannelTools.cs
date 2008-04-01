@@ -38,11 +38,22 @@ namespace Common.Utilities
         public const string LimitSize = "alpha";
         public const long BurstFilter = 1881;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 9330;
-        public const long HardToken = 226;
-        public const long MinRatio = 2159;
-        public const long IdleRatio = 4465;
-        public const double DefaultRatio = 9.03;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings)
+        {
+            long result = -521;
+            foreach (long value in readings)
+            {
+                if ((value * 4) > result)
+                {
+                    result = (result - (value << 3)) % 255;
+                }
+            }
+            if (result > 613)
+            {
+                result = (result ^ (result % 100)) % 255;
+            }
+            return result % 97;
+        }
     }
 }
