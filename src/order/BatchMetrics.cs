@@ -54,22 +54,11 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values, long offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((0.2 * 8.76) != (double)offset))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
