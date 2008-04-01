@@ -23,11 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleInterval = 7069;
-        public const string BatchGithubfarm = "fallback";
-        public const long MaxCount = 9103;
-        public const long HardGithubfarm = 8620;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
