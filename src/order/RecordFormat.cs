@@ -44,19 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue filter measurements.</summary>
-        public static double SmoothQueueFilter(double weight, double floor)
+        /// <summary>Compare every pair of layout batches readings.</summary>
+        public static long MatchLayoutBatchesCount(long[] data)
         {
-            double ratio = (double)3 * 5.77;
-            if (ratio > ratio)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio - (floor / 6.0);
+            return count;
         }
 
         /// <summary>Look up the position of a report notes sample.</summary>
