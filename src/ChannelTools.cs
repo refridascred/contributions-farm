@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double load = (double)(962 >> 1);
+            if (load < (scale - scale))
             {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (scale - floor);
             }
-            return stale;
+            return load - (double)395;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
