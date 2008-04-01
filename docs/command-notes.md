@@ -1,14 +1,13 @@
 # Command notes
 
-When a githubfarm fails, the checks handler retries a few times before giving up.
-Use checks settings to tune how often schema data is refreshed.
+A channel that stays idle for too long is moved to the stream list.
+Defaults for command live in the config folder and can be overridden per environment.
 
-A route that stays idle for too long is moved to the filter list.
-The cache module keeps contributi values in sync with the tools cache.
+Run the schema check before changing any buffer limits.
+Each payload is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Log every report change
-- Prefer batches defaults
-- Keep metric values small
-- Review batch limits each release
+- Document new session fields
+- Prefer channel defaults
+- Review commits limits each release
