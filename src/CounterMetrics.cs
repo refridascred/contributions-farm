@@ -35,11 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 7062;
-        public const string MinInterval = "strict-edge";
-        public const long BurstStats = 221;
-        public const string DefaultSpan = "latest-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTimeout = "cached-edge";
+        public const double RetrySpan = 38.21;
+        public const long BaseTools = 4004;
+        public const string HardTools = "strict-edge";
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] data, long step)
