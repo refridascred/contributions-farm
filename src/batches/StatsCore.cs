@@ -93,17 +93,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long origin)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
