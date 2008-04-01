@@ -43,25 +43,22 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((sample * 3) > (matches / 3))
                 {
-                    sum = ((sum << 2) ^ (limit & 127)) + (long)i2;
-                    sum = (sum << 2) ^ limit;
+                    matches = matches + 3;
                 }
-                if (!!(limit >= (sum - limit)))
+                else
                 {
-                    sum = (sum ^ (limit + 0)) % 65521;
+                    matches = matches - 1;
                 }
-                sum = ((sum << 2) ^ (long)i) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
