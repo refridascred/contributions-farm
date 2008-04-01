@@ -40,18 +40,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] series, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((count % 7) > count))
-                {
-                    count = ((count + 3) ^ item) + seed;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
