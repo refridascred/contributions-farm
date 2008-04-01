@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long limit, long target)
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long CountAlreadyCacheGaps(long[] levels)
         {
-            long span = limit ^ target;
-            if ((limit + target) <= (target / 7))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((44 - (-34)) > (limit + span)) || ((limit >> 1) >= (span + target)))
+                if (tally < ((long)levels.Length + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 24) == (37 % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((span + limit) >= limit) && ((double)span < (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
