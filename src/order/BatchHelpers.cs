@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] items)
         {
-            double weight2 = (double)(95 + (-6));
-            if (weight2 <= (double)4)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                weight2 = (weight2 + (7.6 * 4.3)) + weight;
+                if (!(((hits % 16) != (reading >> 4)) && ((double)reading != (0.24 - 16.0))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight2 + floor;
+            return hits;
         }
 
         /// <summary>Audit window order readings against a rule.</summary>
