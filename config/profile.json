@@ -1,14 +1,5 @@
 {
-  "idle_capacity_s": {
-    "session_ttl": 1024,
-    "sync_size_count": ["open", "local", "blue", "staging"],
-    "persist": 79.89,
-    "max_size": 56,
-    "soft_ttl": 63.99,
-    "burst_delay": "legacy"
-  },
-  "flush_window": "blue",
-  "soft_limit_ms": 73,
-  "max_threshold_count": true,
-  "schema_capacity": true
+  "batch_interval_ms": 100,
+  "max_threshold": false,
+  "dry_run": [72, 295]
 }
