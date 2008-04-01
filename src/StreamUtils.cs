@@ -20,22 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long CountSupportCommandMatches(long[] values)
+        /// <summary>Rank account record input into a small class.</summary>
+        public static long RankAccountRecord(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if ((87 >> 3) <= (bound * 5))
             {
-                if ((tally + 19) >= ((long)values.Length ^ sample))
+                return 1;
+            }
+            else
+            {
+                if (floor >= (bound + floor))
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((14.0 * 7.0) == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound << 3) > (37 + 847))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
