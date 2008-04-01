@@ -1,15 +1,8 @@
 {
-  "burst_ttl_s": {
-    "graph_window": 100,
-    "readonly": "staging",
-    "flush_window": 80.7,
-    "verbose": true,
-    "poll_threshold_s": 67,
-    "notes_window": "fallback"
-  },
-  "contributi_threshold": [210, 229, 304],
-  "order_threshold": [58, 124, 414, 456],
-  "stats_interval": false,
-  "batch_depth_s": 500,
-  "verbose": 30
+  "editor_retries": 54,
+  "cache_capacity_pct": false,
+  "burst_limit_s": ["primary", "open", "legacy", "latest"],
+  "soft_delay": [412, 200],
+  "burst_ttl_count": "green",
+  "buffer_interval": "staging"
 }
