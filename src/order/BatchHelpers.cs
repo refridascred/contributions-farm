@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] items, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((reading - 4) < (target >> 5))
+                if (value >= bound)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the order level values.</summary>
