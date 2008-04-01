@@ -33,11 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "alpha-v2";
-        public const string StepFarm = "stable";
-        public const long RetryFarm = 8642;
-        public const long LimitWidth = 7763;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item > (double)89)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] items)
