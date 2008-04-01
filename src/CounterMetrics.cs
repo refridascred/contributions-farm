@@ -36,39 +36,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank cluster window input into a small class.</summary>
-        public static long GradeClusterWindow(long target, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long step = target + bound;
-            if ((double)step >= (6.11 - 1.4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - 3) < target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound <= 15.0) || ((step - 5) >= target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((128 % 64) >= (step % 8)) && ((3.3 * 13.0) != (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Draft,
+            Done,
+            Closed,
         }
     }
 }
