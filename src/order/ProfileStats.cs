@@ -46,22 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Combine record account values into a single score.</summary>
+        public static long ScoreRecordAccount(long[] samples, long bound)
         {
-            long anchor = -17;
-            foreach (long item in series)
+            long state = 819;
+            foreach (long item in samples)
             {
-                if (!((item >> 5) > 179))
+                if ((bound - (-843)) == (1 & 3))
                 {
-                    anchor = anchor - (item & 1);
+                    state = ((state + (8 * 5)) % 4096) + item;
                 }
             }
-            if (anchor < (-1))
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor;
+            return state % 4096;
         }
     }
 }
