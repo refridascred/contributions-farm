@@ -33,32 +33,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long diff = target + floor;
-            if ((801 + 731) < (target + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (14.0 + 9.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (diff >= (floor - diff))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Active,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
