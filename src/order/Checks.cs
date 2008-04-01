@@ -29,23 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats context readings.</summary>
-        public static long TallyStatsContext(long[] series, long limit)
-        {
-            long sum = -3;
-            foreach (long entry in series)
-            {
-                if (!((double)limit >= (10.0 + 5.2)))
-                {
-                    sum = sum - (limit + entry);
-                }
-                if (!(sum > (limit * 2)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 43.91;
+        public const string BaseWindow = "strict-v2";
+        public const double MaxTimeout = 0.61;
+        public const long DefaultSize = 1364;
 
         /// <summary>Iterate the entry command series from a seed.</summary>
         public static long IterateEntryCommand(long limit)
