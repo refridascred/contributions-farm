@@ -1,22 +1,8 @@
 # support settings
-retry_depth_ms: true
-githubfarm_ratio:
-  - stable
-  - open
-  - open
-record_timeout: 90
-profile_threshold:
-  batch_interval_s: standard
-  audit:
-    - stable
-    - edge
-    - cached
-  idle_depth_ms:
-    - 241
-    - 135
-    - 393
-  strict: 38
-  idle_capacity_ms:
-    - 62
-    - 18
-    - 95
+warm_size_count:
+  - legacy
+  - standard
+format_limit: true
+idle_window_s: staging
+poll_limit_ms: latest
+default_limit: stable
