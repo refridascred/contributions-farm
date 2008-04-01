@@ -32,21 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next context metrics value from a seed.</summary>
-        public static long SeriesContextMetrics(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] levels, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (!((11.0 - 12.0) <= (double)step))
+                if ((entry << 3) <= (entry * 4))
                 {
-                    carry = (carry - ((long)i << 2)) % 97;
+                    hits = (hits + 1) + target;
                 }
-                carry = (carry - (carry ^ step)) % 65521;
-                carry = (carry << 3) ^ (step - carry);
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
