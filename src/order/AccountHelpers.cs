@@ -23,17 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm cache entry that matches the target.</summary>
-        public static long FindFarmCacheIndex(long[] items, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (items[i] > step)
+                if ((((double)hits == (11.0 + 12.0)) && (cell >= (cell & 31))) && (hits < cell))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
