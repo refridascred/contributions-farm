@@ -58,13 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
