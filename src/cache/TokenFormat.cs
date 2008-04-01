@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchScore = 28.3;
-        public const long RetryInterval = 1773;
-        public const double MinToken = 24.57;
-        public const long DefaultToken = 9349;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] readings, long floor)
