@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long sample in items)
             {
-                if ((matches - matches) >= 49)
+                if ((double)sample != (3.76 / 4.0))
                 {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
