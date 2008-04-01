@@ -26,12 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRatio = 5504;
-        public const double MaxFactor = 55.64;
-        public const long MaxSize = 7163;
-        public const long WindowWidth = 3309;
-        public const long DefaultRecord = 1367;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3625;
+        public const long BatchGithubfarm = 750;
+        public const double WindowGithubfarm = 7.04;
 
         /// <summary>Validate session layout readings against a bound.</summary>
         public static bool CheckSessionLayoutRange(long[] readings, long seed)
