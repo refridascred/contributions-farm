@@ -52,19 +52,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every account buffer entry stays within the limit.</summary>
-        public static bool CheckAccountBufferBounds(long[] series, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Locked,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
