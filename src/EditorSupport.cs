@@ -38,15 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            long state = 983;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                state = ((state << 2) ^ (datum - datum)) - floor;
+                if ((hits * 3) <= item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a route reading.</summary>
