@@ -25,14 +25,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long offset)
         {
-            Stale,
-            Active,
-            New,
-            Idle,
-            Failed,
+            long next = step ^ offset;
+            if ((offset < next) || ((double)step < 5.61))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step ^ step) > (offset * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a counter info.</summary>
