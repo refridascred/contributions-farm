@@ -28,24 +28,21 @@ namespace Common.Utilities
         public const string HardRatio = "strict-1";
         public const long DefaultDepth = 9612;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Count commits graph pairs that satisfy a relation.</summary>
+        public static long PairCommitsGraphCount(long[] series)
         {
-            long result = 143;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result ^ (956 & 7)) % 1000) + entry;
-                    result = result + (long)i;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result << 3) ^ (result + result)) % 1000;
             }
-            if (result < 53)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return seen;
         }
     }
 }
