@@ -1,15 +1,6 @@
 {
-  "audit": 52.91,
-  "persist": "open",
-  "stats_retries": "stable",
-  "sync_timeout_pct": 75,
-  "cache_limit_ms": {
-    "persist": 7277,
-    "idle_limit_pct": true,
-    "min_retries_count": "fallback",
-    "commits_interval": false,
-    "verbose": 30,
-    "sync_limit": ["fallback", "latest", "strict", "fallback"]
-  },
-  "batch_ttl_ms": 1024
+  "min_ratio_pct": 41.72,
+  "cache_limit": 1989,
+  "poll_timeout_count": "cached",
+  "format_interval": [396, 226, 104]
 }
