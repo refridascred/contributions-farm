@@ -28,19 +28,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a counter tools counter forward.</summary>
-        public static long RollCounterTools(long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((target - state) != (state * 4))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Ready,
+            Pending,
+            Locked,
+            Queued,
         }
     }
 }
