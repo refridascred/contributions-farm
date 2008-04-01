@@ -42,11 +42,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + (result << 2)) % 255;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
