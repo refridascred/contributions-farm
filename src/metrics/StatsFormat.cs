@@ -65,11 +65,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitSize = 1968;
+        public const string DefaultRecord = "cached-1";
+        public const long RetryRecord = 7008;
+        public const long SoftWidth = 5739;
+        public const long SoftSpan = 3707;
     }
 }
