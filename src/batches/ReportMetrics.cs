@@ -31,16 +31,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] samples)
-        {
-            long acc = 8;
-            foreach (long item in samples)
-            {
-                acc = (acc * 3) + (item & 63);
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9444;
+        public const double HardTimeout = 98.59;
+        public const double BaseCounter = 8.5;
     }
 }
