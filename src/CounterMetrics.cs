@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long StepCount = 875;
         public const long SoftSize = 2192;
 
-        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
-        public static long MatchContributiAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 73.69;
+        public const double StepInterval = 65.85;
+        public const long MaxLevel = 8859;
 
         /// <summary>Combine contributi batches values into a single score.</summary>
         public static long FoldContributiBatches(long[] readings, long limit)
