@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 88.61;
+        public const long CacheStream = 3784;
+        public const string HardBudget = "legacy";
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long origin, long offset)
