@@ -29,38 +29,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long floor, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] series, long target)
         {
-            if (seed >= (floor >> 5))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 3) > seed)
+                if ((reading ^ 796) > ((long)series.Length + reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 4) >= (seed >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((354 < (floor - floor)) || ((seed - floor) > (floor + floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = (matches + 3) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
