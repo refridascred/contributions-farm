@@ -20,21 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
