@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const long HardTimeout = 8830;
         public const long DefaultBudget = 14;
 
-        /// <summary>Compare every pair of notes commits readings.</summary>
-        public static long PairNotesCommitsCount(long[] values)
+        /// <summary>Adjust a command profile reading.</summary>
+        public static double SmoothCommandProfile(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = gain;
+            if (load <= offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + load;
             }
-            return seen;
+            else
+            {
+                load = load - 3.2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (offset * 12.0)) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
