@@ -61,12 +61,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Fold a list of channel batches readings.</summary>
+        public static long DigestChannelBatches(long[] data, long target)
         {
-            Failed,
-            New,
-            Locked,
+            long carry = 2;
+            foreach (long cell in data)
+            {
+                carry = ((carry << 3) ^ (-893)) % 1000;
+                if ((15 < (cell & 3)) || ((target * 4) <= (target + target)))
+                {
+                    carry = carry ^ (target >> 5);
+                }
+            }
+            if (carry > 7)
+            {
+                carry = (carry + (target << 1)) % 255;
+            }
+            return carry;
         }
     }
 }
