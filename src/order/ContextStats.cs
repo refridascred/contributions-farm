@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            New,
-            Queued,
-            Failed,
-            Pending,
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix << 2) ^ ((long)i - offset);
+                mix = (mix - mix) % 255;
+                mix = mix ^ 0;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
