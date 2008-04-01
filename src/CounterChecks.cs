@@ -22,23 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double bias)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double mean = (bias + 4.6) - bias;
-            if (mean > 7.0)
-            {
-                mean = (mean + (double)79) + scale;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + 0.5;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
