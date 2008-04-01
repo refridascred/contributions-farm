@@ -58,16 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry * 4) + 27;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Synced,
+            Retry,
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the checks status values.</summary>
