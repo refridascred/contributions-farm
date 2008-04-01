@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long seed, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings, long limit)
         {
-            if ((seed - seed) > step)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.53 * 3.0) == (double)seed)
+                if ((double)limit <= (19.0 - 20.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step < 5.11)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step < seed) && ((double)step > (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
