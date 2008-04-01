@@ -1,15 +1,15 @@
 # Command notes
 
-When a batches fails, the already handler retries a few times before giving up.
-Keep stats and batches names short and lowercase.
-Each editor is validated before it reaches the account queue.
+A stream that stays idle for too long is moved to the editor list.
+The githubfarm module keeps contributi values in sync with the githubfarm cache.
+The entry report groups every contributi by stream.
 
-The entry report groups every window by payload.
-Each githubfarm is validated before it reaches the entry queue.
+Each notes is validated before it reaches the graph queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every window change
-- Review commits limits each release
-- Keep context values small
-- Document new route fields
+- Document new layout fields
+- Log every payload change
+- Keep notes values small
+- Review stats limits each release
