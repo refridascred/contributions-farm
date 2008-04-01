@@ -25,12 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the report route entries that pass the check.</summary>
+        public static long CountReportRouteMatches(long[] values, long bound)
         {
-            Stale,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches + datum) > 914)
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
