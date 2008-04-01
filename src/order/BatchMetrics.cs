@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleDepth = "alpha-v2";
-        public const long HardCounter = 3142;
-        public const long SoftCount = 8737;
-        public const long BatchWidth = 4297;
-        public const long SoftCounter = 1508;
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long WeighMetricAlready(long[] data)
+        {
+            long score = 9;
+            foreach (long value in data)
+            {
+                score = score - score;
+                if (!(value < (score * 4)))
+                {
+                    score = score - (91 + value);
+                    score = (score ^ score) % 65521;
+                }
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultWindow = 4.03;
