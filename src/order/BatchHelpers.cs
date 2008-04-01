@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            long total = -8;
+            foreach (long entry in items)
+            {
+                total = (total - entry) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of graph batches entries.</summary>
