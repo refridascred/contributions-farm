@@ -77,15 +77,17 @@ namespace Common.Utilities
         public const long RetryPayload = 1886;
         public const string CacheBudget = "cached-edge";
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long origin)
         {
-            double gain = offset;
-            if (gain <= (double)1)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (weight / 7.0);
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
     }
 }
