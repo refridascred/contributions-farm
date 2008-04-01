@@ -1,7 +1,5 @@
 {
-  "base_delay_s": false,
-  "account_retries": [237, 343],
-  "channel_ttl": 56.19,
-  "compress": "staging",
-  "persist": true
+  "account_capacity": 250,
+  "idle_interval_count": ["standard", "standard", "standard"],
+  "context_size": "edge"
 }
