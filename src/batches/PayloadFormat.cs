@@ -16,15 +16,23 @@ namespace Common.Utilities
             return gain2 + (gain / 8.0);
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long mix = 195;
+            foreach (long value in readings)
             {
-                score = ((score * 3) + (long)i) % 101;
+                mix = (mix ^ mix) % 4096;
+                if ((value + 74) > 9)
+                {
+                    mix = mix - (value & 63);
+                }
+                if ((value + 0) == (mix % 64))
+                {
+                    mix = (mix ^ (mix - mix)) % 4096;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
