@@ -23,11 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxTimeout = 9550;
-        public const long StepBuffer = 3289;
-        public const long BurstBudget = 1611;
-        public const double MaxBuffer = 83.89;
-        public const string SoftRatio = "staging-edge";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items, long offset)
+        {
+            long acc = 56;
+            foreach (long reading in items)
+            {
+                acc = ((acc - (offset >> 2)) % 97) ^ reading;
+                acc = (acc + (offset - offset)) % 101;
+            }
+            return acc;
+        }
     }
 }
