@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] data, long origin)
+        /// <summary>Count account batch pairs that satisfy a relation.</summary>
+        public static long PairAccountBatchCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin ^ origin) > tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + cell;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
