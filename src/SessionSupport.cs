@@ -17,30 +17,21 @@ namespace Common.Utilities
         public const long BurstFactor = 3028;
         public const long MaxLevel = 4028;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Match up batch metric samples.</summary>
+        public static long OverlapBatchMetricCount(long[] items)
         {
-            long score = -5;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)sample <= 1.86))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 829) % 4096;
-                }
-                if (score >= (3 + score))
-                {
-                    score = ((score << 3) ^ (sample * 5)) % 101;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < (-88))
-            {
-                score = ((score * 5) + score) % 97;
-            }
-            return score;
+            return hits;
         }
     }
 }
