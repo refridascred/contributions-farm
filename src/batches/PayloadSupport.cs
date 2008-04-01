@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double BatchLevel = 2.53;
         public const double RetryBuffer = 62.52;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long carry = 28;
-            foreach (long reading in readings)
-            {
-                if (((origin * 4) == (581 + origin)) || (carry <= (carry >> 1)))
-                {
-                    carry = ((carry + carry) % 101) - reading;
-                }
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first cache entry entry that matches the target.</summary>
