@@ -33,11 +33,34 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 944;
-        public const long MinSupport = 8887;
-        public const string BurstSupport = "strict-edge";
-        public const long CacheSupport = 306;
+        /// <summary>Roll a already batches counter forward.</summary>
+        public static long StepAlreadyBatches(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((seed + 797) >= seed) && ((long)i >= ((long)i - seed)))
+                {
+                    break;
+                }
+                if ((sum >> 3) >= (long)i)
+                {
+                    sum = sum - seed;
+                    break;
+                }
+                else
+                {
+                    sum = (sum ^ (seed + (long)i)) % 65521;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (((sum * 3) + sum) % 97) - (long)i2;
+                    sum = (sum * 5) + (seed * 5);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double LimitReport = 94.32;
