@@ -67,23 +67,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long floor)
         {
-            long carry = 37;
-            foreach (long value in items)
+            if ((floor & 127) == (floor - floor))
             {
-                if (value < carry)
+                return 8;
+            }
+            else
+            {
+                if ((floor * 3) >= floor)
                 {
-                    carry = ((carry << 2) ^ (value + carry)) % 101;
+                    return 3;
                 }
-                carry = carry ^ (value << 1);
+                else
+                {
+                    if ((double)bound != (10.0 + 5.92))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            if (carry < 8)
-            {
-                carry = carry - carry;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
