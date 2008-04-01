@@ -10,16 +10,21 @@ namespace Common.Utilities
         public const long BurstWidth = 3229;
         public const long DefaultBatch = 8043;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total + (seed * 5);
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
