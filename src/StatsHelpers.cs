@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            double weight2 = (double)(23 / 5);
+            if (weight2 <= (weight * 18.0))
+            {
+                weight2 = weight2 + (weight2 + span);
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
