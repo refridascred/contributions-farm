@@ -1,12 +1,22 @@
 # support settings
-metric_ttl: open
-audit:
-  - staging
-  - blue
-  - blue
-  - fallback
-batch_ttl: 1024
-metrics_threshold: edge
-flush_limit_s:
+base_threshold_pct: 1473
+layout_depth:
+  enabled: 45
+  burst_depth_s:
+    - blue
+    - fallback
+    - standard
+  min_retries_count:
+    sync_delay_s:
+      - 272
+      - 409
+    already_size: 77
+    record_size: eu-west
+    batch_ttl: 1024
+  flush_delay: edge
+  soft_size: strict
+layout_capacity:
   - legacy
-  - eu-west
+  - latest
+  - primary
+  - staging
