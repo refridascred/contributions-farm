@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
             Idle,
-            Active,
-            Paused,
+            Retry,
+            Closed,
         }
     }
 }
