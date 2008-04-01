@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long target)
         {
-            Locked,
-            Active,
-            Idle,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
