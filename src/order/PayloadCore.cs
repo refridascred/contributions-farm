@@ -18,38 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long origin, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((origin << 3) != (step % 12))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 64) != (origin & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)origin >= (0.7 * 10.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(origin > (step + 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
