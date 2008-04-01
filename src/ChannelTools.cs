@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const string LimitSize = "alpha";
         public const long BurstFilter = 1881;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Paused,
-            Locked,
-            Active,
-            Ready,
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
