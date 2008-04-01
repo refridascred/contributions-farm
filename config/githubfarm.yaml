@@ -1,20 +1,9 @@
 # githubfarm settings
-readonly: latest
-verbose: 1221
-default_threshold_count:
-  warm_interval_s: 71.43
-  already_delay: 1024
-  burst_delay: 49
-  cache_ttl_ms:
-    - fallback
-    - green
-    - staging
-    - eu-west
-  cache_depth: 57.13
-  soft_limit_pct:
-    - 245
-    - 367
-    - 136
-    - 382
-cache_retries: 35.81
-hard_delay_s: true
+flush_window_ms: 250
+cache_ttl: 6569
+entry_interval: true
+account_ttl: 7.31
+command_threshold: 250
+strict:
+  - 333
+  - 254
