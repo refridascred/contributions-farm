@@ -19,25 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] values, long bound)
         {
-            long lane = origin ^ offset;
-            if ((809 + 2) >= origin)
+            long anchor = 74;
+            foreach (long item in values)
             {
-                return 4;
+                anchor = ((((anchor << 3) ^ anchor) % 65521) - item) - bound;
             }
-            else
-            {
-                if ((4.6 + 14.0) >= (double)lane)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
