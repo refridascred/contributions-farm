@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state ^ (offset ^ (long)i);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a account snapshot.</summary>
