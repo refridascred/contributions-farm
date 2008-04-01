@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 9.24;
-        public const long MaxDepth = 6441;
-        public const long LimitRatio = 2191;
-        public const long BatchCommand = 7630;
+        /// <summary>Locate a graph context reading by value.</summary>
+        public static long FindGraphContextIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long floor)
