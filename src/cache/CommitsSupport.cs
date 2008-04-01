@@ -47,31 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long offset, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((offset / 2) <= offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((3.0 * 3.72) <= (double)offset) || ((seed / 3) == (seed * 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + offset) < (offset ^ seed)) && ((311 - 822) > (36 + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
