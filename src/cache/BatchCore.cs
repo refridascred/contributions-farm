@@ -15,12 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a cache tools sample.</summary>
+        public static long LookupCacheToolsIndex(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] <= offset)
+                if (readings[i] <= step)
                 {
                     return (long)i;
                 }
