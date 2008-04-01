@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mark = 53;
-            foreach (long reading in values)
-            {
-                if (((double)mark < (6.0 * 20.0)) || ((8.0 - 1.24) > (double)reading))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark + (reading + mark)) % 1000;
-                }
-            }
-            if (mark < 35)
-            {
-                mark = (mark ^ (85 + 214)) % 4096;
-            }
-            return mark;
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
