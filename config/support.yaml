@@ -1,6 +1,10 @@
 # support settings
-hard_retries: 83
-graph_threshold: cached
-window_size: eu-west
-min_capacity: 1
-soft_threshold_count: stable
+warm_retries_count: stable
+dry_run: primary
+entry_size:
+  - edge
+  - open
+  - primary
+  - stable
+max_ratio: local
+hard_size: local
