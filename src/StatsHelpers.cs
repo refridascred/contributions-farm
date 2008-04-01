@@ -16,14 +16,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long limit)
         {
-            Active,
-            Ready,
-            Paused,
-            Failed,
-            Stale,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
