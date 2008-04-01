@@ -76,38 +76,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data)
         {
-            if ((step + floor) != (floor << 2))
+            long mark = 21;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(9.31 > (double)floor))
+                if (((0.38 - 0.2) > (double)sample) && ((mark << 2) != (mark / 6)))
                 {
-                    return 3;
+                    mark = (mark - sample) % 1000;
                 }
-                else
+                if ((double)mark < (double)91)
                 {
-                    if ((floor << 1) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor / 3) > (floor >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark < 448)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
     }
 }
