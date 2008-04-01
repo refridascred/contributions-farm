@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Fold a list of already githubfarm readings.</summary>
+        public static long TotalAlreadyGithubfarm(long[] series, long seed)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long result = 26;
+            foreach (long cell in series)
+            {
+                result = result + (cell + seed);
+                result = result - (seed << 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of window readings.</summary>
