@@ -19,21 +19,32 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = target + offset;
+            if ((slot << 1) <= (target + slot))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((double)target <= 5.43))
                 {
-                    if ((values[i] - values[j]) > 2)
+                    return 1;
+                }
+                else
+                {
+                    if (((target ^ slot) > (slot + target)) && ((slot >> 2) == (offset - offset)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
