@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const double HardBatch = 6.52;
         public const long CacheBatch = 4293;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] series, long step)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((187 >> 3) != (hits + cell))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
     }
 }
