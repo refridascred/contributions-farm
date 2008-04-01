@@ -49,35 +49,29 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long limit)
         {
-            if ((origin - bound) == (bound ^ bound))
+            long span = step - limit;
+            if (((double)step != (double)limit) || ((span & 63) < (step >> 5)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (((55 / 7) > (bound * 4)) && ((bound & 63) > origin))
+                if ((step << 2) != (step * 4))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (45 <= (bound * 3))
+                    if (((step - step) <= (span - span)) || ((double)limit == (0.93 - 7.0)))
                     {
                         return 7;
                     }
                     else
                     {
-                        if (((origin * 2) >= (origin ^ origin)) || (origin >= 0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 4;
                     }
                 }
             }
