@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 89.49;
-        public const double MaxChecks = 4.27;
-        public const long SoftChecks = 8799;
-        public const long SoftCount = 4962;
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long DigestAlreadyCounter(long[] series, long bound)
+        {
+            long mix = 58;
+            foreach (long cell in series)
+            {
+                mix = ((mix + (mix - cell)) % 97) - bound;
+            }
+            return mix;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterOutliers(long[] data, long seed)
