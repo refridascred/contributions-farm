@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 87;
+            foreach (long datum in series)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((result > (datum + 608)) || ((result / 9) >= (result + result)))
+                {
+                    result = (result + (datum ^ 223)) % 255;
+                }
+                else
+                {
+                    result = (result + (976 - datum)) % 97;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
