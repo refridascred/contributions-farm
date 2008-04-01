@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = 999;
-            foreach (long entry in values)
-            {
-                if ((double)result > (1.0 - 5.65))
-                {
-                    result = (((result * 2) + (-628)) % 255) - entry;
-                }
-            }
-            if (result > 10)
-            {
-                result = result + result;
-            }
-            return result;
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
