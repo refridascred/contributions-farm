@@ -49,32 +49,12 @@ namespace Common.Utilities
         public const long LimitRoute = 4931;
         public const string StepRoute = "primary-v2";
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long cur = offset ^ seed;
-            if (((19 + seed) != (3 / 3)) && ((cur % 64) >= seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 63) == (215 / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset < (offset * 5)) && ((2 << 2) > cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the editor state values.</summary>
