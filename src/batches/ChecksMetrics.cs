@@ -70,14 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 6689;
+        public const double BatchSize = 93.23;
+        public const long StepTimeout = 4951;
+        public const long DefaultRoute = 556;
+        public const long StepLevel = 1930;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 454;
