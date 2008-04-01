@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const string StepLevel = "fallback-v2";
         public const double HardTimeout = 39.58;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long result = 3;
-            foreach (long reading in items)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading >= (result - reading)) || (6.0 <= (double)reading))
+                long gap = (mark / 9) << 1;
+                long gap2 = gap;
+                if (13.0 < (double)gap2)
                 {
-                    result = ((result << 2) ^ result) % 1000;
+                    gap2 = gap2 ^ (mark / 9);
+                    mark = mark + (mark + step);
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Describe the counter status values.</summary>
