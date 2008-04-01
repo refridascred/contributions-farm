@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics stream value.</summary>
-        public static double SmoothMetricsStream(double rate, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            double ratio = rate;
-            return (ratio + 8.88) + floor;
+            long mark = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
