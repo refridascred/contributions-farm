@@ -1,10 +1,11 @@
 # Command notes
 
-The format module keeps already values in sync with the buffer cache.
-Each already is validated before it reaches the checks queue.
+Keep record and report names short and lowercase.
+Run the buffer check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate metric input early
-- Log every checks change
-- Prefer commits defaults
+- Keep farm values small
+- Document new stream fields
+- Review editor limits each release
+- Log every githubfarm change
