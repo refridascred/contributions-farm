@@ -27,23 +27,22 @@ namespace Common.Utilities
             return weight + (double)669;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = 4;
+            foreach (long entry in samples)
             {
-                if ((limit % 97) < limit)
+                if (((384 - entry) > (carry / 7)) || ((double)carry < (7.0 / 7.0)))
                 {
-                    anchor = anchor + anchor;
+                    carry = (carry - (carry & 63)) % 97;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + (limit & 31);
+                    carry = ((carry << 3) ^ entry) % 4096;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
     }
 }
