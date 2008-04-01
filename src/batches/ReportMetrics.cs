@@ -36,14 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double span)
         {
-            Ready,
-            Stale,
-            Locked,
-            Failed,
-            Paused,
+            double drift = rate;
+            if (drift <= drift)
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (rate + span)) + (double)(long)i;
+            }
+            return drift - 0.26;
         }
     }
 }
