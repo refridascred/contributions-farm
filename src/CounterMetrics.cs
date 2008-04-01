@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long StepCount = 875;
         public const long SoftSize = 2192;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 73.69;
-        public const double StepInterval = 65.85;
-        public const long MaxLevel = 8859;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (tally >= (tally + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine contributi batches values into a single score.</summary>
         public static long FoldContributiBatches(long[] readings, long limit)
