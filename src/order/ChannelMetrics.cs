@@ -40,22 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((value + tally) >= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Active,
+            Paused,
         }
     }
 }
