@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long anchor = 3;
-            foreach (long cell in samples)
-            {
-                if (!((floor * 4) >= (419 % 16)))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 97) ^ cell;
-                }
-                if (((double)floor == (1.4 + 7.89)) || ((double)913 == (double)floor))
-                {
-                    anchor = (anchor - (anchor - 2)) % 4096;
-                }
-            }
-            return anchor % 4096;
+            Ready,
+            Idle,
+            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the filter class values.</summary>
