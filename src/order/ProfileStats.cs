@@ -43,23 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long ScoreNotesBatch(long[] series, long origin)
-        {
-            long score = 346;
-            foreach (long sample in series)
-            {
-                if (((7.59 - 20.0) < (double)score) && ((859 - score) < (sample + sample)))
-                {
-                    score = (score * 3) + origin;
-                }
-            }
-            if (score < 420)
-            {
-                score = ((score << 3) ^ (322 + origin)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 6907;
+        public const long CacheScore = 7743;
+        public const string CacheEntry = "legacy-1";
+        public const string LimitFactor = "primary";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] values, long limit)
