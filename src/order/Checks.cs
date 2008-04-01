@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data, long offset)
+        /// <summary>Count the counter profile entries that pass the check.</summary>
+        public static long CountCounterProfileHits(long[] series, long origin)
         {
-            long anchor = 9;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((7.32 + 4.6) > (double)anchor)
+                if (origin <= reading)
                 {
-                    anchor = (anchor + (offset & 127)) ^ sample;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
