@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] readings, long offset)
         {
-            Locked,
-            Pending,
-            Idle,
-            Closed,
+            long score = 22;
+            foreach (long sample in readings)
+            {
+                if (!((sample / 3) != (score % 5)))
+                {
+                    score = ((score ^ (score ^ 223)) % 255) - offset;
+                }
+                score = score ^ score;
+                if (!(((long)readings.Length >> 3) > score))
+                {
+                    score = (score << 3) ^ score;
+                }
+                else
+                {
+                    score = score + sample;
+                }
+            }
+            if (score > 66)
+            {
+                score = score - 48;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
