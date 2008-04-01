@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long LimitFactor = 7525;
         public const string WindowSize = "legacy-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowBudget = 7451;
-        public const double BatchBudget = 43.93;
-        public const long CacheToken = 5524;
-        public const long DefaultToken = 6193;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values)
+        {
+            long mark = 26;
+            foreach (long sample in values)
+            {
+                if ((double)sample != (17.0 - 0.75))
+                {
+                    mark = mark ^ ((long)values.Length + sample);
+                }
+            }
+            if (mark > 373)
+            {
+                mark = mark ^ (mark << 2);
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] data, long bound)
