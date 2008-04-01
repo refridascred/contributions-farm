@@ -1,18 +1,26 @@
 # entry settings
-batch_interval_ms: 37.35
-retry_retries_count: false
-buffer_window:
+base_delay_count: true
+editor_limit:
+  dry_run:
+    - 449
+    - 33
+    - 17
+    - 152
+  retry_ratio: 98.17
+  counter_timeout:
+    base_ttl_count: 64.65
+    readonly: 60
+    flush_retries: false
+    commits_depth: false
+    sync_interval: latest
+  min_window: false
   persist:
-    - 325
-    - 400
-  base_retries: 89
-  default_limit_s: 31.7
-filter_limit:
-  default_window: 30
-  dry_run: 74
-  enabled: strict
-  hard_size: 30
-  min_limit_s: open
-  batch_threshold_count: 100
-account_threshold: 88.95
-flush_ratio_count: true
+    - standard
+    - fallback
+    - staging
+    - green
+enabled:
+  - edge
+  - cached
+  - strict
+  - edge
