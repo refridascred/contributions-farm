@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long seed)
         {
-            long mark = 1;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (!((double)entry != (17.0 * 3.47)))
+                if (value < seed)
                 {
-                    mark = mark ^ (entry % 7);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
