@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = 3;
+            foreach (long cell in readings)
             {
-                if ((double)item > (double)89)
+                if ((long)readings.Length == (bound / 3))
                 {
-                    seen = seen + 2;
+                    state = (state ^ (851 + cell)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = (state + bound) % 97;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
