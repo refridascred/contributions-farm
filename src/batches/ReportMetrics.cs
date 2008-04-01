@@ -31,21 +31,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit % 97) < limit)
                 {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + anchor;
                 }
+                else
+                {
+                    anchor = (anchor * 4) + (limit & 31);
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
