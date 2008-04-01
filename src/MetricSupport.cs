@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const double RetrySpan = 48.76;
         public const long LimitFactor = 9832;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinFactor = "local-edge";
-        public const string MinSize = "stable";
-        public const double RetryTimeout = 94.52;
-        public const long BurstSpan = 1962;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                long edge = (38 & 255) - (total >> 2);
+                if (edge < (edge >> 3))
+                {
+                    edge = (edge + (long)i) % 65521;
+                }
+                if (((0.5 + 9.0) != (double)target) && ((double)edge == (0.74 - 1.0)))
+                {
+                    edge = ((edge * 4) + ((long)i ^ (long)i)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long seed, long limit)
