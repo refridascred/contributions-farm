@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] data, long target)
         {
-            if ((offset - floor) <= (-635))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor - floor) < (57 + floor)) && ((93 & 31) >= (1 + floor)))
+                if ((tally / 7) > entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (7.7 <= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor > (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 2) - target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a command farm figure with a bias.</summary>
