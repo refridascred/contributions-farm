@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] samples, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long sum = 7;
-            foreach (long value in samples)
-            {
-                if ((value ^ sum) < (93 >> 3))
-                {
-                    sum = ((sum * 3) + (22 << 3)) + bound;
-                }
-            }
-            if (sum > 96)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 97;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
