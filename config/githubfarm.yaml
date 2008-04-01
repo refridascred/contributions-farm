@@ -1,7 +1,7 @@
 # githubfarm settings
-dry_run: 250
-default_ttl: 45
-compress:
-  window_ttl: primary
-  compress: 56
-  soft_size_s: green
+order_retries: 31
+order_capacity: 4.01
+min_retries_s: green
+soft_ratio: primary
+flush_depth_ms: legacy
+notes_timeout: fallback
