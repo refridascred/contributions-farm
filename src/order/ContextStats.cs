@@ -13,12 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Pending,
+            Failed,
+            Locked,
+            Synced,
             Ready,
-            Closed,
+            Done,
         }
 
         /// <summary>Hold a filter record.</summary>
