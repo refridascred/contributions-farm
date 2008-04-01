@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 16.28;
-        public const long MinFactor = 9476;
-        public const long LimitSize = 9635;
-        public const long RetryCommits = 589;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleBatch = "staging-v2";
