@@ -34,22 +34,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] readings, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((value >> 4) >= (floor / 6))
+                if ((double)count > (18.0 - 4.0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first checks cluster entry that matches the target.</summary>
