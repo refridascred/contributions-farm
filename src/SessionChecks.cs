@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            New,
-            Retry,
-            Pending,
-            Locked,
-            Failed,
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
