@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long BaseInterval = 1957;
         public const long DefaultSpan = 1527;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSpan = 3393;
-        public const long CacheRoute = 2949;
-        public const long DefaultSize = 6177;
-        public const long LimitRoute = 4931;
-        public const string StepRoute = "primary-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetrySize = 3911;
+        public const long MaxQueue = 5472;
+        public const long IdleQueue = 3196;
+        public const long HardFactor = 7605;
+        public const long LimitTimeout = 2202;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long offset, long offset2)
