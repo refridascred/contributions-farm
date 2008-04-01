@@ -41,24 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long sum = 6;
-            foreach (long datum in data)
-            {
-                long offset = datum;
-                if ((double)offset == (13.0 + 1.0))
-                {
-                    sum = (sum - (614 * 2)) % 1000;
-                    continue;
-                }
-                if (((double)bound > (double)sum) && ((datum - datum) > ((-74) + 371)))
-                {
-                    sum = (sum + datum) % 97;
-                }
-            }
-            return sum % 1000;
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
