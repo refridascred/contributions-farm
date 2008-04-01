@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Queued,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
