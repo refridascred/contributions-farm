@@ -74,18 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entry entries that pass the check.</summary>
-        public static long AuditRouteEntryHits(long[] levels, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)floor > (12.0 * 4.6))
+                if ((hits > (664 >> 5)) && ((7.4 - 6.9) < (double)datum))
                 {
-                    matches = (matches + 3) ^ reading;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
