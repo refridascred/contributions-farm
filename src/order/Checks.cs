@@ -42,19 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long total = 4;
-            foreach (long cell in series)
-            {
-                total = total + (bound - cell);
-                if ((double)bound != (double)total)
-                {
-                    total = (total - (cell / 4)) % 65521;
-                }
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
