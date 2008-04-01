@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Retry,
-            Synced,
-            Done,
-            New,
-            Paused,
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
