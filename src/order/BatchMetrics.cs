@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels, long step)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen >> 4) <= (datum & 63))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
