@@ -14,17 +14,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if (step <= (809 * 5))
                 {
-                    return (long)i;
+                    state = state + 724;
+                    state = (state << 2) ^ state;
                 }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i + step)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate entry samples.</summary>
