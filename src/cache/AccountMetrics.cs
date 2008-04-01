@@ -74,21 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session cluster samples.</summary>
-        public static long OverlapSessionClusterCount(long[] readings)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
