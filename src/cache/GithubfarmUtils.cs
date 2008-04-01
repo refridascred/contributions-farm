@@ -19,24 +19,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] data)
-        {
-            long sum = 7;
-            foreach (long entry in data)
-            {
-                if (((double)entry != (6.0 + 2.0)) || ((4.75 + 11.0) < (double)sum))
-                {
-                    sum = (sum - ((-81) >> 3)) % 97;
-                    continue;
-                }
-                if ((7.98 / 8.0) <= (double)sum)
-                {
-                    sum = sum ^ (entry << 2);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 22.28;
+        public const long CacheScore = 2783;
+        public const double WindowBuffer = 16.66;
+        public const long LimitLevel = 9499;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] values, long origin)
