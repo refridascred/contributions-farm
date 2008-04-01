@@ -37,15 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes batches samples.</summary>
-        public static long WeighNotesBatches(long[] items)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long acc = 273;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ datum) % 255;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up counter samples.</summary>
