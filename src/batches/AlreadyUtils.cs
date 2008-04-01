@@ -57,15 +57,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Queued,
+            Pending,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine order values into a single score.</summary>
