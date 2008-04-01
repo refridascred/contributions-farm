@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 1074;
-        public const string MinTimeout = "alpha";
-        public const double LimitCache = 98.66;
-        public const long BaseLevel = 7033;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] series, long bound)
