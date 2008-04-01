@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series, long step)
         {
-            long total = -8;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                total = (total - entry) % 65521;
+                if (entry < 590)
+                {
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of graph batches entries.</summary>
