@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheEntry = 6094;
         public const string LimitEntry = "strict";
 
-        /// <summary>Combine metrics githubfarm values into a single score.</summary>
-        public static long FoldMetricsGithubfarm(long[] readings)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            double load = (gain * 4.74) + (gain + gain);
+            if (load > (load * 20.0))
             {
-                if (((long)readings.Length - sample) <= (sample / 7))
-                {
-                    score = (score - (sample % 24)) % 65521;
-                }
+                load = load - bias;
             }
-            return score % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (bias - gain);
         }
 
         /// <summary>Combine token values into a single score.</summary>
