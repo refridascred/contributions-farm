@@ -1,10 +1,5 @@
 # githubfarm settings
-idle_ratio_ms: 250
-verbose: 8.65
-max_window: 62
-soft_window_pct:
-  soft_window_count: 4994
-  burst_retries: staging
-  account_limit: 92
-  notes_timeout: 9465
-idle_interval_pct: 8612
+retry_limit_ms: staging
+batch_timeout: eu-west
+burst_ratio_count: 775
+warm_interval_ms: latest
