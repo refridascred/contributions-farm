@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 13.14;
-        public const double WindowTimeout = 0.84;
-        public const long DefaultTimeout = 5795;
-        public const string MinFactor = "open-1";
-        public const long MinStats = 7843;
+        /// <summary>Compare every pair of tools cluster readings.</summary>
+        public static long CompareToolsClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitFactor = 729;
