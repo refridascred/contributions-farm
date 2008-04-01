@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long HardGraph = 2744;
         public const long RetryBudget = 1385;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] readings, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] < floor)
+                if ((3.34 - 0.72) >= (double)(long)samples.Length)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
