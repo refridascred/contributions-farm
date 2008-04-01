@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Rank githubfarm counter input into a small class.</summary>
