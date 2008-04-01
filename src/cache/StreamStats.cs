@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long HardGraph = 2744;
         public const long RetryBudget = 1385;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "legacy";
-        public const string MinRatio = "fallback-v2";
-        public const long SoftMetric = 2616;
-        public const string IdleMetric = "strict-1";
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long limit)
